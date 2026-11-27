@@ -1,0 +1,29 @@
+{
+  "lang": "typescript-fetch",
+  "vendor": [
+    {
+      "from": "webhooks/typescript-fetch/webhooks.ts",
+      "to": "seller/src/webhooks.ts"
+    },
+    {
+      "from": "webhooks/typescript-fetch/webhooks.ts",
+      "to": "buyer/src/webhooks.ts"
+    },
+    {
+      "from": "extras/typescript-fetch/src/crossly.ts",
+      "to": "seller/src/crossly.ts"
+    },
+    {
+      "from": "extras/typescript-fetch/src/crossly.ts",
+      "to": "buyer/src/crossly.ts"
+    },
+    {
+      "from": "extras/typescript-fetch/src/webhooks-middleware.ts",
+      "to": "seller/src/webhooks-middleware.ts"
+    },
+    {
+      "from": "extras/typescript-fetch/src/webhooks-middleware.ts",
+      "to": "buyer/src/webhooks-middleware.ts"
+    }
+  ]
+}

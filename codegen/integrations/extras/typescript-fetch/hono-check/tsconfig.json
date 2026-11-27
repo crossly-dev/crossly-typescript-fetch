@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["es2022", "dom"],
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "paths": { "@crossly/fetch": ["../src/index.ts"] }
+  },
+  "include": ["app.ts", "examples/*.ts"]
+}

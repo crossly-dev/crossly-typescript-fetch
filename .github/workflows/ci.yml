@@ -1,0 +1,37 @@
+# Build, test and package on every push (any branch) and pull request.
+#
+# Managed by tools/sdk-repo/seed.mjs in the Crossly monorepo: edits here are overwritten on the next seed.
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: build seller
+        run: bash codegen/ci/check.sh typescript-fetch seller
+      - name: build buyer
+        run: bash codegen/ci/check.sh typescript-fetch buyer
+      - name: webhook conformance vectors
+        working-directory: codegen/integrations/webhooks/typescript-fetch
+        run: node check-vectors.mjs
+      - name: package
+        run: |
+          mkdir -p dist
+          for c in seller buyer; do
+            (cd "$c" && npm pack --pack-destination ../dist)
+          done
+          ls -l dist

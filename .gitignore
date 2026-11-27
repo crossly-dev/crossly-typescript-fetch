@@ -1,0 +1,9 @@
+codegen/specs/
+codegen/sdks/
+codegen/.tools/
+codegen/release-notes.md
+dist/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
