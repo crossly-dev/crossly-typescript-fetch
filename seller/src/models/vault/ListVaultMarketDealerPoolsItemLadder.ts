@@ -58,9 +58,9 @@ export interface ListVaultMarketDealerPoolsItemLadder {
 */
 export enum ListVaultMarketDealerPoolsItemLadderBidLimitEnum {
     Floor = 'floor',
+    Ceiling = 'ceiling',
     NoUnits = 'no_units',
     NoCash = 'no_cash',
-    Ceiling = 'ceiling',
     CurveEnd = 'curve_end'
 }/**
 * @export
@@ -68,9 +68,9 @@ export enum ListVaultMarketDealerPoolsItemLadderBidLimitEnum {
 */
 export enum ListVaultMarketDealerPoolsItemLadderAskLimitEnum {
     Floor = 'floor',
+    Ceiling = 'ceiling',
     NoUnits = 'no_units',
     NoCash = 'no_cash',
-    Ceiling = 'ceiling',
     CurveEnd = 'curve_end'
 }
 

@@ -24,12 +24,6 @@ export interface GetBuyerListingSubscribeOfferResponseData {
      * @type {number}
      * @memberof GetBuyerListingSubscribeOfferResponseData
      */
-    priceCents: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetBuyerListingSubscribeOfferResponseData
-     */
     discountBps: number;
     /**
      * 
@@ -37,6 +31,12 @@ export interface GetBuyerListingSubscribeOfferResponseData {
      * @memberof GetBuyerListingSubscribeOfferResponseData
      */
     intervals: Array<number>;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerListingSubscribeOfferResponseData
+     */
+    priceCents: number;
     /**
      * 
      * @type {number}
@@ -55,9 +55,9 @@ export function GetBuyerListingSubscribeOfferResponseDataFromJSONTyped(json: any
     }
     return {
         
-        'priceCents': json['priceCents'],
         'discountBps': json['discountBps'],
         'intervals': json['intervals'],
+        'priceCents': json['priceCents'],
         'subscribePriceCents': json['subscribePriceCents'],
     };
 }
@@ -71,9 +71,9 @@ export function GetBuyerListingSubscribeOfferResponseDataToJSON(value?: GetBuyer
     }
     return {
         
-        'priceCents': value.priceCents,
         'discountBps': value.discountBps,
         'intervals': value.intervals,
+        'priceCents': value.priceCents,
         'subscribePriceCents': value.subscribePriceCents,
     };
 }

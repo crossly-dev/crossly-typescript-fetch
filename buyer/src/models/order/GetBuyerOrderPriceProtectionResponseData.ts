@@ -21,16 +21,16 @@ import { exists, mapValues } from '../../runtime';
 export interface GetBuyerOrderPriceProtectionResponseData {
     /**
      * 
-     * @type {boolean}
-     * @memberof GetBuyerOrderPriceProtectionResponseData
-     */
-    active: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof GetBuyerOrderPriceProtectionResponseData
      */
     until: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetBuyerOrderPriceProtectionResponseData
+     */
+    active: boolean;
     /**
      * 
      * @type {number}
@@ -49,8 +49,8 @@ export function GetBuyerOrderPriceProtectionResponseDataFromJSONTyped(json: any,
     }
     return {
         
-        'active': json['active'],
         'until': json['until'],
+        'active': json['active'],
         'creditedCents': json['creditedCents'],
     };
 }
@@ -64,8 +64,8 @@ export function GetBuyerOrderPriceProtectionResponseDataToJSON(value?: GetBuyerO
     }
     return {
         
-        'active': value.active,
         'until': value.until,
+        'active': value.active,
         'creditedCents': value.creditedCents,
     };
 }

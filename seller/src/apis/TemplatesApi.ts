@@ -27,6 +27,9 @@ import {
     GetMeTemplateSuggestResponse,
     GetMeTemplateSuggestResponseFromJSON,
     GetMeTemplateSuggestResponseToJSON,
+    GetPublicTemplateResponse,
+    GetPublicTemplateResponseFromJSON,
+    GetPublicTemplateResponseToJSON,
     ListMeTemplatesItem,
     ListMeTemplatesItemFromJSON,
     ListMeTemplatesItemToJSON,
@@ -59,6 +62,10 @@ export interface DeleteMeTemplateShareRequest {
 
 export interface GetMeTemplateRequest {
     id: string;
+}
+
+export interface GetPublicTemplateRequest {
+    token: string;
 }
 
 export interface UpdateMeTemplateRequest {
@@ -365,6 +372,36 @@ export class TemplatesApi extends runtime.BaseAPI {
      */
     async getMeTemplateSuggest(initOverrides?: RequestInit): Promise<GetMeTemplateSuggestResponse> {
         const response = await this.getMeTemplateSuggestRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A shared template by its share token (public, no auth).
+     */
+    async getPublicTemplateRaw(requestParameters: GetPublicTemplateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPublicTemplateResponse>> {
+        if (requestParameters.token === null || requestParameters.token === undefined) {
+            throw new runtime.RequiredError('token','Required parameter requestParameters.token was null or undefined when calling getPublicTemplate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/v1/public/templates/{token}`.replace(`{${"token"}}`, encodeURIComponent(String(requestParameters.token))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPublicTemplateResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A shared template by its share token (public, no auth).
+     */
+    async getPublicTemplate(requestParameters: GetPublicTemplateRequest, initOverrides?: RequestInit): Promise<GetPublicTemplateResponse> {
+        const response = await this.getPublicTemplateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

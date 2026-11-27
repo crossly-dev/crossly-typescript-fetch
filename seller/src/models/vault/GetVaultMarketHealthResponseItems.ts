@@ -87,17 +87,17 @@ export interface GetVaultMarketHealthResponseItems {
 */
 export enum GetVaultMarketHealthResponseItemsQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }/**
 * @export
 * @enum {string}
 */
 export enum GetVaultMarketHealthResponseItemsTierEnum {
+    C = 'C',
     A = 'A',
     B = 'B',
-    C = 'C',
     D = 'D',
     Unclassified = 'unclassified'
 }

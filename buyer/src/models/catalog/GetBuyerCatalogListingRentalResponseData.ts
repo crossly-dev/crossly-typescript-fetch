@@ -19,6 +19,12 @@ import {
     GetBuyerCatalogListingRentalResponseDataBookedFromJSONTyped,
     GetBuyerCatalogListingRentalResponseDataBookedToJSON,
 } from './GetBuyerCatalogListingRentalResponseDataBooked';
+import {
+    GetBuyerCatalogListingRentalResponseDataOptions,
+    GetBuyerCatalogListingRentalResponseDataOptionsFromJSON,
+    GetBuyerCatalogListingRentalResponseDataOptionsFromJSONTyped,
+    GetBuyerCatalogListingRentalResponseDataOptionsToJSON,
+} from './GetBuyerCatalogListingRentalResponseDataOptions';
 
 /**
  * 
@@ -43,7 +49,7 @@ export interface GetBuyerCatalogListingRentalResponseData {
      * @type {number}
      * @memberof GetBuyerCatalogListingRentalResponseData
      */
-    depositCents: number;
+    depositCents?: number | null;
     /**
      * 
      * @type {number}
@@ -82,10 +88,28 @@ export interface GetBuyerCatalogListingRentalResponseData {
     available: boolean;
     /**
      * 
+     * @type {string}
+     * @memberof GetBuyerCatalogListingRentalResponseData
+     */
+    returnPolicy?: string | null;
+    /**
+     * 
      * @type {Array<GetBuyerCatalogListingRentalResponseDataBooked>}
      * @memberof GetBuyerCatalogListingRentalResponseData
      */
     booked: Array<GetBuyerCatalogListingRentalResponseDataBooked>;
+    /**
+     * 
+     * @type {GetBuyerCatalogListingRentalResponseDataOptions}
+     * @memberof GetBuyerCatalogListingRentalResponseData
+     */
+    options: GetBuyerCatalogListingRentalResponseDataOptions;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof GetBuyerCatalogListingRentalResponseData
+     */
+    unitsFree: { [key: string]: any; };
 }
 
 export function GetBuyerCatalogListingRentalResponseDataFromJSON(json: any): GetBuyerCatalogListingRentalResponseData {
@@ -100,14 +124,17 @@ export function GetBuyerCatalogListingRentalResponseDataFromJSONTyped(json: any,
         
         'dailyCents': json['dailyCents'],
         'weeklyCents': !exists(json, 'weeklyCents') ? undefined : json['weeklyCents'],
-        'depositCents': json['depositCents'],
+        'depositCents': !exists(json, 'depositCents') ? undefined : json['depositCents'],
         'minDays': json['minDays'],
         'maxDays': json['maxDays'],
         'bufferDays': json['bufferDays'],
         'rentOnly': json['rentOnly'],
         'requireApproval': json['requireApproval'],
         'available': json['available'],
+        'returnPolicy': !exists(json, 'returnPolicy') ? undefined : json['returnPolicy'],
         'booked': ((json['booked'] as Array<any>).map(GetBuyerCatalogListingRentalResponseDataBookedFromJSON)),
+        'options': GetBuyerCatalogListingRentalResponseDataOptionsFromJSON(json['options']),
+        'unitsFree': json['unitsFree'],
     };
 }
 
@@ -129,7 +156,10 @@ export function GetBuyerCatalogListingRentalResponseDataToJSON(value?: GetBuyerC
         'rentOnly': value.rentOnly,
         'requireApproval': value.requireApproval,
         'available': value.available,
+        'returnPolicy': value.returnPolicy,
         'booked': ((value.booked as Array<any>).map(GetBuyerCatalogListingRentalResponseDataBookedToJSON)),
+        'options': GetBuyerCatalogListingRentalResponseDataOptionsToJSON(value.options),
+        'unitsFree': value.unitsFree,
     };
 }
 

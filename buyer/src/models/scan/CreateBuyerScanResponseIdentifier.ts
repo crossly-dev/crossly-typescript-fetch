@@ -24,13 +24,13 @@ export interface CreateBuyerScanResponseIdentifier {
      * @type {string}
      * @memberof CreateBuyerScanResponseIdentifier
      */
-    value: string;
+    ns: CreateBuyerScanResponseIdentifierNsEnum;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerScanResponseIdentifier
      */
-    ns: CreateBuyerScanResponseIdentifierNsEnum;
+    value: string;
 }
 
 /**
@@ -38,8 +38,8 @@ export interface CreateBuyerScanResponseIdentifier {
 * @enum {string}
 */
 export enum CreateBuyerScanResponseIdentifierNsEnum {
-    StyleCode = 'style_code',
     Gtin = 'gtin',
+    StyleCode = 'style_code',
     LegoSet = 'lego_set',
     Tcgplayer = 'tcgplayer',
     Discogs = 'discogs',
@@ -56,8 +56,8 @@ export function CreateBuyerScanResponseIdentifierFromJSONTyped(json: any, ignore
     }
     return {
         
-        'value': json['value'],
         'ns': json['ns'],
+        'value': json['value'],
     };
 }
 
@@ -70,8 +70,8 @@ export function CreateBuyerScanResponseIdentifierToJSON(value?: CreateBuyerScanR
     }
     return {
         
-        'value': value.value,
         'ns': value.ns,
+        'value': value.value,
     };
 }
 

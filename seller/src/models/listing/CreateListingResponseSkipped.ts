@@ -31,6 +31,12 @@ export interface CreateListingResponseSkipped {
      * @memberof CreateListingResponseSkipped
      */
     reason: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateListingResponseSkipped
+     */
+    code?: string | null;
 }
 
 export function CreateListingResponseSkippedFromJSON(json: any): CreateListingResponseSkipped {
@@ -45,6 +51,7 @@ export function CreateListingResponseSkippedFromJSONTyped(json: any, ignoreDiscr
         
         'platform': json['platform'],
         'reason': json['reason'],
+        'code': !exists(json, 'code') ? undefined : json['code'],
     };
 }
 
@@ -59,6 +66,7 @@ export function CreateListingResponseSkippedToJSON(value?: CreateListingResponse
         
         'platform': value.platform,
         'reason': value.reason,
+        'code': value.code,
     };
 }
 

@@ -49,6 +49,12 @@ export interface CreateStallBookResponseBookingUnits {
      * @memberof CreateStallBookResponseBookingUnits
      */
     externalId?: string | null;
+    /**
+     * CBX only, booked since gap 6: this unit's world_payments row (refunds go through refundWorld).
+     * @type {string}
+     * @memberof CreateStallBookResponseBookingUnits
+     */
+    paymentId?: string | null;
 }
 
 export function CreateStallBookResponseBookingUnitsFromJSON(json: any): CreateStallBookResponseBookingUnits {
@@ -66,6 +72,7 @@ export function CreateStallBookResponseBookingUnitsFromJSONTyped(json: any, igno
         'endsAt': json['endsAt'],
         'cents': json['cents'],
         'externalId': !exists(json, 'externalId') ? undefined : json['externalId'],
+        'paymentId': !exists(json, 'paymentId') ? undefined : json['paymentId'],
     };
 }
 
@@ -83,6 +90,7 @@ export function CreateStallBookResponseBookingUnitsToJSON(value?: CreateStallBoo
         'endsAt': value.endsAt,
         'cents': value.cents,
         'externalId': value.externalId,
+        'paymentId': value.paymentId,
     };
 }
 

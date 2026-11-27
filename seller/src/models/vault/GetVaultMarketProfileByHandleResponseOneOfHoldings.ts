@@ -63,9 +63,9 @@ export interface GetVaultMarketProfileByHandleResponseOneOfHoldings {
 */
 export enum GetVaultMarketProfileByHandleResponseOneOfHoldingsQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketProfileByHandleResponseOneOfHoldingsFromJSON(json: any): GetVaultMarketProfileByHandleResponseOneOfHoldings {

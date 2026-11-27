@@ -118,11 +118,11 @@ export enum GetVaultReceiptResponseFormEnum {
 * @enum {string}
 */
 export enum GetVaultReceiptResponseStatusEnum {
+    Void = 'void',
     Pledged = 'pledged',
     Issued = 'issued',
     Transferred = 'transferred',
-    Surrendered = 'surrendered',
-    Void = 'void'
+    Surrendered = 'surrendered'
 }
 
 export function GetVaultReceiptResponseFromJSON(json: any): GetVaultReceiptResponse {

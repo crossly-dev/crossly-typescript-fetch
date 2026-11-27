@@ -153,11 +153,11 @@ export interface GetDropResponseDrop {
 * @enum {string}
 */
 export enum GetDropResponseDropStatusEnum {
-    Scheduled = 'scheduled',
     Cancelled = 'cancelled',
+    Scheduled = 'scheduled',
     Closed = 'closed',
-    Released = 'released',
-    LineOpen = 'line_open'
+    LineOpen = 'line_open',
+    Released = 'released'
 }/**
 * @export
 * @enum {string}

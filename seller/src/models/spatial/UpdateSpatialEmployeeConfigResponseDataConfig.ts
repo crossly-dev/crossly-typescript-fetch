@@ -80,9 +80,10 @@ export interface UpdateSpatialEmployeeConfigResponseDataConfig {
 * @enum {string}
 */
 export enum UpdateSpatialEmployeeConfigResponseDataConfigBrainKindEnum {
-    Idle = 'idle',
     Rules = 'rules',
-    Agent = 'agent'
+    Idle = 'idle',
+    Agent = 'agent',
+    Byok = 'byok'
 }
 
 export function UpdateSpatialEmployeeConfigResponseDataConfigFromJSON(json: any): UpdateSpatialEmployeeConfigResponseDataConfig {

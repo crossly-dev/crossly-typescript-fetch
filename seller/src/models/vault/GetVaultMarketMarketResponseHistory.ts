@@ -45,9 +45,9 @@ export interface GetVaultMarketMarketResponseHistory {
 */
 export enum GetVaultMarketMarketResponseHistoryQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketMarketResponseHistoryFromJSON(json: any): GetVaultMarketMarketResponseHistory {

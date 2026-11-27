@@ -24,19 +24,13 @@ export interface ListBuyerCatalogSellersItem {
      * @type {string}
      * @memberof ListBuyerCatalogSellersItem
      */
-    displayName: string;
+    username: string;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerCatalogSellersItem
      */
-    username: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerCatalogSellersItem
-     */
-    totalItemsSold: number;
+    displayName: string;
     /**
      * 
      * @type {boolean}
@@ -49,6 +43,12 @@ export interface ListBuyerCatalogSellersItem {
      * @memberof ListBuyerCatalogSellersItem
      */
     activeListings: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerCatalogSellersItem
+     */
+    totalItemsSold: number;
     /**
      * 
      * @type {string}
@@ -67,11 +67,11 @@ export function ListBuyerCatalogSellersItemFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'displayName': json['displayName'],
         'username': json['username'],
-        'totalItemsSold': json['totalItemsSold'],
+        'displayName': json['displayName'],
         'isVerified': json['isVerified'],
         'activeListings': json['activeListings'],
+        'totalItemsSold': json['totalItemsSold'],
         'avatarUrl': !exists(json, 'avatarUrl') ? undefined : json['avatarUrl'],
     };
 }
@@ -85,11 +85,11 @@ export function ListBuyerCatalogSellersItemToJSON(value?: ListBuyerCatalogSeller
     }
     return {
         
-        'displayName': value.displayName,
         'username': value.username,
-        'totalItemsSold': value.totalItemsSold,
+        'displayName': value.displayName,
         'isVerified': value.isVerified,
         'activeListings': value.activeListings,
+        'totalItemsSold': value.totalItemsSold,
         'avatarUrl': value.avatarUrl,
     };
 }

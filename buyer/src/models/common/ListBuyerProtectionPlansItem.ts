@@ -30,7 +30,7 @@ export interface ListBuyerProtectionPlansItem {
      * @type {string}
      * @memberof ListBuyerProtectionPlansItem
      */
-    createdAt: string;
+    purchaseId?: string | null;
     /**
      * 
      * @type {string}
@@ -45,10 +45,16 @@ export interface ListBuyerProtectionPlansItem {
     title: string;
     /**
      * 
+     * @type {number}
+     * @memberof ListBuyerProtectionPlansItem
+     */
+    termMonths?: number | null;
+    /**
+     * 
      * @type {string}
      * @memberof ListBuyerProtectionPlansItem
      */
-    purchaseId?: string | null;
+    coverage?: string | null;
     /**
      * 
      * @type {string}
@@ -69,18 +75,6 @@ export interface ListBuyerProtectionPlansItem {
     refundCents?: number | null;
     /**
      * 
-     * @type {number}
-     * @memberof ListBuyerProtectionPlansItem
-     */
-    termMonths?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerProtectionPlansItem
-     */
-    coverage?: string | null;
-    /**
-     * 
      * @type {string}
      * @memberof ListBuyerProtectionPlansItem
      */
@@ -91,6 +85,12 @@ export interface ListBuyerProtectionPlansItem {
      * @memberof ListBuyerProtectionPlansItem
      */
     itemTitle?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerProtectionPlansItem
+     */
+    createdAt: string;
 }
 
 export function ListBuyerProtectionPlansItemFromJSON(json: any): ListBuyerProtectionPlansItem {
@@ -104,17 +104,17 @@ export function ListBuyerProtectionPlansItemFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
+        'purchaseId': !exists(json, 'purchaseId') ? undefined : json['purchaseId'],
         'status': json['status'],
         'title': json['title'],
-        'purchaseId': !exists(json, 'purchaseId') ? undefined : json['purchaseId'],
+        'termMonths': !exists(json, 'termMonths') ? undefined : json['termMonths'],
+        'coverage': !exists(json, 'coverage') ? undefined : json['coverage'],
         'termsUrl': !exists(json, 'termsUrl') ? undefined : json['termsUrl'],
         'priceCents': json['priceCents'],
         'refundCents': !exists(json, 'refundCents') ? undefined : json['refundCents'],
-        'termMonths': !exists(json, 'termMonths') ? undefined : json['termMonths'],
-        'coverage': !exists(json, 'coverage') ? undefined : json['coverage'],
         'contractId': !exists(json, 'contractId') ? undefined : json['contractId'],
         'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
+        'createdAt': json['createdAt'],
     };
 }
 
@@ -128,17 +128,17 @@ export function ListBuyerProtectionPlansItemToJSON(value?: ListBuyerProtectionPl
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
+        'purchaseId': value.purchaseId,
         'status': value.status,
         'title': value.title,
-        'purchaseId': value.purchaseId,
+        'termMonths': value.termMonths,
+        'coverage': value.coverage,
         'termsUrl': value.termsUrl,
         'priceCents': value.priceCents,
         'refundCents': value.refundCents,
-        'termMonths': value.termMonths,
-        'coverage': value.coverage,
         'contractId': value.contractId,
         'itemTitle': value.itemTitle,
+        'createdAt': value.createdAt,
     };
 }
 

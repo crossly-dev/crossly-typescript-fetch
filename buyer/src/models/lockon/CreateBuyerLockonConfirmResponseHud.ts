@@ -99,8 +99,8 @@ export interface CreateBuyerLockonConfirmResponseHud {
 * @enum {string}
 */
 export enum CreateBuyerLockonConfirmResponseHudToneEnum {
-    None = 'none',
     Info = 'info',
+    None = 'none',
     Win = 'win'
 }
 

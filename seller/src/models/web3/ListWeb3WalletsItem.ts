@@ -56,6 +56,12 @@ export interface ListWeb3WalletsItem {
      */
     lastSyncedAt?: Date | null;
     /**
+     * A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there.
+     * @type {boolean}
+     * @memberof ListWeb3WalletsItem
+     */
+    autoImport: boolean;
+    /**
      * 
      * @type {Date}
      * @memberof ListWeb3WalletsItem
@@ -68,8 +74,8 @@ export interface ListWeb3WalletsItem {
 * @enum {string}
 */
 export enum ListWeb3WalletsItemFamilyEnum {
-    Evm = 'evm',
-    Solana = 'solana'
+    Solana = 'solana',
+    Evm = 'evm'
 }
 
 export function ListWeb3WalletsItemFromJSON(json: any): ListWeb3WalletsItem {
@@ -88,6 +94,7 @@ export function ListWeb3WalletsItemFromJSONTyped(json: any, ignoreDiscriminator:
         'label': !exists(json, 'label') ? undefined : json['label'],
         'verifiedAt': !exists(json, 'verifiedAt') ? undefined : (json['verifiedAt'] === null ? null : new Date(json['verifiedAt'])),
         'lastSyncedAt': !exists(json, 'lastSyncedAt') ? undefined : (json['lastSyncedAt'] === null ? null : new Date(json['lastSyncedAt'])),
+        'autoImport': json['autoImport'],
         'createdAt': (new Date(json['createdAt'])),
     };
 }
@@ -107,6 +114,7 @@ export function ListWeb3WalletsItemToJSON(value?: ListWeb3WalletsItem | null): a
         'label': value.label,
         'verifiedAt': value.verifiedAt === undefined ? undefined : (value.verifiedAt === null ? null : value.verifiedAt.toISOString()),
         'lastSyncedAt': value.lastSyncedAt === undefined ? undefined : (value.lastSyncedAt === null ? null : value.lastSyncedAt.toISOString()),
+        'autoImport': value.autoImport,
         'createdAt': (value.createdAt.toISOString()),
     };
 }

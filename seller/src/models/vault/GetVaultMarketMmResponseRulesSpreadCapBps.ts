@@ -24,6 +24,12 @@ export interface GetVaultMarketMmResponseRulesSpreadCapBps {
      * @type {number}
      * @memberof GetVaultMarketMmResponseRulesSpreadCapBps
      */
+    c: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetVaultMarketMmResponseRulesSpreadCapBps
+     */
     a: number;
     /**
      * 
@@ -31,12 +37,6 @@ export interface GetVaultMarketMmResponseRulesSpreadCapBps {
      * @memberof GetVaultMarketMmResponseRulesSpreadCapBps
      */
     b: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetVaultMarketMmResponseRulesSpreadCapBps
-     */
-    c: number;
     /**
      * 
      * @type {number}
@@ -55,9 +55,9 @@ export function GetVaultMarketMmResponseRulesSpreadCapBpsFromJSONTyped(json: any
     }
     return {
         
+        'c': json['C'],
         'a': json['A'],
         'b': json['B'],
-        'c': json['C'],
         'd': json['D'],
     };
 }
@@ -71,9 +71,9 @@ export function GetVaultMarketMmResponseRulesSpreadCapBpsToJSON(value?: GetVault
     }
     return {
         
+        'C': value.c,
         'A': value.a,
         'B': value.b,
-        'C': value.c,
         'D': value.d,
     };
 }

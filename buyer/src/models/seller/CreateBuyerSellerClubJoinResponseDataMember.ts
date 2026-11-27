@@ -28,16 +28,16 @@ import {
 export interface CreateBuyerSellerClubJoinResponseDataMember {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof CreateBuyerSellerClubJoinResponseDataMember
      */
-    tier?: string | null;
+    spendCents: number;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerSellerClubJoinResponseDataMember
      */
-    joinedAt: string;
+    tier?: string | null;
     /**
      * 
      * @type {number}
@@ -46,16 +46,16 @@ export interface CreateBuyerSellerClubJoinResponseDataMember {
     discountBps: number;
     /**
      * 
-     * @type {number}
-     * @memberof CreateBuyerSellerClubJoinResponseDataMember
-     */
-    spendCents: number;
-    /**
-     * 
      * @type {CreateBuyerSellerClubJoinResponseDataMemberNext}
      * @memberof CreateBuyerSellerClubJoinResponseDataMember
      */
     next?: CreateBuyerSellerClubJoinResponseDataMemberNext | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerSellerClubJoinResponseDataMember
+     */
+    joinedAt: string;
 }
 
 export function CreateBuyerSellerClubJoinResponseDataMemberFromJSON(json: any): CreateBuyerSellerClubJoinResponseDataMember {
@@ -68,11 +68,11 @@ export function CreateBuyerSellerClubJoinResponseDataMemberFromJSONTyped(json: a
     }
     return {
         
-        'tier': !exists(json, 'tier') ? undefined : json['tier'],
-        'joinedAt': json['joinedAt'],
-        'discountBps': json['discountBps'],
         'spendCents': json['spendCents'],
+        'tier': !exists(json, 'tier') ? undefined : json['tier'],
+        'discountBps': json['discountBps'],
         'next': !exists(json, 'next') ? undefined : CreateBuyerSellerClubJoinResponseDataMemberNextFromJSON(json['next']),
+        'joinedAt': json['joinedAt'],
     };
 }
 
@@ -85,11 +85,11 @@ export function CreateBuyerSellerClubJoinResponseDataMemberToJSON(value?: Create
     }
     return {
         
-        'tier': value.tier,
-        'joinedAt': value.joinedAt,
-        'discountBps': value.discountBps,
         'spendCents': value.spendCents,
+        'tier': value.tier,
+        'discountBps': value.discountBps,
         'next': CreateBuyerSellerClubJoinResponseDataMemberNextToJSON(value.next),
+        'joinedAt': value.joinedAt,
     };
 }
 

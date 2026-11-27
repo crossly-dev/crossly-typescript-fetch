@@ -31,7 +31,7 @@ export interface GetAccountDeletionStatusResponse {
      * @type {GetAccountDeletionStatusResponsePending}
      * @memberof GetAccountDeletionStatusResponse
      */
-    pending: GetAccountDeletionStatusResponsePending;
+    pending?: GetAccountDeletionStatusResponsePending | null;
 }
 
 export function GetAccountDeletionStatusResponseFromJSON(json: any): GetAccountDeletionStatusResponse {
@@ -44,7 +44,7 @@ export function GetAccountDeletionStatusResponseFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'pending': GetAccountDeletionStatusResponsePendingFromJSON(json['pending']),
+        'pending': !exists(json, 'pending') ? undefined : GetAccountDeletionStatusResponsePendingFromJSON(json['pending']),
     };
 }
 

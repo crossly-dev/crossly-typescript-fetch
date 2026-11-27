@@ -31,6 +31,30 @@ export interface CreateOrderRefundResponse {
      * @memberof CreateOrderRefundResponse
      */
     amount: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderRefundResponse
+     */
+    id: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateOrderRefundResponse
+     */
+    totalRefunded: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateOrderRefundResponse
+     */
+    remaining?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateOrderRefundResponse
+     */
+    replayed: boolean;
 }
 
 export function CreateOrderRefundResponseFromJSON(json: any): CreateOrderRefundResponse {
@@ -45,6 +69,10 @@ export function CreateOrderRefundResponseFromJSONTyped(json: any, ignoreDiscrimi
         
         'refundId': json['refundId'],
         'amount': json['amount'],
+        'id': json['id'],
+        'totalRefunded': json['totalRefunded'],
+        'remaining': !exists(json, 'remaining') ? undefined : json['remaining'],
+        'replayed': json['replayed'],
     };
 }
 
@@ -59,6 +87,10 @@ export function CreateOrderRefundResponseToJSON(value?: CreateOrderRefundRespons
         
         'refundId': value.refundId,
         'amount': value.amount,
+        'id': value.id,
+        'totalRefunded': value.totalRefunded,
+        'remaining': value.remaining,
+        'replayed': value.replayed,
     };
 }
 

@@ -28,12 +28,6 @@ import {
 export interface GetBuyerPackFairnessResponseData {
     /**
      * 
-     * @type {number}
-     * @memberof GetBuyerPackFairnessResponseData
-     */
-    nonce: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetBuyerPackFairnessResponseData
      */
@@ -44,6 +38,12 @@ export interface GetBuyerPackFairnessResponseData {
      * @memberof GetBuyerPackFairnessResponseData
      */
     clientSeed: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerPackFairnessResponseData
+     */
+    nonce: number;
     /**
      * 
      * @type {Array<GetBuyerPackFairnessResponseDataRevealed>}
@@ -62,9 +62,9 @@ export function GetBuyerPackFairnessResponseDataFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'nonce': json['nonce'],
         'serverSeedHash': json['serverSeedHash'],
         'clientSeed': json['clientSeed'],
+        'nonce': json['nonce'],
         'revealed': ((json['revealed'] as Array<any>).map(GetBuyerPackFairnessResponseDataRevealedFromJSON)),
     };
 }
@@ -78,9 +78,9 @@ export function GetBuyerPackFairnessResponseDataToJSON(value?: GetBuyerPackFairn
     }
     return {
         
-        'nonce': value.nonce,
         'serverSeedHash': value.serverSeedHash,
         'clientSeed': value.clientSeed,
+        'nonce': value.nonce,
         'revealed': ((value.revealed as Array<any>).map(GetBuyerPackFairnessResponseDataRevealedToJSON)),
     };
 }

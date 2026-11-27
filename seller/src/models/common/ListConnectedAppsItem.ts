@@ -79,6 +79,12 @@ export interface ListConnectedAppsItem {
      * @memberof ListConnectedAppsItem
      */
     developerEmail: string;
+    /**
+     * The share of take-home THIS install agreed to (frozen at consent), not the app's current terms. Null = free.
+     * @type {number}
+     * @memberof ListConnectedAppsItem
+     */
+    revShareBps?: number | null;
 }
 
 export function ListConnectedAppsItemFromJSON(json: any): ListConnectedAppsItem {
@@ -101,6 +107,7 @@ export function ListConnectedAppsItemFromJSONTyped(json: any, ignoreDiscriminato
         'homepageUrl': !exists(json, 'homepageUrl') ? undefined : json['homepageUrl'],
         'developerName': !exists(json, 'developerName') ? undefined : json['developerName'],
         'developerEmail': json['developerEmail'],
+        'revShareBps': !exists(json, 'revShareBps') ? undefined : json['revShareBps'],
     };
 }
 
@@ -123,6 +130,7 @@ export function ListConnectedAppsItemToJSON(value?: ListConnectedAppsItem | null
         'homepageUrl': value.homepageUrl,
         'developerName': value.developerName,
         'developerEmail': value.developerEmail,
+        'revShareBps': value.revShareBps,
     };
 }
 

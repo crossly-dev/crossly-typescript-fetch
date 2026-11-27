@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    UpdateSpatialSceneCosmeticResponseDataProps,
-    UpdateSpatialSceneCosmeticResponseDataPropsFromJSON,
-    UpdateSpatialSceneCosmeticResponseDataPropsFromJSONTyped,
-    UpdateSpatialSceneCosmeticResponseDataPropsToJSON,
-} from './UpdateSpatialSceneCosmeticResponseDataProps';
+    GetShowroomResponseDataRoomProps,
+    GetShowroomResponseDataRoomPropsFromJSON,
+    GetShowroomResponseDataRoomPropsFromJSONTyped,
+    GetShowroomResponseDataRoomPropsToJSON,
+} from '../showroom/GetShowroomResponseDataRoomProps';
 
 /**
  * 
@@ -59,10 +59,10 @@ export interface UpdateSpatialSceneCosmeticResponseData {
     coveIntensity?: number | null;
     /**
      * Decorative props. Never containers — see CosmeticProp.
-     * @type {Array<UpdateSpatialSceneCosmeticResponseDataProps>}
+     * @type {Array<GetShowroomResponseDataRoomProps>}
      * @memberof UpdateSpatialSceneCosmeticResponseData
      */
-    props?: Array<UpdateSpatialSceneCosmeticResponseDataProps> | null;
+    props?: Array<GetShowroomResponseDataRoomProps> | null;
     /**
      * How this room's door presents itself in the hall. See SHOPFRONT_STYLES.
      * 
@@ -178,8 +178,8 @@ export enum UpdateSpatialSceneCosmeticResponseDataFloorEnum {
 export enum UpdateSpatialSceneCosmeticResponseDataShopfrontEnum {
     Full = 'full',
     None = 'none',
-    Awning = 'awning',
     Fascia = 'fascia',
+    Awning = 'awning',
     NeonFascia = 'neon_fascia',
     GildedFascia = 'gilded_fascia',
     ScallopedAwning = 'scalloped_awning'
@@ -253,7 +253,7 @@ export function UpdateSpatialSceneCosmeticResponseDataFromJSONTyped(json: any, i
         'floor': !exists(json, 'floor') ? undefined : json['floor'],
         'coveColour': !exists(json, 'coveColour') ? undefined : json['coveColour'],
         'coveIntensity': !exists(json, 'coveIntensity') ? undefined : json['coveIntensity'],
-        'props': !exists(json, 'props') ? undefined : (json['props'] === null ? null : (json['props'] as Array<any>).map(UpdateSpatialSceneCosmeticResponseDataPropsFromJSON)),
+        'props': !exists(json, 'props') ? undefined : (json['props'] === null ? null : (json['props'] as Array<any>).map(GetShowroomResponseDataRoomPropsFromJSON)),
         'shopfront': !exists(json, 'shopfront') ? undefined : json['shopfront'],
         'shopfrontColour': !exists(json, 'shopfrontColour') ? undefined : json['shopfrontColour'],
         'facade': !exists(json, 'facade') ? undefined : json['facade'],
@@ -278,7 +278,7 @@ export function UpdateSpatialSceneCosmeticResponseDataToJSON(value?: UpdateSpati
         'floor': value.floor,
         'coveColour': value.coveColour,
         'coveIntensity': value.coveIntensity,
-        'props': value.props === undefined ? undefined : (value.props === null ? null : (value.props as Array<any>).map(UpdateSpatialSceneCosmeticResponseDataPropsToJSON)),
+        'props': value.props === undefined ? undefined : (value.props === null ? null : (value.props as Array<any>).map(GetShowroomResponseDataRoomPropsToJSON)),
         'shopfront': value.shopfront,
         'shopfrontColour': value.shopfrontColour,
         'facade': value.facade,

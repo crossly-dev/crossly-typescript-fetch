@@ -20,13 +20,13 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface GetAnalyticTodayResponseInbox {
     /**
-     * Conversations not yet opened (hidden threads excluded).
+     * Unread conversations + unopened offers — the Unread tab's rows (services/inbox/attention.ts).
      * @type {number}
      * @memberof GetAnalyticTodayResponseInbox
      */
     unread: number;
     /**
-     * Open threads whose newest message is the buyer's.
+     * Threads and offers waiting on the seller — the Needs reply tab's rows.
      * @type {number}
      * @memberof GetAnalyticTodayResponseInbox
      */

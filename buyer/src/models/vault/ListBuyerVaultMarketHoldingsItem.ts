@@ -177,9 +177,9 @@ export interface ListBuyerVaultMarketHoldingsItem {
 */
 export enum ListBuyerVaultMarketHoldingsItemMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function ListBuyerVaultMarketHoldingsItemFromJSON(json: any): ListBuyerVaultMarketHoldingsItem {

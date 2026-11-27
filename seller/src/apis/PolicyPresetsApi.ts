@@ -15,15 +15,21 @@
 
 import * as runtime from '../runtime';
 import {
-    ListPolicyPresetsItem,
-    ListPolicyPresetsItemFromJSON,
-    ListPolicyPresetsItemToJSON,
+    CreateGeoLocationCheckResponse,
+    CreateGeoLocationCheckResponseFromJSON,
+    CreateGeoLocationCheckResponseToJSON,
+    CreatePolicyPresetResponse,
+    CreatePolicyPresetResponseFromJSON,
+    CreatePolicyPresetResponseToJSON,
+    DeletePolicyPresetResponse,
+    DeletePolicyPresetResponseFromJSON,
+    DeletePolicyPresetResponseToJSON,
+    GetPolicyResponse,
+    GetPolicyResponseFromJSON,
+    GetPolicyResponseToJSON,
     ListPolicyPresetsResponse,
     ListPolicyPresetsResponseFromJSON,
     ListPolicyPresetsResponseToJSON,
-    OkResponse,
-    OkResponseFromJSON,
-    OkResponseToJSON,
 } from '../models';
 
 export interface DeletePolicyPresetRequest {
@@ -44,9 +50,45 @@ export interface UpdatePolicyPresetRequest {
 export class PolicyPresetsApi extends runtime.BaseAPI {
 
     /**
+     * Pass an unsaved `policy` draft or a `presetId` (neither = your default shipping policy), an `address`, and optionally `consolidateVia` (a ship-together hub). Returns `ships`, and when it does not: `reason`, `stage` (buyer | hub), `message` and the deciding `rule`. `partial` means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
+     * Check whether a shipping policy ships to an address.
+     */
+    async createGeoLocationCheckRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGeoLocationCheckResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/geo/location-check`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateGeoLocationCheckResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pass an unsaved `policy` draft or a `presetId` (neither = your default shipping policy), an `address`, and optionally `consolidateVia` (a ship-together hub). Returns `ships`, and when it does not: `reason`, `stage` (buyer | hub), `message` and the deciding `rule`. `partial` means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
+     * Check whether a shipping policy ships to an address.
+     */
+    async createGeoLocationCheck(initOverrides?: RequestInit): Promise<CreateGeoLocationCheckResponse> {
+        const response = await this.createGeoLocationCheckRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Create a return / shipping / payment policy preset.
      */
-    async createPolicyPresetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPolicyPresetsItem>> {
+    async createPolicyPresetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePolicyPresetResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -66,21 +108,21 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListPolicyPresetsItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePolicyPresetResponseFromJSON(jsonValue));
     }
 
     /**
      * Create a return / shipping / payment policy preset.
      */
-    async createPolicyPreset(initOverrides?: RequestInit): Promise<ListPolicyPresetsItem> {
+    async createPolicyPreset(initOverrides?: RequestInit): Promise<CreatePolicyPresetResponse> {
         const response = await this.createPolicyPresetRaw(initOverrides);
         return await response.value();
     }
 
     /**
-     * Delete a policy preset.
+     * Delete a policy preset. Listings that used it switch to the default preset of its kind.
      */
-    async deletePolicyPresetRaw(requestParameters: DeletePolicyPresetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+    async deletePolicyPresetRaw(requestParameters: DeletePolicyPresetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeletePolicyPresetResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deletePolicyPreset.');
         }
@@ -104,19 +146,55 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeletePolicyPresetResponseFromJSON(jsonValue));
     }
 
     /**
-     * Delete a policy preset.
+     * Delete a policy preset. Listings that used it switch to the default preset of its kind.
      */
-    async deletePolicyPreset(requestParameters: DeletePolicyPresetRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+    async deletePolicyPreset(requestParameters: DeletePolicyPresetRequest, initOverrides?: RequestInit): Promise<DeletePolicyPresetResponse> {
         const response = await this.deletePolicyPresetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * List the seller\'s return / shipping / payment policy presets.
+     * Pass a preset `id` as `policies.shippingPresetId` / `returnPresetId` / `paymentPresetId` on POST or PATCH /v1/listings (null = the marketplace\'s own default). A kind you omit uses `defaultPresetId`.
+     * The seller\'s shipping / return / payment policy presets by kind, with each kind\'s default.
+     */
+    async getPolicyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPolicyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/policies`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPolicyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pass a preset `id` as `policies.shippingPresetId` / `returnPresetId` / `paymentPresetId` on POST or PATCH /v1/listings (null = the marketplace\'s own default). A kind you omit uses `defaultPresetId`.
+     * The seller\'s shipping / return / payment policy presets by kind, with each kind\'s default.
+     */
+    async getPolicy(initOverrides?: RequestInit): Promise<GetPolicyResponse> {
+        const response = await this.getPolicyRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List the seller\'s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
      */
     async listPolicyPresetsRaw(requestParameters: ListPolicyPresetsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPolicyPresetsResponse>> {
         const queryParameters: any = {};
@@ -146,7 +224,7 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List the seller\'s return / shipping / payment policy presets.
+     * List the seller\'s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
      */
     async listPolicyPresets(requestParameters: ListPolicyPresetsRequest = {}, initOverrides?: RequestInit): Promise<ListPolicyPresetsResponse> {
         const response = await this.listPolicyPresetsRaw(requestParameters, initOverrides);
@@ -156,7 +234,7 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
     /**
      * Update a policy preset.
      */
-    async updatePolicyPresetRaw(requestParameters: UpdatePolicyPresetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPolicyPresetsItem>> {
+    async updatePolicyPresetRaw(requestParameters: UpdatePolicyPresetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePolicyPresetResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePolicyPreset.');
         }
@@ -180,13 +258,13 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListPolicyPresetsItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePolicyPresetResponseFromJSON(jsonValue));
     }
 
     /**
      * Update a policy preset.
      */
-    async updatePolicyPreset(requestParameters: UpdatePolicyPresetRequest, initOverrides?: RequestInit): Promise<ListPolicyPresetsItem> {
+    async updatePolicyPreset(requestParameters: UpdatePolicyPresetRequest, initOverrides?: RequestInit): Promise<CreatePolicyPresetResponse> {
         const response = await this.updatePolicyPresetRaw(requestParameters, initOverrides);
         return await response.value();
     }

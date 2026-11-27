@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetOrderResponseAppShare,
+    GetOrderResponseAppShareFromJSON,
+    GetOrderResponseAppShareFromJSONTyped,
+    GetOrderResponseAppShareToJSON,
+} from '../order/GetOrderResponseAppShare';
+import {
     ListSalesItemDocuments,
     ListSalesItemDocumentsFromJSON,
     ListSalesItemDocumentsFromJSONTyped,
@@ -26,6 +32,12 @@ import {
  * @interface ListSalesItem
  */
 export interface ListSalesItem {
+    /**
+     * 
+     * @type {GetOrderResponseAppShare}
+     * @memberof ListSalesItem
+     */
+    appShare?: GetOrderResponseAppShare | null;
     /**
      * 
      * @type {string}
@@ -46,22 +58,22 @@ export interface ListSalesItem {
     platform: string;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof ListSalesItem
      */
-    cancelledAt?: Date | null;
+    netProfit?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListSalesItem
      */
-    orderId?: string | null;
+    shippingCost?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListSalesItem
      */
-    listingId?: string | null;
+    shippingCharged?: string | null;
     /**
      * 
      * @type {string}
@@ -79,7 +91,19 @@ export interface ListSalesItem {
      * @type {string}
      * @memberof ListSalesItem
      */
+    listingId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListSalesItem
+     */
     platformListingId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListSalesItem
+     */
+    storefrontId?: string | null;
     /**
      * 
      * @type {string}
@@ -97,7 +121,19 @@ export interface ListSalesItem {
      * @type {Date}
      * @memberof ListSalesItem
      */
+    cancelledAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListSalesItem
+     */
     deletedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListSalesItem
+     */
+    orderId?: string | null;
     /**
      * 
      * @type {string}
@@ -115,25 +151,7 @@ export interface ListSalesItem {
      * @type {string}
      * @memberof ListSalesItem
      */
-    shippingCost?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListSalesItem
-     */
-    netProfit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListSalesItem
-     */
     taxCollected?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListSalesItem
-     */
-    shippingCharged?: string | null;
     /**
      * 
      * @type {string}
@@ -164,6 +182,24 @@ export interface ListSalesItem {
      * @memberof ListSalesItem
      */
     refundedAmount?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListSalesItem
+     */
+    detailsPending: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListSalesItem
+     */
+    variantSku?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListSalesItem
+     */
+    variantId?: string | null;
 }
 
 export function ListSalesItemFromJSON(json: any): ListSalesItem {
@@ -176,29 +212,34 @@ export function ListSalesItemFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
+        'appShare': !exists(json, 'appShare') ? undefined : GetOrderResponseAppShareFromJSON(json['appShare']),
         'id': json['id'],
         'userId': json['userId'],
         'platform': json['platform'],
-        'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
-        'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
-        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
+        'netProfit': !exists(json, 'netProfit') ? undefined : json['netProfit'],
+        'shippingCost': !exists(json, 'shippingCost') ? undefined : json['shippingCost'],
+        'shippingCharged': !exists(json, 'shippingCharged') ? undefined : json['shippingCharged'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
         'currency': !exists(json, 'currency') ? undefined : json['currency'],
+        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'platformOrderId': !exists(json, 'platformOrderId') ? undefined : json['platformOrderId'],
         'costOfGoods': !exists(json, 'costOfGoods') ? undefined : json['costOfGoods'],
+        'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
         'deletedAt': !exists(json, 'deletedAt') ? undefined : (json['deletedAt'] === null ? null : new Date(json['deletedAt'])),
+        'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
         'salePrice': !exists(json, 'salePrice') ? undefined : json['salePrice'],
         'platformFee': !exists(json, 'platformFee') ? undefined : json['platformFee'],
-        'shippingCost': !exists(json, 'shippingCost') ? undefined : json['shippingCost'],
-        'netProfit': !exists(json, 'netProfit') ? undefined : json['netProfit'],
         'taxCollected': !exists(json, 'taxCollected') ? undefined : json['taxCollected'],
-        'shippingCharged': !exists(json, 'shippingCharged') ? undefined : json['shippingCharged'],
         'feeSource': !exists(json, 'feeSource') ? undefined : json['feeSource'],
         'detectedBy': json['detectedBy'],
         'detectedAt': (new Date(json['detectedAt'])),
         'documents': !exists(json, 'documents') ? undefined : (json['documents'] === null ? null : (json['documents'] as Array<any>).map(ListSalesItemDocumentsFromJSON)),
         'refundedAmount': !exists(json, 'refundedAmount') ? undefined : json['refundedAmount'],
+        'detailsPending': json['detailsPending'],
+        'variantSku': !exists(json, 'variantSku') ? undefined : json['variantSku'],
+        'variantId': !exists(json, 'variantId') ? undefined : json['variantId'],
     };
 }
 
@@ -211,29 +252,34 @@ export function ListSalesItemToJSON(value?: ListSalesItem | null): any {
     }
     return {
         
+        'appShare': GetOrderResponseAppShareToJSON(value.appShare),
         'id': value.id,
         'userId': value.userId,
         'platform': value.platform,
-        'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
-        'orderId': value.orderId,
-        'listingId': value.listingId,
+        'netProfit': value.netProfit,
+        'shippingCost': value.shippingCost,
+        'shippingCharged': value.shippingCharged,
         'inventoryItemId': value.inventoryItemId,
         'currency': value.currency,
+        'listingId': value.listingId,
         'platformListingId': value.platformListingId,
+        'storefrontId': value.storefrontId,
         'platformOrderId': value.platformOrderId,
         'costOfGoods': value.costOfGoods,
+        'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
         'deletedAt': value.deletedAt === undefined ? undefined : (value.deletedAt === null ? null : value.deletedAt.toISOString()),
+        'orderId': value.orderId,
         'salePrice': value.salePrice,
         'platformFee': value.platformFee,
-        'shippingCost': value.shippingCost,
-        'netProfit': value.netProfit,
         'taxCollected': value.taxCollected,
-        'shippingCharged': value.shippingCharged,
         'feeSource': value.feeSource,
         'detectedBy': value.detectedBy,
         'detectedAt': (value.detectedAt.toISOString()),
         'documents': value.documents === undefined ? undefined : (value.documents === null ? null : (value.documents as Array<any>).map(ListSalesItemDocumentsToJSON)),
         'refundedAmount': value.refundedAmount,
+        'detailsPending': value.detailsPending,
+        'variantSku': value.variantSku,
+        'variantId': value.variantId,
     };
 }
 

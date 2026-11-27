@@ -39,10 +39,10 @@ export interface ListBrandDropsItem {
     createdAt: Date;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof ListBrandDropsItem
      */
-    status: string;
+    updatedAt: Date;
     /**
      * 
      * @type {string}
@@ -51,10 +51,52 @@ export interface ListBrandDropsItem {
     description?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    status: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListBrandDropsItem
+     */
+    releasedAt?: Date | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListBrandDropsItem
+     */
+    published: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    storefrontId?: string | null;
+    /**
+     * 
      * @type {Date}
      * @memberof ListBrandDropsItem
      */
     endsAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    eventId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    format: string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListBrandDropsItem
+     */
+    config: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -69,42 +111,6 @@ export interface ListBrandDropsItem {
     coverImageUrl?: string | null;
     /**
      * 
-     * @type {Date}
-     * @memberof ListBrandDropsItem
-     */
-    publishedAt?: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ListBrandDropsItem
-     */
-    reviewedAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBrandDropsItem
-     */
-    reviewNote?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBrandDropsItem
-     */
-    supplierName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBrandDropsItem
-     */
-    partnerId?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListBrandDropsItem
-     */
-    published: boolean;
-    /**
-     * 
      * @type {Array<string>}
      * @memberof ListBrandDropsItem
      */
@@ -117,6 +123,12 @@ export interface ListBrandDropsItem {
     dropAt: Date;
     /**
      * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    partnerId?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof ListBrandDropsItem
      */
@@ -127,6 +139,12 @@ export interface ListBrandDropsItem {
      * @memberof ListBrandDropsItem
      */
     unitsPurchased?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    supplierName?: string | null;
     /**
      * 
      * @type {string}
@@ -159,6 +177,108 @@ export interface ListBrandDropsItem {
     previewFrom?: Date | null;
     /**
      * 
+     * @type {Date}
+     * @memberof ListBrandDropsItem
+     */
+    publishedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    reviewNote?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListBrandDropsItem
+     */
+    reviewedAt?: Date | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListBrandDropsItem
+     */
+    placements: Array<string>;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListBrandDropsItem
+     */
+    announceAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListBrandDropsItem
+     */
+    countdownAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListBrandDropsItem
+     */
+    pausedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    liveStreamId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    spatialDropId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    timezone?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    featuredStatus?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    audience: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    audienceCatalogId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    dropKind: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBrandDropsItem
+     */
+    depositBps?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBrandDropsItem
+     */
+    shipBy?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBrandDropsItem
+     */
+    balanceNetDays?: number | null;
+    /**
+     * 
      * @type {number}
      * @memberof ListBrandDropsItem
      */
@@ -178,26 +298,46 @@ export function ListBrandDropsItemFromJSONTyped(json: any, ignoreDiscriminator: 
         'id': json['id'],
         'name': json['name'],
         'createdAt': (new Date(json['createdAt'])),
-        'status': json['status'],
+        'updatedAt': (new Date(json['updatedAt'])),
         'description': !exists(json, 'description') ? undefined : json['description'],
+        'status': json['status'],
+        'releasedAt': !exists(json, 'releasedAt') ? undefined : (json['releasedAt'] === null ? null : new Date(json['releasedAt'])),
+        'published': json['published'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'endsAt': !exists(json, 'endsAt') ? undefined : (json['endsAt'] === null ? null : new Date(json['endsAt'])),
+        'eventId': !exists(json, 'eventId') ? undefined : json['eventId'],
+        'format': json['format'],
+        'config': json['config'],
         'sellerUserId': json['sellerUserId'],
         'coverImageUrl': !exists(json, 'coverImageUrl') ? undefined : json['coverImageUrl'],
-        'publishedAt': !exists(json, 'publishedAt') ? undefined : (json['publishedAt'] === null ? null : new Date(json['publishedAt'])),
-        'reviewedAt': !exists(json, 'reviewedAt') ? undefined : (json['reviewedAt'] === null ? null : new Date(json['reviewedAt'])),
-        'reviewNote': !exists(json, 'reviewNote') ? undefined : json['reviewNote'],
-        'supplierName': !exists(json, 'supplierName') ? undefined : json['supplierName'],
-        'partnerId': !exists(json, 'partnerId') ? undefined : json['partnerId'],
-        'published': json['published'],
         'platformListingIds': !exists(json, 'platformListingIds') ? undefined : json['platformListingIds'],
         'dropAt': (new Date(json['dropAt'])),
+        'partnerId': !exists(json, 'partnerId') ? undefined : json['partnerId'],
         'wholesaleUnitCostCents': !exists(json, 'wholesaleUnitCostCents') ? undefined : json['wholesaleUnitCostCents'],
         'unitsPurchased': !exists(json, 'unitsPurchased') ? undefined : json['unitsPurchased'],
+        'supplierName': !exists(json, 'supplierName') ? undefined : json['supplierName'],
         'poReference': !exists(json, 'poReference') ? undefined : json['poReference'],
         'retailUnitPriceCents': !exists(json, 'retailUnitPriceCents') ? undefined : json['retailUnitPriceCents'],
         'buyerApiEnabled': json['buyerApiEnabled'],
         'perCustomerLimit': !exists(json, 'perCustomerLimit') ? undefined : json['perCustomerLimit'],
         'previewFrom': !exists(json, 'previewFrom') ? undefined : (json['previewFrom'] === null ? null : new Date(json['previewFrom'])),
+        'publishedAt': !exists(json, 'publishedAt') ? undefined : (json['publishedAt'] === null ? null : new Date(json['publishedAt'])),
+        'reviewNote': !exists(json, 'reviewNote') ? undefined : json['reviewNote'],
+        'reviewedAt': !exists(json, 'reviewedAt') ? undefined : (json['reviewedAt'] === null ? null : new Date(json['reviewedAt'])),
+        'placements': json['placements'],
+        'announceAt': !exists(json, 'announceAt') ? undefined : (json['announceAt'] === null ? null : new Date(json['announceAt'])),
+        'countdownAt': !exists(json, 'countdownAt') ? undefined : (json['countdownAt'] === null ? null : new Date(json['countdownAt'])),
+        'pausedAt': !exists(json, 'pausedAt') ? undefined : (json['pausedAt'] === null ? null : new Date(json['pausedAt'])),
+        'liveStreamId': !exists(json, 'liveStreamId') ? undefined : json['liveStreamId'],
+        'spatialDropId': !exists(json, 'spatialDropId') ? undefined : json['spatialDropId'],
+        'timezone': !exists(json, 'timezone') ? undefined : json['timezone'],
+        'featuredStatus': !exists(json, 'featuredStatus') ? undefined : json['featuredStatus'],
+        'audience': json['audience'],
+        'audienceCatalogId': !exists(json, 'audienceCatalogId') ? undefined : json['audienceCatalogId'],
+        'dropKind': json['dropKind'],
+        'depositBps': !exists(json, 'depositBps') ? undefined : json['depositBps'],
+        'shipBy': !exists(json, 'shipBy') ? undefined : json['shipBy'],
+        'balanceNetDays': !exists(json, 'balanceNetDays') ? undefined : json['balanceNetDays'],
         'listingCount': json['listingCount'],
     };
 }
@@ -214,26 +354,46 @@ export function ListBrandDropsItemToJSON(value?: ListBrandDropsItem | null): any
         'id': value.id,
         'name': value.name,
         'createdAt': (value.createdAt.toISOString()),
-        'status': value.status,
+        'updatedAt': (value.updatedAt.toISOString()),
         'description': value.description,
+        'status': value.status,
+        'releasedAt': value.releasedAt === undefined ? undefined : (value.releasedAt === null ? null : value.releasedAt.toISOString()),
+        'published': value.published,
+        'storefrontId': value.storefrontId,
         'endsAt': value.endsAt === undefined ? undefined : (value.endsAt === null ? null : value.endsAt.toISOString()),
+        'eventId': value.eventId,
+        'format': value.format,
+        'config': value.config,
         'sellerUserId': value.sellerUserId,
         'coverImageUrl': value.coverImageUrl,
-        'publishedAt': value.publishedAt === undefined ? undefined : (value.publishedAt === null ? null : value.publishedAt.toISOString()),
-        'reviewedAt': value.reviewedAt === undefined ? undefined : (value.reviewedAt === null ? null : value.reviewedAt.toISOString()),
-        'reviewNote': value.reviewNote,
-        'supplierName': value.supplierName,
-        'partnerId': value.partnerId,
-        'published': value.published,
         'platformListingIds': value.platformListingIds,
         'dropAt': (value.dropAt.toISOString()),
+        'partnerId': value.partnerId,
         'wholesaleUnitCostCents': value.wholesaleUnitCostCents,
         'unitsPurchased': value.unitsPurchased,
+        'supplierName': value.supplierName,
         'poReference': value.poReference,
         'retailUnitPriceCents': value.retailUnitPriceCents,
         'buyerApiEnabled': value.buyerApiEnabled,
         'perCustomerLimit': value.perCustomerLimit,
         'previewFrom': value.previewFrom === undefined ? undefined : (value.previewFrom === null ? null : value.previewFrom.toISOString()),
+        'publishedAt': value.publishedAt === undefined ? undefined : (value.publishedAt === null ? null : value.publishedAt.toISOString()),
+        'reviewNote': value.reviewNote,
+        'reviewedAt': value.reviewedAt === undefined ? undefined : (value.reviewedAt === null ? null : value.reviewedAt.toISOString()),
+        'placements': value.placements,
+        'announceAt': value.announceAt === undefined ? undefined : (value.announceAt === null ? null : value.announceAt.toISOString()),
+        'countdownAt': value.countdownAt === undefined ? undefined : (value.countdownAt === null ? null : value.countdownAt.toISOString()),
+        'pausedAt': value.pausedAt === undefined ? undefined : (value.pausedAt === null ? null : value.pausedAt.toISOString()),
+        'liveStreamId': value.liveStreamId,
+        'spatialDropId': value.spatialDropId,
+        'timezone': value.timezone,
+        'featuredStatus': value.featuredStatus,
+        'audience': value.audience,
+        'audienceCatalogId': value.audienceCatalogId,
+        'dropKind': value.dropKind,
+        'depositBps': value.depositBps,
+        'shipBy': value.shipBy,
+        'balanceNetDays': value.balanceNetDays,
         'listingCount': value.listingCount,
     };
 }

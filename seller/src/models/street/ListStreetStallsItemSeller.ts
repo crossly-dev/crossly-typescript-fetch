@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    NameSlug,
-    NameSlugFromJSON,
-    NameSlugFromJSONTyped,
-    NameSlugToJSON,
-} from '../common/NameSlug';
+    NameSlug2,
+    NameSlug2FromJSON,
+    NameSlug2FromJSONTyped,
+    NameSlug2ToJSON,
+} from '../common/NameSlug2';
 
 /**
  * 
@@ -34,10 +34,10 @@ export interface ListStreetStallsItemSeller {
     name: string;
     /**
      * 
-     * @type {NameSlug}
+     * @type {NameSlug2}
      * @memberof ListStreetStallsItemSeller
      */
-    shop?: NameSlug | null;
+    shop?: NameSlug2 | null;
     /**
      * 
      * @type {number}
@@ -57,7 +57,7 @@ export function ListStreetStallsItemSellerFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'name': json['name'],
-        'shop': !exists(json, 'shop') ? undefined : NameSlugFromJSON(json['shop']),
+        'shop': !exists(json, 'shop') ? undefined : NameSlug2FromJSON(json['shop']),
         'level': json['level'],
     };
 }
@@ -72,7 +72,7 @@ export function ListStreetStallsItemSellerToJSON(value?: ListStreetStallsItemSel
     return {
         
         'name': value.name,
-        'shop': NameSlugToJSON(value.shop),
+        'shop': NameSlug2ToJSON(value.shop),
         'level': value.level,
     };
 }

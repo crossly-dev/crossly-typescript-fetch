@@ -36,19 +36,25 @@ export interface ListBuyerAuctionsItem {
      * @type {boolean}
      * @memberof ListBuyerAuctionsItem
      */
-    paid: boolean;
+    leading: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ListBuyerAuctionsItem
      */
-    leading: boolean;
+    paid: boolean;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerAuctionsItem
      */
-    status?: string | null;
+    slug?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerAuctionsItem
+     */
+    thumbnail?: string | null;
     /**
      * 
      * @type {string}
@@ -60,19 +66,13 @@ export interface ListBuyerAuctionsItem {
      * @type {string}
      * @memberof ListBuyerAuctionsItem
      */
-    slug?: string | null;
+    status?: string | null;
     /**
      * Current high bid, in cents.
      * @type {number}
      * @memberof ListBuyerAuctionsItem
      */
     currentCents?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerAuctionsItem
-     */
-    thumbnail?: string | null;
     /**
      * Your highest maximum (proxy) bid, in cents.
      * @type {number}
@@ -99,13 +99,13 @@ export function ListBuyerAuctionsItemFromJSONTyped(json: any, ignoreDiscriminato
         
         'title': json['title'],
         'bidCount': json['bidCount'],
-        'paid': json['paid'],
         'leading': json['leading'],
-        'status': !exists(json, 'status') ? undefined : json['status'],
-        'endsAt': !exists(json, 'endsAt') ? undefined : json['endsAt'],
+        'paid': json['paid'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
-        'currentCents': !exists(json, 'currentCents') ? undefined : json['currentCents'],
         'thumbnail': !exists(json, 'thumbnail') ? undefined : json['thumbnail'],
+        'endsAt': !exists(json, 'endsAt') ? undefined : json['endsAt'],
+        'status': !exists(json, 'status') ? undefined : json['status'],
+        'currentCents': !exists(json, 'currentCents') ? undefined : json['currentCents'],
         'myMaxCents': !exists(json, 'myMaxCents') ? undefined : json['myMaxCents'],
         'winningCents': !exists(json, 'winningCents') ? undefined : json['winningCents'],
     };
@@ -122,13 +122,13 @@ export function ListBuyerAuctionsItemToJSON(value?: ListBuyerAuctionsItem | null
         
         'title': value.title,
         'bidCount': value.bidCount,
-        'paid': value.paid,
         'leading': value.leading,
-        'status': value.status,
-        'endsAt': value.endsAt,
+        'paid': value.paid,
         'slug': value.slug,
-        'currentCents': value.currentCents,
         'thumbnail': value.thumbnail,
+        'endsAt': value.endsAt,
+        'status': value.status,
+        'currentCents': value.currentCents,
         'myMaxCents': value.myMaxCents,
         'winningCents': value.winningCents,
     };

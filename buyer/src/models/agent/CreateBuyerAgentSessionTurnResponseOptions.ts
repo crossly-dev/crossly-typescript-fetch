@@ -110,6 +110,18 @@ export interface CreateBuyerAgentSessionTurnResponseOptions {
      * @memberof CreateBuyerAgentSessionTurnResponseOptions
      */
     priceCheck?: CreateBuyerAgentSessionActResponseQuotePriceCheck | null;
+    /**
+     * The world object it stands as, and the seller's public shop room (world-picks.ts).
+     * @type {string}
+     * @memberof CreateBuyerAgentSessionTurnResponseOptions
+     */
+    model?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerAgentSessionTurnResponseOptions
+     */
+    shopSlug?: string | null;
 }
 
 export function CreateBuyerAgentSessionTurnResponseOptionsFromJSON(json: any): CreateBuyerAgentSessionTurnResponseOptions {
@@ -136,6 +148,8 @@ export function CreateBuyerAgentSessionTurnResponseOptionsFromJSONTyped(json: an
         'facts': json['facts'],
         'reason': json['reason'],
         'priceCheck': !exists(json, 'priceCheck') ? undefined : CreateBuyerAgentSessionActResponseQuotePriceCheckFromJSON(json['priceCheck']),
+        'model': !exists(json, 'model') ? undefined : json['model'],
+        'shopSlug': !exists(json, 'shopSlug') ? undefined : json['shopSlug'],
     };
 }
 
@@ -162,6 +176,8 @@ export function CreateBuyerAgentSessionTurnResponseOptionsToJSON(value?: CreateB
         'facts': value.facts,
         'reason': value.reason,
         'priceCheck': CreateBuyerAgentSessionActResponseQuotePriceCheckToJSON(value.priceCheck),
+        'model': value.model,
+        'shopSlug': value.shopSlug,
     };
 }
 

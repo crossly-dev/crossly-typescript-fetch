@@ -39,12 +39,6 @@ export interface ListBuyerHuntsItem {
     mode: string;
     /**
      * 
-     * @type {string}
-     * @memberof ListBuyerHuntsItem
-     */
-    status: string;
-    /**
-     * 
      * @type {number}
      * @memberof ListBuyerHuntsItem
      */
@@ -55,6 +49,12 @@ export interface ListBuyerHuntsItem {
      * @memberof ListBuyerHuntsItem
      */
     buysLeft: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerHuntsItem
+     */
+    status: string;
 }
 
 export function ListBuyerHuntsItemFromJSON(json: any): ListBuyerHuntsItem {
@@ -70,9 +70,9 @@ export function ListBuyerHuntsItemFromJSONTyped(json: any, ignoreDiscriminator: 
         'id': json['id'],
         'name': json['name'],
         'mode': json['mode'],
-        'status': json['status'],
         'maxPriceCents': json['maxPriceCents'],
         'buysLeft': json['buysLeft'],
+        'status': json['status'],
     };
 }
 
@@ -88,9 +88,9 @@ export function ListBuyerHuntsItemToJSON(value?: ListBuyerHuntsItem | null): any
         'id': value.id,
         'name': value.name,
         'mode': value.mode,
-        'status': value.status,
         'maxPriceCents': value.maxPriceCents,
         'buysLeft': value.buysLeft,
+        'status': value.status,
     };
 }
 

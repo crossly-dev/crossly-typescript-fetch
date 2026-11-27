@@ -34,10 +34,10 @@ import {
 export interface GetBuyerCollectionOfferResponseData {
     /**
      * 
-     * @type {GetBuyerCollectionOfferResponseDataPending}
+     * @type {string}
      * @memberof GetBuyerCollectionOfferResponseData
      */
-    pending?: GetBuyerCollectionOfferResponseDataPending | null;
+    portfolioId: string;
     /**
      * 
      * @type {string}
@@ -52,16 +52,16 @@ export interface GetBuyerCollectionOfferResponseData {
     lastSaleCents?: number | null;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof GetBuyerCollectionOfferResponseData
      */
-    skuId?: string | null;
+    topBidCents?: number | null;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerCollectionOfferResponseData
      */
-    portfolioId: string;
+    skuId?: string | null;
     /**
      * 
      * @type {GetBuyerCollectionOfferResponseDataOffer}
@@ -70,10 +70,10 @@ export interface GetBuyerCollectionOfferResponseData {
     offer?: GetBuyerCollectionOfferResponseDataOffer | null;
     /**
      * 
-     * @type {number}
+     * @type {GetBuyerCollectionOfferResponseDataPending}
      * @memberof GetBuyerCollectionOfferResponseData
      */
-    topBidCents?: number | null;
+    pending?: GetBuyerCollectionOfferResponseDataPending | null;
 }
 
 export function GetBuyerCollectionOfferResponseDataFromJSON(json: any): GetBuyerCollectionOfferResponseData {
@@ -86,13 +86,13 @@ export function GetBuyerCollectionOfferResponseDataFromJSONTyped(json: any, igno
     }
     return {
         
-        'pending': !exists(json, 'pending') ? undefined : GetBuyerCollectionOfferResponseDataPendingFromJSON(json['pending']),
+        'portfolioId': json['portfolioId'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'lastSaleCents': !exists(json, 'lastSaleCents') ? undefined : json['lastSaleCents'],
-        'skuId': !exists(json, 'skuId') ? undefined : json['skuId'],
-        'portfolioId': json['portfolioId'],
-        'offer': !exists(json, 'offer') ? undefined : GetBuyerCollectionOfferResponseDataOfferFromJSON(json['offer']),
         'topBidCents': !exists(json, 'topBidCents') ? undefined : json['topBidCents'],
+        'skuId': !exists(json, 'skuId') ? undefined : json['skuId'],
+        'offer': !exists(json, 'offer') ? undefined : GetBuyerCollectionOfferResponseDataOfferFromJSON(json['offer']),
+        'pending': !exists(json, 'pending') ? undefined : GetBuyerCollectionOfferResponseDataPendingFromJSON(json['pending']),
     };
 }
 
@@ -105,13 +105,13 @@ export function GetBuyerCollectionOfferResponseDataToJSON(value?: GetBuyerCollec
     }
     return {
         
-        'pending': GetBuyerCollectionOfferResponseDataPendingToJSON(value.pending),
+        'portfolioId': value.portfolioId,
         'title': value.title,
         'lastSaleCents': value.lastSaleCents,
-        'skuId': value.skuId,
-        'portfolioId': value.portfolioId,
-        'offer': GetBuyerCollectionOfferResponseDataOfferToJSON(value.offer),
         'topBidCents': value.topBidCents,
+        'skuId': value.skuId,
+        'offer': GetBuyerCollectionOfferResponseDataOfferToJSON(value.offer),
+        'pending': GetBuyerCollectionOfferResponseDataPendingToJSON(value.pending),
     };
 }
 

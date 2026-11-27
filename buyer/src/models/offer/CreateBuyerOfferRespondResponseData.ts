@@ -26,17 +26,17 @@ export interface CreateBuyerOfferRespondResponseData {
      */
     status: string;
     /**
-     * Countered: the id of YOUR new offer, now waiting on the seller.
-     * @type {string}
-     * @memberof CreateBuyerOfferRespondResponseData
-     */
-    offerId?: string | null;
-    /**
      * Accepted: you can now pay for it (48 hours).
      * @type {boolean}
      * @memberof CreateBuyerOfferRespondResponseData
      */
     redeemable?: boolean | null;
+    /**
+     * Countered: the id of YOUR new offer, now waiting on the seller.
+     * @type {string}
+     * @memberof CreateBuyerOfferRespondResponseData
+     */
+    offerId?: string | null;
 }
 
 export function CreateBuyerOfferRespondResponseDataFromJSON(json: any): CreateBuyerOfferRespondResponseData {
@@ -50,8 +50,8 @@ export function CreateBuyerOfferRespondResponseDataFromJSONTyped(json: any, igno
     return {
         
         'status': json['status'],
-        'offerId': !exists(json, 'offerId') ? undefined : json['offerId'],
         'redeemable': !exists(json, 'redeemable') ? undefined : json['redeemable'],
+        'offerId': !exists(json, 'offerId') ? undefined : json['offerId'],
     };
 }
 
@@ -65,8 +65,8 @@ export function CreateBuyerOfferRespondResponseDataToJSON(value?: CreateBuyerOff
     return {
         
         'status': value.status,
-        'offerId': value.offerId,
         'redeemable': value.redeemable,
+        'offerId': value.offerId,
     };
 }
 

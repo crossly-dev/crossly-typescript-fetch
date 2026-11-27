@@ -68,8 +68,8 @@ export interface GetSpatialPartyResponsePartyMembers {
 * @enum {string}
 */
 export enum GetSpatialPartyResponsePartyMembersRoleEnum {
-    Member = 'member',
-    Leader = 'leader'
+    Leader = 'leader',
+    Member = 'member'
 }
 
 export function GetSpatialPartyResponsePartyMembersFromJSON(json: any): GetSpatialPartyResponsePartyMembers {

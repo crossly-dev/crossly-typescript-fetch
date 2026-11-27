@@ -27,16 +27,16 @@ export interface GetBuyerCaseResponseDataPurchase {
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof GetBuyerCaseResponseDataPurchase
-     */
-    status: string;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerCaseResponseDataPurchase
      */
     buyerPaidCents: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCaseResponseDataPurchase
+     */
+    status: string;
     /**
      * 
      * @type {string}
@@ -62,8 +62,8 @@ export function GetBuyerCaseResponseDataPurchaseFromJSONTyped(json: any, ignoreD
     return {
         
         'id': json['id'],
-        'status': json['status'],
         'buyerPaidCents': json['buyerPaidCents'],
+        'status': json['status'],
         'refundStatus': !exists(json, 'refundStatus') ? undefined : json['refundStatus'],
         'refundAmountCents': !exists(json, 'refundAmountCents') ? undefined : json['refundAmountCents'],
     };
@@ -79,8 +79,8 @@ export function GetBuyerCaseResponseDataPurchaseToJSON(value?: GetBuyerCaseRespo
     return {
         
         'id': value.id,
-        'status': value.status,
         'buyerPaidCents': value.buyerPaidCents,
+        'status': value.status,
         'refundStatus': value.refundStatus,
         'refundAmountCents': value.refundAmountCents,
     };

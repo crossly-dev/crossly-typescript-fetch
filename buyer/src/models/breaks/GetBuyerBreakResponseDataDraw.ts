@@ -24,13 +24,13 @@ export interface GetBuyerBreakResponseDataDraw {
      * @type {number}
      * @memberof GetBuyerBreakResponseDataDraw
      */
-    position: number;
+    entry: number;
     /**
      * 
      * @type {number}
      * @memberof GetBuyerBreakResponseDataDraw
      */
-    entry: number;
+    position: number;
 }
 
 export function GetBuyerBreakResponseDataDrawFromJSON(json: any): GetBuyerBreakResponseDataDraw {
@@ -43,8 +43,8 @@ export function GetBuyerBreakResponseDataDrawFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'position': json['position'],
         'entry': json['entry'],
+        'position': json['position'],
     };
 }
 
@@ -57,8 +57,8 @@ export function GetBuyerBreakResponseDataDrawToJSON(value?: GetBuyerBreakRespons
     }
     return {
         
-        'position': value.position,
         'entry': value.entry,
+        'position': value.position,
     };
 }
 

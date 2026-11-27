@@ -28,6 +28,18 @@ import {
 export interface CreateBuyerCartOptimizerResponseData {
     /**
      * 
+     * @type {Array<CreateBuyerCartOptimizerResponseDataLines>}
+     * @memberof CreateBuyerCartOptimizerResponseData
+     */
+    lines: Array<CreateBuyerCartOptimizerResponseDataLines>;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateBuyerCartOptimizerResponseData
+     */
+    itemsCents: number;
+    /**
+     * 
      * @type {number}
      * @memberof CreateBuyerCartOptimizerResponseData
      */
@@ -40,22 +52,10 @@ export interface CreateBuyerCartOptimizerResponseData {
     totalCents: number;
     /**
      * 
-     * @type {Array<CreateBuyerCartOptimizerResponseDataLines>}
-     * @memberof CreateBuyerCartOptimizerResponseData
-     */
-    lines: Array<CreateBuyerCartOptimizerResponseDataLines>;
-    /**
-     * 
      * @type {number}
      * @memberof CreateBuyerCartOptimizerResponseData
      */
     sellers: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateBuyerCartOptimizerResponseData
-     */
-    itemsCents: number;
     /**
      * 
      * @type {Array<string>}
@@ -74,11 +74,11 @@ export function CreateBuyerCartOptimizerResponseDataFromJSONTyped(json: any, ign
     }
     return {
         
+        'lines': ((json['lines'] as Array<any>).map(CreateBuyerCartOptimizerResponseDataLinesFromJSON)),
+        'itemsCents': json['itemsCents'],
         'shippingCents': json['shippingCents'],
         'totalCents': json['totalCents'],
-        'lines': ((json['lines'] as Array<any>).map(CreateBuyerCartOptimizerResponseDataLinesFromJSON)),
         'sellers': json['sellers'],
-        'itemsCents': json['itemsCents'],
         'unmatched': json['unmatched'],
     };
 }
@@ -92,11 +92,11 @@ export function CreateBuyerCartOptimizerResponseDataToJSON(value?: CreateBuyerCa
     }
     return {
         
+        'lines': ((value.lines as Array<any>).map(CreateBuyerCartOptimizerResponseDataLinesToJSON)),
+        'itemsCents': value.itemsCents,
         'shippingCents': value.shippingCents,
         'totalCents': value.totalCents,
-        'lines': ((value.lines as Array<any>).map(CreateBuyerCartOptimizerResponseDataLinesToJSON)),
         'sellers': value.sellers,
-        'itemsCents': value.itemsCents,
         'unmatched': value.unmatched,
     };
 }

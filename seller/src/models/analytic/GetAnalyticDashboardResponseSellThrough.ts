@@ -14,10 +14,7 @@
 
 import { exists, mapValues } from '../../runtime';
 /**
- * The context the bare rate can't carry. `tooYoungToJudge` is the
- * important one: a cohort measured the day its window closed has had no
- * time to sell, and a low number there means "wait", not "bad buys" — a
- * seller acting on it would stop sourcing for no reason.
+ * 
  * @export
  * @interface GetAnalyticDashboardResponseSellThrough
  */
@@ -52,6 +49,12 @@ export interface GetAnalyticDashboardResponseSellThrough {
      * @memberof GetAnalyticDashboardResponseSellThrough
      */
     tooYoungToJudge: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticDashboardResponseSellThrough
+     */
+    immature: number;
 }
 
 export function GetAnalyticDashboardResponseSellThroughFromJSON(json: any): GetAnalyticDashboardResponseSellThrough {
@@ -69,6 +72,7 @@ export function GetAnalyticDashboardResponseSellThroughFromJSONTyped(json: any, 
         'cohortSold': json['cohortSold'],
         'maturityDays': json['maturityDays'],
         'tooYoungToJudge': json['tooYoungToJudge'],
+        'immature': json['immature'],
     };
 }
 
@@ -86,6 +90,7 @@ export function GetAnalyticDashboardResponseSellThroughToJSON(value?: GetAnalyti
         'cohortSold': value.cohortSold,
         'maturityDays': value.maturityDays,
         'tooYoungToJudge': value.tooYoungToJudge,
+        'immature': value.immature,
     };
 }
 

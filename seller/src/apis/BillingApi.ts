@@ -21,6 +21,12 @@ import {
     CreateBillingUpgradeResponse,
     CreateBillingUpgradeResponseFromJSON,
     CreateBillingUpgradeResponseToJSON,
+    ListBillingAppAllowancesResponse,
+    ListBillingAppAllowancesResponseFromJSON,
+    ListBillingAppAllowancesResponseToJSON,
+    ListBillingPlansResponse,
+    ListBillingPlansResponseFromJSON,
+    ListBillingPlansResponseToJSON,
 } from '../models';
 
 export interface CreateBillingUpgradeOperationRequest {
@@ -72,6 +78,78 @@ export class BillingApi extends runtime.BaseAPI {
      */
     async createBillingUpgrade(requestParameters: CreateBillingUpgradeOperationRequest, initOverrides?: RequestInit): Promise<CreateBillingUpgradeResponse> {
         const response = await this.createBillingUpgradeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Staff can let an OAuth app list above a seller\'s plan, counted apart from the plan\'s itemsPerMonth and only on the allowance\'s platforms. `label` is the sentence to show (12 of 10,000 managed by Infinity; ... this month via Infinity (resets Dec 1); or counts toward your plan for limitMode shared).
+     * Your listing allowances through OAuth apps (used of limit, per app, with its platform scope).
+     */
+    async listBillingAppAllowancesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBillingAppAllowancesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/billing/app-allowances`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBillingAppAllowancesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Staff can let an OAuth app list above a seller\'s plan, counted apart from the plan\'s itemsPerMonth and only on the allowance\'s platforms. `label` is the sentence to show (12 of 10,000 managed by Infinity; ... this month via Infinity (resets Dec 1); or counts toward your plan for limitMode shared).
+     * Your listing allowances through OAuth apps (used of limit, per app, with its platform scope).
+     */
+    async listBillingAppAllowances(initOverrides?: RequestInit): Promise<ListBillingAppAllowancesResponse> {
+        const response = await this.listBillingAppAllowancesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Prices are the Stripe Prices checkout charges (whole USD). A null limit means no cap.
+     * List the plans with their prices, limits and features.
+     */
+    async listBillingPlansRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBillingPlansResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/billing/plans`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBillingPlansResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Prices are the Stripe Prices checkout charges (whole USD). A null limit means no cap.
+     * List the plans with their prices, limits and features.
+     */
+    async listBillingPlans(initOverrides?: RequestInit): Promise<ListBillingPlansResponse> {
+        const response = await this.listBillingPlansRaw(initOverrides);
         return await response.value();
     }
 

@@ -92,8 +92,8 @@ export interface ListVaultMarketAdlPositionsItem {
 * @enum {string}
 */
 export enum ListVaultMarketAdlPositionsItemKindEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function ListVaultMarketAdlPositionsItemFromJSON(json: any): ListVaultMarketAdlPositionsItem {

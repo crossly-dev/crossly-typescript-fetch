@@ -20,13 +20,13 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface CreateOrderWhatnotPackageQuoteResponse {
     /**
-     * 
+     * Cents the platform charges for the change; 0 = free.
      * @type {number}
      * @memberof CreateOrderWhatnotPackageQuoteResponse
      */
     costCents: number;
     /**
-     * 
+     * The platform's refusal of this package, when it gives one.
      * @type {string}
      * @memberof CreateOrderWhatnotPackageQuoteResponse
      */

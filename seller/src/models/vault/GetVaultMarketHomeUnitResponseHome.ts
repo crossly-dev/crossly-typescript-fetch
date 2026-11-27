@@ -45,8 +45,8 @@ export interface GetVaultMarketHomeUnitResponseHome {
 */
 export enum GetVaultMarketHomeUnitResponseHomePrivacyEnum {
     Open = 'open',
-    Locked = 'locked',
-    Friends = 'friends'
+    Friends = 'friends',
+    Locked = 'locked'
 }
 
 export function GetVaultMarketHomeUnitResponseHomeFromJSON(json: any): GetVaultMarketHomeUnitResponseHome {

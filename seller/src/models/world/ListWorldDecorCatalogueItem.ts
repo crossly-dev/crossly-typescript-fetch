@@ -184,11 +184,11 @@ export interface ListWorldDecorCatalogueItem {
 * @enum {string}
 */
 export enum ListWorldDecorCatalogueItemSurfaceEnum {
-    Shop = 'shop',
     Home = 'home',
     Street = 'street',
-    Stall = 'stall',
-    Avatar = 'avatar'
+    Shop = 'shop',
+    Avatar = 'avatar',
+    Stall = 'stall'
 }
 
 export function ListWorldDecorCatalogueItemFromJSON(json: any): ListWorldDecorCatalogueItem {

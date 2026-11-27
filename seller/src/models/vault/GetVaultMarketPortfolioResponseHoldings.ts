@@ -177,9 +177,9 @@ export interface GetVaultMarketPortfolioResponseHoldings {
 */
 export enum GetVaultMarketPortfolioResponseHoldingsMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketPortfolioResponseHoldingsFromJSON(json: any): GetVaultMarketPortfolioResponseHoldings {

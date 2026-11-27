@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    ListWorldOutfitsItemAppearanceOutfit,
+    ListWorldOutfitsItemAppearanceOutfitFromJSON,
+    ListWorldOutfitsItemAppearanceOutfitFromJSONTyped,
+    ListWorldOutfitsItemAppearanceOutfitToJSON,
+} from './ListWorldOutfitsItemAppearanceOutfit';
+
 /**
  * The look to put on your character (the client stores it, as the creator does).
  * @export
@@ -67,6 +74,12 @@ export interface ListWorldOutfitsItemAppearance {
      * @memberof ListWorldOutfitsItemAppearance
      */
     shape?: string | null;
+    /**
+     * 
+     * @type {ListWorldOutfitsItemAppearanceOutfit}
+     * @memberof ListWorldOutfitsItemAppearance
+     */
+    outfit?: ListWorldOutfitsItemAppearanceOutfit | null;
 }
 
 export function ListWorldOutfitsItemAppearanceFromJSON(json: any): ListWorldOutfitsItemAppearance {
@@ -87,6 +100,7 @@ export function ListWorldOutfitsItemAppearanceFromJSONTyped(json: any, ignoreDis
         'brows': !exists(json, 'brows') ? undefined : json['brows'],
         'mouth': !exists(json, 'mouth') ? undefined : json['mouth'],
         'shape': !exists(json, 'shape') ? undefined : json['shape'],
+        'outfit': !exists(json, 'outfit') ? undefined : ListWorldOutfitsItemAppearanceOutfitFromJSON(json['outfit']),
     };
 }
 
@@ -107,6 +121,7 @@ export function ListWorldOutfitsItemAppearanceToJSON(value?: ListWorldOutfitsIte
         'brows': value.brows,
         'mouth': value.mouth,
         'shape': value.shape,
+        'outfit': ListWorldOutfitsItemAppearanceOutfitToJSON(value.outfit),
     };
 }
 

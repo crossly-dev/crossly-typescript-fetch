@@ -69,9 +69,9 @@ export interface GetVaultMarketHealthResponseMarksParts {
 */
 export enum GetVaultMarketHealthResponseMarksPartsQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketHealthResponseMarksPartsFromJSON(json: any): GetVaultMarketHealthResponseMarksParts {

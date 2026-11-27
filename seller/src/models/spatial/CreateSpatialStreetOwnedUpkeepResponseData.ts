@@ -45,9 +45,9 @@ export interface CreateSpatialStreetOwnedUpkeepResponseData {
 */
 export enum CreateSpatialStreetOwnedUpkeepResponseDataUpkeepEnum {
     Active = 'active',
-    Foreclosed = 'foreclosed',
     Grace = 'grace',
-    Delinquent = 'delinquent'
+    Delinquent = 'delinquent',
+    Foreclosed = 'foreclosed'
 }
 
 export function CreateSpatialStreetOwnedUpkeepResponseDataFromJSON(json: any): CreateSpatialStreetOwnedUpkeepResponseData {

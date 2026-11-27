@@ -13,6 +13,25 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetBuyerCatalogListingResponseDescriptionBlocksItem,
+    GetBuyerCatalogListingResponseDescriptionBlocksItemFromJSON,
+    GetBuyerCatalogListingResponseDescriptionBlocksItemFromJSONTyped,
+    GetBuyerCatalogListingResponseDescriptionBlocksItemToJSON,
+} from './GetBuyerCatalogListingResponseDescriptionBlocksItem';
+import {
+    GetBuyerCatalogListingResponseTokenGate,
+    GetBuyerCatalogListingResponseTokenGateFromJSON,
+    GetBuyerCatalogListingResponseTokenGateFromJSONTyped,
+    GetBuyerCatalogListingResponseTokenGateToJSON,
+} from './GetBuyerCatalogListingResponseTokenGate';
+import {
+    GetBuyerCatalogListingResponseVariants,
+    GetBuyerCatalogListingResponseVariantsFromJSON,
+    GetBuyerCatalogListingResponseVariantsFromJSONTyped,
+    GetBuyerCatalogListingResponseVariantsToJSON,
+} from './GetBuyerCatalogListingResponseVariants';
+
 /**
  * 
  * @export
@@ -37,6 +56,12 @@ export interface GetBuyerCatalogListingResponse {
      * @memberof GetBuyerCatalogListingResponse
      */
     description?: string | null;
+    /**
+     * 
+     * @type {Array<GetBuyerCatalogListingResponseDescriptionBlocksItem>}
+     * @memberof GetBuyerCatalogListingResponse
+     */
+    descriptionBlocks: Array<GetBuyerCatalogListingResponseDescriptionBlocksItem>;
     /**
      * 
      * @type {number}
@@ -73,6 +98,12 @@ export interface GetBuyerCatalogListingResponse {
      * @memberof GetBuyerCatalogListingResponse
      */
     quantityAvailable: number;
+    /**
+     * 
+     * @type {Array<GetBuyerCatalogListingResponseVariants>}
+     * @memberof GetBuyerCatalogListingResponse
+     */
+    variants?: Array<GetBuyerCatalogListingResponseVariants> | null;
     /**
      * 
      * @type {string}
@@ -133,6 +164,12 @@ export interface GetBuyerCatalogListingResponse {
      * @memberof GetBuyerCatalogListingResponse
      */
     listedAt?: string | null;
+    /**
+     * 
+     * @type {GetBuyerCatalogListingResponseTokenGate}
+     * @memberof GetBuyerCatalogListingResponse
+     */
+    tokenGate?: GetBuyerCatalogListingResponseTokenGate | null;
 }
 
 export function GetBuyerCatalogListingResponseFromJSON(json: any): GetBuyerCatalogListingResponse {
@@ -148,12 +185,14 @@ export function GetBuyerCatalogListingResponseFromJSONTyped(json: any, ignoreDis
         'slug': json['slug'],
         'title': json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
+        'descriptionBlocks': ((json['descriptionBlocks'] as Array<any>).map(GetBuyerCatalogListingResponseDescriptionBlocksItemFromJSON)),
         'priceCents': json['priceCents'],
         'compareAtCents': !exists(json, 'compareAtCents') ? undefined : json['compareAtCents'],
         'currency': json['currency'],
         'status': json['status'],
         'available': json['available'],
         'quantityAvailable': json['quantityAvailable'],
+        'variants': !exists(json, 'variants') ? undefined : (json['variants'] === null ? null : (json['variants'] as Array<any>).map(GetBuyerCatalogListingResponseVariantsFromJSON)),
         'condition': !exists(json, 'condition') ? undefined : json['condition'],
         'brand': !exists(json, 'brand') ? undefined : json['brand'],
         'size': !exists(json, 'size') ? undefined : json['size'],
@@ -164,6 +203,7 @@ export function GetBuyerCatalogListingResponseFromJSONTyped(json: any, ignoreDis
         'sellerUsername': !exists(json, 'sellerUsername') ? undefined : json['sellerUsername'],
         'sellerDisplayName': !exists(json, 'sellerDisplayName') ? undefined : json['sellerDisplayName'],
         'listedAt': !exists(json, 'listedAt') ? undefined : json['listedAt'],
+        'tokenGate': !exists(json, 'tokenGate') ? undefined : GetBuyerCatalogListingResponseTokenGateFromJSON(json['tokenGate']),
     };
 }
 
@@ -179,12 +219,14 @@ export function GetBuyerCatalogListingResponseToJSON(value?: GetBuyerCatalogList
         'slug': value.slug,
         'title': value.title,
         'description': value.description,
+        'descriptionBlocks': ((value.descriptionBlocks as Array<any>).map(GetBuyerCatalogListingResponseDescriptionBlocksItemToJSON)),
         'priceCents': value.priceCents,
         'compareAtCents': value.compareAtCents,
         'currency': value.currency,
         'status': value.status,
         'available': value.available,
         'quantityAvailable': value.quantityAvailable,
+        'variants': value.variants === undefined ? undefined : (value.variants === null ? null : (value.variants as Array<any>).map(GetBuyerCatalogListingResponseVariantsToJSON)),
         'condition': value.condition,
         'brand': value.brand,
         'size': value.size,
@@ -195,6 +237,7 @@ export function GetBuyerCatalogListingResponseToJSON(value?: GetBuyerCatalogList
         'sellerUsername': value.sellerUsername,
         'sellerDisplayName': value.sellerDisplayName,
         'listedAt': value.listedAt,
+        'tokenGate': GetBuyerCatalogListingResponseTokenGateToJSON(value.tokenGate),
     };
 }
 

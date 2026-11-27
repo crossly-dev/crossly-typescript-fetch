@@ -110,11 +110,11 @@ export interface CreateWorldDecorRetractResponseDataInventoryItems {
 * @enum {string}
 */
 export enum CreateWorldDecorRetractResponseDataInventoryItemsSurfaceEnum {
-    Shop = 'shop',
     Home = 'home',
     Street = 'street',
-    Stall = 'stall',
-    Avatar = 'avatar'
+    Shop = 'shop',
+    Avatar = 'avatar',
+    Stall = 'stall'
 }
 
 export function CreateWorldDecorRetractResponseDataInventoryItemsFromJSON(json: any): CreateWorldDecorRetractResponseDataInventoryItems {

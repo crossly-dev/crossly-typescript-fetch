@@ -15,19 +15,52 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateMagicAutoDecisionUndoResponse,
+    CreateMagicAutoDecisionUndoResponseFromJSON,
+    CreateMagicAutoDecisionUndoResponseToJSON,
+    CreateMagicAutoItemResponse,
+    CreateMagicAutoItemResponseFromJSON,
+    CreateMagicAutoItemResponseToJSON,
+    CreateMagicAutoRunResponse,
+    CreateMagicAutoRunResponseFromJSON,
+    CreateMagicAutoRunResponseToJSON,
+    CreateMagicAutoRunSwipeResponse,
+    CreateMagicAutoRunSwipeResponseFromJSON,
+    CreateMagicAutoRunSwipeResponseToJSON,
     CreateMagicScanResponse,
     CreateMagicScanResponseFromJSON,
     CreateMagicScanResponseToJSON,
     CreateMagicScanSynthesizeResponse,
     CreateMagicScanSynthesizeResponseFromJSON,
     CreateMagicScanSynthesizeResponseToJSON,
+    GetMagicAutoSettingResponse,
+    GetMagicAutoSettingResponseFromJSON,
+    GetMagicAutoSettingResponseToJSON,
     GetMagicDraftResponse,
     GetMagicDraftResponseFromJSON,
     GetMagicDraftResponseToJSON,
+    ListMagicAutoRunDecisionsResponse,
+    ListMagicAutoRunDecisionsResponseFromJSON,
+    ListMagicAutoRunDecisionsResponseToJSON,
     ListMagicRecentResponse,
     ListMagicRecentResponseFromJSON,
     ListMagicRecentResponseToJSON,
+    UpdateMagicAutoSettingRequest,
+    UpdateMagicAutoSettingRequestFromJSON,
+    UpdateMagicAutoSettingRequestToJSON,
 } from '../models';
+
+export interface CreateMagicAutoDecisionUndoRequest {
+    decisionId: string;
+}
+
+export interface CreateMagicAutoRunRequest {
+    runId: string;
+}
+
+export interface CreateMagicAutoRunSwipeRequest {
+    runId: string;
+}
 
 export interface CreateMagicScanSynthesizeRequest {
     runId: string;
@@ -37,10 +70,166 @@ export interface GetMagicDraftRequest {
     draftId: string;
 }
 
+export interface ListMagicAutoRunDecisionsRequest {
+    runId: string;
+}
+
+export interface UpdateMagicAutoSettingOperationRequest {
+    updateMagicAutoSettingRequest: UpdateMagicAutoSettingRequest;
+}
+
 /**
  * 
  */
 export class MagicApi extends runtime.BaseAPI {
+
+    /**
+     * Undo an automated Magic List decision, deleting its unpublished draft.
+     */
+    async createMagicAutoDecisionUndoRaw(requestParameters: CreateMagicAutoDecisionUndoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoDecisionUndoResponse>> {
+        if (requestParameters.decisionId === null || requestParameters.decisionId === undefined) {
+            throw new runtime.RequiredError('decisionId','Required parameter requestParameters.decisionId was null or undefined when calling createMagicAutoDecisionUndo.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/magic/auto/decisions/{decisionId}/undo`.replace(`{${"decisionId"}}`, encodeURIComponent(String(requestParameters.decisionId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicAutoDecisionUndoResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Undo an automated Magic List decision, deleting its unpublished draft.
+     */
+    async createMagicAutoDecisionUndo(requestParameters: CreateMagicAutoDecisionUndoRequest, initOverrides?: RequestInit): Promise<CreateMagicAutoDecisionUndoResponse> {
+        const response = await this.createMagicAutoDecisionUndoRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Scan one item and match it automatically (drafts only, never publishes).
+     */
+    async createMagicAutoItemRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoItemResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/magic/auto/items`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicAutoItemResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Scan one item and match it automatically (drafts only, never publishes).
+     */
+    async createMagicAutoItem(initOverrides?: RequestInit): Promise<CreateMagicAutoItemResponse> {
+        const response = await this.createMagicAutoItemRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Score a Magic List run automatically; a confident match in auto mode becomes a draft.
+     */
+    async createMagicAutoRunRaw(requestParameters: CreateMagicAutoRunRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoRunResponse>> {
+        if (requestParameters.runId === null || requestParameters.runId === undefined) {
+            throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling createMagicAutoRun.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/magic/auto/runs/{runId}`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters.runId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicAutoRunResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Score a Magic List run automatically; a confident match in auto mode becomes a draft.
+     */
+    async createMagicAutoRun(requestParameters: CreateMagicAutoRunRequest, initOverrides?: RequestInit): Promise<CreateMagicAutoRunResponse> {
+        const response = await this.createMagicAutoRunRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Record a seller swipe session (kept and rejected match keys) for a Magic List run.
+     */
+    async createMagicAutoRunSwipeRaw(requestParameters: CreateMagicAutoRunSwipeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoRunSwipeResponse>> {
+        if (requestParameters.runId === null || requestParameters.runId === undefined) {
+            throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling createMagicAutoRunSwipe.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/magic/auto/runs/{runId}/swipes`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters.runId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicAutoRunSwipeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Record a seller swipe session (kept and rejected match keys) for a Magic List run.
+     */
+    async createMagicAutoRunSwipe(requestParameters: CreateMagicAutoRunSwipeRequest, initOverrides?: RequestInit): Promise<CreateMagicAutoRunSwipeResponse> {
+        const response = await this.createMagicAutoRunSwipeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Run a Magic List image scan.
@@ -115,6 +304,42 @@ export class MagicApi extends runtime.BaseAPI {
     }
 
     /**
+     * mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+     * The seller’s Magic List automated-matching mode.
+     */
+    async getMagicAutoSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetMagicAutoSettingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/magic/auto/settings`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetMagicAutoSettingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * mode: off (every match is swiped by hand), auto (confident matches become DRAFTS on their own, never published, always undoable) or review_all (Crossly pre-marks its picks; the seller confirms). Default review_all.
+     * The seller’s Magic List automated-matching mode.
+     */
+    async getMagicAutoSetting(initOverrides?: RequestInit): Promise<GetMagicAutoSettingResponse> {
+        const response = await this.getMagicAutoSettingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Get a synthesized Magic List draft.
      */
     async getMagicDraftRaw(requestParameters: GetMagicDraftRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetMagicDraftResponse>> {
@@ -153,6 +378,44 @@ export class MagicApi extends runtime.BaseAPI {
     }
 
     /**
+     * Every match decision round (automated and seller) for a Magic List run.
+     */
+    async listMagicAutoRunDecisionsRaw(requestParameters: ListMagicAutoRunDecisionsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListMagicAutoRunDecisionsResponse>> {
+        if (requestParameters.runId === null || requestParameters.runId === undefined) {
+            throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling listMagicAutoRunDecisions.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/magic/auto/runs/{runId}/decisions`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters.runId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListMagicAutoRunDecisionsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every match decision round (automated and seller) for a Magic List run.
+     */
+    async listMagicAutoRunDecisions(requestParameters: ListMagicAutoRunDecisionsRequest, initOverrides?: RequestInit): Promise<ListMagicAutoRunDecisionsResponse> {
+        const response = await this.listMagicAutoRunDecisionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Recent Magic List scans for this seller.
      */
     async listMagicRecentRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListMagicRecentResponse>> {
@@ -183,6 +446,47 @@ export class MagicApi extends runtime.BaseAPI {
      */
     async listMagicRecent(initOverrides?: RequestInit): Promise<ListMagicRecentResponse> {
         const response = await this.listMagicRecentRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set the Magic List automated-matching mode (off | auto | review_all).
+     */
+    async updateMagicAutoSettingRaw(requestParameters: UpdateMagicAutoSettingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetMagicAutoSettingResponse>> {
+        if (requestParameters.updateMagicAutoSettingRequest === null || requestParameters.updateMagicAutoSettingRequest === undefined) {
+            throw new runtime.RequiredError('updateMagicAutoSettingRequest','Required parameter requestParameters.updateMagicAutoSettingRequest was null or undefined when calling updateMagicAutoSetting.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/magic/auto/settings`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateMagicAutoSettingRequestToJSON(requestParameters.updateMagicAutoSettingRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetMagicAutoSettingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set the Magic List automated-matching mode (off | auto | review_all).
+     */
+    async updateMagicAutoSetting(requestParameters: UpdateMagicAutoSettingOperationRequest, initOverrides?: RequestInit): Promise<GetMagicAutoSettingResponse> {
+        const response = await this.updateMagicAutoSettingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

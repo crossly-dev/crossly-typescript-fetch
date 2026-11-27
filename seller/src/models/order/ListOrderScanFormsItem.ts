@@ -57,10 +57,16 @@ export interface ListOrderScanFormsItem {
     orderIds: Array<string>;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof ListOrderScanFormsItem
+     */
+    warnings: Array<string>;
+    /**
+     * 
      * @type {string}
      * @memberof ListOrderScanFormsItem
      */
-    documentUrl?: string | null;
+    shipDate: string;
     /**
      * 
      * @type {string}
@@ -72,13 +78,7 @@ export interface ListOrderScanFormsItem {
      * @type {string}
      * @memberof ListOrderScanFormsItem
      */
-    shipDate: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof ListOrderScanFormsItem
-     */
-    warnings: Array<string>;
+    documentUrl?: string | null;
 }
 
 export function ListOrderScanFormsItemFromJSON(json: any): ListOrderScanFormsItem {
@@ -97,10 +97,10 @@ export function ListOrderScanFormsItemFromJSONTyped(json: any, ignoreDiscriminat
         'status': json['status'],
         'carrier': json['carrier'],
         'orderIds': json['orderIds'],
-        'documentUrl': !exists(json, 'documentUrl') ? undefined : json['documentUrl'],
-        'shippoManifestId': json['shippoManifestId'],
-        'shipDate': json['shipDate'],
         'warnings': json['warnings'],
+        'shipDate': json['shipDate'],
+        'shippoManifestId': json['shippoManifestId'],
+        'documentUrl': !exists(json, 'documentUrl') ? undefined : json['documentUrl'],
     };
 }
 
@@ -119,10 +119,10 @@ export function ListOrderScanFormsItemToJSON(value?: ListOrderScanFormsItem | nu
         'status': value.status,
         'carrier': value.carrier,
         'orderIds': value.orderIds,
-        'documentUrl': value.documentUrl,
-        'shippoManifestId': value.shippoManifestId,
-        'shipDate': value.shipDate,
         'warnings': value.warnings,
+        'shipDate': value.shipDate,
+        'shippoManifestId': value.shippoManifestId,
+        'documentUrl': value.documentUrl,
     };
 }
 

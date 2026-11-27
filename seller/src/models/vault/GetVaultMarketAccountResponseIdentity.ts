@@ -31,6 +31,12 @@ export interface GetVaultMarketAccountResponseIdentity {
      * @memberof GetVaultMarketAccountResponseIdentity
      */
     status?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetVaultMarketAccountResponseIdentity
+     */
+    retry: boolean;
 }
 
 export function GetVaultMarketAccountResponseIdentityFromJSON(json: any): GetVaultMarketAccountResponseIdentity {
@@ -45,6 +51,7 @@ export function GetVaultMarketAccountResponseIdentityFromJSONTyped(json: any, ig
         
         'verified': json['verified'],
         'status': !exists(json, 'status') ? undefined : json['status'],
+        'retry': json['retry'],
     };
 }
 
@@ -59,6 +66,7 @@ export function GetVaultMarketAccountResponseIdentityToJSON(value?: GetVaultMark
         
         'verified': value.verified,
         'status': value.status,
+        'retry': value.retry,
     };
 }
 

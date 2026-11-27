@@ -38,11 +38,17 @@ export interface CreatePayoutConnectOnboardResponseData {
      */
     agreement: CreatePayoutConnectOnboardResponseDataAgreementEnum;
     /**
-     * False when Stripe offers no way for Crossly to pay this account (see connect.ts).
+     * 
      * @type {boolean}
      * @memberof CreatePayoutConnectOnboardResponseData
      */
     payoutsSupported: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePayoutConnectOnboardResponseData
+     */
+    accountSource: string;
 }
 
 /**
@@ -68,6 +74,7 @@ export function CreatePayoutConnectOnboardResponseDataFromJSONTyped(json: any, i
         'country': json['country'],
         'agreement': json['agreement'],
         'payoutsSupported': json['payoutsSupported'],
+        'accountSource': json['accountSource'],
     };
 }
 
@@ -84,6 +91,7 @@ export function CreatePayoutConnectOnboardResponseDataToJSON(value?: CreatePayou
         'country': value.country,
         'agreement': value.agreement,
         'payoutsSupported': value.payoutsSupported,
+        'accountSource': value.accountSource,
     };
 }
 

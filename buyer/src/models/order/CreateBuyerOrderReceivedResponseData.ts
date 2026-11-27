@@ -33,16 +33,16 @@ export interface CreateBuyerOrderReceivedResponseData {
     canReview: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof CreateBuyerOrderReceivedResponseData
-     */
-    buyerReceivedAt?: string | null;
-    /**
-     * 
      * @type {boolean}
      * @memberof CreateBuyerOrderReceivedResponseData
      */
     alreadyConfirmed?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerOrderReceivedResponseData
+     */
+    buyerReceivedAt?: string | null;
 }
 
 export function CreateBuyerOrderReceivedResponseDataFromJSON(json: any): CreateBuyerOrderReceivedResponseData {
@@ -57,8 +57,8 @@ export function CreateBuyerOrderReceivedResponseDataFromJSONTyped(json: any, ign
         
         'ok': json['ok'],
         'canReview': json['canReview'],
-        'buyerReceivedAt': !exists(json, 'buyerReceivedAt') ? undefined : json['buyerReceivedAt'],
         'alreadyConfirmed': !exists(json, 'alreadyConfirmed') ? undefined : json['alreadyConfirmed'],
+        'buyerReceivedAt': !exists(json, 'buyerReceivedAt') ? undefined : json['buyerReceivedAt'],
     };
 }
 
@@ -73,8 +73,8 @@ export function CreateBuyerOrderReceivedResponseDataToJSON(value?: CreateBuyerOr
         
         'ok': value.ok,
         'canReview': value.canReview,
-        'buyerReceivedAt': value.buyerReceivedAt,
         'alreadyConfirmed': value.alreadyConfirmed,
+        'buyerReceivedAt': value.buyerReceivedAt,
     };
 }
 

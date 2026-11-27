@@ -30,7 +30,7 @@ export interface CreateAutomationRuleRunNowResponse {
      * @type {string}
      * @memberof CreateAutomationRuleRunNowResponse
      */
-    jobId?: string | null;
+    jobId: string;
 }
 
 export function CreateAutomationRuleRunNowResponseFromJSON(json: any): CreateAutomationRuleRunNowResponse {
@@ -44,7 +44,7 @@ export function CreateAutomationRuleRunNowResponseFromJSONTyped(json: any, ignor
     return {
         
         'success': json['success'],
-        'jobId': !exists(json, 'jobId') ? undefined : json['jobId'],
+        'jobId': json['jobId'],
     };
 }
 

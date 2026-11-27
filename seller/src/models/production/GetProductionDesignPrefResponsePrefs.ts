@@ -55,6 +55,12 @@ export interface GetProductionDesignPrefResponsePrefs {
      * @type {string}
      * @memberof GetProductionDesignPrefResponsePrefs
      */
+    cosmeticId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetProductionDesignPrefResponsePrefs
+     */
     merchantId: string;
     /**
      * 
@@ -62,12 +68,6 @@ export interface GetProductionDesignPrefResponsePrefs {
      * @memberof GetProductionDesignPrefResponsePrefs
      */
     creatorSubjectId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetProductionDesignPrefResponsePrefs
-     */
-    cosmeticId: string;
     /**
      * 
      * @type {CreateProductionDesignSpecResponsePrefsSpec}
@@ -107,9 +107,9 @@ export function GetProductionDesignPrefResponsePrefsFromJSONTyped(json: any, ign
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
+        'cosmeticId': json['cosmeticId'],
         'merchantId': json['merchantId'],
         'creatorSubjectId': json['creatorSubjectId'],
-        'cosmeticId': json['cosmeticId'],
         'spec': !exists(json, 'spec') ? undefined : CreateProductionDesignSpecResponsePrefsSpecFromJSON(json['spec']),
         'physicalOptOut': json['physicalOptOut'],
         'brief': !exists(json, 'brief') ? undefined : CreateProductionDesignSpecResponsePrefsBriefFromJSON(json['brief']),
@@ -129,9 +129,9 @@ export function GetProductionDesignPrefResponsePrefsToJSON(value?: GetProduction
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
+        'cosmeticId': value.cosmeticId,
         'merchantId': value.merchantId,
         'creatorSubjectId': value.creatorSubjectId,
-        'cosmeticId': value.cosmeticId,
         'spec': CreateProductionDesignSpecResponsePrefsSpecToJSON(value.spec),
         'physicalOptOut': value.physicalOptOut,
         'brief': CreateProductionDesignSpecResponsePrefsBriefToJSON(value.brief),

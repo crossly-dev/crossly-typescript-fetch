@@ -26,6 +26,12 @@ import {
     GetAnalyticDashboardResponseCancelRateToJSON,
 } from './GetAnalyticDashboardResponseCancelRate';
 import {
+    GetAnalyticDashboardResponsePeriod,
+    GetAnalyticDashboardResponsePeriodFromJSON,
+    GetAnalyticDashboardResponsePeriodFromJSONTyped,
+    GetAnalyticDashboardResponsePeriodToJSON,
+} from './GetAnalyticDashboardResponsePeriod';
+import {
     GetAnalyticDashboardResponseRecentSales,
     GetAnalyticDashboardResponseRecentSalesFromJSON,
     GetAnalyticDashboardResponseRecentSalesFromJSONTyped,
@@ -55,6 +61,12 @@ import {
     GetAnalyticDashboardResponseSellThroughFromJSONTyped,
     GetAnalyticDashboardResponseSellThroughToJSON,
 } from './GetAnalyticDashboardResponseSellThrough';
+import {
+    GetAnalyticDashboardResponseSellThroughCohort,
+    GetAnalyticDashboardResponseSellThroughCohortFromJSON,
+    GetAnalyticDashboardResponseSellThroughCohortFromJSONTyped,
+    GetAnalyticDashboardResponseSellThroughCohortToJSON,
+} from './GetAnalyticDashboardResponseSellThroughCohort';
 import {
     GetAnalyticDashboardResponseTop5ItemsByRevenue,
     GetAnalyticDashboardResponseTop5ItemsByRevenueFromJSON,
@@ -93,6 +105,12 @@ export interface GetAnalyticDashboardResponse {
      */
     soldItemsCount: GetAnalyticDashboardResponseRevenue;
     /**
+     * "N sales pending details": in the period, not in revenue/profit/avg.
+     * @type {number}
+     * @memberof GetAnalyticDashboardResponse
+     */
+    pendingDetailsCount: number;
+    /**
      * 
      * @type {GetAnalyticDashboardResponseRevenue}
      * @memberof GetAnalyticDashboardResponse
@@ -129,7 +147,7 @@ export interface GetAnalyticDashboardResponse {
      */
     avgSalePrice: GetAnalyticDashboardResponseRevenue;
     /**
-     * 
+     * 0–100 (legacy unit). The full cohort is `sellThroughCohort`.
      * @type {number}
      * @memberof GetAnalyticDashboardResponse
      */
@@ -142,10 +160,22 @@ export interface GetAnalyticDashboardResponse {
     sellThrough: GetAnalyticDashboardResponseSellThrough;
     /**
      * 
+     * @type {GetAnalyticDashboardResponseSellThroughCohort}
+     * @memberof GetAnalyticDashboardResponse
+     */
+    sellThroughCohort: GetAnalyticDashboardResponseSellThroughCohort;
+    /**
+     * 
      * @type {number}
      * @memberof GetAnalyticDashboardResponse
      */
     avgDaysToSell?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticDashboardResponse
+     */
+    medianDaysToSell?: number | null;
     /**
      * 
      * @type {Array<GetAnalyticDashboardResponseSalesByPlatform>}
@@ -200,6 +230,12 @@ export interface GetAnalyticDashboardResponse {
      * @memberof GetAnalyticDashboardResponse
      */
     availableLabels: Array<string>;
+    /**
+     * 
+     * @type {GetAnalyticDashboardResponsePeriod}
+     * @memberof GetAnalyticDashboardResponse
+     */
+    period: GetAnalyticDashboardResponsePeriod;
 }
 
 export function GetAnalyticDashboardResponseFromJSON(json: any): GetAnalyticDashboardResponse {
@@ -215,6 +251,7 @@ export function GetAnalyticDashboardResponseFromJSONTyped(json: any, ignoreDiscr
         'revenue': GetAnalyticDashboardResponseRevenueFromJSON(json['revenue']),
         'profit': GetAnalyticDashboardResponseRevenueFromJSON(json['profit']),
         'soldItemsCount': GetAnalyticDashboardResponseRevenueFromJSON(json['soldItemsCount']),
+        'pendingDetailsCount': json['pendingDetailsCount'],
         'cancelledCount': GetAnalyticDashboardResponseRevenueFromJSON(json['cancelledCount']),
         'cancelRate': GetAnalyticDashboardResponseCancelRateFromJSON(json['cancelRate']),
         'refundedAmount': GetAnalyticDashboardResponseRevenueFromJSON(json['refundedAmount']),
@@ -223,7 +260,9 @@ export function GetAnalyticDashboardResponseFromJSONTyped(json: any, ignoreDiscr
         'avgSalePrice': GetAnalyticDashboardResponseRevenueFromJSON(json['avgSalePrice']),
         'sellThroughRate': !exists(json, 'sellThroughRate') ? undefined : json['sellThroughRate'],
         'sellThrough': GetAnalyticDashboardResponseSellThroughFromJSON(json['sellThrough']),
+        'sellThroughCohort': GetAnalyticDashboardResponseSellThroughCohortFromJSON(json['sellThroughCohort']),
         'avgDaysToSell': !exists(json, 'avgDaysToSell') ? undefined : json['avgDaysToSell'],
+        'medianDaysToSell': !exists(json, 'medianDaysToSell') ? undefined : json['medianDaysToSell'],
         'salesByPlatform': ((json['salesByPlatform'] as Array<any>).map(GetAnalyticDashboardResponseSalesByPlatformFromJSON)),
         'avgSalePriceByPlatform': ((json['avgSalePriceByPlatform'] as Array<any>).map(GetAnalyticDashboardResponseAvgSalePriceByPlatformFromJSON)),
         'revenueByDay': ((json['revenueByDay'] as Array<any>).map(GetAnalyticDashboardResponseRevenueByDayFromJSON)),
@@ -233,6 +272,7 @@ export function GetAnalyticDashboardResponseFromJSONTyped(json: any, ignoreDiscr
         'top5ItemsByRevenue': ((json['top5ItemsByRevenue'] as Array<any>).map(GetAnalyticDashboardResponseTop5ItemsByRevenueFromJSON)),
         'recentSales': ((json['recentSales'] as Array<any>).map(GetAnalyticDashboardResponseRecentSalesFromJSON)),
         'availableLabels': json['availableLabels'],
+        'period': GetAnalyticDashboardResponsePeriodFromJSON(json['period']),
     };
 }
 
@@ -248,6 +288,7 @@ export function GetAnalyticDashboardResponseToJSON(value?: GetAnalyticDashboardR
         'revenue': GetAnalyticDashboardResponseRevenueToJSON(value.revenue),
         'profit': GetAnalyticDashboardResponseRevenueToJSON(value.profit),
         'soldItemsCount': GetAnalyticDashboardResponseRevenueToJSON(value.soldItemsCount),
+        'pendingDetailsCount': value.pendingDetailsCount,
         'cancelledCount': GetAnalyticDashboardResponseRevenueToJSON(value.cancelledCount),
         'cancelRate': GetAnalyticDashboardResponseCancelRateToJSON(value.cancelRate),
         'refundedAmount': GetAnalyticDashboardResponseRevenueToJSON(value.refundedAmount),
@@ -256,7 +297,9 @@ export function GetAnalyticDashboardResponseToJSON(value?: GetAnalyticDashboardR
         'avgSalePrice': GetAnalyticDashboardResponseRevenueToJSON(value.avgSalePrice),
         'sellThroughRate': value.sellThroughRate,
         'sellThrough': GetAnalyticDashboardResponseSellThroughToJSON(value.sellThrough),
+        'sellThroughCohort': GetAnalyticDashboardResponseSellThroughCohortToJSON(value.sellThroughCohort),
         'avgDaysToSell': value.avgDaysToSell,
+        'medianDaysToSell': value.medianDaysToSell,
         'salesByPlatform': ((value.salesByPlatform as Array<any>).map(GetAnalyticDashboardResponseSalesByPlatformToJSON)),
         'avgSalePriceByPlatform': ((value.avgSalePriceByPlatform as Array<any>).map(GetAnalyticDashboardResponseAvgSalePriceByPlatformToJSON)),
         'revenueByDay': ((value.revenueByDay as Array<any>).map(GetAnalyticDashboardResponseRevenueByDayToJSON)),
@@ -266,6 +309,7 @@ export function GetAnalyticDashboardResponseToJSON(value?: GetAnalyticDashboardR
         'top5ItemsByRevenue': ((value.top5ItemsByRevenue as Array<any>).map(GetAnalyticDashboardResponseTop5ItemsByRevenueToJSON)),
         'recentSales': ((value.recentSales as Array<any>).map(GetAnalyticDashboardResponseRecentSalesToJSON)),
         'availableLabels': value.availableLabels,
+        'period': GetAnalyticDashboardResponsePeriodToJSON(value.period),
     };
 }
 

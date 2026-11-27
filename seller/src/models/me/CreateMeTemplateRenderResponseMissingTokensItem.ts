@@ -20,6 +20,8 @@
 export enum CreateMeTemplateRenderResponseMissingTokensItem {
     Date = 'date',
     Brand = 'brand',
+    Category = 'category',
+    Month = 'month',
     Sku = 'sku',
     Condition = 'condition',
     Size = 'size',
@@ -27,11 +29,9 @@ export enum CreateMeTemplateRenderResponseMissingTokensItem {
     Style = 'style',
     Color = 'color',
     Price = 'price',
-    Category = 'category',
     Year = 'year',
     Model = 'model',
-    ItemName = 'item_name',
-    Month = 'month'
+    ItemName = 'item_name'
 }
 
 export function CreateMeTemplateRenderResponseMissingTokensItemFromJSON(json: any): CreateMeTemplateRenderResponseMissingTokensItem {

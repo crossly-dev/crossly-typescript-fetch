@@ -75,6 +75,12 @@ export interface GetHomeResponseLayout {
      */
     set?: string | null;
     /**
+     * A furniture piece's colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.
+     * @type {string}
+     * @memberof GetHomeResponseLayout
+     */
+    tint?: GetHomeResponseLayoutTintEnum;
+    /**
      * 
      * @type {GetHomeResponseLayoutItem}
      * @memberof GetHomeResponseLayout
@@ -89,6 +95,19 @@ export interface GetHomeResponseLayout {
 export enum GetHomeResponseLayoutKindEnum {
     Display = 'display',
     Prop = 'prop'
+}/**
+* @export
+* @enum {string}
+*/
+export enum GetHomeResponseLayoutTintEnum {
+    Oat = 'oat',
+    Sage = 'sage',
+    Forest = 'forest',
+    Navy = 'navy',
+    Clay = 'clay',
+    Mustard = 'mustard',
+    Blush = 'blush',
+    Charcoal = 'charcoal'
 }
 
 export function GetHomeResponseLayoutFromJSON(json: any): GetHomeResponseLayout {
@@ -108,6 +127,7 @@ export function GetHomeResponseLayoutFromJSONTyped(json: any, ignoreDiscriminato
         'rotationY': json['rotationY'],
         'slot': !exists(json, 'slot') ? undefined : json['slot'],
         'set': !exists(json, 'set') ? undefined : json['set'],
+        'tint': !exists(json, 'tint') ? undefined : json['tint'],
         'item': !exists(json, 'item') ? undefined : GetHomeResponseLayoutItemFromJSON(json['item']),
     };
 }
@@ -128,6 +148,7 @@ export function GetHomeResponseLayoutToJSON(value?: GetHomeResponseLayout | null
         'rotationY': value.rotationY,
         'slot': value.slot,
         'set': value.set,
+        'tint': value.tint,
         'item': GetHomeResponseLayoutItemToJSON(value.item),
     };
 }

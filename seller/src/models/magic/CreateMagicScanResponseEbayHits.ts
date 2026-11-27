@@ -44,7 +44,7 @@ export interface CreateMagicScanResponseEbayHits {
      */
     brand?: string | null;
     /**
-     * Normalized cents. eBay returns string + currency on `price.value`.
+     * Integer cents.
      * @type {number}
      * @memberof CreateMagicScanResponseEbayHits
      */
@@ -62,7 +62,7 @@ export interface CreateMagicScanResponseEbayHits {
      */
     condition?: string | null;
     /**
-     * Top-level category eBay assigned to the match (id + path).
+     * The category the marketplace filed the match under (id + path), when the provider returns it.
      * @type {string}
      * @memberof CreateMagicScanResponseEbayHits
      */
@@ -86,8 +86,7 @@ export interface CreateMagicScanResponseEbayHits {
      */
     thumbnailUrl?: string | null;
     /**
-     * Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay
-     * inlines them. Always inspected defensively by the synthesizer.
+     * Item specifics, when the provider returns them. Always read defensively.
      * @type {{ [key: string]: any; }}
      * @memberof CreateMagicScanResponseEbayHits
      */

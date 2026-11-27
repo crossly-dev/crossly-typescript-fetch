@@ -62,7 +62,8 @@ export enum GetVaultMarketLearnResponseConceptsSlugEnum {
     Liens = 'liens',
     Auctions = 'auctions',
     Indexes = 'indexes',
-    Marks = 'marks'
+    Marks = 'marks',
+    VaultShares = 'vault-shares'
 }
 
 export function GetVaultMarketLearnResponseConceptsFromJSON(json: any): GetVaultMarketLearnResponseConcepts {

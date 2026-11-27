@@ -49,31 +49,25 @@ export interface GetBuyerBreakResponseData {
      * @type {string}
      * @memberof GetBuyerBreakResponseData
      */
-    createdAt: string;
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseData
+     */
+    product?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseData
+     */
+    format: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerBreakResponseData
      */
     status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerBreakResponseData
-     */
-    assignedAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerBreakResponseData
-     */
-    title: string;
-    /**
-     * 
-     * @type {GetBuyerBreakResponseDataSeller}
-     * @memberof GetBuyerBreakResponseData
-     */
-    seller: GetBuyerBreakResponseDataSeller;
     /**
      * 
      * @type {string}
@@ -91,31 +85,13 @@ export interface GetBuyerBreakResponseData {
      * @type {string}
      * @memberof GetBuyerBreakResponseData
      */
-    format: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerBreakResponseData
-     */
     streamId?: string | null;
     /**
      * 
-     * @type {string}
+     * @type {GetBuyerBreakResponseDataSeller}
      * @memberof GetBuyerBreakResponseData
      */
-    seed?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerBreakResponseData
-     */
-    product?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerBreakResponseData
-     */
-    seedCommit: string;
+    seller: GetBuyerBreakResponseDataSeller;
     /**
      * 
      * @type {Array<GetBuyerBreakResponseDataSpots>}
@@ -130,10 +106,34 @@ export interface GetBuyerBreakResponseData {
     spotsLeft: number;
     /**
      * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseData
+     */
+    seedCommit: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseData
+     */
+    seed?: string | null;
+    /**
+     * 
      * @type {Array<GetBuyerBreakResponseDataDraw>}
      * @memberof GetBuyerBreakResponseData
      */
     draw?: Array<GetBuyerBreakResponseDataDraw> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseData
+     */
+    createdAt: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseData
+     */
+    assignedAt?: string | null;
 }
 
 export function GetBuyerBreakResponseDataFromJSON(json: any): GetBuyerBreakResponseData {
@@ -147,21 +147,21 @@ export function GetBuyerBreakResponseDataFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'status': json['status'],
-        'assignedAt': !exists(json, 'assignedAt') ? undefined : json['assignedAt'],
         'title': json['title'],
-        'seller': GetBuyerBreakResponseDataSellerFromJSON(json['seller']),
+        'product': !exists(json, 'product') ? undefined : json['product'],
+        'format': json['format'],
+        'status': json['status'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'priceCents': json['priceCents'],
-        'format': json['format'],
         'streamId': !exists(json, 'streamId') ? undefined : json['streamId'],
-        'seed': !exists(json, 'seed') ? undefined : json['seed'],
-        'product': !exists(json, 'product') ? undefined : json['product'],
-        'seedCommit': json['seedCommit'],
+        'seller': GetBuyerBreakResponseDataSellerFromJSON(json['seller']),
         'spots': ((json['spots'] as Array<any>).map(GetBuyerBreakResponseDataSpotsFromJSON)),
         'spotsLeft': json['spotsLeft'],
+        'seedCommit': json['seedCommit'],
+        'seed': !exists(json, 'seed') ? undefined : json['seed'],
         'draw': !exists(json, 'draw') ? undefined : (json['draw'] === null ? null : (json['draw'] as Array<any>).map(GetBuyerBreakResponseDataDrawFromJSON)),
+        'createdAt': json['createdAt'],
+        'assignedAt': !exists(json, 'assignedAt') ? undefined : json['assignedAt'],
     };
 }
 
@@ -175,21 +175,21 @@ export function GetBuyerBreakResponseDataToJSON(value?: GetBuyerBreakResponseDat
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'status': value.status,
-        'assignedAt': value.assignedAt,
         'title': value.title,
-        'seller': GetBuyerBreakResponseDataSellerToJSON(value.seller),
+        'product': value.product,
+        'format': value.format,
+        'status': value.status,
         'slug': value.slug,
         'priceCents': value.priceCents,
-        'format': value.format,
         'streamId': value.streamId,
-        'seed': value.seed,
-        'product': value.product,
-        'seedCommit': value.seedCommit,
+        'seller': GetBuyerBreakResponseDataSellerToJSON(value.seller),
         'spots': ((value.spots as Array<any>).map(GetBuyerBreakResponseDataSpotsToJSON)),
         'spotsLeft': value.spotsLeft,
+        'seedCommit': value.seedCommit,
+        'seed': value.seed,
         'draw': value.draw === undefined ? undefined : (value.draw === null ? null : (value.draw as Array<any>).map(GetBuyerBreakResponseDataDrawToJSON)),
+        'createdAt': value.createdAt,
+        'assignedAt': value.assignedAt,
     };
 }
 

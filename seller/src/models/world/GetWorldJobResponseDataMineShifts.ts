@@ -123,15 +123,15 @@ export enum GetWorldJobResponseDataMineShiftsRoleEnum {
 * @enum {string}
 */
 export enum GetWorldJobResponseDataMineShiftsRailEnum {
-    Bucks = 'bucks',
-    Cbx = 'cbx'
+    Cbx = 'cbx',
+    Bucks = 'bucks'
 }/**
 * @export
 * @enum {string}
 */
 export enum GetWorldJobResponseDataMineShiftsStatusEnum {
-    Open = 'open',
     Cancelled = 'cancelled',
+    Open = 'open',
     Paid = 'paid',
     Claimed = 'claimed',
     Worked = 'worked',

@@ -54,6 +54,36 @@ export interface ListRentalsItem {
      * @type {string}
      * @memberof ListRentalsItem
      */
+    platformListingId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    payoutTiming?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    payoutReleasedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    orderId?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalsItem
+     */
+    crosslyFeeCents?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
     id: string;
     /**
      * 
@@ -181,6 +211,96 @@ export interface ListRentalsItem {
      * @memberof ListRentalsItem
      */
     depositRefundedCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalsItem
+     */
+    unit: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    fulfilment: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalsItem
+     */
+    cleaningFeeCents: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListRentalsItem
+     */
+    damageWaiver: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalsItem
+     */
+    damageWaiverCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalsItem
+     */
+    lateFeeCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalsItem
+     */
+    rentRefundedCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalsItem
+     */
+    buyoutCents?: number | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListRentalsItem
+     */
+    charges: { [key: string]: any; };
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListRentalsItem
+     */
+    conditionPhotosReturn: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    approvedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    deliveredAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    returnShippedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    inspectedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalsItem
+     */
+    boughtOutAt?: string | null;
 }
 
 export function ListRentalsItemFromJSON(json: any): ListRentalsItem {
@@ -198,6 +318,11 @@ export function ListRentalsItemFromJSONTyped(json: any, ignoreDiscriminator: boo
         'closedAt': !exists(json, 'closedAt') ? undefined : json['closedAt'],
         'createdAt': json['createdAt'],
         'shipTo': !exists(json, 'shipTo') ? undefined : json['shipTo'],
+        'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
+        'payoutTiming': !exists(json, 'payoutTiming') ? undefined : json['payoutTiming'],
+        'payoutReleasedAt': !exists(json, 'payoutReleasedAt') ? undefined : json['payoutReleasedAt'],
+        'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
+        'crosslyFeeCents': !exists(json, 'crosslyFeeCents') ? undefined : json['crosslyFeeCents'],
         'id': json['id'],
         'status': json['status'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
@@ -220,6 +345,21 @@ export function ListRentalsItemFromJSONTyped(json: any, ignoreDiscriminator: boo
         'conditionPhotosIn': json['conditionPhotosIn'],
         'approvalDueAt': !exists(json, 'approvalDueAt') ? undefined : json['approvalDueAt'],
         'depositRefundedCents': json['depositRefundedCents'],
+        'unit': json['unit'],
+        'fulfilment': json['fulfilment'],
+        'cleaningFeeCents': json['cleaningFeeCents'],
+        'damageWaiver': json['damageWaiver'],
+        'damageWaiverCents': json['damageWaiverCents'],
+        'lateFeeCents': json['lateFeeCents'],
+        'rentRefundedCents': json['rentRefundedCents'],
+        'buyoutCents': !exists(json, 'buyoutCents') ? undefined : json['buyoutCents'],
+        'charges': json['charges'],
+        'conditionPhotosReturn': json['conditionPhotosReturn'],
+        'approvedAt': !exists(json, 'approvedAt') ? undefined : json['approvedAt'],
+        'deliveredAt': !exists(json, 'deliveredAt') ? undefined : json['deliveredAt'],
+        'returnShippedAt': !exists(json, 'returnShippedAt') ? undefined : json['returnShippedAt'],
+        'inspectedAt': !exists(json, 'inspectedAt') ? undefined : json['inspectedAt'],
+        'boughtOutAt': !exists(json, 'boughtOutAt') ? undefined : json['boughtOutAt'],
     };
 }
 
@@ -237,6 +377,11 @@ export function ListRentalsItemToJSON(value?: ListRentalsItem | null): any {
         'closedAt': value.closedAt,
         'createdAt': value.createdAt,
         'shipTo': value.shipTo,
+        'platformListingId': value.platformListingId,
+        'payoutTiming': value.payoutTiming,
+        'payoutReleasedAt': value.payoutReleasedAt,
+        'orderId': value.orderId,
+        'crosslyFeeCents': value.crosslyFeeCents,
         'id': value.id,
         'status': value.status,
         'slug': value.slug,
@@ -259,6 +404,21 @@ export function ListRentalsItemToJSON(value?: ListRentalsItem | null): any {
         'conditionPhotosIn': value.conditionPhotosIn,
         'approvalDueAt': value.approvalDueAt,
         'depositRefundedCents': value.depositRefundedCents,
+        'unit': value.unit,
+        'fulfilment': value.fulfilment,
+        'cleaningFeeCents': value.cleaningFeeCents,
+        'damageWaiver': value.damageWaiver,
+        'damageWaiverCents': value.damageWaiverCents,
+        'lateFeeCents': value.lateFeeCents,
+        'rentRefundedCents': value.rentRefundedCents,
+        'buyoutCents': value.buyoutCents,
+        'charges': value.charges,
+        'conditionPhotosReturn': value.conditionPhotosReturn,
+        'approvedAt': value.approvedAt,
+        'deliveredAt': value.deliveredAt,
+        'returnShippedAt': value.returnShippedAt,
+        'inspectedAt': value.inspectedAt,
+        'boughtOutAt': value.boughtOutAt,
     };
 }
 

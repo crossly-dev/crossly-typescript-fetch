@@ -26,11 +26,11 @@ import {
     ListGameBreakUpcomingItemSpotsToJSON,
 } from './ListGameBreakUpcomingItemSpots';
 import {
-    SlugName,
-    SlugNameFromJSON,
-    SlugNameFromJSONTyped,
-    SlugNameToJSON,
-} from '../common/SlugName';
+    NameSlug,
+    NameSlugFromJSON,
+    NameSlugFromJSONTyped,
+    NameSlugToJSON,
+} from '../common/NameSlug';
 
 /**
  * 
@@ -69,6 +69,13 @@ export interface ListGameBreakUpcomingItem {
      */
     startsAt?: string | null;
     /**
+     * When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller's `live_early_entry`
+     * perk. Null with no start. Optional: a board read without a viewer leaves it at the start.
+     * @type {string}
+     * @memberof ListGameBreakUpcomingItem
+     */
+    doorsOpenAt?: string | null;
+    /**
      * 
      * @type {boolean}
      * @memberof ListGameBreakUpcomingItem
@@ -76,10 +83,10 @@ export interface ListGameBreakUpcomingItem {
     live: boolean;
     /**
      * 
-     * @type {SlugName}
+     * @type {NameSlug}
      * @memberof ListGameBreakUpcomingItem
      */
-    shop: SlugName;
+    shop: NameSlug;
     /**
      * The listing the spots are bought through, on crossly.net. Never a world checkout.
      * @type {string}
@@ -121,8 +128,9 @@ export function ListGameBreakUpcomingItemFromJSONTyped(json: any, ignoreDiscrimi
         'product': !exists(json, 'product') ? undefined : json['product'],
         'status': json['status'],
         'startsAt': !exists(json, 'startsAt') ? undefined : json['startsAt'],
+        'doorsOpenAt': !exists(json, 'doorsOpenAt') ? undefined : json['doorsOpenAt'],
         'live': json['live'],
-        'shop': SlugNameFromJSON(json['shop']),
+        'shop': NameSlugFromJSON(json['shop']),
         'buyUrl': !exists(json, 'buyUrl') ? undefined : json['buyUrl'],
         'spotsLeft': json['spotsLeft'],
         'spots': ((json['spots'] as Array<any>).map(ListGameBreakUpcomingItemSpotsFromJSON)),
@@ -144,8 +152,9 @@ export function ListGameBreakUpcomingItemToJSON(value?: ListGameBreakUpcomingIte
         'product': value.product,
         'status': value.status,
         'startsAt': value.startsAt,
+        'doorsOpenAt': value.doorsOpenAt,
         'live': value.live,
-        'shop': SlugNameToJSON(value.shop),
+        'shop': NameSlugToJSON(value.shop),
         'buyUrl': value.buyUrl,
         'spotsLeft': value.spotsLeft,
         'spots': ((value.spots as Array<any>).map(ListGameBreakUpcomingItemSpotsToJSON)),

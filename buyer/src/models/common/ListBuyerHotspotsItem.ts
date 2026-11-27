@@ -21,10 +21,22 @@ import { exists, mapValues } from '../../runtime';
 export interface ListBuyerHotspotsItem {
     /**
      * 
-     * @type {boolean}
+     * @type {string}
      * @memberof ListBuyerHotspotsItem
      */
-    available: boolean;
+    platformListingId: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerHotspotsItem
+     */
+    x: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerHotspotsItem
+     */
+    y: number;
     /**
      * 
      * @type {string}
@@ -36,19 +48,13 @@ export interface ListBuyerHotspotsItem {
      * @type {string}
      * @memberof ListBuyerHotspotsItem
      */
-    title?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerHotspotsItem
-     */
-    platformListingId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerHotspotsItem
-     */
     slug?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerHotspotsItem
+     */
+    title?: string | null;
     /**
      * 
      * @type {number}
@@ -63,16 +69,10 @@ export interface ListBuyerHotspotsItem {
     imageUrl?: string | null;
     /**
      * 
-     * @type {number}
+     * @type {boolean}
      * @memberof ListBuyerHotspotsItem
      */
-    x: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerHotspotsItem
-     */
-    y: number;
+    available: boolean;
 }
 
 export function ListBuyerHotspotsItemFromJSON(json: any): ListBuyerHotspotsItem {
@@ -85,15 +85,15 @@ export function ListBuyerHotspotsItemFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'available': json['available'],
-        'label': !exists(json, 'label') ? undefined : json['label'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
         'platformListingId': json['platformListingId'],
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
-        'priceCents': json['priceCents'],
-        'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
         'x': json['x'],
         'y': json['y'],
+        'label': !exists(json, 'label') ? undefined : json['label'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
+        'priceCents': json['priceCents'],
+        'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
+        'available': json['available'],
     };
 }
 
@@ -106,15 +106,15 @@ export function ListBuyerHotspotsItemToJSON(value?: ListBuyerHotspotsItem | null
     }
     return {
         
-        'available': value.available,
-        'label': value.label,
-        'title': value.title,
         'platformListingId': value.platformListingId,
-        'slug': value.slug,
-        'priceCents': value.priceCents,
-        'imageUrl': value.imageUrl,
         'x': value.x,
         'y': value.y,
+        'label': value.label,
+        'slug': value.slug,
+        'title': value.title,
+        'priceCents': value.priceCents,
+        'imageUrl': value.imageUrl,
+        'available': value.available,
     };
 }
 

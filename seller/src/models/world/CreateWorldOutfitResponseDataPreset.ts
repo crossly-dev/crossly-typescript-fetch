@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListWorldOutfitsItemAppearance,
-    ListWorldOutfitsItemAppearanceFromJSON,
-    ListWorldOutfitsItemAppearanceFromJSONTyped,
-    ListWorldOutfitsItemAppearanceToJSON,
-} from './ListWorldOutfitsItemAppearance';
+    CreateWorldOutfitResponseDataPresetAppearance,
+    CreateWorldOutfitResponseDataPresetAppearanceFromJSON,
+    CreateWorldOutfitResponseDataPresetAppearanceFromJSONTyped,
+    CreateWorldOutfitResponseDataPresetAppearanceToJSON,
+} from './CreateWorldOutfitResponseDataPresetAppearance';
 
 /**
  * 
@@ -40,10 +40,10 @@ export interface CreateWorldOutfitResponseDataPreset {
     name: string;
     /**
      * 
-     * @type {ListWorldOutfitsItemAppearance}
+     * @type {CreateWorldOutfitResponseDataPresetAppearance}
      * @memberof CreateWorldOutfitResponseDataPreset
      */
-    appearance: ListWorldOutfitsItemAppearance;
+    appearance: CreateWorldOutfitResponseDataPresetAppearance;
     /**
      * 
      * @type {Array<{ [key: string]: any; }>}
@@ -76,7 +76,7 @@ export function CreateWorldOutfitResponseDataPresetFromJSONTyped(json: any, igno
         
         'id': json['id'],
         'name': json['name'],
-        'appearance': ListWorldOutfitsItemAppearanceFromJSON(json['appearance']),
+        'appearance': CreateWorldOutfitResponseDataPresetAppearanceFromJSON(json['appearance']),
         'items': json['items'],
         'createdAt': json['createdAt'],
         'updatedAt': json['updatedAt'],
@@ -94,7 +94,7 @@ export function CreateWorldOutfitResponseDataPresetToJSON(value?: CreateWorldOut
         
         'id': value.id,
         'name': value.name,
-        'appearance': ListWorldOutfitsItemAppearanceToJSON(value.appearance),
+        'appearance': CreateWorldOutfitResponseDataPresetAppearanceToJSON(value.appearance),
         'items': value.items,
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,

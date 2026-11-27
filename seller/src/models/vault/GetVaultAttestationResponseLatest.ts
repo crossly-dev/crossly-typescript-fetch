@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetVaultAttestationResponseLatestPhysicalCount,
-    GetVaultAttestationResponseLatestPhysicalCountFromJSON,
-    GetVaultAttestationResponseLatestPhysicalCountFromJSONTyped,
-    GetVaultAttestationResponseLatestPhysicalCountToJSON,
-} from './GetVaultAttestationResponseLatestPhysicalCount';
+    GetVaultAttestationResponseLatestOther,
+    GetVaultAttestationResponseLatestOtherFromJSON,
+    GetVaultAttestationResponseLatestOtherFromJSONTyped,
+    GetVaultAttestationResponseLatestOtherToJSON,
+} from './GetVaultAttestationResponseLatestOther';
 
 /**
  * 
@@ -28,34 +28,34 @@ import {
 export interface GetVaultAttestationResponseLatest {
     /**
      * 
-     * @type {GetVaultAttestationResponseLatestPhysicalCount}
+     * @type {GetVaultAttestationResponseLatestOther}
      * @memberof GetVaultAttestationResponseLatest
      */
-    physicalCount?: GetVaultAttestationResponseLatestPhysicalCount | null;
+    other?: GetVaultAttestationResponseLatestOther | null;
     /**
      * 
-     * @type {GetVaultAttestationResponseLatestPhysicalCount}
+     * @type {GetVaultAttestationResponseLatestOther}
      * @memberof GetVaultAttestationResponseLatest
      */
-    insuranceCertificate?: GetVaultAttestationResponseLatestPhysicalCount | null;
+    physicalCount?: GetVaultAttestationResponseLatestOther | null;
     /**
      * 
-     * @type {GetVaultAttestationResponseLatestPhysicalCount}
+     * @type {GetVaultAttestationResponseLatestOther}
      * @memberof GetVaultAttestationResponseLatest
      */
-    soc1Type2?: GetVaultAttestationResponseLatestPhysicalCount | null;
+    insuranceCertificate?: GetVaultAttestationResponseLatestOther | null;
     /**
      * 
-     * @type {GetVaultAttestationResponseLatestPhysicalCount}
+     * @type {GetVaultAttestationResponseLatestOther}
      * @memberof GetVaultAttestationResponseLatest
      */
-    soc2?: GetVaultAttestationResponseLatestPhysicalCount | null;
+    soc1Type2?: GetVaultAttestationResponseLatestOther | null;
     /**
      * 
-     * @type {GetVaultAttestationResponseLatestPhysicalCount}
+     * @type {GetVaultAttestationResponseLatestOther}
      * @memberof GetVaultAttestationResponseLatest
      */
-    other?: GetVaultAttestationResponseLatestPhysicalCount | null;
+    soc2?: GetVaultAttestationResponseLatestOther | null;
 }
 
 export function GetVaultAttestationResponseLatestFromJSON(json: any): GetVaultAttestationResponseLatest {
@@ -68,11 +68,11 @@ export function GetVaultAttestationResponseLatestFromJSONTyped(json: any, ignore
     }
     return {
         
-        'physicalCount': !exists(json, 'physical_count') ? undefined : GetVaultAttestationResponseLatestPhysicalCountFromJSON(json['physical_count']),
-        'insuranceCertificate': !exists(json, 'insurance_certificate') ? undefined : GetVaultAttestationResponseLatestPhysicalCountFromJSON(json['insurance_certificate']),
-        'soc1Type2': !exists(json, 'soc1_type2') ? undefined : GetVaultAttestationResponseLatestPhysicalCountFromJSON(json['soc1_type2']),
-        'soc2': !exists(json, 'soc2') ? undefined : GetVaultAttestationResponseLatestPhysicalCountFromJSON(json['soc2']),
-        'other': !exists(json, 'other') ? undefined : GetVaultAttestationResponseLatestPhysicalCountFromJSON(json['other']),
+        'other': !exists(json, 'other') ? undefined : GetVaultAttestationResponseLatestOtherFromJSON(json['other']),
+        'physicalCount': !exists(json, 'physical_count') ? undefined : GetVaultAttestationResponseLatestOtherFromJSON(json['physical_count']),
+        'insuranceCertificate': !exists(json, 'insurance_certificate') ? undefined : GetVaultAttestationResponseLatestOtherFromJSON(json['insurance_certificate']),
+        'soc1Type2': !exists(json, 'soc1_type2') ? undefined : GetVaultAttestationResponseLatestOtherFromJSON(json['soc1_type2']),
+        'soc2': !exists(json, 'soc2') ? undefined : GetVaultAttestationResponseLatestOtherFromJSON(json['soc2']),
     };
 }
 
@@ -85,11 +85,11 @@ export function GetVaultAttestationResponseLatestToJSON(value?: GetVaultAttestat
     }
     return {
         
-        'physical_count': GetVaultAttestationResponseLatestPhysicalCountToJSON(value.physicalCount),
-        'insurance_certificate': GetVaultAttestationResponseLatestPhysicalCountToJSON(value.insuranceCertificate),
-        'soc1_type2': GetVaultAttestationResponseLatestPhysicalCountToJSON(value.soc1Type2),
-        'soc2': GetVaultAttestationResponseLatestPhysicalCountToJSON(value.soc2),
-        'other': GetVaultAttestationResponseLatestPhysicalCountToJSON(value.other),
+        'other': GetVaultAttestationResponseLatestOtherToJSON(value.other),
+        'physical_count': GetVaultAttestationResponseLatestOtherToJSON(value.physicalCount),
+        'insurance_certificate': GetVaultAttestationResponseLatestOtherToJSON(value.insuranceCertificate),
+        'soc1_type2': GetVaultAttestationResponseLatestOtherToJSON(value.soc1Type2),
+        'soc2': GetVaultAttestationResponseLatestOtherToJSON(value.soc2),
     };
 }
 

@@ -60,10 +60,10 @@ export enum ListBuyerSizeMemorySizesItemDomainEnum {
 * @enum {string}
 */
 export enum ListBuyerSizeMemorySizesItemDepartmentEnum {
+    Unisex = 'unisex',
     Men = 'men',
     Women = 'women',
-    Kids = 'kids',
-    Unisex = 'unisex'
+    Kids = 'kids'
 }
 
 export function ListBuyerSizeMemorySizesItemFromJSON(json: any): ListBuyerSizeMemorySizesItem {

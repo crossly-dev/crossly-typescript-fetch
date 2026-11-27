@@ -132,6 +132,18 @@ export interface ListDaoProposalsItem {
      * @type {string}
      * @memberof ListDaoProposalsItem
      */
+    proposalKind: string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListDaoProposalsItem
+     */
+    params?: { [key: string]: any; } | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListDaoProposalsItem
+     */
     createdAt: string;
 }
 
@@ -163,6 +175,8 @@ export function ListDaoProposalsItemFromJSONTyped(json: any, ignoreDiscriminator
         'talliedAt': !exists(json, 'talliedAt') ? undefined : json['talliedAt'],
         'vetoedReason': !exists(json, 'vetoedReason') ? undefined : json['vetoedReason'],
         'charityGoalId': !exists(json, 'charityGoalId') ? undefined : json['charityGoalId'],
+        'proposalKind': json['proposalKind'],
+        'params': !exists(json, 'params') ? undefined : json['params'],
         'createdAt': json['createdAt'],
     };
 }
@@ -194,6 +208,8 @@ export function ListDaoProposalsItemToJSON(value?: ListDaoProposalsItem | null):
         'talliedAt': value.talliedAt,
         'vetoedReason': value.vetoedReason,
         'charityGoalId': value.charityGoalId,
+        'proposalKind': value.proposalKind,
+        'params': value.params,
         'createdAt': value.createdAt,
     };
 }

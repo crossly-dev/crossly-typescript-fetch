@@ -87,8 +87,8 @@ export interface GetMainStageResponseLive {
 * @enum {string}
 */
 export enum GetMainStageResponseLiveKindEnum {
-    CreatorMeetup = 'creator_meetup',
     BrandLaunch = 'brand_launch',
+    CreatorMeetup = 'creator_meetup',
     Festival = 'festival',
     Talk = 'talk',
     LiveSale = 'live_sale'

@@ -112,9 +112,9 @@ export enum ListListingAiDetectionsItemVerdictEnum {
 * @enum {string}
 */
 export enum ListListingAiDetectionsItemStatusEnum {
-    Flagged = 'flagged',
     Review = 'review',
     Clear = 'clear',
+    Flagged = 'flagged',
     Disputed = 'disputed',
     Cleared = 'cleared'
 }/**

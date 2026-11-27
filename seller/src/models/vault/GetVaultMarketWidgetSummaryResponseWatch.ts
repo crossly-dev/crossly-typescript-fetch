@@ -93,9 +93,9 @@ export interface GetVaultMarketWidgetSummaryResponseWatch {
 */
 export enum GetVaultMarketWidgetSummaryResponseWatchMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketWidgetSummaryResponseWatchFromJSON(json: any): GetVaultMarketWidgetSummaryResponseWatch {

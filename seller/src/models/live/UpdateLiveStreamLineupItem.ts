@@ -21,18 +21,6 @@ import { exists, mapValues } from '../../runtime';
 export interface UpdateLiveStreamLineupItem {
     /**
      * 
-     * @type {boolean}
-     * @memberof UpdateLiveStreamLineupItem
-     */
-    available: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateLiveStreamLineupItem
-     */
-    title?: string | null;
-    /**
-     * 
      * @type {string}
      * @memberof UpdateLiveStreamLineupItem
      */
@@ -51,6 +39,12 @@ export interface UpdateLiveStreamLineupItem {
     slug?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof UpdateLiveStreamLineupItem
+     */
+    title?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof UpdateLiveStreamLineupItem
      */
@@ -61,6 +55,12 @@ export interface UpdateLiveStreamLineupItem {
      * @memberof UpdateLiveStreamLineupItem
      */
     imageUrl?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateLiveStreamLineupItem
+     */
+    available: boolean;
     /**
      * 
      * @type {boolean}
@@ -79,13 +79,13 @@ export function UpdateLiveStreamLineupItemFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'available': json['available'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
         'platformListingId': json['platformListingId'],
         'position': json['position'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
         'priceCents': json['priceCents'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
+        'available': json['available'],
         'pinned': json['pinned'],
     };
 }
@@ -99,13 +99,13 @@ export function UpdateLiveStreamLineupItemToJSON(value?: UpdateLiveStreamLineupI
     }
     return {
         
-        'available': value.available,
-        'title': value.title,
         'platformListingId': value.platformListingId,
         'position': value.position,
         'slug': value.slug,
+        'title': value.title,
         'priceCents': value.priceCents,
         'imageUrl': value.imageUrl,
+        'available': value.available,
         'pinned': value.pinned,
     };
 }

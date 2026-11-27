@@ -81,8 +81,8 @@ export enum GetVaultMarketPositionResponseLegsSideEnum {
 * @enum {string}
 */
 export enum GetVaultMarketPositionResponseLegsStatusEnum {
-    Filled = 'filled',
     Cancelled = 'cancelled',
+    Filled = 'filled',
     Working = 'working',
     Busted = 'busted'
 }

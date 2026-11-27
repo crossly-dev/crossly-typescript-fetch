@@ -48,6 +48,12 @@ export interface ListBuyerFollowingSellersItem {
      * @type {string}
      * @memberof ListBuyerFollowingSellersItem
      */
+    username?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerFollowingSellersItem
+     */
     name?: string | null;
     /**
      * 
@@ -55,12 +61,6 @@ export interface ListBuyerFollowingSellersItem {
      * @memberof ListBuyerFollowingSellersItem
      */
     avatarUrl?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerFollowingSellersItem
-     */
-    username?: string | null;
     /**
      * 
      * @type {string}
@@ -83,9 +83,9 @@ export function ListBuyerFollowingSellersItemFromJSONTyped(json: any, ignoreDisc
         'followedAt': json['followedAt'],
         'activeListings': json['activeListings'],
         'newListings': json['newListings'],
+        'username': !exists(json, 'username') ? undefined : json['username'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'avatarUrl': !exists(json, 'avatarUrl') ? undefined : json['avatarUrl'],
-        'username': !exists(json, 'username') ? undefined : json['username'],
         'lastSeenAt': !exists(json, 'lastSeenAt') ? undefined : json['lastSeenAt'],
     };
 }
@@ -103,9 +103,9 @@ export function ListBuyerFollowingSellersItemToJSON(value?: ListBuyerFollowingSe
         'followedAt': value.followedAt,
         'activeListings': value.activeListings,
         'newListings': value.newListings,
+        'username': value.username,
         'name': value.name,
         'avatarUrl': value.avatarUrl,
-        'username': value.username,
         'lastSeenAt': value.lastSeenAt,
     };
 }

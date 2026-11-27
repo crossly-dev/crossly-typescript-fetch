@@ -97,6 +97,30 @@ export interface GetInboxConversationMessageResponseMessages {
      * @memberof GetInboxConversationMessageResponseMessages
      */
     aiTriagedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxConversationMessageResponseMessages
+     */
+    offerAmount?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxConversationMessageResponseMessages
+     */
+    offerStatus?: GetInboxConversationMessageResponseMessagesOfferStatusEnum;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum GetInboxConversationMessageResponseMessagesOfferStatusEnum {
+    Pending = 'pending',
+    Accepted = 'accepted',
+    Declined = 'declined',
+    Expired = 'expired',
+    Voided = 'voided'
 }
 
 export function GetInboxConversationMessageResponseMessagesFromJSON(json: any): GetInboxConversationMessageResponseMessages {
@@ -122,6 +146,8 @@ export function GetInboxConversationMessageResponseMessagesFromJSONTyped(json: a
         'aiScamScore': !exists(json, 'aiScamScore') ? undefined : json['aiScamScore'],
         'aiSuggestedReply': !exists(json, 'aiSuggestedReply') ? undefined : json['aiSuggestedReply'],
         'aiTriagedAt': !exists(json, 'aiTriagedAt') ? undefined : (json['aiTriagedAt'] === null ? null : new Date(json['aiTriagedAt'])),
+        'offerAmount': !exists(json, 'offerAmount') ? undefined : json['offerAmount'],
+        'offerStatus': !exists(json, 'offerStatus') ? undefined : json['offerStatus'],
     };
 }
 
@@ -147,6 +173,8 @@ export function GetInboxConversationMessageResponseMessagesToJSON(value?: GetInb
         'aiScamScore': value.aiScamScore,
         'aiSuggestedReply': value.aiSuggestedReply,
         'aiTriagedAt': value.aiTriagedAt === undefined ? undefined : (value.aiTriagedAt === null ? null : value.aiTriagedAt.toISOString()),
+        'offerAmount': value.offerAmount,
+        'offerStatus': value.offerStatus,
     };
 }
 

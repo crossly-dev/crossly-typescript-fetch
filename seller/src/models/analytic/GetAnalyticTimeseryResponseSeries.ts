@@ -37,6 +37,18 @@ export interface GetAnalyticTimeseryResponseSeries {
      * @memberof GetAnalyticTimeseryResponseSeries
      */
     revenue: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticTimeseryResponseSeries
+     */
+    netSalesCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticTimeseryResponseSeries
+     */
+    netProfitCents: number;
 }
 
 export function GetAnalyticTimeseryResponseSeriesFromJSON(json: any): GetAnalyticTimeseryResponseSeries {
@@ -52,6 +64,8 @@ export function GetAnalyticTimeseryResponseSeriesFromJSONTyped(json: any, ignore
         'day': json['day'],
         'sales': json['sales'],
         'revenue': json['revenue'],
+        'netSalesCents': json['netSalesCents'],
+        'netProfitCents': json['netProfitCents'],
     };
 }
 
@@ -67,6 +81,8 @@ export function GetAnalyticTimeseryResponseSeriesToJSON(value?: GetAnalyticTimes
         'day': value.day,
         'sales': value.sales,
         'revenue': value.revenue,
+        'netSalesCents': value.netSalesCents,
+        'netProfitCents': value.netProfitCents,
     };
 }
 

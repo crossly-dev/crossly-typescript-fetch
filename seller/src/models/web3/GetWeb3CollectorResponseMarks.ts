@@ -64,9 +64,9 @@ export interface GetWeb3CollectorResponseMarks {
 export enum GetWeb3CollectorResponseMarksSourceEnum {
     Crossly = 'crossly',
     Card = 'card',
-    Tensor = 'tensor',
+    Rarible = 'rarible',
     MagicEden = 'magic_eden',
-    Rarible = 'rarible'
+    Tensor = 'tensor'
 }
 
 export function GetWeb3CollectorResponseMarksFromJSON(json: any): GetWeb3CollectorResponseMarks {

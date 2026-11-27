@@ -37,7 +37,7 @@ export interface ListBuyerTotalRequestsItem {
      * @type {string}
      * @memberof ListBuyerTotalRequestsItem
      */
-    createdAt: string;
+    sellerUserId: string;
     /**
      * requested | quoted | declined | expired.
      * @type {string}
@@ -45,17 +45,17 @@ export interface ListBuyerTotalRequestsItem {
      */
     status: string;
     /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerTotalRequestsItem
-     */
-    sellerUserId: string;
-    /**
      * The cart lines the request covers.
      * @type {Array<ListBuyerTotalRequestsItemLines>}
      * @memberof ListBuyerTotalRequestsItem
      */
     lines: Array<ListBuyerTotalRequestsItemLines>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerTotalRequestsItem
+     */
+    createdAt: string;
     /**
      * Your cart still holds exactly the quoted items, so checkout applies the quote.
      * @type {boolean}
@@ -67,7 +67,7 @@ export interface ListBuyerTotalRequestsItem {
      * @type {string}
      * @memberof ListBuyerTotalRequestsItem
      */
-    expiresAt?: string | null;
+    sellerDisplayName?: string | null;
     /**
      * The seller's combined shipping for these items, in cents, once quoted.
      * @type {number}
@@ -85,7 +85,7 @@ export interface ListBuyerTotalRequestsItem {
      * @type {string}
      * @memberof ListBuyerTotalRequestsItem
      */
-    sellerDisplayName?: string | null;
+    expiresAt?: string | null;
 }
 
 export function ListBuyerTotalRequestsItemFromJSON(json: any): ListBuyerTotalRequestsItem {
@@ -99,15 +99,15 @@ export function ListBuyerTotalRequestsItemFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'status': json['status'],
         'sellerUserId': json['sellerUserId'],
+        'status': json['status'],
         'lines': ((json['lines'] as Array<any>).map(ListBuyerTotalRequestsItemLinesFromJSON)),
+        'createdAt': json['createdAt'],
         'matchesCart': json['matchesCart'],
-        'expiresAt': !exists(json, 'expiresAt') ? undefined : json['expiresAt'],
+        'sellerDisplayName': !exists(json, 'sellerDisplayName') ? undefined : json['sellerDisplayName'],
         'quotedShippingCents': !exists(json, 'quotedShippingCents') ? undefined : json['quotedShippingCents'],
         'sellerMessage': !exists(json, 'sellerMessage') ? undefined : json['sellerMessage'],
-        'sellerDisplayName': !exists(json, 'sellerDisplayName') ? undefined : json['sellerDisplayName'],
+        'expiresAt': !exists(json, 'expiresAt') ? undefined : json['expiresAt'],
     };
 }
 
@@ -121,15 +121,15 @@ export function ListBuyerTotalRequestsItemToJSON(value?: ListBuyerTotalRequestsI
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'status': value.status,
         'sellerUserId': value.sellerUserId,
+        'status': value.status,
         'lines': ((value.lines as Array<any>).map(ListBuyerTotalRequestsItemLinesToJSON)),
+        'createdAt': value.createdAt,
         'matchesCart': value.matchesCart,
-        'expiresAt': value.expiresAt,
+        'sellerDisplayName': value.sellerDisplayName,
         'quotedShippingCents': value.quotedShippingCents,
         'sellerMessage': value.sellerMessage,
-        'sellerDisplayName': value.sellerDisplayName,
+        'expiresAt': value.expiresAt,
     };
 }
 

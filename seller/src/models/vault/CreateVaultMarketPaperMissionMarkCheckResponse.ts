@@ -75,17 +75,17 @@ export interface CreateVaultMarketPaperMissionMarkCheckResponse {
 * @enum {string}
 */
 export enum CreateVaultMarketPaperMissionMarkCheckResponseAnswerEnum {
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }/**
 * @export
 * @enum {string}
 */
 export enum CreateVaultMarketPaperMissionMarkCheckResponseQualityEnum {
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function CreateVaultMarketPaperMissionMarkCheckResponseFromJSON(json: any): CreateVaultMarketPaperMissionMarkCheckResponse {

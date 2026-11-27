@@ -62,12 +62,12 @@ export interface ListWeb3ApprovalsItem {
 * @enum {string}
 */
 export enum ListWeb3ApprovalsItemChainEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }
 
 export function ListWeb3ApprovalsItemFromJSON(json: any): ListWeb3ApprovalsItem {

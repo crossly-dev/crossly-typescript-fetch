@@ -75,11 +75,11 @@ export interface ListWorldSpacesItem {
 * @enum {string}
 */
 export enum ListWorldSpacesItemVenueEnum {
+    Stage = 'stage',
     Gallery = 'gallery',
     CardClub = 'card_club',
     SneakerMeet = 'sneaker_meet',
     VintageMarket = 'vintage_market',
-    Stage = 'stage',
     Clubhouse = 'clubhouse'
 }
 

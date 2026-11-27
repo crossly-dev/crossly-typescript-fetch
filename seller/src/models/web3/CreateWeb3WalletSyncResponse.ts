@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateWeb3WalletSyncResponseSummary,
-    CreateWeb3WalletSyncResponseSummaryFromJSON,
-    CreateWeb3WalletSyncResponseSummaryFromJSONTyped,
-    CreateWeb3WalletSyncResponseSummaryToJSON,
-} from './CreateWeb3WalletSyncResponseSummary';
+    CreateWeb3StoreWalletSyncResponseData,
+    CreateWeb3StoreWalletSyncResponseDataFromJSON,
+    CreateWeb3StoreWalletSyncResponseDataFromJSONTyped,
+    CreateWeb3StoreWalletSyncResponseDataToJSON,
+} from './CreateWeb3StoreWalletSyncResponseData';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface CreateWeb3WalletSyncResponse {
     /**
      * 
-     * @type {CreateWeb3WalletSyncResponseSummary}
+     * @type {CreateWeb3StoreWalletSyncResponseData}
      * @memberof CreateWeb3WalletSyncResponse
      */
-    summary: CreateWeb3WalletSyncResponseSummary;
+    summary: CreateWeb3StoreWalletSyncResponseData;
 }
 
 export function CreateWeb3WalletSyncResponseFromJSON(json: any): CreateWeb3WalletSyncResponse {
@@ -44,7 +44,7 @@ export function CreateWeb3WalletSyncResponseFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'summary': CreateWeb3WalletSyncResponseSummaryFromJSON(json['summary']),
+        'summary': CreateWeb3StoreWalletSyncResponseDataFromJSON(json['summary']),
     };
 }
 
@@ -57,7 +57,7 @@ export function CreateWeb3WalletSyncResponseToJSON(value?: CreateWeb3WalletSyncR
     }
     return {
         
-        'summary': CreateWeb3WalletSyncResponseSummaryToJSON(value.summary),
+        'summary': CreateWeb3StoreWalletSyncResponseDataToJSON(value.summary),
     };
 }
 

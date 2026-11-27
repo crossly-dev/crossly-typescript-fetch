@@ -28,12 +28,6 @@ import {
 export interface ListWorkflowChainsItem {
     /**
      * 
-     * @type {Array<GetWorkflowChainResponseSteps>}
-     * @memberof ListWorkflowChainsItem
-     */
-    steps: Array<GetWorkflowChainResponseSteps>;
-    /**
-     * 
      * @type {string}
      * @memberof ListWorkflowChainsItem
      */
@@ -43,7 +37,31 @@ export interface ListWorkflowChainsItem {
      * @type {string}
      * @memberof ListWorkflowChainsItem
      */
+    userId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListWorkflowChainsItem
+     */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListWorkflowChainsItem
+     */
+    triggerId: string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListWorkflowChainsItem
+     */
+    triggerConfig: { [key: string]: any; };
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListWorkflowChainsItem
+     */
+    isActive: boolean;
     /**
      * 
      * @type {Date}
@@ -55,19 +73,13 @@ export interface ListWorkflowChainsItem {
      * @type {string}
      * @memberof ListWorkflowChainsItem
      */
-    userId: string;
+    workflowId: string;
     /**
      * 
-     * @type {boolean}
+     * @type {Array<GetWorkflowChainResponseSteps>}
      * @memberof ListWorkflowChainsItem
      */
-    isActive: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListWorkflowChainsItem
-     */
-    triggerId: string;
+    steps: Array<GetWorkflowChainResponseSteps>;
 }
 
 export function ListWorkflowChainsItemFromJSON(json: any): ListWorkflowChainsItem {
@@ -80,13 +92,15 @@ export function ListWorkflowChainsItemFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'steps': ((json['steps'] as Array<any>).map(GetWorkflowChainResponseStepsFromJSON)),
         'id': json['id'],
-        'name': json['name'],
-        'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
-        'isActive': json['isActive'],
+        'name': json['name'],
         'triggerId': json['triggerId'],
+        'triggerConfig': json['triggerConfig'],
+        'isActive': json['isActive'],
+        'createdAt': (new Date(json['createdAt'])),
+        'workflowId': json['workflowId'],
+        'steps': ((json['steps'] as Array<any>).map(GetWorkflowChainResponseStepsFromJSON)),
     };
 }
 
@@ -99,13 +113,15 @@ export function ListWorkflowChainsItemToJSON(value?: ListWorkflowChainsItem | nu
     }
     return {
         
-        'steps': ((value.steps as Array<any>).map(GetWorkflowChainResponseStepsToJSON)),
         'id': value.id,
-        'name': value.name,
-        'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
-        'isActive': value.isActive,
+        'name': value.name,
         'triggerId': value.triggerId,
+        'triggerConfig': value.triggerConfig,
+        'isActive': value.isActive,
+        'createdAt': (value.createdAt.toISOString()),
+        'workflowId': value.workflowId,
+        'steps': ((value.steps as Array<any>).map(GetWorkflowChainResponseStepsToJSON)),
     };
 }
 

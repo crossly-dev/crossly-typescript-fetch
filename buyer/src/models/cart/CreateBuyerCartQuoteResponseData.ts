@@ -24,19 +24,13 @@ export interface CreateBuyerCartQuoteResponseData {
      * @type {string}
      * @memberof CreateBuyerCartQuoteResponseData
      */
-    currency: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateBuyerCartQuoteResponseData
-     */
     kind: string;
     /**
      * 
      * @type {number}
      * @memberof CreateBuyerCartQuoteResponseData
      */
-    taxCents: number;
+    itemsTotalCents: number;
     /**
      * 
      * @type {number}
@@ -48,13 +42,19 @@ export interface CreateBuyerCartQuoteResponseData {
      * @type {number}
      * @memberof CreateBuyerCartQuoteResponseData
      */
-    totalCents: number;
+    taxCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreateBuyerCartQuoteResponseData
      */
-    itemsTotalCents: number;
+    totalCents: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerCartQuoteResponseData
+     */
+    currency: string;
     /**
      * Lines being collected in person, so a summary can name what ships free.
      * @type {Array<string>}
@@ -128,12 +128,12 @@ export function CreateBuyerCartQuoteResponseDataFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'currency': json['currency'],
         'kind': json['kind'],
-        'taxCents': json['taxCents'],
-        'shippingCents': json['shippingCents'],
-        'totalCents': json['totalCents'],
         'itemsTotalCents': json['itemsTotalCents'],
+        'shippingCents': json['shippingCents'],
+        'taxCents': json['taxCents'],
+        'totalCents': json['totalCents'],
+        'currency': json['currency'],
         'pickupCartItemIds': json['pickupCartItemIds'],
         'taxComplete': json['taxComplete'],
         'dutiesCents': !exists(json, 'dutiesCents') ? undefined : json['dutiesCents'],
@@ -154,12 +154,12 @@ export function CreateBuyerCartQuoteResponseDataToJSON(value?: CreateBuyerCartQu
     }
     return {
         
-        'currency': value.currency,
         'kind': value.kind,
-        'taxCents': value.taxCents,
-        'shippingCents': value.shippingCents,
-        'totalCents': value.totalCents,
         'itemsTotalCents': value.itemsTotalCents,
+        'shippingCents': value.shippingCents,
+        'taxCents': value.taxCents,
+        'totalCents': value.totalCents,
+        'currency': value.currency,
         'pickupCartItemIds': value.pickupCartItemIds,
         'taxComplete': value.taxComplete,
         'dutiesCents': value.dutiesCents,

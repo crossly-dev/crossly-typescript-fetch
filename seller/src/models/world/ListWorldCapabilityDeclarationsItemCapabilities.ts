@@ -45,18 +45,18 @@ export interface ListWorldCapabilityDeclarationsItemCapabilities {
 */
 export enum ListWorldCapabilityDeclarationsItemCapabilitiesKindEnum {
     Portal = 'portal',
-    Display = 'display',
+    Interactive = 'interactive',
     Place = 'place',
+    Display = 'display',
     Badge = 'badge',
+    Perk = 'perk',
     Wear = 'wear',
     Emote = 'emote',
     RoomTheme = 'room_theme',
     Pet = 'pet',
     Gate = 'gate',
     Quest = 'quest',
-    GamePass = 'game_pass',
-    Perk = 'perk',
-    Interactive = 'interactive'
+    GamePass = 'game_pass'
 }
 
 export function ListWorldCapabilityDeclarationsItemCapabilitiesFromJSON(json: any): ListWorldCapabilityDeclarationsItemCapabilities {

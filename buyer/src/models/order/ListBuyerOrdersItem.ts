@@ -30,6 +30,12 @@ export interface ListBuyerOrdersItem {
      * @type {string}
      * @memberof ListBuyerOrdersItem
      */
+    orderNumber?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerOrdersItem
+     */
     status: string;
     /**
      * 
@@ -56,6 +62,7 @@ export function ListBuyerOrdersItemFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'id': json['id'],
+        'orderNumber': !exists(json, 'orderNumber') ? undefined : json['orderNumber'],
         'status': json['status'],
         'buyerPaidCents': json['buyerPaidCents'],
         'createdAt': (new Date(json['createdAt'])),
@@ -72,6 +79,7 @@ export function ListBuyerOrdersItemToJSON(value?: ListBuyerOrdersItem | null): a
     return {
         
         'id': value.id,
+        'orderNumber': value.orderNumber,
         'status': value.status,
         'buyerPaidCents': value.buyerPaidCents,
         'createdAt': (value.createdAt.toISOString()),

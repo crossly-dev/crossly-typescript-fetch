@@ -19,8 +19,8 @@
  */
 export enum GetWorldGameResponseDataContestsEntryItem {
     Free = 'free',
-    Sponsored = 'sponsored',
-    Paid = 'paid'
+    Paid = 'paid',
+    Sponsored = 'sponsored'
 }
 
 export function GetWorldGameResponseDataContestsEntryItemFromJSON(json: any): GetWorldGameResponseDataContestsEntryItem {

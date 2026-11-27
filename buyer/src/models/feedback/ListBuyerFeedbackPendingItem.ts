@@ -36,7 +36,7 @@ export interface ListBuyerFeedbackPendingItem {
      * @type {string}
      * @memberof ListBuyerFeedbackPendingItem
      */
-    shippedAt?: string | null;
+    imageUrl?: string | null;
     /**
      * 
      * @type {string}
@@ -48,19 +48,19 @@ export interface ListBuyerFeedbackPendingItem {
      * @type {string}
      * @memberof ListBuyerFeedbackPendingItem
      */
-    imageUrl?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerFeedbackPendingItem
-     */
-    sellerName?: string | null;
+    shippedAt?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerFeedbackPendingItem
      */
     orderedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerFeedbackPendingItem
+     */
+    sellerName?: string | null;
 }
 
 export function ListBuyerFeedbackPendingItemFromJSON(json: any): ListBuyerFeedbackPendingItem {
@@ -75,11 +75,11 @@ export function ListBuyerFeedbackPendingItemFromJSONTyped(json: any, ignoreDiscr
         
         'purchaseId': json['purchaseId'],
         'itemTitle': json['itemTitle'],
-        'shippedAt': !exists(json, 'shippedAt') ? undefined : json['shippedAt'],
-        'deliveredAt': !exists(json, 'deliveredAt') ? undefined : json['deliveredAt'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
-        'sellerName': !exists(json, 'sellerName') ? undefined : json['sellerName'],
+        'deliveredAt': !exists(json, 'deliveredAt') ? undefined : json['deliveredAt'],
+        'shippedAt': !exists(json, 'shippedAt') ? undefined : json['shippedAt'],
         'orderedAt': !exists(json, 'orderedAt') ? undefined : json['orderedAt'],
+        'sellerName': !exists(json, 'sellerName') ? undefined : json['sellerName'],
     };
 }
 
@@ -94,11 +94,11 @@ export function ListBuyerFeedbackPendingItemToJSON(value?: ListBuyerFeedbackPend
         
         'purchaseId': value.purchaseId,
         'itemTitle': value.itemTitle,
-        'shippedAt': value.shippedAt,
-        'deliveredAt': value.deliveredAt,
         'imageUrl': value.imageUrl,
-        'sellerName': value.sellerName,
+        'deliveredAt': value.deliveredAt,
+        'shippedAt': value.shippedAt,
         'orderedAt': value.orderedAt,
+        'sellerName': value.sellerName,
     };
 }
 

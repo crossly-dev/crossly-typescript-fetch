@@ -21,10 +21,10 @@ import { exists, mapValues } from '../../runtime';
 export interface GetAutomationRuleExportByIdResponseMetadata {
     /**
      * 
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GetAutomationRuleExportByIdResponseMetadata
      */
-    tags?: Array<string> | null;
+    author?: string | null;
     /**
      * 
      * @type {string}
@@ -33,10 +33,10 @@ export interface GetAutomationRuleExportByIdResponseMetadata {
     sourceUrl?: string | null;
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof GetAutomationRuleExportByIdResponseMetadata
      */
-    author?: string | null;
+    tags?: Array<string> | null;
 }
 
 export function GetAutomationRuleExportByIdResponseMetadataFromJSON(json: any): GetAutomationRuleExportByIdResponseMetadata {
@@ -49,9 +49,9 @@ export function GetAutomationRuleExportByIdResponseMetadataFromJSONTyped(json: a
     }
     return {
         
-        'tags': !exists(json, 'tags') ? undefined : json['tags'],
-        'sourceUrl': !exists(json, 'sourceUrl') ? undefined : json['sourceUrl'],
         'author': !exists(json, 'author') ? undefined : json['author'],
+        'sourceUrl': !exists(json, 'sourceUrl') ? undefined : json['sourceUrl'],
+        'tags': !exists(json, 'tags') ? undefined : json['tags'],
     };
 }
 
@@ -64,9 +64,9 @@ export function GetAutomationRuleExportByIdResponseMetadataToJSON(value?: GetAut
     }
     return {
         
-        'tags': value.tags,
-        'sourceUrl': value.sourceUrl,
         'author': value.author,
+        'sourceUrl': value.sourceUrl,
+        'tags': value.tags,
     };
 }
 

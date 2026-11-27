@@ -26,6 +26,12 @@ import {
     CreateMagicScanResponseEbayMatchToJSON,
 } from './CreateMagicScanResponseEbayMatch';
 import {
+    CreateMagicScanResponseMatchReference,
+    CreateMagicScanResponseMatchReferenceFromJSON,
+    CreateMagicScanResponseMatchReferenceFromJSONTyped,
+    CreateMagicScanResponseMatchReferenceToJSON,
+} from './CreateMagicScanResponseMatchReference';
+import {
     CreateMagicScanResponsePhotoIdentifier,
     CreateMagicScanResponsePhotoIdentifierFromJSON,
     CreateMagicScanResponsePhotoIdentifierFromJSONTyped,
@@ -62,6 +68,12 @@ export interface CreateMagicScanResponse {
      * @memberof CreateMagicScanResponse
      */
     photoIdentifier?: CreateMagicScanResponsePhotoIdentifier | null;
+    /**
+     * 
+     * @type {CreateMagicScanResponseMatchReference}
+     * @memberof CreateMagicScanResponse
+     */
+    matchReference?: CreateMagicScanResponseMatchReference | null;
     /**
      * 
      * @type {CreateMagicScanResponseEbayMatch}
@@ -116,6 +128,13 @@ export interface CreateMagicScanResponse {
      * @memberof CreateMagicScanResponse
      */
     cached: boolean;
+    /**
+     * Monthly vision calls (vision-quota.ts) this scan spent: the seller's Activity Log shows them as credits used.
+     * 0 for a single-photo scan and for a re-scan of the same photos.
+     * @type {number}
+     * @memberof CreateMagicScanResponse
+     */
+    visionCallsUsed?: number | null;
 }
 
 export function CreateMagicScanResponseFromJSON(json: any): CreateMagicScanResponse {
@@ -130,6 +149,7 @@ export function CreateMagicScanResponseFromJSONTyped(json: any, ignoreDiscrimina
         
         'runId': json['runId'],
         'photoIdentifier': !exists(json, 'photoIdentifier') ? undefined : CreateMagicScanResponsePhotoIdentifierFromJSON(json['photoIdentifier']),
+        'matchReference': !exists(json, 'matchReference') ? undefined : CreateMagicScanResponseMatchReferenceFromJSON(json['matchReference']),
         'ebayMatch': !exists(json, 'ebayMatch') ? undefined : CreateMagicScanResponseEbayMatchFromJSON(json['ebayMatch']),
         'topHits': ((json['topHits'] as Array<any>).map(CreateMagicScanResponseTopHitsFromJSON)),
         'ebayHits': ((json['ebayHits'] as Array<any>).map(CreateMagicScanResponseEbayHitsFromJSON)),
@@ -138,6 +158,7 @@ export function CreateMagicScanResponseFromJSONTyped(json: any, ignoreDiscrimina
         'visionAspects': json['visionAspects'],
         'possibleDuplicates': ((json['possibleDuplicates'] as Array<any>).map(CreateMagicScanResponsePossibleDuplicatesFromJSON)),
         'cached': json['cached'],
+        'visionCallsUsed': !exists(json, 'visionCallsUsed') ? undefined : json['visionCallsUsed'],
     };
 }
 
@@ -152,6 +173,7 @@ export function CreateMagicScanResponseToJSON(value?: CreateMagicScanResponse | 
         
         'runId': value.runId,
         'photoIdentifier': CreateMagicScanResponsePhotoIdentifierToJSON(value.photoIdentifier),
+        'matchReference': CreateMagicScanResponseMatchReferenceToJSON(value.matchReference),
         'ebayMatch': CreateMagicScanResponseEbayMatchToJSON(value.ebayMatch),
         'topHits': ((value.topHits as Array<any>).map(CreateMagicScanResponseTopHitsToJSON)),
         'ebayHits': ((value.ebayHits as Array<any>).map(CreateMagicScanResponseEbayHitsToJSON)),
@@ -160,6 +182,7 @@ export function CreateMagicScanResponseToJSON(value?: CreateMagicScanResponse | 
         'visionAspects': value.visionAspects,
         'possibleDuplicates': ((value.possibleDuplicates as Array<any>).map(CreateMagicScanResponsePossibleDuplicatesToJSON)),
         'cached': value.cached,
+        'visionCallsUsed': value.visionCallsUsed,
     };
 }
 

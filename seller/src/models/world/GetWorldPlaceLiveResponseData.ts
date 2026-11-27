@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetWorldPlaceLiveResponseDataLot,
-    GetWorldPlaceLiveResponseDataLotFromJSON,
-    GetWorldPlaceLiveResponseDataLotFromJSONTyped,
-    GetWorldPlaceLiveResponseDataLotToJSON,
-} from './GetWorldPlaceLiveResponseDataLot';
+    GetMainStageResponseStreamLot,
+    GetMainStageResponseStreamLotFromJSON,
+    GetMainStageResponseStreamLotFromJSONTyped,
+    GetMainStageResponseStreamLotToJSON,
+} from '../main/GetMainStageResponseStreamLot';
 import {
     GetWorldPlaceLiveResponseDataStream,
     GetWorldPlaceLiveResponseDataStreamFromJSON,
@@ -40,10 +40,10 @@ export interface GetWorldPlaceLiveResponseData {
     stream?: GetWorldPlaceLiveResponseDataStream | null;
     /**
      * 
-     * @type {GetWorldPlaceLiveResponseDataLot}
+     * @type {GetMainStageResponseStreamLot}
      * @memberof GetWorldPlaceLiveResponseData
      */
-    lot?: GetWorldPlaceLiveResponseDataLot | null;
+    lot?: GetMainStageResponseStreamLot | null;
 }
 
 export function GetWorldPlaceLiveResponseDataFromJSON(json: any): GetWorldPlaceLiveResponseData {
@@ -57,7 +57,7 @@ export function GetWorldPlaceLiveResponseDataFromJSONTyped(json: any, ignoreDisc
     return {
         
         'stream': !exists(json, 'stream') ? undefined : GetWorldPlaceLiveResponseDataStreamFromJSON(json['stream']),
-        'lot': !exists(json, 'lot') ? undefined : GetWorldPlaceLiveResponseDataLotFromJSON(json['lot']),
+        'lot': !exists(json, 'lot') ? undefined : GetMainStageResponseStreamLotFromJSON(json['lot']),
     };
 }
 
@@ -71,7 +71,7 @@ export function GetWorldPlaceLiveResponseDataToJSON(value?: GetWorldPlaceLiveRes
     return {
         
         'stream': GetWorldPlaceLiveResponseDataStreamToJSON(value.stream),
-        'lot': GetWorldPlaceLiveResponseDataLotToJSON(value.lot),
+        'lot': GetMainStageResponseStreamLotToJSON(value.lot),
     };
 }
 

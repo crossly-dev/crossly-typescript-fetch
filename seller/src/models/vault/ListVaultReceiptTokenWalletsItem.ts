@@ -56,8 +56,8 @@ export interface ListVaultReceiptTokenWalletsItem {
 * @enum {string}
 */
 export enum ListVaultReceiptTokenWalletsItemStatusEnum {
-    Allowed = 'allowed',
     Revoked = 'revoked',
+    Allowed = 'allowed',
     NotAllowed = 'not_allowed'
 }
 

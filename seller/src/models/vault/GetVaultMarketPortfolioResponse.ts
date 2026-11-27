@@ -26,6 +26,12 @@ import {
     GetVaultMarketPortfolioResponseOnLoanToJSON,
 } from './GetVaultMarketPortfolioResponseOnLoan';
 import {
+    GetVaultMarketPortfolioResponseShares,
+    GetVaultMarketPortfolioResponseSharesFromJSON,
+    GetVaultMarketPortfolioResponseSharesFromJSONTyped,
+    GetVaultMarketPortfolioResponseSharesToJSON,
+} from './GetVaultMarketPortfolioResponseShares';
+import {
     GetVaultMarketPortfolioResponseTotals,
     GetVaultMarketPortfolioResponseTotalsFromJSON,
     GetVaultMarketPortfolioResponseTotalsFromJSONTyped,
@@ -44,6 +50,12 @@ export interface GetVaultMarketPortfolioResponse {
      * @memberof GetVaultMarketPortfolioResponse
      */
     holdings: Array<GetVaultMarketPortfolioResponseHoldings>;
+    /**
+     * 
+     * @type {GetVaultMarketPortfolioResponseShares}
+     * @memberof GetVaultMarketPortfolioResponse
+     */
+    shares: GetVaultMarketPortfolioResponseShares;
     /**
      * 
      * @type {Array<GetVaultMarketPortfolioResponseOnLoan>}
@@ -69,6 +81,7 @@ export function GetVaultMarketPortfolioResponseFromJSONTyped(json: any, ignoreDi
     return {
         
         'holdings': ((json['holdings'] as Array<any>).map(GetVaultMarketPortfolioResponseHoldingsFromJSON)),
+        'shares': GetVaultMarketPortfolioResponseSharesFromJSON(json['shares']),
         'onLoan': ((json['onLoan'] as Array<any>).map(GetVaultMarketPortfolioResponseOnLoanFromJSON)),
         'totals': GetVaultMarketPortfolioResponseTotalsFromJSON(json['totals']),
     };
@@ -84,6 +97,7 @@ export function GetVaultMarketPortfolioResponseToJSON(value?: GetVaultMarketPort
     return {
         
         'holdings': ((value.holdings as Array<any>).map(GetVaultMarketPortfolioResponseHoldingsToJSON)),
+        'shares': GetVaultMarketPortfolioResponseSharesToJSON(value.shares),
         'onLoan': ((value.onLoan as Array<any>).map(GetVaultMarketPortfolioResponseOnLoanToJSON)),
         'totals': GetVaultMarketPortfolioResponseTotalsToJSON(value.totals),
     };

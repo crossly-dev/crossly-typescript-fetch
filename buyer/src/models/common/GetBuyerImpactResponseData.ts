@@ -24,18 +24,6 @@ export interface GetBuyerImpactResponseData {
      * @type {number}
      * @memberof GetBuyerImpactResponseData
      */
-    co2Kg: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetBuyerImpactResponseData
-     */
-    waterL: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetBuyerImpactResponseData
-     */
     itemsBought: number;
     /**
      * 
@@ -43,6 +31,18 @@ export interface GetBuyerImpactResponseData {
      * @memberof GetBuyerImpactResponseData
      */
     itemsWithFigures: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerImpactResponseData
+     */
+    co2Kg: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerImpactResponseData
+     */
+    waterL: number;
 }
 
 export function GetBuyerImpactResponseDataFromJSON(json: any): GetBuyerImpactResponseData {
@@ -55,10 +55,10 @@ export function GetBuyerImpactResponseDataFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'co2Kg': json['co2Kg'],
-        'waterL': json['waterL'],
         'itemsBought': json['itemsBought'],
         'itemsWithFigures': json['itemsWithFigures'],
+        'co2Kg': json['co2Kg'],
+        'waterL': json['waterL'],
     };
 }
 
@@ -71,10 +71,10 @@ export function GetBuyerImpactResponseDataToJSON(value?: GetBuyerImpactResponseD
     }
     return {
         
-        'co2Kg': value.co2Kg,
-        'waterL': value.waterL,
         'itemsBought': value.itemsBought,
         'itemsWithFigures': value.itemsWithFigures,
+        'co2Kg': value.co2Kg,
+        'waterL': value.waterL,
     };
 }
 

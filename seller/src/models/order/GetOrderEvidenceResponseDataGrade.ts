@@ -61,8 +61,8 @@ export interface GetOrderEvidenceResponseDataGrade {
 */
 export enum GetOrderEvidenceResponseDataGradeGradeEnum {
     None = 'none',
-    Strong = 'strong',
     Basic = 'basic',
+    Strong = 'strong',
     Conclusive = 'conclusive'
 }
 

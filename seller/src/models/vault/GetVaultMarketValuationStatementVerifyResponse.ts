@@ -117,16 +117,16 @@ export interface GetVaultMarketValuationStatementVerifyResponse {
 * @enum {string}
 */
 export enum GetVaultMarketValuationStatementVerifyResponsePurposeEnum {
-    Insurance = 'insurance',
-    Appraisal = 'appraisal'
+    Appraisal = 'appraisal',
+    Insurance = 'insurance'
 }/**
 * @export
 * @enum {string}
 */
 export enum GetVaultMarketValuationStatementVerifyResponseVerdictEnum {
-    Valid = 'valid',
+    Mismatch = 'mismatch',
     Altered = 'altered',
-    Mismatch = 'mismatch'
+    Valid = 'valid'
 }
 
 export function GetVaultMarketValuationStatementVerifyResponseFromJSON(json: any): GetVaultMarketValuationStatementVerifyResponse {

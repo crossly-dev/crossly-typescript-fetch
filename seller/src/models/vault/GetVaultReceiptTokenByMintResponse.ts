@@ -107,9 +107,9 @@ export enum GetVaultReceiptTokenByMintResponseStatusEnum {
     Pending = 'pending',
     Live = 'live',
     Expired = 'expired',
+    Conflict = 'conflict',
     Frozen = 'frozen',
-    Burned = 'burned',
-    Conflict = 'conflict'
+    Burned = 'burned'
 }
 
 export function GetVaultReceiptTokenByMintResponseFromJSON(json: any): GetVaultReceiptTokenByMintResponse {

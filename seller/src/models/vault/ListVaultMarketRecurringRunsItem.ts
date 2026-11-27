@@ -54,13 +54,13 @@ export interface ListVaultMarketRecurringRunsItem {
      * @type {string}
      * @memberof ListVaultMarketRecurringRunsItem
      */
-    reason?: string | null;
+    orderId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListVaultMarketRecurringRunsItem
      */
-    orderId?: string | null;
+    reason?: string | null;
     /**
      * 
      * @type {number}
@@ -108,8 +108,8 @@ export function ListVaultMarketRecurringRunsItemFromJSONTyped(json: any, ignoreD
         'id': json['id'],
         'userId': json['userId'],
         'status': json['status'],
-        'reason': !exists(json, 'reason') ? undefined : json['reason'],
         'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
+        'reason': !exists(json, 'reason') ? undefined : json['reason'],
         'markCents': !exists(json, 'markCents') ? undefined : json['markCents'],
         'limitCents': !exists(json, 'limitCents') ? undefined : json['limitCents'],
         'filledCents': !exists(json, 'filledCents') ? undefined : json['filledCents'],
@@ -132,8 +132,8 @@ export function ListVaultMarketRecurringRunsItemToJSON(value?: ListVaultMarketRe
         'id': value.id,
         'userId': value.userId,
         'status': value.status,
-        'reason': value.reason,
         'orderId': value.orderId,
+        'reason': value.reason,
         'markCents': value.markCents,
         'limitCents': value.limitCents,
         'filledCents': value.filledCents,

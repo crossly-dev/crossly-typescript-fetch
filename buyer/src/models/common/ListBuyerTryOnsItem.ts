@@ -30,7 +30,13 @@ export interface ListBuyerTryOnsItem {
      * @type {string}
      * @memberof ListBuyerTryOnsItem
      */
-    createdAt: string;
+    listingId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerTryOnsItem
+     */
+    resultUrl?: string | null;
     /**
      * 
      * @type {string}
@@ -42,13 +48,7 @@ export interface ListBuyerTryOnsItem {
      * @type {string}
      * @memberof ListBuyerTryOnsItem
      */
-    listingId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerTryOnsItem
-     */
-    resultUrl?: string | null;
+    createdAt: string;
     /**
      * 
      * @type {string}
@@ -68,10 +68,10 @@ export function ListBuyerTryOnsItemFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'status': json['status'],
         'listingId': json['listingId'],
         'resultUrl': !exists(json, 'resultUrl') ? undefined : json['resultUrl'],
+        'status': json['status'],
+        'createdAt': json['createdAt'],
         'listingTitle': !exists(json, 'listingTitle') ? undefined : json['listingTitle'],
     };
 }
@@ -86,10 +86,10 @@ export function ListBuyerTryOnsItemToJSON(value?: ListBuyerTryOnsItem | null): a
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'status': value.status,
         'listingId': value.listingId,
         'resultUrl': value.resultUrl,
+        'status': value.status,
+        'createdAt': value.createdAt,
         'listingTitle': value.listingTitle,
     };
 }

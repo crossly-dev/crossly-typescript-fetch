@@ -24,13 +24,13 @@ export interface GetBuyerGiftFinderOptionResponseDataRecipients {
      * @type {string}
      * @memberof GetBuyerGiftFinderOptionResponseDataRecipients
      */
-    label: string;
+    key: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerGiftFinderOptionResponseDataRecipients
      */
-    key: string;
+    label: string;
     /**
      * 
      * @type {Array<{ [key: string]: any; }>}
@@ -49,8 +49,8 @@ export function GetBuyerGiftFinderOptionResponseDataRecipientsFromJSONTyped(json
     }
     return {
         
-        'label': json['label'],
         'key': json['key'],
+        'label': json['label'],
         'interests': json['interests'],
     };
 }
@@ -64,8 +64,8 @@ export function GetBuyerGiftFinderOptionResponseDataRecipientsToJSON(value?: Get
     }
     return {
         
-        'label': value.label,
         'key': value.key,
+        'label': value.label,
         'interests': value.interests,
     };
 }

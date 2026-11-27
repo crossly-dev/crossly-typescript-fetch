@@ -38,9 +38,9 @@ export interface CreateCbxSubjectSpendPlanResponseDataLegs {
 * @enum {string}
 */
 export enum CreateCbxSubjectSpendPlanResponseDataLegsSourceEnum {
-    Granted = 'granted',
     Earned = 'earned',
-    Connected = 'connected'
+    Connected = 'connected',
+    Granted = 'granted'
 }
 
 export function CreateCbxSubjectSpendPlanResponseDataLegsFromJSON(json: any): CreateCbxSubjectSpendPlanResponseDataLegs {

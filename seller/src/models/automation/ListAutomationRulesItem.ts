@@ -30,7 +30,79 @@ export interface ListAutomationRulesItem {
      * @type {string}
      * @memberof ListAutomationRulesItem
      */
+    userId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAutomationRulesItem
+     */
     name: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListAutomationRulesItem
+     */
+    isActive: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAutomationRulesItem
+     */
+    triggerType: string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListAutomationRulesItem
+     */
+    triggerConfig: { [key: string]: any; };
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAutomationRulesItem
+     */
+    conditionType?: string | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListAutomationRulesItem
+     */
+    conditionConfig?: { [key: string]: any; } | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAutomationRulesItem
+     */
+    actionType: string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListAutomationRulesItem
+     */
+    actionConfig: { [key: string]: any; };
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListAutomationRulesItem
+     */
+    platforms?: Array<string> | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListAutomationRulesItem
+     */
+    lastRunAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListAutomationRulesItem
+     */
+    nextRunAt?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListAutomationRulesItem
+     */
+    runCount: number;
     /**
      * 
      * @type {Date}
@@ -44,59 +116,11 @@ export interface ListAutomationRulesItem {
      */
     updatedAt: Date;
     /**
-     * 
+     * The workflow this rule is (open it in /v1/workflows).
      * @type {string}
      * @memberof ListAutomationRulesItem
      */
-    userId: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListAutomationRulesItem
-     */
-    isActive: boolean;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof ListAutomationRulesItem
-     */
-    platforms?: Array<string> | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ListAutomationRulesItem
-     */
-    nextRunAt?: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ListAutomationRulesItem
-     */
-    lastRunAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListAutomationRulesItem
-     */
-    triggerType: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListAutomationRulesItem
-     */
-    conditionType?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListAutomationRulesItem
-     */
-    actionType: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListAutomationRulesItem
-     */
-    runCount: number;
+    workflowId: string;
 }
 
 export function ListAutomationRulesItemFromJSON(json: any): ListAutomationRulesItem {
@@ -110,18 +134,22 @@ export function ListAutomationRulesItemFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'id': json['id'],
+        'userId': json['userId'],
         'name': json['name'],
+        'isActive': json['isActive'],
+        'triggerType': json['triggerType'],
+        'triggerConfig': json['triggerConfig'],
+        'conditionType': !exists(json, 'conditionType') ? undefined : json['conditionType'],
+        'conditionConfig': !exists(json, 'conditionConfig') ? undefined : json['conditionConfig'],
+        'actionType': json['actionType'],
+        'actionConfig': json['actionConfig'],
+        'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
+        'lastRunAt': !exists(json, 'lastRunAt') ? undefined : (json['lastRunAt'] === null ? null : new Date(json['lastRunAt'])),
+        'nextRunAt': !exists(json, 'nextRunAt') ? undefined : (json['nextRunAt'] === null ? null : new Date(json['nextRunAt'])),
+        'runCount': json['runCount'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
-        'userId': json['userId'],
-        'isActive': json['isActive'],
-        'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
-        'nextRunAt': !exists(json, 'nextRunAt') ? undefined : (json['nextRunAt'] === null ? null : new Date(json['nextRunAt'])),
-        'lastRunAt': !exists(json, 'lastRunAt') ? undefined : (json['lastRunAt'] === null ? null : new Date(json['lastRunAt'])),
-        'triggerType': json['triggerType'],
-        'conditionType': !exists(json, 'conditionType') ? undefined : json['conditionType'],
-        'actionType': json['actionType'],
-        'runCount': json['runCount'],
+        'workflowId': json['workflowId'],
     };
 }
 
@@ -135,18 +163,22 @@ export function ListAutomationRulesItemToJSON(value?: ListAutomationRulesItem | 
     return {
         
         'id': value.id,
+        'userId': value.userId,
         'name': value.name,
+        'isActive': value.isActive,
+        'triggerType': value.triggerType,
+        'triggerConfig': value.triggerConfig,
+        'conditionType': value.conditionType,
+        'conditionConfig': value.conditionConfig,
+        'actionType': value.actionType,
+        'actionConfig': value.actionConfig,
+        'platforms': value.platforms,
+        'lastRunAt': value.lastRunAt === undefined ? undefined : (value.lastRunAt === null ? null : value.lastRunAt.toISOString()),
+        'nextRunAt': value.nextRunAt === undefined ? undefined : (value.nextRunAt === null ? null : value.nextRunAt.toISOString()),
+        'runCount': value.runCount,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
-        'userId': value.userId,
-        'isActive': value.isActive,
-        'platforms': value.platforms,
-        'nextRunAt': value.nextRunAt === undefined ? undefined : (value.nextRunAt === null ? null : value.nextRunAt.toISOString()),
-        'lastRunAt': value.lastRunAt === undefined ? undefined : (value.lastRunAt === null ? null : value.lastRunAt.toISOString()),
-        'triggerType': value.triggerType,
-        'conditionType': value.conditionType,
-        'actionType': value.actionType,
-        'runCount': value.runCount,
+        'workflowId': value.workflowId,
     };
 }
 

@@ -14,17 +14,23 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetVaultMarketGradingSignalResponseCta,
+    GetVaultMarketGradingSignalResponseCtaFromJSON,
+    GetVaultMarketGradingSignalResponseCtaFromJSONTyped,
+    GetVaultMarketGradingSignalResponseCtaToJSON,
+} from './GetVaultMarketGradingSignalResponseCta';
+import {
+    GetVaultMarketGradingSignalResponseGraded,
+    GetVaultMarketGradingSignalResponseGradedFromJSON,
+    GetVaultMarketGradingSignalResponseGradedFromJSONTyped,
+    GetVaultMarketGradingSignalResponseGradedToJSON,
+} from './GetVaultMarketGradingSignalResponseGraded';
+import {
     GetVaultMarketGradingSignalResponseGraders,
     GetVaultMarketGradingSignalResponseGradersFromJSON,
     GetVaultMarketGradingSignalResponseGradersFromJSONTyped,
     GetVaultMarketGradingSignalResponseGradersToJSON,
 } from './GetVaultMarketGradingSignalResponseGraders';
-import {
-    GetVaultMarketKeyStatResponse,
-    GetVaultMarketKeyStatResponseFromJSON,
-    GetVaultMarketKeyStatResponseFromJSONTyped,
-    GetVaultMarketKeyStatResponseToJSON,
-} from './GetVaultMarketKeyStatResponse';
 
 /**
  * 
@@ -52,10 +58,10 @@ export interface GetVaultMarketGradingSignalResponse {
     rawMarkQuality: GetVaultMarketGradingSignalResponseRawMarkQualityEnum;
     /**
      * 
-     * @type {Array<GetVaultMarketKeyStatResponse>}
+     * @type {Array<GetVaultMarketGradingSignalResponseGraded>}
      * @memberof GetVaultMarketGradingSignalResponse
      */
-    graded: Array<GetVaultMarketKeyStatResponse>;
+    graded: Array<GetVaultMarketGradingSignalResponseGraded>;
     /**
      * 
      * @type {Array<GetVaultMarketGradingSignalResponseGraders>}
@@ -86,6 +92,12 @@ export interface GetVaultMarketGradingSignalResponse {
      * @memberof GetVaultMarketGradingSignalResponse
      */
     myRawUnits: number;
+    /**
+     * 
+     * @type {GetVaultMarketGradingSignalResponseCta}
+     * @memberof GetVaultMarketGradingSignalResponse
+     */
+    cta?: GetVaultMarketGradingSignalResponseCta | null;
 }
 
 /**
@@ -94,16 +106,16 @@ export interface GetVaultMarketGradingSignalResponse {
 */
 export enum GetVaultMarketGradingSignalResponseRawMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }/**
 * @export
 * @enum {string}
 */
 export enum GetVaultMarketGradingSignalResponseRawTierEnum {
-    Standard = 'standard',
     Closed = 'closed',
+    Standard = 'standard',
     Deep = 'deep',
     Thin = 'thin'
 }
@@ -121,12 +133,13 @@ export function GetVaultMarketGradingSignalResponseFromJSONTyped(json: any, igno
         'bookKey': json['bookKey'],
         'rawMarkCents': !exists(json, 'rawMarkCents') ? undefined : json['rawMarkCents'],
         'rawMarkQuality': json['rawMarkQuality'],
-        'graded': ((json['graded'] as Array<any>).map(GetVaultMarketKeyStatResponseFromJSON)),
+        'graded': ((json['graded'] as Array<any>).map(GetVaultMarketGradingSignalResponseGradedFromJSON)),
         'graders': ((json['graders'] as Array<any>).map(GetVaultMarketGradingSignalResponseGradersFromJSON)),
         'worthIt': json['worthIt'],
         'rawTier': json['rawTier'],
         'myUnits': json['myUnits'],
         'myRawUnits': json['myRawUnits'],
+        'cta': !exists(json, 'cta') ? undefined : GetVaultMarketGradingSignalResponseCtaFromJSON(json['cta']),
     };
 }
 
@@ -142,12 +155,13 @@ export function GetVaultMarketGradingSignalResponseToJSON(value?: GetVaultMarket
         'bookKey': value.bookKey,
         'rawMarkCents': value.rawMarkCents,
         'rawMarkQuality': value.rawMarkQuality,
-        'graded': ((value.graded as Array<any>).map(GetVaultMarketKeyStatResponseToJSON)),
+        'graded': ((value.graded as Array<any>).map(GetVaultMarketGradingSignalResponseGradedToJSON)),
         'graders': ((value.graders as Array<any>).map(GetVaultMarketGradingSignalResponseGradersToJSON)),
         'worthIt': value.worthIt,
         'rawTier': value.rawTier,
         'myUnits': value.myUnits,
         'myRawUnits': value.myRawUnits,
+        'cta': GetVaultMarketGradingSignalResponseCtaToJSON(value.cta),
     };
 }
 

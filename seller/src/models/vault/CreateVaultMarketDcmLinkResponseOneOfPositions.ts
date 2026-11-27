@@ -92,8 +92,8 @@ export interface CreateVaultMarketDcmLinkResponseOneOfPositions {
 * @enum {string}
 */
 export enum CreateVaultMarketDcmLinkResponseOneOfPositionsSideEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function CreateVaultMarketDcmLinkResponseOneOfPositionsFromJSON(json: any): CreateVaultMarketDcmLinkResponseOneOfPositions {

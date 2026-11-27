@@ -167,9 +167,9 @@ export interface CreateBuyerLockonConfirmResponse {
 */
 export enum CreateBuyerLockonConfirmResponseIdentitySourceEnum {
     Confirmed = 'confirmed',
+    Barcode = 'barcode',
     Visual = 'visual',
-    Ocr = 'ocr',
-    Barcode = 'barcode'
+    Ocr = 'ocr'
 }/**
 * @export
 * @enum {string}

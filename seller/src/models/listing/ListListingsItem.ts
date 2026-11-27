@@ -14,11 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListGradingSubmissionsItemGrading,
-    ListGradingSubmissionsItemGradingFromJSON,
-    ListGradingSubmissionsItemGradingFromJSONTyped,
-    ListGradingSubmissionsItemGradingToJSON,
-} from '../grading/ListGradingSubmissionsItemGrading';
+    CreateBulkBatchItemResponseGrading,
+    CreateBulkBatchItemResponseGradingFromJSON,
+    CreateBulkBatchItemResponseGradingFromJSONTyped,
+    CreateBulkBatchItemResponseGradingToJSON,
+} from '../bulk/CreateBulkBatchItemResponseGrading';
+import {
+    ListListingsItemPricing,
+    ListListingsItemPricingFromJSON,
+    ListListingsItemPricingFromJSONTyped,
+    ListListingsItemPricingToJSON,
+} from './ListListingsItemPricing';
 
 /**
  * 
@@ -38,6 +44,12 @@ export interface ListListingsItem {
      * @memberof ListListingsItem
      */
     aiMediaDetected: boolean;
+    /**
+     * 
+     * @type {ListListingsItemPricing}
+     * @memberof ListListingsItem
+     */
+    pricing: ListListingsItemPricing;
     /**
      * 
      * @type {string}
@@ -74,6 +86,24 @@ export interface ListListingsItem {
      * @memberof ListListingsItem
      */
     userId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
+    description?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
+    status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
+    source: string;
     /**
      * 
      * @type {string}
@@ -178,10 +208,10 @@ export interface ListListingsItem {
     gradeKey?: string | null;
     /**
      * 
-     * @type {ListGradingSubmissionsItemGrading}
+     * @type {CreateBulkBatchItemResponseGrading}
      * @memberof ListListingsItem
      */
-    grading?: ListGradingSubmissionsItemGrading | null;
+    grading?: CreateBulkBatchItemResponseGrading | null;
     /**
      * 
      * @type {number}
@@ -224,24 +254,6 @@ export interface ListListingsItem {
      * @memberof ListListingsItem
      */
     dimensionHIn?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListListingsItem
-     */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListListingsItem
-     */
-    source: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListListingsItem
-     */
-    description?: string | null;
     /**
      * 
      * @type {string}
@@ -346,6 +358,18 @@ export interface ListListingsItem {
     automationBlockedChainIds: Array<string>;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof ListListingsItem
+     */
+    workflowBlockedIds: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListListingsItem
+     */
+    workflowAssignedIds: Array<string>;
+    /**
+     * 
      * @type {string}
      * @memberof ListListingsItem
      */
@@ -386,6 +410,24 @@ export interface ListListingsItem {
      * @memberof ListListingsItem
      */
     clientDraftId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
+    attributedOauthAppId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
+    attributedGrantId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
+    quotaBucket?: string | null;
 }
 
 /**
@@ -410,12 +452,16 @@ export function ListListingsItemFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'aiMedia': json['aiMedia'],
         'aiMediaDetected': json['aiMediaDetected'],
+        'pricing': ListListingsItemPricingFromJSON(json['pricing']),
         'id': json['id'],
         'brand': !exists(json, 'brand') ? undefined : json['brand'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': json['userId'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
+        'status': json['status'],
+        'source': json['source'],
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'quantity': json['quantity'],
         'quantityAvailable': json['quantityAvailable'],
@@ -433,7 +479,7 @@ export function ListListingsItemFromJSONTyped(json: any, ignoreDiscriminator: bo
         'videoUrl': !exists(json, 'videoUrl') ? undefined : json['videoUrl'],
         'tags': json['tags'],
         'gradeKey': !exists(json, 'gradeKey') ? undefined : json['gradeKey'],
-        'grading': !exists(json, 'grading') ? undefined : ListGradingSubmissionsItemGradingFromJSON(json['grading']),
+        'grading': !exists(json, 'grading') ? undefined : CreateBulkBatchItemResponseGradingFromJSON(json['grading']),
         'priceFloorCents': !exists(json, 'priceFloorCents') ? undefined : json['priceFloorCents'],
         'floorIsNet': json['floorIsNet'],
         'weightLb': !exists(json, 'weightLb') ? undefined : json['weightLb'],
@@ -441,9 +487,6 @@ export function ListListingsItemFromJSONTyped(json: any, ignoreDiscriminator: bo
         'dimensionLIn': !exists(json, 'dimensionLIn') ? undefined : json['dimensionLIn'],
         'dimensionWIn': !exists(json, 'dimensionWIn') ? undefined : json['dimensionWIn'],
         'dimensionHIn': !exists(json, 'dimensionHIn') ? undefined : json['dimensionHIn'],
-        'status': json['status'],
-        'source': json['source'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'descriptionHtml': !exists(json, 'descriptionHtml') ? undefined : json['descriptionHtml'],
         'price': !exists(json, 'price') ? undefined : json['price'],
@@ -461,6 +504,8 @@ export function ListListingsItemFromJSONTyped(json: any, ignoreDiscriminator: bo
         'automationBlockedRuleIds': json['automationBlockedRuleIds'],
         'automationAssignedChainIds': json['automationAssignedChainIds'],
         'automationBlockedChainIds': json['automationBlockedChainIds'],
+        'workflowBlockedIds': json['workflowBlockedIds'],
+        'workflowAssignedIds': json['workflowAssignedIds'],
         'hsCode': !exists(json, 'hsCode') ? undefined : json['hsCode'],
         'countryOfOrigin': !exists(json, 'countryOfOrigin') ? undefined : json['countryOfOrigin'],
         'delistedAt': !exists(json, 'delistedAt') ? undefined : (json['delistedAt'] === null ? null : new Date(json['delistedAt'])),
@@ -468,6 +513,9 @@ export function ListListingsItemFromJSONTyped(json: any, ignoreDiscriminator: bo
         'ebayAttributesEnrichedAt': !exists(json, 'ebayAttributesEnrichedAt') ? undefined : (json['ebayAttributesEnrichedAt'] === null ? null : new Date(json['ebayAttributesEnrichedAt'])),
         'duplicateOfListingId': !exists(json, 'duplicateOfListingId') ? undefined : json['duplicateOfListingId'],
         'clientDraftId': !exists(json, 'clientDraftId') ? undefined : json['clientDraftId'],
+        'attributedOauthAppId': !exists(json, 'attributedOauthAppId') ? undefined : json['attributedOauthAppId'],
+        'attributedGrantId': !exists(json, 'attributedGrantId') ? undefined : json['attributedGrantId'],
+        'quotaBucket': !exists(json, 'quotaBucket') ? undefined : json['quotaBucket'],
     };
 }
 
@@ -482,12 +530,16 @@ export function ListListingsItemToJSON(value?: ListListingsItem | null): any {
         
         'aiMedia': value.aiMedia,
         'aiMediaDetected': value.aiMediaDetected,
+        'pricing': ListListingsItemPricingToJSON(value.pricing),
         'id': value.id,
         'brand': value.brand,
         'name': value.name,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
+        'description': value.description,
+        'status': value.status,
+        'source': value.source,
         'sku': value.sku,
         'quantity': value.quantity,
         'quantityAvailable': value.quantityAvailable,
@@ -505,7 +557,7 @@ export function ListListingsItemToJSON(value?: ListListingsItem | null): any {
         'videoUrl': value.videoUrl,
         'tags': value.tags,
         'gradeKey': value.gradeKey,
-        'grading': ListGradingSubmissionsItemGradingToJSON(value.grading),
+        'grading': CreateBulkBatchItemResponseGradingToJSON(value.grading),
         'priceFloorCents': value.priceFloorCents,
         'floorIsNet': value.floorIsNet,
         'weightLb': value.weightLb,
@@ -513,9 +565,6 @@ export function ListListingsItemToJSON(value?: ListListingsItem | null): any {
         'dimensionLIn': value.dimensionLIn,
         'dimensionWIn': value.dimensionWIn,
         'dimensionHIn': value.dimensionHIn,
-        'status': value.status,
-        'source': value.source,
-        'description': value.description,
         'title': value.title,
         'descriptionHtml': value.descriptionHtml,
         'price': value.price,
@@ -533,6 +582,8 @@ export function ListListingsItemToJSON(value?: ListListingsItem | null): any {
         'automationBlockedRuleIds': value.automationBlockedRuleIds,
         'automationAssignedChainIds': value.automationAssignedChainIds,
         'automationBlockedChainIds': value.automationBlockedChainIds,
+        'workflowBlockedIds': value.workflowBlockedIds,
+        'workflowAssignedIds': value.workflowAssignedIds,
         'hsCode': value.hsCode,
         'countryOfOrigin': value.countryOfOrigin,
         'delistedAt': value.delistedAt === undefined ? undefined : (value.delistedAt === null ? null : value.delistedAt.toISOString()),
@@ -540,6 +591,9 @@ export function ListListingsItemToJSON(value?: ListListingsItem | null): any {
         'ebayAttributesEnrichedAt': value.ebayAttributesEnrichedAt === undefined ? undefined : (value.ebayAttributesEnrichedAt === null ? null : value.ebayAttributesEnrichedAt.toISOString()),
         'duplicateOfListingId': value.duplicateOfListingId,
         'clientDraftId': value.clientDraftId,
+        'attributedOauthAppId': value.attributedOauthAppId,
+        'attributedGrantId': value.attributedGrantId,
+        'quotaBucket': value.quotaBucket,
     };
 }
 

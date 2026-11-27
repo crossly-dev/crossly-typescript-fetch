@@ -74,8 +74,8 @@ export interface GetVaultMarketPositionResponseSplits {
 * @enum {string}
 */
 export enum GetVaultMarketPositionResponseSplitsReasonEnum {
-    Auction = 'auction',
     Close = 'close',
+    Auction = 'auction',
     Recall = 'recall'
 }/**
 * @export
@@ -91,8 +91,8 @@ export enum GetVaultMarketPositionResponseSplitsStatusEnum {
 * @enum {string}
 */
 export enum GetVaultMarketPositionResponseSplitsActionEnum {
-    Auction = 'auction',
-    Close = 'close'
+    Close = 'close',
+    Auction = 'auction'
 }
 
 export function GetVaultMarketPositionResponseSplitsFromJSON(json: any): GetVaultMarketPositionResponseSplits {

@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListReferenceCountriesItemSubdivisions,
-    ListReferenceCountriesItemSubdivisionsFromJSON,
-    ListReferenceCountriesItemSubdivisionsFromJSONTyped,
-    ListReferenceCountriesItemSubdivisionsToJSON,
-} from './ListReferenceCountriesItemSubdivisions';
+    CodeName,
+    CodeNameFromJSON,
+    CodeNameFromJSONTyped,
+    CodeNameToJSON,
+} from './CodeName';
 
 /**
  * 
@@ -82,10 +82,10 @@ export interface ListReferenceCountriesItem {
     stateLabel: string;
     /**
      * 
-     * @type {Array<ListReferenceCountriesItemSubdivisions>}
+     * @type {Array<CodeName>}
      * @memberof ListReferenceCountriesItem
      */
-    subdivisions?: Array<ListReferenceCountriesItemSubdivisions> | null;
+    subdivisions?: Array<CodeName> | null;
     /**
      * 
      * @type {boolean}
@@ -113,7 +113,7 @@ export function ListReferenceCountriesItemFromJSONTyped(json: any, ignoreDiscrim
         'postalLabel': json['postalLabel'],
         'stateRequired': json['stateRequired'],
         'stateLabel': json['stateLabel'],
-        'subdivisions': !exists(json, 'subdivisions') ? undefined : (json['subdivisions'] === null ? null : (json['subdivisions'] as Array<any>).map(ListReferenceCountriesItemSubdivisionsFromJSON)),
+        'subdivisions': !exists(json, 'subdivisions') ? undefined : (json['subdivisions'] === null ? null : (json['subdivisions'] as Array<any>).map(CodeNameFromJSON)),
         'embargoed': json['embargoed'],
     };
 }
@@ -136,7 +136,7 @@ export function ListReferenceCountriesItemToJSON(value?: ListReferenceCountriesI
         'postalLabel': value.postalLabel,
         'stateRequired': value.stateRequired,
         'stateLabel': value.stateLabel,
-        'subdivisions': value.subdivisions === undefined ? undefined : (value.subdivisions === null ? null : (value.subdivisions as Array<any>).map(ListReferenceCountriesItemSubdivisionsToJSON)),
+        'subdivisions': value.subdivisions === undefined ? undefined : (value.subdivisions === null ? null : (value.subdivisions as Array<any>).map(CodeNameToJSON)),
         'embargoed': value.embargoed,
     };
 }

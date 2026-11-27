@@ -14,11 +14,29 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListOrdersItemTrackingHistory,
-    ListOrdersItemTrackingHistoryFromJSON,
-    ListOrdersItemTrackingHistoryFromJSONTyped,
-    ListOrdersItemTrackingHistoryToJSON,
-} from './ListOrdersItemTrackingHistory';
+    GetOrderResponseAppShare,
+    GetOrderResponseAppShareFromJSON,
+    GetOrderResponseAppShareFromJSONTyped,
+    GetOrderResponseAppShareToJSON,
+} from './GetOrderResponseAppShare';
+import {
+    GetOrderResponseLineItems,
+    GetOrderResponseLineItemsFromJSON,
+    GetOrderResponseLineItemsFromJSONTyped,
+    GetOrderResponseLineItemsToJSON,
+} from './GetOrderResponseLineItems';
+import {
+    GetOrderResponseTrackingHistory,
+    GetOrderResponseTrackingHistoryFromJSON,
+    GetOrderResponseTrackingHistoryFromJSONTyped,
+    GetOrderResponseTrackingHistoryToJSON,
+} from './GetOrderResponseTrackingHistory';
+import {
+    GetOrderResponseTrade,
+    GetOrderResponseTradeFromJSON,
+    GetOrderResponseTradeFromJSONTyped,
+    GetOrderResponseTradeToJSON,
+} from './GetOrderResponseTrade';
 
 /**
  * 
@@ -28,64 +46,84 @@ import {
 export interface ListOrdersItem {
     /**
      * 
+     * @type {GetOrderResponseAppShare}
+     * @memberof ListOrdersItem
+     */
+    appShare?: GetOrderResponseAppShare | null;
+    /**
+     * 
+     * @type {GetOrderResponseTrade}
+     * @memberof ListOrdersItem
+     */
+    trade?: GetOrderResponseTrade | null;
+    /**
+     * DOLLARS (numbers, as order.created sends them). null = not known (no sale row, or details pending).
+     * @type {number}
+     * @memberof ListOrdersItem
+     */
+    salePrice?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListOrdersItem
+     */
+    platformFee?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListOrdersItem
+     */
+    taxCollected?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListOrdersItem
+     */
+    shippingCharged?: number | null;
+    /**
+     * 'exact' (the marketplace's charged fee) | 'estimated'.
      * @type {string}
      * @memberof ListOrdersItem
      */
-    id: string;
+    feeSource?: string | null;
     /**
      * 
-     * @type {Date}
+     * @type {boolean}
      * @memberof ListOrdersItem
      */
-    createdAt: Date;
+    detailsPending: boolean;
     /**
-     * 
-     * @type {Date}
-     * @memberof ListOrdersItem
-     */
-    updatedAt: Date;
-    /**
-     * 
+     * The listing's SKU (order.created `sku`).
      * @type {string}
      * @memberof ListOrdersItem
      */
-    userId: string;
+    sku?: string | null;
     /**
-     * 
+     * Units purchased in this order (default 1). Drives how many units the
+     * Available→Reserved→Sold state machine moves. See migration 0139.
+     * Units on the order (order.created `quantity`).
      * @type {number}
      * @memberof ListOrdersItem
      */
     quantity: number;
     /**
      * 
-     * @type {string}
+     * @type {Array<GetOrderResponseLineItems>}
      * @memberof ListOrdersItem
      */
-    notes?: string | null;
+    lineItems?: Array<GetOrderResponseLineItems> | null;
     /**
      * 
      * @type {string}
      * @memberof ListOrdersItem
      */
-    status: string;
+    id: string;
     /**
      * 
      * @type {string}
      * @memberof ListOrdersItem
      */
-    platform: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ListOrdersItem
-     */
-    cancelledAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListOrdersItem
-     */
-    listingId?: string | null;
+    userId: string;
     /**
      * 
      * @type {string}
@@ -97,13 +135,19 @@ export interface ListOrdersItem {
      * @type {string}
      * @memberof ListOrdersItem
      */
+    listingId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
     platformListingId?: string | null;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof ListOrdersItem
      */
-    handlingTimeDays?: number | null;
+    platform: string;
     /**
      * 
      * @type {string}
@@ -111,31 +155,46 @@ export interface ListOrdersItem {
      */
     platformOrderId?: string | null;
     /**
+     * 1066 (order relay): the developer app that reported this order through an
+     * inbound item.sold (FK oauth_apps.id ON DELETE SET NULL in SQL). Null for
+     * every order Crossly detected itself. Read by action authority.
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    reportedByAppId?: string | null;
+    /**
+     * Crossly orders only: the seller's storefront this sale came from.
+     * Null for every non-crossly platform. See db/schema/storefronts.ts.
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    storefrontId?: string | null;
+    /**
      * 
      * @type {string}
      * @memberof ListOrdersItem
      */
     buyerUsername?: string | null;
     /**
-     * 
+     * C8 (0448): the carrier location the parcel is held at — services/pickup-points.ts.
      * @type {{ [key: string]: any; }}
      * @memberof ListOrdersItem
      */
     pickupPoint?: { [key: string]: any; } | null;
     /**
-     * 
+     * D4 (0448): set when this seller ships to the consolidation hub, not the buyer — services/hub/.
      * @type {string}
      * @memberof ListOrdersItem
      */
     consolidationId?: string | null;
     /**
-     * 
+     * X4 (0479): import duties + taxes + fees the buyer paid at checkout for this parcel (services/landed-cost/); the label ships DDP.
      * @type {number}
      * @memberof ListOrdersItem
      */
     dutiesCents: number;
     /**
-     * 
+     * X4: refunded because the order never shipped.
      * @type {Date}
      * @memberof ListOrdersItem
      */
@@ -145,13 +204,46 @@ export interface ListOrdersItem {
      * @type {string}
      * @memberof ListOrdersItem
      */
+    status: string;
+    /**
+     * Where the sale happened, as distinct from which platform it was on.
+     * 
+     * Shopify POS orders arrive through the same Orders API as web orders,
+     * so before this they were detected as ordinary online sales and landed
+     * in `needs_fulfillment` — queued for a shipment that will never happen,
+     * because the customer already walked out with the item.
+     * 
+     * 'online' for everything else, which is what every pre-existing row is.
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
     salesChannel: string;
     /**
-     * 
+     * POS location that rang it up. Null for online sales.
      * @type {string}
      * @memberof ListOrdersItem
      */
     channelLocationId?: string | null;
+    /**
+     * 1121 — which BUSINESS channel sold it: retail | wholesale | auction | live | world | pos
+     * (@crosslister/shared/wholesale ORDER_CHANNELS). Orthogonal to `salesChannel` (online vs in person):
+     * a wholesale order is usually online. Written at sale record time (sale/detect/order-write.ts).
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    channel: string;
+    /**
+     * 1121 — the on-account invoice this order was placed on (crossly_invoices.id).
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    invoiceId?: string | null;
+    /**
+     * 1121 — the buyer company (W7 crossly_buyer_companies; no FK until that table exists).
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    buyerCompanyId?: string | null;
     /**
      * 
      * @type {string}
@@ -237,19 +329,25 @@ export interface ListOrdersItem {
      */
     carrierStatusDetail?: string | null;
     /**
+     * Every carrier scan, newest first (migration 0243).
      * 
-     * @type {Array<ListOrdersItemTrackingHistory>}
+     * The two columns above are the CURRENT state, overwritten on each
+     * refresh. For a dispute that proves nothing: "delivered" with no date,
+     * no location and no chain of scans is a claim, not evidence. Shippo
+     * returns the full history on every track call; it used to be discarded.
+     * @type {Array<GetOrderResponseTrackingHistory>}
      * @memberof ListOrdersItem
      */
-    trackingHistory?: Array<ListOrdersItemTrackingHistory> | null;
+    trackingHistory?: Array<GetOrderResponseTrackingHistory> | null;
     /**
-     * 
+     * Where the carrier says it was left, when they say.
      * @type {string}
      * @memberof ListOrdersItem
      */
     deliveryLocation?: string | null;
     /**
-     * 
+     * Signature name, where the service captured one. Most residential
+     * deliveries have none — absence is not evidence of non-delivery.
      * @type {string}
      * @memberof ListOrdersItem
      */
@@ -292,6 +390,12 @@ export interface ListOrdersItem {
     requestedService?: string | null;
     /**
      * 
+     * @type {number}
+     * @memberof ListOrdersItem
+     */
+    handlingTimeDays?: number | null;
+    /**
+     * 
      * @type {Date}
      * @memberof ListOrdersItem
      */
@@ -303,19 +407,26 @@ export interface ListOrdersItem {
      */
     shipByAlertedAt?: Date | null;
     /**
-     * 
+     * Units this order could NOT be covered from stock — an oversell (0 =
+     * normal). Set at detection by recordSale's shortfall; the seller must
+     * cancel or refund. See migration 0156.
      * @type {number}
      * @memberof ListOrdersItem
      */
     oversoldBy: number;
     /**
-     * 
+     * Last time this order's status was reconciled against the platform.
+     * NULL = never. Drives the targeted sweeper for orders that fall off
+     * page 1 of the sold-list walk. See migration 0157.
      * @type {Date}
      * @memberof ListOrdersItem
      */
     lastStatusCheckAt?: Date | null;
     /**
-     * 
+     * Last time this order's platform CHAT thread was pulled. NULL = never.
+     * Separate from lastStatusCheckAt because the cadences differ by an order
+     * of magnitude — a buyer question needs answering in minutes, a status
+     * reconcile can wait an hour. See migration 0158.
      * @type {Date}
      * @memberof ListOrdersItem
      */
@@ -370,12 +481,27 @@ export interface ListOrdersItem {
     refundedAt?: Date | null;
     /**
      * 
+     * @type {Date}
+     * @memberof ListOrdersItem
+     */
+    cancelledAt?: Date | null;
+    /**
+     * 
      * @type {string}
      * @memberof ListOrdersItem
      */
     cancellationReason?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    notes?: string | null;
+    /**
+     * The arrival-condition ask, recorded on the ORDER rather than read off
+     * the seller's toggle at review time. The seller can flip that toggle
+     * later; what a reviewer needs is what was asked of THIS buyer on THIS
+     * delivery — including that they were asked and declined.
      * @type {Date}
      * @memberof ListOrdersItem
      */
@@ -393,19 +519,31 @@ export interface ListOrdersItem {
      */
     arrivalConditionDeclinedAt?: Date | null;
     /**
-     * 
+     * The courier's proof-of-delivery photo, when one can be obtained.
+     * Third-party provenance, which makes it the strongest seal frame we can
+     * get — see services/evidence/delivery-photo.ts.
      * @type {string}
      * @memberof ListOrdersItem
      */
     deliveryPhotoUrl?: string | null;
     /**
+     * Where it came from: 'carrier_api:ups' | 'trackified' | 'platform:<p>' | 'pasted' | 'uploaded' (shared delivery-photo-source.ts).
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    deliveryPhotoSource?: string | null;
+    /**
+     * The buyer's OWN purchase-order reference.
      * 
+     * A trade buyer's accounts department reconciles on their number, not
+     * ours. An order without it is one somebody has to chase by hand, which is
+     * the difference between getting paid on day 30 and day 75.
      * @type {string}
      * @memberof ListOrdersItem
      */
     purchaseOrderRef?: string | null;
     /**
-     * 
+     * Buyer's arrival photos. Always read as a set, for one delivery.
      * @type {Array<string>}
      * @memberof ListOrdersItem
      */
@@ -417,13 +555,46 @@ export interface ListOrdersItem {
      */
     buyerEmail?: string | null;
     /**
+     * `'ship'` | `'pickup'` | `'mixed'` — a DERIVED summary of this order's
+     * lines, for reads that only need the headline.
      * 
+     * The authority is `crossly_order_items.fulfillment_method`: a buyer can
+     * collect part of one seller's order and have the rest posted, so the
+     * order-level value is 'mixed' whenever its lines disagree. Anything that
+     * acts on the difference — buying a label, packing a parcel — must read
+     * the lines, not this (migrations 0219, 0220).
      * @type {string}
      * @memberof ListOrdersItem
      */
     fulfillmentMethod: string;
     /**
+     * 1074 — 'email' = the sale was found by the email monitor, not reported by the platform: the order is
+     * incomplete (no buyer address, label or confirmed fees) until the platform reports it. NULL = platform-reported.
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    source?: string | null;
+    /**
+     * 1074 — when the platform itself reported this email-found order (same order id). Clears the banner.
+     * @type {Date}
+     * @memberof ListOrdersItem
+     */
+    platformConfirmedAt?: Date | null;
+    /**
      * 
+     * @type {Date}
+     * @memberof ListOrdersItem
+     */
+    createdAt: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListOrdersItem
+     */
+    updatedAt: Date;
+    /**
+     * Soft-delete tombstone for bulk-delete on /orders. UI list +
+     * count queries filter WHERE deleted_at IS NULL.
      * @type {Date}
      * @memberof ListOrdersItem
      */
@@ -440,27 +611,37 @@ export function ListOrdersItemFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'id': json['id'],
-        'createdAt': (new Date(json['createdAt'])),
-        'updatedAt': (new Date(json['updatedAt'])),
-        'userId': json['userId'],
+        'appShare': !exists(json, 'appShare') ? undefined : GetOrderResponseAppShareFromJSON(json['appShare']),
+        'trade': !exists(json, 'trade') ? undefined : GetOrderResponseTradeFromJSON(json['trade']),
+        'salePrice': !exists(json, 'salePrice') ? undefined : json['salePrice'],
+        'platformFee': !exists(json, 'platformFee') ? undefined : json['platformFee'],
+        'taxCollected': !exists(json, 'taxCollected') ? undefined : json['taxCollected'],
+        'shippingCharged': !exists(json, 'shippingCharged') ? undefined : json['shippingCharged'],
+        'feeSource': !exists(json, 'feeSource') ? undefined : json['feeSource'],
+        'detailsPending': json['detailsPending'],
+        'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'quantity': json['quantity'],
-        'notes': !exists(json, 'notes') ? undefined : json['notes'],
-        'status': json['status'],
-        'platform': json['platform'],
-        'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
-        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
+        'lineItems': !exists(json, 'lineItems') ? undefined : (json['lineItems'] === null ? null : (json['lineItems'] as Array<any>).map(GetOrderResponseLineItemsFromJSON)),
+        'id': json['id'],
+        'userId': json['userId'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
+        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
-        'handlingTimeDays': !exists(json, 'handlingTimeDays') ? undefined : json['handlingTimeDays'],
+        'platform': json['platform'],
         'platformOrderId': !exists(json, 'platformOrderId') ? undefined : json['platformOrderId'],
+        'reportedByAppId': !exists(json, 'reportedByAppId') ? undefined : json['reportedByAppId'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'buyerUsername': !exists(json, 'buyerUsername') ? undefined : json['buyerUsername'],
         'pickupPoint': !exists(json, 'pickupPoint') ? undefined : json['pickupPoint'],
         'consolidationId': !exists(json, 'consolidationId') ? undefined : json['consolidationId'],
         'dutiesCents': json['dutiesCents'],
         'dutiesRefundedAt': !exists(json, 'dutiesRefundedAt') ? undefined : (json['dutiesRefundedAt'] === null ? null : new Date(json['dutiesRefundedAt'])),
+        'status': json['status'],
         'salesChannel': json['salesChannel'],
         'channelLocationId': !exists(json, 'channelLocationId') ? undefined : json['channelLocationId'],
+        'channel': json['channel'],
+        'invoiceId': !exists(json, 'invoiceId') ? undefined : json['invoiceId'],
+        'buyerCompanyId': !exists(json, 'buyerCompanyId') ? undefined : json['buyerCompanyId'],
         'packagePresetId': !exists(json, 'packagePresetId') ? undefined : json['packagePresetId'],
         'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
         'service': !exists(json, 'service') ? undefined : json['service'],
@@ -475,7 +656,7 @@ export function ListOrdersItemFromJSONTyped(json: any, ignoreDiscriminator: bool
         'deliveredAt': !exists(json, 'deliveredAt') ? undefined : (json['deliveredAt'] === null ? null : new Date(json['deliveredAt'])),
         'carrierStatus': !exists(json, 'carrierStatus') ? undefined : json['carrierStatus'],
         'carrierStatusDetail': !exists(json, 'carrierStatusDetail') ? undefined : json['carrierStatusDetail'],
-        'trackingHistory': !exists(json, 'trackingHistory') ? undefined : (json['trackingHistory'] === null ? null : (json['trackingHistory'] as Array<any>).map(ListOrdersItemTrackingHistoryFromJSON)),
+        'trackingHistory': !exists(json, 'trackingHistory') ? undefined : (json['trackingHistory'] === null ? null : (json['trackingHistory'] as Array<any>).map(GetOrderResponseTrackingHistoryFromJSON)),
         'deliveryLocation': !exists(json, 'deliveryLocation') ? undefined : json['deliveryLocation'],
         'deliverySignature': !exists(json, 'deliverySignature') ? undefined : json['deliverySignature'],
         'trackingSubmittedAt': !exists(json, 'trackingSubmittedAt') ? undefined : (json['trackingSubmittedAt'] === null ? null : new Date(json['trackingSubmittedAt'])),
@@ -484,6 +665,7 @@ export function ListOrdersItemFromJSONTyped(json: any, ignoreDiscriminator: bool
         'costOfGoods': !exists(json, 'costOfGoods') ? undefined : json['costOfGoods'],
         'requestedCarrier': !exists(json, 'requestedCarrier') ? undefined : json['requestedCarrier'],
         'requestedService': !exists(json, 'requestedService') ? undefined : json['requestedService'],
+        'handlingTimeDays': !exists(json, 'handlingTimeDays') ? undefined : json['handlingTimeDays'],
         'shipByAt': !exists(json, 'shipByAt') ? undefined : (json['shipByAt'] === null ? null : new Date(json['shipByAt'])),
         'shipByAlertedAt': !exists(json, 'shipByAlertedAt') ? undefined : (json['shipByAlertedAt'] === null ? null : new Date(json['shipByAlertedAt'])),
         'oversoldBy': json['oversoldBy'],
@@ -497,15 +679,22 @@ export function ListOrdersItemFromJSONTyped(json: any, ignoreDiscriminator: bool
         'refundReason': !exists(json, 'refundReason') ? undefined : json['refundReason'],
         'refundPlatformId': !exists(json, 'refundPlatformId') ? undefined : json['refundPlatformId'],
         'refundedAt': !exists(json, 'refundedAt') ? undefined : (json['refundedAt'] === null ? null : new Date(json['refundedAt'])),
+        'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
         'cancellationReason': !exists(json, 'cancellationReason') ? undefined : json['cancellationReason'],
+        'notes': !exists(json, 'notes') ? undefined : json['notes'],
         'arrivalConditionRequestedAt': !exists(json, 'arrivalConditionRequestedAt') ? undefined : (json['arrivalConditionRequestedAt'] === null ? null : new Date(json['arrivalConditionRequestedAt'])),
         'arrivalConditionSubmittedAt': !exists(json, 'arrivalConditionSubmittedAt') ? undefined : (json['arrivalConditionSubmittedAt'] === null ? null : new Date(json['arrivalConditionSubmittedAt'])),
         'arrivalConditionDeclinedAt': !exists(json, 'arrivalConditionDeclinedAt') ? undefined : (json['arrivalConditionDeclinedAt'] === null ? null : new Date(json['arrivalConditionDeclinedAt'])),
         'deliveryPhotoUrl': !exists(json, 'deliveryPhotoUrl') ? undefined : json['deliveryPhotoUrl'],
+        'deliveryPhotoSource': !exists(json, 'deliveryPhotoSource') ? undefined : json['deliveryPhotoSource'],
         'purchaseOrderRef': !exists(json, 'purchaseOrderRef') ? undefined : json['purchaseOrderRef'],
         'arrivalConditionPhotos': json['arrivalConditionPhotos'],
         'buyerEmail': !exists(json, 'buyerEmail') ? undefined : json['buyerEmail'],
         'fulfillmentMethod': json['fulfillmentMethod'],
+        'source': !exists(json, 'source') ? undefined : json['source'],
+        'platformConfirmedAt': !exists(json, 'platformConfirmedAt') ? undefined : (json['platformConfirmedAt'] === null ? null : new Date(json['platformConfirmedAt'])),
+        'createdAt': (new Date(json['createdAt'])),
+        'updatedAt': (new Date(json['updatedAt'])),
         'deletedAt': !exists(json, 'deletedAt') ? undefined : (json['deletedAt'] === null ? null : new Date(json['deletedAt'])),
     };
 }
@@ -519,27 +708,37 @@ export function ListOrdersItemToJSON(value?: ListOrdersItem | null): any {
     }
     return {
         
-        'id': value.id,
-        'createdAt': (value.createdAt.toISOString()),
-        'updatedAt': (value.updatedAt.toISOString()),
-        'userId': value.userId,
+        'appShare': GetOrderResponseAppShareToJSON(value.appShare),
+        'trade': GetOrderResponseTradeToJSON(value.trade),
+        'salePrice': value.salePrice,
+        'platformFee': value.platformFee,
+        'taxCollected': value.taxCollected,
+        'shippingCharged': value.shippingCharged,
+        'feeSource': value.feeSource,
+        'detailsPending': value.detailsPending,
+        'sku': value.sku,
         'quantity': value.quantity,
-        'notes': value.notes,
-        'status': value.status,
-        'platform': value.platform,
-        'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
-        'listingId': value.listingId,
+        'lineItems': value.lineItems === undefined ? undefined : (value.lineItems === null ? null : (value.lineItems as Array<any>).map(GetOrderResponseLineItemsToJSON)),
+        'id': value.id,
+        'userId': value.userId,
         'inventoryItemId': value.inventoryItemId,
+        'listingId': value.listingId,
         'platformListingId': value.platformListingId,
-        'handlingTimeDays': value.handlingTimeDays,
+        'platform': value.platform,
         'platformOrderId': value.platformOrderId,
+        'reportedByAppId': value.reportedByAppId,
+        'storefrontId': value.storefrontId,
         'buyerUsername': value.buyerUsername,
         'pickupPoint': value.pickupPoint,
         'consolidationId': value.consolidationId,
         'dutiesCents': value.dutiesCents,
         'dutiesRefundedAt': value.dutiesRefundedAt === undefined ? undefined : (value.dutiesRefundedAt === null ? null : value.dutiesRefundedAt.toISOString()),
+        'status': value.status,
         'salesChannel': value.salesChannel,
         'channelLocationId': value.channelLocationId,
+        'channel': value.channel,
+        'invoiceId': value.invoiceId,
+        'buyerCompanyId': value.buyerCompanyId,
         'packagePresetId': value.packagePresetId,
         'carrier': value.carrier,
         'service': value.service,
@@ -554,7 +753,7 @@ export function ListOrdersItemToJSON(value?: ListOrdersItem | null): any {
         'deliveredAt': value.deliveredAt === undefined ? undefined : (value.deliveredAt === null ? null : value.deliveredAt.toISOString()),
         'carrierStatus': value.carrierStatus,
         'carrierStatusDetail': value.carrierStatusDetail,
-        'trackingHistory': value.trackingHistory === undefined ? undefined : (value.trackingHistory === null ? null : (value.trackingHistory as Array<any>).map(ListOrdersItemTrackingHistoryToJSON)),
+        'trackingHistory': value.trackingHistory === undefined ? undefined : (value.trackingHistory === null ? null : (value.trackingHistory as Array<any>).map(GetOrderResponseTrackingHistoryToJSON)),
         'deliveryLocation': value.deliveryLocation,
         'deliverySignature': value.deliverySignature,
         'trackingSubmittedAt': value.trackingSubmittedAt === undefined ? undefined : (value.trackingSubmittedAt === null ? null : value.trackingSubmittedAt.toISOString()),
@@ -563,6 +762,7 @@ export function ListOrdersItemToJSON(value?: ListOrdersItem | null): any {
         'costOfGoods': value.costOfGoods,
         'requestedCarrier': value.requestedCarrier,
         'requestedService': value.requestedService,
+        'handlingTimeDays': value.handlingTimeDays,
         'shipByAt': value.shipByAt === undefined ? undefined : (value.shipByAt === null ? null : value.shipByAt.toISOString()),
         'shipByAlertedAt': value.shipByAlertedAt === undefined ? undefined : (value.shipByAlertedAt === null ? null : value.shipByAlertedAt.toISOString()),
         'oversoldBy': value.oversoldBy,
@@ -576,15 +776,22 @@ export function ListOrdersItemToJSON(value?: ListOrdersItem | null): any {
         'refundReason': value.refundReason,
         'refundPlatformId': value.refundPlatformId,
         'refundedAt': value.refundedAt === undefined ? undefined : (value.refundedAt === null ? null : value.refundedAt.toISOString()),
+        'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
         'cancellationReason': value.cancellationReason,
+        'notes': value.notes,
         'arrivalConditionRequestedAt': value.arrivalConditionRequestedAt === undefined ? undefined : (value.arrivalConditionRequestedAt === null ? null : value.arrivalConditionRequestedAt.toISOString()),
         'arrivalConditionSubmittedAt': value.arrivalConditionSubmittedAt === undefined ? undefined : (value.arrivalConditionSubmittedAt === null ? null : value.arrivalConditionSubmittedAt.toISOString()),
         'arrivalConditionDeclinedAt': value.arrivalConditionDeclinedAt === undefined ? undefined : (value.arrivalConditionDeclinedAt === null ? null : value.arrivalConditionDeclinedAt.toISOString()),
         'deliveryPhotoUrl': value.deliveryPhotoUrl,
+        'deliveryPhotoSource': value.deliveryPhotoSource,
         'purchaseOrderRef': value.purchaseOrderRef,
         'arrivalConditionPhotos': value.arrivalConditionPhotos,
         'buyerEmail': value.buyerEmail,
         'fulfillmentMethod': value.fulfillmentMethod,
+        'source': value.source,
+        'platformConfirmedAt': value.platformConfirmedAt === undefined ? undefined : (value.platformConfirmedAt === null ? null : value.platformConfirmedAt.toISOString()),
+        'createdAt': (value.createdAt.toISOString()),
+        'updatedAt': (value.updatedAt.toISOString()),
         'deletedAt': value.deletedAt === undefined ? undefined : (value.deletedAt === null ? null : value.deletedAt.toISOString()),
     };
 }

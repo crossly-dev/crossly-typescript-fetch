@@ -43,6 +43,12 @@ export interface GetSpatialPropertyResponseDataDeeds {
      * @type {string}
      * @memberof GetSpatialPropertyResponseDataDeeds
      */
+    plotId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSpatialPropertyResponseDataDeeds
+     */
     address: string;
     /**
      * 
@@ -100,9 +106,9 @@ export interface GetSpatialPropertyResponseDataDeeds {
 */
 export enum GetSpatialPropertyResponseDataDeedsStatusEnum {
     Active = 'active',
-    Foreclosed = 'foreclosed',
     Grace = 'grace',
-    Delinquent = 'delinquent'
+    Delinquent = 'delinquent',
+    Foreclosed = 'foreclosed'
 }
 
 export function GetSpatialPropertyResponseDataDeedsFromJSON(json: any): GetSpatialPropertyResponseDataDeeds {
@@ -116,6 +122,7 @@ export function GetSpatialPropertyResponseDataDeedsFromJSONTyped(json: any, igno
     return {
         
         'id': json['id'],
+        'plotId': json['plotId'],
         'address': json['address'],
         'label': json['label'],
         'priceCents': json['priceCents'],
@@ -138,6 +145,7 @@ export function GetSpatialPropertyResponseDataDeedsToJSON(value?: GetSpatialProp
     return {
         
         'id': value.id,
+        'plotId': value.plotId,
         'address': value.address,
         'label': value.label,
         'priceCents': value.priceCents,

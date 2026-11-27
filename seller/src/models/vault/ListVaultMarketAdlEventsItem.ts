@@ -104,8 +104,8 @@ export interface ListVaultMarketAdlEventsItem {
 * @enum {string}
 */
 export enum ListVaultMarketAdlEventsItemKindEnum {
-    Unit = 'unit',
-    Cash = 'cash'
+    Cash = 'cash',
+    Unit = 'unit'
 }/**
 * @export
 * @enum {string}
@@ -118,8 +118,8 @@ export enum ListVaultMarketAdlEventsItemRoleEnum {
 * @enum {string}
 */
 export enum ListVaultMarketAdlEventsItemSideEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function ListVaultMarketAdlEventsItemFromJSON(json: any): ListVaultMarketAdlEventsItem {

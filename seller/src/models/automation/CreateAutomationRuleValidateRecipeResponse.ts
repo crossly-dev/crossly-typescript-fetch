@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateAutomationRuleValidateRecipeResponseDetails,
-    CreateAutomationRuleValidateRecipeResponseDetailsFromJSON,
-    CreateAutomationRuleValidateRecipeResponseDetailsFromJSONTyped,
-    CreateAutomationRuleValidateRecipeResponseDetailsToJSON,
-} from './CreateAutomationRuleValidateRecipeResponseDetails';
+    CreateAutomationRuleValidateRecipeResponseResults,
+    CreateAutomationRuleValidateRecipeResponseResultsFromJSON,
+    CreateAutomationRuleValidateRecipeResponseResultsFromJSONTyped,
+    CreateAutomationRuleValidateRecipeResponseResultsToJSON,
+} from './CreateAutomationRuleValidateRecipeResponseResults';
 
 /**
  * 
@@ -34,16 +34,16 @@ export interface CreateAutomationRuleValidateRecipeResponse {
     valid: boolean;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof CreateAutomationRuleValidateRecipeResponse
      */
-    error: string;
+    count: number;
     /**
      * 
-     * @type {CreateAutomationRuleValidateRecipeResponseDetails}
+     * @type {Array<CreateAutomationRuleValidateRecipeResponseResults>}
      * @memberof CreateAutomationRuleValidateRecipeResponse
      */
-    details: CreateAutomationRuleValidateRecipeResponseDetails;
+    results: Array<CreateAutomationRuleValidateRecipeResponseResults>;
 }
 
 export function CreateAutomationRuleValidateRecipeResponseFromJSON(json: any): CreateAutomationRuleValidateRecipeResponse {
@@ -57,8 +57,8 @@ export function CreateAutomationRuleValidateRecipeResponseFromJSONTyped(json: an
     return {
         
         'valid': json['valid'],
-        'error': json['error'],
-        'details': CreateAutomationRuleValidateRecipeResponseDetailsFromJSON(json['details']),
+        'count': json['count'],
+        'results': ((json['results'] as Array<any>).map(CreateAutomationRuleValidateRecipeResponseResultsFromJSON)),
     };
 }
 
@@ -72,8 +72,8 @@ export function CreateAutomationRuleValidateRecipeResponseToJSON(value?: CreateA
     return {
         
         'valid': value.valid,
-        'error': value.error,
-        'details': CreateAutomationRuleValidateRecipeResponseDetailsToJSON(value.details),
+        'count': value.count,
+        'results': ((value.results as Array<any>).map(CreateAutomationRuleValidateRecipeResponseResultsToJSON)),
     };
 }
 

@@ -24,6 +24,18 @@ export interface GetAnalyticBookkeepingResponseAnnualTotals {
      * @type {number}
      * @memberof GetAnalyticBookkeepingResponseAnnualTotals
      */
+    grossSales: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticBookkeepingResponseAnnualTotals
+     */
+    refunds: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticBookkeepingResponseAnnualTotals
+     */
     revenue: number;
     /**
      * 
@@ -48,6 +60,18 @@ export interface GetAnalyticBookkeepingResponseAnnualTotals {
      * @type {number}
      * @memberof GetAnalyticBookkeepingResponseAnnualTotals
      */
+    mileage: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticBookkeepingResponseAnnualTotals
+     */
+    otherExpenses: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticBookkeepingResponseAnnualTotals
+     */
     netProfit: number;
 }
 
@@ -61,10 +85,14 @@ export function GetAnalyticBookkeepingResponseAnnualTotalsFromJSONTyped(json: an
     }
     return {
         
+        'grossSales': json['grossSales'],
+        'refunds': json['refunds'],
         'revenue': json['revenue'],
         'cogs': json['cogs'],
         'platformFees': json['platformFees'],
         'shippingCosts': json['shippingCosts'],
+        'mileage': json['mileage'],
+        'otherExpenses': json['otherExpenses'],
         'netProfit': json['netProfit'],
     };
 }
@@ -78,10 +106,14 @@ export function GetAnalyticBookkeepingResponseAnnualTotalsToJSON(value?: GetAnal
     }
     return {
         
+        'grossSales': value.grossSales,
+        'refunds': value.refunds,
         'revenue': value.revenue,
         'cogs': value.cogs,
         'platformFees': value.platformFees,
         'shippingCosts': value.shippingCosts,
+        'mileage': value.mileage,
+        'otherExpenses': value.otherExpenses,
         'netProfit': value.netProfit,
     };
 }

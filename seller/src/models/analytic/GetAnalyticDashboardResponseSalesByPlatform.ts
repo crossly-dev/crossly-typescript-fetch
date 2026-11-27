@@ -27,10 +27,10 @@ export interface GetAnalyticDashboardResponseSalesByPlatform {
     platform: string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof GetAnalyticDashboardResponseSalesByPlatform
      */
-    count: string;
+    count: number;
     /**
      * 
      * @type {number}

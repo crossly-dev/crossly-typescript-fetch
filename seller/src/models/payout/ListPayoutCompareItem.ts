@@ -87,8 +87,8 @@ export enum ListPayoutCompareItemFeeSourceEnum {
 * @enum {string}
 */
 export enum ListPayoutCompareItemShippingSourceEnum {
-    None = 'none',
     Unknown = 'unknown',
+    None = 'none',
     Quoted = 'quoted',
     PlatformLabel = 'platform_label',
     BuyerPaid = 'buyer_paid'

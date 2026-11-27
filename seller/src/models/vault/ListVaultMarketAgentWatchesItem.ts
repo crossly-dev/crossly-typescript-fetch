@@ -104,10 +104,10 @@ export interface ListVaultMarketAgentWatchesItem {
 * @enum {string}
 */
 export enum ListVaultMarketAgentWatchesItemMetricEnum {
-    Mark = 'mark',
     Ask = 'ask',
-    Bid = 'bid',
-    Last = 'last'
+    Last = 'last',
+    Mark = 'mark',
+    Bid = 'bid'
 }/**
 * @export
 * @enum {string}

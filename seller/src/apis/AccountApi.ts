@@ -15,21 +15,36 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateAccountCancelDeletionResponse,
+    CreateAccountCancelDeletionResponseFromJSON,
+    CreateAccountCancelDeletionResponseToJSON,
+    CreateAccountIdentityVerificationStartRequest,
+    CreateAccountIdentityVerificationStartRequestFromJSON,
+    CreateAccountIdentityVerificationStartRequestToJSON,
     CreateAccountLogoutAllResponse,
     CreateAccountLogoutAllResponseFromJSON,
     CreateAccountLogoutAllResponseToJSON,
+    CreateAccountReconfirmDeletionResponse,
+    CreateAccountReconfirmDeletionResponseFromJSON,
+    CreateAccountReconfirmDeletionResponseToJSON,
     CreateAccountRequestDeletionResponse,
     CreateAccountRequestDeletionResponseFromJSON,
     CreateAccountRequestDeletionResponseToJSON,
+    CreateWorldMatureVerifyResponse,
+    CreateWorldMatureVerifyResponseFromJSON,
+    CreateWorldMatureVerifyResponseToJSON,
     DeleteAuthSessionResponse,
     DeleteAuthSessionResponseFromJSON,
     DeleteAuthSessionResponseToJSON,
-    DeleteDropResponse,
-    DeleteDropResponseFromJSON,
-    DeleteDropResponseToJSON,
+    GetAccountClosureChecklistResponse,
+    GetAccountClosureChecklistResponseFromJSON,
+    GetAccountClosureChecklistResponseToJSON,
     GetAccountDeletionStatusResponse,
     GetAccountDeletionStatusResponseFromJSON,
     GetAccountDeletionStatusResponseToJSON,
+    GetAccountIdentityVerificationResponse,
+    GetAccountIdentityVerificationResponseFromJSON,
+    GetAccountIdentityVerificationResponseToJSON,
     GetMeResponse,
     GetMeResponseFromJSON,
     GetMeResponseToJSON,
@@ -50,6 +65,10 @@ import {
     SuccessResponseToJSON,
 } from '../models';
 
+export interface CreateAccountIdentityVerificationStartOperationRequest {
+    createAccountIdentityVerificationStartRequest: CreateAccountIdentityVerificationStartRequest;
+}
+
 export interface DeleteAuthSessionBySessionIdRequest {
     sessionId: string;
 }
@@ -66,7 +85,7 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Cancel a pending account deletion.
      */
-    async createAccountCancelDeletionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteDropResponse>> {
+    async createAccountCancelDeletionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountCancelDeletionResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -86,14 +105,57 @@ export class AccountApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteDropResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateAccountCancelDeletionResponseFromJSON(jsonValue));
     }
 
     /**
      * Cancel a pending account deletion.
      */
-    async createAccountCancelDeletion(initOverrides?: RequestInit): Promise<DeleteDropResponse> {
+    async createAccountCancelDeletion(initOverrides?: RequestInit): Promise<CreateAccountCancelDeletionResponse> {
         const response = await this.createAccountCancelDeletionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+     */
+    async createAccountIdentityVerificationStartRaw(requestParameters: CreateAccountIdentityVerificationStartOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldMatureVerifyResponse>> {
+        if (requestParameters.createAccountIdentityVerificationStartRequest === null || requestParameters.createAccountIdentityVerificationStartRequest === undefined) {
+            throw new runtime.RequiredError('createAccountIdentityVerificationStartRequest','Required parameter requestParameters.createAccountIdentityVerificationStartRequest was null or undefined when calling createAccountIdentityVerificationStart.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/account/identity-verification/start`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAccountIdentityVerificationStartRequestToJSON(requestParameters.createAccountIdentityVerificationStartRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldMatureVerifyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+     */
+    async createAccountIdentityVerificationStart(requestParameters: CreateAccountIdentityVerificationStartOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldMatureVerifyResponse> {
+        const response = await this.createAccountIdentityVerificationStartRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -132,7 +194,41 @@ export class AccountApi extends runtime.BaseAPI {
     }
 
     /**
-     * Schedule account deletion after a grace period.
+     * Confirm again a deletion paused because the account was in use.
+     */
+    async createAccountReconfirmDeletionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountReconfirmDeletionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/account/reconfirm-deletion`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateAccountReconfirmDeletionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Confirm again a deletion paused because the account was in use.
+     */
+    async createAccountReconfirmDeletion(initOverrides?: RequestInit): Promise<CreateAccountReconfirmDeletionResponse> {
+        const response = await this.createAccountReconfirmDeletionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Schedule account deletion after a grace period. Requires confirmEmail.
      */
     async createAccountRequestDeletionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountRequestDeletionResponse>> {
         const queryParameters: any = {};
@@ -158,7 +254,7 @@ export class AccountApi extends runtime.BaseAPI {
     }
 
     /**
-     * Schedule account deletion after a grace period.
+     * Schedule account deletion after a grace period. Requires confirmEmail.
      */
     async createAccountRequestDeletion(initOverrides?: RequestInit): Promise<CreateAccountRequestDeletionResponse> {
         const response = await this.createAccountRequestDeletionRaw(initOverrides);
@@ -276,6 +372,40 @@ export class AccountApi extends runtime.BaseAPI {
     }
 
     /**
+     * What closing the account will and will not do, before you request it.
+     */
+    async getAccountClosureChecklistRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAccountClosureChecklistResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/account/closure-checklist`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAccountClosureChecklistResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What closing the account will and will not do, before you request it.
+     */
+    async getAccountClosureChecklist(initOverrides?: RequestInit): Promise<GetAccountClosureChecklistResponse> {
+        const response = await this.getAccountClosureChecklistRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Get the currently-pending deletion request, if any.
      */
     async getAccountDeletionStatusRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAccountDeletionStatusResponse>> {
@@ -306,6 +436,42 @@ export class AccountApi extends runtime.BaseAPI {
      */
     async getAccountDeletionStatus(initOverrides?: RequestInit): Promise<GetAccountDeletionStatusResponse> {
         const response = await this.getAccountDeletionStatusRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+     * Your identity verification: one status for the whole account, read by every feature that needs ID.
+     */
+    async getAccountIdentityVerificationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAccountIdentityVerificationResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/account/identity-verification`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAccountIdentityVerificationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+     * Your identity verification: one status for the whole account, read by every feature that needs ID.
+     */
+    async getAccountIdentityVerification(initOverrides?: RequestInit): Promise<GetAccountIdentityVerificationResponse> {
+        const response = await this.getAccountIdentityVerificationRaw(initOverrides);
         return await response.value();
     }
 

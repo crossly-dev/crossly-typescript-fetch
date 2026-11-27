@@ -26,6 +26,12 @@ import {
     GetVaultMarketNavResponseHoldingsToJSON,
 } from './GetVaultMarketNavResponseHoldings';
 import {
+    GetVaultMarketNavResponseOptions,
+    GetVaultMarketNavResponseOptionsFromJSON,
+    GetVaultMarketNavResponseOptionsFromJSONTyped,
+    GetVaultMarketNavResponseOptionsToJSON,
+} from './GetVaultMarketNavResponseOptions';
+import {
     GetVaultMarketNavResponseTotals,
     GetVaultMarketNavResponseTotalsFromJSON,
     GetVaultMarketNavResponseTotalsFromJSONTyped,
@@ -70,6 +76,12 @@ export interface GetVaultMarketNavResponse {
     holdings: Array<GetVaultMarketNavResponseHoldings>;
     /**
      * 
+     * @type {GetVaultMarketNavResponseOptions}
+     * @memberof GetVaultMarketNavResponse
+     */
+    options?: GetVaultMarketNavResponseOptions | null;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof GetVaultMarketNavResponse
      */
@@ -91,6 +103,7 @@ export function GetVaultMarketNavResponseFromJSONTyped(json: any, ignoreDiscrimi
         'currency': json['currency'],
         'totals': GetVaultMarketNavResponseTotalsFromJSON(json['totals']),
         'holdings': ((json['holdings'] as Array<any>).map(GetVaultMarketNavResponseHoldingsFromJSON)),
+        'options': !exists(json, 'options') ? undefined : GetVaultMarketNavResponseOptionsFromJSON(json['options']),
         'policy': json['policy'],
     };
 }
@@ -109,6 +122,7 @@ export function GetVaultMarketNavResponseToJSON(value?: GetVaultMarketNavRespons
         'currency': value.currency,
         'totals': GetVaultMarketNavResponseTotalsToJSON(value.totals),
         'holdings': ((value.holdings as Array<any>).map(GetVaultMarketNavResponseHoldingsToJSON)),
+        'options': GetVaultMarketNavResponseOptionsToJSON(value.options),
         'policy': value.policy,
     };
 }

@@ -45,6 +45,12 @@ export interface CreateWorkflowChainToggleResponseChain {
     triggerId: string;
     /**
      * 
+     * @type {{ [key: string]: any; }}
+     * @memberof CreateWorkflowChainToggleResponseChain
+     */
+    triggerConfig: { [key: string]: any; };
+    /**
+     * 
      * @type {boolean}
      * @memberof CreateWorkflowChainToggleResponseChain
      */
@@ -55,6 +61,12 @@ export interface CreateWorkflowChainToggleResponseChain {
      * @memberof CreateWorkflowChainToggleResponseChain
      */
     createdAt: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorkflowChainToggleResponseChain
+     */
+    workflowId: string;
 }
 
 export function CreateWorkflowChainToggleResponseChainFromJSON(json: any): CreateWorkflowChainToggleResponseChain {
@@ -71,8 +83,10 @@ export function CreateWorkflowChainToggleResponseChainFromJSONTyped(json: any, i
         'userId': json['userId'],
         'name': json['name'],
         'triggerId': json['triggerId'],
+        'triggerConfig': json['triggerConfig'],
         'isActive': json['isActive'],
         'createdAt': (new Date(json['createdAt'])),
+        'workflowId': json['workflowId'],
     };
 }
 
@@ -89,8 +103,10 @@ export function CreateWorkflowChainToggleResponseChainToJSON(value?: CreateWorkf
         'userId': value.userId,
         'name': value.name,
         'triggerId': value.triggerId,
+        'triggerConfig': value.triggerConfig,
         'isActive': value.isActive,
         'createdAt': (value.createdAt.toISOString()),
+        'workflowId': value.workflowId,
     };
 }
 

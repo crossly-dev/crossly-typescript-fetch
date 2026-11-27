@@ -119,6 +119,30 @@ export interface ListWorldConventionMineItem {
      * @memberof ListWorldConventionMineItem
      */
     publicSlug?: string | null;
+    /**
+     * A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.
+     * @type {boolean}
+     * @memberof ListWorldConventionMineItem
+     */
+    tiered: boolean;
+    /**
+     * When the doors open for visitors: the start (or when the host takes it live, if sooner).
+     * @type {Date}
+     * @memberof ListWorldConventionMineItem
+     */
+    doorsOpenAt: Date;
+    /**
+     * For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.
+     * @type {string}
+     * @memberof ListWorldConventionMineItem
+     */
+    yourDoorsOpenAt?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListWorldConventionMineItem
+     */
+    doorsOpen?: boolean | null;
 }
 
 /**
@@ -127,11 +151,11 @@ export interface ListWorldConventionMineItem {
 */
 export enum ListWorldConventionMineItemRoleEnum {
     Host = 'host',
-    Applied = 'applied',
-    Invited = 'invited',
-    Withdrawn = 'withdrawn',
     Accepted = 'accepted',
-    Declined = 'declined'
+    Declined = 'declined',
+    Applied = 'applied',
+    Withdrawn = 'withdrawn',
+    Invited = 'invited'
 }
 
 export function ListWorldConventionMineItemFromJSON(json: any): ListWorldConventionMineItem {
@@ -160,6 +184,10 @@ export function ListWorldConventionMineItemFromJSONTyped(json: any, ignoreDiscri
         'tableCount': json['tableCount'],
         'exhibitorCount': json['exhibitorCount'],
         'publicSlug': !exists(json, 'publicSlug') ? undefined : json['publicSlug'],
+        'tiered': json['tiered'],
+        'doorsOpenAt': (new Date(json['doorsOpenAt'])),
+        'yourDoorsOpenAt': !exists(json, 'yourDoorsOpenAt') ? undefined : json['yourDoorsOpenAt'],
+        'doorsOpen': !exists(json, 'doorsOpen') ? undefined : json['doorsOpen'],
     };
 }
 
@@ -188,6 +216,10 @@ export function ListWorldConventionMineItemToJSON(value?: ListWorldConventionMin
         'tableCount': value.tableCount,
         'exhibitorCount': value.exhibitorCount,
         'publicSlug': value.publicSlug,
+        'tiered': value.tiered,
+        'doorsOpenAt': (value.doorsOpenAt.toISOString()),
+        'yourDoorsOpenAt': value.yourDoorsOpenAt,
+        'doorsOpen': value.doorsOpen,
     };
 }
 

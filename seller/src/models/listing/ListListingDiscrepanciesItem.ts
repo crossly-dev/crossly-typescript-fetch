@@ -48,19 +48,13 @@ export interface ListListingDiscrepanciesItem {
      * @type {string}
      * @memberof ListListingDiscrepanciesItem
      */
-    source: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListListingDiscrepanciesItem
-     */
     platform: string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ListListingDiscrepanciesItem
      */
-    listingId: string;
+    accountSlot: number;
     /**
      * 
      * @type {string}
@@ -75,10 +69,16 @@ export interface ListListingDiscrepanciesItem {
     lastError?: string | null;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof ListListingDiscrepanciesItem
      */
-    accountSlot: number;
+    source: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingDiscrepanciesItem
+     */
+    listingId: string;
     /**
      * 
      * @type {string}
@@ -137,12 +137,12 @@ export function ListListingDiscrepanciesItemFromJSONTyped(json: any, ignoreDiscr
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': json['userId'],
-        'source': json['source'],
         'platform': json['platform'],
-        'listingId': json['listingId'],
+        'accountSlot': json['accountSlot'],
         'marketplaceId': json['marketplaceId'],
         'lastError': !exists(json, 'lastError') ? undefined : json['lastError'],
-        'accountSlot': json['accountSlot'],
+        'source': json['source'],
+        'listingId': json['listingId'],
         'field': json['field'],
         'ourValue': !exists(json, 'ourValue') ? undefined : json['ourValue'],
         'remoteValue': !exists(json, 'remoteValue') ? undefined : json['remoteValue'],
@@ -166,12 +166,12 @@ export function ListListingDiscrepanciesItemToJSON(value?: ListListingDiscrepanc
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
-        'source': value.source,
         'platform': value.platform,
-        'listingId': value.listingId,
+        'accountSlot': value.accountSlot,
         'marketplaceId': value.marketplaceId,
         'lastError': value.lastError,
-        'accountSlot': value.accountSlot,
+        'source': value.source,
+        'listingId': value.listingId,
         'field': value.field,
         'ourValue': value.ourValue,
         'remoteValue': value.remoteValue,

@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    NameSlug,
-    NameSlugFromJSON,
-    NameSlugFromJSONTyped,
-    NameSlugToJSON,
-} from '../common/NameSlug';
+    NameSlug2,
+    NameSlug2FromJSON,
+    NameSlug2FromJSONTyped,
+    NameSlug2ToJSON,
+} from '../common/NameSlug2';
 
 /**
  * 
@@ -46,10 +46,10 @@ export interface GetWorldCrewResponseDataMembers {
     you: boolean;
     /**
      * 
-     * @type {NameSlug}
+     * @type {NameSlug2}
      * @memberof GetWorldCrewResponseDataMembers
      */
-    room?: NameSlug | null;
+    room?: NameSlug2 | null;
 }
 
 export function GetWorldCrewResponseDataMembersFromJSON(json: any): GetWorldCrewResponseDataMembers {
@@ -65,7 +65,7 @@ export function GetWorldCrewResponseDataMembersFromJSONTyped(json: any, ignoreDi
         'userId': json['userId'],
         'name': json['name'],
         'you': json['you'],
-        'room': !exists(json, 'room') ? undefined : NameSlugFromJSON(json['room']),
+        'room': !exists(json, 'room') ? undefined : NameSlug2FromJSON(json['room']),
     };
 }
 
@@ -81,7 +81,7 @@ export function GetWorldCrewResponseDataMembersToJSON(value?: GetWorldCrewRespon
         'userId': value.userId,
         'name': value.name,
         'you': value.you,
-        'room': NameSlugToJSON(value.room),
+        'room': NameSlug2ToJSON(value.room),
     };
 }
 

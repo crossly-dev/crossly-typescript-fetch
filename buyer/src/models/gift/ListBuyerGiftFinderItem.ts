@@ -39,16 +39,16 @@ export interface ListBuyerGiftFinderItem {
     title?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof ListBuyerGiftFinderItem
-     */
-    salePriceCents?: number | null;
-    /**
-     * 
      * @type {string}
      * @memberof ListBuyerGiftFinderItem
      */
     thumbnail?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerGiftFinderItem
+     */
+    salePriceCents?: number | null;
 }
 
 export function ListBuyerGiftFinderItemFromJSON(json: any): ListBuyerGiftFinderItem {
@@ -64,8 +64,8 @@ export function ListBuyerGiftFinderItemFromJSONTyped(json: any, ignoreDiscrimina
         'slug': json['slug'],
         'priceCents': json['priceCents'],
         'title': !exists(json, 'title') ? undefined : json['title'],
-        'salePriceCents': !exists(json, 'salePriceCents') ? undefined : json['salePriceCents'],
         'thumbnail': !exists(json, 'thumbnail') ? undefined : json['thumbnail'],
+        'salePriceCents': !exists(json, 'salePriceCents') ? undefined : json['salePriceCents'],
     };
 }
 
@@ -81,8 +81,8 @@ export function ListBuyerGiftFinderItemToJSON(value?: ListBuyerGiftFinderItem | 
         'slug': value.slug,
         'priceCents': value.priceCents,
         'title': value.title,
-        'salePriceCents': value.salePriceCents,
         'thumbnail': value.thumbnail,
+        'salePriceCents': value.salePriceCents,
     };
 }
 

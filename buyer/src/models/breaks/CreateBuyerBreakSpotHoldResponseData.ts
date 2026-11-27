@@ -24,13 +24,13 @@ export interface CreateBuyerBreakSpotHoldResponseData {
      * @type {string}
      * @memberof CreateBuyerBreakSpotHoldResponseData
      */
-    slug?: string | null;
+    heldUntil: string;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerBreakSpotHoldResponseData
      */
-    heldUntil: string;
+    slug?: string | null;
 }
 
 export function CreateBuyerBreakSpotHoldResponseDataFromJSON(json: any): CreateBuyerBreakSpotHoldResponseData {
@@ -43,8 +43,8 @@ export function CreateBuyerBreakSpotHoldResponseDataFromJSONTyped(json: any, ign
     }
     return {
         
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'heldUntil': json['heldUntil'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
     };
 }
 
@@ -57,8 +57,8 @@ export function CreateBuyerBreakSpotHoldResponseDataToJSON(value?: CreateBuyerBr
     }
     return {
         
-        'slug': value.slug,
         'heldUntil': value.heldUntil,
+        'slug': value.slug,
     };
 }
 

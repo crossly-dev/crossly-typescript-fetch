@@ -36,9 +36,12 @@ import {
     CreateInboxReplyResponse,
     CreateInboxReplyResponseFromJSON,
     CreateInboxReplyResponseToJSON,
-    CreateOrderDisputeResponse,
-    CreateOrderDisputeResponseFromJSON,
-    CreateOrderDisputeResponseToJSON,
+    CreateInboxSendOfferRequest,
+    CreateInboxSendOfferRequestFromJSON,
+    CreateInboxSendOfferRequestToJSON,
+    CreateInboxSendOfferResponse,
+    CreateInboxSendOfferResponseFromJSON,
+    CreateInboxSendOfferResponseToJSON,
     CreateVideoRequestAnswerResponse,
     CreateVideoRequestAnswerResponseFromJSON,
     CreateVideoRequestAnswerResponseToJSON,
@@ -54,6 +57,9 @@ import {
     GetInboxConversationMessageResponse,
     GetInboxConversationMessageResponseFromJSON,
     GetInboxConversationMessageResponseToJSON,
+    GetInboxCountResponse,
+    GetInboxCountResponseFromJSON,
+    GetInboxCountResponseToJSON,
     GetInboxResponse,
     GetInboxResponseFromJSON,
     GetInboxResponseToJSON,
@@ -63,6 +69,9 @@ import {
     ListVideoRequestsResponse,
     ListVideoRequestsResponseFromJSON,
     ListVideoRequestsResponseToJSON,
+    UpdateInboxCannedResponseOrderRequest,
+    UpdateInboxCannedResponseOrderRequestFromJSON,
+    UpdateInboxCannedResponseOrderRequestToJSON,
     UpdateInboxConversationResponse,
     UpdateInboxConversationResponseFromJSON,
     UpdateInboxConversationResponseToJSON,
@@ -82,6 +91,11 @@ export interface CreateInboxOfferRequest {
 
 export interface CreateInboxReplyRequest {
     id: string;
+}
+
+export interface CreateInboxSendOfferOperationRequest {
+    id: string;
+    createInboxSendOfferRequest: CreateInboxSendOfferRequest;
 }
 
 export interface CreateVideoRequestAnswerRequest {
@@ -107,10 +121,15 @@ export interface GetInboxConversationMessageRequest {
 export interface ListInboxRequest {
     page?: number;
     limit?: number;
+    filter?: ListInboxFilterEnum;
 }
 
 export interface UpdateInboxCannedResponseRequest {
     id: string;
+}
+
+export interface UpdateInboxCannedResponseOrderOperationRequest {
+    updateInboxCannedResponseOrderRequest: UpdateInboxCannedResponseOrderRequest;
 }
 
 export interface UpdateInboxConversationRequest {
@@ -157,7 +176,7 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a canned response.
+     * Create a canned response (added to the end of the list).
      */
     async createInboxCannedResponseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxCannedResponseResponse>> {
         const queryParameters: any = {};
@@ -183,7 +202,7 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a canned response.
+     * Create a canned response (added to the end of the list).
      */
     async createInboxCannedResponse(initOverrides?: RequestInit): Promise<CreateInboxCannedResponseResponse> {
         const response = await this.createInboxCannedResponseRaw(initOverrides);
@@ -411,6 +430,51 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
+     * Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation\'s canSendOffer is true (Grailed today). `amount` is in the listing\'s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus \'sending\' until the platform confirms.
+     */
+    async createInboxSendOfferRaw(requestParameters: CreateInboxSendOfferOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxSendOfferResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createInboxSendOffer.');
+        }
+
+        if (requestParameters.createInboxSendOfferRequest === null || requestParameters.createInboxSendOfferRequest === undefined) {
+            throw new runtime.RequiredError('createInboxSendOfferRequest','Required parameter requestParameters.createInboxSendOfferRequest was null or undefined when calling createInboxSendOffer.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inbox/{id}/send-offer`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateInboxSendOfferRequestToJSON(requestParameters.createInboxSendOfferRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxSendOfferResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation\'s canSendOffer is true (Grailed today). `amount` is in the listing\'s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus \'sending\' until the platform confirms.
+     */
+    async createInboxSendOffer(requestParameters: CreateInboxSendOfferOperationRequest, initOverrides?: RequestInit): Promise<CreateInboxSendOfferResponse> {
+        const response = await this.createInboxSendOfferRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
      */
     async createVideoRequestAnswerRaw(requestParameters: CreateVideoRequestAnswerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoRequestAnswerResponse>> {
@@ -523,7 +587,7 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Delete a canned response.
      */
-    async deleteInboxCannedResponseRaw(requestParameters: DeleteInboxCannedResponseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderDisputeResponse>> {
+    async deleteInboxCannedResponseRaw(requestParameters: DeleteInboxCannedResponseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteInboxCannedResponse.');
         }
@@ -547,19 +611,18 @@ export class InboxApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderDisputeResponseFromJSON(jsonValue));
+        return new runtime.VoidApiResponse(response);
     }
 
     /**
      * Delete a canned response.
      */
-    async deleteInboxCannedResponse(requestParameters: DeleteInboxCannedResponseRequest, initOverrides?: RequestInit): Promise<CreateOrderDisputeResponse> {
-        const response = await this.deleteInboxCannedResponseRaw(requestParameters, initOverrides);
-        return await response.value();
+    async deleteInboxCannedResponse(requestParameters: DeleteInboxCannedResponseRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteInboxCannedResponseRaw(requestParameters, initOverrides);
     }
 
     /**
-     * Get one conversation with its messages.
+     * Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
      */
     async getInboxRaw(requestParameters: GetInboxRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInboxResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -589,7 +652,7 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get one conversation with its messages.
+     * Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
      */
     async getInbox(requestParameters: GetInboxRequest, initOverrides?: RequestInit): Promise<GetInboxResponse> {
         const response = await this.getInboxRaw(requestParameters, initOverrides);
@@ -597,7 +660,7 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * List canned responses.
+     * List canned responses in the seller\'s order.
      */
     async getInboxCannedResponseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInboxCannedResponseResponse>> {
         const queryParameters: any = {};
@@ -623,7 +686,7 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * List canned responses.
+     * List canned responses in the seller\'s order.
      */
     async getInboxCannedResponse(initOverrides?: RequestInit): Promise<GetInboxCannedResponseResponse> {
         const response = await this.getInboxCannedResponseRaw(initOverrides);
@@ -669,7 +732,7 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * Sidebar badge: unread conversation count.
+     * Unread conversation count (threads only; /v1/inbox/counts adds offers).
      */
     async getInboxConversationUnreadCountRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3LaunchArtResponse>> {
         const queryParameters: any = {};
@@ -695,7 +758,7 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * Sidebar badge: unread conversation count.
+     * Unread conversation count (threads only; /v1/inbox/counts adds offers).
      */
     async getInboxConversationUnreadCount(initOverrides?: RequestInit): Promise<CreateWeb3LaunchArtResponse> {
         const response = await this.getInboxConversationUnreadCountRaw(initOverrides);
@@ -703,7 +766,41 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * List conversations.
+     * Inbox badges: unread and needs-reply, split into conversations and offers.
+     */
+    async getInboxCountRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInboxCountResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inbox/counts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetInboxCountResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Inbox badges: unread and needs-reply, split into conversations and offers.
+     */
+    async getInboxCount(initOverrides?: RequestInit): Promise<GetInboxCountResponse> {
+        const response = await this.getInboxCountRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List conversations. `filter` narrows to the rows GET /v1/inbox/counts counts.
      */
     async listInboxRaw(requestParameters: ListInboxRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListInboxResponse>> {
         const queryParameters: any = {};
@@ -714,6 +811,10 @@ export class InboxApi extends runtime.BaseAPI {
 
         if (requestParameters.limit !== undefined) {
             queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.filter !== undefined) {
+            queryParameters['filter'] = requestParameters.filter;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -737,7 +838,7 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
-     * List conversations.
+     * List conversations. `filter` narrows to the rows GET /v1/inbox/counts counts.
      */
     async listInbox(requestParameters: ListInboxRequest = {}, initOverrides?: RequestInit): Promise<ListInboxResponse> {
         const response = await this.listInboxRaw(requestParameters, initOverrides);
@@ -817,6 +918,49 @@ export class InboxApi extends runtime.BaseAPI {
     }
 
     /**
+     * Pass EVERY canned response id in the new order (first = top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+     * Reorder canned responses.
+     */
+    async updateInboxCannedResponseOrderRaw(requestParameters: UpdateInboxCannedResponseOrderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInboxCannedResponseResponse>> {
+        if (requestParameters.updateInboxCannedResponseOrderRequest === null || requestParameters.updateInboxCannedResponseOrderRequest === undefined) {
+            throw new runtime.RequiredError('updateInboxCannedResponseOrderRequest','Required parameter requestParameters.updateInboxCannedResponseOrderRequest was null or undefined when calling updateInboxCannedResponseOrder.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inbox/canned-responses/order`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateInboxCannedResponseOrderRequestToJSON(requestParameters.updateInboxCannedResponseOrderRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetInboxCannedResponseResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pass EVERY canned response id in the new order (first = top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+     * Reorder canned responses.
+     */
+    async updateInboxCannedResponseOrder(requestParameters: UpdateInboxCannedResponseOrderOperationRequest, initOverrides?: RequestInit): Promise<GetInboxCannedResponseResponse> {
+        const response = await this.updateInboxCannedResponseOrderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Mark read / change status / close conversation.
      */
     async updateInboxConversationRaw(requestParameters: UpdateInboxConversationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateInboxConversationResponse>> {
@@ -854,4 +998,13 @@ export class InboxApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListInboxFilterEnum {
+    Unread = 'unread',
+    NeedsReply = 'needs_reply'
 }

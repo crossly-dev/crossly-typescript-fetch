@@ -68,10 +68,10 @@ export interface ListVaultMarketSetGoalsItemBasket {
 * @enum {string}
 */
 export enum ListVaultMarketSetGoalsItemBasketStatusEnum {
+    Completed = 'completed',
     Cancelled = 'cancelled',
     Ended = 'ended',
-    Working = 'working',
-    Completed = 'completed'
+    Working = 'working'
 }
 
 export function ListVaultMarketSetGoalsItemBasketFromJSON(json: any): ListVaultMarketSetGoalsItemBasket {

@@ -18,12 +18,21 @@ import {
     CreateAccountResponse,
     CreateAccountResponseFromJSON,
     CreateAccountResponseToJSON,
+    CreateConnectionCardnexusApiKeyResponse,
+    CreateConnectionCardnexusApiKeyResponseFromJSON,
+    CreateConnectionCardnexusApiKeyResponseToJSON,
     CreateConnectionEmailImapResponse,
     CreateConnectionEmailImapResponseFromJSON,
     CreateConnectionEmailImapResponseToJSON,
     CreateConnectionEmailImapTestResponse,
     CreateConnectionEmailImapTestResponseFromJSON,
     CreateConnectionEmailImapTestResponseToJSON,
+    CreateConnectionLightspeedXTokenRequest,
+    CreateConnectionLightspeedXTokenRequestFromJSON,
+    CreateConnectionLightspeedXTokenRequestToJSON,
+    CreateConnectionLightspeedXTokenResponse,
+    CreateConnectionLightspeedXTokenResponseFromJSON,
+    CreateConnectionLightspeedXTokenResponseToJSON,
     CreatePlatformAccountConnectResponse,
     CreatePlatformAccountConnectResponseFromJSON,
     CreatePlatformAccountConnectResponseToJSON,
@@ -45,6 +54,9 @@ import {
     GetConnectionExtensionOnlineResponse,
     GetConnectionExtensionOnlineResponseFromJSON,
     GetConnectionExtensionOnlineResponseToJSON,
+    GetConnectionPolicyManagementOptionResponse,
+    GetConnectionPolicyManagementOptionResponseFromJSON,
+    GetConnectionPolicyManagementOptionResponseToJSON,
     GetOauthInitResponse,
     GetOauthInitResponseFromJSON,
     GetOauthInitResponseToJSON,
@@ -54,6 +66,12 @@ import {
     ListAccountsResponse,
     ListAccountsResponseFromJSON,
     ListAccountsResponseToJSON,
+    ListConnectionPolicyManagementItem,
+    ListConnectionPolicyManagementItemFromJSON,
+    ListConnectionPolicyManagementItemToJSON,
+    ListConnectionPolicyManagementResponse,
+    ListConnectionPolicyManagementResponseFromJSON,
+    ListConnectionPolicyManagementResponseToJSON,
     ListConnectionsResponse,
     ListConnectionsResponseFromJSON,
     ListConnectionsResponseToJSON,
@@ -67,6 +85,10 @@ import {
     UpdatePlatformPreferenceResponseFromJSON,
     UpdatePlatformPreferenceResponseToJSON,
 } from '../models';
+
+export interface CreateConnectionLightspeedXTokenOperationRequest {
+    createConnectionLightspeedXTokenRequest: CreateConnectionLightspeedXTokenRequest;
+}
 
 export interface CreateConnectionRequestRequest {
     platform: string;
@@ -97,6 +119,11 @@ export interface DeleteConnectionEmailImapRequest {
     id: string;
 }
 
+export interface GetConnectionPolicyManagementOptionRequest {
+    connectionId: string;
+    source: string;
+}
+
 export interface GetOauthInitRequest {
     platform: string;
     shop?: string;
@@ -106,6 +133,10 @@ export interface GetOauthInitRequest {
 
 export interface UpdateConnectionEmailImapRequest {
     id: string;
+}
+
+export interface UpdateConnectionPolicyManagementRequest {
+    connectionId: string;
 }
 
 export interface UpdatePlatformPreferenceRequest {
@@ -149,6 +180,40 @@ export class AccountsApi extends runtime.BaseAPI {
      */
     async createAccount(initOverrides?: RequestInit): Promise<CreateAccountResponse> {
         const response = await this.createAccountRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Connect CardNexus with a personal API key (validated live before it is stored).
+     */
+    async createConnectionCardnexusApiKeyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionCardnexusApiKeyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/cardnexus/api-key`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionCardnexusApiKeyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Connect CardNexus with a personal API key (validated live before it is stored).
+     */
+    async createConnectionCardnexusApiKey(initOverrides?: RequestInit): Promise<CreateConnectionCardnexusApiKeyResponse> {
+        const response = await this.createConnectionCardnexusApiKeyRaw(initOverrides);
         return await response.value();
     }
 
@@ -217,6 +282,47 @@ export class AccountsApi extends runtime.BaseAPI {
      */
     async createConnectionEmailImapTest(initOverrides?: RequestInit): Promise<CreateConnectionEmailImapTestResponse> {
         const response = await this.createConnectionEmailImapTestRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+     */
+    async createConnectionLightspeedXTokenRaw(requestParameters: CreateConnectionLightspeedXTokenOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionLightspeedXTokenResponse>> {
+        if (requestParameters.createConnectionLightspeedXTokenRequest === null || requestParameters.createConnectionLightspeedXTokenRequest === undefined) {
+            throw new runtime.RequiredError('createConnectionLightspeedXTokenRequest','Required parameter requestParameters.createConnectionLightspeedXTokenRequest was null or undefined when calling createConnectionLightspeedXToken.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/lightspeed_x/token`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateConnectionLightspeedXTokenRequestToJSON(requestParameters.createConnectionLightspeedXTokenRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionLightspeedXTokenResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+     */
+    async createConnectionLightspeedXToken(requestParameters: CreateConnectionLightspeedXTokenOperationRequest, initOverrides?: RequestInit): Promise<CreateConnectionLightspeedXTokenResponse> {
+        const response = await this.createConnectionLightspeedXTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -297,7 +403,7 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Archive every active account row for a platform.
+     * Disconnect every account of a platform (archives the rows and deletes their stored sessions).
      */
     async createPlatformAccountDisconnectRaw(requestParameters: CreatePlatformAccountDisconnectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePlatformAccountDisconnectResponse>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
@@ -327,7 +433,7 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Archive every active account row for a platform.
+     * Disconnect every account of a platform (archives the rows and deletes their stored sessions).
      */
     async createPlatformAccountDisconnect(requestParameters: CreatePlatformAccountDisconnectRequest, initOverrides?: RequestInit): Promise<CreatePlatformAccountDisconnectResponse> {
         const response = await this.createPlatformAccountDisconnectRaw(requestParameters, initOverrides);
@@ -596,7 +702,51 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Most platforms return `{ url }`. Etsy adds `{ correlationId }` (PKCE verifier stashed in Redis). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.
+     * For one of your managed connections, the choices a preset\'s `platformFields` picker offers, from the marketplace (`source` is the field\'s `optionsSource`, e.g. `delivery-methods`). An unknown connection or source is a 404.
+     * List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+     */
+    async getConnectionPolicyManagementOptionRaw(requestParameters: GetConnectionPolicyManagementOptionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetConnectionPolicyManagementOptionResponse>> {
+        if (requestParameters.connectionId === null || requestParameters.connectionId === undefined) {
+            throw new runtime.RequiredError('connectionId','Required parameter requestParameters.connectionId was null or undefined when calling getConnectionPolicyManagementOption.');
+        }
+
+        if (requestParameters.source === null || requestParameters.source === undefined) {
+            throw new runtime.RequiredError('source','Required parameter requestParameters.source was null or undefined when calling getConnectionPolicyManagementOption.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/policy-management/{connectionId}/options/{source}`.replace(`{${"connectionId"}}`, encodeURIComponent(String(requestParameters.connectionId))).replace(`{${"source"}}`, encodeURIComponent(String(requestParameters.source))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetConnectionPolicyManagementOptionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * For one of your managed connections, the choices a preset\'s `platformFields` picker offers, from the marketplace (`source` is the field\'s `optionsSource`, e.g. `delivery-methods`). An unknown connection or source is a 404.
+     * List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+     */
+    async getConnectionPolicyManagementOption(requestParameters: GetConnectionPolicyManagementOptionRequest, initOverrides?: RequestInit): Promise<GetConnectionPolicyManagementOptionResponse> {
+        const response = await this.getConnectionPolicyManagementOptionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Most platforms return `{ url }` (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.
      * Return the OAuth authorize URL for an API-track platform.
      */
     async getOauthInitRaw(requestParameters: GetOauthInitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetOauthInitResponse>> {
@@ -639,7 +789,7 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Most platforms return `{ url }`. Etsy adds `{ correlationId }` (PKCE verifier stashed in Redis). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.
+     * Most platforms return `{ url }` (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.
      * Return the OAuth authorize URL for an API-track platform.
      */
     async getOauthInit(requestParameters: GetOauthInitRequest, initOverrides?: RequestInit): Promise<GetOauthInitResponse> {
@@ -716,6 +866,42 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
+     * One row per connected eBay or Etsy account: `eligible` (eBay only on EBAY_US), `managed` (Crossly keeps its policies / shipping profiles in step with your default presets) and sync `notes`.
+     * List eBay and Etsy accounts with whether Crossly manages their policies.
+     */
+    async listConnectionPolicyManagementRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionPolicyManagementResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/policy-management`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListConnectionPolicyManagementResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One row per connected eBay or Etsy account: `eligible` (eBay only on EBAY_US), `managed` (Crossly keeps its policies / shipping profiles in step with your default presets) and sync `notes`.
+     * List eBay and Etsy accounts with whether Crossly manages their policies.
+     */
+    async listConnectionPolicyManagement(initOverrides?: RequestInit): Promise<ListConnectionPolicyManagementResponse> {
+        const response = await this.listConnectionPolicyManagementRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * List OAuth-connected API platforms.
      */
     async listConnectionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionsResponse>> {
@@ -784,6 +970,46 @@ export class AccountsApi extends runtime.BaseAPI {
      */
     async updateConnectionEmailImap(requestParameters: UpdateConnectionEmailImapRequest, initOverrides?: RequestInit): Promise<SuccessResponse> {
         const response = await this.updateConnectionEmailImapRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Body `{ managed: boolean }`. On: Crossly may overwrite that account\'s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+     * Turn Crossly policy management on or off for one eBay or Etsy account.
+     */
+    async updateConnectionPolicyManagementRaw(requestParameters: UpdateConnectionPolicyManagementRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionPolicyManagementItem>> {
+        if (requestParameters.connectionId === null || requestParameters.connectionId === undefined) {
+            throw new runtime.RequiredError('connectionId','Required parameter requestParameters.connectionId was null or undefined when calling updateConnectionPolicyManagement.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/policy-management/{connectionId}`.replace(`{${"connectionId"}}`, encodeURIComponent(String(requestParameters.connectionId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListConnectionPolicyManagementItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Body `{ managed: boolean }`. On: Crossly may overwrite that account\'s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+     * Turn Crossly policy management on or off for one eBay or Etsy account.
+     */
+    async updateConnectionPolicyManagement(requestParameters: UpdateConnectionPolicyManagementRequest, initOverrides?: RequestInit): Promise<ListConnectionPolicyManagementItem> {
+        const response = await this.updateConnectionPolicyManagementRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

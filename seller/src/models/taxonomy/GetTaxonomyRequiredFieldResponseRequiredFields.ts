@@ -45,16 +45,16 @@ export interface GetTaxonomyRequiredFieldResponseRequiredFields {
     key: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof GetTaxonomyRequiredFieldResponseRequiredFields
-     */
-    required: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof GetTaxonomyRequiredFieldResponseRequiredFields
      */
     hint?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetTaxonomyRequiredFieldResponseRequiredFields
+     */
+    required: boolean;
     /**
      * 
      * @type {boolean}
@@ -93,8 +93,8 @@ export function GetTaxonomyRequiredFieldResponseRequiredFieldsFromJSONTyped(json
         'enumValues': !exists(json, 'enumValues') ? undefined : json['enumValues'],
         'label': json['label'],
         'key': json['key'],
-        'required': json['required'],
         'hint': !exists(json, 'hint') ? undefined : json['hint'],
+        'required': json['required'],
         'master': json['master'],
         'selectionOnly': json['selectionOnly'],
     };
@@ -113,8 +113,8 @@ export function GetTaxonomyRequiredFieldResponseRequiredFieldsToJSON(value?: Get
         'enumValues': value.enumValues,
         'label': value.label,
         'key': value.key,
-        'required': value.required,
         'hint': value.hint,
+        'required': value.required,
         'master': value.master,
         'selectionOnly': value.selectionOnly,
     };

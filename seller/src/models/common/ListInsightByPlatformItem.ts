@@ -27,34 +27,40 @@ export interface ListInsightByPlatformItem {
     platform: string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ListInsightByPlatformItem
      */
-    sales: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListInsightByPlatformItem
-     */
-    grossCents: string;
+    sales: number;
     /**
      * 
      * @type {number}
      * @memberof ListInsightByPlatformItem
      */
-    avgDaysToSale: number;
+    grossCents: number;
     /**
      * 
      * @type {number}
      * @memberof ListInsightByPlatformItem
      */
-    avgSaleCents: number;
+    avgDaysToSale?: number | null;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ListInsightByPlatformItem
      */
-    netCents: string;
+    avgSaleCents?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListInsightByPlatformItem
+     */
+    netCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListInsightByPlatformItem
+     */
+    netProfitCents?: number | null;
 }
 
 export function ListInsightByPlatformItemFromJSON(json: any): ListInsightByPlatformItem {
@@ -70,9 +76,10 @@ export function ListInsightByPlatformItemFromJSONTyped(json: any, ignoreDiscrimi
         'platform': json['platform'],
         'sales': json['sales'],
         'grossCents': json['gross_cents'],
-        'avgDaysToSale': json['avg_days_to_sale'],
-        'avgSaleCents': json['avg_sale_cents'],
+        'avgDaysToSale': !exists(json, 'avg_days_to_sale') ? undefined : json['avg_days_to_sale'],
+        'avgSaleCents': !exists(json, 'avg_sale_cents') ? undefined : json['avg_sale_cents'],
         'netCents': json['net_cents'],
+        'netProfitCents': !exists(json, 'net_profit_cents') ? undefined : json['net_profit_cents'],
     };
 }
 
@@ -91,6 +98,7 @@ export function ListInsightByPlatformItemToJSON(value?: ListInsightByPlatformIte
         'avg_days_to_sale': value.avgDaysToSale,
         'avg_sale_cents': value.avgSaleCents,
         'net_cents': value.netCents,
+        'net_profit_cents': value.netProfitCents,
     };
 }
 

@@ -37,6 +37,12 @@ export interface CreateAccountRequestDeletionResponse {
      * @memberof CreateAccountRequestDeletionResponse
      */
     graceDays: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateAccountRequestDeletionResponse
+     */
+    subscriptionsEnding: number;
 }
 
 export function CreateAccountRequestDeletionResponseFromJSON(json: any): CreateAccountRequestDeletionResponse {
@@ -52,6 +58,7 @@ export function CreateAccountRequestDeletionResponseFromJSONTyped(json: any, ign
         'id': json['id'],
         'scheduledFor': (new Date(json['scheduledFor'])),
         'graceDays': json['graceDays'],
+        'subscriptionsEnding': json['subscriptionsEnding'],
     };
 }
 
@@ -67,6 +74,7 @@ export function CreateAccountRequestDeletionResponseToJSON(value?: CreateAccount
         'id': value.id,
         'scheduledFor': (value.scheduledFor.toISOString()),
         'graceDays': value.graceDays,
+        'subscriptionsEnding': value.subscriptionsEnding,
     };
 }
 

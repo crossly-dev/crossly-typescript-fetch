@@ -39,8 +39,8 @@ export interface CreateVaultMarketEntityKybResponse {
 */
 export enum CreateVaultMarketEntityKybResponseKybStatusEnum {
     Pending = 'pending',
-    Approved = 'approved',
     Rejected = 'rejected',
+    Approved = 'approved',
     Restricted = 'restricted'
 }
 

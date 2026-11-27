@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    CreateWorldMarketPlotRentResponseDataOneOf2Placed,
+    CreateWorldMarketPlotRentResponseDataOneOf2PlacedFromJSON,
+    CreateWorldMarketPlotRentResponseDataOneOf2PlacedFromJSONTyped,
+    CreateWorldMarketPlotRentResponseDataOneOf2PlacedToJSON,
+} from '../world/CreateWorldMarketPlotRentResponseDataOneOf2Placed';
+
 /**
  * 
  * @export
@@ -21,28 +28,58 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateSpatialStreetPlotBuyResponseData {
     /**
      * 
-     * @type {string}
+     * @type {boolean}
      * @memberof CreateSpatialStreetPlotBuyResponseData
      */
-    deedId: string;
+    done?: boolean;
     /**
      * 
      * @type {string}
      * @memberof CreateSpatialStreetPlotBuyResponseData
      */
-    address: string;
+    paymentId?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateSpatialStreetPlotBuyResponseData
+     */
+    requiresAction?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialStreetPlotBuyResponseData
+     */
+    clientSecret?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialStreetPlotBuyResponseData
+     */
+    deedId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialStreetPlotBuyResponseData
+     */
+    address?: string;
     /**
      * 
      * @type {number}
      * @memberof CreateSpatialStreetPlotBuyResponseData
      */
-    priceCents: number;
+    priceCents?: number;
     /**
      * 
      * @type {string}
      * @memberof CreateSpatialStreetPlotBuyResponseData
      */
-    paidThrough: string;
+    paidThrough?: string;
+    /**
+     * 
+     * @type {CreateWorldMarketPlotRentResponseDataOneOf2Placed}
+     * @memberof CreateSpatialStreetPlotBuyResponseData
+     */
+    placed?: CreateWorldMarketPlotRentResponseDataOneOf2Placed | null;
 }
 
 export function CreateSpatialStreetPlotBuyResponseDataFromJSON(json: any): CreateSpatialStreetPlotBuyResponseData {
@@ -55,10 +92,15 @@ export function CreateSpatialStreetPlotBuyResponseDataFromJSONTyped(json: any, i
     }
     return {
         
-        'deedId': json['deedId'],
-        'address': json['address'],
-        'priceCents': json['priceCents'],
-        'paidThrough': json['paidThrough'],
+        'done': !exists(json, 'done') ? undefined : json['done'],
+        'paymentId': !exists(json, 'paymentId') ? undefined : json['paymentId'],
+        'requiresAction': !exists(json, 'requiresAction') ? undefined : json['requiresAction'],
+        'clientSecret': !exists(json, 'clientSecret') ? undefined : json['clientSecret'],
+        'deedId': !exists(json, 'deedId') ? undefined : json['deedId'],
+        'address': !exists(json, 'address') ? undefined : json['address'],
+        'priceCents': !exists(json, 'priceCents') ? undefined : json['priceCents'],
+        'paidThrough': !exists(json, 'paidThrough') ? undefined : json['paidThrough'],
+        'placed': !exists(json, 'placed') ? undefined : CreateWorldMarketPlotRentResponseDataOneOf2PlacedFromJSON(json['placed']),
     };
 }
 
@@ -71,10 +113,15 @@ export function CreateSpatialStreetPlotBuyResponseDataToJSON(value?: CreateSpati
     }
     return {
         
+        'done': value.done,
+        'paymentId': value.paymentId,
+        'requiresAction': value.requiresAction,
+        'clientSecret': value.clientSecret,
         'deedId': value.deedId,
         'address': value.address,
         'priceCents': value.priceCents,
         'paidThrough': value.paidThrough,
+        'placed': CreateWorldMarketPlotRentResponseDataOneOf2PlacedToJSON(value.placed),
     };
 }
 

@@ -48,7 +48,7 @@ export interface ListInventoryActivityItem {
      * @type {string}
      * @memberof ListInventoryActivityItem
      */
-    type: string;
+    inventoryItemId?: string | null;
     /**
      * 
      * @type {string}
@@ -60,7 +60,7 @@ export interface ListInventoryActivityItem {
      * @type {string}
      * @memberof ListInventoryActivityItem
      */
-    inventoryItemId?: string | null;
+    type: string;
     /**
      * 
      * @type {number}
@@ -101,9 +101,9 @@ export function ListInventoryActivityItemFromJSONTyped(json: any, ignoreDiscrimi
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
         'platform': !exists(json, 'platform') ? undefined : json['platform'],
-        'type': json['type'],
-        'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
+        'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
+        'type': json['type'],
         'delta': !exists(json, 'delta') ? undefined : json['delta'],
         'quantityBefore': !exists(json, 'quantityBefore') ? undefined : json['quantityBefore'],
         'quantityAfter': !exists(json, 'quantityAfter') ? undefined : json['quantityAfter'],
@@ -124,9 +124,9 @@ export function ListInventoryActivityItemToJSON(value?: ListInventoryActivityIte
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
         'platform': value.platform,
-        'type': value.type,
-        'orderId': value.orderId,
         'inventoryItemId': value.inventoryItemId,
+        'orderId': value.orderId,
+        'type': value.type,
         'delta': value.delta,
         'quantityBefore': value.quantityBefore,
         'quantityAfter': value.quantityAfter,

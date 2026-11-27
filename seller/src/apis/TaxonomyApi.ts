@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    GetCategoryByIdResponse,
+    GetCategoryByIdResponseFromJSON,
+    GetCategoryByIdResponseToJSON,
     GetTaxonomyCategoryAspectResponse,
     GetTaxonomyCategoryAspectResponseFromJSON,
     GetTaxonomyCategoryAspectResponseToJSON,
@@ -27,10 +30,23 @@ import {
     GetTaxonomyRequiredFieldResponse,
     GetTaxonomyRequiredFieldResponseFromJSON,
     GetTaxonomyRequiredFieldResponseToJSON,
+    ListCategoryAspectsResponse,
+    ListCategoryAspectsResponseFromJSON,
+    ListCategoryAspectsResponseToJSON,
+    ListCategorySearchResponse,
+    ListCategorySearchResponseFromJSON,
+    ListCategorySearchResponseToJSON,
+    ListTaxonomyEbayCharitiesResponse,
+    ListTaxonomyEbayCharitiesResponseFromJSON,
+    ListTaxonomyEbayCharitiesResponseToJSON,
     ListTaxonomySuggestResponse,
     ListTaxonomySuggestResponseFromJSON,
     ListTaxonomySuggestResponseToJSON,
 } from '../models';
+
+export interface GetCategoryByIdRequest {
+    id: string;
+}
 
 export interface GetTaxonomyCategoryRequest {
     platform: string;
@@ -52,6 +68,23 @@ export interface GetTaxonomyRequiredFieldRequest {
     categoryId?: string;
 }
 
+export interface ListCategoryAspectsRequest {
+    id: string;
+    valuesLimit?: number;
+}
+
+export interface ListCategorySearchRequest {
+    q?: string;
+    path?: string;
+    limit?: number;
+}
+
+export interface ListTaxonomyEbayCharitiesRequest {
+    q?: string;
+    limit?: number;
+    marketplace?: ListTaxonomyEbayCharitiesMarketplaceEnum;
+}
+
 export interface ListTaxonomySuggestRequest {
     platform: string;
     q?: string;
@@ -61,6 +94,44 @@ export interface ListTaxonomySuggestRequest {
  * 
  */
 export class TaxonomyApi extends runtime.BaseAPI {
+
+    /**
+     * One canonical category and the category it maps to on each marketplace.
+     */
+    async getCategoryByIdRaw(requestParameters: GetCategoryByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCategoryByIdResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getCategoryById.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/categories/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetCategoryByIdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One canonical category and the category it maps to on each marketplace.
+     */
+    async getCategoryById(requestParameters: GetCategoryByIdRequest, initOverrides?: RequestInit): Promise<GetCategoryByIdResponse> {
+        const response = await this.getCategoryByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Categories for a platform. Default is top-level; pass `?parent=<categoryId>` to drill down one level (supported on cookie platforms whose recipe returns flat parent_id-linked rows).
@@ -231,6 +302,146 @@ export class TaxonomyApi extends runtime.BaseAPI {
     }
 
     /**
+     * Required-ness and cardinality come from the eBay category the concept maps to. `freeText` = any text is accepted; otherwise `values` are the known values (up to `valuesLimit`). `marketplaces` gives the attribute name each marketplace uses for the aspect. Send them as `itemSpecifics` on POST /v1/listings.
+     * Item specifics for a canonical category: required/optional, known values, per-marketplace names.
+     */
+    async listCategoryAspectsRaw(requestParameters: ListCategoryAspectsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCategoryAspectsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listCategoryAspects.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.valuesLimit !== undefined) {
+            queryParameters['valuesLimit'] = requestParameters.valuesLimit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/categories/{id}/aspects`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListCategoryAspectsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Required-ness and cardinality come from the eBay category the concept maps to. `freeText` = any text is accepted; otherwise `values` are the known values (up to `valuesLimit`). `marketplaces` gives the attribute name each marketplace uses for the aspect. Send them as `itemSpecifics` on POST /v1/listings.
+     * Item specifics for a canonical category: required/optional, known values, per-marketplace names.
+     */
+    async listCategoryAspects(requestParameters: ListCategoryAspectsRequest, initOverrides?: RequestInit): Promise<ListCategoryAspectsResponse> {
+        const response = await this.listCategoryAspectsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * `q` matches the category name and path. `path` (e.g. \"Clothing & Shoes > Men\") limits to one branch. Without `q`, `meta.branches` lists the next level under `path` (the root when omitted) so a client can walk the tree down to a leaf.
+     * Search or browse Crossly\'s canonical categories (the ids listings take as categoryId).
+     */
+    async listCategorySearchRaw(requestParameters: ListCategorySearchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCategorySearchResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/categories/search`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListCategorySearchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * `q` matches the category name and path. `path` (e.g. \"Clothing & Shoes > Men\") limits to one branch. Without `q`, `meta.branches` lists the next level under `path` (the root when omitted) so a client can walk the tree down to a leaf.
+     * Search or browse Crossly\'s canonical categories (the ids listings take as categoryId).
+     */
+    async listCategorySearch(requestParameters: ListCategorySearchRequest = {}, initOverrides?: RequestInit): Promise<ListCategorySearchResponse> {
+        const response = await this.listCategorySearchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Send the chosen `charityOrgId` as `overrides.ebay.charityId` with `overrides.ebay.donationPercentage` (10-100 in steps of 5) on a listing to donate that share of the eBay sale. `q` needs at least 2 characters.
+     * Search eBay for Charity organisations (the charityId an eBay listing donates to).
+     */
+    async listTaxonomyEbayCharitiesRaw(requestParameters: ListTaxonomyEbayCharitiesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListTaxonomyEbayCharitiesResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.marketplace !== undefined) {
+            queryParameters['marketplace'] = requestParameters.marketplace;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/taxonomy/ebay/charities`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListTaxonomyEbayCharitiesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Send the chosen `charityOrgId` as `overrides.ebay.charityId` with `overrides.ebay.donationPercentage` (10-100 in steps of 5) on a listing to donate that share of the eBay sale. `q` needs at least 2 characters.
+     * Search eBay for Charity organisations (the charityId an eBay listing donates to).
+     */
+    async listTaxonomyEbayCharities(requestParameters: ListTaxonomyEbayCharitiesRequest = {}, initOverrides?: RequestInit): Promise<ListTaxonomyEbayCharitiesResponse> {
+        const response = await this.listTaxonomyEbayCharitiesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Reverse lookup — suggest categories matching a search phrase: eBay live; Poshmark, Mercari, Depop, Grailed, Vinted, Whatnot, Vestiaire, OfferUp, Facebook and Curtsy over their harvested trees. Etsy answers an empty list (browse its tree instead).
      */
     async listTaxonomySuggestRaw(requestParameters: ListTaxonomySuggestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListTaxonomySuggestResponse>> {
@@ -272,4 +483,13 @@ export class TaxonomyApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListTaxonomyEbayCharitiesMarketplaceEnum {
+    Us = 'EBAY_US',
+    Gb = 'EBAY_GB'
 }

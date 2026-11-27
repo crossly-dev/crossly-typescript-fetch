@@ -81,9 +81,9 @@ export interface GetVaultMarketReportResponseRisers {
 */
 export enum GetVaultMarketReportResponseRisersQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketReportResponseRisersFromJSON(json: any): GetVaultMarketReportResponseRisers {

@@ -92,6 +92,18 @@ export interface GetCustomerResponse {
      * @memberof GetCustomerResponse
      */
     stats: GetCustomerResponseStats;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCustomerResponse
+     */
+    notes: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCustomerResponse
+     */
+    notesUpdatedAt?: string | null;
 }
 
 export function GetCustomerResponseFromJSON(json: any): GetCustomerResponse {
@@ -112,6 +124,8 @@ export function GetCustomerResponseFromJSONTyped(json: any, ignoreDiscriminator:
         'contact': GetCustomerResponseContactFromJSON(json['contact']),
         'profiles': ((json['profiles'] as Array<any>).map(GetCustomerResponseProfilesFromJSON)),
         'stats': GetCustomerResponseStatsFromJSON(json['stats']),
+        'notes': json['notes'],
+        'notesUpdatedAt': !exists(json, 'notesUpdatedAt') ? undefined : json['notesUpdatedAt'],
     };
 }
 
@@ -132,6 +146,8 @@ export function GetCustomerResponseToJSON(value?: GetCustomerResponse | null): a
         'contact': GetCustomerResponseContactToJSON(value.contact),
         'profiles': ((value.profiles as Array<any>).map(GetCustomerResponseProfilesToJSON)),
         'stats': GetCustomerResponseStatsToJSON(value.stats),
+        'notes': value.notes,
+        'notesUpdatedAt': value.notesUpdatedAt,
     };
 }
 

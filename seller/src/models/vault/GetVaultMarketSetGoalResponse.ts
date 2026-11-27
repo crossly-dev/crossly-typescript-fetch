@@ -67,13 +67,13 @@ export interface GetVaultMarketSetGoalResponse {
      * @type {string}
      * @memberof GetVaultMarketSetGoalResponse
      */
-    title: string;
+    category: string;
     /**
      * 
      * @type {string}
      * @memberof GetVaultMarketSetGoalResponse
      */
-    category: string;
+    title: string;
     /**
      * 
      * @type {GetVaultMarketSetGoalResponseOptions}
@@ -88,10 +88,22 @@ export interface GetVaultMarketSetGoalResponse {
     completedAt?: string | null;
     /**
      * 
+     * @type {GetVaultMarketSetGoalResponseTarget}
+     * @memberof GetVaultMarketSetGoalResponse
+     */
+    target: GetVaultMarketSetGoalResponseTarget;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetVaultMarketSetGoalResponse
+     */
+    total: number;
+    /**
+     * 
      * @type {string}
      * @memberof GetVaultMarketSetGoalResponse
      */
-    progress: string;
+    href: string;
     /**
      * 
      * @type {string}
@@ -103,13 +115,13 @@ export interface GetVaultMarketSetGoalResponse {
      * @type {string}
      * @memberof GetVaultMarketSetGoalResponse
      */
-    modelSlug: string;
+    progress: string;
     /**
      * 
-     * @type {GetVaultMarketSetGoalResponseTarget}
+     * @type {number}
      * @memberof GetVaultMarketSetGoalResponse
      */
-    target: GetVaultMarketSetGoalResponseTarget;
+    missing: number;
     /**
      * 
      * @type {number}
@@ -118,28 +130,10 @@ export interface GetVaultMarketSetGoalResponse {
     held: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof GetVaultMarketSetGoalResponse
-     */
-    complete: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof GetVaultMarketSetGoalResponse
      */
-    href: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetVaultMarketSetGoalResponse
-     */
-    total: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetVaultMarketSetGoalResponse
-     */
-    setFound: boolean;
+    modelSlug: string;
     /**
      * 
      * @type {GetVaultMarketSetGoalResponseBasket}
@@ -148,10 +142,22 @@ export interface GetVaultMarketSetGoalResponse {
     basket?: GetVaultMarketSetGoalResponseBasket | null;
     /**
      * 
-     * @type {number}
+     * @type {Array<GetVaultMarketSetGoalResponsePieces>}
      * @memberof GetVaultMarketSetGoalResponse
      */
-    missing: number;
+    pieces: Array<GetVaultMarketSetGoalResponsePieces>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetVaultMarketSetGoalResponse
+     */
+    complete: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetVaultMarketSetGoalResponse
+     */
+    setFound: boolean;
     /**
      * 
      * @type {number}
@@ -172,12 +178,6 @@ export interface GetVaultMarketSetGoalResponse {
     tooBig: boolean;
     /**
      * 
-     * @type {Array<GetVaultMarketSetGoalResponsePieces>}
-     * @memberof GetVaultMarketSetGoalResponse
-     */
-    pieces: Array<GetVaultMarketSetGoalResponsePieces>;
-    /**
-     * 
      * @type {string}
      * @memberof GetVaultMarketSetGoalResponse
      */
@@ -190,8 +190,8 @@ export interface GetVaultMarketSetGoalResponse {
 */
 export enum GetVaultMarketSetGoalResponseStatusEnum {
     Active = 'active',
-    Complete = 'complete',
-    Archived = 'archived'
+    Archived = 'archived',
+    Complete = 'complete'
 }
 
 export function GetVaultMarketSetGoalResponseFromJSON(json: any): GetVaultMarketSetGoalResponse {
@@ -207,25 +207,25 @@ export function GetVaultMarketSetGoalResponseFromJSONTyped(json: any, ignoreDisc
         'id': json['id'],
         'createdAt': json['createdAt'],
         'status': json['status'],
-        'title': json['title'],
         'category': json['category'],
+        'title': json['title'],
         'options': GetVaultMarketSetGoalResponseOptionsFromJSON(json['options']),
         'completedAt': !exists(json, 'completedAt') ? undefined : json['completedAt'],
-        'progress': json['progress'],
-        'brandSlug': json['brandSlug'],
-        'modelSlug': json['modelSlug'],
         'target': GetVaultMarketSetGoalResponseTargetFromJSON(json['target']),
-        'held': json['held'],
-        'complete': json['complete'],
-        'href': json['href'],
         'total': json['total'],
-        'setFound': json['setFound'],
-        'basket': !exists(json, 'basket') ? undefined : GetVaultMarketSetGoalResponseBasketFromJSON(json['basket']),
+        'href': json['href'],
+        'brandSlug': json['brandSlug'],
+        'progress': json['progress'],
         'missing': json['missing'],
+        'held': json['held'],
+        'modelSlug': json['modelSlug'],
+        'basket': !exists(json, 'basket') ? undefined : GetVaultMarketSetGoalResponseBasketFromJSON(json['basket']),
+        'pieces': ((json['pieces'] as Array<any>).map(GetVaultMarketSetGoalResponsePiecesFromJSON)),
+        'complete': json['complete'],
+        'setFound': json['setFound'],
         'priced': json['priced'],
         'missingMarkCents': json['missingMarkCents'],
         'tooBig': json['tooBig'],
-        'pieces': ((json['pieces'] as Array<any>).map(GetVaultMarketSetGoalResponsePiecesFromJSON)),
         'cardSetHref': json['cardSetHref'],
     };
 }
@@ -242,25 +242,25 @@ export function GetVaultMarketSetGoalResponseToJSON(value?: GetVaultMarketSetGoa
         'id': value.id,
         'createdAt': value.createdAt,
         'status': value.status,
-        'title': value.title,
         'category': value.category,
+        'title': value.title,
         'options': GetVaultMarketSetGoalResponseOptionsToJSON(value.options),
         'completedAt': value.completedAt,
-        'progress': value.progress,
-        'brandSlug': value.brandSlug,
-        'modelSlug': value.modelSlug,
         'target': GetVaultMarketSetGoalResponseTargetToJSON(value.target),
-        'held': value.held,
-        'complete': value.complete,
-        'href': value.href,
         'total': value.total,
-        'setFound': value.setFound,
-        'basket': GetVaultMarketSetGoalResponseBasketToJSON(value.basket),
+        'href': value.href,
+        'brandSlug': value.brandSlug,
+        'progress': value.progress,
         'missing': value.missing,
+        'held': value.held,
+        'modelSlug': value.modelSlug,
+        'basket': GetVaultMarketSetGoalResponseBasketToJSON(value.basket),
+        'pieces': ((value.pieces as Array<any>).map(GetVaultMarketSetGoalResponsePiecesToJSON)),
+        'complete': value.complete,
+        'setFound': value.setFound,
         'priced': value.priced,
         'missingMarkCents': value.missingMarkCents,
         'tooBig': value.tooBig,
-        'pieces': ((value.pieces as Array<any>).map(GetVaultMarketSetGoalResponsePiecesToJSON)),
         'cardSetHref': value.cardSetHref,
     };
 }

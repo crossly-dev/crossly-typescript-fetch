@@ -14,17 +14,23 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListWeb3LaunchesItemCreator,
-    ListWeb3LaunchesItemCreatorFromJSON,
-    ListWeb3LaunchesItemCreatorFromJSONTyped,
-    ListWeb3LaunchesItemCreatorToJSON,
-} from './ListWeb3LaunchesItemCreator';
+    ContractName,
+    ContractNameFromJSON,
+    ContractNameFromJSONTyped,
+    ContractNameToJSON,
+} from '../common/ContractName';
 import {
-    ListWeb3LaunchesItemHolderGate,
-    ListWeb3LaunchesItemHolderGateFromJSON,
-    ListWeb3LaunchesItemHolderGateFromJSONTyped,
-    ListWeb3LaunchesItemHolderGateToJSON,
-} from './ListWeb3LaunchesItemHolderGate';
+    ListWeb3LaunchesItemHolderPerksItem,
+    ListWeb3LaunchesItemHolderPerksItemFromJSON,
+    ListWeb3LaunchesItemHolderPerksItemFromJSONTyped,
+    ListWeb3LaunchesItemHolderPerksItemToJSON,
+} from './ListWeb3LaunchesItemHolderPerksItem';
+import {
+    NameObject,
+    NameObjectFromJSON,
+    NameObjectFromJSONTyped,
+    NameObjectToJSON,
+} from '../common/NameObject';
 
 /**
  * 
@@ -118,10 +124,10 @@ export interface ListWeb3LaunchesItem {
     endTime?: string | null;
     /**
      * 
-     * @type {ListWeb3LaunchesItemHolderGate}
+     * @type {ContractName}
      * @memberof ListWeb3LaunchesItem
      */
-    holderGate?: ListWeb3LaunchesItemHolderGate | null;
+    holderGate?: ContractName | null;
     /**
      * 
      * @type {number}
@@ -148,10 +154,10 @@ export interface ListWeb3LaunchesItem {
     phase: ListWeb3LaunchesItemPhaseEnum;
     /**
      * 
-     * @type {ListWeb3LaunchesItemCreator}
+     * @type {NameObject}
      * @memberof ListWeb3LaunchesItem
      */
-    creator: ListWeb3LaunchesItemCreator;
+    creator: NameObject;
     /**
      * Card checkout (Crossmint) is set up and the collection is verified there.
      * @type {boolean}
@@ -170,6 +176,24 @@ export interface ListWeb3LaunchesItem {
      * @memberof ListWeb3LaunchesItem
      */
     revealed: boolean;
+    /**
+     * Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints.
+     * @type {string}
+     * @memberof ListWeb3LaunchesItem
+     */
+    cardSetId?: string | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListWeb3LaunchesItem
+     */
+    creationRefs?: Array<string> | null;
+    /**
+     * Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks).
+     * @type {Array<ListWeb3LaunchesItemHolderPerksItem>}
+     * @memberof ListWeb3LaunchesItem
+     */
+    holderPerks?: Array<ListWeb3LaunchesItemHolderPerksItem> | null;
 }
 
 /**
@@ -177,19 +201,19 @@ export interface ListWeb3LaunchesItem {
 * @enum {string}
 */
 export enum ListWeb3LaunchesItemChainEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListWeb3LaunchesItemStatusEnum {
-    Live = 'live',
     Draft = 'draft',
+    Live = 'live',
     Failed = 'failed',
     Deploying = 'deploying'
 }/**
@@ -197,10 +221,10 @@ export enum ListWeb3LaunchesItemStatusEnum {
 * @enum {string}
 */
 export enum ListWeb3LaunchesItemPhaseEnum {
-    Ended = 'ended',
-    Holder = 'holder',
     Public = 'public',
+    Ended = 'ended',
     Upcoming = 'upcoming',
+    Holder = 'holder',
     SoldOut = 'sold_out'
 }
 
@@ -228,15 +252,18 @@ export function ListWeb3LaunchesItemFromJSONTyped(json: any, ignoreDiscriminator
         'holderStart': !exists(json, 'holderStart') ? undefined : json['holderStart'],
         'publicStart': json['publicStart'],
         'endTime': !exists(json, 'endTime') ? undefined : json['endTime'],
-        'holderGate': !exists(json, 'holderGate') ? undefined : ListWeb3LaunchesItemHolderGateFromJSON(json['holderGate']),
+        'holderGate': !exists(json, 'holderGate') ? undefined : ContractNameFromJSON(json['holderGate']),
         'maxPerWallet': json['maxPerWallet'],
         'royaltyBps': json['royaltyBps'],
         'platformBps': json['platformBps'],
         'phase': json['phase'],
-        'creator': ListWeb3LaunchesItemCreatorFromJSON(json['creator']),
+        'creator': NameObjectFromJSON(json['creator']),
         'card': json['card'],
         'allowlist': json['allowlist'],
         'revealed': json['revealed'],
+        'cardSetId': !exists(json, 'cardSetId') ? undefined : json['cardSetId'],
+        'creationRefs': !exists(json, 'creationRefs') ? undefined : json['creationRefs'],
+        'holderPerks': !exists(json, 'holderPerks') ? undefined : (json['holderPerks'] === null ? null : (json['holderPerks'] as Array<any>).map(ListWeb3LaunchesItemHolderPerksItemFromJSON)),
     };
 }
 
@@ -263,15 +290,18 @@ export function ListWeb3LaunchesItemToJSON(value?: ListWeb3LaunchesItem | null):
         'holderStart': value.holderStart,
         'publicStart': value.publicStart,
         'endTime': value.endTime,
-        'holderGate': ListWeb3LaunchesItemHolderGateToJSON(value.holderGate),
+        'holderGate': ContractNameToJSON(value.holderGate),
         'maxPerWallet': value.maxPerWallet,
         'royaltyBps': value.royaltyBps,
         'platformBps': value.platformBps,
         'phase': value.phase,
-        'creator': ListWeb3LaunchesItemCreatorToJSON(value.creator),
+        'creator': NameObjectToJSON(value.creator),
         'card': value.card,
         'allowlist': value.allowlist,
         'revealed': value.revealed,
+        'cardSetId': value.cardSetId,
+        'creationRefs': value.creationRefs,
+        'holderPerks': value.holderPerks === undefined ? undefined : (value.holderPerks === null ? null : (value.holderPerks as Array<any>).map(ListWeb3LaunchesItemHolderPerksItemToJSON)),
     };
 }
 

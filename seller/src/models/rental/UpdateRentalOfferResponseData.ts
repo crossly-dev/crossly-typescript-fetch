@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    StartEnd,
+    StartEndFromJSON,
+    StartEndFromJSONTyped,
+    StartEndToJSON,
+} from '../common/StartEnd';
+
 /**
  * 
  * @export
@@ -39,10 +46,28 @@ export interface UpdateRentalOfferResponseData {
     updatedAt: Date;
     /**
      * 
+     * @type {number}
+     * @memberof UpdateRentalOfferResponseData
+     */
+    quantity: number;
+    /**
+     * 
      * @type {string}
      * @memberof UpdateRentalOfferResponseData
      */
     platformListingId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateRentalOfferResponseData
+     */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof UpdateRentalOfferResponseData
+     */
+    options: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -60,18 +85,6 @@ export interface UpdateRentalOfferResponseData {
      * @type {number}
      * @memberof UpdateRentalOfferResponseData
      */
-    dailyCents: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateRentalOfferResponseData
-     */
-    weeklyCents?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UpdateRentalOfferResponseData
-     */
     minDays: number;
     /**
      * 
@@ -79,6 +92,18 @@ export interface UpdateRentalOfferResponseData {
      * @memberof UpdateRentalOfferResponseData
      */
     maxDays: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateRentalOfferResponseData
+     */
+    dailyCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateRentalOfferResponseData
+     */
+    weeklyCents?: number | null;
     /**
      * 
      * @type {number}
@@ -97,6 +122,18 @@ export interface UpdateRentalOfferResponseData {
      * @memberof UpdateRentalOfferResponseData
      */
     requireApproval: boolean;
+    /**
+     * 
+     * @type {Array<StartEnd>}
+     * @memberof UpdateRentalOfferResponseData
+     */
+    blackoutRanges: Array<StartEnd>;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateRentalOfferResponseData
+     */
+    returnPolicy?: string | null;
 }
 
 export function UpdateRentalOfferResponseDataFromJSON(json: any): UpdateRentalOfferResponseData {
@@ -112,16 +149,21 @@ export function UpdateRentalOfferResponseDataFromJSONTyped(json: any, ignoreDisc
         'active': json['active'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
+        'quantity': json['quantity'],
         'platformListingId': json['platformListingId'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'options': json['options'],
         'sellerUserId': json['sellerUserId'],
         'depositCents': json['depositCents'],
-        'dailyCents': json['dailyCents'],
-        'weeklyCents': !exists(json, 'weeklyCents') ? undefined : json['weeklyCents'],
         'minDays': json['minDays'],
         'maxDays': json['maxDays'],
+        'dailyCents': json['dailyCents'],
+        'weeklyCents': !exists(json, 'weeklyCents') ? undefined : json['weeklyCents'],
         'bufferDays': json['bufferDays'],
         'rentOnly': json['rentOnly'],
         'requireApproval': json['requireApproval'],
+        'blackoutRanges': ((json['blackoutRanges'] as Array<any>).map(StartEndFromJSON)),
+        'returnPolicy': !exists(json, 'returnPolicy') ? undefined : json['returnPolicy'],
     };
 }
 
@@ -137,16 +179,21 @@ export function UpdateRentalOfferResponseDataToJSON(value?: UpdateRentalOfferRes
         'active': value.active,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
+        'quantity': value.quantity,
         'platformListingId': value.platformListingId,
+        'storefrontId': value.storefrontId,
+        'options': value.options,
         'sellerUserId': value.sellerUserId,
         'depositCents': value.depositCents,
-        'dailyCents': value.dailyCents,
-        'weeklyCents': value.weeklyCents,
         'minDays': value.minDays,
         'maxDays': value.maxDays,
+        'dailyCents': value.dailyCents,
+        'weeklyCents': value.weeklyCents,
         'bufferDays': value.bufferDays,
         'rentOnly': value.rentOnly,
         'requireApproval': value.requireApproval,
+        'blackoutRanges': ((value.blackoutRanges as Array<any>).map(StartEndToJSON)),
+        'returnPolicy': value.returnPolicy,
     };
 }
 

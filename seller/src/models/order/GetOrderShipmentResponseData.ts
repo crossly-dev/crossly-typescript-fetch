@@ -48,12 +48,6 @@ export interface GetOrderShipmentResponseData {
      * @type {string}
      * @memberof GetOrderShipmentResponseData
      */
-    orderId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetOrderShipmentResponseData
-     */
     carrier?: string | null;
     /**
      * 
@@ -69,10 +63,10 @@ export interface GetOrderShipmentResponseData {
     trackingNumber?: string | null;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof GetOrderShipmentResponseData
      */
-    voidedAt?: Date | null;
+    orderId: string;
     /**
      * 
      * @type {number}
@@ -90,6 +84,12 @@ export interface GetOrderShipmentResponseData {
      * @type {string}
      * @memberof GetOrderShipmentResponseData
      */
+    labelQrUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderShipmentResponseData
+     */
     shippoShipmentId?: string | null;
     /**
      * 
@@ -97,6 +97,12 @@ export interface GetOrderShipmentResponseData {
      * @memberof GetOrderShipmentResponseData
      */
     trackingRegisteredAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetOrderShipmentResponseData
+     */
+    voidedAt?: Date | null;
 }
 
 export function GetOrderShipmentResponseDataFromJSON(json: any): GetOrderShipmentResponseData {
@@ -113,15 +119,16 @@ export function GetOrderShipmentResponseDataFromJSONTyped(json: any, ignoreDiscr
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
         'source': json['source'],
-        'orderId': json['orderId'],
         'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
         'service': !exists(json, 'service') ? undefined : json['service'],
         'trackingNumber': !exists(json, 'trackingNumber') ? undefined : json['trackingNumber'],
-        'voidedAt': !exists(json, 'voidedAt') ? undefined : (json['voidedAt'] === null ? null : new Date(json['voidedAt'])),
+        'orderId': json['orderId'],
         'labelCostCents': !exists(json, 'labelCostCents') ? undefined : json['labelCostCents'],
         'labelUrl': !exists(json, 'labelUrl') ? undefined : json['labelUrl'],
+        'labelQrUrl': !exists(json, 'labelQrUrl') ? undefined : json['labelQrUrl'],
         'shippoShipmentId': !exists(json, 'shippoShipmentId') ? undefined : json['shippoShipmentId'],
         'trackingRegisteredAt': !exists(json, 'trackingRegisteredAt') ? undefined : (json['trackingRegisteredAt'] === null ? null : new Date(json['trackingRegisteredAt'])),
+        'voidedAt': !exists(json, 'voidedAt') ? undefined : (json['voidedAt'] === null ? null : new Date(json['voidedAt'])),
     };
 }
 
@@ -138,15 +145,16 @@ export function GetOrderShipmentResponseDataToJSON(value?: GetOrderShipmentRespo
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
         'source': value.source,
-        'orderId': value.orderId,
         'carrier': value.carrier,
         'service': value.service,
         'trackingNumber': value.trackingNumber,
-        'voidedAt': value.voidedAt === undefined ? undefined : (value.voidedAt === null ? null : value.voidedAt.toISOString()),
+        'orderId': value.orderId,
         'labelCostCents': value.labelCostCents,
         'labelUrl': value.labelUrl,
+        'labelQrUrl': value.labelQrUrl,
         'shippoShipmentId': value.shippoShipmentId,
         'trackingRegisteredAt': value.trackingRegisteredAt === undefined ? undefined : (value.trackingRegisteredAt === null ? null : value.trackingRegisteredAt.toISOString()),
+        'voidedAt': value.voidedAt === undefined ? undefined : (value.voidedAt === null ? null : value.voidedAt.toISOString()),
     };
 }
 

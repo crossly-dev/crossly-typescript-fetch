@@ -88,9 +88,9 @@ export interface GetVaultMarketMarketResponseMarkRead {
 */
 export enum GetVaultMarketMarketResponseMarkReadQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketMarketResponseMarkReadFromJSON(json: any): GetVaultMarketMarketResponseMarkRead {

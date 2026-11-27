@@ -24,6 +24,12 @@ export interface ListBuyerTogetherItem {
      * @type {string}
      * @memberof ListBuyerTogetherItem
      */
+    code: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerTogetherItem
+     */
     name: string;
     /**
      * 
@@ -31,12 +37,6 @@ export interface ListBuyerTogetherItem {
      * @memberof ListBuyerTogetherItem
      */
     endsAt: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerTogetherItem
-     */
-    code: string;
 }
 
 export function ListBuyerTogetherItemFromJSON(json: any): ListBuyerTogetherItem {
@@ -49,9 +49,9 @@ export function ListBuyerTogetherItemFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
+        'code': json['code'],
         'name': json['name'],
         'endsAt': json['endsAt'],
-        'code': json['code'],
     };
 }
 
@@ -64,9 +64,9 @@ export function ListBuyerTogetherItemToJSON(value?: ListBuyerTogetherItem | null
     }
     return {
         
+        'code': value.code,
         'name': value.name,
         'endsAt': value.endsAt,
-        'code': value.code,
     };
 }
 

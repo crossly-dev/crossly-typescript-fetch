@@ -54,6 +54,12 @@ export interface ListBuyerCartItem {
      * @type {string}
      * @memberof ListBuyerCartItem
      */
+    listingVariantId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerCartItem
+     */
     slug?: string | null;
     /**
      * 
@@ -84,6 +90,7 @@ export function ListBuyerCartItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'platformListingId': json['platformListingId'],
         'quantity': json['quantity'],
         'unitPriceCents': json['unitPriceCents'],
+        'listingVariantId': !exists(json, 'listingVariantId') ? undefined : json['listingVariantId'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'listingStatus': !exists(json, 'listingStatus') ? undefined : json['listingStatus'],
@@ -104,6 +111,7 @@ export function ListBuyerCartItemToJSON(value?: ListBuyerCartItem | null): any {
         'platformListingId': value.platformListingId,
         'quantity': value.quantity,
         'unitPriceCents': value.unitPriceCents,
+        'listingVariantId': value.listingVariantId,
         'slug': value.slug,
         'title': value.title,
         'listingStatus': value.listingStatus,

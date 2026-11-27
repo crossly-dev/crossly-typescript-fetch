@@ -21,22 +21,40 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateSpatialPropertyLeaseRentResponseData {
     /**
      * 
+     * @type {boolean}
+     * @memberof CreateSpatialPropertyLeaseRentResponseData
+     */
+    requiresAction?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof CreateSpatialPropertyLeaseRentResponseData
      */
-    paidThrough: string;
+    paymentId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialPropertyLeaseRentResponseData
+     */
+    clientSecret?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialPropertyLeaseRentResponseData
+     */
+    paidThrough?: string;
     /**
      * 
      * @type {boolean}
      * @memberof CreateSpatialPropertyLeaseRentResponseData
      */
-    waived: boolean;
+    waived?: boolean;
     /**
      * 
      * @type {number}
      * @memberof CreateSpatialPropertyLeaseRentResponseData
      */
-    paidCents: number;
+    paidCents?: number;
 }
 
 export function CreateSpatialPropertyLeaseRentResponseDataFromJSON(json: any): CreateSpatialPropertyLeaseRentResponseData {
@@ -49,9 +67,12 @@ export function CreateSpatialPropertyLeaseRentResponseDataFromJSONTyped(json: an
     }
     return {
         
-        'paidThrough': json['paidThrough'],
-        'waived': json['waived'],
-        'paidCents': json['paidCents'],
+        'requiresAction': !exists(json, 'requiresAction') ? undefined : json['requiresAction'],
+        'paymentId': !exists(json, 'paymentId') ? undefined : json['paymentId'],
+        'clientSecret': !exists(json, 'clientSecret') ? undefined : json['clientSecret'],
+        'paidThrough': !exists(json, 'paidThrough') ? undefined : json['paidThrough'],
+        'waived': !exists(json, 'waived') ? undefined : json['waived'],
+        'paidCents': !exists(json, 'paidCents') ? undefined : json['paidCents'],
     };
 }
 
@@ -64,6 +85,9 @@ export function CreateSpatialPropertyLeaseRentResponseDataToJSON(value?: CreateS
     }
     return {
         
+        'requiresAction': value.requiresAction,
+        'paymentId': value.paymentId,
+        'clientSecret': value.clientSecret,
         'paidThrough': value.paidThrough,
         'waived': value.waived,
         'paidCents': value.paidCents,

@@ -50,8 +50,8 @@ export interface CreateWorldInteractiveAssetResponseData {
 * @enum {string}
 */
 export enum CreateWorldInteractiveAssetResponseDataKindEnum {
-    Png = 'png',
     Glb = 'glb',
+    Png = 'png',
     Wav = 'wav'
 }
 

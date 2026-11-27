@@ -69,12 +69,12 @@ export interface ListWeb3SearchTokensItem {
 * @enum {string}
 */
 export enum ListWeb3SearchTokensItemChainEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }
 
 export function ListWeb3SearchTokensItemFromJSON(json: any): ListWeb3SearchTokensItem {

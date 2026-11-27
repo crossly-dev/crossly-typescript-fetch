@@ -56,8 +56,8 @@ export interface GetVaultMarketSetGoalBasketPlanResponseSkipped {
 * @enum {string}
 */
 export enum GetVaultMarketSetGoalBasketPlanResponseSkippedReasonEnum {
-    TooMany = 'too_many',
     NoPrice = 'no_price',
+    TooMany = 'too_many',
     OverBudget = 'over_budget',
     NotChosen = 'not_chosen'
 }

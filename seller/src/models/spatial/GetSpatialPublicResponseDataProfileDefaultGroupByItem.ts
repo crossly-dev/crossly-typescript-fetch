@@ -19,22 +19,22 @@
  */
 export enum GetSpatialPublicResponseDataProfileDefaultGroupByItem {
     brand = 'brand',
+    label = 'label',
+    status = 'status',
+    age = 'age',
     condition = 'condition',
     size = 'size',
-    status = 'status',
-    label = 'label',
     title = 'title',
     valueOption = 'value',
+    set = 'set',
+    team = 'team',
     year = 'year',
     grade = 'grade',
     game = 'game',
-    set = 'set',
     franchise = 'franchise',
-    team = 'team',
     era = 'era',
     genre = 'genre',
     colour = 'colour',
-    age = 'age',
     exhibitor = 'exhibitor'
 }
 

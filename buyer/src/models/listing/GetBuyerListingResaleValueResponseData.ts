@@ -42,7 +42,13 @@ export interface GetBuyerListingResaleValueResponseData {
      * @type {number}
      * @memberof GetBuyerListingResaleValueResponseData
      */
-    buybackDays: number;
+    comps: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerListingResaleValueResponseData
+     */
+    keepsPct?: number | null;
     /**
      * 
      * @type {number}
@@ -54,13 +60,7 @@ export interface GetBuyerListingResaleValueResponseData {
      * @type {number}
      * @memberof GetBuyerListingResaleValueResponseData
      */
-    comps: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetBuyerListingResaleValueResponseData
-     */
-    keepsPct?: number | null;
+    buybackDays: number;
 }
 
 export function GetBuyerListingResaleValueResponseDataFromJSON(json: any): GetBuyerListingResaleValueResponseData {
@@ -76,10 +76,10 @@ export function GetBuyerListingResaleValueResponseDataFromJSONTyped(json: any, i
         'brand': json['brand'],
         'category': json['category'],
         'medianCents': json['medianCents'],
-        'buybackDays': json['buybackDays'],
-        'buybackCents': !exists(json, 'buybackCents') ? undefined : json['buybackCents'],
         'comps': json['comps'],
         'keepsPct': !exists(json, 'keepsPct') ? undefined : json['keepsPct'],
+        'buybackCents': !exists(json, 'buybackCents') ? undefined : json['buybackCents'],
+        'buybackDays': json['buybackDays'],
     };
 }
 
@@ -95,10 +95,10 @@ export function GetBuyerListingResaleValueResponseDataToJSON(value?: GetBuyerLis
         'brand': value.brand,
         'category': value.category,
         'medianCents': value.medianCents,
-        'buybackDays': value.buybackDays,
-        'buybackCents': value.buybackCents,
         'comps': value.comps,
         'keepsPct': value.keepsPct,
+        'buybackCents': value.buybackCents,
+        'buybackDays': value.buybackDays,
     };
 }
 

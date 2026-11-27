@@ -42,6 +42,12 @@ export interface GetMarketProductResponseDataVariants {
      * @type {string}
      * @memberof GetMarketProductResponseDataVariants
      */
+    skuId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMarketProductResponseDataVariants
+     */
     externalId?: string | null;
     /**
      * 
@@ -67,12 +73,6 @@ export interface GetMarketProductResponseDataVariants {
      * @memberof GetMarketProductResponseDataVariants
      */
     tradesCount: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetMarketProductResponseDataVariants
-     */
-    skuId: string;
     /**
      * 
      * @type {Date}
@@ -106,12 +106,12 @@ export function GetMarketProductResponseDataVariantsFromJSONTyped(json: any, ign
         'id': json['id'],
         'label': json['label'],
         'sortKey': json['sortKey'],
+        'skuId': json['skuId'],
         'externalId': !exists(json, 'externalId') ? undefined : json['externalId'],
         'externalSource': !exists(json, 'externalSource') ? undefined : json['externalSource'],
         'externalSyncedAt': !exists(json, 'externalSyncedAt') ? undefined : (json['externalSyncedAt'] === null ? null : new Date(json['externalSyncedAt'])),
         'lastSaleCents': !exists(json, 'lastSaleCents') ? undefined : json['lastSaleCents'],
         'tradesCount': json['tradesCount'],
-        'skuId': json['skuId'],
         'lastSaleAt': !exists(json, 'lastSaleAt') ? undefined : (json['lastSaleAt'] === null ? null : new Date(json['lastSaleAt'])),
         'bestBidCents': !exists(json, 'bestBidCents') ? undefined : json['bestBidCents'],
         'bestAskCents': !exists(json, 'bestAskCents') ? undefined : json['bestAskCents'],
@@ -130,12 +130,12 @@ export function GetMarketProductResponseDataVariantsToJSON(value?: GetMarketProd
         'id': value.id,
         'label': value.label,
         'sortKey': value.sortKey,
+        'skuId': value.skuId,
         'externalId': value.externalId,
         'externalSource': value.externalSource,
         'externalSyncedAt': value.externalSyncedAt === undefined ? undefined : (value.externalSyncedAt === null ? null : value.externalSyncedAt.toISOString()),
         'lastSaleCents': value.lastSaleCents,
         'tradesCount': value.tradesCount,
-        'skuId': value.skuId,
         'lastSaleAt': value.lastSaleAt === undefined ? undefined : (value.lastSaleAt === null ? null : value.lastSaleAt.toISOString()),
         'bestBidCents': value.bestBidCents,
         'bestAskCents': value.bestAskCents,

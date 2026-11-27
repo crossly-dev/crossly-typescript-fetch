@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    CreateInventoryBulkDeleteResponseRefused,
+    CreateInventoryBulkDeleteResponseRefusedFromJSON,
+    CreateInventoryBulkDeleteResponseRefusedFromJSONTyped,
+    CreateInventoryBulkDeleteResponseRefusedToJSON,
+} from './CreateInventoryBulkDeleteResponseRefused';
+
 /**
  * 
  * @export
@@ -21,22 +28,40 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateInventoryBulkDeleteResponse {
     /**
      * 
-     * @type {boolean}
-     * @memberof CreateInventoryBulkDeleteResponse
-     */
-    success: boolean;
-    /**
-     * 
      * @type {number}
      * @memberof CreateInventoryBulkDeleteResponse
      */
     deleted: number;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof CreateInventoryBulkDeleteResponse
+     */
+    deletedIds: Array<string>;
+    /**
+     * Items NOT deleted: a live listing Crossly may not end (action authority).
+     * @type {Array<CreateInventoryBulkDeleteResponseRefused>}
+     * @memberof CreateInventoryBulkDeleteResponse
+     */
+    refused: Array<CreateInventoryBulkDeleteResponseRefused>;
+    /**
+     * Live rows handed to their managing app as delist commands.
+     * @type {number}
+     * @memberof CreateInventoryBulkDeleteResponse
+     */
+    relayed: number;
+    /**
+     * 
      * @type {string}
      * @memberof CreateInventoryBulkDeleteResponse
      */
     bulkJobId: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateInventoryBulkDeleteResponse
+     */
+    success: boolean;
 }
 
 export function CreateInventoryBulkDeleteResponseFromJSON(json: any): CreateInventoryBulkDeleteResponse {
@@ -49,9 +74,12 @@ export function CreateInventoryBulkDeleteResponseFromJSONTyped(json: any, ignore
     }
     return {
         
-        'success': json['success'],
         'deleted': json['deleted'],
+        'deletedIds': json['deletedIds'],
+        'refused': ((json['refused'] as Array<any>).map(CreateInventoryBulkDeleteResponseRefusedFromJSON)),
+        'relayed': json['relayed'],
         'bulkJobId': json['bulkJobId'],
+        'success': json['success'],
     };
 }
 
@@ -64,9 +92,12 @@ export function CreateInventoryBulkDeleteResponseToJSON(value?: CreateInventoryB
     }
     return {
         
-        'success': value.success,
         'deleted': value.deleted,
+        'deletedIds': value.deletedIds,
+        'refused': ((value.refused as Array<any>).map(CreateInventoryBulkDeleteResponseRefusedToJSON)),
+        'relayed': value.relayed,
         'bulkJobId': value.bulkJobId,
+        'success': value.success,
     };
 }
 

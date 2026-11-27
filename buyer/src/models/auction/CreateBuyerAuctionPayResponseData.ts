@@ -33,16 +33,16 @@ export interface CreateBuyerAuctionPayResponseData {
     clientSecret?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof CreateBuyerAuctionPayResponseData
-     */
-    amountCents?: number | null;
-    /**
-     * 
      * @type {string}
      * @memberof CreateBuyerAuctionPayResponseData
      */
     paymentIntentId?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateBuyerAuctionPayResponseData
+     */
+    amountCents?: number | null;
 }
 
 export function CreateBuyerAuctionPayResponseDataFromJSON(json: any): CreateBuyerAuctionPayResponseData {
@@ -57,8 +57,8 @@ export function CreateBuyerAuctionPayResponseDataFromJSONTyped(json: any, ignore
         
         'paid': json['paid'],
         'clientSecret': !exists(json, 'clientSecret') ? undefined : json['clientSecret'],
-        'amountCents': !exists(json, 'amountCents') ? undefined : json['amountCents'],
         'paymentIntentId': !exists(json, 'paymentIntentId') ? undefined : json['paymentIntentId'],
+        'amountCents': !exists(json, 'amountCents') ? undefined : json['amountCents'],
     };
 }
 
@@ -73,8 +73,8 @@ export function CreateBuyerAuctionPayResponseDataToJSON(value?: CreateBuyerAucti
         
         'paid': value.paid,
         'clientSecret': value.clientSecret,
-        'amountCents': value.amountCents,
         'paymentIntentId': value.paymentIntentId,
+        'amountCents': value.amountCents,
     };
 }
 

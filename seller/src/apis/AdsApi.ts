@@ -21,6 +21,21 @@ import {
     CreateAdOffsiteResumeResponse,
     CreateAdOffsiteResumeResponseFromJSON,
     CreateAdOffsiteResumeResponseToJSON,
+    CreateListingAdBulkAddResponse,
+    CreateListingAdBulkAddResponseFromJSON,
+    CreateListingAdBulkAddResponseToJSON,
+    CreateListingAdCampaignListingResponse,
+    CreateListingAdCampaignListingResponseFromJSON,
+    CreateListingAdCampaignListingResponseToJSON,
+    CreateListingAdCampaignResponse,
+    CreateListingAdCampaignResponseFromJSON,
+    CreateListingAdCampaignResponseToJSON,
+    CreateSponsoredAdBillingTopupLinkResponse,
+    CreateSponsoredAdBillingTopupLinkResponseFromJSON,
+    CreateSponsoredAdBillingTopupLinkResponseToJSON,
+    CreateSponsoredAdBoostRemoveResponse,
+    CreateSponsoredAdBoostRemoveResponseFromJSON,
+    CreateSponsoredAdBoostRemoveResponseToJSON,
     GetAdOffsiteEligibilityResponse,
     GetAdOffsiteEligibilityResponseFromJSON,
     GetAdOffsiteEligibilityResponseToJSON,
@@ -30,10 +45,118 @@ import {
     GetAdOffsiteResponse,
     GetAdOffsiteResponseFromJSON,
     GetAdOffsiteResponseToJSON,
+    GetListingAdListingResponse,
+    GetListingAdListingResponseFromJSON,
+    GetListingAdListingResponseToJSON,
+    GetSponsoredAdBillingResponse,
+    GetSponsoredAdBillingResponseFromJSON,
+    GetSponsoredAdBillingResponseToJSON,
+    GetSponsoredAdBillingStatementResponse,
+    GetSponsoredAdBillingStatementResponseFromJSON,
+    GetSponsoredAdBillingStatementResponseToJSON,
+    GetSponsoredAdFundResponse,
+    GetSponsoredAdFundResponseFromJSON,
+    GetSponsoredAdFundResponseToJSON,
+    GetSponsoredAdReportResponse,
+    GetSponsoredAdReportResponseFromJSON,
+    GetSponsoredAdReportResponseToJSON,
+    ListListingAdCampaignsResponse,
+    ListListingAdCampaignsResponseFromJSON,
+    ListListingAdCampaignsResponseToJSON,
+    ListListingAdPlatformsResponse,
+    ListListingAdPlatformsResponseFromJSON,
+    ListListingAdPlatformsResponseToJSON,
+    ListSponsoredAdBillingHistoryResponse,
+    ListSponsoredAdBillingHistoryResponseFromJSON,
+    ListSponsoredAdBillingHistoryResponseToJSON,
+    ListSponsoredAdBillingStatementsResponse,
+    ListSponsoredAdBillingStatementsResponseFromJSON,
+    ListSponsoredAdBillingStatementsResponseToJSON,
+    ListSponsoredAdBoostsResponse,
+    ListSponsoredAdBoostsResponseFromJSON,
+    ListSponsoredAdBoostsResponseToJSON,
+    ListSponsoredAdCampaignsResponse,
+    ListSponsoredAdCampaignsResponseFromJSON,
+    ListSponsoredAdCampaignsResponseToJSON,
+    ListSponsoredAdListingsResponse,
+    ListSponsoredAdListingsResponseFromJSON,
+    ListSponsoredAdListingsResponseToJSON,
+    SponsoredAdCampaignResponse,
+    SponsoredAdCampaignResponseFromJSON,
+    SponsoredAdCampaignResponseToJSON,
+    SponsoredAdResponse,
+    SponsoredAdResponseFromJSON,
+    SponsoredAdResponseToJSON,
     UpdateAdOffsiteResponse,
     UpdateAdOffsiteResponseFromJSON,
     UpdateAdOffsiteResponseToJSON,
+    UpdateListingAdListingRateResponse,
+    UpdateListingAdListingRateResponseFromJSON,
+    UpdateListingAdListingRateResponseToJSON,
+    UpdateSponsoredAdBoostResponse,
+    UpdateSponsoredAdBoostResponseFromJSON,
+    UpdateSponsoredAdBoostResponseToJSON,
 } from '../models';
+
+export interface CreateListingAdCampaignRequest {
+    platform: string;
+}
+
+export interface CreateListingAdCampaignListingRequest {
+    platform: string;
+    campaignId: string;
+}
+
+export interface CreateListingAdCampaignListingRemoveRequest {
+    platform: string;
+    campaignId: string;
+}
+
+export interface CreateSponsoredAdCampaignDuplicateRequest {
+    id: string;
+}
+
+export interface CreateSponsoredAdCampaignStatusRequest {
+    id: string;
+}
+
+export interface GetListingAdListingRequest {
+    listingId: string;
+}
+
+export interface GetSponsoredAdBillingStatementRequest {
+    month: string;
+}
+
+export interface GetSponsoredAdBillingStatementPdfRequest {
+    month: string;
+}
+
+export interface GetSponsoredAdBillingTopupReceiptRequest {
+    id: string;
+}
+
+export interface GetSponsoredAdCampaignRequest {
+    id: string;
+}
+
+export interface ListListingAdCampaignsRequest {
+    platform: string;
+}
+
+export interface UpdateListingAdCampaignRequest {
+    platform: string;
+    campaignId: string;
+}
+
+export interface UpdateListingAdListingRateRequest {
+    platform: string;
+    platformListingId: string;
+}
+
+export interface UpdateSponsoredAdCampaignRequest {
+    id: string;
+}
 
 /**
  * 
@@ -109,6 +232,340 @@ export class AdsApi extends runtime.BaseAPI {
      */
     async createAdOffsiteResume(initOverrides?: RequestInit): Promise<CreateAdOffsiteResumeResponse> {
         const response = await this.createAdOffsiteResumeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Add listings to a campaign by master listing id: each listing\'s live row on `platform` joins campaignId (a Crossly campaign uuid, or the marketplace\'s campaign id). A listing not live there is its own failed result.
+     */
+    async createListingAdBulkAddRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdBulkAddResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/bulk-add`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdBulkAddResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Add listings to a campaign by master listing id: each listing\'s live row on `platform` joins campaignId (a Crossly campaign uuid, or the marketplace\'s campaign id). A listing not live there is its own failed result.
+     */
+    async createListingAdBulkAdd(initOverrides?: RequestInit): Promise<CreateListingAdBulkAddResponse> {
+        const response = await this.createListingAdBulkAddRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Create a campaign on the marketplace: program (promoted_listing_rate = eBay General, a % of the sale; cpc_campaign = eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
+     */
+    async createListingAdCampaignRaw(requestParameters: CreateListingAdCampaignRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling createListingAdCampaign.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/{platform}/campaigns`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdCampaignResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create a campaign on the marketplace: program (promoted_listing_rate = eBay General, a % of the sale; cpc_campaign = eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
+     */
+    async createListingAdCampaign(requestParameters: CreateListingAdCampaignRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignResponse> {
+        const response = await this.createListingAdCampaignRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
+     */
+    async createListingAdCampaignListingRaw(requestParameters: CreateListingAdCampaignListingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignListingResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling createListingAdCampaignListing.');
+        }
+
+        if (requestParameters.campaignId === null || requestParameters.campaignId === undefined) {
+            throw new runtime.RequiredError('campaignId','Required parameter requestParameters.campaignId was null or undefined when calling createListingAdCampaignListing.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/{platform}/campaigns/{campaignId}/listings`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))).replace(`{${"campaignId"}}`, encodeURIComponent(String(requestParameters.campaignId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdCampaignListingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
+     */
+    async createListingAdCampaignListing(requestParameters: CreateListingAdCampaignListingRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignListingResponse> {
+        const response = await this.createListingAdCampaignListingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Stop promoting listings in a marketplace campaign. One result per listing.
+     */
+    async createListingAdCampaignListingRemoveRaw(requestParameters: CreateListingAdCampaignListingRemoveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignListingResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling createListingAdCampaignListingRemove.');
+        }
+
+        if (requestParameters.campaignId === null || requestParameters.campaignId === undefined) {
+            throw new runtime.RequiredError('campaignId','Required parameter requestParameters.campaignId was null or undefined when calling createListingAdCampaignListingRemove.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/{platform}/campaigns/{campaignId}/listings/remove`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))).replace(`{${"campaignId"}}`, encodeURIComponent(String(requestParameters.campaignId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdCampaignListingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Stop promoting listings in a marketplace campaign. One result per listing.
+     */
+    async createListingAdCampaignListingRemove(requestParameters: CreateListingAdCampaignListingRemoveRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignListingResponse> {
+        const response = await this.createListingAdCampaignListingRemoveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
+     */
+    async createSponsoredAdBillingTopupLinkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/billing/topup-link`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateSponsoredAdBillingTopupLinkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
+     */
+    async createSponsoredAdBillingTopupLink(initOverrides?: RequestInit): Promise<CreateSponsoredAdBillingTopupLinkResponse> {
+        const response = await this.createSponsoredAdBillingTopupLinkRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Stop boosting listings in bulk.
+     */
+    async createSponsoredAdBoostRemoveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSponsoredAdBoostRemoveResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/boosts/remove`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateSponsoredAdBoostRemoveResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Stop boosting listings in bulk.
+     */
+    async createSponsoredAdBoostRemove(initOverrides?: RequestInit): Promise<CreateSponsoredAdBoostRemoveResponse> {
+        const response = await this.createSponsoredAdBoostRemoveRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Create a Sponsored Listings campaign: name, dailyBudgetCents (≥100), optional totalBudgetCents, defaultBidCents (5–10000; the max bid under bidStrategy \"auto\"), placements (search, browse, product_page, home_rail, storefront, worlds_surface), goal (sales | visits), optional targetCategories / targetRegions (ISO countries) / targetDevices (mobile, desktop, app), optional startsAt/endsAt, listings [{platformListingId, bidCents?, boostBps? (100–2000, pay-on-sale Boost; null clears)}], keywords [{keyword, matchType broad|phrase|exact, negative?, bidCents?}], worldTargets [{kind showroom|convention, id, bidCents?, status?}] (your showroom or a convention you host, promoted in the Crossly World directory; at least one listing or world target), status active|draft. A catalog boost: targetType \"wholesale_catalog\" + targetCatalogId (your catalog), no listings, keywords or world targets; it ranks Sponsored in the wholesale directory. bidStrategy defaults to your account default. Clicks are charged from your ad funds (ad balance and/or CBX, ad credit first); with none it waits as out_of_budget.
+     */
+    async createSponsoredAdCampaignRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdCampaignResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/campaigns`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdCampaignResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create a Sponsored Listings campaign: name, dailyBudgetCents (≥100), optional totalBudgetCents, defaultBidCents (5–10000; the max bid under bidStrategy \"auto\"), placements (search, browse, product_page, home_rail, storefront, worlds_surface), goal (sales | visits), optional targetCategories / targetRegions (ISO countries) / targetDevices (mobile, desktop, app), optional startsAt/endsAt, listings [{platformListingId, bidCents?, boostBps? (100–2000, pay-on-sale Boost; null clears)}], keywords [{keyword, matchType broad|phrase|exact, negative?, bidCents?}], worldTargets [{kind showroom|convention, id, bidCents?, status?}] (your showroom or a convention you host, promoted in the Crossly World directory; at least one listing or world target), status active|draft. A catalog boost: targetType \"wholesale_catalog\" + targetCatalogId (your catalog), no listings, keywords or world targets; it ranks Sponsored in the wholesale directory. bidStrategy defaults to your account default. Clicks are charged from your ad funds (ad balance and/or CBX, ad credit first); with none it waits as out_of_budget.
+     */
+    async createSponsoredAdCampaign(initOverrides?: RequestInit): Promise<SponsoredAdCampaignResponse> {
+        const response = await this.createSponsoredAdCampaignRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Copy a campaign (settings, listings, keywords) as a new draft.
+     */
+    async createSponsoredAdCampaignDuplicateRaw(requestParameters: CreateSponsoredAdCampaignDuplicateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdCampaignResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSponsoredAdCampaignDuplicate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/campaigns/{id}/duplicate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdCampaignResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Copy a campaign (settings, listings, keywords) as a new draft.
+     */
+    async createSponsoredAdCampaignDuplicate(requestParameters: CreateSponsoredAdCampaignDuplicateRequest, initOverrides?: RequestInit): Promise<SponsoredAdCampaignResponse> {
+        const response = await this.createSponsoredAdCampaignDuplicateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set a campaign active (launch/resume), paused, or ended (final). Resuming with no ad funds to pay for clicks leaves it out_of_budget until you top up.
+     */
+    async createSponsoredAdCampaignStatusRaw(requestParameters: CreateSponsoredAdCampaignStatusRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdCampaignResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSponsoredAdCampaignStatus.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/campaigns/{id}/status`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdCampaignResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set a campaign active (launch/resume), paused, or ended (final). Resuming with no ad funds to pay for clicks leaves it out_of_budget until you top up.
+     */
+    async createSponsoredAdCampaignStatus(requestParameters: CreateSponsoredAdCampaignStatusRequest, initOverrides?: RequestInit): Promise<SponsoredAdCampaignResponse> {
+        const response = await this.createSponsoredAdCampaignStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -221,6 +678,574 @@ export class AdsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Every promotion of one listing: its Crossly campaigns and Boost, and each marketplace ad with status, campaign, rate and last sync.
+     */
+    async getListingAdListingRaw(requestParameters: GetListingAdListingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetListingAdListingResponse>> {
+        if (requestParameters.listingId === null || requestParameters.listingId === undefined) {
+            throw new runtime.RequiredError('listingId','Required parameter requestParameters.listingId was null or undefined when calling getListingAdListing.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/listings/{listingId}`.replace(`{${"listingId"}}`, encodeURIComponent(String(requestParameters.listingId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetListingAdListingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every promotion of one listing: its Crossly campaigns and Boost, and each marketplace ad with status, campaign, rate and last sync.
+     */
+    async getListingAdListing(requestParameters: GetListingAdListingRequest, initOverrides?: RequestInit): Promise<GetListingAdListingResponse> {
+        const response = await this.getListingAdListingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh=true re-reads the balance.
+     */
+    async getSponsoredAdBillingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdBillingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/billing`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetSponsoredAdBillingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh=true re-reads the balance.
+     */
+    async getSponsoredAdBilling(initOverrides?: RequestInit): Promise<GetSponsoredAdBillingResponse> {
+        const response = await this.getSponsoredAdBillingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One month\'s ads statement: opening and closing ad balance, top-ups, click spend by campaign, how clicks were paid, credits, refunds and Boost fees.
+     */
+    async getSponsoredAdBillingStatementRaw(requestParameters: GetSponsoredAdBillingStatementRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdBillingStatementResponse>> {
+        if (requestParameters.month === null || requestParameters.month === undefined) {
+            throw new runtime.RequiredError('month','Required parameter requestParameters.month was null or undefined when calling getSponsoredAdBillingStatement.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/billing/statements/{month}`.replace(`{${"month"}}`, encodeURIComponent(String(requestParameters.month))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetSponsoredAdBillingStatementResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One month\'s ads statement: opening and closing ad balance, top-ups, click spend by campaign, how clicks were paid, credits, refunds and Boost fees.
+     */
+    async getSponsoredAdBillingStatement(requestParameters: GetSponsoredAdBillingStatementRequest, initOverrides?: RequestInit): Promise<GetSponsoredAdBillingStatementResponse> {
+        const response = await this.getSponsoredAdBillingStatementRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One month\'s ads statement as a PDF.
+     */
+    async getSponsoredAdBillingStatementPdfRaw(requestParameters: GetSponsoredAdBillingStatementPdfRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Blob>> {
+        if (requestParameters.month === null || requestParameters.month === undefined) {
+            throw new runtime.RequiredError('month','Required parameter requestParameters.month was null or undefined when calling getSponsoredAdBillingStatementPdf.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/billing/statements/{month}/pdf`.replace(`{${"month"}}`, encodeURIComponent(String(requestParameters.month))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.BlobApiResponse(response);
+    }
+
+    /**
+     * One month\'s ads statement as a PDF.
+     */
+    async getSponsoredAdBillingStatementPdf(requestParameters: GetSponsoredAdBillingStatementPdfRequest, initOverrides?: RequestInit): Promise<Blob> {
+        const response = await this.getSponsoredAdBillingStatementPdfRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One ad balance top-up\'s receipt as a PDF (each top-up in the billing history carries its id and receipt number).
+     */
+    async getSponsoredAdBillingTopupReceiptRaw(requestParameters: GetSponsoredAdBillingTopupReceiptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Blob>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getSponsoredAdBillingTopupReceipt.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/billing/topups/{id}/receipt`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.BlobApiResponse(response);
+    }
+
+    /**
+     * One ad balance top-up\'s receipt as a PDF (each top-up in the billing history carries its id and receipt number).
+     */
+    async getSponsoredAdBillingTopupReceipt(requestParameters: GetSponsoredAdBillingTopupReceiptRequest, initOverrides?: RequestInit): Promise<Blob> {
+        const response = await this.getSponsoredAdBillingTopupReceiptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has `catalogs`: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS.
+     */
+    async getSponsoredAdCampaignRaw(requestParameters: GetSponsoredAdCampaignRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdCampaignResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getSponsoredAdCampaign.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/campaigns/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdCampaignResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has `catalogs`: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS.
+     */
+    async getSponsoredAdCampaign(requestParameters: GetSponsoredAdCampaignRequest, initOverrides?: RequestInit): Promise<SponsoredAdCampaignResponse> {
+        const response = await this.getSponsoredAdCampaignRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh=true re-reads CBX.
+     */
+    async getSponsoredAdFundRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdFundResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/funds`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetSponsoredAdFundResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh=true re-reads CBX.
+     */
+    async getSponsoredAdFund(initOverrides?: RequestInit): Promise<GetSponsoredAdFundResponse> {
+        const response = await this.getSponsoredAdFundRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and `catalogs`, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
+     */
+    async getSponsoredAdReportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdReportResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/report`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetSponsoredAdReportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and `catalogs`, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
+     */
+    async getSponsoredAdReport(initOverrides?: RequestInit): Promise<GetSponsoredAdReportResponse> {
+        const response = await this.getSponsoredAdReportRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ads quick settings: adsPaused, accountDailyCapCents and spentTodayCents, defaultBidStrategy, autoTopup.
+     */
+    async getSponsoredAdSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/settings`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ads quick settings: adsPaused, accountDailyCapCents and spentTodayCents, defaultBidStrategy, autoTopup.
+     */
+    async getSponsoredAdSetting(initOverrides?: RequestInit): Promise<SponsoredAdResponse> {
+        const response = await this.getSponsoredAdSettingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your ad campaigns on one marketplace (cached up to 15 minutes; refresh=true asks the marketplace now).
+     */
+    async listListingAdCampaignsRaw(requestParameters: ListListingAdCampaignsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingAdCampaignsResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling listListingAdCampaigns.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/{platform}/campaigns`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListListingAdCampaignsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your ad campaigns on one marketplace (cached up to 15 minutes; refresh=true asks the marketplace now).
+     */
+    async listListingAdCampaigns(requestParameters: ListListingAdCampaignsRequest, initOverrides?: RequestInit): Promise<ListListingAdCampaignsResponse> {
+        const response = await this.listListingAdCampaignsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The ads registry: each marketplace that sells promotion, its programs (kind, scope, campaign and listing fields), which verbs are wired / need a capture / are unsupported, and whether you are connected there.
+     */
+    async listListingAdPlatformsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingAdPlatformsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/platforms`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListListingAdPlatformsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The ads registry: each marketplace that sells promotion, its programs (kind, scope, campaign and listing fields), which verbs are wired / need a capture / are unsupported, and whether you are connected there.
+     */
+    async listListingAdPlatforms(initOverrides?: RequestInit): Promise<ListListingAdPlatformsResponse> {
+        const response = await this.listListingAdPlatformsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
+     */
+    async listSponsoredAdBillingHistoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdBillingHistoryResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/billing/history`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListSponsoredAdBillingHistoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
+     */
+    async listSponsoredAdBillingHistory(initOverrides?: RequestInit): Promise<ListSponsoredAdBillingHistoryResponse> {
+        const response = await this.listSponsoredAdBillingHistoryRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Months (YYYY-MM) with any ad billing activity, newest first.
+     */
+    async listSponsoredAdBillingStatementsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdBillingStatementsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/billing/statements`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListSponsoredAdBillingStatementsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Months (YYYY-MM) with any ad billing activity, newest first.
+     */
+    async listSponsoredAdBillingStatements(initOverrides?: RequestInit): Promise<ListSponsoredAdBillingStatementsResponse> {
+        const response = await this.listSponsoredAdBillingStatementsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Boosted (pay-on-sale) listings: the rate, sales and fees taken so far. A boost lifts organic ranking by up to 10% and costs its rate only when the listing sells on Crossly.
+     */
+    async listSponsoredAdBoostsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdBoostsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/boosts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListSponsoredAdBoostsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Boosted (pay-on-sale) listings: the rate, sales and fees taken so far. A boost lifts organic ranking by up to 10% and costs its rate only when the listing sells on Crossly.
+     */
+    async listSponsoredAdBoosts(initOverrides?: RequestInit): Promise<ListSponsoredAdBoostsResponse> {
+        const response = await this.listSponsoredAdBoostsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
+     */
+    async listSponsoredAdCampaignsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdCampaignsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/campaigns`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListSponsoredAdCampaignsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
+     */
+    async listSponsoredAdCampaigns(initOverrides?: RequestInit): Promise<ListSponsoredAdCampaignsResponse> {
+        const response = await this.listSponsoredAdCampaignsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
+     */
+    async listSponsoredAdListingsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdListingsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/listings`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListSponsoredAdListingsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
+     */
+    async listSponsoredAdListings(initOverrides?: RequestInit): Promise<ListSponsoredAdListingsResponse> {
+        const response = await this.listSponsoredAdListingsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * The toggle. Nothing else in the system sets `enabled` — no onboarding default, no bulk enable, no admin override. `maxOffsiteShareBps` caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. `minReturnBps` sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE\'s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
      * Turn offsite ads on or off. Yours alone to set.
      */
@@ -253,6 +1278,230 @@ export class AdsApi extends runtime.BaseAPI {
      */
     async updateAdOffsite(initOverrides?: RequestInit): Promise<UpdateAdOffsiteResponse> {
         const response = await this.updateAdOffsiteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
+     */
+    async updateListingAdCampaignRaw(requestParameters: UpdateListingAdCampaignRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling updateListingAdCampaign.');
+        }
+
+        if (requestParameters.campaignId === null || requestParameters.campaignId === undefined) {
+            throw new runtime.RequiredError('campaignId','Required parameter requestParameters.campaignId was null or undefined when calling updateListingAdCampaign.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/{platform}/campaigns/{campaignId}`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))).replace(`{${"campaignId"}}`, encodeURIComponent(String(requestParameters.campaignId))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdCampaignResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
+     */
+    async updateListingAdCampaign(requestParameters: UpdateListingAdCampaignRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignResponse> {
+        const response = await this.updateListingAdCampaignRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change one promoted listing\'s ad rate (percent of the sale) in the campaign it is in.
+     */
+    async updateListingAdListingRateRaw(requestParameters: UpdateListingAdListingRateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateListingAdListingRateResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling updateListingAdListingRate.');
+        }
+
+        if (requestParameters.platformListingId === null || requestParameters.platformListingId === undefined) {
+            throw new runtime.RequiredError('platformListingId','Required parameter requestParameters.platformListingId was null or undefined when calling updateListingAdListingRate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listing-ads/{platform}/listings/{platformListingId}/rate`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))).replace(`{${"platformListingId"}}`, encodeURIComponent(String(requestParameters.platformListingId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateListingAdListingRateResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change one promoted listing\'s ad rate (percent of the sale) in the campaign it is in.
+     */
+    async updateListingAdListingRate(requestParameters: UpdateListingAdListingRateRequest, initOverrides?: RequestInit): Promise<UpdateListingAdListingRateResponse> {
+        const response = await this.updateListingAdListingRateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
+     */
+    async updateSponsoredAdBillingAutoTopupRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/billing/auto-topup`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
+     */
+    async updateSponsoredAdBillingAutoTopup(initOverrides?: RequestInit): Promise<SponsoredAdResponse> {
+        const response = await this.updateSponsoredAdBillingAutoTopupRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Boost listings in bulk (platformListingIds, upliftBps 100–2000 = 1–20%), or change their rate. Your own live Crossly listings only.
+     */
+    async updateSponsoredAdBoostRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSponsoredAdBoostResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/boosts`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateSponsoredAdBoostResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Boost listings in bulk (platformListingIds, upliftBps 100–2000 = 1–20%), or change their rate. Your own live Crossly listings only.
+     */
+    async updateSponsoredAdBoost(initOverrides?: RequestInit): Promise<UpdateSponsoredAdBoostResponse> {
+        const response = await this.updateSponsoredAdBoostRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit a campaign. Any of the create fields; listings and keywords, when given, replace the current set. Raising the total budget resumes a campaign stopped by it.
+     */
+    async updateSponsoredAdCampaignRaw(requestParameters: UpdateSponsoredAdCampaignRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdCampaignResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSponsoredAdCampaign.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/campaigns/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdCampaignResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit a campaign. Any of the create fields; listings and keywords, when given, replace the current set. Raising the total budget resumes a campaign stopped by it.
+     */
+    async updateSponsoredAdCampaign(requestParameters: UpdateSponsoredAdCampaignRequest, initOverrides?: RequestInit): Promise<SponsoredAdCampaignResponse> {
+        const response = await this.updateSponsoredAdCampaignRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change ads quick settings: adsPaused (pause / resume every ad), accountDailyCapCents (null = no cap), defaultBidStrategy (auto | manual) for new campaigns, autoTopup {enabled, thresholdCents?, amountCents?}, railPreference (cash_first | cbx_first, both rails live only).
+     */
+    async updateSponsoredAdSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sponsored-ads/settings`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change ads quick settings: adsPaused (pause / resume every ad), accountDailyCapCents (null = no cap), defaultBidStrategy (auto | manual) for new campaigns, autoTopup {enabled, thresholdCents?, amountCents?}, railPreference (cash_first | cbx_first, both rails live only).
+     */
+    async updateSponsoredAdSetting(initOverrides?: RequestInit): Promise<SponsoredAdResponse> {
+        const response = await this.updateSponsoredAdSettingRaw(initOverrides);
         return await response.value();
     }
 

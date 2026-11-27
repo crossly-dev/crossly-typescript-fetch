@@ -30,13 +30,13 @@ export interface CreateVaultMarketAlertPrefTestResponsePlan {
      * @type {string}
      * @memberof CreateVaultMarketAlertPrefTestResponsePlan
      */
-    webhook: CreateVaultMarketAlertPrefTestResponsePlanWebhookEnum;
+    push: CreateVaultMarketAlertPrefTestResponsePlanPushEnum;
     /**
      * 
      * @type {string}
      * @memberof CreateVaultMarketAlertPrefTestResponsePlan
      */
-    push: CreateVaultMarketAlertPrefTestResponsePlanPushEnum;
+    webhook: CreateVaultMarketAlertPrefTestResponsePlanWebhookEnum;
     /**
      * 
      * @type {string}
@@ -64,7 +64,7 @@ export enum CreateVaultMarketAlertPrefTestResponsePlanEmailEnum {
 * @export
 * @enum {string}
 */
-export enum CreateVaultMarketAlertPrefTestResponsePlanWebhookEnum {
+export enum CreateVaultMarketAlertPrefTestResponsePlanPushEnum {
     Unavailable = 'unavailable',
     Off = 'off',
     Send = 'send',
@@ -73,7 +73,7 @@ export enum CreateVaultMarketAlertPrefTestResponsePlanWebhookEnum {
 * @export
 * @enum {string}
 */
-export enum CreateVaultMarketAlertPrefTestResponsePlanPushEnum {
+export enum CreateVaultMarketAlertPrefTestResponsePlanWebhookEnum {
     Unavailable = 'unavailable',
     Off = 'off',
     Send = 'send',
@@ -109,8 +109,8 @@ export function CreateVaultMarketAlertPrefTestResponsePlanFromJSONTyped(json: an
     return {
         
         'email': json['email'],
-        'webhook': json['webhook'],
         'push': json['push'],
+        'webhook': json['webhook'],
         'telegram': json['telegram'],
         'terminal': json['terminal'],
     };
@@ -126,8 +126,8 @@ export function CreateVaultMarketAlertPrefTestResponsePlanToJSON(value?: CreateV
     return {
         
         'email': value.email,
-        'webhook': value.webhook,
         'push': value.push,
+        'webhook': value.webhook,
         'telegram': value.telegram,
         'terminal': value.terminal,
     };

@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetMainStageResponseStreamLot,
+    GetMainStageResponseStreamLotFromJSON,
+    GetMainStageResponseStreamLotFromJSONTyped,
+    GetMainStageResponseStreamLotToJSON,
+} from './GetMainStageResponseStreamLot';
+
 /**
  * The live event's screen: a lineup host's stream while they are on air.
  * @export
@@ -49,6 +56,12 @@ export interface GetMainStageResponseStream {
      * @memberof GetMainStageResponseStream
      */
     host?: string | null;
+    /**
+     * 
+     * @type {GetMainStageResponseStreamLot}
+     * @memberof GetMainStageResponseStream
+     */
+    lot?: GetMainStageResponseStreamLot | null;
 }
 
 export function GetMainStageResponseStreamFromJSON(json: any): GetMainStageResponseStream {
@@ -66,6 +79,7 @@ export function GetMainStageResponseStreamFromJSONTyped(json: any, ignoreDiscrim
         'playbackUrl': !exists(json, 'playbackUrl') ? undefined : json['playbackUrl'],
         'coverImageUrl': !exists(json, 'coverImageUrl') ? undefined : json['coverImageUrl'],
         'host': !exists(json, 'host') ? undefined : json['host'],
+        'lot': !exists(json, 'lot') ? undefined : GetMainStageResponseStreamLotFromJSON(json['lot']),
     };
 }
 
@@ -83,6 +97,7 @@ export function GetMainStageResponseStreamToJSON(value?: GetMainStageResponseStr
         'playbackUrl': value.playbackUrl,
         'coverImageUrl': value.coverImageUrl,
         'host': value.host,
+        'lot': GetMainStageResponseStreamLotToJSON(value.lot),
     };
 }
 

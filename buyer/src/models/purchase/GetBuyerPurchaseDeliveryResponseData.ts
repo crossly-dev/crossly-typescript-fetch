@@ -30,13 +30,13 @@ export interface GetBuyerPurchaseDeliveryResponseData {
      * @type {string}
      * @memberof GetBuyerPurchaseDeliveryResponseData
      */
-    carrier?: string | null;
+    trackingNumber?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerPurchaseDeliveryResponseData
      */
-    trackingNumber?: string | null;
+    carrier?: string | null;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -56,8 +56,8 @@ export function GetBuyerPurchaseDeliveryResponseDataFromJSONTyped(json: any, ign
     return {
         
         'pickupPoint': !exists(json, 'pickupPoint') ? undefined : json['pickupPoint'],
-        'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
         'trackingNumber': !exists(json, 'trackingNumber') ? undefined : json['trackingNumber'],
+        'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
         'consolidation': !exists(json, 'consolidation') ? undefined : json['consolidation'],
     };
 }
@@ -72,8 +72,8 @@ export function GetBuyerPurchaseDeliveryResponseDataToJSON(value?: GetBuyerPurch
     return {
         
         'pickupPoint': value.pickupPoint,
-        'carrier': value.carrier,
         'trackingNumber': value.trackingNumber,
+        'carrier': value.carrier,
         'consolidation': value.consolidation,
     };
 }

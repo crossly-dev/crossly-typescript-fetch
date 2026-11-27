@@ -51,16 +51,22 @@ export interface GetWeb3CollectionResponseCollection {
     slug?: string | null;
     /**
      * 
-     * @type {Date}
-     * @memberof GetWeb3CollectionResponseCollection
-     */
-    hiddenAt?: Date | null;
-    /**
-     * 
      * @type {string}
      * @memberof GetWeb3CollectionResponseCollection
      */
     imageUrl?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetWeb3CollectionResponseCollection
+     */
+    verified: boolean;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetWeb3CollectionResponseCollection
+     */
+    hiddenAt?: Date | null;
     /**
      * 
      * @type {Date}
@@ -87,12 +93,6 @@ export interface GetWeb3CollectionResponseCollection {
     contract: string;
     /**
      * 
-     * @type {Date}
-     * @memberof GetWeb3CollectionResponseCollection
-     */
-    firstSeenAt: Date;
-    /**
-     * 
      * @type {string}
      * @memberof GetWeb3CollectionResponseCollection
      */
@@ -111,6 +111,12 @@ export interface GetWeb3CollectionResponseCollection {
     featuredRank?: number | null;
     /**
      * 
+     * @type {Date}
+     * @memberof GetWeb3CollectionResponseCollection
+     */
+    firstSeenAt: Date;
+    /**
+     * 
      * @type {string}
      * @memberof GetWeb3CollectionResponseCollection
      */
@@ -127,12 +133,6 @@ export interface GetWeb3CollectionResponseCollection {
      * @memberof GetWeb3CollectionResponseCollection
      */
     discord?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetWeb3CollectionResponseCollection
-     */
-    verified: boolean;
     /**
      * 
      * @type {number}
@@ -216,20 +216,20 @@ export function GetWeb3CollectionResponseCollectionFromJSONTyped(json: any, igno
         'description': !exists(json, 'description') ? undefined : json['description'],
         'category': !exists(json, 'category') ? undefined : json['category'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
-        'hiddenAt': !exists(json, 'hiddenAt') ? undefined : (json['hiddenAt'] === null ? null : new Date(json['hiddenAt'])),
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
+        'verified': json['verified'],
+        'hiddenAt': !exists(json, 'hiddenAt') ? undefined : (json['hiddenAt'] === null ? null : new Date(json['hiddenAt'])),
         'refreshedAt': (new Date(json['refreshedAt'])),
         'externalUrl': !exists(json, 'externalUrl') ? undefined : json['externalUrl'],
         'chain': json['chain'],
         'contract': json['contract'],
-        'firstSeenAt': (new Date(json['firstSeenAt'])),
         'tokenType': !exists(json, 'tokenType') ? undefined : json['tokenType'],
         'totalSupply': !exists(json, 'totalSupply') ? undefined : json['totalSupply'],
         'featuredRank': !exists(json, 'featuredRank') ? undefined : json['featuredRank'],
+        'firstSeenAt': (new Date(json['firstSeenAt'])),
         'bannerUrl': !exists(json, 'bannerUrl') ? undefined : json['bannerUrl'],
         'twitter': !exists(json, 'twitter') ? undefined : json['twitter'],
         'discord': !exists(json, 'discord') ? undefined : json['discord'],
-        'verified': json['verified'],
         'deployedBlock': !exists(json, 'deployedBlock') ? undefined : json['deployedBlock'],
         'collectors': json['collectors'],
         'indexedAt': !exists(json, 'indexedAt') ? undefined : (json['indexedAt'] === null ? null : new Date(json['indexedAt'])),
@@ -258,20 +258,20 @@ export function GetWeb3CollectionResponseCollectionToJSON(value?: GetWeb3Collect
         'description': value.description,
         'category': value.category,
         'slug': value.slug,
-        'hiddenAt': value.hiddenAt === undefined ? undefined : (value.hiddenAt === null ? null : value.hiddenAt.toISOString()),
         'imageUrl': value.imageUrl,
+        'verified': value.verified,
+        'hiddenAt': value.hiddenAt === undefined ? undefined : (value.hiddenAt === null ? null : value.hiddenAt.toISOString()),
         'refreshedAt': (value.refreshedAt.toISOString()),
         'externalUrl': value.externalUrl,
         'chain': value.chain,
         'contract': value.contract,
-        'firstSeenAt': (value.firstSeenAt.toISOString()),
         'tokenType': value.tokenType,
         'totalSupply': value.totalSupply,
         'featuredRank': value.featuredRank,
+        'firstSeenAt': (value.firstSeenAt.toISOString()),
         'bannerUrl': value.bannerUrl,
         'twitter': value.twitter,
         'discord': value.discord,
-        'verified': value.verified,
         'deployedBlock': value.deployedBlock,
         'collectors': value.collectors,
         'indexedAt': value.indexedAt === undefined ? undefined : (value.indexedAt === null ? null : value.indexedAt.toISOString()),

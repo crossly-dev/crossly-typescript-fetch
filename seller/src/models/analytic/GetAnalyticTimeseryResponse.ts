@@ -34,10 +34,26 @@ export interface GetAnalyticTimeseryResponse {
     days: number;
     /**
      * 
+     * @type {string}
+     * @memberof GetAnalyticTimeseryResponse
+     */
+    granularity: GetAnalyticTimeseryResponseGranularityEnum;
+    /**
+     * 
      * @type {Array<GetAnalyticTimeseryResponseSeries>}
      * @memberof GetAnalyticTimeseryResponse
      */
     series: Array<GetAnalyticTimeseryResponseSeries>;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum GetAnalyticTimeseryResponseGranularityEnum {
+    Day = 'day',
+    Week = 'week',
+    Month = 'month'
 }
 
 export function GetAnalyticTimeseryResponseFromJSON(json: any): GetAnalyticTimeseryResponse {
@@ -51,6 +67,7 @@ export function GetAnalyticTimeseryResponseFromJSONTyped(json: any, ignoreDiscri
     return {
         
         'days': json['days'],
+        'granularity': json['granularity'],
         'series': ((json['series'] as Array<any>).map(GetAnalyticTimeseryResponseSeriesFromJSON)),
     };
 }
@@ -65,6 +82,7 @@ export function GetAnalyticTimeseryResponseToJSON(value?: GetAnalyticTimeseryRes
     return {
         
         'days': value.days,
+        'granularity': value.granularity,
         'series': ((value.series as Array<any>).map(GetAnalyticTimeseryResponseSeriesToJSON)),
     };
 }

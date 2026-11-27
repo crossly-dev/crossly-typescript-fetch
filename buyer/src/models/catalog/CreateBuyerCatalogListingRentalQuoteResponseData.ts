@@ -13,12 +13,73 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    CreateBuyerCatalogListingRentalQuoteResponseDataBuyout,
+    CreateBuyerCatalogListingRentalQuoteResponseDataBuyoutFromJSON,
+    CreateBuyerCatalogListingRentalQuoteResponseDataBuyoutFromJSONTyped,
+    CreateBuyerCatalogListingRentalQuoteResponseDataBuyoutToJSON,
+} from './CreateBuyerCatalogListingRentalQuoteResponseDataBuyout';
+import {
+    CreateBuyerCatalogListingRentalQuoteResponseDataCancellation,
+    CreateBuyerCatalogListingRentalQuoteResponseDataCancellationFromJSON,
+    CreateBuyerCatalogListingRentalQuoteResponseDataCancellationFromJSONTyped,
+    CreateBuyerCatalogListingRentalQuoteResponseDataCancellationToJSON,
+} from './CreateBuyerCatalogListingRentalQuoteResponseDataCancellation';
+import {
+    CreateBuyerCatalogListingRentalQuoteResponseDataLines,
+    CreateBuyerCatalogListingRentalQuoteResponseDataLinesFromJSON,
+    CreateBuyerCatalogListingRentalQuoteResponseDataLinesFromJSONTyped,
+    CreateBuyerCatalogListingRentalQuoteResponseDataLinesToJSON,
+} from './CreateBuyerCatalogListingRentalQuoteResponseDataLines';
+
 /**
  * 
  * @export
  * @interface CreateBuyerCatalogListingRentalQuoteResponseData
  */
 export interface CreateBuyerCatalogListingRentalQuoteResponseData {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    fulfilment: CreateBuyerCatalogListingRentalQuoteResponseDataFulfilmentEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    shippingCents?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    totalCents?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    needsApproval: boolean;
+    /**
+     * 
+     * @type {CreateBuyerCatalogListingRentalQuoteResponseDataCancellation}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    cancellation: CreateBuyerCatalogListingRentalQuoteResponseDataCancellation;
+    /**
+     * 
+     * @type {CreateBuyerCatalogListingRentalQuoteResponseDataBuyout}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    buyout: CreateBuyerCatalogListingRentalQuoteResponseDataBuyout;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    problem?: string | null;
     /**
      * 
      * @type {string}
@@ -38,13 +99,19 @@ export interface CreateBuyerCatalogListingRentalQuoteResponseData {
      */
     days: number;
     /**
-     * 
-     * @type {string}
+     * The unit the booking would hold (null when none is free).
+     * @type {number}
      * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
      */
-    problem?: string | null;
+    unit?: number | null;
     /**
      * 
+     * @type {Array<CreateBuyerCatalogListingRentalQuoteResponseDataLines>}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    lines: Array<CreateBuyerCatalogListingRentalQuoteResponseDataLines>;
+    /**
+     * Rent after discounts.
      * @type {number}
      * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
      */
@@ -54,19 +121,40 @@ export interface CreateBuyerCatalogListingRentalQuoteResponseData {
      * @type {number}
      * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
      */
+    cleaningFeeCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
+    damageWaiverCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
+     */
     depositCents: number;
     /**
-     * 
-     * @type {number}
+     * Why the deposit is 0 or lowered, when it is.
+     * @type {string}
      * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
      */
-    shippingCents?: number | null;
+    depositNote?: string | null;
     /**
-     * 
+     * Everything but shipping and the deposit: what the seller's fee is taken on.
      * @type {number}
      * @memberof CreateBuyerCatalogListingRentalQuoteResponseData
      */
-    totalCents?: number | null;
+    chargeableCents: number;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum CreateBuyerCatalogListingRentalQuoteResponseDataFulfilmentEnum {
+    Ship = 'ship',
+    Pickup = 'pickup'
 }
 
 export function CreateBuyerCatalogListingRentalQuoteResponseDataFromJSON(json: any): CreateBuyerCatalogListingRentalQuoteResponseData {
@@ -79,14 +167,24 @@ export function CreateBuyerCatalogListingRentalQuoteResponseDataFromJSONTyped(js
     }
     return {
         
+        'fulfilment': json['fulfilment'],
+        'shippingCents': !exists(json, 'shippingCents') ? undefined : json['shippingCents'],
+        'totalCents': !exists(json, 'totalCents') ? undefined : json['totalCents'],
+        'needsApproval': json['needsApproval'],
+        'cancellation': CreateBuyerCatalogListingRentalQuoteResponseDataCancellationFromJSON(json['cancellation']),
+        'buyout': CreateBuyerCatalogListingRentalQuoteResponseDataBuyoutFromJSON(json['buyout']),
+        'problem': !exists(json, 'problem') ? undefined : json['problem'],
         'startDate': json['startDate'],
         'endDate': json['endDate'],
         'days': json['days'],
-        'problem': !exists(json, 'problem') ? undefined : json['problem'],
+        'unit': !exists(json, 'unit') ? undefined : json['unit'],
+        'lines': ((json['lines'] as Array<any>).map(CreateBuyerCatalogListingRentalQuoteResponseDataLinesFromJSON)),
         'rentCents': json['rentCents'],
+        'cleaningFeeCents': json['cleaningFeeCents'],
+        'damageWaiverCents': json['damageWaiverCents'],
         'depositCents': json['depositCents'],
-        'shippingCents': !exists(json, 'shippingCents') ? undefined : json['shippingCents'],
-        'totalCents': !exists(json, 'totalCents') ? undefined : json['totalCents'],
+        'depositNote': !exists(json, 'depositNote') ? undefined : json['depositNote'],
+        'chargeableCents': json['chargeableCents'],
     };
 }
 
@@ -99,14 +197,24 @@ export function CreateBuyerCatalogListingRentalQuoteResponseDataToJSON(value?: C
     }
     return {
         
+        'fulfilment': value.fulfilment,
+        'shippingCents': value.shippingCents,
+        'totalCents': value.totalCents,
+        'needsApproval': value.needsApproval,
+        'cancellation': CreateBuyerCatalogListingRentalQuoteResponseDataCancellationToJSON(value.cancellation),
+        'buyout': CreateBuyerCatalogListingRentalQuoteResponseDataBuyoutToJSON(value.buyout),
+        'problem': value.problem,
         'startDate': value.startDate,
         'endDate': value.endDate,
         'days': value.days,
-        'problem': value.problem,
+        'unit': value.unit,
+        'lines': ((value.lines as Array<any>).map(CreateBuyerCatalogListingRentalQuoteResponseDataLinesToJSON)),
         'rentCents': value.rentCents,
+        'cleaningFeeCents': value.cleaningFeeCents,
+        'damageWaiverCents': value.damageWaiverCents,
         'depositCents': value.depositCents,
-        'shippingCents': value.shippingCents,
-        'totalCents': value.totalCents,
+        'depositNote': value.depositNote,
+        'chargeableCents': value.chargeableCents,
     };
 }
 

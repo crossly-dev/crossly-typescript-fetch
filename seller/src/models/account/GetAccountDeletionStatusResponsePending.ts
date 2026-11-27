@@ -37,6 +37,30 @@ export interface GetAccountDeletionStatusResponsePending {
      * @memberof GetAccountDeletionStatusResponsePending
      */
     scheduledFor: Date;
+    /**
+     * Set when the account was found in use: it waits for a re-confirmation.
+     * @type {Date}
+     * @memberof GetAccountDeletionStatusResponsePending
+     */
+    pausedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAccountDeletionStatusResponsePending
+     */
+    pauseReason?: string | null;
+    /**
+     * What the cascade will take.
+     * @type {number}
+     * @memberof GetAccountDeletionStatusResponsePending
+     */
+    listingCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAccountDeletionStatusResponsePending
+     */
+    inventoryCount: number;
 }
 
 export function GetAccountDeletionStatusResponsePendingFromJSON(json: any): GetAccountDeletionStatusResponsePending {
@@ -52,6 +76,10 @@ export function GetAccountDeletionStatusResponsePendingFromJSONTyped(json: any, 
         'id': json['id'],
         'requestedAt': (new Date(json['requestedAt'])),
         'scheduledFor': (new Date(json['scheduledFor'])),
+        'pausedAt': !exists(json, 'pausedAt') ? undefined : (json['pausedAt'] === null ? null : new Date(json['pausedAt'])),
+        'pauseReason': !exists(json, 'pauseReason') ? undefined : json['pauseReason'],
+        'listingCount': json['listingCount'],
+        'inventoryCount': json['inventoryCount'],
     };
 }
 
@@ -67,6 +95,10 @@ export function GetAccountDeletionStatusResponsePendingToJSON(value?: GetAccount
         'id': value.id,
         'requestedAt': (value.requestedAt.toISOString()),
         'scheduledFor': (value.scheduledFor.toISOString()),
+        'pausedAt': value.pausedAt === undefined ? undefined : (value.pausedAt === null ? null : value.pausedAt.toISOString()),
+        'pauseReason': value.pauseReason,
+        'listingCount': value.listingCount,
+        'inventoryCount': value.inventoryCount,
     };
 }
 

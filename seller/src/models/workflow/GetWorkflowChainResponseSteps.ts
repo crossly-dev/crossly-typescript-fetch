@@ -27,16 +27,16 @@ export interface GetWorkflowChainResponseSteps {
     id: string;
     /**
      * 
-     * @type {number}
-     * @memberof GetWorkflowChainResponseSteps
-     */
-    position: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetWorkflowChainResponseSteps
      */
     chainId: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetWorkflowChainResponseSteps
+     */
+    position: number;
     /**
      * 
      * @type {string}
@@ -49,6 +49,12 @@ export interface GetWorkflowChainResponseSteps {
      * @memberof GetWorkflowChainResponseSteps
      */
     actionId?: string | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof GetWorkflowChainResponseSteps
+     */
+    actionConfig: { [key: string]: any; };
     /**
      * 
      * @type {number}
@@ -68,10 +74,11 @@ export function GetWorkflowChainResponseStepsFromJSONTyped(json: any, ignoreDisc
     return {
         
         'id': json['id'],
-        'position': json['position'],
         'chainId': json['chainId'],
+        'position': json['position'],
         'stepType': json['stepType'],
         'actionId': !exists(json, 'actionId') ? undefined : json['actionId'],
+        'actionConfig': json['actionConfig'],
         'waitMs': !exists(json, 'waitMs') ? undefined : json['waitMs'],
     };
 }
@@ -86,10 +93,11 @@ export function GetWorkflowChainResponseStepsToJSON(value?: GetWorkflowChainResp
     return {
         
         'id': value.id,
-        'position': value.position,
         'chainId': value.chainId,
+        'position': value.position,
         'stepType': value.stepType,
         'actionId': value.actionId,
+        'actionConfig': value.actionConfig,
         'waitMs': value.waitMs,
     };
 }

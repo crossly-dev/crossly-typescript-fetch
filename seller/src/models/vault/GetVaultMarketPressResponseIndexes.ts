@@ -107,9 +107,9 @@ export enum GetVaultMarketPressResponseIndexesKindEnum {
     Custom = 'custom',
     Brand = 'brand',
     Category = 'category',
+    Segment = 'segment',
     Curated = 'curated',
-    Composite = 'composite',
-    Segment = 'segment'
+    Composite = 'composite'
 }/**
 * @export
 * @enum {string}
@@ -125,9 +125,9 @@ export enum GetVaultMarketPressResponseIndexesWeightingEnum {
 */
 export enum GetVaultMarketPressResponseIndexesQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketPressResponseIndexesFromJSON(json: any): GetVaultMarketPressResponseIndexes {

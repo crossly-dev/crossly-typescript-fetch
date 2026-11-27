@@ -91,6 +91,30 @@ export interface ListWorldConventionsItem {
      * @memberof ListWorldConventionsItem
      */
     publicSlug?: string | null;
+    /**
+     * A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.
+     * @type {boolean}
+     * @memberof ListWorldConventionsItem
+     */
+    tiered: boolean;
+    /**
+     * When the doors open for visitors: the start (or when the host takes it live, if sooner).
+     * @type {Date}
+     * @memberof ListWorldConventionsItem
+     */
+    doorsOpenAt: Date;
+    /**
+     * For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.
+     * @type {string}
+     * @memberof ListWorldConventionsItem
+     */
+    yourDoorsOpenAt?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListWorldConventionsItem
+     */
+    doorsOpen?: boolean | null;
 }
 
 export function ListWorldConventionsItemFromJSON(json: any): ListWorldConventionsItem {
@@ -115,6 +139,10 @@ export function ListWorldConventionsItemFromJSONTyped(json: any, ignoreDiscrimin
         'tableCount': json['tableCount'],
         'exhibitorCount': json['exhibitorCount'],
         'publicSlug': !exists(json, 'publicSlug') ? undefined : json['publicSlug'],
+        'tiered': json['tiered'],
+        'doorsOpenAt': (new Date(json['doorsOpenAt'])),
+        'yourDoorsOpenAt': !exists(json, 'yourDoorsOpenAt') ? undefined : json['yourDoorsOpenAt'],
+        'doorsOpen': !exists(json, 'doorsOpen') ? undefined : json['doorsOpen'],
     };
 }
 
@@ -139,6 +167,10 @@ export function ListWorldConventionsItemToJSON(value?: ListWorldConventionsItem 
         'tableCount': value.tableCount,
         'exhibitorCount': value.exhibitorCount,
         'publicSlug': value.publicSlug,
+        'tiered': value.tiered,
+        'doorsOpenAt': (value.doorsOpenAt.toISOString()),
+        'yourDoorsOpenAt': value.yourDoorsOpenAt,
+        'doorsOpen': value.doorsOpen,
     };
 }
 

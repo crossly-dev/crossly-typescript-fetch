@@ -27,12 +27,6 @@ export interface GetOauthInitResponse {
     url?: string;
     /**
      * 
-     * @type {string}
-     * @memberof GetOauthInitResponse
-     */
-    correlationId?: string;
-    /**
-     * 
      * @type {boolean}
      * @memberof GetOauthInitResponse
      */
@@ -68,7 +62,6 @@ export function GetOauthInitResponseFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'url': !exists(json, 'url') ? undefined : json['url'],
-        'correlationId': !exists(json, 'correlationId') ? undefined : json['correlationId'],
         'oneShot': !exists(json, 'oneShot') ? undefined : json['oneShot'],
         'status': !exists(json, 'status') ? undefined : json['status'],
         'requestUrl': !exists(json, 'requestUrl') ? undefined : json['requestUrl'],
@@ -86,7 +79,6 @@ export function GetOauthInitResponseToJSON(value?: GetOauthInitResponse | null):
     return {
         
         'url': value.url,
-        'correlationId': value.correlationId,
         'oneShot': value.oneShot,
         'status': value.status,
         'requestUrl': value.requestUrl,

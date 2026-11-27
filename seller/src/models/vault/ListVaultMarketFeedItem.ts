@@ -14,11 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListVaultMarketFeedItemMark,
-    ListVaultMarketFeedItemMarkFromJSON,
-    ListVaultMarketFeedItemMarkFromJSONTyped,
-    ListVaultMarketFeedItemMarkToJSON,
-} from './ListVaultMarketFeedItemMark';
+    ListVaultMarketFeedItemBy,
+    ListVaultMarketFeedItemByFromJSON,
+    ListVaultMarketFeedItemByFromJSONTyped,
+    ListVaultMarketFeedItemByToJSON,
+} from './ListVaultMarketFeedItemBy';
+import {
+    ListVaultMarketOpeningItemMark,
+    ListVaultMarketOpeningItemMarkFromJSON,
+    ListVaultMarketOpeningItemMarkFromJSONTyped,
+    ListVaultMarketOpeningItemMarkToJSON,
+} from './ListVaultMarketOpeningItemMark';
 
 /**
  * 
@@ -38,6 +44,12 @@ export interface ListVaultMarketFeedItem {
      * @memberof ListVaultMarketFeedItem
      */
     at: string;
+    /**
+     * 
+     * @type {ListVaultMarketFeedItemBy}
+     * @memberof ListVaultMarketFeedItem
+     */
+    by: ListVaultMarketFeedItemBy;
     /**
      * 
      * @type {string}
@@ -64,10 +76,10 @@ export interface ListVaultMarketFeedItem {
     imageUrl?: string | null;
     /**
      * 
-     * @type {ListVaultMarketFeedItemMark}
+     * @type {ListVaultMarketOpeningItemMark}
      * @memberof ListVaultMarketFeedItem
      */
-    mark: ListVaultMarketFeedItemMark;
+    mark: ListVaultMarketOpeningItemMark;
     /**
      * 
      * @type {string}
@@ -88,11 +100,12 @@ export function ListVaultMarketFeedItemFromJSONTyped(json: any, ignoreDiscrimina
         
         'id': json['id'],
         'at': json['at'],
+        'by': ListVaultMarketFeedItemByFromJSON(json['by']),
         'bookKey': json['bookKey'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'label': !exists(json, 'label') ? undefined : json['label'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
-        'mark': ListVaultMarketFeedItemMarkFromJSON(json['mark']),
+        'mark': ListVaultMarketOpeningItemMarkFromJSON(json['mark']),
         'buyHref': json['buyHref'],
     };
 }
@@ -108,11 +121,12 @@ export function ListVaultMarketFeedItemToJSON(value?: ListVaultMarketFeedItem | 
         
         'id': value.id,
         'at': value.at,
+        'by': ListVaultMarketFeedItemByToJSON(value.by),
         'bookKey': value.bookKey,
         'name': value.name,
         'label': value.label,
         'imageUrl': value.imageUrl,
-        'mark': ListVaultMarketFeedItemMarkToJSON(value.mark),
+        'mark': ListVaultMarketOpeningItemMarkToJSON(value.mark),
         'buyHref': value.buyHref,
     };
 }

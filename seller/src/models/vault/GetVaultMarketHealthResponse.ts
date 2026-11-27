@@ -20,6 +20,12 @@ import {
     GetVaultMarketHealthResponseConcentrationToJSON,
 } from './GetVaultMarketHealthResponseConcentration';
 import {
+    GetVaultMarketHealthResponseHedges,
+    GetVaultMarketHealthResponseHedgesFromJSON,
+    GetVaultMarketHealthResponseHedgesFromJSONTyped,
+    GetVaultMarketHealthResponseHedgesToJSON,
+} from './GetVaultMarketHealthResponseHedges';
+import {
     GetVaultMarketHealthResponseItems,
     GetVaultMarketHealthResponseItemsFromJSON,
     GetVaultMarketHealthResponseItemsFromJSONTyped,
@@ -110,6 +116,12 @@ export interface GetVaultMarketHealthResponse {
      * @memberof GetVaultMarketHealthResponse
      */
     items: Array<GetVaultMarketHealthResponseItems>;
+    /**
+     * 
+     * @type {GetVaultMarketHealthResponseHedges}
+     * @memberof GetVaultMarketHealthResponse
+     */
+    hedges: GetVaultMarketHealthResponseHedges;
 }
 
 export function GetVaultMarketHealthResponseFromJSON(json: any): GetVaultMarketHealthResponse {
@@ -131,6 +143,7 @@ export function GetVaultMarketHealthResponseFromJSONTyped(json: any, ignoreDiscr
         'marks': GetVaultMarketHealthResponseMarksFromJSON(json['marks']),
         'notes': json['notes'],
         'items': ((json['items'] as Array<any>).map(GetVaultMarketHealthResponseItemsFromJSON)),
+        'hedges': GetVaultMarketHealthResponseHedgesFromJSON(json['hedges']),
     };
 }
 
@@ -152,6 +165,7 @@ export function GetVaultMarketHealthResponseToJSON(value?: GetVaultMarketHealthR
         'marks': GetVaultMarketHealthResponseMarksToJSON(value.marks),
         'notes': value.notes,
         'items': ((value.items as Array<any>).map(GetVaultMarketHealthResponseItemsToJSON)),
+        'hedges': GetVaultMarketHealthResponseHedgesToJSON(value.hedges),
     };
 }
 

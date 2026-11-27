@@ -50,9 +50,9 @@ export interface GetVaultMarketSetGoalResponseTarget {
 * @enum {string}
 */
 export enum GetVaultMarketSetGoalResponseTargetGradeModeEnum {
+    Any = 'any',
     Exact = 'exact',
-    Ungraded = 'ungraded',
-    Any = 'any'
+    Ungraded = 'ungraded'
 }
 
 export function GetVaultMarketSetGoalResponseTargetFromJSON(json: any): GetVaultMarketSetGoalResponseTarget {

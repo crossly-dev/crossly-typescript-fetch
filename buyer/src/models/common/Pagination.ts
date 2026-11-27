@@ -43,6 +43,12 @@ export interface Pagination {
      * @memberof Pagination
      */
     totalPages?: number;
+    /**
+     * Deprecated alias of `totalPages`, sent only by GET /v1/inventory (its original name). Read `totalPages`.
+     * @type {number}
+     * @memberof Pagination
+     */
+    pages?: number;
 }
 
 export function PaginationFromJSON(json: any): Pagination {
@@ -59,6 +65,7 @@ export function PaginationFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'limit': json['limit'],
         'total': !exists(json, 'total') ? undefined : json['total'],
         'totalPages': !exists(json, 'totalPages') ? undefined : json['totalPages'],
+        'pages': !exists(json, 'pages') ? undefined : json['pages'],
     };
 }
 
@@ -75,6 +82,7 @@ export function PaginationToJSON(value?: Pagination | null): any {
         'limit': value.limit,
         'total': value.total,
         'totalPages': value.totalPages,
+        'pages': value.pages,
     };
 }
 

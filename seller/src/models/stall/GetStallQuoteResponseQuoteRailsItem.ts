@@ -19,8 +19,8 @@
  */
 export enum GetStallQuoteResponseQuoteRailsItem {
     Card = 'card',
-    Bucks = 'bucks',
-    Cbx = 'cbx'
+    Cbx = 'cbx',
+    Bucks = 'bucks'
 }
 
 export function GetStallQuoteResponseQuoteRailsItemFromJSON(json: any): GetStallQuoteResponseQuoteRailsItem {

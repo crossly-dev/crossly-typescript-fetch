@@ -62,12 +62,12 @@ export interface GetWeb3ProfileResponseNfts {
 * @enum {string}
 */
 export enum GetWeb3ProfileResponseNftsChainEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }
 
 export function GetWeb3ProfileResponseNftsFromJSON(json: any): GetWeb3ProfileResponseNfts {

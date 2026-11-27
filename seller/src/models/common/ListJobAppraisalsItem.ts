@@ -111,8 +111,8 @@ export interface ListJobAppraisalsItem {
 * @enum {string}
 */
 export enum ListJobAppraisalsItemRailEnum {
-    Bucks = 'bucks',
-    Cbx = 'cbx'
+    Cbx = 'cbx',
+    Bucks = 'bucks'
 }
 
 export function ListJobAppraisalsItemFromJSON(json: any): ListJobAppraisalsItem {

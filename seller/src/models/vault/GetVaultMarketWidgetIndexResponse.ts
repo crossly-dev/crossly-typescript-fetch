@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetVaultMarketWidgetIndexResponsePoints,
-    GetVaultMarketWidgetIndexResponsePointsFromJSON,
-    GetVaultMarketWidgetIndexResponsePointsFromJSONTyped,
-    GetVaultMarketWidgetIndexResponsePointsToJSON,
-} from './GetVaultMarketWidgetIndexResponsePoints';
+    GetVaultMarketOptionAnalyticResponseHistoricalVolSeries,
+    GetVaultMarketOptionAnalyticResponseHistoricalVolSeriesFromJSON,
+    GetVaultMarketOptionAnalyticResponseHistoricalVolSeriesFromJSONTyped,
+    GetVaultMarketOptionAnalyticResponseHistoricalVolSeriesToJSON,
+} from './GetVaultMarketOptionAnalyticResponseHistoricalVolSeries';
 
 /**
  * 
@@ -88,10 +88,10 @@ export interface GetVaultMarketWidgetIndexResponse {
     sinceInceptionBps?: number | null;
     /**
      * 
-     * @type {Array<GetVaultMarketWidgetIndexResponsePoints>}
+     * @type {Array<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries>}
      * @memberof GetVaultMarketWidgetIndexResponse
      */
-    points: Array<GetVaultMarketWidgetIndexResponsePoints>;
+    points: Array<GetVaultMarketOptionAnalyticResponseHistoricalVolSeries>;
     /**
      * 
      * @type {string}
@@ -138,9 +138,9 @@ export enum GetVaultMarketWidgetIndexResponseKindEnum {
     Custom = 'custom',
     Brand = 'brand',
     Category = 'category',
+    Segment = 'segment',
     Curated = 'curated',
-    Composite = 'composite',
-    Segment = 'segment'
+    Composite = 'composite'
 }/**
 * @export
 * @enum {string}
@@ -156,9 +156,9 @@ export enum GetVaultMarketWidgetIndexResponseWeightingEnum {
 */
 export enum GetVaultMarketWidgetIndexResponseQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketWidgetIndexResponseFromJSON(json: any): GetVaultMarketWidgetIndexResponse {
@@ -181,7 +181,7 @@ export function GetVaultMarketWidgetIndexResponseFromJSONTyped(json: any, ignore
         'level': !exists(json, 'level') ? undefined : json['level'],
         'changeBps': !exists(json, 'changeBps') ? undefined : json['changeBps'],
         'sinceInceptionBps': !exists(json, 'sinceInceptionBps') ? undefined : json['sinceInceptionBps'],
-        'points': ((json['points'] as Array<any>).map(GetVaultMarketWidgetIndexResponsePointsFromJSON)),
+        'points': ((json['points'] as Array<any>).map(GetVaultMarketOptionAnalyticResponseHistoricalVolSeriesFromJSON)),
         'quality': json['quality'],
         'n': json['n'],
         'members': json['members'],
@@ -210,7 +210,7 @@ export function GetVaultMarketWidgetIndexResponseToJSON(value?: GetVaultMarketWi
         'level': value.level,
         'changeBps': value.changeBps,
         'sinceInceptionBps': value.sinceInceptionBps,
-        'points': ((value.points as Array<any>).map(GetVaultMarketWidgetIndexResponsePointsToJSON)),
+        'points': ((value.points as Array<any>).map(GetVaultMarketOptionAnalyticResponseHistoricalVolSeriesToJSON)),
         'quality': value.quality,
         'n': value.n,
         'members': value.members,

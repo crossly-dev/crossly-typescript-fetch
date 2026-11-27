@@ -20,11 +20,11 @@ import {
     GetVaultMarketProfileByHandleResponseOneOfHoldingsToJSON,
 } from './GetVaultMarketProfileByHandleResponseOneOfHoldings';
 import {
-    ListVaultMarketFeedItem,
-    ListVaultMarketFeedItemFromJSON,
-    ListVaultMarketFeedItemFromJSONTyped,
-    ListVaultMarketFeedItemToJSON,
-} from './ListVaultMarketFeedItem';
+    GetVaultMarketProfileByHandleResponseOneOfRecentBuys,
+    GetVaultMarketProfileByHandleResponseOneOfRecentBuysFromJSON,
+    GetVaultMarketProfileByHandleResponseOneOfRecentBuysFromJSONTyped,
+    GetVaultMarketProfileByHandleResponseOneOfRecentBuysToJSON,
+} from './GetVaultMarketProfileByHandleResponseOneOfRecentBuys';
 
 /**
  * 
@@ -82,10 +82,10 @@ export interface GetVaultMarketProfileByHandleResponse {
     isMe: boolean;
     /**
      * 
-     * @type {Array<ListVaultMarketFeedItem>}
+     * @type {Array<GetVaultMarketProfileByHandleResponseOneOfRecentBuys>}
      * @memberof GetVaultMarketProfileByHandleResponse
      */
-    recentBuys: Array<ListVaultMarketFeedItem>;
+    recentBuys: Array<GetVaultMarketProfileByHandleResponseOneOfRecentBuys>;
     /**
      * 
      * @type {string}
@@ -124,7 +124,7 @@ export function GetVaultMarketProfileByHandleResponseFromJSONTyped(json: any, ig
         'followers': json['followers'],
         'following': json['following'],
         'isMe': json['isMe'],
-        'recentBuys': ((json['recentBuys'] as Array<any>).map(ListVaultMarketFeedItemFromJSON)),
+        'recentBuys': ((json['recentBuys'] as Array<any>).map(GetVaultMarketProfileByHandleResponseOneOfRecentBuysFromJSON)),
         'displayName': json['displayName'],
         'avatarUrl': !exists(json, 'avatarUrl') ? undefined : json['avatarUrl'],
         'profileUrl': json['profileUrl'],
@@ -148,7 +148,7 @@ export function GetVaultMarketProfileByHandleResponseToJSON(value?: GetVaultMark
         'followers': value.followers,
         'following': value.following,
         'isMe': value.isMe,
-        'recentBuys': ((value.recentBuys as Array<any>).map(ListVaultMarketFeedItemToJSON)),
+        'recentBuys': ((value.recentBuys as Array<any>).map(GetVaultMarketProfileByHandleResponseOneOfRecentBuysToJSON)),
         'displayName': value.displayName,
         'avatarUrl': value.avatarUrl,
         'profileUrl': value.profileUrl,

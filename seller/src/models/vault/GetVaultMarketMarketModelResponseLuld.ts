@@ -70,8 +70,8 @@ export interface GetVaultMarketMarketModelResponseLuld {
 */
 export enum GetVaultMarketMarketModelResponseLuldPhaseEnum {
     Limit = 'limit',
-    Normal = 'normal',
-    Paused = 'paused'
+    Paused = 'paused',
+    Normal = 'normal'
 }
 
 export function GetVaultMarketMarketModelResponseLuldFromJSON(json: any): GetVaultMarketMarketModelResponseLuld {

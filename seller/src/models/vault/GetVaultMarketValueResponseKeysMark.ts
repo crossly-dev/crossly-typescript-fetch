@@ -51,9 +51,9 @@ export interface GetVaultMarketValueResponseKeysMark {
 */
 export enum GetVaultMarketValueResponseKeysMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketValueResponseKeysMarkFromJSON(json: any): GetVaultMarketValueResponseKeysMark {

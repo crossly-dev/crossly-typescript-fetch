@@ -14,12 +14,6 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetAutomationRuleExportByIdResponseAction,
-    GetAutomationRuleExportByIdResponseActionFromJSON,
-    GetAutomationRuleExportByIdResponseActionFromJSONTyped,
-    GetAutomationRuleExportByIdResponseActionToJSON,
-} from './GetAutomationRuleExportByIdResponseAction';
-import {
     GetAutomationRuleExportByIdResponseCondition,
     GetAutomationRuleExportByIdResponseConditionFromJSON,
     GetAutomationRuleExportByIdResponseConditionFromJSONTyped,
@@ -31,6 +25,12 @@ import {
     GetAutomationRuleExportByIdResponseMetadataFromJSONTyped,
     GetAutomationRuleExportByIdResponseMetadataToJSON,
 } from './GetAutomationRuleExportByIdResponseMetadata';
+import {
+    GetAutomationRuleExportByIdResponseTrigger,
+    GetAutomationRuleExportByIdResponseTriggerFromJSON,
+    GetAutomationRuleExportByIdResponseTriggerFromJSONTyped,
+    GetAutomationRuleExportByIdResponseTriggerToJSON,
+} from './GetAutomationRuleExportByIdResponseTrigger';
 
 /**
  * 
@@ -40,40 +40,34 @@ import {
 export interface GetAutomationRuleExportByIdResponse {
     /**
      * 
-     * @type {string}
-     * @memberof GetAutomationRuleExportByIdResponse
-     */
-    name: string;
-    /**
-     * 
-     * @type {GetAutomationRuleExportByIdResponseAction}
-     * @memberof GetAutomationRuleExportByIdResponse
-     */
-    action: GetAutomationRuleExportByIdResponseAction;
-    /**
-     * 
      * @type {number}
      * @memberof GetAutomationRuleExportByIdResponse
      */
     schemaVersion: number;
     /**
      * 
-     * @type {GetAutomationRuleExportByIdResponseAction}
+     * @type {string}
      * @memberof GetAutomationRuleExportByIdResponse
      */
-    trigger: GetAutomationRuleExportByIdResponseAction;
+    name: string;
     /**
      * 
-     * @type {GetAutomationRuleExportByIdResponseCondition}
+     * @type {GetAutomationRuleExportByIdResponseTrigger}
      * @memberof GetAutomationRuleExportByIdResponse
      */
-    condition?: GetAutomationRuleExportByIdResponseCondition | null;
+    trigger: GetAutomationRuleExportByIdResponseTrigger;
     /**
      * 
-     * @type {GetAutomationRuleExportByIdResponseMetadata}
+     * @type {GetAutomationRuleExportByIdResponseTrigger}
      * @memberof GetAutomationRuleExportByIdResponse
      */
-    metadata?: GetAutomationRuleExportByIdResponseMetadata | null;
+    action: GetAutomationRuleExportByIdResponseTrigger;
+    /**
+     * Optional reference to the public schema URL — purely cosmetic.
+     * @type {string}
+     * @memberof GetAutomationRuleExportByIdResponse
+     */
+    $schema?: string | null;
     /**
      * 
      * @type {string}
@@ -82,16 +76,22 @@ export interface GetAutomationRuleExportByIdResponse {
     description?: string | null;
     /**
      * 
+     * @type {GetAutomationRuleExportByIdResponseCondition}
+     * @memberof GetAutomationRuleExportByIdResponse
+     */
+    condition?: GetAutomationRuleExportByIdResponseCondition | null;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof GetAutomationRuleExportByIdResponse
      */
     platforms?: Array<string> | null;
     /**
-     * Optional reference to the public schema URL — purely cosmetic.
-     * @type {string}
+     * 
+     * @type {GetAutomationRuleExportByIdResponseMetadata}
      * @memberof GetAutomationRuleExportByIdResponse
      */
-    $schema?: string | null;
+    metadata?: GetAutomationRuleExportByIdResponseMetadata | null;
 }
 
 export function GetAutomationRuleExportByIdResponseFromJSON(json: any): GetAutomationRuleExportByIdResponse {
@@ -104,15 +104,15 @@ export function GetAutomationRuleExportByIdResponseFromJSONTyped(json: any, igno
     }
     return {
         
-        'name': json['name'],
-        'action': GetAutomationRuleExportByIdResponseActionFromJSON(json['action']),
         'schemaVersion': json['schemaVersion'],
-        'trigger': GetAutomationRuleExportByIdResponseActionFromJSON(json['trigger']),
-        'condition': !exists(json, 'condition') ? undefined : GetAutomationRuleExportByIdResponseConditionFromJSON(json['condition']),
-        'metadata': !exists(json, 'metadata') ? undefined : GetAutomationRuleExportByIdResponseMetadataFromJSON(json['metadata']),
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
+        'name': json['name'],
+        'trigger': GetAutomationRuleExportByIdResponseTriggerFromJSON(json['trigger']),
+        'action': GetAutomationRuleExportByIdResponseTriggerFromJSON(json['action']),
         '$schema': !exists(json, '$schema') ? undefined : json['$schema'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
+        'condition': !exists(json, 'condition') ? undefined : GetAutomationRuleExportByIdResponseConditionFromJSON(json['condition']),
+        'platforms': !exists(json, 'platforms') ? undefined : json['platforms'],
+        'metadata': !exists(json, 'metadata') ? undefined : GetAutomationRuleExportByIdResponseMetadataFromJSON(json['metadata']),
     };
 }
 
@@ -125,15 +125,15 @@ export function GetAutomationRuleExportByIdResponseToJSON(value?: GetAutomationR
     }
     return {
         
-        'name': value.name,
-        'action': GetAutomationRuleExportByIdResponseActionToJSON(value.action),
         'schemaVersion': value.schemaVersion,
-        'trigger': GetAutomationRuleExportByIdResponseActionToJSON(value.trigger),
-        'condition': GetAutomationRuleExportByIdResponseConditionToJSON(value.condition),
-        'metadata': GetAutomationRuleExportByIdResponseMetadataToJSON(value.metadata),
-        'description': value.description,
-        'platforms': value.platforms,
+        'name': value.name,
+        'trigger': GetAutomationRuleExportByIdResponseTriggerToJSON(value.trigger),
+        'action': GetAutomationRuleExportByIdResponseTriggerToJSON(value.action),
         '$schema': value.$schema,
+        'description': value.description,
+        'condition': GetAutomationRuleExportByIdResponseConditionToJSON(value.condition),
+        'platforms': value.platforms,
+        'metadata': GetAutomationRuleExportByIdResponseMetadataToJSON(value.metadata),
     };
 }
 

@@ -14,23 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateVaultMarketPartnerBatchResponseLabel,
-    CreateVaultMarketPartnerBatchResponseLabelFromJSON,
-    CreateVaultMarketPartnerBatchResponseLabelFromJSONTyped,
-    CreateVaultMarketPartnerBatchResponseLabelToJSON,
-} from './CreateVaultMarketPartnerBatchResponseLabel';
-import {
-    CreateVaultMarketSupplySendResponseCreated,
-    CreateVaultMarketSupplySendResponseCreatedFromJSON,
-    CreateVaultMarketSupplySendResponseCreatedFromJSONTyped,
-    CreateVaultMarketSupplySendResponseCreatedToJSON,
-} from './CreateVaultMarketSupplySendResponseCreated';
-import {
-    CreateVaultMarketSupplySendResponseSkipped,
-    CreateVaultMarketSupplySendResponseSkippedFromJSON,
-    CreateVaultMarketSupplySendResponseSkippedFromJSONTyped,
-    CreateVaultMarketSupplySendResponseSkippedToJSON,
-} from './CreateVaultMarketSupplySendResponseSkipped';
+    InventoryItemIdReason,
+    InventoryItemIdReasonFromJSON,
+    InventoryItemIdReasonFromJSONTyped,
+    InventoryItemIdReasonToJSON,
+} from '../common/InventoryItemIdReason';
 
 /**
  * 
@@ -40,28 +28,40 @@ import {
 export interface CreateVaultMarketSupplySendResponse {
     /**
      * 
-     * @type {Array<CreateVaultMarketSupplySendResponseCreated>}
+     * @type {any}
      * @memberof CreateVaultMarketSupplySendResponse
      */
-    created: Array<CreateVaultMarketSupplySendResponseCreated>;
+    batchId?: any | null;
     /**
      * 
-     * @type {Array<CreateVaultMarketSupplySendResponseSkipped>}
+     * @type {any}
      * @memberof CreateVaultMarketSupplySendResponse
      */
-    skipped: Array<CreateVaultMarketSupplySendResponseSkipped>;
+    created: any | null;
     /**
      * 
-     * @type {CreateVaultMarketPartnerBatchResponseLabel}
+     * @type {Array<InventoryItemIdReason>}
      * @memberof CreateVaultMarketSupplySendResponse
      */
-    label?: CreateVaultMarketPartnerBatchResponseLabel | null;
+    skipped: Array<InventoryItemIdReason>;
+    /**
+     * 
+     * @type {any}
+     * @memberof CreateVaultMarketSupplySendResponse
+     */
+    label?: any | null;
+    /**
+     * 
+     * @type {any}
+     * @memberof CreateVaultMarketSupplySendResponse
+     */
+    labelError?: any | null;
     /**
      * 
      * @type {string}
      * @memberof CreateVaultMarketSupplySendResponse
      */
-    labelError?: string | null;
+    storefrontId?: string | null;
 }
 
 export function CreateVaultMarketSupplySendResponseFromJSON(json: any): CreateVaultMarketSupplySendResponse {
@@ -74,10 +74,12 @@ export function CreateVaultMarketSupplySendResponseFromJSONTyped(json: any, igno
     }
     return {
         
-        'created': ((json['created'] as Array<any>).map(CreateVaultMarketSupplySendResponseCreatedFromJSON)),
-        'skipped': ((json['skipped'] as Array<any>).map(CreateVaultMarketSupplySendResponseSkippedFromJSON)),
-        'label': !exists(json, 'label') ? undefined : CreateVaultMarketPartnerBatchResponseLabelFromJSON(json['label']),
+        'batchId': !exists(json, 'batchId') ? undefined : json['batchId'],
+        'created': json['created'],
+        'skipped': ((json['skipped'] as Array<any>).map(InventoryItemIdReasonFromJSON)),
+        'label': !exists(json, 'label') ? undefined : json['label'],
         'labelError': !exists(json, 'labelError') ? undefined : json['labelError'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
     };
 }
 
@@ -90,10 +92,12 @@ export function CreateVaultMarketSupplySendResponseToJSON(value?: CreateVaultMar
     }
     return {
         
-        'created': ((value.created as Array<any>).map(CreateVaultMarketSupplySendResponseCreatedToJSON)),
-        'skipped': ((value.skipped as Array<any>).map(CreateVaultMarketSupplySendResponseSkippedToJSON)),
-        'label': CreateVaultMarketPartnerBatchResponseLabelToJSON(value.label),
+        'batchId': value.batchId,
+        'created': value.created,
+        'skipped': ((value.skipped as Array<any>).map(InventoryItemIdReasonToJSON)),
+        'label': value.label,
         'labelError': value.labelError,
+        'storefrontId': value.storefrontId,
     };
 }
 

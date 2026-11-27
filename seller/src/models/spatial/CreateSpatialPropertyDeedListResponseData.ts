@@ -42,7 +42,7 @@ export interface CreateSpatialPropertyDeedListResponseData {
      * @type {string}
      * @memberof CreateSpatialPropertyDeedListResponseData
      */
-    sellerUserId: string;
+    storefrontId?: string | null;
     /**
      * 
      * @type {string}
@@ -55,6 +55,12 @@ export interface CreateSpatialPropertyDeedListResponseData {
      * @memberof CreateSpatialPropertyDeedListResponseData
      */
     priceCents: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialPropertyDeedListResponseData
+     */
+    sellerUserId: string;
     /**
      * 
      * @type {Date}
@@ -82,9 +88,10 @@ export function CreateSpatialPropertyDeedListResponseDataFromJSONTyped(json: any
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
-        'sellerUserId': json['sellerUserId'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'buyerUserId': !exists(json, 'buyerUserId') ? undefined : json['buyerUserId'],
         'priceCents': json['priceCents'],
+        'sellerUserId': json['sellerUserId'],
         'closedAt': !exists(json, 'closedAt') ? undefined : (json['closedAt'] === null ? null : new Date(json['closedAt'])),
         'deedId': json['deedId'],
     };
@@ -102,9 +109,10 @@ export function CreateSpatialPropertyDeedListResponseDataToJSON(value?: CreateSp
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
-        'sellerUserId': value.sellerUserId,
+        'storefrontId': value.storefrontId,
         'buyerUserId': value.buyerUserId,
         'priceCents': value.priceCents,
+        'sellerUserId': value.sellerUserId,
         'closedAt': value.closedAt === undefined ? undefined : (value.closedAt === null ? null : value.closedAt.toISOString()),
         'deedId': value.deedId,
     };

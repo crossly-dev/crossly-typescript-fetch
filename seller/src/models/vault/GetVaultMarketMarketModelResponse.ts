@@ -141,9 +141,9 @@ export interface GetVaultMarketMarketModelResponse {
 * @enum {string}
 */
 export enum GetVaultMarketMarketModelResponseTierEnum {
+    C = 'C',
     A = 'A',
     B = 'B',
-    C = 'C',
     D = 'D'
 }/**
 * @export

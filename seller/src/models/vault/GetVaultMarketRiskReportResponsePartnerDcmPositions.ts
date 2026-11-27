@@ -104,8 +104,8 @@ export interface GetVaultMarketRiskReportResponsePartnerDcmPositions {
 * @enum {string}
 */
 export enum GetVaultMarketRiskReportResponsePartnerDcmPositionsSideEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function GetVaultMarketRiskReportResponsePartnerDcmPositionsFromJSON(json: any): GetVaultMarketRiskReportResponsePartnerDcmPositions {

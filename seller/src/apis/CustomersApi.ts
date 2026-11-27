@@ -21,26 +21,110 @@ import {
     CreateCustomerRefreshProfileResponse,
     CreateCustomerRefreshProfileResponseFromJSON,
     CreateCustomerRefreshProfileResponseToJSON,
+    CreateLoyaltyAirdropPrepareResponse,
+    CreateLoyaltyAirdropPrepareResponseFromJSON,
+    CreateLoyaltyAirdropPrepareResponseToJSON,
+    CreateLoyaltyProgramInviteResponse,
+    CreateLoyaltyProgramInviteResponseFromJSON,
+    CreateLoyaltyProgramInviteResponseToJSON,
+    CreateLoyaltyTierResponse,
+    CreateLoyaltyTierResponseFromJSON,
+    CreateLoyaltyTierResponseToJSON,
+    GetCustomerNoteResponse,
+    GetCustomerNoteResponseFromJSON,
+    GetCustomerNoteResponseToJSON,
     GetCustomerResponse,
     GetCustomerResponseFromJSON,
     GetCustomerResponseToJSON,
     GetLoyaltyClubResponse,
     GetLoyaltyClubResponseFromJSON,
     GetLoyaltyClubResponseToJSON,
+    GetLoyaltyProgramMemberResponse,
+    GetLoyaltyProgramMemberResponseFromJSON,
+    GetLoyaltyProgramMemberResponseToJSON,
+    GetLoyaltyProgramResponse,
+    GetLoyaltyProgramResponseFromJSON,
+    GetLoyaltyProgramResponseToJSON,
     ListCustomersResponse,
     ListCustomersResponseFromJSON,
     ListCustomersResponseToJSON,
+    ListLoyaltyAirdropsResponse,
+    ListLoyaltyAirdropsResponseFromJSON,
+    ListLoyaltyAirdropsResponseToJSON,
     ListLoyaltyMembersResponse,
     ListLoyaltyMembersResponseFromJSON,
     ListLoyaltyMembersResponseToJSON,
+    ListLoyaltyProgramInviteCandidatesResponse,
+    ListLoyaltyProgramInviteCandidatesResponseFromJSON,
+    ListLoyaltyProgramInviteCandidatesResponseToJSON,
+    ListLoyaltyProgramMembersResponse,
+    ListLoyaltyProgramMembersResponseFromJSON,
+    ListLoyaltyProgramMembersResponseToJSON,
+    LoyaltyAirdropResponse,
+    LoyaltyAirdropResponseFromJSON,
+    LoyaltyAirdropResponseToJSON,
+    UpdateCustomerNoteRequest,
+    UpdateCustomerNoteRequestFromJSON,
+    UpdateCustomerNoteRequestToJSON,
+    UpdateGroupBuyResponse,
+    UpdateGroupBuyResponseFromJSON,
+    UpdateGroupBuyResponseToJSON,
+    UpdateLoyaltyProgramResponse,
+    UpdateLoyaltyProgramResponseFromJSON,
+    UpdateLoyaltyProgramResponseToJSON,
 } from '../models';
 
 export interface CreateCustomerRefreshProfileRequest {
     handle: string;
 }
 
+export interface CreateLoyaltyAirdropCancelRequest {
+    id: string;
+}
+
+export interface CreateLoyaltyAirdropCheckRequest {
+    id: string;
+}
+
+export interface CreateLoyaltyAirdropPrepareRequest {
+    id: string;
+}
+
+export interface CreateLoyaltyAirdropSubmitRequest {
+    id: string;
+}
+
+export interface CreateLoyaltyProgramMemberOverrideRequest {
+    id: string;
+}
+
+export interface DeleteLoyaltyTierRequest {
+    id: string;
+}
+
 export interface GetCustomerRequest {
     handle: string;
+}
+
+export interface GetCustomerNoteRequest {
+    handle: string;
+}
+
+export interface GetLoyaltyAirdropRequest {
+    id: string;
+}
+
+export interface GetLoyaltyProgramMemberRequest {
+    id: string;
+}
+
+export interface UpdateCustomerNoteOperationRequest {
+    handle: string;
+    updateCustomerNoteRequest: UpdateCustomerNoteRequest;
+}
+
+export interface UpdateLoyaltyTierRequest {
+    id: string;
 }
 
 /**
@@ -155,6 +239,302 @@ export class CustomersApi extends runtime.BaseAPI {
     }
 
     /**
+     * Cancel a queued or failed airdrop (one already sent is the member’s).
+     */
+    async createLoyaltyAirdropCancelRaw(requestParameters: CreateLoyaltyAirdropCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LoyaltyAirdropResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLoyaltyAirdropCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/airdrops/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LoyaltyAirdropResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a queued or failed airdrop (one already sent is the member’s).
+     */
+    async createLoyaltyAirdropCancel(requestParameters: CreateLoyaltyAirdropCancelRequest, initOverrides?: RequestInit): Promise<LoyaltyAirdropResponse> {
+        const response = await this.createLoyaltyAirdropCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Read a submitted airdrop’s receipt again now.
+     */
+    async createLoyaltyAirdropCheckRaw(requestParameters: CreateLoyaltyAirdropCheckRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LoyaltyAirdropResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLoyaltyAirdropCheck.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/airdrops/{id}/check`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LoyaltyAirdropResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Read a submitted airdrop’s receipt again now.
+     */
+    async createLoyaltyAirdropCheck(requestParameters: CreateLoyaltyAirdropCheckRequest, initOverrides?: RequestInit): Promise<LoyaltyAirdropResponse> {
+        const response = await this.createLoyaltyAirdropCheckRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The mint transaction for your launch owner wallet to send: chain, from, to (your launch contract) and calldata, to the member’s verified wallet. Refused airdrop_not_sendable with a reason when it cannot be built.
+     */
+    async createLoyaltyAirdropPrepareRaw(requestParameters: CreateLoyaltyAirdropPrepareRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLoyaltyAirdropPrepareResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLoyaltyAirdropPrepare.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/airdrops/{id}/prepare`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateLoyaltyAirdropPrepareResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The mint transaction for your launch owner wallet to send: chain, from, to (your launch contract) and calldata, to the member’s verified wallet. Refused airdrop_not_sendable with a reason when it cannot be built.
+     */
+    async createLoyaltyAirdropPrepare(requestParameters: CreateLoyaltyAirdropPrepareRequest, initOverrides?: RequestInit): Promise<CreateLoyaltyAirdropPrepareResponse> {
+        const response = await this.createLoyaltyAirdropPrepareRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
+     */
+    async createLoyaltyAirdropSubmitRaw(requestParameters: CreateLoyaltyAirdropSubmitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LoyaltyAirdropResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLoyaltyAirdropSubmit.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/airdrops/{id}/submit`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LoyaltyAirdropResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
+     */
+    async createLoyaltyAirdropSubmit(requestParameters: CreateLoyaltyAirdropSubmitRequest, initOverrides?: RequestInit): Promise<LoyaltyAirdropResponse> {
+        const response = await this.createLoyaltyAirdropSubmitRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
+     */
+    async createLoyaltyProgramInviteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLoyaltyProgramInviteResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program/invite`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateLoyaltyProgramInviteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
+     */
+    async createLoyaltyProgramInvite(initOverrides?: RequestInit): Promise<CreateLoyaltyProgramInviteResponse> {
+        const response = await this.createLoyaltyProgramInviteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Pin a member to a tier (tierId null clears the pin), with a reason.
+     */
+    async createLoyaltyProgramMemberOverrideRaw(requestParameters: CreateLoyaltyProgramMemberOverrideRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyProgramMemberResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLoyaltyProgramMemberOverride.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program/members/{id}/override`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLoyaltyProgramMemberResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pin a member to a tier (tierId null clears the pin), with a reason.
+     */
+    async createLoyaltyProgramMemberOverride(requestParameters: CreateLoyaltyProgramMemberOverrideRequest, initOverrides?: RequestInit): Promise<GetLoyaltyProgramMemberResponse> {
+        const response = await this.createLoyaltyProgramMemberOverrideRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Add a tier: name, look, threshold and typed perks (% off, free shipping, early access, members-only listings, wholesale access, token gates, airdrops, Bucks, World items, event tickets, …).
+     */
+    async createLoyaltyTierRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLoyaltyTierResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/tiers`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateLoyaltyTierResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Add a tier: name, look, threshold and typed perks (% off, free shipping, early access, members-only listings, wholesale access, token gates, airdrops, Bucks, World items, event tickets, …).
+     */
+    async createLoyaltyTier(initOverrides?: RequestInit): Promise<CreateLoyaltyTierResponse> {
+        const response = await this.createLoyaltyTierRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete a tier; its members are re-evaluated.
+     */
+    async deleteLoyaltyTierRaw(requestParameters: DeleteLoyaltyTierRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteLoyaltyTier.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/tiers/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete a tier; its members are re-evaluated.
+     */
+    async deleteLoyaltyTier(requestParameters: DeleteLoyaltyTierRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.deleteLoyaltyTierRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Get one customer: recent 50 orders, buyer profiles per platform, and stats over all of their orders.
      */
     async getCustomerRaw(requestParameters: GetCustomerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCustomerResponse>> {
@@ -193,6 +573,82 @@ export class CustomersApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your private notes on a customer (empty when none). Works before their first order.
+     */
+    async getCustomerNoteRaw(requestParameters: GetCustomerNoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCustomerNoteResponse>> {
+        if (requestParameters.handle === null || requestParameters.handle === undefined) {
+            throw new runtime.RequiredError('handle','Required parameter requestParameters.handle was null or undefined when calling getCustomerNote.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/customers/{handle}/notes`.replace(`{${"handle"}}`, encodeURIComponent(String(requestParameters.handle))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetCustomerNoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your private notes on a customer (empty when none). Works before their first order.
+     */
+    async getCustomerNote(requestParameters: GetCustomerNoteRequest, initOverrides?: RequestInit): Promise<GetCustomerNoteResponse> {
+        const response = await this.getCustomerNoteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One loyalty NFT airdrop: member, collection, recipient wallet, transaction hash and status.
+     */
+    async getLoyaltyAirdropRaw(requestParameters: GetLoyaltyAirdropRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LoyaltyAirdropResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getLoyaltyAirdrop.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/airdrops/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LoyaltyAirdropResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One loyalty NFT airdrop: member, collection, recipient wallet, transaction hash and status.
+     */
+    async getLoyaltyAirdrop(requestParameters: GetLoyaltyAirdropRequest, initOverrides?: RequestInit): Promise<LoyaltyAirdropResponse> {
+        const response = await this.getLoyaltyAirdropRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your loyalty club: tiers and how many members are in each.
      */
     async getLoyaltyClubRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyClubResponse>> {
@@ -223,6 +679,78 @@ export class CustomersApi extends runtime.BaseAPI {
      */
     async getLoyaltyClub(initOverrides?: RequestInit): Promise<GetLoyaltyClubResponse> {
         const response = await this.getLoyaltyClubRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your loyalty program: qualification (spend, orders, points), window, joining, downgrade and grace, and its tiers with typed perks.
+     */
+    async getLoyaltyProgramRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyProgramResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLoyaltyProgramResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your loyalty program: qualification (spend, orders, points), window, joining, downgrade and grace, and its tiers with typed perks.
+     */
+    async getLoyaltyProgram(initOverrides?: RequestInit): Promise<GetLoyaltyProgramResponse> {
+        const response = await this.getLoyaltyProgramRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One member: standing, tier, progress, perks held, history and any override.
+     */
+    async getLoyaltyProgramMemberRaw(requestParameters: GetLoyaltyProgramMemberRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyProgramMemberResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getLoyaltyProgramMember.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program/members/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLoyaltyProgramMemberResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One member: standing, tier, progress, perks held, history and any override.
+     */
+    async getLoyaltyProgramMember(requestParameters: GetLoyaltyProgramMemberRequest, initOverrides?: RequestInit): Promise<GetLoyaltyProgramMemberResponse> {
+        const response = await this.getLoyaltyProgramMemberRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -261,6 +789,40 @@ export class CustomersApi extends runtime.BaseAPI {
     }
 
     /**
+     * NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
+     */
+    async listLoyaltyAirdropsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyAirdropsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/airdrops`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListLoyaltyAirdropsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
+     */
+    async listLoyaltyAirdrops(initOverrides?: RequestInit): Promise<ListLoyaltyAirdropsResponse> {
+        const response = await this.listLoyaltyAirdropsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your loyalty club’s members, by spend with you.
      */
     async listLoyaltyMembersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyMembersResponse>> {
@@ -295,6 +857,119 @@ export class CustomersApi extends runtime.BaseAPI {
     }
 
     /**
+     * Crossly buyers who bought from you and are not loyalty members yet (q searches by name): who you can invite.
+     */
+    async listLoyaltyProgramInviteCandidatesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyProgramInviteCandidatesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program/invite-candidates`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListLoyaltyProgramInviteCandidatesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Crossly buyers who bought from you and are not loyalty members yet (q searches by name): who you can invite.
+     */
+    async listLoyaltyProgramInviteCandidates(initOverrides?: RequestInit): Promise<ListLoyaltyProgramInviteCandidatesResponse> {
+        const response = await this.listLoyaltyProgramInviteCandidatesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your loyalty members with tier, standing, grace and overrides; search, tier, status and sort filters.
+     */
+    async listLoyaltyProgramMembersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyProgramMembersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program/members`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListLoyaltyProgramMembersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your loyalty members with tier, standing, grace and overrides; search, tier, status and sort filters.
+     */
+    async listLoyaltyProgramMembers(initOverrides?: RequestInit): Promise<ListLoyaltyProgramMembersResponse> {
+        const response = await this.listLoyaltyProgramMembersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save your private notes on a customer (an empty string clears them).
+     */
+    async updateCustomerNoteRaw(requestParameters: UpdateCustomerNoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCustomerNoteResponse>> {
+        if (requestParameters.handle === null || requestParameters.handle === undefined) {
+            throw new runtime.RequiredError('handle','Required parameter requestParameters.handle was null or undefined when calling updateCustomerNote.');
+        }
+
+        if (requestParameters.updateCustomerNoteRequest === null || requestParameters.updateCustomerNoteRequest === undefined) {
+            throw new runtime.RequiredError('updateCustomerNoteRequest','Required parameter requestParameters.updateCustomerNoteRequest was null or undefined when calling updateCustomerNote.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/customers/{handle}/notes`.replace(`{${"handle"}}`, encodeURIComponent(String(requestParameters.handle))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateCustomerNoteRequestToJSON(requestParameters.updateCustomerNoteRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetCustomerNoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save your private notes on a customer (an empty string clears them).
+     */
+    async updateCustomerNote(requestParameters: UpdateCustomerNoteOperationRequest, initOverrides?: RequestInit): Promise<GetCustomerNoteResponse> {
+        const response = await this.updateCustomerNoteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
      */
     async updateLoyaltyClubRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyClubResponse>> {
@@ -325,6 +1000,78 @@ export class CustomersApi extends runtime.BaseAPI {
      */
     async updateLoyaltyClub(initOverrides?: RequestInit): Promise<GetLoyaltyClubResponse> {
         const response = await this.updateLoyaltyClubRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Create or update your loyalty program settings.
+     */
+    async updateLoyaltyProgramRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateLoyaltyProgramResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateLoyaltyProgramResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create or update your loyalty program settings.
+     */
+    async updateLoyaltyProgram(initOverrides?: RequestInit): Promise<UpdateLoyaltyProgramResponse> {
+        const response = await this.updateLoyaltyProgramRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Replace a tier. Members holding it get the edited perks.
+     */
+    async updateLoyaltyTierRaw(requestParameters: UpdateLoyaltyTierRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLoyaltyTierResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLoyaltyTier.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/tiers/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateLoyaltyTierResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Replace a tier. Members holding it get the edited perks.
+     */
+    async updateLoyaltyTier(requestParameters: UpdateLoyaltyTierRequest, initOverrides?: RequestInit): Promise<CreateLoyaltyTierResponse> {
+        const response = await this.updateLoyaltyTierRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

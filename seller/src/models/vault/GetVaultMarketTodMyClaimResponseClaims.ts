@@ -124,11 +124,11 @@ export interface GetVaultMarketTodMyClaimResponseClaims {
 */
 export enum GetVaultMarketTodMyClaimResponseClaimsStatusEnum {
     Draft = 'draft',
+    Submitted = 'submitted',
     Rejected = 'rejected',
     Withdrawn = 'withdrawn',
     Released = 'released',
     Waiting = 'waiting',
-    Submitted = 'submitted',
     NeedsInfo = 'needs_info',
     PartlyReleased = 'partly_released',
     Objected = 'objected'

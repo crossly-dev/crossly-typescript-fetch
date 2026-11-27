@@ -1,15 +1,48 @@
 {
   "name": "@crossly/fetch",
-  "version": "1.0.0",
-  "description": "OpenAPI client for @crossly/fetch",
-  "author": "OpenAPI-Generator",
+  "version": "0.2.0",
+  "description": "Official Crossly seller API client for the Fetch API (Cloudflare Workers, Deno, Bun, Node 18+): your store: listings, crossposting, orders, inventory, analytics. With webhook verification.",
+  "author": "Crossly",
+  "license": "MIT",
+  "homepage": "https://crossly.net/docs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crossly-dev/crossly-typescript-fetch.git",
+    "directory": "seller"
+  },
+  "bugs": {
+    "url": "https://github.com/crossly-dev/crossly-typescript-fetch/issues"
+  },
+  "keywords": [
+    "crossly",
+    "reselling",
+    "ecommerce",
+    "marketplace",
+    "api",
+    "sdk",
+    "fetch",
+    "cloudflare-workers",
+    "deno",
+    "bun"
+  ],
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "typescript": "^3.9.5"
+    "typescript": "5.9.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

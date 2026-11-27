@@ -68,8 +68,8 @@ export interface GetVaultMarketGradingSignalResponseGraders {
 * @enum {string}
 */
 export enum GetVaultMarketGradingSignalResponseGradersViaEnum {
-    Run = 'run',
-    Single = 'single'
+    Single = 'single',
+    Run = 'run'
 }
 
 export function GetVaultMarketGradingSignalResponseGradersFromJSON(json: any): GetVaultMarketGradingSignalResponseGraders {

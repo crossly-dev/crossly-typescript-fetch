@@ -18,6 +18,9 @@ import {
     CreateRestockPromptRepublishResponse,
     CreateRestockPromptRepublishResponseFromJSON,
     CreateRestockPromptRepublishResponseToJSON,
+    GetRestockPromptSettingResponse,
+    GetRestockPromptSettingResponseFromJSON,
+    GetRestockPromptSettingResponseToJSON,
     ListRestockPromptsResponse,
     ListRestockPromptsResponseFromJSON,
     ListRestockPromptsResponseToJSON,
@@ -32,6 +35,10 @@ export interface CreateRestockPromptDismissRequest {
 
 export interface CreateRestockPromptRepublishRequest {
     id: string;
+}
+
+export interface UpdateRestockPromptSettingRequest {
+    getRestockPromptSettingResponse: GetRestockPromptSettingResponse;
 }
 
 /**
@@ -116,6 +123,42 @@ export class RestockPromptsApi extends runtime.BaseAPI {
     }
 
     /**
+     * autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+     * Whether restocked items are republished automatically.
+     */
+    async getRestockPromptSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRestockPromptSettingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/restock-prompts/settings`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetRestockPromptSettingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+     * Whether restocked items are republished automatically.
+     */
+    async getRestockPromptSetting(initOverrides?: RequestInit): Promise<GetRestockPromptSettingResponse> {
+        const response = await this.getRestockPromptSettingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * List pending restock prompts.
      */
     async listRestockPromptsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListRestockPromptsResponse>> {
@@ -146,6 +189,47 @@ export class RestockPromptsApi extends runtime.BaseAPI {
      */
     async listRestockPrompts(initOverrides?: RequestInit): Promise<ListRestockPromptsResponse> {
         const response = await this.listRestockPromptsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Turn automatic republish of restocked items on or off.
+     */
+    async updateRestockPromptSettingRaw(requestParameters: UpdateRestockPromptSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRestockPromptSettingResponse>> {
+        if (requestParameters.getRestockPromptSettingResponse === null || requestParameters.getRestockPromptSettingResponse === undefined) {
+            throw new runtime.RequiredError('getRestockPromptSettingResponse','Required parameter requestParameters.getRestockPromptSettingResponse was null or undefined when calling updateRestockPromptSetting.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/restock-prompts/settings`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: GetRestockPromptSettingResponseToJSON(requestParameters.getRestockPromptSettingResponse),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetRestockPromptSettingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Turn automatic republish of restocked items on or off.
+     */
+    async updateRestockPromptSetting(requestParameters: UpdateRestockPromptSettingRequest, initOverrides?: RequestInit): Promise<GetRestockPromptSettingResponse> {
+        const response = await this.updateRestockPromptSettingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

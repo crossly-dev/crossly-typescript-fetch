@@ -87,9 +87,9 @@ export interface ListSpatialDeedListingsItem {
 */
 export enum ListSpatialDeedListingsItemStatusEnum {
     Active = 'active',
-    Foreclosed = 'foreclosed',
     Grace = 'grace',
-    Delinquent = 'delinquent'
+    Delinquent = 'delinquent',
+    Foreclosed = 'foreclosed'
 }
 
 export function ListSpatialDeedListingsItemFromJSON(json: any): ListSpatialDeedListingsItem {

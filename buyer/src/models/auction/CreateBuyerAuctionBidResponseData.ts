@@ -20,18 +20,6 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface CreateBuyerAuctionBidResponseData {
     /**
-     * Possibly extended by anti-sniping.
-     * @type {string}
-     * @memberof CreateBuyerAuctionBidResponseData
-     */
-    endsAt: string;
-    /**
-     * The price now, in cents, after proxy bidding resolved.
-     * @type {number}
-     * @memberof CreateBuyerAuctionBidResponseData
-     */
-    currentBidCents: number;
-    /**
      * 
      * @type {boolean}
      * @memberof CreateBuyerAuctionBidResponseData
@@ -43,6 +31,18 @@ export interface CreateBuyerAuctionBidResponseData {
      * @memberof CreateBuyerAuctionBidResponseData
      */
     leading: boolean;
+    /**
+     * The price now, in cents, after proxy bidding resolved.
+     * @type {number}
+     * @memberof CreateBuyerAuctionBidResponseData
+     */
+    currentBidCents: number;
+    /**
+     * Possibly extended by anti-sniping.
+     * @type {string}
+     * @memberof CreateBuyerAuctionBidResponseData
+     */
+    endsAt: string;
 }
 
 export function CreateBuyerAuctionBidResponseDataFromJSON(json: any): CreateBuyerAuctionBidResponseData {
@@ -55,10 +55,10 @@ export function CreateBuyerAuctionBidResponseDataFromJSONTyped(json: any, ignore
     }
     return {
         
-        'endsAt': json['endsAt'],
-        'currentBidCents': json['currentBidCents'],
         'ok': json['ok'],
         'leading': json['leading'],
+        'currentBidCents': json['currentBidCents'],
+        'endsAt': json['endsAt'],
     };
 }
 
@@ -71,10 +71,10 @@ export function CreateBuyerAuctionBidResponseDataToJSON(value?: CreateBuyerAucti
     }
     return {
         
-        'endsAt': value.endsAt,
-        'currentBidCents': value.currentBidCents,
         'ok': value.ok,
         'leading': value.leading,
+        'currentBidCents': value.currentBidCents,
+        'endsAt': value.endsAt,
     };
 }
 

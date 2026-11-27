@@ -38,13 +38,13 @@ export interface ListWorldCapabilityDeclarationsItemDeclarationCollection {
 * @enum {string}
 */
 export enum ListWorldCapabilityDeclarationsItemDeclarationCollectionChainEnum {
-    Solana = 'solana',
-    Cosm = 'cosm',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana',
+    Cosm = 'cosm'
 }
 
 export function ListWorldCapabilityDeclarationsItemDeclarationCollectionFromJSON(json: any): ListWorldCapabilityDeclarationsItemDeclarationCollection {

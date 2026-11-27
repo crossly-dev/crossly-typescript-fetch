@@ -45,9 +45,9 @@ export interface ListVaultMarketShareCardsItemMark {
 */
 export enum ListVaultMarketShareCardsItemMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function ListVaultMarketShareCardsItemMarkFromJSON(json: any): ListVaultMarketShareCardsItemMark {

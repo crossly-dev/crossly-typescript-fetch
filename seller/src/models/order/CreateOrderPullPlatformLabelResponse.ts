@@ -24,25 +24,37 @@ export interface CreateOrderPullPlatformLabelResponse {
      * @type {string}
      * @memberof CreateOrderPullPlatformLabelResponse
      */
-    url: string;
+    url?: string;
     /**
      * 
      * @type {boolean}
      * @memberof CreateOrderPullPlatformLabelResponse
      */
-    persisted: boolean;
+    persisted?: boolean;
     /**
      * 
      * @type {number}
      * @memberof CreateOrderPullPlatformLabelResponse
      */
-    expiresInSeconds: number;
+    expiresInSeconds?: number;
     /**
      * 
      * @type {string}
      * @memberof CreateOrderPullPlatformLabelResponse
      */
     provenance: CreateOrderPullPlatformLabelResponseProvenanceEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderPullPlatformLabelResponse
+     */
+    shippingLabelUrl?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderPullPlatformLabelResponse
+     */
+    trackingNumber?: string | null;
 }
 
 /**
@@ -64,10 +76,12 @@ export function CreateOrderPullPlatformLabelResponseFromJSONTyped(json: any, ign
     }
     return {
         
-        'url': json['url'],
-        'persisted': json['persisted'],
-        'expiresInSeconds': json['expiresInSeconds'],
+        'url': !exists(json, 'url') ? undefined : json['url'],
+        'persisted': !exists(json, 'persisted') ? undefined : json['persisted'],
+        'expiresInSeconds': !exists(json, 'expiresInSeconds') ? undefined : json['expiresInSeconds'],
         'provenance': json['provenance'],
+        'shippingLabelUrl': !exists(json, 'shippingLabelUrl') ? undefined : json['shippingLabelUrl'],
+        'trackingNumber': !exists(json, 'trackingNumber') ? undefined : json['trackingNumber'],
     };
 }
 
@@ -84,6 +98,8 @@ export function CreateOrderPullPlatformLabelResponseToJSON(value?: CreateOrderPu
         'persisted': value.persisted,
         'expiresInSeconds': value.expiresInSeconds,
         'provenance': value.provenance,
+        'shippingLabelUrl': value.shippingLabelUrl,
+        'trackingNumber': value.trackingNumber,
     };
 }
 

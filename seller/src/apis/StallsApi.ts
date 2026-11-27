@@ -21,9 +21,18 @@ import {
     CreateStallBookingCancelResponse,
     CreateStallBookingCancelResponseFromJSON,
     CreateStallBookingCancelResponseToJSON,
+    GetStallBookingCounterResponse,
+    GetStallBookingCounterResponseFromJSON,
+    GetStallBookingCounterResponseToJSON,
     GetStallQuoteResponse,
     GetStallQuoteResponseFromJSON,
     GetStallQuoteResponseToJSON,
+    GetStallStreetAerialResponse,
+    GetStallStreetAerialResponseFromJSON,
+    GetStallStreetAerialResponseToJSON,
+    ListStallListingSearchResponse,
+    ListStallListingSearchResponseFromJSON,
+    ListStallListingSearchResponseToJSON,
     ListStallMineResponse,
     ListStallMineResponseFromJSON,
     ListStallMineResponseToJSON,
@@ -39,6 +48,10 @@ export interface CreateStallBookingCancelRequest {
     id: string;
 }
 
+export interface GetStallBookingCounterRequest {
+    id: string;
+}
+
 export interface GetStallQuoteRequest {
     street: string;
     spot: number;
@@ -46,6 +59,10 @@ export interface GetStallQuoteRequest {
     start?: string;
     days?: number;
     events?: string;
+}
+
+export interface GetStallStreetAerialRequest {
+    slug: string;
 }
 
 export interface ListStreetEventsRequest {
@@ -138,6 +155,44 @@ export class StallsApi extends runtime.BaseAPI {
     }
 
     /**
+     * A stall counter: the listings you picked (in order), its booth kind and capacity.
+     */
+    async getStallBookingCounterRaw(requestParameters: GetStallBookingCounterRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStallBookingCounterResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getStallBookingCounter.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/stalls/bookings/{id}/counter`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetStallBookingCounterResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A stall counter: the listings you picked (in order), its booth kind and capacity.
+     */
+    async getStallBookingCounter(requestParameters: GetStallBookingCounterRequest, initOverrides?: RequestInit): Promise<GetStallBookingCounterResponse> {
+        const response = await this.getStallBookingCounterRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Quote a stall: street, spot, and either unit=day with start (YYYY-MM-DD) and days, or unit=event with events (comma-separated event ids). Returns the line items in cents, the rails the spot accepts and whether it is bookable.
      */
     async getStallQuoteRaw(requestParameters: GetStallQuoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStallQuoteResponse>> {
@@ -200,6 +255,78 @@ export class StallsApi extends runtime.BaseAPI {
      */
     async getStallQuote(requestParameters: GetStallQuoteRequest, initOverrides?: RequestInit): Promise<GetStallQuoteResponse> {
         const response = await this.getStallQuoteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A street from above for booking: every spot with its owner, booth size, counter capacity and price, the street events, and who is booked on each date.
+     */
+    async getStallStreetAerialRaw(requestParameters: GetStallStreetAerialRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStallStreetAerialResponse>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
+            throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling getStallStreetAerial.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/stalls/streets/{slug}/aerial`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetStallStreetAerialResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A street from above for booking: every spot with its owner, booth size, counter capacity and price, the street events, and who is booked on each date.
+     */
+    async getStallStreetAerial(requestParameters: GetStallStreetAerialRequest, initOverrides?: RequestInit): Promise<GetStallStreetAerialResponse> {
+        const response = await this.getStallStreetAerialRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Search ANY of your live Crossly listings for a stall counter or convention booth: q, category, min, max (cents), street (marks what its terms allow), limit, offset.
+     */
+    async listStallListingSearchRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListStallListingSearchResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/stalls/listing-search`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListStallListingSearchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Search ANY of your live Crossly listings for a stall counter or convention booth: q, category, min, max (cents), street (marks what its terms allow), limit, offset.
+     */
+    async listStallListingSearch(initOverrides?: RequestInit): Promise<ListStallListingSearchResponse> {
+        const response = await this.listStallListingSearchRaw(initOverrides);
         return await response.value();
     }
 

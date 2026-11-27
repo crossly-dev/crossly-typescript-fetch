@@ -180,9 +180,9 @@ export enum GetBuyerVaultMarketIndexResponseKindEnum {
     Custom = 'custom',
     Brand = 'brand',
     Category = 'category',
+    Segment = 'segment',
     Curated = 'curated',
-    Composite = 'composite',
-    Segment = 'segment'
+    Composite = 'composite'
 }/**
 * @export
 * @enum {string}

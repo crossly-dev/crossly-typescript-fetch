@@ -50,9 +50,9 @@ export interface CreateWorldDecorRetractResponseDataInventorySpaces {
 * @enum {string}
 */
 export enum CreateWorldDecorRetractResponseDataInventorySpacesKindEnum {
-    Shop = 'shop',
     Home = 'home',
     Street = 'street',
+    Shop = 'shop',
     Stall = 'stall'
 }
 

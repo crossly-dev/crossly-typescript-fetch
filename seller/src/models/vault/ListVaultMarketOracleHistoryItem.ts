@@ -153,8 +153,8 @@ export interface ListVaultMarketOracleHistoryItem {
 */
 export enum ListVaultMarketOracleHistoryItemStatusEnum {
     Skipped = 'skipped',
-    Failed = 'failed',
-    Published = 'published'
+    Published = 'published',
+    Failed = 'failed'
 }
 
 export function ListVaultMarketOracleHistoryItemFromJSON(json: any): ListVaultMarketOracleHistoryItem {

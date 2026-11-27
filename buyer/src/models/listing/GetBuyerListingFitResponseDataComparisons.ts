@@ -31,13 +31,13 @@ export interface GetBuyerListingFitResponseDataComparisons {
      * @type {string}
      * @memberof GetBuyerListingFitResponseDataComparisons
      */
-    label: string;
+    refId: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerListingFitResponseDataComparisons
      */
-    refId: string;
+    label: string;
     /**
      * 
      * @type {GetBuyerListingFitResponseDataComparisonsResult}
@@ -56,8 +56,8 @@ export function GetBuyerListingFitResponseDataComparisonsFromJSONTyped(json: any
     }
     return {
         
-        'label': json['label'],
         'refId': json['refId'],
+        'label': json['label'],
         'result': GetBuyerListingFitResponseDataComparisonsResultFromJSON(json['result']),
     };
 }
@@ -71,8 +71,8 @@ export function GetBuyerListingFitResponseDataComparisonsToJSON(value?: GetBuyer
     }
     return {
         
-        'label': value.label,
         'refId': value.refId,
+        'label': value.label,
         'result': GetBuyerListingFitResponseDataComparisonsResultToJSON(value.result),
     };
 }

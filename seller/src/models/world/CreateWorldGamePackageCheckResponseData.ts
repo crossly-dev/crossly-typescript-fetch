@@ -20,17 +20,17 @@ import {
     CreateWorldGamePackageCheckResponseDataFitsToJSON,
 } from './CreateWorldGamePackageCheckResponseDataFits';
 import {
-    CreateWorldGamePackageCheckResponseDataIssues,
-    CreateWorldGamePackageCheckResponseDataIssuesFromJSON,
-    CreateWorldGamePackageCheckResponseDataIssuesFromJSONTyped,
-    CreateWorldGamePackageCheckResponseDataIssuesToJSON,
-} from './CreateWorldGamePackageCheckResponseDataIssues';
-import {
     CreateWorldGamePackageCheckResponseDataManifest,
     CreateWorldGamePackageCheckResponseDataManifestFromJSON,
     CreateWorldGamePackageCheckResponseDataManifestFromJSONTyped,
     CreateWorldGamePackageCheckResponseDataManifestToJSON,
 } from './CreateWorldGamePackageCheckResponseDataManifest';
+import {
+    PathMessage,
+    PathMessageFromJSON,
+    PathMessageFromJSONTyped,
+    PathMessageToJSON,
+} from '../common/PathMessage';
 
 /**
  * 
@@ -46,10 +46,10 @@ export interface CreateWorldGamePackageCheckResponseData {
     ok: boolean;
     /**
      * 
-     * @type {Array<CreateWorldGamePackageCheckResponseDataIssues>}
+     * @type {Array<PathMessage>}
      * @memberof CreateWorldGamePackageCheckResponseData
      */
-    issues: Array<CreateWorldGamePackageCheckResponseDataIssues>;
+    issues: Array<PathMessage>;
     /**
      * 
      * @type {CreateWorldGamePackageCheckResponseDataFits}
@@ -81,7 +81,7 @@ export function CreateWorldGamePackageCheckResponseDataFromJSONTyped(json: any, 
     return {
         
         'ok': json['ok'],
-        'issues': ((json['issues'] as Array<any>).map(CreateWorldGamePackageCheckResponseDataIssuesFromJSON)),
+        'issues': ((json['issues'] as Array<any>).map(PathMessageFromJSON)),
         'fits': CreateWorldGamePackageCheckResponseDataFitsFromJSON(json['fits']),
         'totalBytes': json['totalBytes'],
         'manifest': !exists(json, 'manifest') ? undefined : CreateWorldGamePackageCheckResponseDataManifestFromJSON(json['manifest']),
@@ -98,7 +98,7 @@ export function CreateWorldGamePackageCheckResponseDataToJSON(value?: CreateWorl
     return {
         
         'ok': value.ok,
-        'issues': ((value.issues as Array<any>).map(CreateWorldGamePackageCheckResponseDataIssuesToJSON)),
+        'issues': ((value.issues as Array<any>).map(PathMessageToJSON)),
         'fits': CreateWorldGamePackageCheckResponseDataFitsToJSON(value.fits),
         'totalBytes': value.totalBytes,
         'manifest': CreateWorldGamePackageCheckResponseDataManifestToJSON(value.manifest),

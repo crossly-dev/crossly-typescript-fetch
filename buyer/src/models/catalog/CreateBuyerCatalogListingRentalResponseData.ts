@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    CreateBuyerCatalogListingRentalResponseDataQuote,
+    CreateBuyerCatalogListingRentalResponseDataQuoteFromJSON,
+    CreateBuyerCatalogListingRentalResponseDataQuoteFromJSONTyped,
+    CreateBuyerCatalogListingRentalResponseDataQuoteToJSON,
+} from './CreateBuyerCatalogListingRentalResponseDataQuote';
+
 /**
  * 
  * @export
@@ -43,6 +50,12 @@ export interface CreateBuyerCatalogListingRentalResponseData {
      * @memberof CreateBuyerCatalogListingRentalResponseData
      */
     needsApproval: boolean;
+    /**
+     * 
+     * @type {CreateBuyerCatalogListingRentalResponseDataQuote}
+     * @memberof CreateBuyerCatalogListingRentalResponseData
+     */
+    quote: CreateBuyerCatalogListingRentalResponseDataQuote;
 }
 
 export function CreateBuyerCatalogListingRentalResponseDataFromJSON(json: any): CreateBuyerCatalogListingRentalResponseData {
@@ -59,6 +72,7 @@ export function CreateBuyerCatalogListingRentalResponseDataFromJSONTyped(json: a
         'clientSecret': !exists(json, 'clientSecret') ? undefined : json['clientSecret'],
         'totalCents': json['totalCents'],
         'needsApproval': json['needsApproval'],
+        'quote': CreateBuyerCatalogListingRentalResponseDataQuoteFromJSON(json['quote']),
     };
 }
 
@@ -75,6 +89,7 @@ export function CreateBuyerCatalogListingRentalResponseDataToJSON(value?: Create
         'clientSecret': value.clientSecret,
         'totalCents': value.totalCents,
         'needsApproval': value.needsApproval,
+        'quote': CreateBuyerCatalogListingRentalResponseDataQuoteToJSON(value.quote),
     };
 }
 

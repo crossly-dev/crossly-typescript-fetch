@@ -86,11 +86,11 @@ export interface ListStreetDropsItem {
 * @enum {string}
 */
 export enum ListStreetDropsItemStatusEnum {
-    Scheduled = 'scheduled',
     Cancelled = 'cancelled',
+    Scheduled = 'scheduled',
     Closed = 'closed',
-    Released = 'released',
-    LineOpen = 'line_open'
+    LineOpen = 'line_open',
+    Released = 'released'
 }
 
 export function ListStreetDropsItemFromJSON(json: any): ListStreetDropsItem {

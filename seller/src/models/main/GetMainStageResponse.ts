@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetMainStageResponseHouse,
+    GetMainStageResponseHouseFromJSON,
+    GetMainStageResponseHouseFromJSONTyped,
+    GetMainStageResponseHouseToJSON,
+} from './GetMainStageResponseHouse';
+import {
     GetMainStageResponseLive,
     GetMainStageResponseLiveFromJSON,
     GetMainStageResponseLiveFromJSONTyped,
@@ -80,6 +86,12 @@ export interface GetMainStageResponse {
      * @memberof GetMainStageResponse
      */
     stream?: GetMainStageResponseStream | null;
+    /**
+     * 
+     * @type {GetMainStageResponseHouse}
+     * @memberof GetMainStageResponse
+     */
+    house: GetMainStageResponseHouse;
 }
 
 export function GetMainStageResponseFromJSON(json: any): GetMainStageResponse {
@@ -99,6 +111,7 @@ export function GetMainStageResponseFromJSONTyped(json: any, ignoreDiscriminator
         'live': !exists(json, 'live') ? undefined : GetMainStageResponseLiveFromJSON(json['live']),
         'upcoming': ((json['upcoming'] as Array<any>).map(GetMainStageResponseUpcomingFromJSON)),
         'stream': !exists(json, 'stream') ? undefined : GetMainStageResponseStreamFromJSON(json['stream']),
+        'house': GetMainStageResponseHouseFromJSON(json['house']),
     };
 }
 
@@ -118,6 +131,7 @@ export function GetMainStageResponseToJSON(value?: GetMainStageResponse | null):
         'live': GetMainStageResponseLiveToJSON(value.live),
         'upcoming': ((value.upcoming as Array<any>).map(GetMainStageResponseUpcomingToJSON)),
         'stream': GetMainStageResponseStreamToJSON(value.stream),
+        'house': GetMainStageResponseHouseToJSON(value.house),
     };
 }
 

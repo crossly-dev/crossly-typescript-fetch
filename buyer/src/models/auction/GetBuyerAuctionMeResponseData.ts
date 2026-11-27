@@ -27,12 +27,6 @@ export interface GetBuyerAuctionMeResponseData {
     bidding: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof GetBuyerAuctionMeResponseData
-     */
-    won?: boolean | null;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerAuctionMeResponseData
      */
@@ -43,6 +37,12 @@ export interface GetBuyerAuctionMeResponseData {
      * @memberof GetBuyerAuctionMeResponseData
      */
     leading?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetBuyerAuctionMeResponseData
+     */
+    won?: boolean | null;
     /**
      * Won, and the charge at close did not go through — call pay.
      * @type {boolean}
@@ -62,9 +62,9 @@ export function GetBuyerAuctionMeResponseDataFromJSONTyped(json: any, ignoreDisc
     return {
         
         'bidding': json['bidding'],
-        'won': !exists(json, 'won') ? undefined : json['won'],
         'myMaxCents': !exists(json, 'myMaxCents') ? undefined : json['myMaxCents'],
         'leading': !exists(json, 'leading') ? undefined : json['leading'],
+        'won': !exists(json, 'won') ? undefined : json['won'],
         'needsPayment': !exists(json, 'needsPayment') ? undefined : json['needsPayment'],
     };
 }
@@ -79,9 +79,9 @@ export function GetBuyerAuctionMeResponseDataToJSON(value?: GetBuyerAuctionMeRes
     return {
         
         'bidding': value.bidding,
-        'won': value.won,
         'myMaxCents': value.myMaxCents,
         'leading': value.leading,
+        'won': value.won,
         'needsPayment': value.needsPayment,
     };
 }

@@ -70,6 +70,18 @@ export interface GetWorldGamePackageResponseData {
     createdAt: Date;
     /**
      * 
+     * @type {Date}
+     * @memberof GetWorldGamePackageResponseData
+     */
+    updatedAt: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetWorldGamePackageResponseData
+     */
+    unpublishedAt?: Date | null;
+    /**
+     * 
      * @type {Array<GetWorldGamePackageResponseDataVersions>}
      * @memberof GetWorldGamePackageResponseData
      */
@@ -92,6 +104,8 @@ export function GetWorldGamePackageResponseDataFromJSONTyped(json: any, ignoreDi
         'name': json['name'],
         'designId': json['designId'],
         'createdAt': (new Date(json['createdAt'])),
+        'updatedAt': (new Date(json['updatedAt'])),
+        'unpublishedAt': !exists(json, 'unpublishedAt') ? undefined : (json['unpublishedAt'] === null ? null : new Date(json['unpublishedAt'])),
         'versions': ((json['versions'] as Array<any>).map(GetWorldGamePackageResponseDataVersionsFromJSON)),
     };
 }
@@ -111,6 +125,8 @@ export function GetWorldGamePackageResponseDataToJSON(value?: GetWorldGamePackag
         'name': value.name,
         'designId': value.designId,
         'createdAt': (value.createdAt.toISOString()),
+        'updatedAt': (value.updatedAt.toISOString()),
+        'unpublishedAt': value.unpublishedAt === undefined ? undefined : (value.unpublishedAt === null ? null : value.unpublishedAt.toISOString()),
         'versions': ((value.versions as Array<any>).map(GetWorldGamePackageResponseDataVersionsToJSON)),
     };
 }

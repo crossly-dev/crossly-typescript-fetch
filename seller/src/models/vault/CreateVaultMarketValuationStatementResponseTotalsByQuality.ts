@@ -37,6 +37,12 @@ export interface CreateVaultMarketValuationStatementResponseTotalsByQuality {
      * @type {UnitsCents}
      * @memberof CreateVaultMarketValuationStatementResponseTotalsByQuality
      */
+    c: UnitsCents;
+    /**
+     * 
+     * @type {UnitsCents}
+     * @memberof CreateVaultMarketValuationStatementResponseTotalsByQuality
+     */
     a: UnitsCents;
     /**
      * 
@@ -44,12 +50,6 @@ export interface CreateVaultMarketValuationStatementResponseTotalsByQuality {
      * @memberof CreateVaultMarketValuationStatementResponseTotalsByQuality
      */
     b: UnitsCents;
-    /**
-     * 
-     * @type {UnitsCents}
-     * @memberof CreateVaultMarketValuationStatementResponseTotalsByQuality
-     */
-    c: UnitsCents;
 }
 
 export function CreateVaultMarketValuationStatementResponseTotalsByQualityFromJSON(json: any): CreateVaultMarketValuationStatementResponseTotalsByQuality {
@@ -63,9 +63,9 @@ export function CreateVaultMarketValuationStatementResponseTotalsByQualityFromJS
     return {
         
         'none': UnitsCentsFromJSON(json['none']),
+        'c': UnitsCentsFromJSON(json['C']),
         'a': UnitsCentsFromJSON(json['A']),
         'b': UnitsCentsFromJSON(json['B']),
-        'c': UnitsCentsFromJSON(json['C']),
     };
 }
 
@@ -79,9 +79,9 @@ export function CreateVaultMarketValuationStatementResponseTotalsByQualityToJSON
     return {
         
         'none': UnitsCentsToJSON(value.none),
+        'C': UnitsCentsToJSON(value.c),
         'A': UnitsCentsToJSON(value.a),
         'B': UnitsCentsToJSON(value.b),
-        'C': UnitsCentsToJSON(value.c),
     };
 }
 

@@ -44,7 +44,7 @@ export interface GetHomeResponseVaultWallUnits {
      */
     units: number;
     /**
-     * The book key, for a click through to its market (/shop/vault/markets/<bookKey>).
+     * The book key, for a click through to its market (/trading/<bookKey>).
      * @type {string}
      * @memberof GetHomeResponseVaultWallUnits
      */

@@ -24,6 +24,12 @@ export interface GetBuyerPriceGuideResponseData {
      * @type {number}
      * @memberof GetBuyerPriceGuideResponseData
      */
+    count: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerPriceGuideResponseData
+     */
     medianCents?: number | null;
     /**
      * 
@@ -37,12 +43,6 @@ export interface GetBuyerPriceGuideResponseData {
      * @memberof GetBuyerPriceGuideResponseData
      */
     p75Cents?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetBuyerPriceGuideResponseData
-     */
-    count: number;
     /**
      * 
      * @type {Array<{ [key: string]: any; }>}
@@ -67,10 +67,10 @@ export function GetBuyerPriceGuideResponseDataFromJSONTyped(json: any, ignoreDis
     }
     return {
         
+        'count': json['count'],
         'medianCents': !exists(json, 'medianCents') ? undefined : json['medianCents'],
         'p25Cents': !exists(json, 'p25Cents') ? undefined : json['p25Cents'],
         'p75Cents': !exists(json, 'p75Cents') ? undefined : json['p75Cents'],
-        'count': json['count'],
         'byMonth': json['byMonth'],
         'recent': json['recent'],
     };
@@ -85,10 +85,10 @@ export function GetBuyerPriceGuideResponseDataToJSON(value?: GetBuyerPriceGuideR
     }
     return {
         
+        'count': value.count,
         'medianCents': value.medianCents,
         'p25Cents': value.p25Cents,
         'p75Cents': value.p75Cents,
-        'count': value.count,
         'byMonth': value.byMonth,
         'recent': value.recent,
     };

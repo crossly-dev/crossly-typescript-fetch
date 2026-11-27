@@ -62,8 +62,8 @@ export interface GetVaultMarketHealthResponseConcentrationSingleItem {
 * @enum {string}
 */
 export enum GetVaultMarketHealthResponseConcentrationSingleItemBandEnum {
-    Spread = 'spread',
     Moderate = 'moderate',
+    Spread = 'spread',
     Empty = 'empty',
     Concentrated = 'concentrated'
 }

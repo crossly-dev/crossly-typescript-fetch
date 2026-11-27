@@ -27,6 +27,18 @@ export interface GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
     id: string;
     /**
      * 
+     * @type {string}
+     * @memberof GetBuyerMarketPurchaseOptionResponseDataGradingRuns
+     */
+    graderName: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerMarketPurchaseOptionResponseDataGradingRuns
+     */
+    tierName: string;
+    /**
+     * 
      * @type {number}
      * @memberof GetBuyerMarketPurchaseOptionResponseDataGradingRuns
      */
@@ -36,19 +48,7 @@ export interface GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
      * @type {string}
      * @memberof GetBuyerMarketPurchaseOptionResponseDataGradingRuns
      */
-    tierName: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerMarketPurchaseOptionResponseDataGradingRuns
-     */
     cutoffAt: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerMarketPurchaseOptionResponseDataGradingRuns
-     */
-    graderName: string;
 }
 
 export function GetBuyerMarketPurchaseOptionResponseDataGradingRunsFromJSON(json: any): GetBuyerMarketPurchaseOptionResponseDataGradingRuns {
@@ -62,10 +62,10 @@ export function GetBuyerMarketPurchaseOptionResponseDataGradingRunsFromJSONTyped
     return {
         
         'id': json['id'],
-        'priceCents': json['priceCents'],
-        'tierName': json['tierName'],
-        'cutoffAt': json['cutoffAt'],
         'graderName': json['graderName'],
+        'tierName': json['tierName'],
+        'priceCents': json['priceCents'],
+        'cutoffAt': json['cutoffAt'],
     };
 }
 
@@ -79,10 +79,10 @@ export function GetBuyerMarketPurchaseOptionResponseDataGradingRunsToJSON(value?
     return {
         
         'id': value.id,
-        'priceCents': value.priceCents,
-        'tierName': value.tierName,
-        'cutoffAt': value.cutoffAt,
         'graderName': value.graderName,
+        'tierName': value.tierName,
+        'priceCents': value.priceCents,
+        'cutoffAt': value.cutoffAt,
     };
 }
 

@@ -37,6 +37,12 @@ export interface CreateBuyerSellerClubJoinResponseData {
      * @type {string}
      * @memberof CreateBuyerSellerClubJoinResponseData
      */
+    sellerUserId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerSellerClubJoinResponseData
+     */
     name: string;
     /**
      * 
@@ -46,22 +52,16 @@ export interface CreateBuyerSellerClubJoinResponseData {
     description?: string | null;
     /**
      * 
-     * @type {string}
+     * @type {Array<CreateBuyerSellerClubJoinResponseDataTiers>}
      * @memberof CreateBuyerSellerClubJoinResponseData
      */
-    sellerUserId: string;
+    tiers: Array<CreateBuyerSellerClubJoinResponseDataTiers>;
     /**
      * 
      * @type {CreateBuyerSellerClubJoinResponseDataMember}
      * @memberof CreateBuyerSellerClubJoinResponseData
      */
     member?: CreateBuyerSellerClubJoinResponseDataMember | null;
-    /**
-     * 
-     * @type {Array<CreateBuyerSellerClubJoinResponseDataTiers>}
-     * @memberof CreateBuyerSellerClubJoinResponseData
-     */
-    tiers: Array<CreateBuyerSellerClubJoinResponseDataTiers>;
 }
 
 export function CreateBuyerSellerClubJoinResponseDataFromJSON(json: any): CreateBuyerSellerClubJoinResponseData {
@@ -74,11 +74,11 @@ export function CreateBuyerSellerClubJoinResponseDataFromJSONTyped(json: any, ig
     }
     return {
         
+        'sellerUserId': json['sellerUserId'],
         'name': json['name'],
         'description': !exists(json, 'description') ? undefined : json['description'],
-        'sellerUserId': json['sellerUserId'],
-        'member': !exists(json, 'member') ? undefined : CreateBuyerSellerClubJoinResponseDataMemberFromJSON(json['member']),
         'tiers': ((json['tiers'] as Array<any>).map(CreateBuyerSellerClubJoinResponseDataTiersFromJSON)),
+        'member': !exists(json, 'member') ? undefined : CreateBuyerSellerClubJoinResponseDataMemberFromJSON(json['member']),
     };
 }
 
@@ -91,11 +91,11 @@ export function CreateBuyerSellerClubJoinResponseDataToJSON(value?: CreateBuyerS
     }
     return {
         
+        'sellerUserId': value.sellerUserId,
         'name': value.name,
         'description': value.description,
-        'sellerUserId': value.sellerUserId,
-        'member': CreateBuyerSellerClubJoinResponseDataMemberToJSON(value.member),
         'tiers': ((value.tiers as Array<any>).map(CreateBuyerSellerClubJoinResponseDataTiersToJSON)),
+        'member': CreateBuyerSellerClubJoinResponseDataMemberToJSON(value.member),
     };
 }
 

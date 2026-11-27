@@ -38,25 +38,65 @@ export interface GetInventoryAgingResponseDataBuckets {
      */
     unitCount: number;
     /**
-     * What the seller PAID for the stock in this bucket — the number that
-     * makes 90+ feel urgent. Retail value flatters it; cost is the money
-     * actually stuck on the shelf.
-     * @type {number}
-     * @memberof GetInventoryAgingResponseDataBuckets
-     */
-    costCents: number;
-    /**
-     * What it would bring in at current prices, for the opportunity figure.
+     * Old name for listedValueCents.
      * @type {number}
      * @memberof GetInventoryAgingResponseDataBuckets
      */
     retailCents: number;
     /**
-     * One line the seller can act on.
+     * 
      * @type {string}
      * @memberof GetInventoryAgingResponseDataBuckets
      */
     recommendation: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryAgingResponseDataBuckets
+     */
+    key: GetInventoryAgingResponseDataBucketsKeyEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseDataBuckets
+     */
+    items: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseDataBuckets
+     */
+    units: number;
+    /**
+     * Σ unit cost × units over the items whose cost is known.
+     * @type {number}
+     * @memberof GetInventoryAgingResponseDataBuckets
+     */
+    costCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseDataBuckets
+     */
+    costKnownItems: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseDataBuckets
+     */
+    costUnknownItems: number;
+    /**
+     * Σ ask × units; items with no ask add nothing.
+     * @type {number}
+     * @memberof GetInventoryAgingResponseDataBuckets
+     */
+    listedValueCents: number;
+    /**
+     * Σ market × units over the marked items; null when none in the bucket are marked.
+     * @type {number}
+     * @memberof GetInventoryAgingResponseDataBuckets
+     */
+    marketValueCents?: number | null;
 }
 
 /**
@@ -64,11 +104,21 @@ export interface GetInventoryAgingResponseDataBuckets {
 * @enum {string}
 */
 export enum GetInventoryAgingResponseDataBucketsBucketEnum {
+    Unlisted = 'unlisted',
+    _90 = '90+',
     _07 = '0-7',
     _730 = '7-30',
-    _3090 = '30-90',
-    _90 = '90+',
-    Unlisted = 'unlisted'
+    _3090 = '30-90'
+}/**
+* @export
+* @enum {string}
+*/
+export enum GetInventoryAgingResponseDataBucketsKeyEnum {
+    Unlisted = 'unlisted',
+    Lt7 = 'lt7',
+    D730 = 'd7_30',
+    D3090 = 'd30_90',
+    Gt90 = 'gt90'
 }
 
 export function GetInventoryAgingResponseDataBucketsFromJSON(json: any): GetInventoryAgingResponseDataBuckets {
@@ -84,9 +134,16 @@ export function GetInventoryAgingResponseDataBucketsFromJSONTyped(json: any, ign
         'bucket': json['bucket'],
         'itemCount': json['itemCount'],
         'unitCount': json['unitCount'],
-        'costCents': json['costCents'],
         'retailCents': json['retailCents'],
         'recommendation': json['recommendation'],
+        'key': json['key'],
+        'items': json['items'],
+        'units': json['units'],
+        'costCents': json['costCents'],
+        'costKnownItems': json['costKnownItems'],
+        'costUnknownItems': json['costUnknownItems'],
+        'listedValueCents': json['listedValueCents'],
+        'marketValueCents': !exists(json, 'marketValueCents') ? undefined : json['marketValueCents'],
     };
 }
 
@@ -102,9 +159,16 @@ export function GetInventoryAgingResponseDataBucketsToJSON(value?: GetInventoryA
         'bucket': value.bucket,
         'itemCount': value.itemCount,
         'unitCount': value.unitCount,
-        'costCents': value.costCents,
         'retailCents': value.retailCents,
         'recommendation': value.recommendation,
+        'key': value.key,
+        'items': value.items,
+        'units': value.units,
+        'costCents': value.costCents,
+        'costKnownItems': value.costKnownItems,
+        'costUnknownItems': value.costUnknownItems,
+        'listedValueCents': value.listedValueCents,
+        'marketValueCents': value.marketValueCents,
     };
 }
 

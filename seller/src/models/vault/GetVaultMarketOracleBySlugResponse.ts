@@ -201,8 +201,8 @@ export interface GetVaultMarketOracleBySlugResponse {
 */
 export enum GetVaultMarketOracleBySlugResponseStatusEnum {
     Skipped = 'skipped',
-    Failed = 'failed',
-    Published = 'published'
+    Published = 'published',
+    Failed = 'failed'
 }
 
 export function GetVaultMarketOracleBySlugResponseFromJSON(json: any): GetVaultMarketOracleBySlugResponse {

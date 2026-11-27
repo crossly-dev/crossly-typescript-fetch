@@ -30,6 +30,9 @@ import {
     GetPatternResponse,
     GetPatternResponseFromJSON,
     GetPatternResponseToJSON,
+    GetReferencePostalResponse,
+    GetReferencePostalResponseFromJSON,
+    GetReferencePostalResponseToJSON,
     GetSizeSystemResponse,
     GetSizeSystemResponseFromJSON,
     GetSizeSystemResponseToJSON,
@@ -42,7 +45,20 @@ import {
     ListReferenceCountriesResponse,
     ListReferenceCountriesResponseFromJSON,
     ListReferenceCountriesResponseToJSON,
+    ListReferenceMetrosResponse,
+    ListReferenceMetrosResponseFromJSON,
+    ListReferenceMetrosResponseToJSON,
 } from '../models';
+
+export interface GetReferencePostalRequest {
+    country: string;
+    code: string;
+}
+
+export interface ListReferenceMetrosRequest {
+    q: string;
+    limit?: number;
+}
 
 /**
  * 
@@ -220,6 +236,50 @@ export class ReferenceApi extends runtime.BaseAPI {
     }
 
     /**
+     * Every country gets its canonical shape and `valid`. A US ZIP (territories normalize to country US with `territory`) also gets state, county FIPS and CBSA/CSA. `metroStatus` is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+     * Look up a postal code: canonical shape, state and US metro areas.
+     */
+    async getReferencePostalRaw(requestParameters: GetReferencePostalRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetReferencePostalResponse>> {
+        if (requestParameters.country === null || requestParameters.country === undefined) {
+            throw new runtime.RequiredError('country','Required parameter requestParameters.country was null or undefined when calling getReferencePostal.');
+        }
+
+        if (requestParameters.code === null || requestParameters.code === undefined) {
+            throw new runtime.RequiredError('code','Required parameter requestParameters.code was null or undefined when calling getReferencePostal.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/reference/postal/{country}/{code}`.replace(`{${"country"}}`, encodeURIComponent(String(requestParameters.country))).replace(`{${"code"}}`, encodeURIComponent(String(requestParameters.code))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetReferencePostalResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every country gets its canonical shape and `valid`. A US ZIP (territories normalize to country US with `territory`) also gets state, county FIPS and CBSA/CSA. `metroStatus` is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+     * Look up a postal code: canonical shape, state and US metro areas.
+     */
+    async getReferencePostal(requestParameters: GetReferencePostalRequest, initOverrides?: RequestInit): Promise<GetReferencePostalResponse> {
+        const response = await this.getReferencePostalRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Search the Poshmark + Vestiaire size-system union (US/UK/EU/AU/FR/KR).
      */
     async getSizeSystemRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSizeSystemResponse>> {
@@ -354,6 +414,54 @@ export class ReferenceApi extends runtime.BaseAPI {
      */
     async listReferenceCountries(initOverrides?: RequestInit): Promise<ListReferenceCountriesResponse> {
         const response = await this.listReferenceCountriesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. `q` needs 2+ characters. `meta.datasetAvailable` is false when the census dataset is not loaded, in which case no metro rule can match.
+     * Search US metro areas (CSA / CBSA) for location rules.
+     */
+    async listReferenceMetrosRaw(requestParameters: ListReferenceMetrosRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListReferenceMetrosResponse>> {
+        if (requestParameters.q === null || requestParameters.q === undefined) {
+            throw new runtime.RequiredError('q','Required parameter requestParameters.q was null or undefined when calling listReferenceMetros.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/reference/metros`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListReferenceMetrosResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. `q` needs 2+ characters. `meta.datasetAvailable` is false when the census dataset is not loaded, in which case no metro rule can match.
+     * Search US metro areas (CSA / CBSA) for location rules.
+     */
+    async listReferenceMetros(requestParameters: ListReferenceMetrosRequest, initOverrides?: RequestInit): Promise<ListReferenceMetrosResponse> {
+        const response = await this.listReferenceMetrosRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

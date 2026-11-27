@@ -33,10 +33,22 @@ export interface ListBuyerSubscriptionsItem {
     status: string;
     /**
      * 
+     * @type {number}
+     * @memberof ListBuyerSubscriptionsItem
+     */
+    intervalDays: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerSubscriptionsItem
+     */
+    discountBps: number;
+    /**
+     * 
      * @type {string}
      * @memberof ListBuyerSubscriptionsItem
      */
-    title?: string | null;
+    nextRunAt: string;
     /**
      * 
      * @type {string}
@@ -48,19 +60,7 @@ export interface ListBuyerSubscriptionsItem {
      * @type {string}
      * @memberof ListBuyerSubscriptionsItem
      */
-    nextRunAt: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerSubscriptionsItem
-     */
-    intervalDays: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerSubscriptionsItem
-     */
-    discountBps: number;
+    title?: string | null;
 }
 
 export function ListBuyerSubscriptionsItemFromJSON(json: any): ListBuyerSubscriptionsItem {
@@ -75,11 +75,11 @@ export function ListBuyerSubscriptionsItemFromJSONTyped(json: any, ignoreDiscrim
         
         'id': json['id'],
         'status': json['status'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
-        'nextRunAt': json['nextRunAt'],
         'intervalDays': json['intervalDays'],
         'discountBps': json['discountBps'],
+        'nextRunAt': json['nextRunAt'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
     };
 }
 
@@ -94,11 +94,11 @@ export function ListBuyerSubscriptionsItemToJSON(value?: ListBuyerSubscriptionsI
         
         'id': value.id,
         'status': value.status,
-        'title': value.title,
-        'slug': value.slug,
-        'nextRunAt': value.nextRunAt,
         'intervalDays': value.intervalDays,
         'discountBps': value.discountBps,
+        'nextRunAt': value.nextRunAt,
+        'slug': value.slug,
+        'title': value.title,
     };
 }
 

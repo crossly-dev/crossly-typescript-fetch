@@ -28,6 +28,12 @@ import {
 export interface GetBuyerMarketPurchaseOptionResponseData {
     /**
      * 
+     * @type {boolean}
+     * @memberof GetBuyerMarketPurchaseOptionResponseData
+     */
+    vaultStock: boolean;
+    /**
+     * 
      * @type {number}
      * @memberof GetBuyerMarketPurchaseOptionResponseData
      */
@@ -38,12 +44,6 @@ export interface GetBuyerMarketPurchaseOptionResponseData {
      * @memberof GetBuyerMarketPurchaseOptionResponseData
      */
     gradingRuns: Array<GetBuyerMarketPurchaseOptionResponseDataGradingRuns>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetBuyerMarketPurchaseOptionResponseData
-     */
-    vaultStock: boolean;
 }
 
 export function GetBuyerMarketPurchaseOptionResponseDataFromJSON(json: any): GetBuyerMarketPurchaseOptionResponseData {
@@ -56,9 +56,9 @@ export function GetBuyerMarketPurchaseOptionResponseDataFromJSONTyped(json: any,
     }
     return {
         
+        'vaultStock': json['vaultStock'],
         'fastShipCents': json['fastShipCents'],
         'gradingRuns': ((json['gradingRuns'] as Array<any>).map(GetBuyerMarketPurchaseOptionResponseDataGradingRunsFromJSON)),
-        'vaultStock': json['vaultStock'],
     };
 }
 
@@ -71,9 +71,9 @@ export function GetBuyerMarketPurchaseOptionResponseDataToJSON(value?: GetBuyerM
     }
     return {
         
+        'vaultStock': value.vaultStock,
         'fastShipCents': value.fastShipCents,
         'gradingRuns': ((value.gradingRuns as Array<any>).map(GetBuyerMarketPurchaseOptionResponseDataGradingRunsToJSON)),
-        'vaultStock': value.vaultStock,
     };
 }
 

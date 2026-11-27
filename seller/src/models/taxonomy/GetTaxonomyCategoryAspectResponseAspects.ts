@@ -44,12 +44,6 @@ export interface GetTaxonomyCategoryAspectResponseAspects {
      */
     required: boolean;
     /**
-     * Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.
-     * @type {string}
-     * @memberof GetTaxonomyCategoryAspectResponseAspects
-     */
-    cardinality: string;
-    /**
      * 
      * @type {boolean}
      * @memberof GetTaxonomyCategoryAspectResponseAspects
@@ -61,6 +55,12 @@ export interface GetTaxonomyCategoryAspectResponseAspects {
      * @memberof GetTaxonomyCategoryAspectResponseAspects
      */
     maxLength?: number | null;
+    /**
+     * Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.
+     * @type {string}
+     * @memberof GetTaxonomyCategoryAspectResponseAspects
+     */
+    cardinality: string;
     /**
      * 
      * @type {boolean}
@@ -83,9 +83,9 @@ export function GetTaxonomyCategoryAspectResponseAspectsFromJSONTyped(json: any,
         'dataType': json['dataType'],
         'enumValues': !exists(json, 'enumValues') ? undefined : json['enumValues'],
         'required': json['required'],
-        'cardinality': json['cardinality'],
         'variesByAspect': !exists(json, 'variesByAspect') ? undefined : json['variesByAspect'],
         'maxLength': !exists(json, 'maxLength') ? undefined : json['maxLength'],
+        'cardinality': json['cardinality'],
         'selectionOnly': json['selectionOnly'],
     };
 }
@@ -103,9 +103,9 @@ export function GetTaxonomyCategoryAspectResponseAspectsToJSON(value?: GetTaxono
         'dataType': value.dataType,
         'enumValues': value.enumValues,
         'required': value.required,
-        'cardinality': value.cardinality,
         'variesByAspect': value.variesByAspect,
         'maxLength': value.maxLength,
+        'cardinality': value.cardinality,
         'selectionOnly': value.selectionOnly,
     };
 }

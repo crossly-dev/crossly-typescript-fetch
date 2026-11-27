@@ -18,10 +18,10 @@
  * @enum {string}
  */
 export enum GetWorldCapabilityCatalogueResponseDataKindsClientsItem {
-    Web = 'web',
     App = 'app',
-    Godot = 'godot',
     Api = 'api',
+    Web = 'web',
+    Godot = 'godot',
     Runner = 'runner'
 }
 

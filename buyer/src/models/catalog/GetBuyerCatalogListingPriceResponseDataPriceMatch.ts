@@ -21,16 +21,22 @@ import { exists, mapValues } from '../../runtime';
 export interface GetBuyerCatalogListingPriceResponseDataPriceMatch {
     /**
      * 
+     * @type {number}
+     * @memberof GetBuyerCatalogListingPriceResponseDataPriceMatch
+     */
+    listPriceCents: number;
+    /**
+     * 
      * @type {string}
      * @memberof GetBuyerCatalogListingPriceResponseDataPriceMatch
      */
     platform: string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof GetBuyerCatalogListingPriceResponseDataPriceMatch
      */
-    listPriceCents: number;
+    platformName?: string | null;
 }
 
 export function GetBuyerCatalogListingPriceResponseDataPriceMatchFromJSON(json: any): GetBuyerCatalogListingPriceResponseDataPriceMatch {
@@ -43,8 +49,9 @@ export function GetBuyerCatalogListingPriceResponseDataPriceMatchFromJSONTyped(j
     }
     return {
         
-        'platform': json['platform'],
         'listPriceCents': json['listPriceCents'],
+        'platform': json['platform'],
+        'platformName': !exists(json, 'platformName') ? undefined : json['platformName'],
     };
 }
 
@@ -57,8 +64,9 @@ export function GetBuyerCatalogListingPriceResponseDataPriceMatchToJSON(value?: 
     }
     return {
         
-        'platform': value.platform,
         'listPriceCents': value.listPriceCents,
+        'platform': value.platform,
+        'platformName': value.platformName,
     };
 }
 

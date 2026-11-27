@@ -40,24 +40,6 @@ export interface ListBuyerListingSellerReviewsItem {
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof ListBuyerListingSellerReviewsItem
-     */
-    createdAt: string;
-    /**
-     * 
-     * @type {ListBuyerListingSellerReviewsItemItem}
-     * @memberof ListBuyerListingSellerReviewsItem
-     */
-    item: ListBuyerListingSellerReviewsItemItem;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerListingSellerReviewsItem
-     */
-    body?: string | null;
-    /**
-     * 
      * @type {number}
      * @memberof ListBuyerListingSellerReviewsItem
      */
@@ -67,7 +49,7 @@ export interface ListBuyerListingSellerReviewsItem {
      * @type {string}
      * @memberof ListBuyerListingSellerReviewsItem
      */
-    sellerReply?: string | null;
+    body?: string | null;
     /**
      * 
      * @type {Array<ListBuyerListingSellerReviewsItemMedia>}
@@ -79,7 +61,25 @@ export interface ListBuyerListingSellerReviewsItem {
      * @type {string}
      * @memberof ListBuyerListingSellerReviewsItem
      */
+    sellerReply?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerListingSellerReviewsItem
+     */
     reviewer?: string | null;
+    /**
+     * 
+     * @type {ListBuyerListingSellerReviewsItemItem}
+     * @memberof ListBuyerListingSellerReviewsItem
+     */
+    item: ListBuyerListingSellerReviewsItemItem;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerListingSellerReviewsItem
+     */
+    createdAt: string;
 }
 
 export function ListBuyerListingSellerReviewsItemFromJSON(json: any): ListBuyerListingSellerReviewsItem {
@@ -93,13 +93,13 @@ export function ListBuyerListingSellerReviewsItemFromJSONTyped(json: any, ignore
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'item': ListBuyerListingSellerReviewsItemItemFromJSON(json['item']),
-        'body': !exists(json, 'body') ? undefined : json['body'],
         'rating': json['rating'],
-        'sellerReply': !exists(json, 'sellerReply') ? undefined : json['sellerReply'],
+        'body': !exists(json, 'body') ? undefined : json['body'],
         'media': ((json['media'] as Array<any>).map(ListBuyerListingSellerReviewsItemMediaFromJSON)),
+        'sellerReply': !exists(json, 'sellerReply') ? undefined : json['sellerReply'],
         'reviewer': !exists(json, 'reviewer') ? undefined : json['reviewer'],
+        'item': ListBuyerListingSellerReviewsItemItemFromJSON(json['item']),
+        'createdAt': json['createdAt'],
     };
 }
 
@@ -113,13 +113,13 @@ export function ListBuyerListingSellerReviewsItemToJSON(value?: ListBuyerListing
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'item': ListBuyerListingSellerReviewsItemItemToJSON(value.item),
-        'body': value.body,
         'rating': value.rating,
-        'sellerReply': value.sellerReply,
+        'body': value.body,
         'media': ((value.media as Array<any>).map(ListBuyerListingSellerReviewsItemMediaToJSON)),
+        'sellerReply': value.sellerReply,
         'reviewer': value.reviewer,
+        'item': ListBuyerListingSellerReviewsItemItemToJSON(value.item),
+        'createdAt': value.createdAt,
     };
 }
 

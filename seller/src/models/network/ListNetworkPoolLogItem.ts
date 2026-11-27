@@ -36,12 +36,6 @@ export interface ListNetworkPoolLogItem {
      * @type {string}
      * @memberof ListNetworkPoolLogItem
      */
-    ruleId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListNetworkPoolLogItem
-     */
     actionType: string;
     /**
      * 
@@ -51,10 +45,10 @@ export interface ListNetworkPoolLogItem {
     targetUserId: string;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof ListNetworkPoolLogItem
      */
-    performedAt: Date;
+    ruleId?: string | null;
     /**
      * 
      * @type {string}
@@ -73,6 +67,12 @@ export interface ListNetworkPoolLogItem {
      * @memberof ListNetworkPoolLogItem
      */
     targetPlatformListingId?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListNetworkPoolLogItem
+     */
+    performedAt: Date;
 }
 
 export function ListNetworkPoolLogItemFromJSON(json: any): ListNetworkPoolLogItem {
@@ -87,13 +87,13 @@ export function ListNetworkPoolLogItemFromJSONTyped(json: any, ignoreDiscriminat
         
         'id': json['id'],
         'platform': json['platform'],
-        'ruleId': !exists(json, 'ruleId') ? undefined : json['ruleId'],
         'actionType': json['actionType'],
         'targetUserId': json['targetUserId'],
-        'performedAt': (new Date(json['performedAt'])),
+        'ruleId': !exists(json, 'ruleId') ? undefined : json['ruleId'],
         'engagerUserId': json['engagerUserId'],
         'targetListingId': !exists(json, 'targetListingId') ? undefined : json['targetListingId'],
         'targetPlatformListingId': !exists(json, 'targetPlatformListingId') ? undefined : json['targetPlatformListingId'],
+        'performedAt': (new Date(json['performedAt'])),
     };
 }
 
@@ -108,13 +108,13 @@ export function ListNetworkPoolLogItemToJSON(value?: ListNetworkPoolLogItem | nu
         
         'id': value.id,
         'platform': value.platform,
-        'ruleId': value.ruleId,
         'actionType': value.actionType,
         'targetUserId': value.targetUserId,
-        'performedAt': (value.performedAt.toISOString()),
+        'ruleId': value.ruleId,
         'engagerUserId': value.engagerUserId,
         'targetListingId': value.targetListingId,
         'targetPlatformListingId': value.targetPlatformListingId,
+        'performedAt': (value.performedAt.toISOString()),
     };
 }
 

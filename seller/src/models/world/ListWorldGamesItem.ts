@@ -32,12 +32,6 @@ import {
     GetWorldGameResponseDataPieceToJSON,
 } from './GetWorldGameResponseDataPiece';
 import {
-    GetWorldGameResponseDataPlayers,
-    GetWorldGameResponseDataPlayersFromJSON,
-    GetWorldGameResponseDataPlayersFromJSONTyped,
-    GetWorldGameResponseDataPlayersToJSON,
-} from './GetWorldGameResponseDataPlayers';
-import {
     GetWorldGameResponseDataRewards,
     GetWorldGameResponseDataRewardsFromJSON,
     GetWorldGameResponseDataRewardsFromJSONTyped,
@@ -49,6 +43,12 @@ import {
     ListWorldGamesItemPlacesItemFromJSONTyped,
     ListWorldGamesItemPlacesItemToJSON,
 } from './ListWorldGamesItemPlacesItem';
+import {
+    MinMax,
+    MinMaxFromJSON,
+    MinMaxFromJSONTyped,
+    MinMaxToJSON,
+} from '../common/MinMax';
 
 /**
  * 
@@ -94,10 +94,10 @@ export interface ListWorldGamesItem {
     mode: ListWorldGamesItemModeEnum;
     /**
      * 
-     * @type {GetWorldGameResponseDataPlayers}
+     * @type {MinMax}
      * @memberof ListWorldGamesItem
      */
-    players: GetWorldGameResponseDataPlayers;
+    players: MinMax;
     /**
      * 
      * @type {Array<ListWorldGamesItemPlacesItem>}
@@ -187,7 +187,7 @@ export function ListWorldGamesItemFromJSONTyped(json: any, ignoreDiscriminator: 
         'version': json['version'],
         'description': json['description'],
         'mode': json['mode'],
-        'players': GetWorldGameResponseDataPlayersFromJSON(json['players']),
+        'players': MinMaxFromJSON(json['players']),
         'places': ((json['places'] as Array<any>).map(ListWorldGamesItemPlacesItemFromJSON)),
         'rating': json['rating'],
         'scoring': !exists(json, 'scoring') ? undefined : GetWorldGameLeaderboardResponseDataScoringFromJSON(json['scoring']),
@@ -215,7 +215,7 @@ export function ListWorldGamesItemToJSON(value?: ListWorldGamesItem | null): any
         'version': value.version,
         'description': value.description,
         'mode': value.mode,
-        'players': GetWorldGameResponseDataPlayersToJSON(value.players),
+        'players': MinMaxToJSON(value.players),
         'places': ((value.places as Array<any>).map(ListWorldGamesItemPlacesItemToJSON)),
         'rating': value.rating,
         'scoring': GetWorldGameLeaderboardResponseDataScoringToJSON(value.scoring),

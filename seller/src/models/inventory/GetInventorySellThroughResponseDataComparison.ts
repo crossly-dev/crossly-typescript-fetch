@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetAnalyticOverviewResponseDataKpisNetSalesDelta,
+    GetAnalyticOverviewResponseDataKpisNetSalesDeltaFromJSON,
+    GetAnalyticOverviewResponseDataKpisNetSalesDeltaFromJSONTyped,
+    GetAnalyticOverviewResponseDataKpisNetSalesDeltaToJSON,
+} from '../analytic/GetAnalyticOverviewResponseDataKpisNetSalesDelta';
+
 /**
  * 
  * @export
@@ -20,11 +27,17 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface GetInventorySellThroughResponseDataComparison {
     /**
-     * 
+     * Always null: a relative change of a rate is not reported. Read `pp`.
+     * @type {any}
+     * @memberof GetInventorySellThroughResponseDataComparison
+     */
+    pctChange: any | null;
+    /**
+     * Percentage points, null when not comparable.
      * @type {number}
      * @memberof GetInventorySellThroughResponseDataComparison
      */
-    pctChange?: number | null;
+    pp?: number | null;
     /**
      * 
      * @type {boolean}
@@ -37,6 +50,12 @@ export interface GetInventorySellThroughResponseDataComparison {
      * @memberof GetInventorySellThroughResponseDataComparison
      */
     reason?: string | null;
+    /**
+     * 
+     * @type {GetAnalyticOverviewResponseDataKpisNetSalesDelta}
+     * @memberof GetInventorySellThroughResponseDataComparison
+     */
+    delta: GetAnalyticOverviewResponseDataKpisNetSalesDelta;
 }
 
 export function GetInventorySellThroughResponseDataComparisonFromJSON(json: any): GetInventorySellThroughResponseDataComparison {
@@ -49,9 +68,11 @@ export function GetInventorySellThroughResponseDataComparisonFromJSONTyped(json:
     }
     return {
         
-        'pctChange': !exists(json, 'pctChange') ? undefined : json['pctChange'],
+        'pctChange': json['pctChange'],
+        'pp': !exists(json, 'pp') ? undefined : json['pp'],
         'comparable': json['comparable'],
         'reason': !exists(json, 'reason') ? undefined : json['reason'],
+        'delta': GetAnalyticOverviewResponseDataKpisNetSalesDeltaFromJSON(json['delta']),
     };
 }
 
@@ -65,8 +86,10 @@ export function GetInventorySellThroughResponseDataComparisonToJSON(value?: GetI
     return {
         
         'pctChange': value.pctChange,
+        'pp': value.pp,
         'comparable': value.comparable,
         'reason': value.reason,
+        'delta': GetAnalyticOverviewResponseDataKpisNetSalesDeltaToJSON(value.delta),
     };
 }
 

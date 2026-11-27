@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetMembershipResponseBenefits,
+    GetMembershipResponseBenefitsFromJSON,
+    GetMembershipResponseBenefitsFromJSONTyped,
+    GetMembershipResponseBenefitsToJSON,
+} from './GetMembershipResponseBenefits';
+
 /**
  * 
  * @export
@@ -43,6 +50,12 @@ export interface GetMembershipResponse {
      * @memberof GetMembershipResponse
      */
     endsAt?: Date | null;
+    /**
+     * 
+     * @type {GetMembershipResponseBenefits}
+     * @memberof GetMembershipResponse
+     */
+    benefits?: GetMembershipResponseBenefits | null;
 }
 
 /**
@@ -50,8 +63,8 @@ export interface GetMembershipResponse {
 * @enum {string}
 */
 export enum GetMembershipResponseTierEnum {
-    Classic = 'classic',
-    Pro = 'pro'
+    Pro = 'pro',
+    Classic = 'classic'
 }
 
 export function GetMembershipResponseFromJSON(json: any): GetMembershipResponse {
@@ -68,6 +81,7 @@ export function GetMembershipResponseFromJSONTyped(json: any, ignoreDiscriminato
         'active': json['active'],
         'startedAt': !exists(json, 'startedAt') ? undefined : (json['startedAt'] === null ? null : new Date(json['startedAt'])),
         'endsAt': !exists(json, 'endsAt') ? undefined : (json['endsAt'] === null ? null : new Date(json['endsAt'])),
+        'benefits': !exists(json, 'benefits') ? undefined : GetMembershipResponseBenefitsFromJSON(json['benefits']),
     };
 }
 
@@ -84,6 +98,7 @@ export function GetMembershipResponseToJSON(value?: GetMembershipResponse | null
         'active': value.active,
         'startedAt': value.startedAt === undefined ? undefined : (value.startedAt === null ? null : value.startedAt.toISOString()),
         'endsAt': value.endsAt === undefined ? undefined : (value.endsAt === null ? null : value.endsAt.toISOString()),
+        'benefits': GetMembershipResponseBenefitsToJSON(value.benefits),
     };
 }
 

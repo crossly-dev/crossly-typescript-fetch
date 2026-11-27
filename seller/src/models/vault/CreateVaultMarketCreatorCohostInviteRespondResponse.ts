@@ -74,10 +74,10 @@ export interface CreateVaultMarketCreatorCohostInviteRespondResponse {
 * @enum {string}
 */
 export enum CreateVaultMarketCreatorCohostInviteRespondResponseStatusEnum {
-    Invited = 'invited',
-    Withdrawn = 'withdrawn',
     Accepted = 'accepted',
-    Declined = 'declined'
+    Declined = 'declined',
+    Withdrawn = 'withdrawn',
+    Invited = 'invited'
 }
 
 export function CreateVaultMarketCreatorCohostInviteRespondResponseFromJSON(json: any): CreateVaultMarketCreatorCohostInviteRespondResponse {

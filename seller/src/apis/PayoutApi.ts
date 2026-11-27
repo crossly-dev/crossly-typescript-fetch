@@ -21,6 +21,15 @@ import {
     CreatePayoutConnectOnboardResponse,
     CreatePayoutConnectOnboardResponseFromJSON,
     CreatePayoutConnectOnboardResponseToJSON,
+    CreatePayoutIdentityLinkResponse,
+    CreatePayoutIdentityLinkResponseFromJSON,
+    CreatePayoutIdentityLinkResponseToJSON,
+    CreatePayoutPayoutRequest,
+    CreatePayoutPayoutRequestFromJSON,
+    CreatePayoutPayoutRequestToJSON,
+    CreatePayoutPayoutResponse,
+    CreatePayoutPayoutResponseFromJSON,
+    CreatePayoutPayoutResponseToJSON,
     GetPayoutConnectResponse,
     GetPayoutConnectResponseFromJSON,
     GetPayoutConnectResponseToJSON,
@@ -30,13 +39,41 @@ import {
     GetPayoutGrossForNetResponse,
     GetPayoutGrossForNetResponseFromJSON,
     GetPayoutGrossForNetResponseToJSON,
+    GetPayoutIdentityResponse,
+    GetPayoutIdentityResponseFromJSON,
+    GetPayoutIdentityResponseToJSON,
+    GetPayoutWalletResponse,
+    GetPayoutWalletResponseFromJSON,
+    GetPayoutWalletResponseToJSON,
     ListPayoutCompareResponse,
     ListPayoutCompareResponseFromJSON,
     ListPayoutCompareResponseToJSON,
+    UpdatePayoutScheduleRequest,
+    UpdatePayoutScheduleRequestFromJSON,
+    UpdatePayoutScheduleRequestToJSON,
+    UpdatePayoutScheduleResponse,
+    UpdatePayoutScheduleResponseFromJSON,
+    UpdatePayoutScheduleResponseToJSON,
 } from '../models';
 
 export interface CreatePayoutConnectOnboardOperationRequest {
     createPayoutConnectOnboardRequest: CreatePayoutConnectOnboardRequest;
+}
+
+export interface CreatePayoutIdentityLinkRequest {
+    createPayoutConnectOnboardRequest: CreatePayoutConnectOnboardRequest;
+}
+
+export interface CreatePayoutPayoutOperationRequest {
+    createPayoutPayoutRequest: CreatePayoutPayoutRequest;
+}
+
+export interface GetPayoutIdentityRequest {
+    fresh?: GetPayoutIdentityFreshEnum;
+}
+
+export interface UpdatePayoutScheduleOperationRequest {
+    updatePayoutScheduleRequest: UpdatePayoutScheduleRequest;
 }
 
 /**
@@ -84,6 +121,92 @@ export class PayoutApi extends runtime.BaseAPI {
      */
     async createPayoutConnectOnboard(requestParameters: CreatePayoutConnectOnboardOperationRequest, initOverrides?: RequestInit): Promise<CreatePayoutConnectOnboardResponse> {
         const response = await this.createPayoutConnectOnboardRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+     * Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs.
+     */
+    async createPayoutIdentityLinkRaw(requestParameters: CreatePayoutIdentityLinkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePayoutIdentityLinkResponse>> {
+        if (requestParameters.createPayoutConnectOnboardRequest === null || requestParameters.createPayoutConnectOnboardRequest === undefined) {
+            throw new runtime.RequiredError('createPayoutConnectOnboardRequest','Required parameter requestParameters.createPayoutConnectOnboardRequest was null or undefined when calling createPayoutIdentityLink.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/payouts/identity/link`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreatePayoutConnectOnboardRequestToJSON(requestParameters.createPayoutConnectOnboardRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePayoutIdentityLinkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.
+     * Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs.
+     */
+    async createPayoutIdentityLink(requestParameters: CreatePayoutIdentityLinkRequest, initOverrides?: RequestInit): Promise<CreatePayoutIdentityLinkResponse> {
+        const response = await this.createPayoutIdentityLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+     * Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only).
+     */
+    async createPayoutPayoutRaw(requestParameters: CreatePayoutPayoutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePayoutPayoutResponse>> {
+        if (requestParameters.createPayoutPayoutRequest === null || requestParameters.createPayoutPayoutRequest === undefined) {
+            throw new runtime.RequiredError('createPayoutPayoutRequest','Required parameter requestParameters.createPayoutPayoutRequest was null or undefined when calling createPayoutPayout.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/payout/payouts`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreatePayoutPayoutRequestToJSON(requestParameters.createPayoutPayoutRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePayoutPayoutResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.
+     * Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only).
+     */
+    async createPayoutPayout(requestParameters: CreatePayoutPayoutOperationRequest, initOverrides?: RequestInit): Promise<CreatePayoutPayoutResponse> {
+        const response = await this.createPayoutPayoutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -192,6 +315,82 @@ export class PayoutApi extends runtime.BaseAPI {
     }
 
     /**
+     * status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe\'s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe\'s reason. Cached up to 60 s; fresh=1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+     * Stripe\'s verification of your payout account: status and what Stripe still needs, in plain words.
+     */
+    async getPayoutIdentityRaw(requestParameters: GetPayoutIdentityRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPayoutIdentityResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.fresh !== undefined) {
+            queryParameters['fresh'] = requestParameters.fresh;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/payouts/identity`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPayoutIdentityResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe\'s requirement keys as plain-words lines ({ keys, label }); errors carry Stripe\'s reason. Cached up to 60 s; fresh=1 re-reads Stripe. Payouts are gated on payoutsEnabled only.
+     * Stripe\'s verification of your payout account: status and what Stripe still needs, in plain words.
+     */
+    async getPayoutIdentity(requestParameters: GetPayoutIdentityRequest = {}, initOverrides?: RequestInit): Promise<GetPayoutIdentityResponse> {
+        const response = await this.getPayoutIdentityRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+     * Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions.
+     */
+    async getPayoutWalletRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPayoutWalletResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/payout/wallet`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPayoutWalletResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.
+     * Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions.
+     */
+    async getPayoutWallet(initOverrides?: RequestInit): Promise<GetPayoutWalletResponse> {
+        const response = await this.getPayoutWalletRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Rank platforms by what they net at a given price. Defaults to connected ones.
      */
     async listPayoutCompareRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPayoutCompareResponse>> {
@@ -225,4 +424,54 @@ export class PayoutApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * Change the automatic payout schedule.
+     */
+    async updatePayoutScheduleRaw(requestParameters: UpdatePayoutScheduleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatePayoutScheduleResponse>> {
+        if (requestParameters.updatePayoutScheduleRequest === null || requestParameters.updatePayoutScheduleRequest === undefined) {
+            throw new runtime.RequiredError('updatePayoutScheduleRequest','Required parameter requestParameters.updatePayoutScheduleRequest was null or undefined when calling updatePayoutSchedule.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/payout/schedule`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdatePayoutScheduleRequestToJSON(requestParameters.updatePayoutScheduleRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdatePayoutScheduleResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change the automatic payout schedule.
+     */
+    async updatePayoutSchedule(requestParameters: UpdatePayoutScheduleOperationRequest, initOverrides?: RequestInit): Promise<UpdatePayoutScheduleResponse> {
+        const response = await this.updatePayoutScheduleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetPayoutIdentityFreshEnum {
+    _0 = '0',
+    _1 = '1'
 }

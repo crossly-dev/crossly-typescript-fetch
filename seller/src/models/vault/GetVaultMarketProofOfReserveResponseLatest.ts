@@ -19,6 +19,12 @@ import {
     GetVaultMarketProofOfReserveByDayResponseUnitsFromJSONTyped,
     GetVaultMarketProofOfReserveByDayResponseUnitsToJSON,
 } from './GetVaultMarketProofOfReserveByDayResponseUnits';
+import {
+    GetVaultMarketProofOfReserveResponseLatestAnchor,
+    GetVaultMarketProofOfReserveResponseLatestAnchorFromJSON,
+    GetVaultMarketProofOfReserveResponseLatestAnchorFromJSONTyped,
+    GetVaultMarketProofOfReserveResponseLatestAnchorToJSON,
+} from './GetVaultMarketProofOfReserveResponseLatestAnchor';
 
 /**
  * 
@@ -80,6 +86,12 @@ export interface GetVaultMarketProofOfReserveResponseLatest {
      * @memberof GetVaultMarketProofOfReserveResponseLatest
      */
     memo: string;
+    /**
+     * 
+     * @type {GetVaultMarketProofOfReserveResponseLatestAnchor}
+     * @memberof GetVaultMarketProofOfReserveResponseLatest
+     */
+    anchor: GetVaultMarketProofOfReserveResponseLatestAnchor;
 }
 
 export function GetVaultMarketProofOfReserveResponseLatestFromJSON(json: any): GetVaultMarketProofOfReserveResponseLatest {
@@ -101,6 +113,7 @@ export function GetVaultMarketProofOfReserveResponseLatestFromJSONTyped(json: an
         'loansOpen': json['loansOpen'],
         'totalInsuredCents': json['totalInsuredCents'],
         'memo': json['memo'],
+        'anchor': GetVaultMarketProofOfReserveResponseLatestAnchorFromJSON(json['anchor']),
     };
 }
 
@@ -122,6 +135,7 @@ export function GetVaultMarketProofOfReserveResponseLatestToJSON(value?: GetVaul
         'loansOpen': value.loansOpen,
         'totalInsuredCents': value.totalInsuredCents,
         'memo': value.memo,
+        'anchor': GetVaultMarketProofOfReserveResponseLatestAnchorToJSON(value.anchor),
     };
 }
 

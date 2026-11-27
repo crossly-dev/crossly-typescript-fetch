@@ -14,12 +14,6 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetInventorySellThroughResponseDataWindow,
-    GetInventorySellThroughResponseDataWindowFromJSON,
-    GetInventorySellThroughResponseDataWindowFromJSONTyped,
-    GetInventorySellThroughResponseDataWindowToJSON,
-} from '../inventory/GetInventorySellThroughResponseDataWindow';
-import {
     GetVaultMarketReportResponseGradePremiums,
     GetVaultMarketReportResponseGradePremiumsFromJSON,
     GetVaultMarketReportResponseGradePremiumsFromJSONTyped,
@@ -55,6 +49,12 @@ import {
     GetVaultMarketReportResponseTotalsFromJSONTyped,
     GetVaultMarketReportResponseTotalsToJSON,
 } from './GetVaultMarketReportResponseTotals';
+import {
+    StartEnd,
+    StartEndFromJSON,
+    StartEndFromJSONTyped,
+    StartEndToJSON,
+} from '../common/StartEnd';
 
 /**
  * 
@@ -76,10 +76,10 @@ export interface GetVaultMarketReportResponse {
     label: string;
     /**
      * 
-     * @type {GetInventorySellThroughResponseDataWindow}
+     * @type {StartEnd}
      * @memberof GetVaultMarketReportResponse
      */
-    range: GetInventorySellThroughResponseDataWindow;
+    range: StartEnd;
     /**
      * 
      * @type {boolean}
@@ -160,7 +160,7 @@ export function GetVaultMarketReportResponseFromJSONTyped(json: any, ignoreDiscr
         
         'quarter': json['quarter'],
         'label': json['label'],
-        'range': GetInventorySellThroughResponseDataWindowFromJSON(json['range']),
+        'range': StartEndFromJSON(json['range']),
         'inProgress': json['inProgress'],
         'generatedAt': json['generatedAt'],
         'totals': GetVaultMarketReportResponseTotalsFromJSON(json['totals']),
@@ -186,7 +186,7 @@ export function GetVaultMarketReportResponseToJSON(value?: GetVaultMarketReportR
         
         'quarter': value.quarter,
         'label': value.label,
-        'range': GetInventorySellThroughResponseDataWindowToJSON(value.range),
+        'range': StartEndToJSON(value.range),
         'inProgress': value.inProgress,
         'generatedAt': value.generatedAt,
         'totals': GetVaultMarketReportResponseTotalsToJSON(value.totals),

@@ -44,8 +44,8 @@ export interface GetOrderEvidenceResponseDataSealAssessment {
 * @enum {string}
 */
 export enum GetOrderEvidenceResponseDataSealAssessmentVerdictEnum {
-    Opened = 'opened',
     Unknown = 'unknown',
+    Opened = 'opened',
     Intact = 'intact',
     Suspect = 'suspect'
 }

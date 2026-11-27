@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetVaultMarketAlertPrefResponseMatrixPrice,
-    GetVaultMarketAlertPrefResponseMatrixPriceFromJSON,
-    GetVaultMarketAlertPrefResponseMatrixPriceFromJSONTyped,
-    GetVaultMarketAlertPrefResponseMatrixPriceToJSON,
-} from './GetVaultMarketAlertPrefResponseMatrixPrice';
+    GetVaultMarketAlertPrefResponseMatrixAccount,
+    GetVaultMarketAlertPrefResponseMatrixAccountFromJSON,
+    GetVaultMarketAlertPrefResponseMatrixAccountFromJSONTyped,
+    GetVaultMarketAlertPrefResponseMatrixAccountToJSON,
+} from './GetVaultMarketAlertPrefResponseMatrixAccount';
 
 /**
  * 
@@ -28,70 +28,106 @@ import {
 export interface GetVaultMarketAlertPrefResponseMatrix {
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    price: GetVaultMarketAlertPrefResponseMatrixPrice;
+    account: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    auction: GetVaultMarketAlertPrefResponseMatrixPrice;
+    price: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    fill: GetVaultMarketAlertPrefResponseMatrixPrice;
+    fill: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    account: GetVaultMarketAlertPrefResponseMatrixPrice;
+    auction: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    marginCall: GetVaultMarketAlertPrefResponseMatrixPrice;
+    prediction: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    adl: GetVaultMarketAlertPrefResponseMatrixPrice;
+    optionExpiry: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    p2pLoan: GetVaultMarketAlertPrefResponseMatrixPrice;
+    marginCall: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    marketOpen: GetVaultMarketAlertPrefResponseMatrixPrice;
+    adl: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    receiptToken: GetVaultMarketAlertPrefResponseMatrixPrice;
+    p2pLoan: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    setGoal: GetVaultMarketAlertPrefResponseMatrixPrice;
+    marketOpen: GetVaultMarketAlertPrefResponseMatrixAccount;
     /**
      * 
-     * @type {GetVaultMarketAlertPrefResponseMatrixPrice}
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
      * @memberof GetVaultMarketAlertPrefResponseMatrix
      */
-    follow: GetVaultMarketAlertPrefResponseMatrixPrice;
+    receiptToken: GetVaultMarketAlertPrefResponseMatrixAccount;
+    /**
+     * 
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
+     * @memberof GetVaultMarketAlertPrefResponseMatrix
+     */
+    setGoal: GetVaultMarketAlertPrefResponseMatrixAccount;
+    /**
+     * 
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
+     * @memberof GetVaultMarketAlertPrefResponseMatrix
+     */
+    follow: GetVaultMarketAlertPrefResponseMatrixAccount;
+    /**
+     * 
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
+     * @memberof GetVaultMarketAlertPrefResponseMatrix
+     */
+    shareOffering: GetVaultMarketAlertPrefResponseMatrixAccount;
+    /**
+     * 
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
+     * @memberof GetVaultMarketAlertPrefResponseMatrix
+     */
+    shareVote: GetVaultMarketAlertPrefResponseMatrixAccount;
+    /**
+     * 
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
+     * @memberof GetVaultMarketAlertPrefResponseMatrix
+     */
+    optionSettlement: GetVaultMarketAlertPrefResponseMatrixAccount;
+    /**
+     * 
+     * @type {GetVaultMarketAlertPrefResponseMatrixAccount}
+     * @memberof GetVaultMarketAlertPrefResponseMatrix
+     */
+    predictionOdds: GetVaultMarketAlertPrefResponseMatrixAccount;
 }
 
 export function GetVaultMarketAlertPrefResponseMatrixFromJSON(json: any): GetVaultMarketAlertPrefResponseMatrix {
@@ -104,17 +140,23 @@ export function GetVaultMarketAlertPrefResponseMatrixFromJSONTyped(json: any, ig
     }
     return {
         
-        'price': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['price']),
-        'auction': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['auction']),
-        'fill': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['fill']),
-        'account': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['account']),
-        'marginCall': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['margin_call']),
-        'adl': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['adl']),
-        'p2pLoan': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['p2p_loan']),
-        'marketOpen': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['market_open']),
-        'receiptToken': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['receipt_token']),
-        'setGoal': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['set_goal']),
-        'follow': GetVaultMarketAlertPrefResponseMatrixPriceFromJSON(json['follow']),
+        'account': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['account']),
+        'price': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['price']),
+        'fill': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['fill']),
+        'auction': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['auction']),
+        'prediction': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['prediction']),
+        'optionExpiry': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['option_expiry']),
+        'marginCall': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['margin_call']),
+        'adl': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['adl']),
+        'p2pLoan': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['p2p_loan']),
+        'marketOpen': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['market_open']),
+        'receiptToken': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['receipt_token']),
+        'setGoal': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['set_goal']),
+        'follow': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['follow']),
+        'shareOffering': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['share_offering']),
+        'shareVote': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['share_vote']),
+        'optionSettlement': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['option_settlement']),
+        'predictionOdds': GetVaultMarketAlertPrefResponseMatrixAccountFromJSON(json['prediction_odds']),
     };
 }
 
@@ -127,17 +169,23 @@ export function GetVaultMarketAlertPrefResponseMatrixToJSON(value?: GetVaultMark
     }
     return {
         
-        'price': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.price),
-        'auction': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.auction),
-        'fill': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.fill),
-        'account': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.account),
-        'margin_call': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.marginCall),
-        'adl': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.adl),
-        'p2p_loan': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.p2pLoan),
-        'market_open': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.marketOpen),
-        'receipt_token': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.receiptToken),
-        'set_goal': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.setGoal),
-        'follow': GetVaultMarketAlertPrefResponseMatrixPriceToJSON(value.follow),
+        'account': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.account),
+        'price': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.price),
+        'fill': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.fill),
+        'auction': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.auction),
+        'prediction': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.prediction),
+        'option_expiry': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.optionExpiry),
+        'margin_call': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.marginCall),
+        'adl': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.adl),
+        'p2p_loan': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.p2pLoan),
+        'market_open': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.marketOpen),
+        'receipt_token': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.receiptToken),
+        'set_goal': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.setGoal),
+        'follow': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.follow),
+        'share_offering': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.shareOffering),
+        'share_vote': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.shareVote),
+        'option_settlement': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.optionSettlement),
+        'prediction_odds': GetVaultMarketAlertPrefResponseMatrixAccountToJSON(value.predictionOdds),
     };
 }
 

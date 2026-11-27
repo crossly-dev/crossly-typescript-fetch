@@ -152,17 +152,17 @@ export interface CreateVaultMarketPriceWidgetPreviewResponseView {
 * @enum {string}
 */
 export enum CreateVaultMarketPriceWidgetPreviewResponseViewKindEnum {
-    Mark = 'mark',
-    Index = 'index'
+    Index = 'index',
+    Mark = 'mark'
 }/**
 * @export
 * @enum {string}
 */
 export enum CreateVaultMarketPriceWidgetPreviewResponseViewQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }/**
 * @export
 * @enum {string}

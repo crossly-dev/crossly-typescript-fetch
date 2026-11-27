@@ -25,6 +25,12 @@ import {
     GetVaultMarketWorthVaultResponseSellNowFromJSONTyped,
     GetVaultMarketWorthVaultResponseSellNowToJSON,
 } from './GetVaultMarketWorthVaultResponseSellNow';
+import {
+    GetVaultMarketWorthVaultResponseToday,
+    GetVaultMarketWorthVaultResponseTodayFromJSON,
+    GetVaultMarketWorthVaultResponseTodayFromJSONTyped,
+    GetVaultMarketWorthVaultResponseTodayToJSON,
+} from './GetVaultMarketWorthVaultResponseToday';
 
 /**
  * 
@@ -94,6 +100,12 @@ export interface GetVaultMarketWorthVaultResponse {
     pnlCents: number;
     /**
      * 
+     * @type {GetVaultMarketWorthVaultResponseToday}
+     * @memberof GetVaultMarketWorthVaultResponse
+     */
+    today: GetVaultMarketWorthVaultResponseToday;
+    /**
+     * 
      * @type {GetVaultMarketWorthVaultResponseSellNow}
      * @memberof GetVaultMarketWorthVaultResponse
      */
@@ -126,6 +138,7 @@ export function GetVaultMarketWorthVaultResponseFromJSONTyped(json: any, ignoreD
         'marks': GetVaultMarketPortfolioHistoryResponseNowMarksFromJSON(json['marks']),
         'costCents': json['costCents'],
         'pnlCents': json['pnlCents'],
+        'today': GetVaultMarketWorthVaultResponseTodayFromJSON(json['today']),
         'sellNow': GetVaultMarketWorthVaultResponseSellNowFromJSON(json['sellNow']),
         'note': json['note'],
     };
@@ -150,6 +163,7 @@ export function GetVaultMarketWorthVaultResponseToJSON(value?: GetVaultMarketWor
         'marks': GetVaultMarketPortfolioHistoryResponseNowMarksToJSON(value.marks),
         'costCents': value.costCents,
         'pnlCents': value.pnlCents,
+        'today': GetVaultMarketWorthVaultResponseTodayToJSON(value.today),
         'sellNow': GetVaultMarketWorthVaultResponseSellNowToJSON(value.sellNow),
         'note': value.note,
     };

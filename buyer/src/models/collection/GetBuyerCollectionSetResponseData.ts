@@ -46,16 +46,10 @@ export interface GetBuyerCollectionSetResponseData {
     group: GetBuyerCollectionSetResponseDataGroup;
     /**
      * 
-     * @type {Array<GetBuyerCollectionSetResponseDataLeaderboard>}
-     * @memberof GetBuyerCollectionSetResponseData
-     */
-    leaderboard: Array<GetBuyerCollectionSetResponseDataLeaderboard>;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerCollectionSetResponseData
      */
-    missing: number;
+    pct: number;
     /**
      * 
      * @type {Array<GetBuyerCollectionSetResponseDataPieces>}
@@ -64,16 +58,10 @@ export interface GetBuyerCollectionSetResponseData {
     pieces: Array<GetBuyerCollectionSetResponseDataPieces>;
     /**
      * 
-     * @type {boolean}
-     * @memberof GetBuyerCollectionSetResponseData
-     */
-    leaderboardOptIn: boolean;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerCollectionSetResponseData
      */
-    pct: number;
+    missing: number;
     /**
      * 
      * @type {number}
@@ -88,10 +76,22 @@ export interface GetBuyerCollectionSetResponseData {
     missingUnpriced: number;
     /**
      * 
+     * @type {Array<GetBuyerCollectionSetResponseDataLeaderboard>}
+     * @memberof GetBuyerCollectionSetResponseData
+     */
+    leaderboard: Array<GetBuyerCollectionSetResponseDataLeaderboard>;
+    /**
+     * 
      * @type {number}
      * @memberof GetBuyerCollectionSetResponseData
      */
     myRank?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetBuyerCollectionSetResponseData
+     */
+    leaderboardOptIn: boolean;
 }
 
 export function GetBuyerCollectionSetResponseDataFromJSON(json: any): GetBuyerCollectionSetResponseData {
@@ -105,14 +105,14 @@ export function GetBuyerCollectionSetResponseDataFromJSONTyped(json: any, ignore
     return {
         
         'group': GetBuyerCollectionSetResponseDataGroupFromJSON(json['group']),
-        'leaderboard': ((json['leaderboard'] as Array<any>).map(GetBuyerCollectionSetResponseDataLeaderboardFromJSON)),
-        'missing': json['missing'],
-        'pieces': ((json['pieces'] as Array<any>).map(GetBuyerCollectionSetResponseDataPiecesFromJSON)),
-        'leaderboardOptIn': json['leaderboardOptIn'],
         'pct': json['pct'],
+        'pieces': ((json['pieces'] as Array<any>).map(GetBuyerCollectionSetResponseDataPiecesFromJSON)),
+        'missing': json['missing'],
         'missingCostCents': json['missingCostCents'],
         'missingUnpriced': json['missingUnpriced'],
+        'leaderboard': ((json['leaderboard'] as Array<any>).map(GetBuyerCollectionSetResponseDataLeaderboardFromJSON)),
         'myRank': !exists(json, 'myRank') ? undefined : json['myRank'],
+        'leaderboardOptIn': json['leaderboardOptIn'],
     };
 }
 
@@ -126,14 +126,14 @@ export function GetBuyerCollectionSetResponseDataToJSON(value?: GetBuyerCollecti
     return {
         
         'group': GetBuyerCollectionSetResponseDataGroupToJSON(value.group),
-        'leaderboard': ((value.leaderboard as Array<any>).map(GetBuyerCollectionSetResponseDataLeaderboardToJSON)),
-        'missing': value.missing,
-        'pieces': ((value.pieces as Array<any>).map(GetBuyerCollectionSetResponseDataPiecesToJSON)),
-        'leaderboardOptIn': value.leaderboardOptIn,
         'pct': value.pct,
+        'pieces': ((value.pieces as Array<any>).map(GetBuyerCollectionSetResponseDataPiecesToJSON)),
+        'missing': value.missing,
         'missingCostCents': value.missingCostCents,
         'missingUnpriced': value.missingUnpriced,
+        'leaderboard': ((value.leaderboard as Array<any>).map(GetBuyerCollectionSetResponseDataLeaderboardToJSON)),
         'myRank': value.myRank,
+        'leaderboardOptIn': value.leaderboardOptIn,
     };
 }
 

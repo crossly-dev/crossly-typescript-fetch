@@ -18,7 +18,56 @@ import {
     CreateBreakResponse,
     CreateBreakResponseFromJSON,
     CreateBreakResponseToJSON,
+    CreateGroupBuyCancelResponse,
+    CreateGroupBuyCancelResponseFromJSON,
+    CreateGroupBuyCancelResponseToJSON,
+    CreateGroupBuyCloseResponse,
+    CreateGroupBuyCloseResponseFromJSON,
+    CreateGroupBuyCloseResponseToJSON,
+    CreateGroupBuyExtendResponse,
+    CreateGroupBuyExtendResponseFromJSON,
+    CreateGroupBuyExtendResponseToJSON,
+    CreateGroupBuyMessageResponse,
+    CreateGroupBuyMessageResponseFromJSON,
+    CreateGroupBuyMessageResponseToJSON,
+    GetGroupBuyResponse,
+    GetGroupBuyResponseFromJSON,
+    GetGroupBuyResponseToJSON,
+    ListGroupBuysResponse,
+    ListGroupBuysResponseFromJSON,
+    ListGroupBuysResponseToJSON,
+    UpdateGroupBuyResponse,
+    UpdateGroupBuyResponseFromJSON,
+    UpdateGroupBuyResponseToJSON,
 } from '../models';
+
+export interface CreateGroupBuyCancelRequest {
+    id: string;
+}
+
+export interface CreateGroupBuyCloseRequest {
+    id: string;
+}
+
+export interface CreateGroupBuyExtendRequest {
+    id: string;
+}
+
+export interface CreateGroupBuyMessageRequest {
+    id: string;
+}
+
+export interface GetGroupBuyRequest {
+    id: string;
+}
+
+export interface GetGroupBuyParticipantsCsvRequest {
+    id: string;
+}
+
+export interface UpdateGroupBuyRequest {
+    id: string;
+}
 
 /**
  * 
@@ -26,7 +75,7 @@ import {
 export class GroupBuysApi extends runtime.BaseAPI {
 
     /**
-     * Run a group buy on a listing with stock: price tiers by buyer count, a minimum, up to 6 days. Below the minimum nobody pays.
+     * Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
      */
     async createGroupBuyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakResponse>> {
         const queryParameters: any = {};
@@ -52,10 +101,310 @@ export class GroupBuysApi extends runtime.BaseAPI {
     }
 
     /**
-     * Run a group buy on a listing with stock: price tiers by buyer count, a minimum, up to 6 days. Below the minimum nobody pays.
+     * Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
      */
     async createGroupBuy(initOverrides?: RequestInit): Promise<CreateBreakResponse> {
         const response = await this.createGroupBuyRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel a group buy: every hold is released and every charge refunded.
+     */
+    async createGroupBuyCancelRaw(requestParameters: CreateGroupBuyCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGroupBuyCancelResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createGroupBuyCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/group-buys/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateGroupBuyCancelResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a group buy: every hold is released and every charge refunded.
+     */
+    async createGroupBuyCancel(requestParameters: CreateGroupBuyCancelRequest, initOverrides?: RequestInit): Promise<CreateGroupBuyCancelResponse> {
+        const response = await this.createGroupBuyCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Close a group buy now: every buyer pays the price reached (the minimum and goal-miss policy still apply).
+     */
+    async createGroupBuyCloseRaw(requestParameters: CreateGroupBuyCloseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGroupBuyCloseResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createGroupBuyClose.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/group-buys/{id}/close`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateGroupBuyCloseResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Close a group buy now: every buyer pays the price reached (the minimum and goal-miss policy still apply).
+     */
+    async createGroupBuyClose(requestParameters: CreateGroupBuyCloseRequest, initOverrides?: RequestInit): Promise<CreateGroupBuyCloseResponse> {
+        const response = await this.createGroupBuyCloseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
+     */
+    async createGroupBuyExtendRaw(requestParameters: CreateGroupBuyExtendRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGroupBuyExtendResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createGroupBuyExtend.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/group-buys/{id}/extend`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateGroupBuyExtendResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
+     */
+    async createGroupBuyExtend(requestParameters: CreateGroupBuyExtendRequest, initOverrides?: RequestInit): Promise<CreateGroupBuyExtendResponse> {
+        const response = await this.createGroupBuyExtendRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Send a notification to every buyer committed to the group buy.
+     */
+    async createGroupBuyMessageRaw(requestParameters: CreateGroupBuyMessageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGroupBuyMessageResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createGroupBuyMessage.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/group-buys/{id}/message`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateGroupBuyMessageResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Send a notification to every buyer committed to the group buy.
+     */
+    async createGroupBuyMessage(requestParameters: CreateGroupBuyMessageRequest, initOverrides?: RequestInit): Promise<CreateGroupBuyMessageResponse> {
+        const response = await this.createGroupBuyMessageRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One group buy: progress towards each tier, committed buyers (masked), time left, revenue at the current tier and the activity feed.
+     */
+    async getGroupBuyRaw(requestParameters: GetGroupBuyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetGroupBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getGroupBuy.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/group-buys/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One group buy: progress towards each tier, committed buyers (masked), time left, revenue at the current tier and the activity feed.
+     */
+    async getGroupBuy(requestParameters: GetGroupBuyRequest, initOverrides?: RequestInit): Promise<GetGroupBuyResponse> {
+        const response = await this.getGroupBuyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Every participant of a group buy as CSV: quantity, status, amounts and ship-to.
+     */
+    async getGroupBuyParticipantsCsvRaw(requestParameters: GetGroupBuyParticipantsCsvRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getGroupBuyParticipantsCsv.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/group-buys/{id}/participants.csv`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * Every participant of a group buy as CSV: quantity, status, amounts and ship-to.
+     */
+    async getGroupBuyParticipantsCsv(requestParameters: GetGroupBuyParticipantsCsvRequest, initOverrides?: RequestInit): Promise<string> {
+        const response = await this.getGroupBuyParticipantsCsvRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your group buys, open ones first: tiers, buyers joined, the price reached and when it ends.
+     */
+    async listGroupBuysRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListGroupBuysResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/group-buys`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListGroupBuysResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your group buys, open ones first: tiers, buyers joined, the price reached and when it ends.
+     */
+    async listGroupBuys(initOverrides?: RequestInit): Promise<ListGroupBuysResponse> {
+        const response = await this.listGroupBuysRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
+     */
+    async updateGroupBuyRaw(requestParameters: UpdateGroupBuyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateGroupBuy.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/group-buys/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
+     */
+    async updateGroupBuy(requestParameters: UpdateGroupBuyRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.updateGroupBuyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

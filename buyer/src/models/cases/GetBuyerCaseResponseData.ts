@@ -46,16 +46,16 @@ import {
 export interface GetBuyerCaseResponseData {
     /**
      * 
-     * @type {Array<GetBuyerCaseResponseDataMessages>}
-     * @memberof GetBuyerCaseResponseData
-     */
-    messages: Array<GetBuyerCaseResponseDataMessages>;
-    /**
-     * 
      * @type {GetBuyerCaseResponseDataCase}
      * @memberof GetBuyerCaseResponseData
      */
     _case: GetBuyerCaseResponseDataCase;
+    /**
+     * 
+     * @type {Array<GetBuyerCaseResponseDataMessages>}
+     * @memberof GetBuyerCaseResponseData
+     */
+    messages: Array<GetBuyerCaseResponseDataMessages>;
     /**
      * 
      * @type {GetBuyerCaseResponseDataPurchase}
@@ -80,8 +80,8 @@ export function GetBuyerCaseResponseDataFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'messages': ((json['messages'] as Array<any>).map(GetBuyerCaseResponseDataMessagesFromJSON)),
         '_case': GetBuyerCaseResponseDataCaseFromJSON(json['case']),
+        'messages': ((json['messages'] as Array<any>).map(GetBuyerCaseResponseDataMessagesFromJSON)),
         'purchase': !exists(json, 'purchase') ? undefined : GetBuyerCaseResponseDataPurchaseFromJSON(json['purchase']),
         'returnShipment': !exists(json, 'returnShipment') ? undefined : GetBuyerCaseResponseDataReturnShipmentFromJSON(json['returnShipment']),
     };
@@ -96,8 +96,8 @@ export function GetBuyerCaseResponseDataToJSON(value?: GetBuyerCaseResponseData 
     }
     return {
         
-        'messages': ((value.messages as Array<any>).map(GetBuyerCaseResponseDataMessagesToJSON)),
         'case': GetBuyerCaseResponseDataCaseToJSON(value._case),
+        'messages': ((value.messages as Array<any>).map(GetBuyerCaseResponseDataMessagesToJSON)),
         'purchase': GetBuyerCaseResponseDataPurchaseToJSON(value.purchase),
         'returnShipment': GetBuyerCaseResponseDataReturnShipmentToJSON(value.returnShipment),
     };

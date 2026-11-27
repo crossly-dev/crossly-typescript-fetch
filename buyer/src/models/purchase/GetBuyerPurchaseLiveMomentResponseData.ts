@@ -24,7 +24,7 @@ export interface GetBuyerPurchaseLiveMomentResponseData {
      * @type {string}
      * @memberof GetBuyerPurchaseLiveMomentResponseData
      */
-    status: string;
+    streamId: string;
     /**
      * 
      * @type {string}
@@ -36,13 +36,13 @@ export interface GetBuyerPurchaseLiveMomentResponseData {
      * @type {string}
      * @memberof GetBuyerPurchaseLiveMomentResponseData
      */
-    soldAt: string;
+    sellerUserId: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerPurchaseLiveMomentResponseData
      */
-    sellerUserId: string;
+    status: string;
     /**
      * 
      * @type {string}
@@ -51,16 +51,16 @@ export interface GetBuyerPurchaseLiveMomentResponseData {
     replayUrl?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof GetBuyerPurchaseLiveMomentResponseData
-     */
-    streamId: string;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerPurchaseLiveMomentResponseData
      */
     offsetSeconds: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerPurchaseLiveMomentResponseData
+     */
+    soldAt: string;
 }
 
 export function GetBuyerPurchaseLiveMomentResponseDataFromJSON(json: any): GetBuyerPurchaseLiveMomentResponseData {
@@ -73,13 +73,13 @@ export function GetBuyerPurchaseLiveMomentResponseDataFromJSONTyped(json: any, i
     }
     return {
         
-        'status': json['status'],
-        'title': json['title'],
-        'soldAt': json['soldAt'],
-        'sellerUserId': json['sellerUserId'],
-        'replayUrl': !exists(json, 'replayUrl') ? undefined : json['replayUrl'],
         'streamId': json['streamId'],
+        'title': json['title'],
+        'sellerUserId': json['sellerUserId'],
+        'status': json['status'],
+        'replayUrl': !exists(json, 'replayUrl') ? undefined : json['replayUrl'],
         'offsetSeconds': json['offsetSeconds'],
+        'soldAt': json['soldAt'],
     };
 }
 
@@ -92,13 +92,13 @@ export function GetBuyerPurchaseLiveMomentResponseDataToJSON(value?: GetBuyerPur
     }
     return {
         
-        'status': value.status,
-        'title': value.title,
-        'soldAt': value.soldAt,
-        'sellerUserId': value.sellerUserId,
-        'replayUrl': value.replayUrl,
         'streamId': value.streamId,
+        'title': value.title,
+        'sellerUserId': value.sellerUserId,
+        'status': value.status,
+        'replayUrl': value.replayUrl,
         'offsetSeconds': value.offsetSeconds,
+        'soldAt': value.soldAt,
     };
 }
 

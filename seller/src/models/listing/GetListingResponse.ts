@@ -14,17 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    CreateBulkBatchItemResponseGrading,
+    CreateBulkBatchItemResponseGradingFromJSON,
+    CreateBulkBatchItemResponseGradingFromJSONTyped,
+    CreateBulkBatchItemResponseGradingToJSON,
+} from '../bulk/CreateBulkBatchItemResponseGrading';
+import {
     GetListingResponsePlatformListings,
     GetListingResponsePlatformListingsFromJSON,
     GetListingResponsePlatformListingsFromJSONTyped,
     GetListingResponsePlatformListingsToJSON,
 } from './GetListingResponsePlatformListings';
-import {
-    ListGradingSubmissionsItemGrading,
-    ListGradingSubmissionsItemGradingFromJSON,
-    ListGradingSubmissionsItemGradingFromJSONTyped,
-    ListGradingSubmissionsItemGradingToJSON,
-} from '../grading/ListGradingSubmissionsItemGrading';
 
 /**
  * 
@@ -86,6 +86,24 @@ export interface GetListingResponse {
      * @memberof GetListingResponse
      */
     userId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetListingResponse
+     */
+    description?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetListingResponse
+     */
+    status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetListingResponse
+     */
+    source: string;
     /**
      * 
      * @type {string}
@@ -190,10 +208,10 @@ export interface GetListingResponse {
     gradeKey?: string | null;
     /**
      * 
-     * @type {ListGradingSubmissionsItemGrading}
+     * @type {CreateBulkBatchItemResponseGrading}
      * @memberof GetListingResponse
      */
-    grading?: ListGradingSubmissionsItemGrading | null;
+    grading?: CreateBulkBatchItemResponseGrading | null;
     /**
      * 
      * @type {number}
@@ -236,24 +254,6 @@ export interface GetListingResponse {
      * @memberof GetListingResponse
      */
     dimensionHIn?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetListingResponse
-     */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetListingResponse
-     */
-    source: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetListingResponse
-     */
-    description?: string | null;
     /**
      * 
      * @type {string}
@@ -358,6 +358,18 @@ export interface GetListingResponse {
     automationBlockedChainIds: Array<string>;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof GetListingResponse
+     */
+    workflowBlockedIds: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetListingResponse
+     */
+    workflowAssignedIds: Array<string>;
+    /**
+     * 
      * @type {string}
      * @memberof GetListingResponse
      */
@@ -398,6 +410,24 @@ export interface GetListingResponse {
      * @memberof GetListingResponse
      */
     clientDraftId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetListingResponse
+     */
+    attributedOauthAppId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetListingResponse
+     */
+    attributedGrantId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetListingResponse
+     */
+    quotaBucket?: string | null;
 }
 
 /**
@@ -429,6 +459,9 @@ export function GetListingResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': json['userId'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
+        'status': json['status'],
+        'source': json['source'],
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'quantity': json['quantity'],
         'quantityAvailable': json['quantityAvailable'],
@@ -446,7 +479,7 @@ export function GetListingResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'videoUrl': !exists(json, 'videoUrl') ? undefined : json['videoUrl'],
         'tags': json['tags'],
         'gradeKey': !exists(json, 'gradeKey') ? undefined : json['gradeKey'],
-        'grading': !exists(json, 'grading') ? undefined : ListGradingSubmissionsItemGradingFromJSON(json['grading']),
+        'grading': !exists(json, 'grading') ? undefined : CreateBulkBatchItemResponseGradingFromJSON(json['grading']),
         'priceFloorCents': !exists(json, 'priceFloorCents') ? undefined : json['priceFloorCents'],
         'floorIsNet': json['floorIsNet'],
         'weightLb': !exists(json, 'weightLb') ? undefined : json['weightLb'],
@@ -454,9 +487,6 @@ export function GetListingResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'dimensionLIn': !exists(json, 'dimensionLIn') ? undefined : json['dimensionLIn'],
         'dimensionWIn': !exists(json, 'dimensionWIn') ? undefined : json['dimensionWIn'],
         'dimensionHIn': !exists(json, 'dimensionHIn') ? undefined : json['dimensionHIn'],
-        'status': json['status'],
-        'source': json['source'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'descriptionHtml': !exists(json, 'descriptionHtml') ? undefined : json['descriptionHtml'],
         'price': !exists(json, 'price') ? undefined : json['price'],
@@ -474,6 +504,8 @@ export function GetListingResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'automationBlockedRuleIds': json['automationBlockedRuleIds'],
         'automationAssignedChainIds': json['automationAssignedChainIds'],
         'automationBlockedChainIds': json['automationBlockedChainIds'],
+        'workflowBlockedIds': json['workflowBlockedIds'],
+        'workflowAssignedIds': json['workflowAssignedIds'],
         'hsCode': !exists(json, 'hsCode') ? undefined : json['hsCode'],
         'countryOfOrigin': !exists(json, 'countryOfOrigin') ? undefined : json['countryOfOrigin'],
         'delistedAt': !exists(json, 'delistedAt') ? undefined : (json['delistedAt'] === null ? null : new Date(json['delistedAt'])),
@@ -481,6 +513,9 @@ export function GetListingResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'ebayAttributesEnrichedAt': !exists(json, 'ebayAttributesEnrichedAt') ? undefined : (json['ebayAttributesEnrichedAt'] === null ? null : new Date(json['ebayAttributesEnrichedAt'])),
         'duplicateOfListingId': !exists(json, 'duplicateOfListingId') ? undefined : json['duplicateOfListingId'],
         'clientDraftId': !exists(json, 'clientDraftId') ? undefined : json['clientDraftId'],
+        'attributedOauthAppId': !exists(json, 'attributedOauthAppId') ? undefined : json['attributedOauthAppId'],
+        'attributedGrantId': !exists(json, 'attributedGrantId') ? undefined : json['attributedGrantId'],
+        'quotaBucket': !exists(json, 'quotaBucket') ? undefined : json['quotaBucket'],
     };
 }
 
@@ -502,6 +537,9 @@ export function GetListingResponseToJSON(value?: GetListingResponse | null): any
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
+        'description': value.description,
+        'status': value.status,
+        'source': value.source,
         'sku': value.sku,
         'quantity': value.quantity,
         'quantityAvailable': value.quantityAvailable,
@@ -519,7 +557,7 @@ export function GetListingResponseToJSON(value?: GetListingResponse | null): any
         'videoUrl': value.videoUrl,
         'tags': value.tags,
         'gradeKey': value.gradeKey,
-        'grading': ListGradingSubmissionsItemGradingToJSON(value.grading),
+        'grading': CreateBulkBatchItemResponseGradingToJSON(value.grading),
         'priceFloorCents': value.priceFloorCents,
         'floorIsNet': value.floorIsNet,
         'weightLb': value.weightLb,
@@ -527,9 +565,6 @@ export function GetListingResponseToJSON(value?: GetListingResponse | null): any
         'dimensionLIn': value.dimensionLIn,
         'dimensionWIn': value.dimensionWIn,
         'dimensionHIn': value.dimensionHIn,
-        'status': value.status,
-        'source': value.source,
-        'description': value.description,
         'title': value.title,
         'descriptionHtml': value.descriptionHtml,
         'price': value.price,
@@ -547,6 +582,8 @@ export function GetListingResponseToJSON(value?: GetListingResponse | null): any
         'automationBlockedRuleIds': value.automationBlockedRuleIds,
         'automationAssignedChainIds': value.automationAssignedChainIds,
         'automationBlockedChainIds': value.automationBlockedChainIds,
+        'workflowBlockedIds': value.workflowBlockedIds,
+        'workflowAssignedIds': value.workflowAssignedIds,
         'hsCode': value.hsCode,
         'countryOfOrigin': value.countryOfOrigin,
         'delistedAt': value.delistedAt === undefined ? undefined : (value.delistedAt === null ? null : value.delistedAt.toISOString()),
@@ -554,6 +591,9 @@ export function GetListingResponseToJSON(value?: GetListingResponse | null): any
         'ebayAttributesEnrichedAt': value.ebayAttributesEnrichedAt === undefined ? undefined : (value.ebayAttributesEnrichedAt === null ? null : value.ebayAttributesEnrichedAt.toISOString()),
         'duplicateOfListingId': value.duplicateOfListingId,
         'clientDraftId': value.clientDraftId,
+        'attributedOauthAppId': value.attributedOauthAppId,
+        'attributedGrantId': value.attributedGrantId,
+        'quotaBucket': value.quotaBucket,
     };
 }
 

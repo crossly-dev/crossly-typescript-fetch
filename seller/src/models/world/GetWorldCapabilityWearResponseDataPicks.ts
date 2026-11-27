@@ -30,13 +30,13 @@ export interface GetWorldCapabilityWearResponseDataPicks {
      * @type {string}
      * @memberof GetWorldCapabilityWearResponseDataPicks
      */
-    legs?: string | null;
+    head?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetWorldCapabilityWearResponseDataPicks
      */
-    head?: string | null;
+    legs?: string | null;
     /**
      * 
      * @type {string}
@@ -62,8 +62,8 @@ export function GetWorldCapabilityWearResponseDataPicksFromJSONTyped(json: any, 
     return {
         
         'body': !exists(json, 'body') ? undefined : json['body'],
-        'legs': !exists(json, 'legs') ? undefined : json['legs'],
         'head': !exists(json, 'head') ? undefined : json['head'],
+        'legs': !exists(json, 'legs') ? undefined : json['legs'],
         'feet': !exists(json, 'feet') ? undefined : json['feet'],
         'back': !exists(json, 'back') ? undefined : json['back'],
     };
@@ -79,8 +79,8 @@ export function GetWorldCapabilityWearResponseDataPicksToJSON(value?: GetWorldCa
     return {
         
         'body': value.body,
-        'legs': value.legs,
         'head': value.head,
+        'legs': value.legs,
         'feet': value.feet,
         'back': value.back,
     };

@@ -32,6 +32,12 @@ export interface CreateVariationGroupResponseDataMembers {
      */
     axisValue?: string | null;
     /**
+     * The member's value on every axis of a multi-axis group; null on a single-axis member.
+     * @type {{ [key: string]: any; }}
+     * @memberof CreateVariationGroupResponseDataMembers
+     */
+    options?: { [key: string]: any; } | null;
+    /**
      * 
      * @type {number}
      * @memberof CreateVariationGroupResponseDataMembers
@@ -87,6 +93,7 @@ export function CreateVariationGroupResponseDataMembersFromJSONTyped(json: any, 
         
         'listingId': json['listingId'],
         'axisValue': !exists(json, 'axisValue') ? undefined : json['axisValue'],
+        'options': !exists(json, 'options') ? undefined : json['options'],
         'sortKey': json['sortKey'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'price': !exists(json, 'price') ? undefined : json['price'],
@@ -108,6 +115,7 @@ export function CreateVariationGroupResponseDataMembersToJSON(value?: CreateVari
         
         'listingId': value.listingId,
         'axisValue': value.axisValue,
+        'options': value.options,
         'sortKey': value.sortKey,
         'title': value.title,
         'price': value.price,

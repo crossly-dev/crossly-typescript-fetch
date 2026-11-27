@@ -49,6 +49,18 @@ export interface GetAnalyticBookkeepingResponsePlatformBreakdown {
      * @memberof GetAnalyticBookkeepingResponsePlatformBreakdown
      */
     netProfit: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticBookkeepingResponsePlatformBreakdown
+     */
+    refunds: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticBookkeepingResponsePlatformBreakdown
+     */
+    taxCollected: number;
 }
 
 export function GetAnalyticBookkeepingResponsePlatformBreakdownFromJSON(json: any): GetAnalyticBookkeepingResponsePlatformBreakdown {
@@ -66,6 +78,8 @@ export function GetAnalyticBookkeepingResponsePlatformBreakdownFromJSONTyped(jso
         'count': json['count'],
         'platformFees': json['platformFees'],
         'netProfit': json['netProfit'],
+        'refunds': json['refunds'],
+        'taxCollected': json['taxCollected'],
     };
 }
 
@@ -83,6 +97,8 @@ export function GetAnalyticBookkeepingResponsePlatformBreakdownToJSON(value?: Ge
         'count': value.count,
         'platformFees': value.platformFees,
         'netProfit': value.netProfit,
+        'refunds': value.refunds,
+        'taxCollected': value.taxCollected,
     };
 }
 

@@ -21,16 +21,16 @@ import { exists, mapValues } from '../../runtime';
 export interface ListBuyerTotalRequestsItemLines {
     /**
      * 
-     * @type {number}
-     * @memberof ListBuyerTotalRequestsItemLines
-     */
-    quantity: number;
-    /**
-     * 
      * @type {string}
      * @memberof ListBuyerTotalRequestsItemLines
      */
     platformListingId: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerTotalRequestsItemLines
+     */
+    quantity: number;
 }
 
 export function ListBuyerTotalRequestsItemLinesFromJSON(json: any): ListBuyerTotalRequestsItemLines {
@@ -43,8 +43,8 @@ export function ListBuyerTotalRequestsItemLinesFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'quantity': json['quantity'],
         'platformListingId': json['platformListingId'],
+        'quantity': json['quantity'],
     };
 }
 
@@ -57,8 +57,8 @@ export function ListBuyerTotalRequestsItemLinesToJSON(value?: ListBuyerTotalRequ
     }
     return {
         
-        'quantity': value.quantity,
         'platformListingId': value.platformListingId,
+        'quantity': value.quantity,
     };
 }
 

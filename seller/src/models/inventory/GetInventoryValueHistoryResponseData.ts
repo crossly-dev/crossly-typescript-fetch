@@ -37,7 +37,7 @@ export interface GetInventoryValueHistoryResponseData {
      * @type {string}
      * @memberof GetInventoryValueHistoryResponseData
      */
-    collectingSince: string;
+    collectingSince?: string | null;
 }
 
 export function GetInventoryValueHistoryResponseDataFromJSON(json: any): GetInventoryValueHistoryResponseData {
@@ -51,7 +51,7 @@ export function GetInventoryValueHistoryResponseDataFromJSONTyped(json: any, ign
     return {
         
         'points': ((json['points'] as Array<any>).map(GetInventoryValueHistoryResponseDataPointsFromJSON)),
-        'collectingSince': json['collectingSince'],
+        'collectingSince': !exists(json, 'collectingSince') ? undefined : json['collectingSince'],
     };
 }
 

@@ -21,22 +21,40 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateSpatialPropertyDeedMaintenanceResponseData {
     /**
      * 
-     * @type {string}
+     * @type {boolean}
      * @memberof CreateSpatialPropertyDeedMaintenanceResponseData
      */
-    paidThrough: string;
+    requiresAction?: boolean;
     /**
      * 
      * @type {string}
      * @memberof CreateSpatialPropertyDeedMaintenanceResponseData
      */
-    status: CreateSpatialPropertyDeedMaintenanceResponseDataStatusEnum;
+    paymentId?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialPropertyDeedMaintenanceResponseData
+     */
+    clientSecret?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialPropertyDeedMaintenanceResponseData
+     */
+    paidThrough?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialPropertyDeedMaintenanceResponseData
+     */
+    status?: CreateSpatialPropertyDeedMaintenanceResponseDataStatusEnum;
     /**
      * 
      * @type {number}
      * @memberof CreateSpatialPropertyDeedMaintenanceResponseData
      */
-    paidCents: number;
+    paidCents?: number;
 }
 
 /**
@@ -45,9 +63,9 @@ export interface CreateSpatialPropertyDeedMaintenanceResponseData {
 */
 export enum CreateSpatialPropertyDeedMaintenanceResponseDataStatusEnum {
     Active = 'active',
-    Foreclosed = 'foreclosed',
     Grace = 'grace',
-    Delinquent = 'delinquent'
+    Delinquent = 'delinquent',
+    Foreclosed = 'foreclosed'
 }
 
 export function CreateSpatialPropertyDeedMaintenanceResponseDataFromJSON(json: any): CreateSpatialPropertyDeedMaintenanceResponseData {
@@ -60,9 +78,12 @@ export function CreateSpatialPropertyDeedMaintenanceResponseDataFromJSONTyped(js
     }
     return {
         
-        'paidThrough': json['paidThrough'],
-        'status': json['status'],
-        'paidCents': json['paidCents'],
+        'requiresAction': !exists(json, 'requiresAction') ? undefined : json['requiresAction'],
+        'paymentId': !exists(json, 'paymentId') ? undefined : json['paymentId'],
+        'clientSecret': !exists(json, 'clientSecret') ? undefined : json['clientSecret'],
+        'paidThrough': !exists(json, 'paidThrough') ? undefined : json['paidThrough'],
+        'status': !exists(json, 'status') ? undefined : json['status'],
+        'paidCents': !exists(json, 'paidCents') ? undefined : json['paidCents'],
     };
 }
 
@@ -75,6 +96,9 @@ export function CreateSpatialPropertyDeedMaintenanceResponseDataToJSON(value?: C
     }
     return {
         
+        'requiresAction': value.requiresAction,
+        'paymentId': value.paymentId,
+        'clientSecret': value.clientSecret,
         'paidThrough': value.paidThrough,
         'status': value.status,
         'paidCents': value.paidCents,

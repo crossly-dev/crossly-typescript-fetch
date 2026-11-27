@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetMileageSummaryResponseRates,
+    GetMileageSummaryResponseRatesFromJSON,
+    GetMileageSummaryResponseRatesFromJSONTyped,
+    GetMileageSummaryResponseRatesToJSON,
+} from './GetMileageSummaryResponseRates';
+
 /**
  * 
  * @export
@@ -33,6 +40,12 @@ export interface GetMileageSummaryResponse {
     ratePerMile: number;
     /**
      * 
+     * @type {Array<GetMileageSummaryResponseRates>}
+     * @memberof GetMileageSummaryResponse
+     */
+    rates: Array<GetMileageSummaryResponseRates>;
+    /**
+     * 
      * @type {number}
      * @memberof GetMileageSummaryResponse
      */
@@ -43,6 +56,12 @@ export interface GetMileageSummaryResponse {
      * @memberof GetMileageSummaryResponse
      */
     deduction: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetMileageSummaryResponse
+     */
+    deductionCents: number;
     /**
      * 
      * @type {number}
@@ -63,8 +82,10 @@ export function GetMileageSummaryResponseFromJSONTyped(json: any, ignoreDiscrimi
         
         'year': json['year'],
         'ratePerMile': json['ratePerMile'],
+        'rates': ((json['rates'] as Array<any>).map(GetMileageSummaryResponseRatesFromJSON)),
         'totalMiles': json['totalMiles'],
         'deduction': json['deduction'],
+        'deductionCents': json['deductionCents'],
         'entryCount': json['entryCount'],
     };
 }
@@ -80,8 +101,10 @@ export function GetMileageSummaryResponseToJSON(value?: GetMileageSummaryRespons
         
         'year': value.year,
         'ratePerMile': value.ratePerMile,
+        'rates': ((value.rates as Array<any>).map(GetMileageSummaryResponseRatesToJSON)),
         'totalMiles': value.totalMiles,
         'deduction': value.deduction,
+        'deductionCents': value.deductionCents,
         'entryCount': value.entryCount,
     };
 }

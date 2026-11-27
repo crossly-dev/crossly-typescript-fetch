@@ -30,6 +30,30 @@ export interface GetAnalyticItemResponseItems {
      * @type {string}
      * @memberof GetAnalyticItemResponseItems
      */
+    inventoryItemId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAnalyticItemResponseItems
+     */
+    listingId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAnalyticItemResponseItems
+     */
+    platformListingId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAnalyticItemResponseItems
+     */
+    imageUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAnalyticItemResponseItems
+     */
     platform: string;
     /**
      * 
@@ -55,6 +79,12 @@ export interface GetAnalyticItemResponseItems {
      * @memberof GetAnalyticItemResponseItems
      */
     itemSku?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetAnalyticItemResponseItems
+     */
+    detailsPending: boolean;
     /**
      * 
      * @type {number}
@@ -90,7 +120,7 @@ export interface GetAnalyticItemResponseItems {
      * @type {number}
      * @memberof GetAnalyticItemResponseItems
      */
-    marginPct: number;
+    marginPct?: number | null;
     /**
      * 
      * @type {number}
@@ -116,17 +146,22 @@ export function GetAnalyticItemResponseItemsFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'saleId': json['saleId'],
+        'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
+        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
+        'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
+        'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
         'platform': json['platform'],
         'platformOrderId': !exists(json, 'platformOrderId') ? undefined : json['platformOrderId'],
         'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
         'itemBrand': !exists(json, 'itemBrand') ? undefined : json['itemBrand'],
         'itemSku': !exists(json, 'itemSku') ? undefined : json['itemSku'],
+        'detailsPending': json['detailsPending'],
         'salePrice': !exists(json, 'salePrice') ? undefined : json['salePrice'],
         'platformFee': !exists(json, 'platformFee') ? undefined : json['platformFee'],
         'shippingCost': !exists(json, 'shippingCost') ? undefined : json['shippingCost'],
         'costOfGoods': !exists(json, 'costOfGoods') ? undefined : json['costOfGoods'],
         'netProfit': !exists(json, 'netProfit') ? undefined : json['netProfit'],
-        'marginPct': json['marginPct'],
+        'marginPct': !exists(json, 'marginPct') ? undefined : json['marginPct'],
         'daysToSell': !exists(json, 'daysToSell') ? undefined : json['daysToSell'],
         'detectedAt': (new Date(json['detectedAt'])),
     };
@@ -142,11 +177,16 @@ export function GetAnalyticItemResponseItemsToJSON(value?: GetAnalyticItemRespon
     return {
         
         'saleId': value.saleId,
+        'inventoryItemId': value.inventoryItemId,
+        'listingId': value.listingId,
+        'platformListingId': value.platformListingId,
+        'imageUrl': value.imageUrl,
         'platform': value.platform,
         'platformOrderId': value.platformOrderId,
         'itemTitle': value.itemTitle,
         'itemBrand': value.itemBrand,
         'itemSku': value.itemSku,
+        'detailsPending': value.detailsPending,
         'salePrice': value.salePrice,
         'platformFee': value.platformFee,
         'shippingCost': value.shippingCost,

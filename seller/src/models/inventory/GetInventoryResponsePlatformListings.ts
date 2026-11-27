@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetInventoryResponsePlatformListingsDigitalFile,
-    GetInventoryResponsePlatformListingsDigitalFileFromJSON,
-    GetInventoryResponsePlatformListingsDigitalFileFromJSONTyped,
-    GetInventoryResponsePlatformListingsDigitalFileToJSON,
-} from './GetInventoryResponsePlatformListingsDigitalFile';
+    GetInventoryResponsePlatformListingsBundlePromo,
+    GetInventoryResponsePlatformListingsBundlePromoFromJSON,
+    GetInventoryResponsePlatformListingsBundlePromoFromJSONTyped,
+    GetInventoryResponsePlatformListingsBundlePromoToJSON,
+} from './GetInventoryResponsePlatformListingsBundlePromo';
 import {
     GetInventoryResponsePlatformListingsMeasurements,
     GetInventoryResponsePlatformListingsMeasurementsFromJSON,
@@ -52,10 +52,16 @@ export interface GetInventoryResponsePlatformListings {
     userId: string;
     /**
      * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    platform: string;
+    /**
+     * 
      * @type {number}
      * @memberof GetInventoryResponsePlatformListings
      */
-    quantity: number;
+    accountSlot: number;
     /**
      * 
      * @type {string}
@@ -67,31 +73,31 @@ export interface GetInventoryResponsePlatformListings {
      * @type {string}
      * @memberof GetInventoryResponsePlatformListings
      */
-    platform: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetInventoryResponsePlatformListings
-     */
-    errorMessage?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetInventoryResponsePlatformListings
-     */
-    listingId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetInventoryResponsePlatformListings
-     */
     marketplaceId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    origin: GetInventoryResponsePlatformListingsOriginEnum;
     /**
      * 
      * @type {number}
      * @memberof GetInventoryResponsePlatformListings
      */
-    accountSlot: number;
+    views: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    favorites: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    quantity: number;
     /**
      * 
      * @type {string}
@@ -116,6 +122,12 @@ export interface GetInventoryResponsePlatformListings {
      * @memberof GetInventoryResponsePlatformListings
      */
     soldAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    listingId: string;
     /**
      * 
      * @type {string}
@@ -163,25 +175,67 @@ export interface GetInventoryResponsePlatformListings {
      * @type {number}
      * @memberof GetInventoryResponsePlatformListings
      */
-    views: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetInventoryResponsePlatformListings
-     */
-    favorites: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetInventoryResponsePlatformListings
-     */
     commentsCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    impressions?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    ctrBps?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    viewsSemantics?: GetInventoryResponsePlatformListingsViewsSemanticsEnum;
     /**
      * 
      * @type {Date}
      * @memberof GetInventoryResponsePlatformListings
      */
     lastStatsSyncedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    errorMessage?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    delistRequestedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    delistRequestedReason?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    delistFailedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    delistError?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    delistErrorCode?: string | null;
     /**
      * 
      * @type {string}
@@ -200,6 +254,18 @@ export interface GetInventoryResponsePlatformListings {
      * @memberof GetInventoryResponsePlatformListings
      */
     crosslyPriceFxAsOf?: string | null;
+    /**
+     * 
+     * @type {GetInventoryResponsePlatformListingsBundlePromo}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    bundlePromo?: GetInventoryResponsePlatformListingsBundlePromo | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    storefrontId?: string | null;
     /**
      * 
      * @type {Array<string>}
@@ -314,12 +380,6 @@ export interface GetInventoryResponsePlatformListings {
      * @memberof GetInventoryResponsePlatformListings
      */
     personalization?: GetInventoryResponsePlatformListingsPersonalization | null;
-    /**
-     * 
-     * @type {GetInventoryResponsePlatformListingsDigitalFile}
-     * @memberof GetInventoryResponsePlatformListings
-     */
-    digitalFile?: GetInventoryResponsePlatformListingsDigitalFile | null;
     /**
      * 
      * @type {number}
@@ -538,6 +598,27 @@ export interface GetInventoryResponsePlatformListings {
     web3OrderId?: string | null;
 }
 
+/**
+* @export
+* @enum {string}
+*/
+export enum GetInventoryResponsePlatformListingsOriginEnum {
+    Unknown = 'unknown',
+    Published = 'published',
+    Imported = 'imported',
+    ExternalStub = 'external_stub',
+    AppLinked = 'app_linked'
+}/**
+* @export
+* @enum {string}
+*/
+export enum GetInventoryResponsePlatformListingsViewsSemanticsEnum {
+    Lifetime = 'lifetime',
+    Rolling7d = 'rolling7d',
+    Rolling30d = 'rolling30d',
+    Clicks = 'clicks'
+}
+
 export function GetInventoryResponsePlatformListingsFromJSON(json: any): GetInventoryResponsePlatformListings {
     return GetInventoryResponsePlatformListingsFromJSONTyped(json, false);
 }
@@ -550,17 +631,19 @@ export function GetInventoryResponsePlatformListingsFromJSONTyped(json: any, ign
         
         'id': json['id'],
         'userId': json['userId'],
-        'quantity': json['quantity'],
-        'status': json['status'],
         'platform': json['platform'],
-        'errorMessage': !exists(json, 'errorMessage') ? undefined : json['errorMessage'],
-        'listingId': json['listingId'],
-        'marketplaceId': !exists(json, 'marketplaceId') ? undefined : json['marketplaceId'],
         'accountSlot': json['accountSlot'],
+        'status': json['status'],
+        'marketplaceId': !exists(json, 'marketplaceId') ? undefined : json['marketplaceId'],
+        'origin': json['origin'],
+        'views': json['views'],
+        'favorites': json['favorites'],
+        'quantity': json['quantity'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
         'currency': !exists(json, 'currency') ? undefined : json['currency'],
         'delistedAt': !exists(json, 'delistedAt') ? undefined : (json['delistedAt'] === null ? null : new Date(json['delistedAt'])),
         'soldAt': !exists(json, 'soldAt') ? undefined : (json['soldAt'] === null ? null : new Date(json['soldAt'])),
+        'listingId': json['listingId'],
         'platformListingId': json['platformListingId'],
         'platformListingUrl': !exists(json, 'platformListingUrl') ? undefined : json['platformListingUrl'],
         'stockLocation': json['stockLocation'],
@@ -568,13 +651,22 @@ export function GetInventoryResponsePlatformListingsFromJSONTyped(json: any, ign
         'sharedAt': !exists(json, 'sharedAt') ? undefined : (json['sharedAt'] === null ? null : new Date(json['sharedAt'])),
         'delistReason': !exists(json, 'delistReason') ? undefined : json['delistReason'],
         'lastCheckedAt': !exists(json, 'lastCheckedAt') ? undefined : (json['lastCheckedAt'] === null ? null : new Date(json['lastCheckedAt'])),
-        'views': json['views'],
-        'favorites': json['favorites'],
         'commentsCount': json['commentsCount'],
+        'impressions': !exists(json, 'impressions') ? undefined : json['impressions'],
+        'ctrBps': !exists(json, 'ctrBps') ? undefined : json['ctrBps'],
+        'viewsSemantics': !exists(json, 'viewsSemantics') ? undefined : json['viewsSemantics'],
         'lastStatsSyncedAt': !exists(json, 'lastStatsSyncedAt') ? undefined : (json['lastStatsSyncedAt'] === null ? null : new Date(json['lastStatsSyncedAt'])),
+        'errorMessage': !exists(json, 'errorMessage') ? undefined : json['errorMessage'],
+        'delistRequestedAt': !exists(json, 'delistRequestedAt') ? undefined : (json['delistRequestedAt'] === null ? null : new Date(json['delistRequestedAt'])),
+        'delistRequestedReason': !exists(json, 'delistRequestedReason') ? undefined : json['delistRequestedReason'],
+        'delistFailedAt': !exists(json, 'delistFailedAt') ? undefined : (json['delistFailedAt'] === null ? null : new Date(json['delistFailedAt'])),
+        'delistError': !exists(json, 'delistError') ? undefined : json['delistError'],
+        'delistErrorCode': !exists(json, 'delistErrorCode') ? undefined : json['delistErrorCode'],
         'listedPrice': !exists(json, 'listedPrice') ? undefined : json['listedPrice'],
         'crosslyPriceUsdCents': !exists(json, 'crosslyPriceUsdCents') ? undefined : json['crosslyPriceUsdCents'],
         'crosslyPriceFxAsOf': !exists(json, 'crosslyPriceFxAsOf') ? undefined : json['crosslyPriceFxAsOf'],
+        'bundlePromo': !exists(json, 'bundlePromo') ? undefined : GetInventoryResponsePlatformListingsBundlePromoFromJSON(json['bundlePromo']),
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'hashtags': !exists(json, 'hashtags') ? undefined : json['hashtags'],
         'isDraft': json['isDraft'],
         'scheduledPublishAt': !exists(json, 'scheduledPublishAt') ? undefined : (json['scheduledPublishAt'] === null ? null : new Date(json['scheduledPublishAt'])),
@@ -594,7 +686,6 @@ export function GetInventoryResponsePlatformListingsFromJSONTyped(json: any, ign
         'bestOfferAutoDeclineCents': !exists(json, 'bestOfferAutoDeclineCents') ? undefined : json['bestOfferAutoDeclineCents'],
         'aestheticTags': !exists(json, 'aestheticTags') ? undefined : json['aestheticTags'],
         'personalization': !exists(json, 'personalization') ? undefined : GetInventoryResponsePlatformListingsPersonalizationFromJSON(json['personalization']),
-        'digitalFile': !exists(json, 'digitalFile') ? undefined : GetInventoryResponsePlatformListingsDigitalFileFromJSON(json['digitalFile']),
         'tryDays': !exists(json, 'tryDays') ? undefined : json['tryDays'],
         'tryFeeCents': !exists(json, 'tryFeeCents') ? undefined : json['tryFeeCents'],
         'subscribeDiscountBps': !exists(json, 'subscribeDiscountBps') ? undefined : json['subscribeDiscountBps'],
@@ -645,17 +736,19 @@ export function GetInventoryResponsePlatformListingsToJSON(value?: GetInventoryR
         
         'id': value.id,
         'userId': value.userId,
-        'quantity': value.quantity,
-        'status': value.status,
         'platform': value.platform,
-        'errorMessage': value.errorMessage,
-        'listingId': value.listingId,
-        'marketplaceId': value.marketplaceId,
         'accountSlot': value.accountSlot,
+        'status': value.status,
+        'marketplaceId': value.marketplaceId,
+        'origin': value.origin,
+        'views': value.views,
+        'favorites': value.favorites,
+        'quantity': value.quantity,
         'inventoryItemId': value.inventoryItemId,
         'currency': value.currency,
         'delistedAt': value.delistedAt === undefined ? undefined : (value.delistedAt === null ? null : value.delistedAt.toISOString()),
         'soldAt': value.soldAt === undefined ? undefined : (value.soldAt === null ? null : value.soldAt.toISOString()),
+        'listingId': value.listingId,
         'platformListingId': value.platformListingId,
         'platformListingUrl': value.platformListingUrl,
         'stockLocation': value.stockLocation,
@@ -663,13 +756,22 @@ export function GetInventoryResponsePlatformListingsToJSON(value?: GetInventoryR
         'sharedAt': value.sharedAt === undefined ? undefined : (value.sharedAt === null ? null : value.sharedAt.toISOString()),
         'delistReason': value.delistReason,
         'lastCheckedAt': value.lastCheckedAt === undefined ? undefined : (value.lastCheckedAt === null ? null : value.lastCheckedAt.toISOString()),
-        'views': value.views,
-        'favorites': value.favorites,
         'commentsCount': value.commentsCount,
+        'impressions': value.impressions,
+        'ctrBps': value.ctrBps,
+        'viewsSemantics': value.viewsSemantics,
         'lastStatsSyncedAt': value.lastStatsSyncedAt === undefined ? undefined : (value.lastStatsSyncedAt === null ? null : value.lastStatsSyncedAt.toISOString()),
+        'errorMessage': value.errorMessage,
+        'delistRequestedAt': value.delistRequestedAt === undefined ? undefined : (value.delistRequestedAt === null ? null : value.delistRequestedAt.toISOString()),
+        'delistRequestedReason': value.delistRequestedReason,
+        'delistFailedAt': value.delistFailedAt === undefined ? undefined : (value.delistFailedAt === null ? null : value.delistFailedAt.toISOString()),
+        'delistError': value.delistError,
+        'delistErrorCode': value.delistErrorCode,
         'listedPrice': value.listedPrice,
         'crosslyPriceUsdCents': value.crosslyPriceUsdCents,
         'crosslyPriceFxAsOf': value.crosslyPriceFxAsOf,
+        'bundlePromo': GetInventoryResponsePlatformListingsBundlePromoToJSON(value.bundlePromo),
+        'storefrontId': value.storefrontId,
         'hashtags': value.hashtags,
         'isDraft': value.isDraft,
         'scheduledPublishAt': value.scheduledPublishAt === undefined ? undefined : (value.scheduledPublishAt === null ? null : value.scheduledPublishAt.toISOString()),
@@ -689,7 +791,6 @@ export function GetInventoryResponsePlatformListingsToJSON(value?: GetInventoryR
         'bestOfferAutoDeclineCents': value.bestOfferAutoDeclineCents,
         'aestheticTags': value.aestheticTags,
         'personalization': GetInventoryResponsePlatformListingsPersonalizationToJSON(value.personalization),
-        'digitalFile': GetInventoryResponsePlatformListingsDigitalFileToJSON(value.digitalFile),
         'tryDays': value.tryDays,
         'tryFeeCents': value.tryFeeCents,
         'subscribeDiscountBps': value.subscribeDiscountBps,

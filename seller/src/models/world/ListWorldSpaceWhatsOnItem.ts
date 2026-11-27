@@ -80,10 +80,10 @@ export interface ListWorldSpaceWhatsOnItem {
 * @enum {string}
 */
 export enum ListWorldSpaceWhatsOnItemPlaceEnum {
+    Stage = 'stage',
     Street = 'street',
     Festival = 'festival',
-    Space = 'space',
-    Stage = 'stage'
+    Space = 'space'
 }
 
 export function ListWorldSpaceWhatsOnItemFromJSON(json: any): ListWorldSpaceWhatsOnItem {

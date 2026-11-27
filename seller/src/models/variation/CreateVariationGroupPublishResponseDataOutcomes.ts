@@ -51,6 +51,33 @@ export interface CreateVariationGroupPublishResponseDataOutcomes {
      */
     jobIds?: Array<string> | null;
     /**
+     * Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one
+     * platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option.
+     * @type {Array<{ [key: string]: any; }>}
+     * @memberof CreateVariationGroupPublishResponseDataOutcomes
+     */
+    members?: Array<{ [key: string]: any; }> | null;
+    /**
+     * Grouped: options that did not go live. Reported in `warnings`; the live ones are still recorded.
+     * @type {Array<{ [key: string]: any; }>}
+     * @memberof CreateVariationGroupPublishResponseDataOutcomes
+     */
+    failed?: Array<{ [key: string]: any; }> | null;
+    /**
+     * Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are
+     * recorded. Returns warnings for the seller; must not throw for one option.
+     * @type {{ [key: string]: any; }}
+     * @memberof CreateVariationGroupPublishResponseDataOutcomes
+     */
+    afterRecorded?: { [key: string]: any; } | null;
+    /**
+     * The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with
+     * the member listing id, variation-publish-crossly.ts), so no `members` is not a gap.
+     * @type {boolean}
+     * @memberof CreateVariationGroupPublishResponseDataOutcomes
+     */
+    ownOptionRows?: boolean | null;
+    /**
      * 
      * @type {Array<string>}
      * @memberof CreateVariationGroupPublishResponseDataOutcomes
@@ -69,8 +96,8 @@ export interface CreateVariationGroupPublishResponseDataOutcomes {
 * @enum {string}
 */
 export enum CreateVariationGroupPublishResponseDataOutcomesModeEnum {
-    Grouped = 'grouped',
-    Separate = 'separate'
+    Separate = 'separate',
+    Grouped = 'grouped'
 }
 
 export function CreateVariationGroupPublishResponseDataOutcomesFromJSON(json: any): CreateVariationGroupPublishResponseDataOutcomes {
@@ -88,6 +115,10 @@ export function CreateVariationGroupPublishResponseDataOutcomesFromJSONTyped(jso
         'ok': json['ok'],
         'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'jobIds': !exists(json, 'jobIds') ? undefined : json['jobIds'],
+        'members': !exists(json, 'members') ? undefined : json['members'],
+        'failed': !exists(json, 'failed') ? undefined : json['failed'],
+        'afterRecorded': !exists(json, 'afterRecorded') ? undefined : json['afterRecorded'],
+        'ownOptionRows': !exists(json, 'ownOptionRows') ? undefined : json['ownOptionRows'],
         'warnings': json['warnings'],
         'error': !exists(json, 'error') ? undefined : json['error'],
     };
@@ -107,6 +138,10 @@ export function CreateVariationGroupPublishResponseDataOutcomesToJSON(value?: Cr
         'ok': value.ok,
         'listingId': value.listingId,
         'jobIds': value.jobIds,
+        'members': value.members,
+        'failed': value.failed,
+        'afterRecorded': value.afterRecorded,
+        'ownOptionRows': value.ownOptionRows,
         'warnings': value.warnings,
         'error': value.error,
     };

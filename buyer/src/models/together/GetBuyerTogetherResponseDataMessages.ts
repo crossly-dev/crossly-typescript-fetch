@@ -33,10 +33,10 @@ export interface GetBuyerTogetherResponseDataMessages {
     name: string;
     /**
      * 
-     * @type {string}
+     * @type {boolean}
      * @memberof GetBuyerTogetherResponseDataMessages
      */
-    createdAt: string;
+    me: boolean;
     /**
      * 
      * @type {string}
@@ -45,10 +45,10 @@ export interface GetBuyerTogetherResponseDataMessages {
     body: string;
     /**
      * 
-     * @type {boolean}
+     * @type {string}
      * @memberof GetBuyerTogetherResponseDataMessages
      */
-    me: boolean;
+    createdAt: string;
 }
 
 export function GetBuyerTogetherResponseDataMessagesFromJSON(json: any): GetBuyerTogetherResponseDataMessages {
@@ -63,9 +63,9 @@ export function GetBuyerTogetherResponseDataMessagesFromJSONTyped(json: any, ign
         
         'id': json['id'],
         'name': json['name'],
-        'createdAt': json['createdAt'],
-        'body': json['body'],
         'me': json['me'],
+        'body': json['body'],
+        'createdAt': json['createdAt'],
     };
 }
 
@@ -80,9 +80,9 @@ export function GetBuyerTogetherResponseDataMessagesToJSON(value?: GetBuyerToget
         
         'id': value.id,
         'name': value.name,
-        'createdAt': value.createdAt,
-        'body': value.body,
         'me': value.me,
+        'body': value.body,
+        'createdAt': value.createdAt,
     };
 }
 

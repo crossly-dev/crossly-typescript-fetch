@@ -63,8 +63,8 @@ export interface CreateVaultMarketInstantExitResponse {
 * @enum {string}
 */
 export enum CreateVaultMarketInstantExitResponseStatusEnum {
-    Filled = 'filled',
-    Missed = 'missed'
+    Missed = 'missed',
+    Filled = 'filled'
 }
 
 export function CreateVaultMarketInstantExitResponseFromJSON(json: any): CreateVaultMarketInstantExitResponse {

@@ -39,12 +39,6 @@ import {
  */
 export interface GetVaultMarketReportResponsePrintable {
     /**
-     * Closing paragraphs, small and grey.
-     * @type {Array<string>}
-     * @memberof GetVaultMarketReportResponsePrintable
-     */
-    notes: Array<string>;
-    /**
      * 
      * @type {string}
      * @memberof GetVaultMarketReportResponsePrintable
@@ -62,6 +56,12 @@ export interface GetVaultMarketReportResponsePrintable {
      * @memberof GetVaultMarketReportResponsePrintable
      */
     sections: Array<GetVaultMarketOrderHandlingResponseSections>;
+    /**
+     * Closing paragraphs, small and grey.
+     * @type {Array<string>}
+     * @memberof GetVaultMarketReportResponsePrintable
+     */
+    notes: Array<string>;
     /**
      * 
      * @type {string}
@@ -101,10 +101,10 @@ export function GetVaultMarketReportResponsePrintableFromJSONTyped(json: any, ig
     }
     return {
         
-        'notes': json['notes'],
         'title': json['title'],
         'meta': json['meta'],
         'sections': ((json['sections'] as Array<any>).map(GetVaultMarketOrderHandlingResponseSectionsFromJSON)),
+        'notes': json['notes'],
         'paper': json['paper'],
         'table': !exists(json, 'table') ? undefined : GetVaultMarketReportResponsePrintableTableFromJSON(json['table']),
         'qr': !exists(json, 'qr') ? undefined : GetVaultMarketReportResponsePrintableQrFromJSON(json['qr']),
@@ -120,10 +120,10 @@ export function GetVaultMarketReportResponsePrintableToJSON(value?: GetVaultMark
     }
     return {
         
-        'notes': value.notes,
         'title': value.title,
         'meta': value.meta,
         'sections': ((value.sections as Array<any>).map(GetVaultMarketOrderHandlingResponseSectionsToJSON)),
+        'notes': value.notes,
         'paper': value.paper,
         'table': GetVaultMarketReportResponsePrintableTableToJSON(value.table),
         'qr': GetVaultMarketReportResponsePrintableQrToJSON(value.qr),

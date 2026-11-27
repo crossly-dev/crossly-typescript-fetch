@@ -56,11 +56,11 @@ export interface GetVaultMarketLiquidityResponseComponents {
 * @enum {string}
 */
 export enum GetVaultMarketLiquidityResponseComponentsNameEnum {
-    SpreadBps = 'spreadBps',
     Trades30d = 'trades30d',
     Trades90d = 'trades90d',
     Counterparties90d = 'counterparties90d',
     MedianGapDays = 'medianGapDays',
+    SpreadBps = 'spreadBps',
     TwoSidedShare = 'twoSidedShare',
     DepthCents = 'depthCents',
     Amihud = 'amihud',
@@ -70,8 +70,8 @@ export enum GetVaultMarketLiquidityResponseComponentsNameEnum {
 * @enum {string}
 */
 export enum GetVaultMarketLiquidityResponseComponentsBetterEnum {
-    High = 'high',
-    Low = 'low'
+    Low = 'low',
+    High = 'high'
 }
 
 export function GetVaultMarketLiquidityResponseComponentsFromJSON(json: any): GetVaultMarketLiquidityResponseComponents {

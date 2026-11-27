@@ -1,0 +1,2196 @@
+{
+ "ops": {
+  "GET /v1/buyer/profile": {
+   "id": "getBuyerProfile",
+   "sig": "7f407e47cf6f"
+  },
+  "GET /v1/buyer/orders": {
+   "id": "listBuyerOrders",
+   "sig": "089b40db8ce7"
+  },
+  "GET /v1/buyer/cart": {
+   "id": "listBuyerCart",
+   "sig": "daa280f1940e"
+  },
+  "GET /v1/buyer/cashback": {
+   "id": "listBuyerCashback",
+   "sig": "31d3c0ddb296"
+  },
+  "GET /v1/buyer/wishlists": {
+   "id": "listBuyerWishlists",
+   "sig": "d94b01e05d8f"
+  },
+  "POST /v1/buyer/wishlists": {
+   "id": "createBuyerWishlist",
+   "sig": "4ec6afe22ef5"
+  },
+  "GET /v1/buyer/wishlists/{id}/items": {
+   "id": "listBuyerWishlistItems",
+   "sig": "19d4deb445e7"
+  },
+  "POST /v1/buyer/wishlists/{id}/items": {
+   "id": "createBuyerWishlistItem",
+   "sig": "2934860508b8"
+  },
+  "GET /v1/buyer/catalog/search": {
+   "id": "listBuyerCatalogSearch",
+   "sig": "0a6a396193a1"
+  },
+  "GET /v1/buyer/catalog/listings/{slug}": {
+   "id": "getBuyerCatalogListing",
+   "sig": "7f64c634db78"
+  },
+  "GET /v1/buyer/catalog/listings/{slug}/shipping": {
+   "id": "getBuyerCatalogListingShipping",
+   "sig": "8caf8ffc0be0"
+  },
+  "GET /v1/buyer/catalog/listings/{slug}/availability": {
+   "id": "getBuyerCatalogListingAvailability",
+   "sig": "e26bea637569"
+  },
+  "GET /v1/buyer/catalog/facets": {
+   "id": "getBuyerCatalogFacet",
+   "sig": "6c42cbb78da3"
+  },
+  "GET /v1/buyer/catalog/fx": {
+   "id": "getBuyerCatalogFx",
+   "sig": "3039f7b00289"
+  },
+  "GET /v1/buyer/listings/{slug}/landed-cost": {
+   "id": "getBuyerListingLandedCost",
+   "sig": "011870acfbcc"
+  },
+  "GET /v1/buyer/anywhere": {
+   "id": "getBuyerAnywhere",
+   "sig": "8993585bb15c"
+  },
+  "GET /v1/buyer/offers": {
+   "id": "listBuyerOffers",
+   "sig": "072aa020f07e"
+  },
+  "POST /v1/buyer/offers": {
+   "id": "createBuyerOffer",
+   "sig": "c21bc6f51287"
+  },
+  "GET /v1/buyer/auctions": {
+   "id": "listBuyerAuctions",
+   "sig": "6d5c5b6431d6"
+  },
+  "GET /v1/buyer/auctions/{slug}/bids": {
+   "id": "listBuyerAuctionBids",
+   "sig": "07e7d74a7f9c"
+  },
+  "POST /v1/buyer/auctions/{slug}/bids": {
+   "id": "createBuyerAuctionBid",
+   "sig": "d0960a194056"
+  },
+  "GET /v1/buyer/auctions/{slug}/me": {
+   "id": "getBuyerAuctionMe",
+   "sig": "a39103467899"
+  },
+  "GET /v1/buyer/badges": {
+   "id": "getBuyerBadge",
+   "sig": "573027744586"
+  },
+  "GET /v1/buyer/orders/export": {
+   "id": "getBuyerOrderExport",
+   "sig": "276fe014d95d"
+  },
+  "GET /v1/buyer/orders/{id}/eligibility": {
+   "id": "getBuyerOrderEligibility",
+   "sig": "4e000bcc3b7a"
+  },
+  "GET /v1/buyer/cases": {
+   "id": "listBuyerCases",
+   "sig": "891ee9ca3265"
+  },
+  "GET /v1/buyer/cases/{id}": {
+   "id": "getBuyerCase",
+   "sig": "844a635070dc"
+  },
+  "GET /v1/buyer/feedback/pending": {
+   "id": "listBuyerFeedbackPending",
+   "sig": "4c455369e962"
+  },
+  "GET /v1/buyer/feedback": {
+   "id": "listBuyerFeedback",
+   "sig": "94b5c8124f80"
+  },
+  "POST /v1/buyer/feedback": {
+   "id": "createBuyerFeedback",
+   "sig": "63bc31bf99c2"
+  },
+  "GET /v1/buyer/cart/saved": {
+   "id": "listBuyerCartSaved",
+   "sig": "5571fc190fbb"
+  },
+  "GET /v1/buyer/total-requests": {
+   "id": "listBuyerTotalRequests",
+   "sig": "ffa77edce55c"
+  },
+  "POST /v1/buyer/total-requests": {
+   "id": "createBuyerTotalRequest",
+   "sig": "aeb052d6434a"
+  },
+  "GET /v1/buyer/following/sellers": {
+   "id": "listBuyerFollowingSellers",
+   "sig": "d2388725646c"
+  },
+  "GET /v1/buyer/gift-finder/options": {
+   "id": "getBuyerGiftFinderOption",
+   "sig": "73f9e20da25d"
+  },
+  "GET /v1/buyer/gift-finder": {
+   "id": "listBuyerGiftFinder",
+   "sig": "ae1afb1d9f25"
+  },
+  "GET /v1/buyer/listings/{slug}/fit": {
+   "id": "getBuyerListingFit",
+   "sig": "1545e22a1397"
+  },
+  "GET /v1/buyer/listings/{slug}/resale-value": {
+   "id": "getBuyerListingResaleValue",
+   "sig": "cdef7cf22694"
+  },
+  "GET /v1/buyer/listings/{slug}/impact": {
+   "id": "getBuyerListingImpact",
+   "sig": "f97d2967befa"
+  },
+  "GET /v1/buyer/listings/{slug}/bought-together": {
+   "id": "getBuyerListingBoughtTogether",
+   "sig": "de1fe966931c"
+  },
+  "GET /v1/buyer/listings/{slug}/seller-reviews": {
+   "id": "listBuyerListingSellerReviews",
+   "sig": "368eb99a4f17"
+  },
+  "GET /v1/buyer/listings/{slug}/quick-questions": {
+   "id": "listBuyerListingQuickQuestions",
+   "sig": "466a917813ce"
+  },
+  "GET /v1/buyer/listings/{slug}/break": {
+   "id": "getBuyerListingBreak",
+   "sig": "38384a84b022"
+  },
+  "GET /v1/buyer/listings/{slug}/group-buy": {
+   "id": "getBuyerListingGroupBuy",
+   "sig": "3396a13a6fa3"
+  },
+  "GET /v1/buyer/subscriptions": {
+   "id": "listBuyerSubscriptions",
+   "sig": "e94e61401b3c"
+  },
+  "GET /v1/buyer/hunts": {
+   "id": "listBuyerHunts",
+   "sig": "f6022142b5ff"
+  },
+  "POST /v1/buyer/hunts": {
+   "id": "createBuyerHunt",
+   "sig": "58a468efe97f"
+  },
+  "GET /v1/buyer/together": {
+   "id": "listBuyerTogether",
+   "sig": "6f44ffcdd582"
+  },
+  "POST /v1/buyer/together": {
+   "id": "createBuyerTogether",
+   "sig": "5f4c372f0264"
+  },
+  "GET /v1/buyer/listings/{slug}/subscribe-offer": {
+   "id": "getBuyerListingSubscribeOffer",
+   "sig": "787cb386a5fe"
+  },
+  "GET /v1/buyer/impact": {
+   "id": "getBuyerImpact",
+   "sig": "ba70ac673f9d"
+  },
+  "GET /v1/buyer/buybacks": {
+   "id": "listBuyerBuybacks",
+   "sig": "d36de9320086"
+  },
+  "GET /v1/buyer/splits": {
+   "id": "listBuyerSplits",
+   "sig": "9d644f32179f"
+  },
+  "GET /v1/buyer/purchases/{id}/return": {
+   "id": "getBuyerPurchaseReturn",
+   "sig": "8863d66990c3"
+  },
+  "POST /v1/buyer/purchases/{id}/return": {
+   "id": "createBuyerPurchaseReturn",
+   "sig": "a2b7fb717dc2"
+  },
+  "GET /v1/buyer/purchases/{id}/story": {
+   "id": "getBuyerPurchaseStory",
+   "sig": "00df2d19f313"
+  },
+  "PUT /v1/buyer/purchases/{id}/story": {
+   "id": "updateBuyerPurchaseStory",
+   "sig": "90e6d174c42e"
+  },
+  "GET /v1/buyer/fit/vocabulary": {
+   "id": "getBuyerFitVocabulary",
+   "sig": "066521b8aebc"
+  },
+  "GET /v1/buyer/fit/refs": {
+   "id": "listBuyerFitRefs",
+   "sig": "2bb62606a036"
+  },
+  "POST /v1/buyer/fit/refs": {
+   "id": "createBuyerFitRef",
+   "sig": "5057e3683f76"
+  },
+  "GET /v1/buyer/breaks": {
+   "id": "listBuyerBreaks",
+   "sig": "9a0de5dc40b4"
+  },
+  "GET /v1/buyer/breaks/{id}": {
+   "id": "getBuyerBreak",
+   "sig": "5ca01045fdd0"
+  },
+  "GET /v1/buyer/together/{code}": {
+   "id": "getBuyerTogether",
+   "sig": "a751cf62d735"
+  },
+  "GET /v1/buyer/parties": {
+   "id": "listBuyerParties",
+   "sig": "1a4074553366"
+  },
+  "GET /v1/buyer/parties/{slug}": {
+   "id": "getBuyerParty",
+   "sig": "468af050da5b"
+  },
+  "GET /v1/buyer/parties/{slug}/listings": {
+   "id": "listBuyerPartyListings",
+   "sig": "b38f701cdfab"
+  },
+  "GET /v1/buyer/price-guide": {
+   "id": "getBuyerPriceGuide",
+   "sig": "64a372af77f7"
+  },
+  "GET /v1/buyer/creators/{handle}": {
+   "id": "getBuyerCreator",
+   "sig": "f2bb3b01df8e"
+  },
+  "GET /v1/buyer/live-streams/{id}/auction": {
+   "id": "getBuyerLiveStreamAuction",
+   "sig": "685ad892330f"
+  },
+  "GET /v1/buyer/pickup-points": {
+   "id": "listBuyerPickupPoints",
+   "sig": "66dccd99257d"
+  },
+  "GET /v1/buyer/purchases/{id}/delivery": {
+   "id": "getBuyerPurchaseDelivery",
+   "sig": "e621bb55b459"
+  },
+  "GET /v1/buyer/consolidations": {
+   "id": "listBuyerConsolidations",
+   "sig": "2d896880d944"
+  },
+  "GET /v1/buyer/market/watches": {
+   "id": "listBuyerMarketWatches",
+   "sig": "934011f7be4d"
+  },
+  "POST /v1/buyer/market/watches": {
+   "id": "createBuyerMarketWatch",
+   "sig": "ba786598b639"
+  },
+  "GET /v1/buyer/market/bids": {
+   "id": "listBuyerMarketBids",
+   "sig": "715e1962e985"
+  },
+  "POST /v1/buyer/market/bids": {
+   "id": "createBuyerMarketBid",
+   "sig": "c221dedd11fe"
+  },
+  "GET /v1/buyer/catalog/browse": {
+   "id": "listBuyerCatalogBrowse",
+   "sig": "c92451e117f6"
+  },
+  "GET /v1/buyer/catalog/sellers": {
+   "id": "listBuyerCatalogSellers",
+   "sig": "62d3a0a17aeb"
+  },
+  "GET /v1/buyer/catalog/listings/{slug}/sold-history": {
+   "id": "listBuyerCatalogListingSoldHistory",
+   "sig": "47d6e1acde84"
+  },
+  "GET /v1/buyer/sellers/{username}/trust": {
+   "id": "getBuyerSellerTrust",
+   "sig": "cab42e35819b"
+  },
+  "GET /v1/buyer/stores/{slug}/listings": {
+   "id": "listBuyerStoreListings",
+   "sig": "545e004527a3"
+  },
+  "GET /v1/buyer/drops/{id}/me": {
+   "id": "getBuyerDropMe",
+   "sig": "a6748cfa695a"
+  },
+  "GET /v1/buyer/wallet/perks": {
+   "id": "listBuyerWalletPerks",
+   "sig": "dc7e5e825252"
+  },
+  "GET /v1/buyer/vault-markets/worth": {
+   "id": "getBuyerVaultMarketWorth",
+   "sig": "3a71dd731009"
+  },
+  "GET /v1/buyer/vault-markets/holdings": {
+   "id": "listBuyerVaultMarketHoldings",
+   "sig": "ebc344dc4196"
+  },
+  "GET /v1/buyer/vault-markets/history": {
+   "id": "getBuyerVaultMarketHistory",
+   "sig": "5b22d2833144"
+  },
+  "GET /v1/buyer/vault-markets/watchlist": {
+   "id": "listBuyerVaultMarketWatchlist",
+   "sig": "cce857b62377"
+  },
+  "GET /v1/buyer/vault-markets/instant-exit": {
+   "id": "listBuyerVaultMarketInstantExit",
+   "sig": "139a7df5f5c8"
+  },
+  "GET /v1/buyer/vault-markets/instant-exit/{id}": {
+   "id": "getBuyerVaultMarketInstantExit",
+   "sig": "109dcfb5bbf2"
+  },
+  "GET /v1/buyer/vault-markets/indexes": {
+   "id": "listBuyerVaultMarketIndexes",
+   "sig": "8f2aa579563b"
+  },
+  "GET /v1/buyer/vault-markets/indexes/{slug}": {
+   "id": "getBuyerVaultMarketIndex",
+   "sig": "94d3c0ebd037"
+  },
+  "GET /v1/buyer/vault-markets/shares": {
+   "id": "getBuyerVaultMarketShare",
+   "sig": "e81665eb47e7"
+  },
+  "GET /v1/buyer/vault-markets/shares/series": {
+   "id": "listBuyerVaultMarketShareSeries",
+   "sig": "6037e1917c89"
+  },
+  "GET /v1/buyer/vault-markets/shares/series/{id}": {
+   "id": "getBuyerVaultMarketShareSery",
+   "sig": "ce315e507536"
+  },
+  "GET /v1/buyer/vault-markets/options/series": {
+   "id": "listBuyerVaultMarketOptionSeries",
+   "sig": "95466c16bc6d"
+  },
+  "GET /v1/buyer/vault-markets/options/chain/{underlying}": {
+   "id": "getBuyerVaultMarketOptionChain",
+   "sig": "ab14879201c4"
+  },
+  "GET /v1/buyer/vault-markets/options/iv/{underlying}": {
+   "id": "getBuyerVaultMarketOptionIv",
+   "sig": "0cd7e9cbb7b6"
+  },
+  "GET /v1/buyer/vault-markets/options/positions": {
+   "id": "getBuyerVaultMarketOptionPosition",
+   "sig": "1eb34bd706c3"
+  },
+  "GET /v1/buyer/vault-markets/predictions/markets": {
+   "id": "listBuyerVaultMarketPredictionMarkets",
+   "sig": "83b86738085a"
+  },
+  "GET /v1/buyer/vault-markets/predictions/markets/{id}": {
+   "id": "getBuyerVaultMarketPredictionMarket",
+   "sig": "fe32af8474b3"
+  },
+  "GET /v1/buyer/vault-markets/predictions/positions": {
+   "id": "listBuyerVaultMarketPredictionPositions",
+   "sig": "3b62653fa3ed"
+  },
+  "GET /v1/buyer/vault-markets/predictions/board": {
+   "id": "getBuyerVaultMarketPredictionBoard",
+   "sig": "c986f8b51519"
+  },
+  "GET /v1/buyer/vault-markets/predictions/markets/{id}/history": {
+   "id": "getBuyerVaultMarketPredictionMarketHistory",
+   "sig": "437f0a8e2a8f"
+  },
+  "GET /v1/buyer/vault-markets/predictions/events/{id}": {
+   "id": "getBuyerVaultMarketPredictionEvent",
+   "sig": "6e3dc9695980"
+  },
+  "GET /v1/buyer/vault-markets/predictions/leaderboard": {
+   "id": "getBuyerVaultMarketPredictionLeaderboard",
+   "sig": "0b5e27fe9d51"
+  },
+  "GET /v1/buyer/vault-markets/predictions/comments": {
+   "id": "listBuyerVaultMarketPredictionComments",
+   "sig": "508e4f2b590c"
+  },
+  "GET /v1/buyer/vault-markets/options/strategies": {
+   "id": "listBuyerVaultMarketOptionStrategies",
+   "sig": "a8f5b7012f77"
+  },
+  "GET /v1/buyer/vault-markets/options/analytics/{underlying}": {
+   "id": "getBuyerVaultMarketOptionAnalytic",
+   "sig": "2d683d29e802"
+  },
+  "GET /v1/buyer/vault-markets/options/risk": {
+   "id": "getBuyerVaultMarketOptionRisk",
+   "sig": "beac65b0b7f1"
+  },
+  "GET /v1/buyer/vault-markets/options/combos": {
+   "id": "listBuyerVaultMarketOptionCombos",
+   "sig": "c8e8543a10e0"
+  },
+  "GET /v1/buyer/vault-markets/options/notices": {
+   "id": "listBuyerVaultMarketOptionNotices",
+   "sig": "935fd83e02dd"
+  },
+  "GET /v1/buyer/vault-markets/shares/drops": {
+   "id": "listBuyerVaultMarketShareDrops",
+   "sig": "a4ed76f4ce1c"
+  },
+  "GET /v1/buyer/vault-markets/shares/baskets": {
+   "id": "listBuyerVaultMarketShareBaskets",
+   "sig": "462abf80ee2a"
+  },
+  "GET /v1/buyer/vault-markets/shares/baskets/{id}": {
+   "id": "getBuyerVaultMarketShareBasket",
+   "sig": "46a77786a7c7"
+  },
+  "GET /v1/buyer/vault-markets/shares/series/{id}/history": {
+   "id": "getBuyerVaultMarketShareSeryHistory",
+   "sig": "7fb1c64ca312"
+  },
+  "GET /v1/buyer/vault-markets/shares/series/{id}/perks": {
+   "id": "getBuyerVaultMarketShareSeryPerk",
+   "sig": "319e5498ed0b"
+  },
+  "GET /v1/buyer/vault-markets/shares/auto-invest": {
+   "id": "listBuyerVaultMarketShareAutoInvest",
+   "sig": "e0fe05c10473"
+  },
+  "GET /v1/buyer/vault-markets/shares/gifts": {
+   "id": "listBuyerVaultMarketShareGifts",
+   "sig": "99e4a2bd2747"
+  },
+  "POST /v1/buyer/cart/items": {
+   "id": "createBuyerCartItem",
+   "sig": "4b677e9a20fd"
+  },
+  "DELETE /v1/buyer/cart/items/{id}": {
+   "id": "deleteBuyerCartItem",
+   "sig": "a3ea0a4af516"
+  },
+  "POST /v1/buyer/cart/quote": {
+   "id": "createBuyerCartQuote",
+   "sig": "d4655f30d9b5"
+  },
+  "GET /v1/buyer/gift-cards": {
+   "id": "listBuyerGiftCards",
+   "sig": "bc55c80b84f1"
+  },
+  "POST /v1/buyer/gift-cards": {
+   "id": "createBuyerGiftCard",
+   "sig": "eac17d2cae8c"
+  },
+  "GET /v1/buyer/gift-cards/credit": {
+   "id": "listBuyerGiftCardCredit",
+   "sig": "d07bd0bcedcb"
+  },
+  "POST /v1/buyer/gift-cards/redeem": {
+   "id": "createBuyerGiftCardRedeem",
+   "sig": "9d08dd10f9d1"
+  },
+  "GET /v1/buyer/payment-methods": {
+   "id": "listBuyerPaymentMethods",
+   "sig": "68939e1c160f"
+  },
+  "PUT /v1/buyer/payment-methods/{id}/default": {
+   "id": "updateBuyerPaymentMethodDefault",
+   "sig": "96d6058a5167"
+  },
+  "GET /v1/buyer/monitors": {
+   "id": "listBuyerMonitors",
+   "sig": "b54167f30f98"
+  },
+  "POST /v1/buyer/monitors": {
+   "id": "createBuyerMonitor",
+   "sig": "2e38b1aec79f"
+  },
+  "GET /v1/buyer/monitors/{id}/matches": {
+   "id": "listBuyerMonitorMatches",
+   "sig": "156263e8c500"
+  },
+  "DELETE /v1/buyer/monitors/{id}": {
+   "id": "deleteBuyerMonitor",
+   "sig": "f3958be1849f"
+  },
+  "PATCH /v1/buyer/monitors/{id}": {
+   "id": "updateBuyerMonitor",
+   "sig": "044b5215f3b4"
+  },
+  "GET /v1/buyer/agent/sessions": {
+   "id": "listBuyerAgentSessions",
+   "sig": "ba8b6e0df1db"
+  },
+  "POST /v1/buyer/agent/sessions": {
+   "id": "createBuyerAgentSession",
+   "sig": "05015e9ab814"
+  },
+  "GET /v1/buyer/agent/sessions/{id}": {
+   "id": "getBuyerAgentSession",
+   "sig": "392ab0909cf8"
+  },
+  "DELETE /v1/buyer/agent/sessions/{id}": {
+   "id": "deleteBuyerAgentSession",
+   "sig": "89d2e26c8f79"
+  },
+  "POST /v1/buyer/agent/sessions/{id}/turns": {
+   "id": "createBuyerAgentSessionTurn",
+   "sig": "cfc3382cf1dc"
+  },
+  "POST /v1/buyer/agent/sessions/{id}/react": {
+   "id": "createBuyerAgentSessionReact",
+   "sig": "d6f8b3b492c6"
+  },
+  "POST /v1/buyer/agent/sessions/{id}/act": {
+   "id": "createBuyerAgentSessionAct",
+   "sig": "5e57bcf7122f"
+  },
+  "GET /v1/buyer/checkout/controls": {
+   "id": "getBuyerCheckoutControl",
+   "sig": "a0af5fa3e16e"
+  },
+  "PUT /v1/buyer/checkout/controls": {
+   "id": "updateBuyerCheckoutControl",
+   "sig": "85953c536470"
+  },
+  "POST /v1/buyer/checkout": {
+   "id": "createBuyerCheckout",
+   "sig": "5d92f45120be"
+  },
+  "POST /v1/buyer/scan": {
+   "id": "createBuyerScan",
+   "sig": "78888b8be6df"
+  },
+  "GET /v1/buyer/scan/sessions": {
+   "id": "listBuyerScanSessions",
+   "sig": "4ddada9b02f8"
+  },
+  "POST /v1/buyer/scan/sessions": {
+   "id": "createBuyerScanSession",
+   "sig": "8be375f68f91"
+  },
+  "POST /v1/buyer/scan/sessions/{id}/end": {
+   "id": "createBuyerScanSessionEnd",
+   "sig": "dd01b0dd1390"
+  },
+  "GET /v1/buyer/scan/sessions/{id}": {
+   "id": "getBuyerScanSession",
+   "sig": "9787879b05f9"
+  },
+  "POST /v1/buyer/identify": {
+   "id": "createBuyerIdentify",
+   "sig": "3810dfea7d40"
+  },
+  "POST /v1/buyer/lockons": {
+   "id": "createBuyerLockon",
+   "sig": "464d1c22ac2a"
+  },
+  "POST /v1/buyer/lockons/{id}/observe": {
+   "id": "createBuyerLockonObserve",
+   "sig": "6789df27d057"
+  },
+  "POST /v1/buyer/lockons/{id}/confirm": {
+   "id": "createBuyerLockonConfirm",
+   "sig": "e3c6dc8deca8"
+  },
+  "POST /v1/buyer/offers/{id}/respond": {
+   "id": "createBuyerOfferRespond",
+   "sig": "795935c50ae2"
+  },
+  "DELETE /v1/buyer/offers/{id}": {
+   "id": "deleteBuyerOffer",
+   "sig": "3546885d043c"
+  },
+  "POST /v1/buyer/auctions/{slug}/retract": {
+   "id": "createBuyerAuctionRetract",
+   "sig": "b6e7a86ec8a7"
+  },
+  "POST /v1/buyer/auctions/{slug}/pay": {
+   "id": "createBuyerAuctionPay",
+   "sig": "28058d552cc0"
+  },
+  "POST /v1/buyer/orders/{id}/cancel": {
+   "id": "createBuyerOrderCancel",
+   "sig": "84156814b194"
+  },
+  "POST /v1/buyer/orders/{id}/received": {
+   "id": "createBuyerOrderReceived",
+   "sig": "bc76e9e2e7f1"
+  },
+  "POST /v1/buyer/orders/{id}/inr": {
+   "id": "createBuyerOrderInr",
+   "sig": "242f7f1b8009"
+  },
+  "POST /v1/buyer/sellers/{username}/report": {
+   "id": "createBuyerSellerReport",
+   "sig": "865ad00d4c2d"
+  },
+  "POST /v1/buyer/stores/{slug}/report": {
+   "id": "createBuyerStoreReport",
+   "sig": "3742259a286e"
+  },
+  "POST /v1/buyer/cases/{id}/respond": {
+   "id": "createBuyerCaseRespond",
+   "sig": "8533d3728f96"
+  },
+  "POST /v1/buyer/cases/{id}/counter": {
+   "id": "createBuyerCaseCounter",
+   "sig": "0478c9f881df"
+  },
+  "POST /v1/buyer/cases/{id}/messages": {
+   "id": "createBuyerCaseMessage",
+   "sig": "ecaf01b3c92a"
+  },
+  "POST /v1/buyer/cases/{id}/escalate": {
+   "id": "createBuyerCaseEscalate",
+   "sig": "6aeee7e7ad22"
+  },
+  "POST /v1/buyer/cases/{id}/withdraw": {
+   "id": "createBuyerCaseWithdraw",
+   "sig": "3a7da26e6a28"
+  },
+  "PATCH /v1/buyer/feedback/{id}": {
+   "id": "updateBuyerFeedback",
+   "sig": "458f8b50adcc"
+  },
+  "GET /v1/buyer/creations/reviewable": {
+   "id": "listBuyerCreationReviewable",
+   "sig": "7bf8e0ad45c2"
+  },
+  "GET /v1/buyer/creations/{format}/{id}": {
+   "id": "getBuyerCreation",
+   "sig": "3ad9577f7925"
+  },
+  "PUT /v1/buyer/creations/{format}/{id}/review": {
+   "id": "updateBuyerCreationReview",
+   "sig": "7423773487aa"
+  },
+  "DELETE /v1/buyer/creations/{format}/{id}/review": {
+   "id": "deleteBuyerCreationReview",
+   "sig": "c091cb89fdef"
+  },
+  "POST /v1/buyer/cart/items/{id}/save-for-later": {
+   "id": "createBuyerCartItemSaveForLater",
+   "sig": "ca4a87cb5842"
+  },
+  "POST /v1/buyer/cart/saved/{id}/move-to-cart": {
+   "id": "createBuyerCartSavedMoveToCart",
+   "sig": "73f69ca2f066"
+  },
+  "DELETE /v1/buyer/cart/saved/{id}": {
+   "id": "deleteBuyerCartSaved",
+   "sig": "ee325de6388b"
+  },
+  "DELETE /v1/buyer/total-requests/{id}": {
+   "id": "deleteBuyerTotalRequest",
+   "sig": "19a65c53e11f"
+  },
+  "DELETE /v1/buyer/wishlists/{id}": {
+   "id": "deleteBuyerWishlist",
+   "sig": "ee4f1ec1d80d"
+  },
+  "PATCH /v1/buyer/wishlists/{id}": {
+   "id": "updateBuyerWishlist",
+   "sig": "174ba061961b"
+  },
+  "DELETE /v1/buyer/wishlists/{id}/items/{slug}": {
+   "id": "deleteBuyerWishlistItem",
+   "sig": "db68b7761ad6"
+  },
+  "POST /v1/buyer/wishlists/{id}/share": {
+   "id": "createBuyerWishlistShare",
+   "sig": "a27bac42cf8c"
+  },
+  "DELETE /v1/buyer/recently-viewed/{slug}": {
+   "id": "deleteBuyerRecentlyViewed",
+   "sig": "0453f79a4adc"
+  },
+  "DELETE /v1/buyer/recently-viewed": {
+   "id": "deleteBuyerRecentlyViewed2",
+   "sig": "ca77c0f7e1d5"
+  },
+  "POST /v1/buyer/following/sellers/seen": {
+   "id": "createBuyerFollowingSellerSeen",
+   "sig": "01e17b8acac1"
+  },
+  "POST /v1/buyer/listings/{slug}/subscribe": {
+   "id": "createBuyerListingSubscribe",
+   "sig": "b911b880d43e"
+  },
+  "PATCH /v1/buyer/subscriptions/{id}": {
+   "id": "updateBuyerSubscription",
+   "sig": "c7d4aa6eaeac"
+  },
+  "POST /v1/buyer/listings/{slug}/split": {
+   "id": "createBuyerListingSplit",
+   "sig": "f6341e8c95e1"
+  },
+  "POST /v1/buyer/orders/{id}/tip": {
+   "id": "createBuyerOrderTip",
+   "sig": "c6d1c7c3f033"
+  },
+  "PATCH /v1/buyer/hunts/{id}": {
+   "id": "updateBuyerHunt",
+   "sig": "61f4b2017829"
+  },
+  "POST /v1/buyer/group-buys/{id}/join": {
+   "id": "createBuyerGroupBuyJoin",
+   "sig": "f8354323750d"
+  },
+  "POST /v1/buyer/group-buys/{id}/leave": {
+   "id": "createBuyerGroupBuyLeave",
+   "sig": "eb5a023dc3ca"
+  },
+  "POST /v1/buyer/buybacks/{id}/request": {
+   "id": "createBuyerBuybackRequest",
+   "sig": "0e140868fc23"
+  },
+  "POST /v1/buyer/together/{code}/items": {
+   "id": "createBuyerTogetherItem",
+   "sig": "18fd1e24c36a"
+  },
+  "POST /v1/buyer/cart-optimizer": {
+   "id": "createBuyerCartOptimizer",
+   "sig": "47f13f079dfa"
+  },
+  "GET /v1/buyer/collection/{id}/offer": {
+   "id": "getBuyerCollectionOffer",
+   "sig": "b02bc9e29a62"
+  },
+  "GET /v1/buyer/instant-offers": {
+   "id": "listBuyerInstantOffers",
+   "sig": "429ab6e13a13"
+  },
+  "POST /v1/buyer/instant-offers/{id}/accept": {
+   "id": "createBuyerInstantOfferAccept",
+   "sig": "5ca04d5296bd"
+  },
+  "GET /v1/buyer/collection/sets": {
+   "id": "listBuyerCollectionSets",
+   "sig": "f5b98d445555"
+  },
+  "GET /v1/buyer/collection/sets/{category}/{brand}/{model}": {
+   "id": "getBuyerCollectionSet",
+   "sig": "c82b0197d30f"
+  },
+  "PUT /v1/buyer/collection/sets/leaderboard": {
+   "id": "updateBuyerCollectionSetLeaderboard",
+   "sig": "0cda5a12906e"
+  },
+  "GET /v1/buyer/listings/{slug}/cert": {
+   "id": "getBuyerListingCert",
+   "sig": "12312fae47d2"
+  },
+  "GET /v1/buyer/vault": {
+   "id": "listBuyerVault",
+   "sig": "cddb620c50f7"
+  },
+  "POST /v1/buyer/vault/{id}/list": {
+   "id": "createBuyerVaultList",
+   "sig": "5ec33379a3f1"
+  },
+  "POST /v1/buyer/vault/{id}/unlist": {
+   "id": "createBuyerVaultUnlist",
+   "sig": "8720b693bbd6"
+  },
+  "POST /v1/buyer/vault/{id}/withdraw": {
+   "id": "createBuyerVaultWithdraw",
+   "sig": "a1e980e0a0b9"
+  },
+  "GET /v1/buyer/market/purchase-options": {
+   "id": "getBuyerMarketPurchaseOption",
+   "sig": "264385177371"
+  },
+  "GET /v1/buyer/packs": {
+   "id": "listBuyerPacks",
+   "sig": "f988d0699b1c"
+  },
+  "GET /v1/buyer/packs/fairness": {
+   "id": "getBuyerPackFairness",
+   "sig": "417784887ced"
+  },
+  "POST /v1/buyer/packs/fairness/rotate": {
+   "id": "createBuyerPackFairnessRotate",
+   "sig": "20f1261d83a7"
+  },
+  "GET /v1/buyer/packs/{slug}": {
+   "id": "getBuyerPack",
+   "sig": "2849d8fd1e55"
+  },
+  "POST /v1/buyer/packs/{slug}/open": {
+   "id": "createBuyerPackOpen",
+   "sig": "7f7235a71d16"
+  },
+  "GET /v1/buyer/pack-openings": {
+   "id": "listBuyerPackOpenings",
+   "sig": "3b838e01127b"
+  },
+  "POST /v1/buyer/pack-openings/{id}/sell-back": {
+   "id": "createBuyerPackOpeningSellBack",
+   "sig": "da73af96f315"
+  },
+  "GET /v1/buyer/listings/{slug}/try-on": {
+   "id": "getBuyerListingTryOn",
+   "sig": "6848cbe9959f"
+  },
+  "POST /v1/buyer/listings/{slug}/try-on": {
+   "id": "createBuyerListingTryOn",
+   "sig": "d2135669f4b7"
+  },
+  "GET /v1/buyer/try-ons": {
+   "id": "listBuyerTryOns",
+   "sig": "048f67255df9"
+  },
+  "DELETE /v1/buyer/try-ons/{id}": {
+   "id": "deleteBuyerTryOn",
+   "sig": "58d5e2ef53b9"
+  },
+  "GET /v1/buyer/listings/{slug}/audio-summary": {
+   "id": "getBuyerListingAudioSummary",
+   "sig": "84aff48209c4"
+  },
+  "POST /v1/buyer/listings/{slug}/audio-summary": {
+   "id": "createBuyerListingAudioSummary",
+   "sig": "8df5e687a28a"
+  },
+  "GET /v1/buyer/checkout/usdc": {
+   "id": "getBuyerCheckoutUsdc",
+   "sig": "c3b10827bd03"
+  },
+  "GET /v1/buyer/protection-plans": {
+   "id": "listBuyerProtectionPlans",
+   "sig": "c7906f8f331e"
+  },
+  "POST /v1/buyer/protection-plans/{id}/cancel": {
+   "id": "createBuyerProtectionPlanCancel",
+   "sig": "bdf81e6cba8b"
+  },
+  "GET /v1/buyer/passports/{code}": {
+   "id": "getBuyerPassport",
+   "sig": "79864cbf2712"
+  },
+  "POST /v1/buyer/passports/{code}/claim": {
+   "id": "createBuyerPassportClaim",
+   "sig": "21a6b4a10947"
+  },
+  "GET /v1/buyer/live-streams/{id}/lineup": {
+   "id": "listBuyerLiveStreamLineup",
+   "sig": "8e343e2ed895"
+  },
+  "GET /v1/buyer/purchases/{id}/live-moment": {
+   "id": "getBuyerPurchaseLiveMoment",
+   "sig": "0e412ed12f7d"
+  },
+  "GET /v1/buyer/live-shipments": {
+   "id": "listBuyerLiveShipments",
+   "sig": "6e22fbd13309"
+  },
+  "GET /v1/buyer/gifts/sent": {
+   "id": "listBuyerGiftSent",
+   "sig": "02c7678708ec"
+  },
+  "POST /v1/buyer/conversations/{id}/invite": {
+   "id": "createBuyerConversationInvite",
+   "sig": "6e04408d0927"
+  },
+  "POST /v1/buyer/conversations/join/{token}": {
+   "id": "createBuyerConversationJoin",
+   "sig": "648f85580cb8"
+  },
+  "GET /v1/buyer/conversations/{id}/guests": {
+   "id": "listBuyerConversationGuests",
+   "sig": "70e8a606ae95"
+  },
+  "DELETE /v1/buyer/conversations/{id}/guests/{userId}": {
+   "id": "deleteBuyerConversationGuest",
+   "sig": "937360c13061"
+  },
+  "POST /v1/buyer/wishlists/{id}/invite": {
+   "id": "createBuyerWishlistInvite",
+   "sig": "74b2f93db165"
+  },
+  "POST /v1/buyer/wishlists/join/{token}": {
+   "id": "createBuyerWishlistJoin",
+   "sig": "8a82dbe81d60"
+  },
+  "GET /v1/buyer/wishlists/{id}/members": {
+   "id": "listBuyerWishlistMembers",
+   "sig": "5fd574cf306f"
+  },
+  "DELETE /v1/buyer/wishlists/{id}/members/{userId}": {
+   "id": "deleteBuyerWishlistMember",
+   "sig": "33094a775a6e"
+  },
+  "GET /v1/buyer/boards": {
+   "id": "listBuyerBoards",
+   "sig": "dd46c47b54b4"
+  },
+  "POST /v1/buyer/boards": {
+   "id": "createBuyerBoard",
+   "sig": "bb45531ababc"
+  },
+  "GET /v1/buyer/boards/shared/{token}": {
+   "id": "getBuyerBoardShared",
+   "sig": "9941d5ffd1f1"
+  },
+  "GET /v1/buyer/boards/{id}": {
+   "id": "getBuyerBoard",
+   "sig": "48f262a2f371"
+  },
+  "DELETE /v1/buyer/boards/{id}": {
+   "id": "deleteBuyerBoard",
+   "sig": "bed665feb9e3"
+  },
+  "PATCH /v1/buyer/boards/{id}": {
+   "id": "updateBuyerBoard",
+   "sig": "c01822c19e75"
+  },
+  "PUT /v1/buyer/boards/{id}/layout": {
+   "id": "updateBuyerBoardLayout",
+   "sig": "eebef881e08e"
+  },
+  "POST /v1/buyer/boards/{id}/items": {
+   "id": "createBuyerBoardItem",
+   "sig": "b586594c9cc7"
+  },
+  "DELETE /v1/buyer/boards/{id}/items/{platformListingId}": {
+   "id": "deleteBuyerBoardItem",
+   "sig": "d301ae1fefcb"
+  },
+  "GET /v1/buyer/hotspots": {
+   "id": "listBuyerHotspots",
+   "sig": "c80518d9d70a"
+  },
+  "GET /v1/buyer/clubs": {
+   "id": "listBuyerClubs",
+   "sig": "9712d177ddac"
+  },
+  "GET /v1/buyer/sellers/{sellerUserId}/club": {
+   "id": "getBuyerSellerClub",
+   "sig": "00cc67fe76a0"
+  },
+  "POST /v1/buyer/sellers/{sellerUserId}/club/join": {
+   "id": "createBuyerSellerClubJoin",
+   "sig": "d41a9dd6cc95"
+  },
+  "DELETE /v1/buyer/sellers/{sellerUserId}/club/join": {
+   "id": "deleteBuyerSellerClubJoin",
+   "sig": "6c688133963d"
+  },
+  "GET /v1/buyer/home": {
+   "id": "getBuyerHome",
+   "sig": "da83954a833f"
+  },
+  "PATCH /v1/buyer/home": {
+   "id": "updateBuyerHome",
+   "sig": "027920fed40f"
+  },
+  "PUT /v1/buyer/home/layout": {
+   "id": "updateBuyerHomeLayout",
+   "sig": "f0899b211ca5"
+  },
+  "GET /v1/buyer/home/placeable": {
+   "id": "getBuyerHomePlaceable",
+   "sig": "7e1593ec8fbb"
+  },
+  "GET /v1/buyer/home/builders": {
+   "id": "listBuyerHomeBuilders",
+   "sig": "03f6befe8d83"
+  },
+  "PUT /v1/buyer/home/builders": {
+   "id": "updateBuyerHomeBuilder",
+   "sig": "4aa813e50a51"
+  },
+  "DELETE /v1/buyer/home/guestbook/{id}": {
+   "id": "deleteBuyerHomeGuestbook",
+   "sig": "8286d3aac06c"
+  },
+  "GET /v1/buyer/homes/building": {
+   "id": "listBuyerHomeBuilding",
+   "sig": "aeff4fd8c213"
+  },
+  "GET /v1/buyer/loyalty": {
+   "id": "listBuyerLoyalty",
+   "sig": "d7a5d1556839"
+  },
+  "GET /v1/buyer/sellers/{sellerUserId}/loyalty": {
+   "id": "getBuyerSellerLoyalty",
+   "sig": "ae971dea042c"
+  },
+  "POST /v1/buyer/sellers/{sellerUserId}/loyalty/join": {
+   "id": "createBuyerSellerLoyaltyJoin",
+   "sig": "3d4c62230605"
+  },
+  "DELETE /v1/buyer/sellers/{sellerUserId}/loyalty/join": {
+   "id": "deleteBuyerSellerLoyaltyJoin",
+   "sig": "d2d1103e2a93"
+  },
+  "GET /v1/buyer/catalog/listings/{slug}/price": {
+   "id": "getBuyerCatalogListingPrice",
+   "sig": "d4012e1fdb0c"
+  },
+  "GET /v1/buyer/orders/{id}/price-protection": {
+   "id": "getBuyerOrderPriceProtection",
+   "sig": "f6b6e17aaba0"
+  },
+  "POST /v1/buyer/catalog/listings/{slug}/video-requests": {
+   "id": "createBuyerCatalogListingVideoRequest",
+   "sig": "0f64adae3f37"
+  },
+  "GET /v1/buyer/catalog/listings/{slug}/videos": {
+   "id": "listBuyerCatalogListingVideos",
+   "sig": "804fdf3ac28b"
+  },
+  "GET /v1/buyer/video-requests": {
+   "id": "listBuyerVideoRequests",
+   "sig": "863b5b660e1d"
+  },
+  "GET /v1/buyer/registries": {
+   "id": "listBuyerRegistries",
+   "sig": "fe8806f666db"
+  },
+  "POST /v1/buyer/registries": {
+   "id": "createBuyerRegistry",
+   "sig": "ca3a957fce5e"
+  },
+  "GET /v1/buyer/registries/search": {
+   "id": "listBuyerRegistrySearch",
+   "sig": "b868058e0e84"
+  },
+  "GET /v1/buyer/registries/{id}": {
+   "id": "getBuyerRegistry",
+   "sig": "135ed73e17a6"
+  },
+  "DELETE /v1/buyer/registries/{id}": {
+   "id": "deleteBuyerRegistry",
+   "sig": "c038e8616265"
+  },
+  "PATCH /v1/buyer/registries/{id}": {
+   "id": "updateBuyerRegistry",
+   "sig": "55a2066c4037"
+  },
+  "PUT /v1/buyer/registries/{id}/items/{platformListingId}": {
+   "id": "updateBuyerRegistryItem",
+   "sig": "51eb7aed2b4b"
+  },
+  "GET /v1/buyer/registries/{id}/gifts": {
+   "id": "listBuyerRegistryGifts",
+   "sig": "6bc5bd9a6a20"
+  },
+  "POST /v1/buyer/registries/{id}/gifts/{giftId}/thanked": {
+   "id": "createBuyerRegistryGiftThanked",
+   "sig": "92dd9fc93086"
+  },
+  "GET /v1/buyer/registry/{token}": {
+   "id": "getBuyerRegistryByToken",
+   "sig": "ffe5d7a1abbb"
+  },
+  "GET /v1/buyer/layaways": {
+   "id": "listBuyerLayaways",
+   "sig": "2707a7f0087b"
+  },
+  "GET /v1/buyer/layaways/{id}": {
+   "id": "getBuyerLayaway",
+   "sig": "a3d7903c69a9"
+  },
+  "POST /v1/buyer/layaways/{id}/pay": {
+   "id": "createBuyerLayawayPay",
+   "sig": "2891cf5f6639"
+  },
+  "POST /v1/buyer/layaways/{id}/cancel": {
+   "id": "createBuyerLayawayCancel",
+   "sig": "7a1919691b93"
+  },
+  "GET /v1/buyer/catalog/listings/{slug}/rental": {
+   "id": "getBuyerCatalogListingRental",
+   "sig": "59403320c632"
+  },
+  "POST /v1/buyer/catalog/listings/{slug}/rental": {
+   "id": "createBuyerCatalogListingRental",
+   "sig": "75c1dd11ece5"
+  },
+  "POST /v1/buyer/catalog/listings/{slug}/rental/quote": {
+   "id": "createBuyerCatalogListingRentalQuote",
+   "sig": "914097348d52"
+  },
+  "GET /v1/buyer/rentals": {
+   "id": "listBuyerRentals",
+   "sig": "11412e858282"
+  },
+  "POST /v1/buyer/rentals/{id}/cancel": {
+   "id": "createBuyerRentalCancel",
+   "sig": "6613cdf1538e"
+  },
+  "POST /v1/buyer/rentals/{id}/claim-response": {
+   "id": "createBuyerRentalClaimResponse",
+   "sig": "b043e31c8b90"
+  },
+  "GET /v1/buyer/rentals/eligibility": {
+   "id": "getBuyerRentalEligibility",
+   "sig": "d6256c239bef"
+  },
+  "POST /v1/buyer/rentals/identity/start": {
+   "id": "createBuyerRentalIdentityStart",
+   "sig": "422535b5dfbe"
+  },
+  "POST /v1/buyer/rentals/{id}/arrival-photos": {
+   "id": "createBuyerRentalArrivalPhoto",
+   "sig": "b999cded3879"
+  },
+  "GET /v1/buyer/rentals/{id}": {
+   "id": "getBuyerRental",
+   "sig": "ea36860262a1"
+  },
+  "POST /v1/buyer/rentals/{id}/delivered": {
+   "id": "createBuyerRentalDelivered",
+   "sig": "ff37401cd6fe"
+  },
+  "POST /v1/buyer/rentals/{id}/return-shipped": {
+   "id": "createBuyerRentalReturnShipped",
+   "sig": "f4a2d20e3181"
+  },
+  "POST /v1/buyer/rentals/{id}/extensions": {
+   "id": "createBuyerRentalExtension",
+   "sig": "4591410b7991"
+  },
+  "POST /v1/buyer/rentals/{id}/extensions/{extensionId}/pay": {
+   "id": "createBuyerRentalExtensionPay",
+   "sig": "737bbf7ff0ad"
+  },
+  "POST /v1/buyer/rentals/{id}/buyout": {
+   "id": "createBuyerRentalBuyout",
+   "sig": "f0ebe51c38a1"
+  },
+  "GET /v1/buyer/events": {
+   "id": "listBuyerEvents",
+   "sig": "f0fb54d27ec9"
+  },
+  "GET /v1/buyer/events/{slug}": {
+   "id": "getBuyerEvent",
+   "sig": "4e0e1cefd14e"
+  },
+  "POST /v1/buyer/events/{slug}/rsvp": {
+   "id": "createBuyerEventRsvp",
+   "sig": "104e4ceb36f7"
+  },
+  "DELETE /v1/buyer/events/{slug}/rsvp": {
+   "id": "deleteBuyerEventRsvp",
+   "sig": "aca463646327"
+  },
+  "GET /v1/buyer/catalog/listings/{slug}/my-size": {
+   "id": "getBuyerCatalogListingMySize",
+   "sig": "e5ee20dd3052"
+  },
+  "GET /v1/buyer/size-memory/prompts": {
+   "id": "listBuyerSizeMemoryPrompts",
+   "sig": "482858a1e4b9"
+  },
+  "POST /v1/buyer/purchases/{id}/fit": {
+   "id": "createBuyerPurchaseFit",
+   "sig": "290345b1fe43"
+  },
+  "GET /v1/buyer/size-memory/sizes": {
+   "id": "listBuyerSizeMemorySizes",
+   "sig": "a3d7b79a9867"
+  },
+  "POST /v1/buyer/splits/{id}/cancel": {
+   "id": "createBuyerSplitCancel",
+   "sig": "2f91f432da7f"
+  },
+  "POST /v1/buyer/returns/{id}/tracking": {
+   "id": "createBuyerReturnTracking",
+   "sig": "b7119681f0de"
+  },
+  "POST /v1/buyer/returns/{id}/cancel": {
+   "id": "createBuyerReturnCancel",
+   "sig": "8355c61f8468"
+  },
+  "DELETE /v1/buyer/fit/refs/{id}": {
+   "id": "deleteBuyerFitRef",
+   "sig": "6caca78937fc"
+  },
+  "POST /v1/buyer/breaks/{id}/spots/{spotId}/hold": {
+   "id": "createBuyerBreakSpotHold",
+   "sig": "06ba758f020b"
+  },
+  "DELETE /v1/buyer/breaks/{id}/spots/{spotId}/hold": {
+   "id": "deleteBuyerBreakSpotHold",
+   "sig": "e81b86a30568"
+  },
+  "POST /v1/buyer/together/{code}/join": {
+   "id": "createBuyerTogetherJoin",
+   "sig": "1aa8e33c0131"
+  },
+  "POST /v1/buyer/together/{code}/leave": {
+   "id": "createBuyerTogetherLeave",
+   "sig": "997ca3733922"
+  },
+  "DELETE /v1/buyer/together/{code}/items/{id}": {
+   "id": "deleteBuyerTogetherItem",
+   "sig": "1dc091fb8b7c"
+  },
+  "POST /v1/buyer/together/{code}/items/{id}/vote": {
+   "id": "createBuyerTogetherItemVote",
+   "sig": "cd87476b511b"
+  },
+  "POST /v1/buyer/together/{code}/messages": {
+   "id": "createBuyerTogetherMessage",
+   "sig": "5a3da32dab3f"
+  },
+  "DELETE /v1/buyer/market/watches/{id}": {
+   "id": "deleteBuyerMarketWatch",
+   "sig": "63fafc0304cf"
+  },
+  "DELETE /v1/buyer/market/bids/{id}": {
+   "id": "deleteBuyerMarketBid",
+   "sig": "10aad705b7bd"
+  },
+  "GET /v1/buyer/activity": {
+   "id": "listBuyerActivity",
+   "sig": "8c93cd354f95"
+  },
+  "POST /v1/buyer/activity": {
+   "id": "createBuyerActivity",
+   "sig": "d7d5d1c52042"
+  },
+  "GET /v1/buyer/preferences": {
+   "id": "getBuyerPreference",
+   "sig": "8b071721c613"
+  },
+  "POST /v1/buyer/drops/{id}/join": {
+   "id": "createBuyerDropJoin",
+   "sig": "c74f29a7eb57"
+  },
+  "DELETE /v1/buyer/drops/{id}/join": {
+   "id": "deleteBuyerDropJoin",
+   "sig": "800862304ae0"
+  },
+  "GET /v1/buyer/wholesale/quotes": {
+   "id": "listBuyerWholesaleQuotes",
+   "sig": "dc01e9566bb6"
+  },
+  "POST /v1/buyer/wholesale/quotes": {
+   "id": "createBuyerWholesaleQuote",
+   "sig": "5929602f1131"
+  },
+  "GET /v1/buyer/wholesale/quotes/{id}": {
+   "id": "getBuyerWholesaleQuote",
+   "sig": "6a7791306df3"
+  },
+  "POST /v1/buyer/wholesale/quotes/{id}/accept": {
+   "id": "createBuyerWholesaleQuoteAccept",
+   "sig": "e0dbad320e98"
+  },
+  "POST /v1/buyer/wholesale/quotes/{id}/withdraw": {
+   "id": "createBuyerWholesaleQuoteWithdraw",
+   "sig": "c9b0a9fc54b9"
+  },
+  "GET /v1/buyer/wholesale/order-sheets": {
+   "id": "listBuyerWholesaleOrderSheets",
+   "sig": "c4254f6784ed"
+  },
+  "POST /v1/buyer/wholesale/order-sheets": {
+   "id": "createBuyerWholesaleOrderSheet",
+   "sig": "bcd6c87637e3"
+  },
+  "GET /v1/buyer/wholesale/order-sheets/{id}": {
+   "id": "getBuyerWholesaleOrderSheet",
+   "sig": "bbe31fe2d228"
+  },
+  "DELETE /v1/buyer/wholesale/order-sheets/{id}": {
+   "id": "deleteBuyerWholesaleOrderSheet",
+   "sig": "ae088283080c"
+  },
+  "PATCH /v1/buyer/wholesale/order-sheets/{id}": {
+   "id": "updateBuyerWholesaleOrderSheet",
+   "sig": "b3428dc47bf9"
+  },
+  "GET /v1/buyer/wholesale/orders": {
+   "id": "listBuyerWholesaleOrders",
+   "sig": "3a305d87b97c"
+  },
+  "GET /v1/buyer/wholesale/reorder/{id}": {
+   "id": "getBuyerWholesaleReorder",
+   "sig": "1d01a5b75354"
+  },
+  "POST /v1/buyer/wholesale/upload/validate": {
+   "id": "createBuyerWholesaleUploadValidate",
+   "sig": "be98f657419b"
+  },
+  "GET /v1/buyer/wholesale/cart": {
+   "id": "getBuyerWholesaleCart",
+   "sig": "7c45c0c71e72"
+  },
+  "PUT /v1/buyer/wholesale/cart/po": {
+   "id": "updateBuyerWholesaleCartPo",
+   "sig": "1c7a80a9c8b6"
+  },
+  "GET /v1/buyer/wholesale/suppliers": {
+   "id": "listBuyerWholesaleSuppliers",
+   "sig": "90affafde72d"
+  },
+  "GET /v1/buyer/wholesale/freight-requests": {
+   "id": "listBuyerWholesaleFreightRequests",
+   "sig": "9d0c795983e5"
+  },
+  "POST /v1/buyer/wholesale/freight-requests": {
+   "id": "createBuyerWholesaleFreightRequest",
+   "sig": "aa27ef5be509"
+  },
+  "GET /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply": {
+   "id": "getBuyerWholesaleCatalogApply",
+   "sig": "81c4ba5194b3"
+  },
+  "POST /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply": {
+   "id": "createBuyerWholesaleCatalogApply",
+   "sig": "dc0522bb4832"
+  },
+  "GET /v1/buyer/wholesale/statement": {
+   "id": "listBuyerWholesaleStatement",
+   "sig": "f3d736dde0e1"
+  },
+  "GET /v1/buyer/wholesale/drops": {
+   "id": "listBuyerWholesaleDrops",
+   "sig": "1d18be28db8b"
+  },
+  "GET /v1/buyer/wholesale/drops/{id}": {
+   "id": "getBuyerWholesaleDrop",
+   "sig": "b038e956291e"
+  },
+  "GET /v1/buyer/wholesale/prebooks": {
+   "id": "listBuyerWholesalePrebooks",
+   "sig": "ab23fda9736e"
+  },
+  "GET /v1/buyer/company": {
+   "id": "getBuyerCompany",
+   "sig": "59440d6d8e5e"
+  },
+  "POST /v1/buyer/company": {
+   "id": "createBuyerCompany",
+   "sig": "fdae5ff0f473"
+  },
+  "PATCH /v1/buyer/company": {
+   "id": "updateBuyerCompany",
+   "sig": "4a1131feb57b"
+  },
+  "PUT /v1/buyer/company/addresses": {
+   "id": "updateBuyerCompanyAddress",
+   "sig": "53af4f5bc580"
+  },
+  "POST /v1/buyer/company/members": {
+   "id": "createBuyerCompanyMember",
+   "sig": "171f9eb41df9"
+  },
+  "DELETE /v1/buyer/company/members/{id}": {
+   "id": "deleteBuyerCompanyMember",
+   "sig": "0109063cf9b2"
+  },
+  "PATCH /v1/buyer/company/members/{id}": {
+   "id": "updateBuyerCompanyMember",
+   "sig": "3e0ebe9671ee"
+  },
+  "GET /v1/buyer/company/approvals": {
+   "id": "listBuyerCompanyApprovals",
+   "sig": "3c460574c338"
+  },
+  "POST /v1/buyer/company/approvals": {
+   "id": "createBuyerCompanyApproval",
+   "sig": "6bb137c5c826"
+  },
+  "POST /v1/buyer/company/approvals/{id}/decide": {
+   "id": "createBuyerCompanyApprovalDecide",
+   "sig": "00c1cd81c47b"
+  },
+  "GET /v1/buyer/wholesale/invoices/{id}/pay-quote": {
+   "id": "getBuyerWholesaleInvoicePayQuote",
+   "sig": "753b5c0d3700"
+  },
+  "POST /v1/buyer/wholesale/invoices/{id}/pay-link": {
+   "id": "createBuyerWholesaleInvoicePayLink",
+   "sig": "c57fc3b8b261"
+  }
+ },
+ "schemas": {
+  "BuyerBoardResponse": "4e34f56902fa",
+  "BuyerBoardResponseData": "9becbe7c6145",
+  "BuyerBoardResponseDataItems": "f193ce4bfff5",
+  "BuyerCartResponse": "b5a43bf56874",
+  "BuyerCompanyResponse": "0bbc6565e0bf",
+  "BuyerCompanyResponseData": "165e63c7c91f",
+  "BuyerCompanyResponseDataAddresses": "440ef7fb4bc3",
+  "BuyerCompanyResponseDataMembers": "eb06a0a54e9e",
+  "BuyerCompanyResponseDataYou": "64bb936832e8",
+  "BuyerHomeResponse": "066725556186",
+  "BuyerHomeResponseData": "64c0cb827455",
+  "BuyerHomeResponseDataDecor": "80809cfe7a9e",
+  "BuyerHomeResponseDataGiftShelf": "ad213b05a1c9",
+  "BuyerHomeResponseDataGiftShelfItems": "3c007a42c09a",
+  "BuyerHomeResponseDataGuestbook": "8ce7dde35ec7",
+  "BuyerHomeResponseDataGuestbookAuthor": "40dfcb9ce2f2",
+  "BuyerHomeResponseDataLayout": "8bd10640fa7d",
+  "BuyerHomeResponseDataLayoutItem": "ccc6e0ebe842",
+  "BuyerHomeResponseDataLayoutRef": "af17ec483d6c",
+  "BuyerHomeResponseDataOwner": "3a39a6aca1bd",
+  "BuyerHomeResponseDataPinCase": "4e88048a087c",
+  "BuyerHomeResponseDataPullsShelf": "cffc6cc462d1",
+  "BuyerHomeResponseDataPullsShelfItems": "8b1349837ec8",
+  "BuyerHomeResponseDataRoom": "5dd175f131bd",
+  "BuyerHomeResponseDataRoomFloor": "0c98d833fe30",
+  "BuyerHomeResponseDataSetWall": "9bb1e36fc19f",
+  "BuyerHomeResponseDataSetWallChoices": "9fb7e38a4ef6",
+  "BuyerHomeResponseDataSetWallPieces": "7de785dee92e",
+  "BuyerHomeResponseDataVaultWall": "b29c6425fe25",
+  "BuyerHomeResponseDataVaultWallUnits": "f3ecaaa174bd",
+  "BuyerLayawayResponse": "d6e2400a6a85",
+  "BuyerRegistryResponse": "e27567223459",
+  "BuyerRegistryResponseData": "b5006b9e9cb1",
+  "BuyerRegistryResponseDataItems": "4ed60f3a54c5",
+  "BuyerRentalResponse": "fc051f7776ec",
+  "BuyerRentalResponseData": "9847806a7d36",
+  "BuyerRentalResponseDataInspection": "4c128a04e153",
+  "BuyerResponse": "ca30aa65ee89",
+  "BuyerResponse2": "1efc385076c7",
+  "BuyerResponse2Data": "52a3acc2fde7",
+  "BuyerResponse3": "1baa1609bbdd",
+  "BuyerWholesaleOrderSheetResponse": "6eebc733194a",
+  "BuyerWholesaleOrderSheetResponseData": "13057f7c5f47",
+  "BuyerWholesaleOrderSheetResponseDataLines": "0f8abba94a81",
+  "BuyerWholesaleOrderSheetResponseDataLinesTerms": "535708f6faa6",
+  "BuyerWholesaleQuoteResponse": "51c323200571",
+  "BuyerWholesaleQuoteResponseData": "2f3a48739bd6",
+  "BuyerWholesaleQuoteResponseDataItems": "cd4b62e7ecb3",
+  "CreateBuyerActivityRequest": "0a5b294f8792",
+  "CreateBuyerActivityResponse": "8d63a9003655",
+  "CreateBuyerActivityResponseData": "68ab26e51bb7",
+  "CreateBuyerActivityResponseDataMatch": "120bd650ea9a",
+  "CreateBuyerActivityResponseDataMatchCatalog": "2409f899daf1",
+  "CreateBuyerActivityResponseDataMatchOffer": "7857ed8a231d",
+  "CreateBuyerAgentSessionActResponse": "bfc8cdc90089",
+  "CreateBuyerAgentSessionActResponseLinks": "66ce58d1e84e",
+  "CreateBuyerAgentSessionActResponseNavigate": "7677b3acc7c1",
+  "CreateBuyerAgentSessionActResponsePayment": "4f06771d0efe",
+  "CreateBuyerAgentSessionActResponseQuote": "84be29f66620",
+  "CreateBuyerAgentSessionActResponseQuoteLayaway": "28a358e19340",
+  "CreateBuyerAgentSessionActResponseQuotePriceCheck": "9703ff7343e1",
+  "CreateBuyerAgentSessionActResponseQuoteProtectionPlans": "34d689535e4d",
+  "CreateBuyerAgentSessionResponse": "929491c75747",
+  "CreateBuyerAgentSessionResponseBrief": "4c23bf81098e",
+  "CreateBuyerAgentSessionResponseBriefPending": "39737e956ecc",
+  "CreateBuyerAgentSessionTurnResponse": "740aa8faa89d",
+  "CreateBuyerAgentSessionTurnResponseAction": "c87152b86f04",
+  "CreateBuyerAgentSessionTurnResponseActionQuote": "d04920278375",
+  "CreateBuyerAgentSessionTurnResponseBrief": "f7a138985109",
+  "CreateBuyerAgentSessionTurnResponseOptions": "5d411691bde9",
+  "CreateBuyerAuctionBidRequest": "c0640c2c4f45",
+  "CreateBuyerAuctionBidResponse": "18f11d4bd9ad",
+  "CreateBuyerAuctionBidResponseData": "9e34c3d23f21",
+  "CreateBuyerAuctionPayResponse": "ba1f70651aa0",
+  "CreateBuyerAuctionPayResponseData": "c99292d03a97",
+  "CreateBuyerAuctionRetractRequest": "3f6ffd400cf2",
+  "CreateBuyerAuctionRetractResponse": "0b7ac337df1d",
+  "CreateBuyerAuctionRetractResponseData": "28a2829e456b",
+  "CreateBuyerBoardResponse": "6ead959c03c1",
+  "CreateBuyerBoardResponseData": "47770ca046e3",
+  "CreateBuyerBreakSpotHoldResponse": "d57aa65e0dd0",
+  "CreateBuyerBreakSpotHoldResponseData": "5b6abade57f6",
+  "CreateBuyerCartItemRequest": "308420d6ab6c",
+  "CreateBuyerCartItemResponse": "ce481a374cc7",
+  "CreateBuyerCartItemResponseData": "4788d9c973cc",
+  "CreateBuyerCartOptimizerResponse": "6a30e9f6dc96",
+  "CreateBuyerCartOptimizerResponseData": "f294e5f26903",
+  "CreateBuyerCartOptimizerResponseDataLines": "78786752cc03",
+  "CreateBuyerCartOptimizerResponseDataLinesLine": "59813d8aa799",
+  "CreateBuyerCartOptimizerResponseDataLinesPick": "ab328f20ed68",
+  "CreateBuyerCartQuoteResponse": "a7b398c4c5a1",
+  "CreateBuyerCartQuoteResponseData": "d03520fc616d",
+  "CreateBuyerCartQuoteResponseMeta": "93ef657279bb",
+  "CreateBuyerCaseCounterRequest": "ce08df7ebdb2",
+  "CreateBuyerCaseMessageRequest": "1dd7774059fe",
+  "CreateBuyerCaseRespondRequest": "c51930225ad7",
+  "CreateBuyerCatalogListingRentalQuoteResponse": "296e4636fb3b",
+  "CreateBuyerCatalogListingRentalQuoteResponseData": "1289b89aa8b2",
+  "CreateBuyerCatalogListingRentalQuoteResponseDataBuyout": "1c2b65412dab",
+  "CreateBuyerCatalogListingRentalQuoteResponseDataCancellation": "c40f02ae8389",
+  "CreateBuyerCatalogListingRentalQuoteResponseDataCancellationTiers": "38212e9c8b5d",
+  "CreateBuyerCatalogListingRentalQuoteResponseDataLines": "7ffcb2bbc597",
+  "CreateBuyerCatalogListingRentalResponse": "e055ec5abe46",
+  "CreateBuyerCatalogListingRentalResponseData": "d00dd6e6296c",
+  "CreateBuyerCatalogListingRentalResponseDataQuote": "920499791ed4",
+  "CreateBuyerCatalogListingVideoRequestResponse": "fe7ef6ab2177",
+  "CreateBuyerCatalogListingVideoRequestResponseData": "044da81670f6",
+  "CreateBuyerCheckoutResponse": "25f059a8ac96",
+  "CreateBuyerCompanyApprovalResponse": "d0951f96e6d4",
+  "CreateBuyerCompanyApprovalResponseData": "fe3724888a98",
+  "CreateBuyerConversationJoinResponse": "0fd0c44e2dae",
+  "CreateBuyerConversationJoinResponseData": "a4b16dbce8d9",
+  "CreateBuyerDropJoinResponse": "e1f257c15dcf",
+  "CreateBuyerDropJoinResponseMe": "1e2c872cd27e",
+  "CreateBuyerEventRsvpResponse": "a50ac4322589",
+  "CreateBuyerEventRsvpResponseData": "1dced71d6b8f",
+  "CreateBuyerFeedbackItem": "dd4edf167b92",
+  "CreateBuyerFeedbackRequest": "b59aeacd0d62",
+  "CreateBuyerFeedbackRequestReviews": "f812b1223800",
+  "CreateBuyerFeedbackResponse": "95d9c88c3dab",
+  "CreateBuyerFollowingSellerSeenRequest": "e8169fe2b3a3",
+  "CreateBuyerFollowingSellerSeenResponse": "ddcf70baac22",
+  "CreateBuyerFollowingSellerSeenResponseData": "74f87714e9d4",
+  "CreateBuyerGiftCardRedeemRequest": "8d7eafa63073",
+  "CreateBuyerGiftCardRedeemResponse": "0d255b377f23",
+  "CreateBuyerGiftCardRedeemResponseData": "d02e13ebd7d5",
+  "CreateBuyerGiftCardRequest": "21ced7102c49",
+  "CreateBuyerGiftCardResponse": "f5faaac15103",
+  "CreateBuyerGiftCardResponseData": "8276fc847a90",
+  "CreateBuyerGroupBuyJoinResponse": "322c9f2342ad",
+  "CreateBuyerGroupBuyJoinResponseData": "4799c01ac595",
+  "CreateBuyerIdentifyResponse": "bc20adbe2905",
+  "CreateBuyerIdentifyResponseVisualMatches": "d9154d72a963",
+  "CreateBuyerListingSplitResponse": "b2863e97e6b5",
+  "CreateBuyerListingSplitResponseData": "27f823e1a93d",
+  "CreateBuyerListingSplitResponseDataShares": "b79078aad1e5",
+  "CreateBuyerListingTryOnResponse": "93627fee4664",
+  "CreateBuyerLockonConfirmResponse": "f27c0abd23df",
+  "CreateBuyerLockonConfirmResponseAlternates": "1298eebabd9c",
+  "CreateBuyerLockonConfirmResponseCandidates": "e7bcdd894499",
+  "CreateBuyerLockonConfirmResponseCoupon": "7080a6f73f80",
+  "CreateBuyerLockonConfirmResponseCrossly": "4d1fab0c7e28",
+  "CreateBuyerLockonConfirmResponseHud": "451083ca970e",
+  "CreateBuyerLockonConfirmResponseHudAction": "e7b86c5f76e1",
+  "CreateBuyerLockonConfirmResponseHudConfirm": "ffd50b7df8a0",
+  "CreateBuyerLockonConfirmResponseHudCoupon": "44c9f3e826b0",
+  "CreateBuyerLockonConfirmResponseHudFacts": "30d6dc7b2c45",
+  "CreateBuyerLockonConfirmResponseIdentifier": "8477936f30ae",
+  "CreateBuyerLockonConfirmResponseOffsite": "9c6873c9c049",
+  "CreateBuyerLockonResponse": "30c5fe47701d",
+  "CreateBuyerMarketBidResponse": "7e4e6bb57ea3",
+  "CreateBuyerMarketBidResponseData": "ad20faabb974",
+  "CreateBuyerOfferRequest": "c5fb8638a4d2",
+  "CreateBuyerOfferRespondRequest": "ade31ec6f580",
+  "CreateBuyerOfferRespondResponse": "20e05c8082b1",
+  "CreateBuyerOfferRespondResponseData": "9fec06d0fe3e",
+  "CreateBuyerOfferResponse": "b10a2f1eb4db",
+  "CreateBuyerOfferResponseData": "484f0d04e9c3",
+  "CreateBuyerOfferResponseDataOffer": "cb830006f596",
+  "CreateBuyerOrderCancelResponse": "3915e8c980bc",
+  "CreateBuyerOrderCancelResponseData": "19e2556397a9",
+  "CreateBuyerOrderInrRequest": "d4de6e97b325",
+  "CreateBuyerOrderInrResponse": "68bc7fae879a",
+  "CreateBuyerOrderInrResponseData": "3ff6137938d4",
+  "CreateBuyerOrderReceivedResponse": "f2746afa2d20",
+  "CreateBuyerOrderReceivedResponseData": "b478f58f1d27",
+  "CreateBuyerOrderTipResponse": "f4a6e2409aa6",
+  "CreateBuyerOrderTipResponseData": "6e03e93b8bd6",
+  "CreateBuyerPackOpenResponse": "bf1666e9e618",
+  "CreateBuyerPackOpenResponseData": "9127601de83a",
+  "CreateBuyerPackOpeningSellBackResponse": "294f236ba9f6",
+  "CreateBuyerPackOpeningSellBackResponseData": "68ed7d97c7f9",
+  "CreateBuyerProtectionPlanCancelResponse": "a893592e61df",
+  "CreateBuyerProtectionPlanCancelResponseData": "0c99a0b84e4c",
+  "CreateBuyerRegistryGiftThankedResponse": "0371e566d34d",
+  "CreateBuyerRegistryGiftThankedResponseData": "ab70754a3fe8",
+  "CreateBuyerRegistryResponse": "819219a674cc",
+  "CreateBuyerRegistryResponseData": "62eeb2e1078a",
+  "CreateBuyerRentalBuyoutResponse": "80392f3ef844",
+  "CreateBuyerRentalBuyoutResponseData": "9b5f5dcad2b9",
+  "CreateBuyerRentalExtensionPayResponse": "457d2f5ef40e",
+  "CreateBuyerRentalExtensionPayResponseData": "2f1b79ab6abe",
+  "CreateBuyerRentalExtensionResponse": "9d1f9f832f89",
+  "CreateBuyerRentalIdentityStartResponse": "0323c7fb4477",
+  "CreateBuyerScanResponse": "049352b65d66",
+  "CreateBuyerScanResponseIdentifier": "6d0d77fc0c76",
+  "CreateBuyerScanSessionEndResponse": "29ed54228680",
+  "CreateBuyerScanSessionResponse": "b9ce5562189d",
+  "CreateBuyerSellerClubJoinResponse": "398fd4875ca2",
+  "CreateBuyerSellerClubJoinResponseData": "e383a9ecd9c4",
+  "CreateBuyerSellerClubJoinResponseDataMember": "85146bcd05d3",
+  "CreateBuyerSellerClubJoinResponseDataMemberNext": "08a644a78fb5",
+  "CreateBuyerSellerClubJoinResponseDataTiers": "43f9a24d0ac2",
+  "CreateBuyerSellerReportRequest": "060595110414",
+  "CreateBuyerStoreReportResponse": "fe842086b18d",
+  "CreateBuyerStoreReportResponseData": "65b8238bcdfb",
+  "CreateBuyerTogetherResponse": "ef9033278dab",
+  "CreateBuyerTogetherResponseData": "2f82c5b4dd29",
+  "CreateBuyerTotalRequestRequest": "eb273c8ca059",
+  "CreateBuyerTotalRequestResponse": "a00c7fe200e1",
+  "CreateBuyerTotalRequestResponseData": "709b4485d0c2",
+  "CreateBuyerVaultListResponse": "6c592c212038",
+  "CreateBuyerVaultListResponseData": "ebc7ed1c0da7",
+  "CreateBuyerVaultWithdrawResponse": "0af8b28f87c8",
+  "CreateBuyerVaultWithdrawResponseData": "7864e9f16c93",
+  "CreateBuyerWholesaleCatalogApplyResponse": "ed24f38e885d",
+  "CreateBuyerWholesaleCatalogApplyResponseData": "c675ea08d064",
+  "CreateBuyerWholesaleFreightRequestResponse": "ad38f50bb2e7",
+  "CreateBuyerWholesaleFreightRequestResponseData": "e0c99b587afe",
+  "CreateBuyerWholesaleFreightRequestResponseDataLines": "64289d19b154",
+  "CreateBuyerWholesaleInvoicePayLinkResponse": "cb9d1ce4c1d5",
+  "CreateBuyerWholesaleInvoicePayLinkResponseData": "daebf8bc372b",
+  "CreateBuyerWholesaleQuoteAcceptResponse": "a391756413f8",
+  "CreateBuyerWholesaleQuoteAcceptResponseData": "f0724ecff6b1",
+  "CreateBuyerWholesaleUploadValidateResponse": "f132f8ab6a60",
+  "CreateBuyerWholesaleUploadValidateResponseData": "4aaa92f092c7",
+  "CreateBuyerWholesaleUploadValidateResponseDataLines": "dccb1994a284",
+  "CreateBuyerWholesaleUploadValidateResponseDataUnmatched": "e0489c990fc5",
+  "CreateBuyerWishlistInviteResponse": "9d27e846a2fa",
+  "CreateBuyerWishlistInviteResponseData": "7a7bc268b7de",
+  "CreateBuyerWishlistItemRequest": "e31d706b06ec",
+  "CreateBuyerWishlistJoinResponse": "9e6810cdcb53",
+  "CreateBuyerWishlistJoinResponseData": "1bcdc3e9dfc4",
+  "CreateBuyerWishlistRequest": "feaa2286dd3b",
+  "CreateBuyerWishlistResponse": "d0859d249bb7",
+  "CreateBuyerWishlistResponseData": "8ac11aa58648",
+  "CreateBuyerWishlistShareRequest": "2961f6bcab09",
+  "CreateBuyerWishlistShareResponse": "52c524179ff4",
+  "CreateBuyerWishlistShareResponseData": "b6f4ce9fbd76",
+  "DeleteBuyerAgentSessionResponse": "68d04d77fb1e",
+  "DeleteBuyerDropJoinResponse": "303d3891f5a5",
+  "DeleteBuyerTryOnResponse": "b1a5dcc11a00",
+  "DeleteBuyerTryOnResponseData": "7cc9c285f389",
+  "DeleteBuyerWholesaleOrderSheetResponse": "66fec8752b33",
+  "DeleteBuyerWholesaleOrderSheetResponseData": "0af84165abf2",
+  "DeleteBuyerWishlistItemResponse": "87000ffabc93",
+  "DeleteBuyerWishlistItemResponseData": "5c9946ea17c5",
+  "Error": "fadba1339f2a",
+  "ErrorError": "5a5bf5913652",
+  "ForOccasion": "2d52dff8cf9e",
+  "GetBuyerAgentSessionResponse": "5a8d1fbf7540",
+  "GetBuyerAgentSessionResponseTurns": "d5eb607b6c63",
+  "GetBuyerAnywhereResponse": "4f29354f091f",
+  "GetBuyerAuctionMeResponse": "b17dea55484b",
+  "GetBuyerAuctionMeResponseData": "deb324169e33",
+  "GetBuyerBadgeResponse": "e03e0937812f",
+  "GetBuyerBadgeResponseData": "7b18e1187bc2",
+  "GetBuyerBreakResponse": "ce7d765e1133",
+  "GetBuyerBreakResponseData": "662a61b25b90",
+  "GetBuyerBreakResponseDataDraw": "ce5f6207760f",
+  "GetBuyerBreakResponseDataSeller": "42b9d485f7d0",
+  "GetBuyerBreakResponseDataSpots": "3feb1e8090d5",
+  "GetBuyerCaseResponse": "a05a61a4a433",
+  "GetBuyerCaseResponseData": "96d548b431a9",
+  "GetBuyerCaseResponseDataCase": "bd233826b3e9",
+  "GetBuyerCaseResponseDataMessages": "1cdba88ee6f3",
+  "GetBuyerCaseResponseDataPurchase": "af02cfefb0ef",
+  "GetBuyerCaseResponseDataReturnShipment": "b012c139e54e",
+  "GetBuyerCatalogFacetResponse": "277691b69832",
+  "GetBuyerCatalogFxResponse": "8bf925171fb1",
+  "GetBuyerCatalogListingAvailabilityResponse": "727bd514154d",
+  "GetBuyerCatalogListingMySizeResponse": "32dc3da4495c",
+  "GetBuyerCatalogListingMySizeResponseDataOneOfBrandRuns": "d5b2376f563f",
+  "GetBuyerCatalogListingPriceResponse": "fff3e7ae6ea4",
+  "GetBuyerCatalogListingPriceResponseData": "8e7251d0d8a2",
+  "GetBuyerCatalogListingPriceResponseDataLowestAnywhere": "53b752fcd65b",
+  "GetBuyerCatalogListingPriceResponseDataPriceCheck": "bd39c93f53e5",
+  "GetBuyerCatalogListingPriceResponseDataPriceMatch": "1202df7c990b",
+  "GetBuyerCatalogListingRentalResponse": "d84d687aa417",
+  "GetBuyerCatalogListingRentalResponseData": "ad46bee52289",
+  "GetBuyerCatalogListingRentalResponseDataBooked": "eaa84c8d17fa",
+  "GetBuyerCatalogListingRentalResponseDataOptions": "62b4674be684",
+  "GetBuyerCatalogListingRentalResponseDataOptionsCancellation": "bb8339e455c1",
+  "GetBuyerCatalogListingRentalResponseDataOptionsDamageWaiver": "840c046cc144",
+  "GetBuyerCatalogListingRentalResponseDataOptionsDeposit": "01f8eb4710d5",
+  "GetBuyerCatalogListingRentalResponseDataOptionsExtensions": "1faa6fafa339",
+  "GetBuyerCatalogListingRentalResponseDataOptionsLastMinute": "e96a5f1dfb5f",
+  "GetBuyerCatalogListingRentalResponseDataOptionsLateEscalation": "7259b25dac7a",
+  "GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscounts": "c5ddcaf339bd",
+  "GetBuyerCatalogListingRentalResponseDataOptionsPhotosOut": "03ee023e1cc1",
+  "GetBuyerCatalogListingRentalResponseDataOptionsPickup": "7d9fa46a141a",
+  "GetBuyerCatalogListingRentalResponseDataOptionsSeasonal": "0ca5538a5262",
+  "GetBuyerCatalogListingResponse": "675499270a86",
+  "GetBuyerCatalogListingResponseTokenGate": "7ebc10c54d3f",
+  "GetBuyerCatalogListingResponseVariants": "cc3d6d8f34e8",
+  "GetBuyerCatalogListingShippingResponse": "632ceb406a92",
+  "GetBuyerCatalogListingShippingResponseInternational": "d6ac9e31e812",
+  "GetBuyerCatalogListingShippingResponseServices": "c41b6561725e",
+  "GetBuyerCheckoutControlResponse": "915f39c55c4e",
+  "GetBuyerCheckoutUsdcResponse": "af2aedde12d9",
+  "GetBuyerCheckoutUsdcResponseData": "fb6e0f7aa6a6",
+  "GetBuyerCollectionOfferResponse": "ebc8ef36e8af",
+  "GetBuyerCollectionOfferResponseData": "92ab1e1c548b",
+  "GetBuyerCollectionOfferResponseDataOffer": "8bf6520f6d02",
+  "GetBuyerCollectionOfferResponseDataPending": "8345fc6d55a0",
+  "GetBuyerCollectionSetResponse": "b3eda4af59bb",
+  "GetBuyerCollectionSetResponseData": "d76c13a6926d",
+  "GetBuyerCollectionSetResponseDataGroup": "81bb63facdff",
+  "GetBuyerCollectionSetResponseDataLeaderboard": "dce819079e60",
+  "GetBuyerCollectionSetResponseDataPieces": "bc8c9a291296",
+  "GetBuyerCreationResponse": "75f30a1c93a6",
+  "GetBuyerCreationResponseData": "fc529c41a4e9",
+  "GetBuyerCreationResponseDataReviews": "cda02d211e71",
+  "GetBuyerCreationResponseDataSummary": "3773fb40c594",
+  "GetBuyerCreationResponseDataViewer": "d6ff698ab8b5",
+  "GetBuyerCreationResponseDataViewerReview": "f0e93f14d759",
+  "GetBuyerCreatorResponse": "bc612b1e37d6",
+  "GetBuyerCreatorResponseData": "db917c48ca27",
+  "GetBuyerCreatorResponseDataCreator": "ab2a352a7688",
+  "GetBuyerDropMeResponse": "3a3d7a6a9abb",
+  "GetBuyerEventResponse": "702057657bd3",
+  "GetBuyerEventResponseData": "345ed117b269",
+  "GetBuyerEventResponseDataDropRef": "1b6df9cc2931",
+  "GetBuyerEventResponseDataHost": "7aefa14c176b",
+  "GetBuyerEventResponseDataHostStore": "e5255a5bcc4f",
+  "GetBuyerEventResponseDataListings": "7644141eaea9",
+  "GetBuyerEventResponseDataLiveShow": "ad24286e42d9",
+  "GetBuyerEventResponseDataPromo": "c2df7bb72a50",
+  "GetBuyerFitVocabularyResponse": "cfd025594651",
+  "GetBuyerFitVocabularyResponseData": "ee1da6d8d796",
+  "GetBuyerFitVocabularyResponseDataKinds": "e9b431e64904",
+  "GetBuyerGiftFinderOptionResponse": "49107432e075",
+  "GetBuyerGiftFinderOptionResponseData": "47fc9247c488",
+  "GetBuyerGiftFinderOptionResponseDataBudgets": "caa277689cab",
+  "GetBuyerGiftFinderOptionResponseDataRecipients": "8c0a6619b7b3",
+  "GetBuyerHomePlaceableResponse": "f4067aa3501d",
+  "GetBuyerHomePlaceableResponseData": "36c921f56b03",
+  "GetBuyerHomePlaceableResponseDataItems": "7109a4b95564",
+  "GetBuyerHomePlaceableResponseDataItemsRef": "9c5d117694c6",
+  "GetBuyerImpactResponse": "2312f953fa04",
+  "GetBuyerImpactResponseData": "71dc06014150",
+  "GetBuyerListingAudioSummaryResponse": "72662e28a3c6",
+  "GetBuyerListingAudioSummaryResponseData": "37414f88a126",
+  "GetBuyerListingBoughtTogetherResponse": "e56102c736ef",
+  "GetBuyerListingBoughtTogetherResponseData": "df25bf7f95e3",
+  "GetBuyerListingBoughtTogetherResponseDataItems": "e509faa32ac2",
+  "GetBuyerListingBreakResponse": "d9eb4cae2f9f",
+  "GetBuyerListingBreakResponseData": "35e1ad2f4482",
+  "GetBuyerListingCertResponse": "792418fb43eb",
+  "GetBuyerListingCertResponseData": "83620c57abec",
+  "GetBuyerListingFitResponse": "0fc1086bb919",
+  "GetBuyerListingFitResponseData": "7f3cc2d848d3",
+  "GetBuyerListingFitResponseDataChart": "b738e5141f13",
+  "GetBuyerListingFitResponseDataChartRows": "ea8c6898e21d",
+  "GetBuyerListingFitResponseDataComparisons": "ab1aefdf48dc",
+  "GetBuyerListingFitResponseDataComparisonsResult": "cf1d406c4ce5",
+  "GetBuyerListingGroupBuyResponse": "06dc42c59ff2",
+  "GetBuyerListingGroupBuyResponseData": "12e924007cae",
+  "GetBuyerListingImpactResponse": "1a35fde7cb5a",
+  "GetBuyerListingImpactResponseData": "38d9f3ad535c",
+  "GetBuyerListingLandedCostResponse": "08c963638275",
+  "GetBuyerListingResaleValueResponse": "2dfbca159274",
+  "GetBuyerListingResaleValueResponseData": "4e1de43dfc8c",
+  "GetBuyerListingSubscribeOfferResponse": "c6cb4aeec1cc",
+  "GetBuyerListingSubscribeOfferResponseData": "42d4bc5881d1",
+  "GetBuyerListingTryOnResponse": "246709251479",
+  "GetBuyerListingTryOnResponseData": "3c10944b1e3a",
+  "GetBuyerLiveStreamAuctionResponse": "f0c3326d6fbf",
+  "GetBuyerLiveStreamAuctionResponseData": "50709340de70",
+  "GetBuyerMarketPurchaseOptionResponse": "e669e3ae059d",
+  "GetBuyerMarketPurchaseOptionResponseData": "dbd7cdeaece4",
+  "GetBuyerMarketPurchaseOptionResponseDataGradingRuns": "44a92d347d34",
+  "GetBuyerOrderEligibilityResponse": "a1f00985c69d",
+  "GetBuyerOrderEligibilityResponseData": "0f21ce014e2f",
+  "GetBuyerOrderEligibilityResponseDataInr": "0afac58581e1",
+  "GetBuyerOrderExportResponse": "7a07327eaefb",
+  "GetBuyerOrderExportResponseData": "4b79b19a5652",
+  "GetBuyerOrderPriceProtectionResponse": "59469aab7eb6",
+  "GetBuyerOrderPriceProtectionResponseData": "e147365921a3",
+  "GetBuyerPackFairnessResponse": "e347adb96002",
+  "GetBuyerPackFairnessResponseData": "4e6c3fe38b94",
+  "GetBuyerPackFairnessResponseDataRevealed": "49ccdbbc860d",
+  "GetBuyerPackResponse": "f61f49e3b845",
+  "GetBuyerPartyResponse": "dae406707ff8",
+  "GetBuyerPassportResponse": "54dbc28d7e23",
+  "GetBuyerPassportResponseData": "8ae73f4fa9f5",
+  "GetBuyerPassportResponseDataAuthenticated": "8c633847dedd",
+  "GetBuyerPassportResponseDataDetails": "614a5965222b",
+  "GetBuyerPassportResponseDataGrading": "d1d8034d7e0d",
+  "GetBuyerPassportResponseDataHistory": "4bb9619f2c1d",
+  "GetBuyerPassportResponseDataItem": "0149adc15050",
+  "GetBuyerPassportResponseDataTimeline": "93194c34c7b4",
+  "GetBuyerPassportResponseDataVerdict": "d14f7530d465",
+  "GetBuyerPassportResponseDataVerdictChecks": "3b4644a1fb74",
+  "GetBuyerPreferenceResponse": "94e2f25c3c0f",
+  "GetBuyerPreferenceResponseData": "44754215e44c",
+  "GetBuyerPreferenceResponseDataBrands": "efb6f692bac6",
+  "GetBuyerPreferenceResponseDataPriceBand": "1ce76fcdc4d8",
+  "GetBuyerPreferenceResponseDataRetailers": "3d5b79b80041",
+  "GetBuyerPriceGuideResponse": "4c5d81601652",
+  "GetBuyerPriceGuideResponseData": "8b85eaed7c1b",
+  "GetBuyerProfileResponse": "c14fe72f1073",
+  "GetBuyerProfileResponseData": "01ef0b2c7af2",
+  "GetBuyerPurchaseDeliveryResponse": "bae6b00178cb",
+  "GetBuyerPurchaseDeliveryResponseData": "69146752d8d6",
+  "GetBuyerPurchaseLiveMomentResponse": "8fb45c93bff7",
+  "GetBuyerPurchaseLiveMomentResponseData": "c465473dcb25",
+  "GetBuyerPurchaseReturnResponse": "ab398602e235",
+  "GetBuyerPurchaseReturnResponseData": "0eae9281a386",
+  "GetBuyerPurchaseReturnResponseDataReasons": "0853dccc4cd1",
+  "GetBuyerPurchaseStoryResponse": "19109495226f",
+  "GetBuyerPurchaseStoryResponseData": "d7b93ee3087b",
+  "GetBuyerRentalEligibilityResponse": "813fa9154939",
+  "GetBuyerRentalEligibilityResponseData": "19481e1918a9",
+  "GetBuyerRentalResponse": "caeffb5c8f81",
+  "GetBuyerRentalResponseData": "79c2411e9f40",
+  "GetBuyerRentalResponseDataBuyout": "87d126c38050",
+  "GetBuyerRentalResponseDataEvents": "5dd734d25276",
+  "GetBuyerRentalResponseDataExtension": "9a1172930d56",
+  "GetBuyerRentalResponseDataExtensions": "0befe3970e4a",
+  "GetBuyerRentalResponseDataPayments": "b6fd9bd6edfc",
+  "GetBuyerRentalResponseDataShipping": "a5ce98319d69",
+  "GetBuyerRentalResponseDataTimeline": "d74af66e3477",
+  "GetBuyerScanSessionResponse": "31fde7a2d295",
+  "GetBuyerScanSessionResponseCaptures": "419e7f2f927b",
+  "GetBuyerScanSessionResponseCapturesIdentifier": "f4e6a62fd438",
+  "GetBuyerSellerClubResponse": "eed316e3bce3",
+  "GetBuyerSellerClubResponseData": "ec1a801c1ca2",
+  "GetBuyerSellerLoyaltyResponse": "2fc2c26b8fbb",
+  "GetBuyerSellerLoyaltyResponseData": "6843383c278e",
+  "GetBuyerSellerLoyaltyResponseDataMember": "330cece4209b",
+  "GetBuyerSellerLoyaltyResponseDataMemberHistory": "de2e28f722f6",
+  "GetBuyerSellerLoyaltyResponseDataMemberNext": "6f2c884fe4a2",
+  "GetBuyerSellerLoyaltyResponseDataMemberNextTier": "056aeccb935f",
+  "GetBuyerSellerLoyaltyResponseDataMemberPerks": "86323912cd19",
+  "GetBuyerSellerLoyaltyResponseDataMemberStanding": "40f7da6a410d",
+  "GetBuyerSellerLoyaltyResponseDataMemberTier": "3826af46fd57",
+  "GetBuyerSellerTrustResponse": "1bb7b5bd621e",
+  "GetBuyerSellerTrustResponseData": "af5ba29b39c7",
+  "GetBuyerSellerTrustResponseDataRating": "d6a67cbb56b4",
+  "GetBuyerTogetherResponse": "1133d286ab23",
+  "GetBuyerTogetherResponseData": "9aa43637b3ef",
+  "GetBuyerTogetherResponseDataItems": "8e38d5a071db",
+  "GetBuyerTogetherResponseDataMembers": "73e9e42979c8",
+  "GetBuyerTogetherResponseDataMessages": "c7d6936ccc79",
+  "GetBuyerVaultMarketHistoryResponse": "536bd009104b",
+  "GetBuyerVaultMarketHistoryResponseNow": "ded6c69dccf3",
+  "GetBuyerVaultMarketHistoryResponseNowMarks": "997039f29b89",
+  "GetBuyerVaultMarketHistoryResponseSeries": "a58aa92b2a32",
+  "GetBuyerVaultMarketIndexResponse": "4f84be9d6160",
+  "GetBuyerVaultMarketIndexResponseHistory": "f09d3b9abbbb",
+  "GetBuyerVaultMarketIndexResponseLastClose": "c5e8e7a68c18",
+  "GetBuyerVaultMarketIndexResponseNow": "adbd82769619",
+  "GetBuyerVaultMarketInstantExitResponse": "0a851621eb49",
+  "GetBuyerVaultMarketInstantExitResponseLevels": "d221fdde872c",
+  "GetBuyerVaultMarketOptionAnalyticResponse": "e9162d824774",
+  "GetBuyerVaultMarketOptionAnalyticResponseExpiries": "518c289b237d",
+  "GetBuyerVaultMarketOptionAnalyticResponseExpiriesExpectedMove": "fb6a73c75ea2",
+  "GetBuyerVaultMarketOptionAnalyticResponseExpiriesOpenInterest": "332b076ca77f",
+  "GetBuyerVaultMarketOptionAnalyticResponseHistoricalVol": "a2ff205491ca",
+  "GetBuyerVaultMarketOptionAnalyticResponseHistoricalVolSeries": "d392c65919e7",
+  "GetBuyerVaultMarketOptionAnalyticResponseHistoricalVolWindows": "96a5a4fb123a",
+  "GetBuyerVaultMarketOptionAnalyticResponseIv": "2c92bff104b2",
+  "GetBuyerVaultMarketOptionAnalyticResponseIvHistory": "de531a0b1a0e",
+  "GetBuyerVaultMarketOptionAnalyticResponsePutCall": "2c8df31a5fdd",
+  "GetBuyerVaultMarketOptionAnalyticResponsePutCallTotals": "c95e4b8300c8",
+  "GetBuyerVaultMarketOptionAnalyticResponseSmile": "665778909437",
+  "GetBuyerVaultMarketOptionAnalyticResponseSmileByStrike": "1660e47766dd",
+  "GetBuyerVaultMarketOptionAnalyticResponseSmileFitted": "8a0333f44e55",
+  "GetBuyerVaultMarketOptionAnalyticResponseSmilePoints": "adf16314c968",
+  "GetBuyerVaultMarketOptionAnalyticResponseSurface": "e4ba5c4cf196",
+  "GetBuyerVaultMarketOptionAnalyticResponseSurfaceRows": "bb7837cd3f14",
+  "GetBuyerVaultMarketOptionAnalyticResponseUnderlying": "77de51aaa2c3",
+  "GetBuyerVaultMarketOptionChainResponse": "7d071e66977c",
+  "GetBuyerVaultMarketOptionChainResponseExpiries": "7603f6cc2348",
+  "GetBuyerVaultMarketOptionChainResponseRows": "ba54fe929a12",
+  "GetBuyerVaultMarketOptionChainResponseRowsCall": "11f0b97f650f",
+  "GetBuyerVaultMarketOptionChainResponseSeries": "98c16f092bb2",
+  "GetBuyerVaultMarketOptionChainResponseUnderlying": "0e6560025c50",
+  "GetBuyerVaultMarketOptionChainResponseVenue": "c606d960aea4",
+  "GetBuyerVaultMarketOptionIvResponse": "9d135622e900",
+  "GetBuyerVaultMarketOptionPositionResponse": "76b5867330e2",
+  "GetBuyerVaultMarketOptionPositionResponseAccount": "12af5e142d40",
+  "GetBuyerVaultMarketOptionPositionResponsePositions": "ff099bb9d58d",
+  "GetBuyerVaultMarketOptionPositionResponsePositionsContract": "90cbf59b25ba",
+  "GetBuyerVaultMarketOptionPositionResponsePositionsGreeks": "84c51cc07cec",
+  "GetBuyerVaultMarketOptionRiskResponse": "e4d05d7f9806",
+  "GetBuyerVaultMarketOptionRiskResponseBetaWeighted": "3833081da0fa",
+  "GetBuyerVaultMarketOptionRiskResponseBetaWeightedIndex": "7333c01544c3",
+  "GetBuyerVaultMarketOptionRiskResponseByUnderlying": "ba977fe800b6",
+  "GetBuyerVaultMarketOptionRiskResponseScenario": "07f31a59005f",
+  "GetBuyerVaultMarketOptionRiskResponseScenarioGrid": "e3dae5734271",
+  "GetBuyerVaultMarketOptionRiskResponseScenarioRanges": "ade0cf4d8c5f",
+  "GetBuyerVaultMarketOptionRiskResponseTotal": "4e38a2be75e3",
+  "GetBuyerVaultMarketPredictionBoardResponse": "6ace4dc1c1e1",
+  "GetBuyerVaultMarketPredictionBoardResponseRows": "60aa2ec54f08",
+  "GetBuyerVaultMarketPredictionEventResponse": "f8eef7cc1fe0",
+  "GetBuyerVaultMarketPredictionEventResponseConversions": "a4336366ce3f",
+  "GetBuyerVaultMarketPredictionEventResponseMarkets": "7c23a757e72e",
+  "GetBuyerVaultMarketPredictionEventResponseRisk": "52d9abf71866",
+  "GetBuyerVaultMarketPredictionLeaderboardResponse": "729efcf36170",
+  "GetBuyerVaultMarketPredictionLeaderboardResponseRows": "42dcff1a6943",
+  "GetBuyerVaultMarketPredictionMarketHistoryResponse": "d7318ea6742e",
+  "GetBuyerVaultMarketPredictionMarketHistoryResponseCandles": "bd9001220507",
+  "GetBuyerVaultMarketPredictionMarketHistoryResponseNow": "056996351bb7",
+  "GetBuyerVaultMarketPredictionMarketHistoryResponsePoints": "21cbb3b38f2a",
+  "GetBuyerVaultMarketPredictionMarketResponse": "dfe852c88486",
+  "GetBuyerVaultMarketPredictionMarketResponseBook": "030696bc0b11",
+  "GetBuyerVaultMarketPredictionMarketResponseBookBids": "731812ef99a5",
+  "GetBuyerVaultMarketPredictionMarketResponsePracticeBook": "5642082e42f9",
+  "GetBuyerVaultMarketPredictionMarketResponseRules": "bceb4263eeae",
+  "GetBuyerVaultMarketPredictionMarketResponseSettlements": "953026abf7c5",
+  "GetBuyerVaultMarketPredictionMarketResponseTrades": "997c0cbc8407",
+  "GetBuyerVaultMarketPredictionMarketResponseVenue": "94f6d6051993",
+  "GetBuyerVaultMarketPredictionMarketResponseVenueMissing": "1262bc4e281f",
+  "GetBuyerVaultMarketShareBasketResponse": "d0db20d73434",
+  "GetBuyerVaultMarketShareBasketResponseMembers": "786d4727b3af",
+  "GetBuyerVaultMarketShareBasketResponseMine": "2c0ff5a5c6e4",
+  "GetBuyerVaultMarketShareBasketResponseMineMembers": "4f1537b7cc73",
+  "GetBuyerVaultMarketShareResponse": "3fddff9eccb1",
+  "GetBuyerVaultMarketShareResponseAutoInvest": "662438013c8f",
+  "GetBuyerVaultMarketShareResponseDistributions": "8351a9ea9c3e",
+  "GetBuyerVaultMarketShareResponseHoldings": "26c3bca0160c",
+  "GetBuyerVaultMarketShareResponseHoldingsSeries": "ecdc942e088b",
+  "GetBuyerVaultMarketShareResponseSubscriptions": "ad96f270c57f",
+  "GetBuyerVaultMarketShareResponseTotals": "b8426d272113",
+  "GetBuyerVaultMarketShareResponseVenue": "ae2a94526409",
+  "GetBuyerVaultMarketShareSeryHistoryResponse": "90b48dedd503",
+  "GetBuyerVaultMarketShareSeryHistoryResponseAppraisals": "05450420a3e1",
+  "GetBuyerVaultMarketShareSeryHistoryResponseCandles": "4ac5f9e4bfdf",
+  "GetBuyerVaultMarketShareSeryPerkResponse": "4966490facdf",
+  "GetBuyerVaultMarketShareSeryPerkResponseBadge": "2f72a8af0051",
+  "GetBuyerVaultMarketShareSeryPerkResponseViewingDays": "5256cebf5951",
+  "GetBuyerVaultMarketShareSeryPerkResponseViewingDaysMyBooking": "5d6142e0be14",
+  "GetBuyerVaultMarketShareSeryPerkResponseVisit": "78f203f35b82",
+  "GetBuyerVaultMarketShareSeryResponse": "ba0e299f052a",
+  "GetBuyerVaultMarketShareSeryResponseBuyouts": "c10831253749",
+  "GetBuyerVaultMarketShareSeryResponseBuyoutsMyVote": "aa853d9652a7",
+  "GetBuyerVaultMarketShareSeryResponseDepth": "5b0e835d2a41",
+  "GetBuyerVaultMarketShareSeryResponseDepthBids": "54913b9389f6",
+  "GetBuyerVaultMarketShareSeryResponseDrop": "53adb07591ef",
+  "GetBuyerVaultMarketShareSeryResponseHolders": "9b89b3ecb700",
+  "GetBuyerVaultMarketShareSeryResponseHoldersDistribution": "c2634588f8a5",
+  "GetBuyerVaultMarketShareSeryResponseMarket": "a094a95f118b",
+  "GetBuyerVaultMarketShareSeryResponseMarketIndicative": "4a0dc2a72e1e",
+  "GetBuyerVaultMarketShareSeryResponseMarketTrading": "127dfae10dde",
+  "GetBuyerVaultMarketShareSeryResponseMy": "8480b33cb660",
+  "GetBuyerVaultMarketShareSeryResponseMyOrders": "028ffc8fbf9a",
+  "GetBuyerVaultMarketShareSeryResponseMySubscriptions": "383277499c73",
+  "GetBuyerVaultMarketShareSeryResponsePerks": "f7fd606fcaad",
+  "GetBuyerVaultMarketShareSeryResponsePerksViewingDays": "facd7c96ab5d",
+  "GetBuyerVaultMarketShareSeryResponseTape": "714fe2ac14be",
+  "GetBuyerVaultMarketShareSeryResponseUpdates": "824122ebd329",
+  "GetBuyerVaultMarketWorthResponse": "43da40eeb235",
+  "GetBuyerVaultMarketWorthResponseSellNow": "9bc6f289c737",
+  "GetBuyerVaultMarketWorthResponseSellNowBlocked": "c0c520170baf",
+  "GetBuyerWholesaleCartResponse": "5549c9c66c05",
+  "GetBuyerWholesaleCartResponseData": "cb33cf2b242f",
+  "GetBuyerWholesaleCartResponseDataGroups": "f008b4cbf372",
+  "GetBuyerWholesaleCartResponseDataGroupsCheckout": "8048d2a2c23c",
+  "GetBuyerWholesaleCartResponseDataGroupsMinimum": "cb2a05c83924",
+  "GetBuyerWholesaleCartResponseDataTaxExempt": "56254141ef5e",
+  "GetBuyerWholesaleCartResponseDataViolations": "000ee58d94f5",
+  "GetBuyerWholesaleCatalogApplyResponse": "00859389bd1f",
+  "GetBuyerWholesaleCatalogApplyResponseData": "e6f5af7ee844",
+  "GetBuyerWholesaleCatalogApplyResponseDataCatalog": "738ab365d532",
+  "GetBuyerWholesaleCatalogApplyResponseDataPrefill": "92420e29ccdb",
+  "GetBuyerWholesaleCatalogApplyResponseDataRequirements": "10c11230f7c5",
+  "GetBuyerWholesaleCatalogApplyResponseDataRequirementsQuestions": "b397b0f61546",
+  "GetBuyerWholesaleDropResponse": "3b12105628e2",
+  "GetBuyerWholesaleDropResponseData": "f7cdb7a5177d",
+  "GetBuyerWholesaleDropResponseDataListings": "6bb8d2a5907f",
+  "GetBuyerWholesaleDropResponseDataReservations": "b22fb448a0f1",
+  "GetBuyerWholesaleInvoicePayQuoteResponse": "626b4744b57f",
+  "GetBuyerWholesaleInvoicePayQuoteResponseData": "551d56efdeb6",
+  "GetBuyerWholesaleReorderResponse": "e2fa370bb5d1",
+  "GetBuyerWholesaleReorderResponseData": "de2901c6b863",
+  "ListBuyerActivityItem": "157babff29f1",
+  "ListBuyerActivityResponse": "8f1871442feb",
+  "ListBuyerAgentSessionsItem": "3695666a956a",
+  "ListBuyerAgentSessionsResponse": "9af6d30cbadb",
+  "ListBuyerAuctionBidsItem": "f9daf3a2766d",
+  "ListBuyerAuctionBidsResponse": "12ac1de5bf2f",
+  "ListBuyerAuctionsItem": "954288ea146f",
+  "ListBuyerAuctionsResponse": "071cffbfadf0",
+  "ListBuyerBoardsItem": "4bfb32d48f1c",
+  "ListBuyerBoardsResponse": "b9d6f7dc962d",
+  "ListBuyerCartItem": "bb578b873359",
+  "ListBuyerCartResponse": "a5706215a10d",
+  "ListBuyerCartSavedItem": "366acbdf43ae",
+  "ListBuyerCasesItem": "64bb8068311e",
+  "ListBuyerCasesResponse": "ff7463672ee0",
+  "ListBuyerCashbackItem": "d1e23f79f296",
+  "ListBuyerCashbackResponse": "a3dbaee097c4",
+  "ListBuyerCatalogBrowseItem": "82159d49f6c2",
+  "ListBuyerCatalogBrowseResponse": "d78555b12813",
+  "ListBuyerCatalogListingSoldHistoryItem": "7e31d4aea6bd",
+  "ListBuyerCatalogListingSoldHistoryResponse": "8e979294d768",
+  "ListBuyerCatalogListingVideosItem": "5c3d4f3bd65b",
+  "ListBuyerCatalogListingVideosResponse": "2fd3728d27a6",
+  "ListBuyerCatalogSearchItem": "102b168d70b9",
+  "ListBuyerCatalogSearchResponse": "30c52da3ee29",
+  "ListBuyerCatalogSellersItem": "1eac1248c48e",
+  "ListBuyerCatalogSellersResponse": "2d5bd2ed5906",
+  "ListBuyerClubsItem": "7a1954dd5db9",
+  "ListBuyerClubsResponse": "ff4b27b5808a",
+  "ListBuyerCreationReviewableItem": "ed132e293d4a",
+  "ListBuyerCreationReviewableItemReview": "b0145655bc6a",
+  "ListBuyerCreationReviewableResponse": "355cb88346ae",
+  "ListBuyerEventsItem": "1369dd3aab24",
+  "ListBuyerEventsResponse": "623d84ba3967",
+  "ListBuyerFeedbackItem": "f247dbb35f6a",
+  "ListBuyerFeedbackPendingItem": "eaa08cbaa996",
+  "ListBuyerFeedbackPendingResponse": "3e5973de57de",
+  "ListBuyerFeedbackResponse": "30039cd5c969",
+  "ListBuyerFollowingSellersItem": "3c81346d9d39",
+  "ListBuyerFollowingSellersResponse": "9dbcd364b9f2",
+  "ListBuyerGiftCardCreditItem": "48f87ad5ea92",
+  "ListBuyerGiftCardCreditResponse": "4fe9fa67245c",
+  "ListBuyerGiftCardsItem": "593e672c2aae",
+  "ListBuyerGiftCardsResponse": "1e0daf7838f8",
+  "ListBuyerGiftFinderItem": "f96b9e1b5303",
+  "ListBuyerGiftFinderResponse": "8a404349626b",
+  "ListBuyerGiftSentItem": "c34de68d77c8",
+  "ListBuyerGiftSentResponse": "bcf945735f13",
+  "ListBuyerHomeBuildersItem": "7f48adf6fc8d",
+  "ListBuyerHomeBuildersResponse": "4b9abb1d3e5e",
+  "ListBuyerHomeBuildingItem": "c3c740652586",
+  "ListBuyerHomeBuildingResponse": "5de74f49711e",
+  "ListBuyerHotspotsItem": "48dfa739f5ce",
+  "ListBuyerHotspotsResponse": "0bdb598a9af8",
+  "ListBuyerHuntsItem": "36c61b577a14",
+  "ListBuyerHuntsResponse": "44a54f82e479",
+  "ListBuyerLayawaysItem": "2015cd1848f8",
+  "ListBuyerLayawaysItemSchedule": "592604bb8415",
+  "ListBuyerLayawaysResponse": "d2588a6340c2",
+  "ListBuyerListingQuickQuestionsItem": "88e137515fa4",
+  "ListBuyerListingQuickQuestionsResponse": "eda803676d95",
+  "ListBuyerListingSellerReviewsItem": "00db91e55a0c",
+  "ListBuyerListingSellerReviewsItemItem": "1057195f9056",
+  "ListBuyerListingSellerReviewsItemMedia": "6985e2ba6ae6",
+  "ListBuyerListingSellerReviewsResponse": "41ff5613802a",
+  "ListBuyerLiveShipmentsItem": "332cdc0e3247",
+  "ListBuyerLiveShipmentsItemOrders": "8814f8103b65",
+  "ListBuyerLiveShipmentsResponse": "75d4f6593345",
+  "ListBuyerLiveStreamLineupItem": "a5216ae73d60",
+  "ListBuyerLiveStreamLineupResponse": "7d608b311b0a",
+  "ListBuyerLoyaltyItem": "4e3069d12444",
+  "ListBuyerLoyaltyResponse": "78ba84c493c3",
+  "ListBuyerMonitorMatchesItem": "83cd0c791dae",
+  "ListBuyerMonitorMatchesResponse": "5d96c49bdc83",
+  "ListBuyerMonitorsItem": "03ec166992c8",
+  "ListBuyerMonitorsResponse": "dd71c6c52b11",
+  "ListBuyerOffersItem": "8972b9848f99",
+  "ListBuyerOffersItemItems": "a42a9d1b2874",
+  "ListBuyerOffersResponse": "d1602e4f42fe",
+  "ListBuyerOrdersItem": "0dbaaa01341e",
+  "ListBuyerOrdersResponse": "1757471b289f",
+  "ListBuyerPackOpeningsItem": "5f39ae120f3f",
+  "ListBuyerPackOpeningsItemProof": "1df3cf897f16",
+  "ListBuyerPackOpeningsItemProofTierWeights": "a7cee4caca07",
+  "ListBuyerPackOpeningsResponse": "9d518e46f461",
+  "ListBuyerPacksItem": "f8fcd8a2ddb0",
+  "ListBuyerPacksItemChase": "c34e4e724072",
+  "ListBuyerPacksItemTiers": "d4971fd3f436",
+  "ListBuyerPacksResponse": "f456141527b0",
+  "ListBuyerPartiesItem": "18f796f35821",
+  "ListBuyerPartiesResponse": "bddf6d4ffa9b",
+  "ListBuyerPaymentMethodsItem": "cacb1b2886b1",
+  "ListBuyerPaymentMethodsResponse": "b158636b1099",
+  "ListBuyerProtectionPlansItem": "406d53c1b647",
+  "ListBuyerProtectionPlansResponse": "3e9d75ee5ade",
+  "ListBuyerRegistriesItem": "b47dad5b618f",
+  "ListBuyerRegistriesResponse": "e1a41d3828af",
+  "ListBuyerRegistryGiftsItem": "57f83d4c2165",
+  "ListBuyerRegistryGiftsResponse": "8f245dbda984",
+  "ListBuyerRegistrySearchItem": "e558ce2f0531",
+  "ListBuyerRegistrySearchResponse": "5ebfd92e5131",
+  "ListBuyerRentalsItem": "d413f9eb703b",
+  "ListBuyerRentalsResponse": "c0177ef6c5a5",
+  "ListBuyerScanSessionsItem": "4bf6e3d56f90",
+  "ListBuyerScanSessionsResponse": "47380166aabc",
+  "ListBuyerSizeMemoryPromptsItem": "22bc1a4daccb",
+  "ListBuyerSizeMemoryPromptsResponse": "f9bc38ef3a06",
+  "ListBuyerSizeMemorySizesItem": "0a9f23da6afd",
+  "ListBuyerSizeMemorySizesResponse": "0e51c6011439",
+  "ListBuyerStoreListingsItem": "957d6446e66a",
+  "ListBuyerStoreListingsResponse": "590084dc8fe5",
+  "ListBuyerSubscriptionsItem": "33b0313d04da",
+  "ListBuyerSubscriptionsResponse": "d098edc7c689",
+  "ListBuyerTogetherItem": "8d1381dc1f69",
+  "ListBuyerTogetherResponse": "7cc0393e58b8",
+  "ListBuyerTotalRequestsItem": "81de47b2eaf0",
+  "ListBuyerTotalRequestsItemLines": "1e9f9bf3f70a",
+  "ListBuyerTotalRequestsResponse": "73a81d142878",
+  "ListBuyerTryOnsItem": "5e876a91e367",
+  "ListBuyerTryOnsResponse": "951afb517109",
+  "ListBuyerVaultItem": "507755d266c2",
+  "ListBuyerVaultMarketHoldingsItem": "6fc5c5285166",
+  "ListBuyerVaultMarketHoldingsResponse": "98082965ba46",
+  "ListBuyerVaultMarketIndexesItem": "e765883ce99f",
+  "ListBuyerVaultMarketIndexesResponse": "48d94a6f61fa",
+  "ListBuyerVaultMarketInstantExitItem": "dffcc571c981",
+  "ListBuyerVaultMarketInstantExitResponse": "48be33f086f1",
+  "ListBuyerVaultMarketOptionCombosItem": "99c411f88916",
+  "ListBuyerVaultMarketOptionCombosItemLegs": "f81d01c7d4c6",
+  "ListBuyerVaultMarketOptionCombosResponse": "727654ab0b1e",
+  "ListBuyerVaultMarketOptionNoticesItem": "8309d65d4258",
+  "ListBuyerVaultMarketOptionNoticesResponse": "d6a39a8818d7",
+  "ListBuyerVaultMarketOptionSeriesItem": "c22d8d746cf6",
+  "ListBuyerVaultMarketOptionSeriesResponse": "1dd4153cc9fc",
+  "ListBuyerVaultMarketOptionStrategiesItem": "73dfce8c810c",
+  "ListBuyerVaultMarketOptionStrategiesResponse": "4a7f3a260277",
+  "ListBuyerVaultMarketPredictionCommentsItem": "1b57229e2dec",
+  "ListBuyerVaultMarketPredictionCommentsItemReplies": "a744456bb6e0",
+  "ListBuyerVaultMarketPredictionCommentsItemRepliesAuthor": "d0f200846058",
+  "ListBuyerVaultMarketPredictionCommentsResponse": "38944369d891",
+  "ListBuyerVaultMarketPredictionMarketsItem": "82fb70d6f043",
+  "ListBuyerVaultMarketPredictionMarketsItemProbability": "072afe8a032a",
+  "ListBuyerVaultMarketPredictionMarketsResponse": "4f4c95bb2ac9",
+  "ListBuyerVaultMarketPredictionPositionsItem": "eef860cc7889",
+  "ListBuyerVaultMarketPredictionPositionsResponse": "2e31f6c7b937",
+  "ListBuyerVaultMarketShareAutoInvestItem": "3035026e9dd0",
+  "ListBuyerVaultMarketShareAutoInvestItemTargets": "c402cdf03985",
+  "ListBuyerVaultMarketShareAutoInvestResponse": "ba63d19d0485",
+  "ListBuyerVaultMarketShareBasketsItem": "506e16dc1ba4",
+  "ListBuyerVaultMarketShareBasketsResponse": "b63f81c70497",
+  "ListBuyerVaultMarketShareDropsItem": "72672a189f5d",
+  "ListBuyerVaultMarketShareDropsResponse": "947d066d6e80",
+  "ListBuyerVaultMarketShareGiftsItem": "e11b3e5cdd5b",
+  "ListBuyerVaultMarketShareGiftsResponse": "642e0f32dd19",
+  "ListBuyerVaultMarketShareSeriesItem": "7ed02f93ef3b",
+  "ListBuyerVaultMarketShareSeriesItemMine": "38cdd98cc2de",
+  "ListBuyerVaultMarketShareSeriesItemRights": "079298ec257a",
+  "ListBuyerVaultMarketShareSeriesResponse": "3dddb74f3725",
+  "ListBuyerVaultMarketWatchlistItem": "37116e36f978",
+  "ListBuyerVaultMarketWatchlistItemSparkline": "86891322dac3",
+  "ListBuyerVaultMarketWatchlistResponse": "b55952f52b41",
+  "ListBuyerVaultResponse": "dd27f7a6a414",
+  "ListBuyerVideoRequestsItem": "788b2d088bba",
+  "ListBuyerVideoRequestsResponse": "24ce291fdde7",
+  "ListBuyerWalletPerksItem": "93c71f77478a",
+  "ListBuyerWalletPerksResponse": "a33cb3e91134",
+  "ListBuyerWholesaleDropsItem": "414863ef0170",
+  "ListBuyerWholesaleDropsResponse": "b00e1e27fe59",
+  "ListBuyerWholesalePrebooksItem": "bd601e1c8099",
+  "ListBuyerWholesalePrebooksResponse": "fb9a922a749e",
+  "ListBuyerWishlistItemsItem": "0b29d37d0634",
+  "ListBuyerWishlistItemsResponse": "0e86569fca46",
+  "ListBuyerWishlistMembersItem": "e639747f7902",
+  "ListBuyerWishlistMembersResponse": "ecf98d63f036",
+  "ListBuyerWishlistsItem": "035ad5b36396",
+  "ListBuyerWishlistsResponse": "3851709f7b3c",
+  "Pagination": "e82caa492089",
+  "UpdateBuyerCollectionSetLeaderboardResponse": "6b805c64fbc4",
+  "UpdateBuyerCollectionSetLeaderboardResponseData": "194300cd560c",
+  "UpdateBuyerCreationReviewRequest": "9f78d03f61af",
+  "UpdateBuyerCreationReviewResponse": "a5ff4789cb9b",
+  "UpdateBuyerFeedbackRequest": "d3c3b68f33fb",
+  "UpdateBuyerPaymentMethodDefaultResponse": "f69ae91aa87d",
+  "UpdateBuyerPaymentMethodDefaultResponseData": "be354751d927",
+  "UpdateBuyerRegistryItemResponse": "b78e2f8a1182",
+  "UpdateBuyerRegistryItemResponseData": "db82b1394bfe",
+  "UpdateBuyerWholesaleCartPoResponse": "6e29f88778bc",
+  "UpdateBuyerWholesaleCartPoResponseData": "7bb3057d0a36",
+  "UpdateBuyerWishlistRequest": "fc68f71efdb9",
+  "UpdateBuyerWishlistResponse": "473c2269afd1",
+  "UpdateBuyerWishlistResponseData": "2577c172970f",
+  "ValueCount": "7600dfc823ca",
+  "CreateBuyerRentalExtensionResponseData": "9be2012a3416",
+  "CreateBuyerRentalIdentityStartResponseData": "3495b78b622c",
+  "GetBuyerCatalogListingMySizeResponseData": "b43077dbbe67",
+  "GetBuyerCatalogListingResponseDescriptionBlocksItem": "c52bac143277",
+  "GetBuyerPassportResponseDataHolder": "1aee28f83e7a",
+  "GetBuyerVaultMarketHistoryResponseToday": "80f90f0d4b49",
+  "GetBuyerVaultMarketWorthResponseToday": "80f90f0d4b49",
+  "BuyerWholesaleOrderSheetResponseDataLinesFlagsItem": "3dfaa91ac8f6",
+  "CreateBuyerWholesaleUploadValidateResponseDataLinesFlagsItem": "3dfaa91ac8f6",
+  "GetBuyerWholesaleCartResponseDataGroupsCheckoutMethodsItem": "72589ae92586",
+  "GetBuyerWholesaleInvoicePayQuoteResponseDataMethodsItem": "d04072ceea28"
+ }
+}

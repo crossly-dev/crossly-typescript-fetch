@@ -136,11 +136,11 @@ export interface GetConnectionHealthResponseAccounts {
 * @enum {string}
 */
 export enum GetConnectionHealthResponseAccountsStateEnum {
-    Stale = 'stale',
     Unknown = 'unknown',
-    Healthy = 'healthy',
     Unmonitored = 'unmonitored',
     Disconnected = 'disconnected',
+    Healthy = 'healthy',
+    Stale = 'stale',
     PartialBlank = 'partial_blank',
     BlankCredential = 'blank_credential',
     SignedOut = 'signed_out',
@@ -151,11 +151,11 @@ export enum GetConnectionHealthResponseAccountsStateEnum {
 * @enum {string}
 */
 export enum GetConnectionHealthResponseAccountsSeverityEnum {
-    Error = 'error',
+    Info = 'info',
     Unknown = 'unknown',
-    Ok = 'ok',
+    Error = 'error',
     Warn = 'warn',
-    Info = 'info'
+    Ok = 'ok'
 }/**
 * @export
 * @enum {string}

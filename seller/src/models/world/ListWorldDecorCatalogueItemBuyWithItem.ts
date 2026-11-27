@@ -18,8 +18,8 @@
  * @enum {string}
  */
 export enum ListWorldDecorCatalogueItemBuyWithItem {
-    Cbx = 'cbx',
-    Cosm = 'cosm'
+    Cosm = 'cosm',
+    Cbx = 'cbx'
 }
 
 export function ListWorldDecorCatalogueItemBuyWithItemFromJSON(json: any): ListWorldDecorCatalogueItemBuyWithItem {

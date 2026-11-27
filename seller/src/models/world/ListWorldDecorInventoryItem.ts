@@ -123,11 +123,11 @@ export interface ListWorldDecorInventoryItem {
 * @enum {string}
 */
 export enum ListWorldDecorInventoryItemSurfaceEnum {
-    Shop = 'shop',
     Home = 'home',
     Street = 'street',
-    Stall = 'stall',
-    Avatar = 'avatar'
+    Shop = 'shop',
+    Avatar = 'avatar',
+    Stall = 'stall'
 }
 
 export function ListWorldDecorInventoryItemFromJSON(json: any): ListWorldDecorInventoryItem {

@@ -56,9 +56,9 @@ export interface ListVaultMarketShareCardsItemChange {
 * @enum {string}
 */
 export enum ListVaultMarketShareCardsItemChangeSinceEnum {
-    Fill = 'fill',
     Entry = 'entry',
     Cost = 'cost',
+    Fill = 'fill',
     Inception = 'inception'
 }/**
 * @export
@@ -68,16 +68,16 @@ export enum ListVaultMarketShareCardsItemChangeStateEnum {
     Live = 'live',
     Open = 'open',
     Closed = 'closed',
-    Held = 'held',
     Sold = 'sold',
+    Held = 'held',
     Gone = 'gone'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListVaultMarketShareCardsItemChangeSideEnum {
-    Long = 'long',
     Short = 'short',
+    Long = 'long',
     Own = 'own'
 }
 

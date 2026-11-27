@@ -161,9 +161,9 @@ export enum ListVaultReceiptTokensItemTokenStatusEnum {
     Pending = 'pending',
     Live = 'live',
     Expired = 'expired',
+    Conflict = 'conflict',
     Frozen = 'frozen',
-    Burned = 'burned',
-    Conflict = 'conflict'
+    Burned = 'burned'
 }
 
 export function ListVaultReceiptTokensItemTokenFromJSON(json: any): ListVaultReceiptTokensItemToken {

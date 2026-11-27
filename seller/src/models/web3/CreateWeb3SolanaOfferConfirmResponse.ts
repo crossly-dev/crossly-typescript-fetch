@@ -32,8 +32,8 @@ export interface CreateWeb3SolanaOfferConfirmResponse {
 * @enum {string}
 */
 export enum CreateWeb3SolanaOfferConfirmResponseStatusEnum {
-    Filled = 'filled',
-    Cancelled = 'cancelled'
+    Cancelled = 'cancelled',
+    Filled = 'filled'
 }
 
 export function CreateWeb3SolanaOfferConfirmResponseFromJSON(json: any): CreateWeb3SolanaOfferConfirmResponse {

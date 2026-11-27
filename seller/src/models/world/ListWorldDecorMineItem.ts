@@ -140,11 +140,11 @@ export interface ListWorldDecorMineItem {
 * @enum {string}
 */
 export enum ListWorldDecorMineItemSurfaceEnum {
-    Shop = 'shop',
     Home = 'home',
     Street = 'street',
-    Stall = 'stall',
-    Avatar = 'avatar'
+    Shop = 'shop',
+    Avatar = 'avatar',
+    Stall = 'stall'
 }/**
 * @export
 * @enum {string}

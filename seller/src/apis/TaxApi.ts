@@ -18,15 +18,30 @@ import {
     CreateMileageResponse,
     CreateMileageResponseFromJSON,
     CreateMileageResponseToJSON,
+    GetBookTaxProfileResponse,
+    GetBookTaxProfileResponseFromJSON,
+    GetBookTaxProfileResponseToJSON,
     GetMileageSummaryResponse,
     GetMileageSummaryResponseFromJSON,
     GetMileageSummaryResponseToJSON,
+    GetOrderSalesTaxResponse,
+    GetOrderSalesTaxResponseFromJSON,
+    GetOrderSalesTaxResponseToJSON,
+    GetTaxSalesTaxResponse,
+    GetTaxSalesTaxResponseFromJSON,
+    GetTaxSalesTaxResponseToJSON,
     GetTaxScheduleCResponse,
     GetTaxScheduleCResponseFromJSON,
     GetTaxScheduleCResponseToJSON,
     ListMileageResponse,
     ListMileageResponseFromJSON,
     ListMileageResponseToJSON,
+    ListTaxCrosslyCollectsResponse,
+    ListTaxCrosslyCollectsResponseFromJSON,
+    ListTaxCrosslyCollectsResponseToJSON,
+    ListTaxSalesTaxNotCollectedResponse,
+    ListTaxSalesTaxNotCollectedResponseFromJSON,
+    ListTaxSalesTaxNotCollectedResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
@@ -34,6 +49,34 @@ import {
 
 export interface DeleteMileageRequest {
     id: string;
+}
+
+export interface GetMileageSummaryRequest {
+    year?: number;
+}
+
+export interface TaxApiGetOrderSalesTaxRequest {
+    id: string;
+}
+
+export interface GetTaxSalesTaxRequest {
+    from?: string;
+    to?: string;
+}
+
+export interface ListMileageRequest {
+    year?: number;
+    from?: string;
+    to?: string;
+    page?: number;
+    limit?: number;
+}
+
+export interface ListTaxSalesTaxNotCollectedRequest {
+    from?: string;
+    to?: string;
+    page?: number;
+    limit?: number;
 }
 
 export interface UpdateMileageRequest {
@@ -118,10 +161,48 @@ export class TaxApi extends runtime.BaseAPI {
     }
 
     /**
-     * Annual mileage totals + IRS deduction.
+     * Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
      */
-    async getMileageSummaryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetMileageSummaryResponse>> {
+    async getBookTaxProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBookTaxProfileResponse>> {
         const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/books/tax-profile`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBookTaxProfileResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
+     */
+    async getBookTaxProfile(initOverrides?: RequestInit): Promise<GetBookTaxProfileResponse> {
+        const response = await this.getBookTaxProfileRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in `rates`); `ratePerMile` is the January rate.
+     */
+    async getMileageSummaryRaw(requestParameters: GetMileageSummaryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetMileageSummaryResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.year !== undefined) {
+            queryParameters['year'] = requestParameters.year;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -144,15 +225,95 @@ export class TaxApi extends runtime.BaseAPI {
     }
 
     /**
-     * Annual mileage totals + IRS deduction.
+     * Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in `rates`); `ratePerMile` is the January rate.
      */
-    async getMileageSummary(initOverrides?: RequestInit): Promise<GetMileageSummaryResponse> {
-        const response = await this.getMileageSummaryRaw(initOverrides);
+    async getMileageSummary(requestParameters: GetMileageSummaryRequest = {}, initOverrides?: RequestInit): Promise<GetMileageSummaryResponse> {
+        const response = await this.getMileageSummaryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Schedule C JSON for a tax year.
+     * Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+     */
+    async getOrderSalesTaxRaw(requestParameters: TaxApiGetOrderSalesTaxRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetOrderSalesTaxResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getOrderSalesTax.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/orders/{id}/sales-tax`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetOrderSalesTaxResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
+     */
+    async getOrderSalesTax(requestParameters: TaxApiGetOrderSalesTaxRequest, initOverrides?: RequestInit): Promise<GetOrderSalesTaxResponse> {
+        const response = await this.getOrderSalesTaxRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
+     */
+    async getTaxSalesTaxRaw(requestParameters: GetTaxSalesTaxRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetTaxSalesTaxResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/tax/sales-tax`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetTaxSalesTaxResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
+     */
+    async getTaxSalesTax(requestParameters: GetTaxSalesTaxRequest = {}, initOverrides?: RequestInit): Promise<GetTaxSalesTaxResponse> {
+        const response = await this.getTaxSalesTaxRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Schedule C JSON for a tax year (default the current year), from the same P&L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&L by period.
      */
     async getTaxScheduleCRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetTaxScheduleCResponse>> {
         const queryParameters: any = {};
@@ -178,7 +339,7 @@ export class TaxApi extends runtime.BaseAPI {
     }
 
     /**
-     * Schedule C JSON for a tax year.
+     * Schedule C JSON for a tax year (default the current year), from the same P&L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&L by period.
      */
     async getTaxScheduleC(initOverrides?: RequestInit): Promise<GetTaxScheduleCResponse> {
         const response = await this.getTaxScheduleCRaw(initOverrides);
@@ -186,10 +347,30 @@ export class TaxApi extends runtime.BaseAPI {
     }
 
     /**
-     * List mileage entries.
+     * List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
      */
-    async listMileageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListMileageResponse>> {
+    async listMileageRaw(requestParameters: ListMileageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListMileageResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.year !== undefined) {
+            queryParameters['year'] = requestParameters.year;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -212,10 +393,128 @@ export class TaxApi extends runtime.BaseAPI {
     }
 
     /**
-     * List mileage entries.
+     * List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
      */
-    async listMileage(initOverrides?: RequestInit): Promise<ListMileageResponse> {
-        const response = await this.listMileageRaw(initOverrides);
+    async listMileage(requestParameters: ListMileageRequest = {}, initOverrides?: RequestInit): Promise<ListMileageResponse> {
+        const response = await this.listMileageRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Where Crossly collects sales tax today (its active Stripe Tax registrations).
+     */
+    async listTaxCrosslyCollectsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListTaxCrosslyCollectsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/tax/crossly-collects`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListTaxCrosslyCollectsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Where Crossly collects sales tax today (its active Stripe Tax registrations).
+     */
+    async listTaxCrosslyCollects(initOverrides?: RequestInit): Promise<ListTaxCrosslyCollectsResponse> {
+        const response = await this.listTaxCrosslyCollectsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The individual Crossly sales Crossly did not collect sales tax on, newest first.
+     */
+    async listTaxSalesTaxNotCollectedRaw(requestParameters: ListTaxSalesTaxNotCollectedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListTaxSalesTaxNotCollectedResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/tax/sales-tax/not-collected`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListTaxSalesTaxNotCollectedResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The individual Crossly sales Crossly did not collect sales tax on, newest first.
+     */
+    async listTaxSalesTaxNotCollected(requestParameters: ListTaxSalesTaxNotCollectedRequest = {}, initOverrides?: RequestInit): Promise<ListTaxSalesTaxNotCollectedResponse> {
+        const response = await this.listTaxSalesTaxNotCollectedRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
+     */
+    async updateBookTaxProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBookTaxProfileResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/books/tax-profile`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBookTaxProfileResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
+     */
+    async updateBookTaxProfile(initOverrides?: RequestInit): Promise<GetBookTaxProfileResponse> {
+        const response = await this.updateBookTaxProfileRaw(initOverrides);
         return await response.value();
     }
 

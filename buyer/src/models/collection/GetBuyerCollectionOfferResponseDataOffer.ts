@@ -27,16 +27,16 @@ export interface GetBuyerCollectionOfferResponseDataOffer {
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof GetBuyerCollectionOfferResponseDataOffer
-     */
-    expiresAt: string;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerCollectionOfferResponseDataOffer
      */
     cents: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCollectionOfferResponseDataOffer
+     */
+    expiresAt: string;
 }
 
 export function GetBuyerCollectionOfferResponseDataOfferFromJSON(json: any): GetBuyerCollectionOfferResponseDataOffer {
@@ -50,8 +50,8 @@ export function GetBuyerCollectionOfferResponseDataOfferFromJSONTyped(json: any,
     return {
         
         'id': json['id'],
-        'expiresAt': json['expiresAt'],
         'cents': json['cents'],
+        'expiresAt': json['expiresAt'],
     };
 }
 
@@ -65,8 +65,8 @@ export function GetBuyerCollectionOfferResponseDataOfferToJSON(value?: GetBuyerC
     return {
         
         'id': value.id,
-        'expiresAt': value.expiresAt,
         'cents': value.cents,
+        'expiresAt': value.expiresAt,
     };
 }
 

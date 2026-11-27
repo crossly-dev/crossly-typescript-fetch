@@ -24,13 +24,13 @@ export interface GetBuyerListingBoughtTogetherResponseDataItems {
      * @type {string}
      * @memberof GetBuyerListingBoughtTogetherResponseDataItems
      */
-    title?: string | null;
+    slug: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerListingBoughtTogetherResponseDataItems
      */
-    slug: string;
+    title?: string | null;
     /**
      * 
      * @type {number}
@@ -61,8 +61,8 @@ export function GetBuyerListingBoughtTogetherResponseDataItemsFromJSONTyped(json
     }
     return {
         
-        'title': !exists(json, 'title') ? undefined : json['title'],
         'slug': json['slug'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
         'priceCents': json['priceCents'],
         'image': !exists(json, 'image') ? undefined : json['image'],
         'sameSeller': json['sameSeller'],
@@ -78,8 +78,8 @@ export function GetBuyerListingBoughtTogetherResponseDataItemsToJSON(value?: Get
     }
     return {
         
-        'title': value.title,
         'slug': value.slug,
+        'title': value.title,
         'priceCents': value.priceCents,
         'image': value.image,
         'sameSeller': value.sameSeller,

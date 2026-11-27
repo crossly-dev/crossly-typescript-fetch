@@ -14,17 +14,23 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    ListGameHuntsItemRules,
+    ListGameHuntsItemRulesFromJSON,
+    ListGameHuntsItemRulesFromJSONTyped,
+    ListGameHuntsItemRulesToJSON,
+} from './ListGameHuntsItemRules';
+import {
     ListGameHuntsItemStall,
     ListGameHuntsItemStallFromJSON,
     ListGameHuntsItemStallFromJSONTyped,
     ListGameHuntsItemStallToJSON,
 } from './ListGameHuntsItemStall';
 import {
-    SlugName,
-    SlugNameFromJSON,
-    SlugNameFromJSONTyped,
-    SlugNameToJSON,
-} from '../common/SlugName';
+    NameSlug,
+    NameSlugFromJSON,
+    NameSlugFromJSONTyped,
+    NameSlugToJSON,
+} from '../common/NameSlug';
 
 /**
  * 
@@ -46,10 +52,10 @@ export interface ListGameHuntsItem {
     title: string;
     /**
      * 
-     * @type {SlugName}
+     * @type {NameSlug}
      * @memberof ListGameHuntsItem
      */
-    shop: SlugName;
+    shop: NameSlug;
     /**
      * 
      * @type {ListGameHuntsItemStall}
@@ -80,6 +86,12 @@ export interface ListGameHuntsItem {
      * @memberof ListGameHuntsItem
      */
     finishers: number;
+    /**
+     * 
+     * @type {ListGameHuntsItemRules}
+     * @memberof ListGameHuntsItem
+     */
+    rules?: ListGameHuntsItemRules | null;
 }
 
 export function ListGameHuntsItemFromJSON(json: any): ListGameHuntsItem {
@@ -94,12 +106,13 @@ export function ListGameHuntsItemFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'id': json['id'],
         'title': json['title'],
-        'shop': SlugNameFromJSON(json['shop']),
+        'shop': NameSlugFromJSON(json['shop']),
         'stall': !exists(json, 'stall') ? undefined : ListGameHuntsItemStallFromJSON(json['stall']),
         'tokens': json['tokens'],
         'reward': json['reward'],
         'endsAt': json['endsAt'],
         'finishers': json['finishers'],
+        'rules': !exists(json, 'rules') ? undefined : ListGameHuntsItemRulesFromJSON(json['rules']),
     };
 }
 
@@ -114,12 +127,13 @@ export function ListGameHuntsItemToJSON(value?: ListGameHuntsItem | null): any {
         
         'id': value.id,
         'title': value.title,
-        'shop': SlugNameToJSON(value.shop),
+        'shop': NameSlugToJSON(value.shop),
         'stall': ListGameHuntsItemStallToJSON(value.stall),
         'tokens': value.tokens,
         'reward': value.reward,
         'endsAt': value.endsAt,
         'finishers': value.finishers,
+        'rules': ListGameHuntsItemRulesToJSON(value.rules),
     };
 }
 

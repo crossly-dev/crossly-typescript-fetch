@@ -21,16 +21,16 @@ import { exists, mapValues } from '../../runtime';
 export interface GetBuyerCheckoutUsdcResponseData {
     /**
      * 
-     * @type {string}
-     * @memberof GetBuyerCheckoutUsdcResponseData
-     */
-    reason?: string | null;
-    /**
-     * 
      * @type {boolean}
      * @memberof GetBuyerCheckoutUsdcResponseData
      */
     available: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCheckoutUsdcResponseData
+     */
+    reason?: string | null;
     /**
      * 
      * @type {number}
@@ -55,8 +55,8 @@ export function GetBuyerCheckoutUsdcResponseDataFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'reason': !exists(json, 'reason') ? undefined : json['reason'],
         'available': json['available'],
+        'reason': !exists(json, 'reason') ? undefined : json['reason'],
         'maxCents': json['maxCents'],
         'networks': json['networks'],
     };
@@ -71,8 +71,8 @@ export function GetBuyerCheckoutUsdcResponseDataToJSON(value?: GetBuyerCheckoutU
     }
     return {
         
-        'reason': value.reason,
         'available': value.available,
+        'reason': value.reason,
         'maxCents': value.maxCents,
         'networks': value.networks,
     };

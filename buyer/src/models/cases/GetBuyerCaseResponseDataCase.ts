@@ -30,13 +30,13 @@ export interface GetBuyerCaseResponseDataCase {
      * @type {string}
      * @memberof GetBuyerCaseResponseDataCase
      */
-    createdAt: string;
+    purchaseId: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerCaseResponseDataCase
      */
-    updatedAt: string;
+    sellerUserId: string;
     /**
      * 
      * @type {string}
@@ -54,19 +54,13 @@ export interface GetBuyerCaseResponseDataCase {
      * @type {string}
      * @memberof GetBuyerCaseResponseDataCase
      */
-    sellerUserId: string;
+    createdAt: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerCaseResponseDataCase
      */
-    purchaseId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerCaseResponseDataCase
-     */
-    resolvedAt?: string | null;
+    updatedAt: string;
     /**
      * 
      * @type {string}
@@ -109,6 +103,12 @@ export interface GetBuyerCaseResponseDataCase {
      * @memberof GetBuyerCaseResponseDataCase
      */
     resolvedDecision?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCaseResponseDataCase
+     */
+    resolvedAt?: string | null;
 }
 
 export function GetBuyerCaseResponseDataCaseFromJSON(json: any): GetBuyerCaseResponseDataCase {
@@ -122,13 +122,12 @@ export function GetBuyerCaseResponseDataCaseFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'updatedAt': json['updatedAt'],
+        'purchaseId': json['purchaseId'],
+        'sellerUserId': json['sellerUserId'],
         'reason': json['reason'],
         'state': json['state'],
-        'sellerUserId': json['sellerUserId'],
-        'purchaseId': json['purchaseId'],
-        'resolvedAt': !exists(json, 'resolvedAt') ? undefined : json['resolvedAt'],
+        'createdAt': json['createdAt'],
+        'updatedAt': json['updatedAt'],
         'buyerNote': !exists(json, 'buyerNote') ? undefined : json['buyerNote'],
         'photoUrls': !exists(json, 'photoUrls') ? undefined : json['photoUrls'],
         'awaitingParty': !exists(json, 'awaitingParty') ? undefined : json['awaitingParty'],
@@ -136,6 +135,7 @@ export function GetBuyerCaseResponseDataCaseFromJSONTyped(json: any, ignoreDiscr
         'offeredRefundCents': !exists(json, 'offeredRefundCents') ? undefined : json['offeredRefundCents'],
         'resolvedRefundCents': !exists(json, 'resolvedRefundCents') ? undefined : json['resolvedRefundCents'],
         'resolvedDecision': !exists(json, 'resolvedDecision') ? undefined : json['resolvedDecision'],
+        'resolvedAt': !exists(json, 'resolvedAt') ? undefined : json['resolvedAt'],
     };
 }
 
@@ -149,13 +149,12 @@ export function GetBuyerCaseResponseDataCaseToJSON(value?: GetBuyerCaseResponseD
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'updatedAt': value.updatedAt,
+        'purchaseId': value.purchaseId,
+        'sellerUserId': value.sellerUserId,
         'reason': value.reason,
         'state': value.state,
-        'sellerUserId': value.sellerUserId,
-        'purchaseId': value.purchaseId,
-        'resolvedAt': value.resolvedAt,
+        'createdAt': value.createdAt,
+        'updatedAt': value.updatedAt,
         'buyerNote': value.buyerNote,
         'photoUrls': value.photoUrls,
         'awaitingParty': value.awaitingParty,
@@ -163,6 +162,7 @@ export function GetBuyerCaseResponseDataCaseToJSON(value?: GetBuyerCaseResponseD
         'offeredRefundCents': value.offeredRefundCents,
         'resolvedRefundCents': value.resolvedRefundCents,
         'resolvedDecision': value.resolvedDecision,
+        'resolvedAt': value.resolvedAt,
     };
 }
 

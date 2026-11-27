@@ -36,12 +36,6 @@ export interface GetVaultMarketFollowSharingResponseExplain {
      * @type {string}
      * @memberof GetVaultMarketFollowSharingResponseExplain
      */
-    hallLoans: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetVaultMarketFollowSharingResponseExplain
-     */
     leaderboard: string;
     /**
      * 
@@ -49,6 +43,12 @@ export interface GetVaultMarketFollowSharingResponseExplain {
      * @memberof GetVaultMarketFollowSharingResponseExplain
      */
     deposits: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetVaultMarketFollowSharingResponseExplain
+     */
+    hallLoans: string;
 }
 
 export function GetVaultMarketFollowSharingResponseExplainFromJSON(json: any): GetVaultMarketFollowSharingResponseExplain {
@@ -63,9 +63,9 @@ export function GetVaultMarketFollowSharingResponseExplainFromJSONTyped(json: an
         
         'orders': json['orders'],
         'sales': json['sales'],
-        'hallLoans': json['hallLoans'],
         'leaderboard': json['leaderboard'],
         'deposits': json['deposits'],
+        'hallLoans': json['hallLoans'],
     };
 }
 
@@ -80,9 +80,9 @@ export function GetVaultMarketFollowSharingResponseExplainToJSON(value?: GetVaul
         
         'orders': value.orders,
         'sales': value.sales,
-        'hallLoans': value.hallLoans,
         'leaderboard': value.leaderboard,
         'deposits': value.deposits,
+        'hallLoans': value.hallLoans,
     };
 }
 

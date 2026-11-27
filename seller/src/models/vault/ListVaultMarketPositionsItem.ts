@@ -230,8 +230,8 @@ export interface ListVaultMarketPositionsItem {
 * @enum {string}
 */
 export enum ListVaultMarketPositionsItemKindEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function ListVaultMarketPositionsItemFromJSON(json: any): ListVaultMarketPositionsItem {

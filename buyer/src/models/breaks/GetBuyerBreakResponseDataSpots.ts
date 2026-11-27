@@ -27,12 +27,6 @@ export interface GetBuyerBreakResponseDataSpots {
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof GetBuyerBreakResponseDataSpots
-     */
-    label: string;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerBreakResponseDataSpots
      */
@@ -42,19 +36,7 @@ export interface GetBuyerBreakResponseDataSpots {
      * @type {string}
      * @memberof GetBuyerBreakResponseDataSpots
      */
-    heldUntil?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerBreakResponseDataSpots
-     */
-    hits?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerBreakResponseDataSpots
-     */
-    buyer?: string | null;
+    label: string;
     /**
      * 
      * @type {boolean}
@@ -79,6 +61,24 @@ export interface GetBuyerBreakResponseDataSpots {
      * @memberof GetBuyerBreakResponseDataSpots
      */
     heldByOther: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseDataSpots
+     */
+    heldUntil?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseDataSpots
+     */
+    buyer?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerBreakResponseDataSpots
+     */
+    hits?: string | null;
 }
 
 export function GetBuyerBreakResponseDataSpotsFromJSON(json: any): GetBuyerBreakResponseDataSpots {
@@ -92,15 +92,15 @@ export function GetBuyerBreakResponseDataSpotsFromJSONTyped(json: any, ignoreDis
     return {
         
         'id': json['id'],
-        'label': json['label'],
         'position': json['position'],
-        'heldUntil': !exists(json, 'heldUntil') ? undefined : json['heldUntil'],
-        'hits': !exists(json, 'hits') ? undefined : json['hits'],
-        'buyer': !exists(json, 'buyer') ? undefined : json['buyer'],
+        'label': json['label'],
         'taken': json['taken'],
         'mine': json['mine'],
         'heldByMe': json['heldByMe'],
         'heldByOther': json['heldByOther'],
+        'heldUntil': !exists(json, 'heldUntil') ? undefined : json['heldUntil'],
+        'buyer': !exists(json, 'buyer') ? undefined : json['buyer'],
+        'hits': !exists(json, 'hits') ? undefined : json['hits'],
     };
 }
 
@@ -114,15 +114,15 @@ export function GetBuyerBreakResponseDataSpotsToJSON(value?: GetBuyerBreakRespon
     return {
         
         'id': value.id,
-        'label': value.label,
         'position': value.position,
-        'heldUntil': value.heldUntil,
-        'hits': value.hits,
-        'buyer': value.buyer,
+        'label': value.label,
         'taken': value.taken,
         'mine': value.mine,
         'heldByMe': value.heldByMe,
         'heldByOther': value.heldByOther,
+        'heldUntil': value.heldUntil,
+        'buyer': value.buyer,
+        'hits': value.hits,
     };
 }
 

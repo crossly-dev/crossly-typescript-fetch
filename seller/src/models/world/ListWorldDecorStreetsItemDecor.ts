@@ -56,14 +56,14 @@ export interface ListWorldDecorStreetsItemDecor {
 * @enum {string}
 */
 export enum ListWorldDecorStreetsItemDecorBannerColourEnum {
-    Red = 'red',
-    Green = 'green',
-    Teal = 'teal',
     Blue = 'blue',
+    Green = 'green',
     Purple = 'purple',
+    Red = 'red',
+    Teal = 'teal',
     Cream = 'cream',
-    Amber = 'amber',
-    Ink = 'ink'
+    Ink = 'ink',
+    Amber = 'amber'
 }
 
 export function ListWorldDecorStreetsItemDecorFromJSON(json: any): ListWorldDecorStreetsItemDecor {

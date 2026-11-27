@@ -24,13 +24,13 @@ export interface GetBuyerCreatorResponseDataCreator {
      * @type {string}
      * @memberof GetBuyerCreatorResponseDataCreator
      */
-    displayName?: string | null;
+    handle: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerCreatorResponseDataCreator
      */
-    avatarUrl?: string | null;
+    displayName?: string | null;
     /**
      * 
      * @type {string}
@@ -42,13 +42,13 @@ export interface GetBuyerCreatorResponseDataCreator {
      * @type {string}
      * @memberof GetBuyerCreatorResponseDataCreator
      */
-    code?: string | null;
+    avatarUrl?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerCreatorResponseDataCreator
      */
-    handle: string;
+    code?: string | null;
 }
 
 export function GetBuyerCreatorResponseDataCreatorFromJSON(json: any): GetBuyerCreatorResponseDataCreator {
@@ -61,11 +61,11 @@ export function GetBuyerCreatorResponseDataCreatorFromJSONTyped(json: any, ignor
     }
     return {
         
-        'displayName': !exists(json, 'displayName') ? undefined : json['displayName'],
-        'avatarUrl': !exists(json, 'avatarUrl') ? undefined : json['avatarUrl'],
-        'bio': !exists(json, 'bio') ? undefined : json['bio'],
-        'code': !exists(json, 'code') ? undefined : json['code'],
         'handle': json['handle'],
+        'displayName': !exists(json, 'displayName') ? undefined : json['displayName'],
+        'bio': !exists(json, 'bio') ? undefined : json['bio'],
+        'avatarUrl': !exists(json, 'avatarUrl') ? undefined : json['avatarUrl'],
+        'code': !exists(json, 'code') ? undefined : json['code'],
     };
 }
 
@@ -78,11 +78,11 @@ export function GetBuyerCreatorResponseDataCreatorToJSON(value?: GetBuyerCreator
     }
     return {
         
-        'displayName': value.displayName,
-        'avatarUrl': value.avatarUrl,
-        'bio': value.bio,
-        'code': value.code,
         'handle': value.handle,
+        'displayName': value.displayName,
+        'bio': value.bio,
+        'avatarUrl': value.avatarUrl,
+        'code': value.code,
     };
 }
 

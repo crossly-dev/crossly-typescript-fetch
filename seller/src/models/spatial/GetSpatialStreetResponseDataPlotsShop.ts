@@ -167,10 +167,10 @@ export interface GetSpatialStreetResponseDataPlotsShop {
     /**
      * The shop is shut — the seller is on vacation.
      * 
-     * Sourced from `seller_profiles.vacation_mode`, which is the flag whose own
-     * schema comment says the storefront shows a banner and checkout blocks new
-     * orders. NOT `users.vacation_mode`, which pauses automation and share
-     * schedulers and has nothing to do with whether somebody is selling.
+     * Sourced from `users.vacation_mode` / `vacation_ends_at` — Settings ›
+     * Vacation mode, the same flag checkout blocks new orders on
+     * (services/vacation/seller-vacation.ts, settings IA audit B3). The old
+     * `seller_profiles.vacation_mode` copy had no writer any client used.
      * 
      * A closed room is still WALKABLE on purpose. Vacation pauses selling, it
      * does not hide a collection, and a door that refuses to open is a worse
@@ -189,8 +189,8 @@ export interface GetSpatialStreetResponseDataPlotsShop {
 export enum GetSpatialStreetResponseDataPlotsShopShopfrontEnum {
     Full = 'full',
     None = 'none',
-    Awning = 'awning',
     Fascia = 'fascia',
+    Awning = 'awning',
     NeonFascia = 'neon_fascia',
     GildedFascia = 'gilded_fascia',
     ScallopedAwning = 'scalloped_awning'

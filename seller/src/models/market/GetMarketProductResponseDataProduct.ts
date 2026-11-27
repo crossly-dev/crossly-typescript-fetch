@@ -79,19 +79,31 @@ export interface GetMarketProductResponseDataProduct {
      * @type {string}
      * @memberof GetMarketProductResponseDataProduct
      */
+    imageUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetMarketProductResponseDataProduct
+     */
     categorySlug: string;
     /**
      * 
      * @type {string}
      * @memberof GetMarketProductResponseDataProduct
      */
-    externalId?: string | null;
+    approvedByUserId?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetMarketProductResponseDataProduct
+     */
+    approvedAt?: Date | null;
     /**
      * 
      * @type {string}
      * @memberof GetMarketProductResponseDataProduct
      */
-    imageUrl?: string | null;
+    externalId?: string | null;
     /**
      * 
      * @type {string}
@@ -122,18 +134,6 @@ export interface GetMarketProductResponseDataProduct {
      * @memberof GetMarketProductResponseDataProduct
      */
     submittedByUserId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetMarketProductResponseDataProduct
-     */
-    approvedByUserId?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof GetMarketProductResponseDataProduct
-     */
-    approvedAt?: Date | null;
     /**
      * 
      * @type {string}
@@ -291,16 +291,16 @@ export function GetMarketProductResponseDataProductFromJSONTyped(json: any, igno
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
         'retailCents': !exists(json, 'retailCents') ? undefined : json['retailCents'],
-        'categorySlug': json['categorySlug'],
-        'externalId': !exists(json, 'externalId') ? undefined : json['externalId'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
+        'categorySlug': json['categorySlug'],
+        'approvedByUserId': !exists(json, 'approvedByUserId') ? undefined : json['approvedByUserId'],
+        'approvedAt': !exists(json, 'approvedAt') ? undefined : (json['approvedAt'] === null ? null : new Date(json['approvedAt'])),
+        'externalId': !exists(json, 'externalId') ? undefined : json['externalId'],
         'model': !exists(json, 'model') ? undefined : json['model'],
         'colorway': !exists(json, 'colorway') ? undefined : json['colorway'],
         'styleCode': !exists(json, 'styleCode') ? undefined : json['styleCode'],
         'releaseDate': !exists(json, 'releaseDate') ? undefined : json['releaseDate'],
         'submittedByUserId': !exists(json, 'submittedByUserId') ? undefined : json['submittedByUserId'],
-        'approvedByUserId': !exists(json, 'approvedByUserId') ? undefined : json['approvedByUserId'],
-        'approvedAt': !exists(json, 'approvedAt') ? undefined : (json['approvedAt'] === null ? null : new Date(json['approvedAt'])),
         'rejectionReason': !exists(json, 'rejectionReason') ? undefined : json['rejectionReason'],
         'proposedVariants': ((json['proposedVariants'] as Array<any>).map(GetMarketProductResponseDataProductProposedVariantsFromJSON)),
         'verification': json['verification'],
@@ -343,16 +343,16 @@ export function GetMarketProductResponseDataProductToJSON(value?: GetMarketProdu
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
         'retailCents': value.retailCents,
-        'categorySlug': value.categorySlug,
-        'externalId': value.externalId,
         'imageUrl': value.imageUrl,
+        'categorySlug': value.categorySlug,
+        'approvedByUserId': value.approvedByUserId,
+        'approvedAt': value.approvedAt === undefined ? undefined : (value.approvedAt === null ? null : value.approvedAt.toISOString()),
+        'externalId': value.externalId,
         'model': value.model,
         'colorway': value.colorway,
         'styleCode': value.styleCode,
         'releaseDate': value.releaseDate,
         'submittedByUserId': value.submittedByUserId,
-        'approvedByUserId': value.approvedByUserId,
-        'approvedAt': value.approvedAt === undefined ? undefined : (value.approvedAt === null ? null : value.approvedAt.toISOString()),
         'rejectionReason': value.rejectionReason,
         'proposedVariants': ((value.proposedVariants as Array<any>).map(GetMarketProductResponseDataProductProposedVariantsToJSON)),
         'verification': value.verification,

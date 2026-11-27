@@ -49,19 +49,25 @@ export interface GetBuyerTogetherResponseData {
      * @type {string}
      * @memberof GetBuyerTogetherResponseData
      */
+    code: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerTogetherResponseData
+     */
     name: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetBuyerTogetherResponseData
+     */
+    isHost: boolean;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerTogetherResponseData
      */
     endsAt: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerTogetherResponseData
-     */
-    code: string;
     /**
      * 
      * @type {Array<GetBuyerTogetherResponseDataMembers>}
@@ -80,12 +86,6 @@ export interface GetBuyerTogetherResponseData {
      * @memberof GetBuyerTogetherResponseData
      */
     messages: Array<GetBuyerTogetherResponseDataMessages>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetBuyerTogetherResponseData
-     */
-    isHost: boolean;
 }
 
 export function GetBuyerTogetherResponseDataFromJSON(json: any): GetBuyerTogetherResponseData {
@@ -99,13 +99,13 @@ export function GetBuyerTogetherResponseDataFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'id': json['id'],
-        'name': json['name'],
-        'endsAt': json['endsAt'],
         'code': json['code'],
+        'name': json['name'],
+        'isHost': json['isHost'],
+        'endsAt': json['endsAt'],
         'members': ((json['members'] as Array<any>).map(GetBuyerTogetherResponseDataMembersFromJSON)),
         'items': ((json['items'] as Array<any>).map(GetBuyerTogetherResponseDataItemsFromJSON)),
         'messages': ((json['messages'] as Array<any>).map(GetBuyerTogetherResponseDataMessagesFromJSON)),
-        'isHost': json['isHost'],
     };
 }
 
@@ -119,13 +119,13 @@ export function GetBuyerTogetherResponseDataToJSON(value?: GetBuyerTogetherRespo
     return {
         
         'id': value.id,
-        'name': value.name,
-        'endsAt': value.endsAt,
         'code': value.code,
+        'name': value.name,
+        'isHost': value.isHost,
+        'endsAt': value.endsAt,
         'members': ((value.members as Array<any>).map(GetBuyerTogetherResponseDataMembersToJSON)),
         'items': ((value.items as Array<any>).map(GetBuyerTogetherResponseDataItemsToJSON)),
         'messages': ((value.messages as Array<any>).map(GetBuyerTogetherResponseDataMessagesToJSON)),
-        'isHost': value.isHost,
     };
 }
 

@@ -63,12 +63,12 @@ export interface GetSpatialSceneWarehouseResponseDataShell {
 * @enum {string}
 */
 export enum GetSpatialSceneWarehouseResponseDataShellThemeEnum {
-    Storybook = 'storybook',
     Studio = 'studio',
     Noir = 'noir',
     Daylight = 'daylight',
     Vitrine = 'vitrine',
-    Street = 'street'
+    Street = 'street',
+    Storybook = 'storybook'
 }
 
 export function GetSpatialSceneWarehouseResponseDataShellFromJSON(json: any): GetSpatialSceneWarehouseResponseDataShell {

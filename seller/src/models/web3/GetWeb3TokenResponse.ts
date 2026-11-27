@@ -165,12 +165,12 @@ export interface GetWeb3TokenResponse {
 * @enum {string}
 */
 export enum GetWeb3TokenResponseChainEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }/**
 * @export
 * @enum {string}

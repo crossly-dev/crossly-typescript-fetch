@@ -18,6 +18,15 @@ import {
     CreatePolicyReturnReceivedResponse,
     CreatePolicyReturnReceivedResponseFromJSON,
     CreatePolicyReturnReceivedResponseToJSON,
+    CreateReturnAcceptResponse,
+    CreateReturnAcceptResponseFromJSON,
+    CreateReturnAcceptResponseToJSON,
+    CreateReturnDeclineRequest,
+    CreateReturnDeclineRequestFromJSON,
+    CreateReturnDeclineRequestToJSON,
+    GetReturnResponse,
+    GetReturnResponseFromJSON,
+    GetReturnResponseToJSON,
     ListPolicyReturnsResponse,
     ListPolicyReturnsResponseFromJSON,
     ListPolicyReturnsResponseToJSON,
@@ -31,6 +40,15 @@ import {
 
 export interface CreatePolicyReturnReceivedRequest {
     id: string;
+}
+
+export interface CreateReturnAcceptRequest {
+    id: string;
+}
+
+export interface CreateReturnDeclineOperationRequest {
+    id: string;
+    createReturnDeclineRequest: CreateReturnDeclineRequest;
 }
 
 export interface GetReturnRequest {
@@ -87,7 +105,7 @@ export class ReturnsApi extends runtime.BaseAPI {
     /**
      * Open a return record on an order (rejects if another open return exists).
      */
-    async createReturnRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListReturnsItem>> {
+    async createReturnRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetReturnResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -107,21 +125,104 @@ export class ReturnsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListReturnsItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetReturnResponseFromJSON(jsonValue));
     }
 
     /**
      * Open a return record on an order (rejects if another open return exists).
      */
-    async createReturn(initOverrides?: RequestInit): Promise<ListReturnsItem> {
+    async createReturn(initOverrides?: RequestInit): Promise<GetReturnResponse> {
         const response = await this.createReturnRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
+     */
+    async createReturnAcceptRaw(requestParameters: CreateReturnAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateReturnAcceptResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createReturnAccept.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/returns/{id}/accept`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateReturnAcceptResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
+     */
+    async createReturnAccept(requestParameters: CreateReturnAcceptRequest, initOverrides?: RequestInit): Promise<CreateReturnAcceptResponse> {
+        const response = await this.createReturnAcceptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Decline a Crossly-marketplace return request with a reason (required, 8-2000 chars), posted to the buyer as your response. It does not close the request: the buyer can reply or ask Crossly to decide. Not after the label is issued.
+     */
+    async createReturnDeclineRaw(requestParameters: CreateReturnDeclineOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListReturnsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createReturnDecline.');
+        }
+
+        if (requestParameters.createReturnDeclineRequest === null || requestParameters.createReturnDeclineRequest === undefined) {
+            throw new runtime.RequiredError('createReturnDeclineRequest','Required parameter requestParameters.createReturnDeclineRequest was null or undefined when calling createReturnDecline.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/returns/{id}/decline`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateReturnDeclineRequestToJSON(requestParameters.createReturnDeclineRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListReturnsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Decline a Crossly-marketplace return request with a reason (required, 8-2000 chars), posted to the buyer as your response. It does not close the request: the buyer can reply or ask Crossly to decide. Not after the label is issued.
+     */
+    async createReturnDecline(requestParameters: CreateReturnDeclineOperationRequest, initOverrides?: RequestInit): Promise<ListReturnsItem> {
+        const response = await this.createReturnDeclineRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Get one return record.
      */
-    async getReturnRaw(requestParameters: GetReturnRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListReturnsItem>> {
+    async getReturnRaw(requestParameters: GetReturnRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetReturnResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getReturn.');
         }
@@ -145,13 +246,13 @@ export class ReturnsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListReturnsItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetReturnResponseFromJSON(jsonValue));
     }
 
     /**
      * Get one return record.
      */
-    async getReturn(requestParameters: GetReturnRequest, initOverrides?: RequestInit): Promise<ListReturnsItem> {
+    async getReturn(requestParameters: GetReturnRequest, initOverrides?: RequestInit): Promise<GetReturnResponse> {
         const response = await this.getReturnRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -191,7 +292,7 @@ export class ReturnsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List returns (physical-return workflow). status=open|closed|<exact>.
+     * List returns. Default: your return records (the physical-return workflow), status=open|closed|<exact>. source=request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
      */
     async listReturnsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListReturnsResponse>> {
         const queryParameters: any = {};
@@ -217,7 +318,7 @@ export class ReturnsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List returns (physical-return workflow). status=open|closed|<exact>.
+     * List returns. Default: your return records (the physical-return workflow), status=open|closed|<exact>. source=request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
      */
     async listReturns(initOverrides?: RequestInit): Promise<ListReturnsResponse> {
         const response = await this.listReturnsRaw(initOverrides);
@@ -227,7 +328,7 @@ export class ReturnsApi extends runtime.BaseAPI {
     /**
      * Transition return status (received/inspected/restocked) and bump inventory on restock.
      */
-    async updateReturnRaw(requestParameters: UpdateReturnRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListReturnsItem>> {
+    async updateReturnRaw(requestParameters: UpdateReturnRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetReturnResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateReturn.');
         }
@@ -251,13 +352,13 @@ export class ReturnsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListReturnsItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetReturnResponseFromJSON(jsonValue));
     }
 
     /**
      * Transition return status (received/inspected/restocked) and bump inventory on restock.
      */
-    async updateReturn(requestParameters: UpdateReturnRequest, initOverrides?: RequestInit): Promise<ListReturnsItem> {
+    async updateReturn(requestParameters: UpdateReturnRequest, initOverrides?: RequestInit): Promise<GetReturnResponse> {
         const response = await this.updateReturnRaw(requestParameters, initOverrides);
         return await response.value();
     }

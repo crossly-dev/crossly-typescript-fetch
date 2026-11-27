@@ -55,6 +55,18 @@ export interface ListBrandDropListingsItem {
      * @memberof ListBrandDropListingsItem
      */
     status: string;
+    /**
+     * The Crossly listing's slug (platform_listings.platform_listing_id): what the cart adds by.
+     * @type {string}
+     * @memberof ListBrandDropListingsItem
+     */
+    slug?: string | null;
+    /**
+     * Units the listing offers (null = untracked): a pre-book's reservable quantity.
+     * @type {number}
+     * @memberof ListBrandDropListingsItem
+     */
+    quantity?: number | null;
 }
 
 export function ListBrandDropListingsItemFromJSON(json: any): ListBrandDropListingsItem {
@@ -73,6 +85,8 @@ export function ListBrandDropListingsItemFromJSONTyped(json: any, ignoreDiscrimi
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
         'priceCents': !exists(json, 'priceCents') ? undefined : json['priceCents'],
         'status': json['status'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'quantity': !exists(json, 'quantity') ? undefined : json['quantity'],
     };
 }
 
@@ -91,6 +105,8 @@ export function ListBrandDropListingsItemToJSON(value?: ListBrandDropListingsIte
         'imageUrl': value.imageUrl,
         'priceCents': value.priceCents,
         'status': value.status,
+        'slug': value.slug,
+        'quantity': value.quantity,
     };
 }
 

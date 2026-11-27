@@ -71,15 +71,16 @@ export enum CreateProductionDesignSpecResponsePrefsSpecCategoryEnum {
     Sneakers = 'sneakers',
     Slides = 'slides',
     FigureResin = 'figure_resin',
-    FigureVinyl = 'figure_vinyl'
+    FigureVinyl = 'figure_vinyl',
+    TradingCards = 'trading_cards'
 }/**
 * @export
 * @enum {string}
 */
 export enum CreateProductionDesignSpecResponsePrefsSpecMaterialTierEnum {
     Standard = 'standard',
-    Luxury = 'luxury',
-    Premium = 'premium'
+    Premium = 'premium',
+    Luxury = 'luxury'
 }/**
 * @export
 * @enum {string}

@@ -13,12 +13,25 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    ListVaultMarketFollowCopyWatchItemPerson,
+    ListVaultMarketFollowCopyWatchItemPersonFromJSON,
+    ListVaultMarketFollowCopyWatchItemPersonFromJSONTyped,
+    ListVaultMarketFollowCopyWatchItemPersonToJSON,
+} from './ListVaultMarketFollowCopyWatchItemPerson';
+
 /**
  * 
  * @export
  * @interface ListVaultMarketFollowCopyWatchItem
  */
 export interface ListVaultMarketFollowCopyWatchItem {
+    /**
+     * 
+     * @type {ListVaultMarketFollowCopyWatchItemPerson}
+     * @memberof ListVaultMarketFollowCopyWatchItem
+     */
+    person: ListVaultMarketFollowCopyWatchItemPerson;
     /**
      * 
      * @type {string}
@@ -43,6 +56,7 @@ export function ListVaultMarketFollowCopyWatchItemFromJSONTyped(json: any, ignor
     }
     return {
         
+        'person': ListVaultMarketFollowCopyWatchItemPersonFromJSON(json['person']),
         'since': json['since'],
         'active': json['active'],
     };
@@ -57,6 +71,7 @@ export function ListVaultMarketFollowCopyWatchItemToJSON(value?: ListVaultMarket
     }
     return {
         
+        'person': ListVaultMarketFollowCopyWatchItemPersonToJSON(value.person),
         'since': value.since,
         'active': value.active,
     };

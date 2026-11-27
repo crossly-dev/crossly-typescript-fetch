@@ -49,6 +49,36 @@ export interface GetAnalyticByPlatformResponseBreakdown {
      * @memberof GetAnalyticByPlatformResponseBreakdown
      */
     netProfit: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticByPlatformResponseBreakdown
+     */
+    pendingDetailsCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticByPlatformResponseBreakdown
+     */
+    netSalesCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticByPlatformResponseBreakdown
+     */
+    feesCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticByPlatformResponseBreakdown
+     */
+    netProfitCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticByPlatformResponseBreakdown
+     */
+    share: number;
 }
 
 export function GetAnalyticByPlatformResponseBreakdownFromJSON(json: any): GetAnalyticByPlatformResponseBreakdown {
@@ -66,6 +96,11 @@ export function GetAnalyticByPlatformResponseBreakdownFromJSONTyped(json: any, i
         'revenue': json['revenue'],
         'fees': json['fees'],
         'netProfit': json['netProfit'],
+        'pendingDetailsCount': json['pendingDetailsCount'],
+        'netSalesCents': json['netSalesCents'],
+        'feesCents': json['feesCents'],
+        'netProfitCents': json['netProfitCents'],
+        'share': json['share'],
     };
 }
 
@@ -83,6 +118,11 @@ export function GetAnalyticByPlatformResponseBreakdownToJSON(value?: GetAnalytic
         'revenue': value.revenue,
         'fees': value.fees,
         'netProfit': value.netProfit,
+        'pendingDetailsCount': value.pendingDetailsCount,
+        'netSalesCents': value.netSalesCents,
+        'feesCents': value.feesCents,
+        'netProfitCents': value.netProfitCents,
+        'share': value.share,
     };
 }
 

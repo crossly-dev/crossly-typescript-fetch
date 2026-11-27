@@ -87,11 +87,11 @@ export interface GetVaultMarketMarketResponseMark {
 */
 export enum GetVaultMarketMarketResponseMarkSourceEnum {
     None = 'none',
-    Twap = 'twap',
-    Mid = 'mid',
     Ask = 'ask',
-    Bid = 'bid',
+    Mid = 'mid',
     Last = 'last',
+    Bid = 'bid',
+    Twap = 'twap',
     Implied = 'implied'
 }/**
 * @export
@@ -99,9 +99,9 @@ export enum GetVaultMarketMarketResponseMarkSourceEnum {
 */
 export enum GetVaultMarketMarketResponseMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketMarketResponseMarkFromJSON(json: any): GetVaultMarketMarketResponseMark {

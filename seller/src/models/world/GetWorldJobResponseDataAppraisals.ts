@@ -104,8 +104,8 @@ export interface GetWorldJobResponseDataAppraisals {
 * @enum {string}
 */
 export enum GetWorldJobResponseDataAppraisalsRailEnum {
-    Bucks = 'bucks',
-    Cbx = 'cbx'
+    Cbx = 'cbx',
+    Bucks = 'bucks'
 }
 
 export function GetWorldJobResponseDataAppraisalsFromJSON(json: any): GetWorldJobResponseDataAppraisals {

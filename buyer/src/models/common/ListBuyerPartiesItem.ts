@@ -30,19 +30,13 @@ export interface ListBuyerPartiesItem {
      * @type {string}
      * @memberof ListBuyerPartiesItem
      */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPartiesItem
-     */
-    endsAt: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPartiesItem
-     */
     slug: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPartiesItem
+     */
+    theme: string;
     /**
      * 
      * @type {string}
@@ -54,7 +48,13 @@ export interface ListBuyerPartiesItem {
      * @type {string}
      * @memberof ListBuyerPartiesItem
      */
-    theme: string;
+    endsAt: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPartiesItem
+     */
+    status: string;
 }
 
 export function ListBuyerPartiesItemFromJSON(json: any): ListBuyerPartiesItem {
@@ -68,11 +68,11 @@ export function ListBuyerPartiesItemFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'id': json['id'],
-        'status': json['status'],
-        'endsAt': json['endsAt'],
         'slug': json['slug'],
-        'startsAt': json['startsAt'],
         'theme': json['theme'],
+        'startsAt': json['startsAt'],
+        'endsAt': json['endsAt'],
+        'status': json['status'],
     };
 }
 
@@ -86,11 +86,11 @@ export function ListBuyerPartiesItemToJSON(value?: ListBuyerPartiesItem | null):
     return {
         
         'id': value.id,
-        'status': value.status,
-        'endsAt': value.endsAt,
         'slug': value.slug,
-        'startsAt': value.startsAt,
         'theme': value.theme,
+        'startsAt': value.startsAt,
+        'endsAt': value.endsAt,
+        'status': value.status,
     };
 }
 

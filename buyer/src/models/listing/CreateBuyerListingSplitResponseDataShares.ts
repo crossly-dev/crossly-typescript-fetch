@@ -30,13 +30,13 @@ export interface CreateBuyerListingSplitResponseDataShares {
      * @type {number}
      * @memberof CreateBuyerListingSplitResponseDataShares
      */
-    position: number;
+    shareCents: number;
     /**
      * 
      * @type {number}
      * @memberof CreateBuyerListingSplitResponseDataShares
      */
-    shareCents: number;
+    position: number;
 }
 
 export function CreateBuyerListingSplitResponseDataSharesFromJSON(json: any): CreateBuyerListingSplitResponseDataShares {
@@ -50,8 +50,8 @@ export function CreateBuyerListingSplitResponseDataSharesFromJSONTyped(json: any
     return {
         
         'token': json['token'],
-        'position': json['position'],
         'shareCents': json['shareCents'],
+        'position': json['position'],
     };
 }
 
@@ -65,8 +65,8 @@ export function CreateBuyerListingSplitResponseDataSharesToJSON(value?: CreateBu
     return {
         
         'token': value.token,
-        'position': value.position,
         'shareCents': value.shareCents,
+        'position': value.position,
     };
 }
 

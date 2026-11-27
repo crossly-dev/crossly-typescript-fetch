@@ -14,17 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetVaultMarketProofOfReserveByDayResponse,
-    GetVaultMarketProofOfReserveByDayResponseFromJSON,
-    GetVaultMarketProofOfReserveByDayResponseFromJSONTyped,
-    GetVaultMarketProofOfReserveByDayResponseToJSON,
-} from './GetVaultMarketProofOfReserveByDayResponse';
-import {
     GetVaultMarketProofOfReserveResponseAnchoring,
     GetVaultMarketProofOfReserveResponseAnchoringFromJSON,
     GetVaultMarketProofOfReserveResponseAnchoringFromJSONTyped,
     GetVaultMarketProofOfReserveResponseAnchoringToJSON,
 } from './GetVaultMarketProofOfReserveResponseAnchoring';
+import {
+    GetVaultMarketProofOfReserveResponseHistory,
+    GetVaultMarketProofOfReserveResponseHistoryFromJSON,
+    GetVaultMarketProofOfReserveResponseHistoryFromJSONTyped,
+    GetVaultMarketProofOfReserveResponseHistoryToJSON,
+} from './GetVaultMarketProofOfReserveResponseHistory';
 import {
     GetVaultMarketProofOfReserveResponseLatest,
     GetVaultMarketProofOfReserveResponseLatestFromJSON,
@@ -52,10 +52,10 @@ export interface GetVaultMarketProofOfReserveResponse {
     latest?: GetVaultMarketProofOfReserveResponseLatest | null;
     /**
      * 
-     * @type {Array<GetVaultMarketProofOfReserveByDayResponse>}
+     * @type {Array<GetVaultMarketProofOfReserveResponseHistory>}
      * @memberof GetVaultMarketProofOfReserveResponse
      */
-    history: Array<GetVaultMarketProofOfReserveByDayResponse>;
+    history: Array<GetVaultMarketProofOfReserveResponseHistory>;
     /**
      * 
      * @type {GetVaultMarketProofOfReserveResponseAnchoring}
@@ -81,7 +81,7 @@ export function GetVaultMarketProofOfReserveResponseFromJSONTyped(json: any, ign
     return {
         
         'latest': !exists(json, 'latest') ? undefined : GetVaultMarketProofOfReserveResponseLatestFromJSON(json['latest']),
-        'history': ((json['history'] as Array<any>).map(GetVaultMarketProofOfReserveByDayResponseFromJSON)),
+        'history': ((json['history'] as Array<any>).map(GetVaultMarketProofOfReserveResponseHistoryFromJSON)),
         'anchoring': GetVaultMarketProofOfReserveResponseAnchoringFromJSON(json['anchoring']),
         'method': GetVaultMarketProofOfReserveResponseMethodFromJSON(json['method']),
     };
@@ -97,7 +97,7 @@ export function GetVaultMarketProofOfReserveResponseToJSON(value?: GetVaultMarke
     return {
         
         'latest': GetVaultMarketProofOfReserveResponseLatestToJSON(value.latest),
-        'history': ((value.history as Array<any>).map(GetVaultMarketProofOfReserveByDayResponseToJSON)),
+        'history': ((value.history as Array<any>).map(GetVaultMarketProofOfReserveResponseHistoryToJSON)),
         'anchoring': GetVaultMarketProofOfReserveResponseAnchoringToJSON(value.anchoring),
         'method': GetVaultMarketProofOfReserveResponseMethodToJSON(value.method),
     };

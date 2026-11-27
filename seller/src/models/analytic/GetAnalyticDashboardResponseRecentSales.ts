@@ -39,6 +39,12 @@ export interface GetAnalyticDashboardResponseRecentSales {
     platformOrderId?: string | null;
     /**
      * 
+     * @type {boolean}
+     * @memberof GetAnalyticDashboardResponseRecentSales
+     */
+    detailsPending: boolean;
+    /**
+     * 
      * @type {number}
      * @memberof GetAnalyticDashboardResponseRecentSales
      */
@@ -72,25 +78,13 @@ export interface GetAnalyticDashboardResponseRecentSales {
      * @type {string}
      * @memberof GetAnalyticDashboardResponseRecentSales
      */
-    detectedBy: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof GetAnalyticDashboardResponseRecentSales
-     */
-    detectedAt: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetAnalyticDashboardResponseRecentSales
-     */
     itemTitle?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetAnalyticDashboardResponseRecentSales
      */
-    itemImage: string;
+    itemImage?: string | null;
 }
 
 export function GetAnalyticDashboardResponseRecentSalesFromJSON(json: any): GetAnalyticDashboardResponseRecentSales {
@@ -106,15 +100,14 @@ export function GetAnalyticDashboardResponseRecentSalesFromJSONTyped(json: any, 
         'saleId': json['saleId'],
         'platform': json['platform'],
         'platformOrderId': !exists(json, 'platformOrderId') ? undefined : json['platformOrderId'],
+        'detailsPending': json['detailsPending'],
         'salePrice': !exists(json, 'salePrice') ? undefined : json['salePrice'],
         'platformFee': !exists(json, 'platformFee') ? undefined : json['platformFee'],
         'shippingCost': !exists(json, 'shippingCost') ? undefined : json['shippingCost'],
         'costOfGoods': !exists(json, 'costOfGoods') ? undefined : json['costOfGoods'],
         'netProfit': !exists(json, 'netProfit') ? undefined : json['netProfit'],
-        'detectedBy': json['detectedBy'],
-        'detectedAt': (new Date(json['detectedAt'])),
         'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
-        'itemImage': json['itemImage'],
+        'itemImage': !exists(json, 'itemImage') ? undefined : json['itemImage'],
     };
 }
 
@@ -130,13 +123,12 @@ export function GetAnalyticDashboardResponseRecentSalesToJSON(value?: GetAnalyti
         'saleId': value.saleId,
         'platform': value.platform,
         'platformOrderId': value.platformOrderId,
+        'detailsPending': value.detailsPending,
         'salePrice': value.salePrice,
         'platformFee': value.platformFee,
         'shippingCost': value.shippingCost,
         'costOfGoods': value.costOfGoods,
         'netProfit': value.netProfit,
-        'detectedBy': value.detectedBy,
-        'detectedAt': (value.detectedAt.toISOString()),
         'itemTitle': value.itemTitle,
         'itemImage': value.itemImage,
     };

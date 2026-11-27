@@ -97,6 +97,30 @@ export interface CreateVaultMarketPartnerApplyResponsePartner {
      * @memberof CreateVaultMarketPartnerApplyResponsePartner
      */
     decisionNote?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateVaultMarketPartnerApplyResponsePartner
+     */
+    postalCode?: string | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof CreateVaultMarketPartnerApplyResponsePartner
+     */
+    hours?: { [key: string]: any; } | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreateVaultMarketPartnerApplyResponsePartner
+     */
+    services: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateVaultMarketPartnerApplyResponsePartner
+     */
+    listed: boolean;
 }
 
 /**
@@ -105,8 +129,8 @@ export interface CreateVaultMarketPartnerApplyResponsePartner {
 */
 export enum CreateVaultMarketPartnerApplyResponsePartnerStatusEnum {
     Applied = 'applied',
-    Approved = 'approved',
     Rejected = 'rejected',
+    Approved = 'approved',
     Suspended = 'suspended'
 }
 
@@ -133,6 +157,10 @@ export function CreateVaultMarketPartnerApplyResponsePartnerFromJSONTyped(json: 
         'appliedAt': json['appliedAt'],
         'decidedAt': !exists(json, 'decidedAt') ? undefined : json['decidedAt'],
         'decisionNote': !exists(json, 'decisionNote') ? undefined : json['decisionNote'],
+        'postalCode': !exists(json, 'postalCode') ? undefined : json['postalCode'],
+        'hours': !exists(json, 'hours') ? undefined : json['hours'],
+        'services': json['services'],
+        'listed': json['listed'],
     };
 }
 
@@ -158,6 +186,10 @@ export function CreateVaultMarketPartnerApplyResponsePartnerToJSON(value?: Creat
         'appliedAt': value.appliedAt,
         'decidedAt': value.decidedAt,
         'decisionNote': value.decisionNote,
+        'postalCode': value.postalCode,
+        'hours': value.hours,
+        'services': value.services,
+        'listed': value.listed,
     };
 }
 

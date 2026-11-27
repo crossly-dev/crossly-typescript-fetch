@@ -20,6 +20,12 @@ import {
     CreateVaultMarketValuationStatementResponseAccountToJSON,
 } from './CreateVaultMarketValuationStatementResponseAccount';
 import {
+    CreateVaultMarketValuationStatementResponseShares,
+    CreateVaultMarketValuationStatementResponseSharesFromJSON,
+    CreateVaultMarketValuationStatementResponseSharesFromJSONTyped,
+    CreateVaultMarketValuationStatementResponseSharesToJSON,
+} from './CreateVaultMarketValuationStatementResponseShares';
+import {
     CreateVaultMarketValuationStatementResponseTotals,
     CreateVaultMarketValuationStatementResponseTotalsFromJSON,
     CreateVaultMarketValuationStatementResponseTotalsFromJSONTyped,
@@ -152,6 +158,12 @@ export interface GetVaultMarketValuationStatementPreviewResponse {
      * @memberof GetVaultMarketValuationStatementPreviewResponse
      */
     venue: string;
+    /**
+     * 
+     * @type {CreateVaultMarketValuationStatementResponseShares}
+     * @memberof GetVaultMarketValuationStatementPreviewResponse
+     */
+    shares?: CreateVaultMarketValuationStatementResponseShares | null;
 }
 
 /**
@@ -159,8 +171,8 @@ export interface GetVaultMarketValuationStatementPreviewResponse {
 * @enum {string}
 */
 export enum GetVaultMarketValuationStatementPreviewResponsePurposeEnum {
-    Insurance = 'insurance',
-    Appraisal = 'appraisal'
+    Appraisal = 'appraisal',
+    Insurance = 'insurance'
 }
 
 export function GetVaultMarketValuationStatementPreviewResponseFromJSON(json: any): GetVaultMarketValuationStatementPreviewResponse {
@@ -192,6 +204,7 @@ export function GetVaultMarketValuationStatementPreviewResponseFromJSONTyped(jso
         'notes': json['notes'],
         'verifyUrl': !exists(json, 'verifyUrl') ? undefined : json['verifyUrl'],
         'venue': json['venue'],
+        'shares': !exists(json, 'shares') ? undefined : CreateVaultMarketValuationStatementResponseSharesFromJSON(json['shares']),
     };
 }
 
@@ -223,6 +236,7 @@ export function GetVaultMarketValuationStatementPreviewResponseToJSON(value?: Ge
         'notes': value.notes,
         'verifyUrl': value.verifyUrl,
         'venue': value.venue,
+        'shares': CreateVaultMarketValuationStatementResponseSharesToJSON(value.shares),
     };
 }
 

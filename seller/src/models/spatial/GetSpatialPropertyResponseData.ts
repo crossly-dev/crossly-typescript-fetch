@@ -14,17 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateSpatialPropertyDeedLeaseResponseData,
-    CreateSpatialPropertyDeedLeaseResponseDataFromJSON,
-    CreateSpatialPropertyDeedLeaseResponseDataFromJSONTyped,
-    CreateSpatialPropertyDeedLeaseResponseDataToJSON,
-} from './CreateSpatialPropertyDeedLeaseResponseData';
-import {
     GetSpatialPropertyResponseDataDeeds,
     GetSpatialPropertyResponseDataDeedsFromJSON,
     GetSpatialPropertyResponseDataDeedsFromJSONTyped,
     GetSpatialPropertyResponseDataDeedsToJSON,
 } from './GetSpatialPropertyResponseDataDeeds';
+import {
+    GetSpatialPropertyResponseDataTenancies,
+    GetSpatialPropertyResponseDataTenanciesFromJSON,
+    GetSpatialPropertyResponseDataTenanciesFromJSONTyped,
+    GetSpatialPropertyResponseDataTenanciesToJSON,
+} from './GetSpatialPropertyResponseDataTenancies';
 
 /**
  * 
@@ -46,10 +46,10 @@ export interface GetSpatialPropertyResponseData {
     deeds: Array<GetSpatialPropertyResponseDataDeeds>;
     /**
      * 
-     * @type {Array<CreateSpatialPropertyDeedLeaseResponseData>}
+     * @type {Array<GetSpatialPropertyResponseDataTenancies>}
      * @memberof GetSpatialPropertyResponseData
      */
-    tenancies: Array<CreateSpatialPropertyDeedLeaseResponseData>;
+    tenancies: Array<GetSpatialPropertyResponseDataTenancies>;
 }
 
 export function GetSpatialPropertyResponseDataFromJSON(json: any): GetSpatialPropertyResponseData {
@@ -64,7 +64,7 @@ export function GetSpatialPropertyResponseDataFromJSONTyped(json: any, ignoreDis
         
         'enabled': json['enabled'],
         'deeds': ((json['deeds'] as Array<any>).map(GetSpatialPropertyResponseDataDeedsFromJSON)),
-        'tenancies': ((json['tenancies'] as Array<any>).map(CreateSpatialPropertyDeedLeaseResponseDataFromJSON)),
+        'tenancies': ((json['tenancies'] as Array<any>).map(GetSpatialPropertyResponseDataTenanciesFromJSON)),
     };
 }
 
@@ -79,7 +79,7 @@ export function GetSpatialPropertyResponseDataToJSON(value?: GetSpatialPropertyR
         
         'enabled': value.enabled,
         'deeds': ((value.deeds as Array<any>).map(GetSpatialPropertyResponseDataDeedsToJSON)),
-        'tenancies': ((value.tenancies as Array<any>).map(CreateSpatialPropertyDeedLeaseResponseDataToJSON)),
+        'tenancies': ((value.tenancies as Array<any>).map(GetSpatialPropertyResponseDataTenanciesToJSON)),
     };
 }
 

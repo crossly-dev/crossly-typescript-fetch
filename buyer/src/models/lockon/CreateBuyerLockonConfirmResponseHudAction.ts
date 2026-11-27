@@ -45,10 +45,10 @@ export interface CreateBuyerLockonConfirmResponseHudAction {
 */
 export enum CreateBuyerLockonConfirmResponseHudActionKindEnum {
     None = 'none',
-    Confirm = 'confirm',
     Save = 'save',
     BuyCrossly = 'buy_crossly',
-    BuyOffsite = 'buy_offsite'
+    BuyOffsite = 'buy_offsite',
+    Confirm = 'confirm'
 }
 
 export function CreateBuyerLockonConfirmResponseHudActionFromJSON(json: any): CreateBuyerLockonConfirmResponseHudAction {

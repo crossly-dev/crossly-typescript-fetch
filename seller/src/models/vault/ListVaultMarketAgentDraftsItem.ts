@@ -166,9 +166,9 @@ export enum ListVaultMarketAgentDraftsItemSideEnum {
 * @enum {string}
 */
 export enum ListVaultMarketAgentDraftsItemFundingEnum {
+    Vault = 'vault',
     Card = 'card',
-    Custodian = 'custodian',
-    Vault = 'vault'
+    Custodian = 'custodian'
 }/**
 * @export
 * @enum {string}
@@ -176,9 +176,9 @@ export enum ListVaultMarketAgentDraftsItemFundingEnum {
 export enum ListVaultMarketAgentDraftsItemStatusEnum {
     Cancelled = 'cancelled',
     Expired = 'expired',
+    Drafted = 'drafted',
     Rejected = 'rejected',
     Placing = 'placing',
-    Drafted = 'drafted',
     Placed = 'placed'
 }
 

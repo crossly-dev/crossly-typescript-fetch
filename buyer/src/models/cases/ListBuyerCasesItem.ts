@@ -30,13 +30,7 @@ export interface ListBuyerCasesItem {
      * @type {string}
      * @memberof ListBuyerCasesItem
      */
-    createdAt: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerCasesItem
-     */
-    updatedAt: string;
+    purchaseId: string;
     /**
      * inr, snad, counterfeit, damaged, wrong_item, other.
      * @type {string}
@@ -50,17 +44,23 @@ export interface ListBuyerCasesItem {
      */
     state: string;
     /**
-     * not_received | return | problem.
+     * 
      * @type {string}
      * @memberof ListBuyerCasesItem
      */
-    kind: string;
+    createdAt: string;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerCasesItem
      */
-    purchaseId: string;
+    updatedAt: string;
+    /**
+     * not_received | return | problem.
+     * @type {string}
+     * @memberof ListBuyerCasesItem
+     */
+    kind: string;
     /**
      * 
      * @type {boolean}
@@ -73,18 +73,6 @@ export interface ListBuyerCasesItem {
      * @memberof ListBuyerCasesItem
      */
     yourTurn: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerCasesItem
-     */
-    resolvedAt?: string | null;
-    /**
-     * What you paid for the order, in cents.
-     * @type {number}
-     * @memberof ListBuyerCasesItem
-     */
-    buyerPaidCents?: number | null;
     /**
      * 
      * @type {string}
@@ -109,6 +97,12 @@ export interface ListBuyerCasesItem {
      * @memberof ListBuyerCasesItem
      */
     resolvedRefundCents?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerCasesItem
+     */
+    resolvedAt?: string | null;
     /**
      * 
      * @type {string}
@@ -140,6 +134,12 @@ export interface ListBuyerCasesItem {
      */
     returnDeliveredAt?: string | null;
     /**
+     * What you paid for the order, in cents.
+     * @type {number}
+     * @memberof ListBuyerCasesItem
+     */
+    buyerPaidCents?: number | null;
+    /**
      * 
      * @type {string}
      * @memberof ListBuyerCasesItem
@@ -170,25 +170,25 @@ export function ListBuyerCasesItemFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'updatedAt': json['updatedAt'],
+        'purchaseId': json['purchaseId'],
         'reason': json['reason'],
         'state': json['state'],
+        'createdAt': json['createdAt'],
+        'updatedAt': json['updatedAt'],
         'kind': json['kind'],
-        'purchaseId': json['purchaseId'],
         'closed': json['closed'],
         'yourTurn': json['yourTurn'],
-        'resolvedAt': !exists(json, 'resolvedAt') ? undefined : json['resolvedAt'],
-        'buyerPaidCents': !exists(json, 'buyerPaidCents') ? undefined : json['buyerPaidCents'],
         'awaitingParty': !exists(json, 'awaitingParty') ? undefined : json['awaitingParty'],
         'escalateAfter': !exists(json, 'escalateAfter') ? undefined : json['escalateAfter'],
         'offeredRefundCents': !exists(json, 'offeredRefundCents') ? undefined : json['offeredRefundCents'],
         'resolvedRefundCents': !exists(json, 'resolvedRefundCents') ? undefined : json['resolvedRefundCents'],
+        'resolvedAt': !exists(json, 'resolvedAt') ? undefined : json['resolvedAt'],
         'returnLabelUrl': !exists(json, 'returnLabelUrl') ? undefined : json['returnLabelUrl'],
         'returnTrackingCode': !exists(json, 'returnTrackingCode') ? undefined : json['returnTrackingCode'],
         'returnTrackingCarrier': !exists(json, 'returnTrackingCarrier') ? undefined : json['returnTrackingCarrier'],
         'returnTrackingStatus': !exists(json, 'returnTrackingStatus') ? undefined : json['returnTrackingStatus'],
         'returnDeliveredAt': !exists(json, 'returnDeliveredAt') ? undefined : json['returnDeliveredAt'],
+        'buyerPaidCents': !exists(json, 'buyerPaidCents') ? undefined : json['buyerPaidCents'],
         'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
         'itemThumbnail': !exists(json, 'itemThumbnail') ? undefined : json['itemThumbnail'],
         'sellerName': !exists(json, 'sellerName') ? undefined : json['sellerName'],
@@ -205,25 +205,25 @@ export function ListBuyerCasesItemToJSON(value?: ListBuyerCasesItem | null): any
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'updatedAt': value.updatedAt,
+        'purchaseId': value.purchaseId,
         'reason': value.reason,
         'state': value.state,
+        'createdAt': value.createdAt,
+        'updatedAt': value.updatedAt,
         'kind': value.kind,
-        'purchaseId': value.purchaseId,
         'closed': value.closed,
         'yourTurn': value.yourTurn,
-        'resolvedAt': value.resolvedAt,
-        'buyerPaidCents': value.buyerPaidCents,
         'awaitingParty': value.awaitingParty,
         'escalateAfter': value.escalateAfter,
         'offeredRefundCents': value.offeredRefundCents,
         'resolvedRefundCents': value.resolvedRefundCents,
+        'resolvedAt': value.resolvedAt,
         'returnLabelUrl': value.returnLabelUrl,
         'returnTrackingCode': value.returnTrackingCode,
         'returnTrackingCarrier': value.returnTrackingCarrier,
         'returnTrackingStatus': value.returnTrackingStatus,
         'returnDeliveredAt': value.returnDeliveredAt,
+        'buyerPaidCents': value.buyerPaidCents,
         'itemTitle': value.itemTitle,
         'itemThumbnail': value.itemThumbnail,
         'sellerName': value.sellerName,

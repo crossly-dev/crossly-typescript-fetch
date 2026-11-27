@@ -74,8 +74,8 @@ export interface GetGradingWorthResponseWorthGraders {
 * @enum {string}
 */
 export enum GetGradingWorthResponseWorthGradersViaEnum {
-    Run = 'run',
-    Single = 'single'
+    Single = 'single',
+    Run = 'run'
 }
 
 export function GetGradingWorthResponseWorthGradersFromJSON(json: any): GetGradingWorthResponseWorthGraders {

@@ -20,6 +20,12 @@ import {
     GetVaultMarketDigestPreviewResponseFirstMarksToJSON,
 } from './GetVaultMarketDigestPreviewResponseFirstMarks';
 import {
+    GetVaultMarketDigestPreviewResponseLearn,
+    GetVaultMarketDigestPreviewResponseLearnFromJSON,
+    GetVaultMarketDigestPreviewResponseLearnFromJSONTyped,
+    GetVaultMarketDigestPreviewResponseLearnToJSON,
+} from './GetVaultMarketDigestPreviewResponseLearn';
+import {
     GetVaultMarketDigestPreviewResponseOffers,
     GetVaultMarketDigestPreviewResponseOffersFromJSON,
     GetVaultMarketDigestPreviewResponseOffersFromJSONTyped,
@@ -68,6 +74,12 @@ export interface GetVaultMarketDigestPreviewResponse {
      * @memberof GetVaultMarketDigestPreviewResponse
      */
     firstMarks: Array<GetVaultMarketDigestPreviewResponseFirstMarks>;
+    /**
+     * 
+     * @type {GetVaultMarketDigestPreviewResponseLearn}
+     * @memberof GetVaultMarketDigestPreviewResponse
+     */
+    learn: GetVaultMarketDigestPreviewResponseLearn;
 }
 
 export function GetVaultMarketDigestPreviewResponseFromJSON(json: any): GetVaultMarketDigestPreviewResponse {
@@ -85,6 +97,7 @@ export function GetVaultMarketDigestPreviewResponseFromJSONTyped(json: any, igno
         'value': GetVaultMarketDigestPreviewResponseValueFromJSON(json['value']),
         'offers': ((json['offers'] as Array<any>).map(GetVaultMarketDigestPreviewResponseOffersFromJSON)),
         'firstMarks': ((json['firstMarks'] as Array<any>).map(GetVaultMarketDigestPreviewResponseFirstMarksFromJSON)),
+        'learn': GetVaultMarketDigestPreviewResponseLearnFromJSON(json['learn']),
     };
 }
 
@@ -102,6 +115,7 @@ export function GetVaultMarketDigestPreviewResponseToJSON(value?: GetVaultMarket
         'value': GetVaultMarketDigestPreviewResponseValueToJSON(value.value),
         'offers': ((value.offers as Array<any>).map(GetVaultMarketDigestPreviewResponseOffersToJSON)),
         'firstMarks': ((value.firstMarks as Array<any>).map(GetVaultMarketDigestPreviewResponseFirstMarksToJSON)),
+        'learn': GetVaultMarketDigestPreviewResponseLearnToJSON(value.learn),
     };
 }
 

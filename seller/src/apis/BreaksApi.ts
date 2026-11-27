@@ -15,9 +15,6 @@
 
 import * as runtime from '../runtime';
 import {
-    CreateBreakCancelResponse,
-    CreateBreakCancelResponseFromJSON,
-    CreateBreakCancelResponseToJSON,
     CreateBreakDrawResponse,
     CreateBreakDrawResponseFromJSON,
     CreateBreakDrawResponseToJSON,
@@ -30,6 +27,9 @@ import {
     ListBreaksResponse,
     ListBreaksResponseFromJSON,
     ListBreaksResponseToJSON,
+    UpdateGroupBuyResponse,
+    UpdateGroupBuyResponseFromJSON,
+    UpdateGroupBuyResponseToJSON,
 } from '../models';
 
 export interface CreateBreakCancelRequest {
@@ -95,7 +95,7 @@ export class BreaksApi extends runtime.BaseAPI {
     /**
      * Cancel a break before any spot is paid for; after that, refund those orders instead (409).
      */
-    async createBreakCancelRaw(requestParameters: CreateBreakCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakCancelResponse>> {
+    async createBreakCancelRaw(requestParameters: CreateBreakCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBreakCancel.');
         }
@@ -119,13 +119,13 @@ export class BreaksApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBreakCancelResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
     }
 
     /**
      * Cancel a break before any spot is paid for; after that, refund those orders instead (409).
      */
-    async createBreakCancel(requestParameters: CreateBreakCancelRequest, initOverrides?: RequestInit): Promise<CreateBreakCancelResponse> {
+    async createBreakCancel(requestParameters: CreateBreakCancelRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.createBreakCancelRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -171,7 +171,7 @@ export class BreaksApi extends runtime.BaseAPI {
     /**
      * Mark the product opened on stream.
      */
-    async createBreakOpenedRaw(requestParameters: CreateBreakOpenedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakCancelResponse>> {
+    async createBreakOpenedRaw(requestParameters: CreateBreakOpenedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBreakOpened.');
         }
@@ -195,13 +195,13 @@ export class BreaksApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBreakCancelResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
     }
 
     /**
      * Mark the product opened on stream.
      */
-    async createBreakOpened(requestParameters: CreateBreakOpenedRequest, initOverrides?: RequestInit): Promise<CreateBreakCancelResponse> {
+    async createBreakOpened(requestParameters: CreateBreakOpenedRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.createBreakOpenedRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -209,7 +209,7 @@ export class BreaksApi extends runtime.BaseAPI {
     /**
      * Record what a spot pulled.
      */
-    async createBreakSpotHitRaw(requestParameters: CreateBreakSpotHitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakCancelResponse>> {
+    async createBreakSpotHitRaw(requestParameters: CreateBreakSpotHitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBreakSpotHit.');
         }
@@ -237,13 +237,13 @@ export class BreaksApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBreakCancelResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
     }
 
     /**
      * Record what a spot pulled.
      */
-    async createBreakSpotHit(requestParameters: CreateBreakSpotHitRequest, initOverrides?: RequestInit): Promise<CreateBreakCancelResponse> {
+    async createBreakSpotHit(requestParameters: CreateBreakSpotHitRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.createBreakSpotHitRaw(requestParameters, initOverrides);
         return await response.value();
     }

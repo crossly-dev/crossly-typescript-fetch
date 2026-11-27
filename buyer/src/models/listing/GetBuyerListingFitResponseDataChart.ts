@@ -34,16 +34,16 @@ export interface GetBuyerListingFitResponseDataChart {
     kind: string;
     /**
      * 
-     * @type {Array<GetBuyerListingFitResponseDataChartRows>}
-     * @memberof GetBuyerListingFitResponseDataChart
-     */
-    rows: Array<GetBuyerListingFitResponseDataChartRows>;
-    /**
-     * 
      * @type {string}
      * @memberof GetBuyerListingFitResponseDataChart
      */
     kindLabel: string;
+    /**
+     * 
+     * @type {Array<GetBuyerListingFitResponseDataChartRows>}
+     * @memberof GetBuyerListingFitResponseDataChart
+     */
+    rows: Array<GetBuyerListingFitResponseDataChartRows>;
 }
 
 export function GetBuyerListingFitResponseDataChartFromJSON(json: any): GetBuyerListingFitResponseDataChart {
@@ -57,8 +57,8 @@ export function GetBuyerListingFitResponseDataChartFromJSONTyped(json: any, igno
     return {
         
         'kind': json['kind'],
-        'rows': ((json['rows'] as Array<any>).map(GetBuyerListingFitResponseDataChartRowsFromJSON)),
         'kindLabel': json['kindLabel'],
+        'rows': ((json['rows'] as Array<any>).map(GetBuyerListingFitResponseDataChartRowsFromJSON)),
     };
 }
 
@@ -72,8 +72,8 @@ export function GetBuyerListingFitResponseDataChartToJSON(value?: GetBuyerListin
     return {
         
         'kind': value.kind,
-        'rows': ((value.rows as Array<any>).map(GetBuyerListingFitResponseDataChartRowsToJSON)),
         'kindLabel': value.kindLabel,
+        'rows': ((value.rows as Array<any>).map(GetBuyerListingFitResponseDataChartRowsToJSON)),
     };
 }
 

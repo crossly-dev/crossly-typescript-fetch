@@ -24,13 +24,13 @@ export interface ListBuyerListingSellerReviewsItemMedia {
      * @type {string}
      * @memberof ListBuyerListingSellerReviewsItemMedia
      */
-    url: string;
+    kind: string;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerListingSellerReviewsItemMedia
      */
-    kind: string;
+    url: string;
 }
 
 export function ListBuyerListingSellerReviewsItemMediaFromJSON(json: any): ListBuyerListingSellerReviewsItemMedia {
@@ -43,8 +43,8 @@ export function ListBuyerListingSellerReviewsItemMediaFromJSONTyped(json: any, i
     }
     return {
         
-        'url': json['url'],
         'kind': json['kind'],
+        'url': json['url'],
     };
 }
 
@@ -57,8 +57,8 @@ export function ListBuyerListingSellerReviewsItemMediaToJSON(value?: ListBuyerLi
     }
     return {
         
-        'url': value.url,
         'kind': value.kind,
+        'url': value.url,
     };
 }
 

@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    ListVaultMarketFollowCopyWatchAlertsItemBy,
+    ListVaultMarketFollowCopyWatchAlertsItemByFromJSON,
+    ListVaultMarketFollowCopyWatchAlertsItemByFromJSONTyped,
+    ListVaultMarketFollowCopyWatchAlertsItemByToJSON,
+} from './ListVaultMarketFollowCopyWatchAlertsItemBy';
+
 /**
  * 
  * @export
@@ -25,6 +32,12 @@ export interface ListVaultMarketFollowCopyWatchAlertsItem {
      * @memberof ListVaultMarketFollowCopyWatchAlertsItem
      */
     id: string;
+    /**
+     * 
+     * @type {ListVaultMarketFollowCopyWatchAlertsItemBy}
+     * @memberof ListVaultMarketFollowCopyWatchAlertsItem
+     */
+    by: ListVaultMarketFollowCopyWatchAlertsItemBy;
     /**
      * 
      * @type {string}
@@ -119,6 +132,7 @@ export function ListVaultMarketFollowCopyWatchAlertsItemFromJSONTyped(json: any,
     return {
         
         'id': json['id'],
+        'by': ListVaultMarketFollowCopyWatchAlertsItemByFromJSON(json['by']),
         'side': json['side'],
         'quantity': json['quantity'],
         'limitCents': !exists(json, 'limitCents') ? undefined : json['limitCents'],
@@ -144,6 +158,7 @@ export function ListVaultMarketFollowCopyWatchAlertsItemToJSON(value?: ListVault
     return {
         
         'id': value.id,
+        'by': ListVaultMarketFollowCopyWatchAlertsItemByToJSON(value.by),
         'side': value.side,
         'quantity': value.quantity,
         'limitCents': value.limitCents,

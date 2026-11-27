@@ -32,11 +32,23 @@ export interface CreateOrderMessageResponse {
      */
     sent: boolean;
     /**
+     * True when the managing app was asked to send it (action authority).
+     * @type {boolean}
+     * @memberof CreateOrderMessageResponse
+     */
+    relayed?: boolean | null;
+    /**
+     * The managing-app command id, on a relay.
+     * @type {string}
+     * @memberof CreateOrderMessageResponse
+     */
+    commandId?: string | null;
+    /**
      * 
      * @type {string}
      * @memberof CreateOrderMessageResponse
      */
-    platformConversationId: string;
+    platformConversationId?: string | null;
 }
 
 export function CreateOrderMessageResponseFromJSON(json: any): CreateOrderMessageResponse {
@@ -51,7 +63,9 @@ export function CreateOrderMessageResponseFromJSONTyped(json: any, ignoreDiscrim
         
         'orderId': json['orderId'],
         'sent': json['sent'],
-        'platformConversationId': json['platformConversationId'],
+        'relayed': !exists(json, 'relayed') ? undefined : json['relayed'],
+        'commandId': !exists(json, 'commandId') ? undefined : json['commandId'],
+        'platformConversationId': !exists(json, 'platformConversationId') ? undefined : json['platformConversationId'],
     };
 }
 
@@ -66,6 +80,8 @@ export function CreateOrderMessageResponseToJSON(value?: CreateOrderMessageRespo
         
         'orderId': value.orderId,
         'sent': value.sent,
+        'relayed': value.relayed,
+        'commandId': value.commandId,
         'platformConversationId': value.platformConversationId,
     };
 }

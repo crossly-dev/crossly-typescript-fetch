@@ -62,6 +62,18 @@ export interface GetAnalyticBookkeepingResponse {
      * @memberof GetAnalyticBookkeepingResponse
      */
     platformBreakdown: Array<GetAnalyticBookkeepingResponsePlatformBreakdown>;
+    /**
+     * Sales of the year whose price and buyer are not known yet: in no line above. "N sales pending details".
+     * @type {number}
+     * @memberof GetAnalyticBookkeepingResponse
+     */
+    pendingDetailsCount: number;
+    /**
+     * The books timezone the year was cut in.
+     * @type {string}
+     * @memberof GetAnalyticBookkeepingResponse
+     */
+    tz: string;
 }
 
 export function GetAnalyticBookkeepingResponseFromJSON(json: any): GetAnalyticBookkeepingResponse {
@@ -78,6 +90,8 @@ export function GetAnalyticBookkeepingResponseFromJSONTyped(json: any, ignoreDis
         'monthlyPL': ((json['monthlyPL'] as Array<any>).map(GetAnalyticBookkeepingResponseMonthlyPLFromJSON)),
         'annualTotals': GetAnalyticBookkeepingResponseAnnualTotalsFromJSON(json['annualTotals']),
         'platformBreakdown': ((json['platformBreakdown'] as Array<any>).map(GetAnalyticBookkeepingResponsePlatformBreakdownFromJSON)),
+        'pendingDetailsCount': json['pendingDetailsCount'],
+        'tz': json['tz'],
     };
 }
 
@@ -94,6 +108,8 @@ export function GetAnalyticBookkeepingResponseToJSON(value?: GetAnalyticBookkeep
         'monthlyPL': ((value.monthlyPL as Array<any>).map(GetAnalyticBookkeepingResponseMonthlyPLToJSON)),
         'annualTotals': GetAnalyticBookkeepingResponseAnnualTotalsToJSON(value.annualTotals),
         'platformBreakdown': ((value.platformBreakdown as Array<any>).map(GetAnalyticBookkeepingResponsePlatformBreakdownToJSON)),
+        'pendingDetailsCount': value.pendingDetailsCount,
+        'tz': value.tz,
     };
 }
 

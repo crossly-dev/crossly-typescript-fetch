@@ -38,8 +38,8 @@ export interface CreateBuyerLockonConfirmResponseIdentifier {
 * @enum {string}
 */
 export enum CreateBuyerLockonConfirmResponseIdentifierNsEnum {
-    StyleCode = 'style_code',
     Gtin = 'gtin',
+    StyleCode = 'style_code',
     LegoSet = 'lego_set',
     Tcgplayer = 'tcgplayer',
     Discogs = 'discogs',

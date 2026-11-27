@@ -15,15 +15,24 @@
 
 import * as runtime from '../runtime';
 import {
-    CreateGradingSubmissionResultResponse,
-    CreateGradingSubmissionResultResponseFromJSON,
-    CreateGradingSubmissionResultResponseToJSON,
     CreateGradingVerifyCertResponse,
     CreateGradingVerifyCertResponseFromJSON,
     CreateGradingVerifyCertResponseToJSON,
+    CreateVaultMarketGradingOrderPayResponse,
+    CreateVaultMarketGradingOrderPayResponseFromJSON,
+    CreateVaultMarketGradingOrderPayResponseToJSON,
+    CreateVaultMarketGradingOrderResponse,
+    CreateVaultMarketGradingOrderResponseFromJSON,
+    CreateVaultMarketGradingOrderResponseToJSON,
+    GetGradingPriceBookResponse,
+    GetGradingPriceBookResponseFromJSON,
+    GetGradingPriceBookResponseToJSON,
     GetGradingWorthResponse,
     GetGradingWorthResponseFromJSON,
     GetGradingWorthResponseToJSON,
+    GetVaultMarketGradingOrderResponse,
+    GetVaultMarketGradingOrderResponseFromJSON,
+    GetVaultMarketGradingOrderResponseToJSON,
     IdResponse,
     IdResponseFromJSON,
     IdResponseToJSON,
@@ -36,9 +45,18 @@ import {
     ListGradingSubmissionsResponse,
     ListGradingSubmissionsResponseFromJSON,
     ListGradingSubmissionsResponseToJSON,
+    ListVaultMarketGradingCandidatesResponse,
+    ListVaultMarketGradingCandidatesResponseFromJSON,
+    ListVaultMarketGradingCandidatesResponseToJSON,
+    ListVaultMarketGradingOrdersResponse,
+    ListVaultMarketGradingOrdersResponseFromJSON,
+    ListVaultMarketGradingOrdersResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    StatusResponse,
+    StatusResponseFromJSON,
+    StatusResponseToJSON,
 } from '../models';
 
 export interface CreateGradingRunReserveRequest {
@@ -49,16 +67,28 @@ export interface CreateGradingSubmissionCancelRequest {
     id: string;
 }
 
-export interface CreateGradingSubmissionResultRequest {
+export interface CreateGradingSubmissionShippedRequest {
     id: string;
 }
 
-export interface CreateGradingSubmissionShippedRequest {
+export interface CreateVaultMarketGradingOrderCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketGradingOrderPayRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketGradingOrderPayConfirmRequest {
     id: string;
 }
 
 export interface GetGradingWorthRequest {
     inventoryItemId: string;
+}
+
+export interface GetVaultMarketGradingOrderRequest {
+    id: string;
 }
 
 export interface ListGradingSubmissionsRequest {
@@ -69,40 +99,6 @@ export interface ListGradingSubmissionsRequest {
  * 
  */
 export class GradingApi extends runtime.BaseAPI {
-
-    /**
-     * Track a card you sent on your own grader account (Direct). Crossly takes no money; it verifies the cert when it comes back.
-     */
-    async createGradingDirectRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("PersonalAccessToken", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/v1/grading/direct`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => IdResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Track a card you sent on your own grader account (Direct). Crossly takes no money; it verifies the cert when it comes back.
-     */
-    async createGradingDirect(initOverrides?: RequestInit): Promise<IdResponse> {
-        const response = await this.createGradingDirectRaw(initOverrides);
-        return await response.value();
-    }
 
     /**
      * Hold a slot in a Grading Run. Free now; charged on your saved card only if the run locks. Full-access token and Idempotency-Key required.
@@ -181,44 +177,6 @@ export class GradingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Direct only: enter the grade that came back. Writes it to the item and its listings, verified when the cert agrees.
-     */
-    async createGradingSubmissionResultRaw(requestParameters: CreateGradingSubmissionResultRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGradingSubmissionResultResponse>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createGradingSubmissionResult.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("PersonalAccessToken", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/v1/grading/submissions/{id}/result`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateGradingSubmissionResultResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Direct only: enter the grade that came back. Writes it to the item and its listings, verified when the cert agrees.
-     */
-    async createGradingSubmissionResult(requestParameters: CreateGradingSubmissionResultRequest, initOverrides?: RequestInit): Promise<CreateGradingSubmissionResultResponse> {
-        const response = await this.createGradingSubmissionResultRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * Say you mailed a charged card to the hub, with optional tracking.
      */
     async createGradingSubmissionShippedRaw(requestParameters: CreateGradingSubmissionShippedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
@@ -291,6 +249,188 @@ export class GradingApi extends runtime.BaseAPI {
     }
 
     /**
+     * Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay.
+     */
+    async createVaultMarketGradingOrderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketGradingOrderResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/grading/orders`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketGradingOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay.
+     */
+    async createVaultMarketGradingOrder(initOverrides?: RequestInit): Promise<CreateVaultMarketGradingOrderResponse> {
+        const response = await this.createVaultMarketGradingOrderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel a draft submission; its vault units go back on their shelf. A paid submission cannot be cancelled here.
+     */
+    async createVaultMarketGradingOrderCancelRaw(requestParameters: CreateVaultMarketGradingOrderCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StatusResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketGradingOrderCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/grading/orders/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StatusResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a draft submission; its vault units go back on their shelf. A paid submission cannot be cancelled here.
+     */
+    async createVaultMarketGradingOrderCancel(requestParameters: CreateVaultMarketGradingOrderCancelRequest, initOverrides?: RequestInit): Promise<StatusResponse> {
+        const response = await this.createVaultMarketGradingOrderCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Pay for a draft submission. savedCard: true charges your saved card (paid, or requires_action with a client secret for 3-D Secure). Full-access token and Idempotency-Key required.
+     */
+    async createVaultMarketGradingOrderPayRaw(requestParameters: CreateVaultMarketGradingOrderPayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketGradingOrderPayResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketGradingOrderPay.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/grading/orders/{id}/pay`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketGradingOrderPayResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pay for a draft submission. savedCard: true charges your saved card (paid, or requires_action with a client secret for 3-D Secure). Full-access token and Idempotency-Key required.
+     */
+    async createVaultMarketGradingOrderPay(requestParameters: CreateVaultMarketGradingOrderPayRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketGradingOrderPayResponse> {
+        const response = await this.createVaultMarketGradingOrderPayRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
+     */
+    async createVaultMarketGradingOrderPayConfirmRaw(requestParameters: CreateVaultMarketGradingOrderPayConfirmRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StatusResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketGradingOrderPayConfirm.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/grading/orders/{id}/pay/confirm`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StatusResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
+     */
+    async createVaultMarketGradingOrderPayConfirm(requestParameters: CreateVaultMarketGradingOrderPayConfirmRequest, initOverrides?: RequestInit): Promise<StatusResponse> {
+        const response = await this.createVaultMarketGradingOrderPayConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The grading price book: every grader, its services (per-card price, minimum cards, max declared value, turnaround) and add-ons, plus Crossly handling. The same data the dashboard prices from.
+     */
+    async getGradingPriceBookRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetGradingPriceBookResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/grading/price-book`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetGradingPriceBookResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The grading price book: every grader, its services (per-card price, minimum cards, max declared value, turnaround) and add-ons, plus Crossly handling. The same data the dashboard prices from.
+     */
+    async getGradingPriceBook(initOverrides?: RequestInit): Promise<GetGradingPriceBookResponse> {
+        const response = await this.getGradingPriceBookRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Worth grading? Raw value vs what each grade is worth at each grader, against the cost. Never predicts the grade.
      */
     async getGradingWorthRaw(requestParameters: GetGradingWorthRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetGradingWorthResponse>> {
@@ -325,6 +465,44 @@ export class GradingApi extends runtime.BaseAPI {
      */
     async getGradingWorth(requestParameters: GetGradingWorthRequest, initOverrides?: RequestInit): Promise<GetGradingWorthResponse> {
         const response = await this.getGradingWorthRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One grading submission: its timeline, every card with its grade, cert number and photos, the costs and the tracking.
+     */
+    async getVaultMarketGradingOrderRaw(requestParameters: GetVaultMarketGradingOrderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketGradingOrderResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketGradingOrder.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/grading/orders/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketGradingOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One grading submission: its timeline, every card with its grade, cert number and photos, the costs and the tracking.
+     */
+    async getVaultMarketGradingOrder(requestParameters: GetVaultMarketGradingOrderRequest, initOverrides?: RequestInit): Promise<GetVaultMarketGradingOrderResponse> {
+        const response = await this.getVaultMarketGradingOrderRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -431,6 +609,74 @@ export class GradingApi extends runtime.BaseAPI {
      */
     async listGradingSubmissions(requestParameters: ListGradingSubmissionsRequest = {}, initOverrides?: RequestInit): Promise<ListGradingSubmissionsResponse> {
         const response = await this.listGradingSubmissionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go.
+     */
+    async listVaultMarketGradingCandidatesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradingCandidatesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/grading/candidates`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketGradingCandidatesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go.
+     */
+    async listVaultMarketGradingCandidates(initOverrides?: RequestInit): Promise<ListVaultMarketGradingCandidatesResponse> {
+        const response = await this.listVaultMarketGradingCandidatesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
+     */
+    async listVaultMarketGradingOrdersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradingOrdersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/grading/orders`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketGradingOrdersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
+     */
+    async listVaultMarketGradingOrders(initOverrides?: RequestInit): Promise<ListVaultMarketGradingOrdersResponse> {
+        const response = await this.listVaultMarketGradingOrdersRaw(initOverrides);
         return await response.value();
     }
 

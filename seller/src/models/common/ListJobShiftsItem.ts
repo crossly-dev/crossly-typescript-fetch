@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    SlugName,
-    SlugNameFromJSON,
-    SlugNameFromJSONTyped,
-    SlugNameToJSON,
-} from './SlugName';
+    NameSlug,
+    NameSlugFromJSON,
+    NameSlugFromJSONTyped,
+    NameSlugToJSON,
+} from './NameSlug';
 
 /**
  * 
@@ -46,10 +46,10 @@ export interface ListJobShiftsItem {
     title: string;
     /**
      * 
-     * @type {SlugName}
+     * @type {NameSlug}
      * @memberof ListJobShiftsItem
      */
-    place: SlugName;
+    place: NameSlug;
     /**
      * 
      * @type {string}
@@ -130,15 +130,15 @@ export enum ListJobShiftsItemRoleEnum {
 * @enum {string}
 */
 export enum ListJobShiftsItemRailEnum {
-    Bucks = 'bucks',
-    Cbx = 'cbx'
+    Cbx = 'cbx',
+    Bucks = 'bucks'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListJobShiftsItemStatusEnum {
-    Open = 'open',
     Cancelled = 'cancelled',
+    Open = 'open',
     Paid = 'paid',
     Claimed = 'claimed',
     Worked = 'worked',
@@ -158,7 +158,7 @@ export function ListJobShiftsItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': json['id'],
         'role': json['role'],
         'title': json['title'],
-        'place': SlugNameFromJSON(json['place']),
+        'place': NameSlugFromJSON(json['place']),
         'startsAt': json['startsAt'],
         'endsAt': json['endsAt'],
         'payCents': json['payCents'],
@@ -185,7 +185,7 @@ export function ListJobShiftsItemToJSON(value?: ListJobShiftsItem | null): any {
         'id': value.id,
         'role': value.role,
         'title': value.title,
-        'place': SlugNameToJSON(value.place),
+        'place': NameSlugToJSON(value.place),
         'startsAt': value.startsAt,
         'endsAt': value.endsAt,
         'payCents': value.payCents,

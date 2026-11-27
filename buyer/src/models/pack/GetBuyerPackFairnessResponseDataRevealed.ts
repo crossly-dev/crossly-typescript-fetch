@@ -27,18 +27,6 @@ export interface GetBuyerPackFairnessResponseDataRevealed {
     id: string;
     /**
      * 
-     * @type {number}
-     * @memberof GetBuyerPackFairnessResponseDataRevealed
-     */
-    nonce: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerPackFairnessResponseDataRevealed
-     */
-    revealedAt: string;
-    /**
-     * 
      * @type {string}
      * @memberof GetBuyerPackFairnessResponseDataRevealed
      */
@@ -55,6 +43,18 @@ export interface GetBuyerPackFairnessResponseDataRevealed {
      * @memberof GetBuyerPackFairnessResponseDataRevealed
      */
     clientSeed: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerPackFairnessResponseDataRevealed
+     */
+    nonce: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerPackFairnessResponseDataRevealed
+     */
+    revealedAt: string;
 }
 
 export function GetBuyerPackFairnessResponseDataRevealedFromJSON(json: any): GetBuyerPackFairnessResponseDataRevealed {
@@ -68,11 +68,11 @@ export function GetBuyerPackFairnessResponseDataRevealedFromJSONTyped(json: any,
     return {
         
         'id': json['id'],
-        'nonce': json['nonce'],
-        'revealedAt': json['revealedAt'],
         'serverSeed': json['serverSeed'],
         'serverSeedHash': json['serverSeedHash'],
         'clientSeed': json['clientSeed'],
+        'nonce': json['nonce'],
+        'revealedAt': json['revealedAt'],
     };
 }
 
@@ -86,11 +86,11 @@ export function GetBuyerPackFairnessResponseDataRevealedToJSON(value?: GetBuyerP
     return {
         
         'id': value.id,
-        'nonce': value.nonce,
-        'revealedAt': value.revealedAt,
         'serverSeed': value.serverSeed,
         'serverSeedHash': value.serverSeedHash,
         'clientSeed': value.clientSeed,
+        'nonce': value.nonce,
+        'revealedAt': value.revealedAt,
     };
 }
 

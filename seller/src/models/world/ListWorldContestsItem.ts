@@ -39,6 +39,12 @@ export interface ListWorldContestsItem {
     status: ListWorldContestsItemStatusEnum;
     /**
      * 
+     * @type {string}
+     * @memberof ListWorldContestsItem
+     */
+    ownerUserId: string;
+    /**
+     * 
      * @type {Date}
      * @memberof ListWorldContestsItem
      */
@@ -55,12 +61,6 @@ export interface ListWorldContestsItem {
      * @memberof ListWorldContestsItem
      */
     feeCents?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListWorldContestsItem
-     */
-    ownerUserId: string;
     /**
      * 
      * @type {Date}
@@ -98,8 +98,8 @@ export interface ListWorldContestsItem {
 * @enum {string}
 */
 export enum ListWorldContestsItemStatusEnum {
-    Open = 'open',
     Cancelled = 'cancelled',
+    Open = 'open',
     Settled = 'settled'
 }/**
 * @export
@@ -107,8 +107,8 @@ export enum ListWorldContestsItemStatusEnum {
 */
 export enum ListWorldContestsItemEntryModeEnum {
     Free = 'free',
-    Sponsored = 'sponsored',
-    Paid = 'paid'
+    Paid = 'paid',
+    Sponsored = 'sponsored'
 }/**
 * @export
 * @enum {string}
@@ -131,10 +131,10 @@ export function ListWorldContestsItemFromJSONTyped(json: any, ignoreDiscriminato
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
+        'ownerUserId': json['ownerUserId'],
         'endsAt': (new Date(json['endsAt'])),
         'startsAt': (new Date(json['startsAt'])),
         'feeCents': !exists(json, 'feeCents') ? undefined : json['feeCents'],
-        'ownerUserId': json['ownerUserId'],
         'settledAt': !exists(json, 'settledAt') ? undefined : (json['settledAt'] === null ? null : new Date(json['settledAt'])),
         'gamePlace': json['gamePlace'],
         'gameObject': json['gameObject'],
@@ -155,10 +155,10 @@ export function ListWorldContestsItemToJSON(value?: ListWorldContestsItem | null
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
+        'ownerUserId': value.ownerUserId,
         'endsAt': (value.endsAt.toISOString()),
         'startsAt': (value.startsAt.toISOString()),
         'feeCents': value.feeCents,
-        'ownerUserId': value.ownerUserId,
         'settledAt': value.settledAt === undefined ? undefined : (value.settledAt === null ? null : value.settledAt.toISOString()),
         'gamePlace': value.gamePlace,
         'gameObject': value.gameObject,

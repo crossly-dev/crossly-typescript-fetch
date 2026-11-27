@@ -28,16 +28,16 @@ import {
 export interface GetBuyerPurchaseReturnResponseData {
     /**
      * 
-     * @type {Array<GetBuyerPurchaseReturnResponseDataReasons>}
-     * @memberof GetBuyerPurchaseReturnResponseData
-     */
-    reasons: Array<GetBuyerPurchaseReturnResponseDataReasons>;
-    /**
-     * 
      * @type {{ [key: string]: any; }}
      * @memberof GetBuyerPurchaseReturnResponseData
      */
     terms: { [key: string]: any; };
+    /**
+     * 
+     * @type {Array<GetBuyerPurchaseReturnResponseDataReasons>}
+     * @memberof GetBuyerPurchaseReturnResponseData
+     */
+    reasons: Array<GetBuyerPurchaseReturnResponseDataReasons>;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -56,8 +56,8 @@ export function GetBuyerPurchaseReturnResponseDataFromJSONTyped(json: any, ignor
     }
     return {
         
-        'reasons': ((json['reasons'] as Array<any>).map(GetBuyerPurchaseReturnResponseDataReasonsFromJSON)),
         'terms': json['terms'],
+        'reasons': ((json['reasons'] as Array<any>).map(GetBuyerPurchaseReturnResponseDataReasonsFromJSON)),
         'existing': !exists(json, 'existing') ? undefined : json['existing'],
     };
 }
@@ -71,8 +71,8 @@ export function GetBuyerPurchaseReturnResponseDataToJSON(value?: GetBuyerPurchas
     }
     return {
         
-        'reasons': ((value.reasons as Array<any>).map(GetBuyerPurchaseReturnResponseDataReasonsToJSON)),
         'terms': value.terms,
+        'reasons': ((value.reasons as Array<any>).map(GetBuyerPurchaseReturnResponseDataReasonsToJSON)),
         'existing': value.existing,
     };
 }

@@ -36,7 +36,7 @@ export interface CreateWorldGamePackageResponseDataVersion {
      * @type {number}
      * @memberof CreateWorldGamePackageResponseDataVersion
      */
-    designVersion: number;
+    designVersion?: number | null;
     /**
      * 
      * @type {string}
@@ -57,7 +57,7 @@ export function CreateWorldGamePackageResponseDataVersionFromJSONTyped(json: any
         
         'id': json['id'],
         'semver': json['semver'],
-        'designVersion': json['designVersion'],
+        'designVersion': !exists(json, 'designVersion') ? undefined : json['designVersion'],
         'state': json['state'],
     };
 }

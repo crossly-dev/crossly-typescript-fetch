@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    CreateInventoryCsvImportResponseCapacity,
+    CreateInventoryCsvImportResponseCapacityFromJSON,
+    CreateInventoryCsvImportResponseCapacityFromJSONTyped,
+    CreateInventoryCsvImportResponseCapacityToJSON,
+} from './CreateInventoryCsvImportResponseCapacity';
+import {
     CreateInventoryCsvImportResponseProblems,
     CreateInventoryCsvImportResponseProblemsFromJSON,
     CreateInventoryCsvImportResponseProblemsFromJSONTyped,
@@ -45,19 +51,20 @@ export interface CreateInventoryCsvImportResponse {
      */
     maxRows: number;
     /**
-     * 
+     * New items written — or, on a dry run, that WOULD be written.
      * @type {number}
      * @memberof CreateInventoryCsvImportResponse
      */
     created: number;
     /**
-     * 
+     * Existing items updated by SKU — or, on a dry run, that would be.
      * @type {number}
      * @memberof CreateInventoryCsvImportResponse
      */
     updated: number;
     /**
-     * Rows that mapped cleanly. `created + updated` when not a dry run.
+     * Rows that can be imported: `created + updated + skippedOverLimit`.
+     * Zero means the file has nothing usable in it.
      * @type {number}
      * @memberof CreateInventoryCsvImportResponse
      */
@@ -74,6 +81,18 @@ export interface CreateInventoryCsvImportResponse {
      * @memberof CreateInventoryCsvImportResponse
      */
     listingsCreated: number;
+    /**
+     * New rows left out because the monthly item limit was reached.
+     * @type {number}
+     * @memberof CreateInventoryCsvImportResponse
+     */
+    skippedOverLimit: number;
+    /**
+     * 
+     * @type {CreateInventoryCsvImportResponseCapacity}
+     * @memberof CreateInventoryCsvImportResponse
+     */
+    capacity: CreateInventoryCsvImportResponseCapacity;
     /**
      * True when nothing was written — a preview pass.
      * @type {boolean}
@@ -100,6 +119,8 @@ export function CreateInventoryCsvImportResponseFromJSONTyped(json: any, ignoreD
         'usable': json['usable'],
         'totalRows': json['totalRows'],
         'listingsCreated': json['listingsCreated'],
+        'skippedOverLimit': json['skippedOverLimit'],
+        'capacity': CreateInventoryCsvImportResponseCapacityFromJSON(json['capacity']),
         'dryRun': json['dryRun'],
     };
 }
@@ -121,6 +142,8 @@ export function CreateInventoryCsvImportResponseToJSON(value?: CreateInventoryCs
         'usable': value.usable,
         'totalRows': value.totalRows,
         'listingsCreated': value.listingsCreated,
+        'skippedOverLimit': value.skippedOverLimit,
+        'capacity': CreateInventoryCsvImportResponseCapacityToJSON(value.capacity),
         'dryRun': value.dryRun,
     };
 }

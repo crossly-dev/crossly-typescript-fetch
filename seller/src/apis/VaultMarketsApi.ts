@@ -39,6 +39,12 @@ import {
     CreateVaultMarketAuctionLotResponse,
     CreateVaultMarketAuctionLotResponseFromJSON,
     CreateVaultMarketAuctionLotResponseToJSON,
+    CreateVaultMarketAutoBuyPauseResponse,
+    CreateVaultMarketAutoBuyPauseResponseFromJSON,
+    CreateVaultMarketAutoBuyPauseResponseToJSON,
+    CreateVaultMarketAutoBuyResumeResponse,
+    CreateVaultMarketAutoBuyResumeResponseFromJSON,
+    CreateVaultMarketAutoBuyResumeResponseToJSON,
     CreateVaultMarketBlockAllocateResponse,
     CreateVaultMarketBlockAllocateResponseFromJSON,
     CreateVaultMarketBlockAllocateResponseToJSON,
@@ -162,6 +168,54 @@ import {
     CreateVaultMarketOpeningWaitlistResponse,
     CreateVaultMarketOpeningWaitlistResponseFromJSON,
     CreateVaultMarketOpeningWaitlistResponseToJSON,
+    CreateVaultMarketOptionComboResponse,
+    CreateVaultMarketOptionComboResponseFromJSON,
+    CreateVaultMarketOptionComboResponseToJSON,
+    CreateVaultMarketOptionComboRfqAcceptResponse,
+    CreateVaultMarketOptionComboRfqAcceptResponseFromJSON,
+    CreateVaultMarketOptionComboRfqAcceptResponseToJSON,
+    CreateVaultMarketOptionComboRfqResponse,
+    CreateVaultMarketOptionComboRfqResponseFromJSON,
+    CreateVaultMarketOptionComboRfqResponseToJSON,
+    CreateVaultMarketOptionCoveredCallReleaseResponse,
+    CreateVaultMarketOptionCoveredCallReleaseResponseFromJSON,
+    CreateVaultMarketOptionCoveredCallReleaseResponseToJSON,
+    CreateVaultMarketOptionCoveredCallResponse,
+    CreateVaultMarketOptionCoveredCallResponseFromJSON,
+    CreateVaultMarketOptionCoveredCallResponseToJSON,
+    CreateVaultMarketOptionMmHeartbeatResponse,
+    CreateVaultMarketOptionMmHeartbeatResponseFromJSON,
+    CreateVaultMarketOptionMmHeartbeatResponseToJSON,
+    CreateVaultMarketOptionMmQuoteResponse,
+    CreateVaultMarketOptionMmQuoteResponseFromJSON,
+    CreateVaultMarketOptionMmQuoteResponseToJSON,
+    CreateVaultMarketOptionOrderCancelResponse,
+    CreateVaultMarketOptionOrderCancelResponseFromJSON,
+    CreateVaultMarketOptionOrderCancelResponseToJSON,
+    CreateVaultMarketOptionOrderResponse,
+    CreateVaultMarketOptionOrderResponseFromJSON,
+    CreateVaultMarketOptionOrderResponseToJSON,
+    CreateVaultMarketOptionPracticeComboResponse,
+    CreateVaultMarketOptionPracticeComboResponseFromJSON,
+    CreateVaultMarketOptionPracticeComboResponseToJSON,
+    CreateVaultMarketOptionPracticeOrderResponse,
+    CreateVaultMarketOptionPracticeOrderResponseFromJSON,
+    CreateVaultMarketOptionPracticeOrderResponseToJSON,
+    CreateVaultMarketOptionQuoteResponse,
+    CreateVaultMarketOptionQuoteResponseFromJSON,
+    CreateVaultMarketOptionQuoteResponseToJSON,
+    CreateVaultMarketOptionRfqAcceptResponse,
+    CreateVaultMarketOptionRfqAcceptResponseFromJSON,
+    CreateVaultMarketOptionRfqAcceptResponseToJSON,
+    CreateVaultMarketOptionRfqRespondResponse,
+    CreateVaultMarketOptionRfqRespondResponseFromJSON,
+    CreateVaultMarketOptionRfqRespondResponseToJSON,
+    CreateVaultMarketOptionRollResponse,
+    CreateVaultMarketOptionRollResponseFromJSON,
+    CreateVaultMarketOptionRollResponseToJSON,
+    CreateVaultMarketOptionStrategyPreviewResponse,
+    CreateVaultMarketOptionStrategyPreviewResponseFromJSON,
+    CreateVaultMarketOptionStrategyPreviewResponseToJSON,
     CreateVaultMarketPaperMissionMarkCheckResponse,
     CreateVaultMarketPaperMissionMarkCheckResponseFromJSON,
     CreateVaultMarketPaperMissionMarkCheckResponseToJSON,
@@ -201,6 +255,66 @@ import {
     CreateVaultMarketPositionCollateralResponse,
     CreateVaultMarketPositionCollateralResponseFromJSON,
     CreateVaultMarketPositionCollateralResponseToJSON,
+    CreateVaultMarketPredictionAccountResponse,
+    CreateVaultMarketPredictionAccountResponseFromJSON,
+    CreateVaultMarketPredictionAccountResponseToJSON,
+    CreateVaultMarketPredictionAlertResponse,
+    CreateVaultMarketPredictionAlertResponseFromJSON,
+    CreateVaultMarketPredictionAlertResponseToJSON,
+    CreateVaultMarketPredictionCardResponse,
+    CreateVaultMarketPredictionCardResponseFromJSON,
+    CreateVaultMarketPredictionCardResponseToJSON,
+    CreateVaultMarketPredictionComboRfqQuoteResponse,
+    CreateVaultMarketPredictionComboRfqQuoteResponseFromJSON,
+    CreateVaultMarketPredictionComboRfqQuoteResponseToJSON,
+    CreateVaultMarketPredictionComboRfqResponse,
+    CreateVaultMarketPredictionComboRfqResponseFromJSON,
+    CreateVaultMarketPredictionComboRfqResponseToJSON,
+    CreateVaultMarketPredictionCommentReportResponse,
+    CreateVaultMarketPredictionCommentReportResponseFromJSON,
+    CreateVaultMarketPredictionCommentReportResponseToJSON,
+    CreateVaultMarketPredictionCommentResponse,
+    CreateVaultMarketPredictionCommentResponseFromJSON,
+    CreateVaultMarketPredictionCommentResponseToJSON,
+    CreateVaultMarketPredictionConversionResponse,
+    CreateVaultMarketPredictionConversionResponseFromJSON,
+    CreateVaultMarketPredictionConversionResponseToJSON,
+    CreateVaultMarketPredictionForecastResponse,
+    CreateVaultMarketPredictionForecastResponseFromJSON,
+    CreateVaultMarketPredictionForecastResponseToJSON,
+    CreateVaultMarketPredictionForecasterFollowResponse,
+    CreateVaultMarketPredictionForecasterFollowResponseFromJSON,
+    CreateVaultMarketPredictionForecasterFollowResponseToJSON,
+    CreateVaultMarketPredictionMakerQuoteResponse,
+    CreateVaultMarketPredictionMakerQuoteResponseFromJSON,
+    CreateVaultMarketPredictionMakerQuoteResponseToJSON,
+    CreateVaultMarketPredictionOrderAmendResponse,
+    CreateVaultMarketPredictionOrderAmendResponseFromJSON,
+    CreateVaultMarketPredictionOrderAmendResponseToJSON,
+    CreateVaultMarketPredictionOrderBatchCancelResponse,
+    CreateVaultMarketPredictionOrderBatchCancelResponseFromJSON,
+    CreateVaultMarketPredictionOrderBatchCancelResponseToJSON,
+    CreateVaultMarketPredictionOrderBatchResponse,
+    CreateVaultMarketPredictionOrderBatchResponseFromJSON,
+    CreateVaultMarketPredictionOrderBatchResponseToJSON,
+    CreateVaultMarketPredictionOrderResponse,
+    CreateVaultMarketPredictionOrderResponseFromJSON,
+    CreateVaultMarketPredictionOrderResponseToJSON,
+    CreateVaultMarketPredictionPaperResetResponse,
+    CreateVaultMarketPredictionPaperResetResponseFromJSON,
+    CreateVaultMarketPredictionPaperResetResponseToJSON,
+    CreateVaultMarketPredictionPositionCloseAllResponse,
+    CreateVaultMarketPredictionPositionCloseAllResponseFromJSON,
+    CreateVaultMarketPredictionPositionCloseAllResponseToJSON,
+    CreateVaultMarketPredictionProposalCheckResponse,
+    CreateVaultMarketPredictionProposalCheckResponseFromJSON,
+    CreateVaultMarketPredictionProposalCheckResponseToJSON,
+    CreateVaultMarketPredictionSettlementDisputeResponse,
+    CreateVaultMarketPredictionSettlementDisputeResponseFromJSON,
+    CreateVaultMarketPredictionSettlementDisputeResponseToJSON,
+    CreateVaultMarketPredictionTermResponse,
+    CreateVaultMarketPredictionTermResponseFromJSON,
+    CreateVaultMarketPredictionTermResponseToJSON,
     CreateVaultMarketPriceWidgetPreviewResponse,
     CreateVaultMarketPriceWidgetPreviewResponseFromJSON,
     CreateVaultMarketPriceWidgetPreviewResponseToJSON,
@@ -216,9 +330,6 @@ import {
     CreateVaultMarketProOrderResponse,
     CreateVaultMarketProOrderResponseFromJSON,
     CreateVaultMarketProOrderResponseToJSON,
-    CreateVaultMarketProQuoteHeartbeatResponse,
-    CreateVaultMarketProQuoteHeartbeatResponseFromJSON,
-    CreateVaultMarketProQuoteHeartbeatResponseToJSON,
     CreateVaultMarketProQuoteResponse,
     CreateVaultMarketProQuoteResponseFromJSON,
     CreateVaultMarketProQuoteResponseToJSON,
@@ -237,6 +348,39 @@ import {
     CreateVaultMarketRfqResponse,
     CreateVaultMarketRfqResponseFromJSON,
     CreateVaultMarketRfqResponseToJSON,
+    CreateVaultMarketShareAutoInvestRunResponse,
+    CreateVaultMarketShareAutoInvestRunResponseFromJSON,
+    CreateVaultMarketShareAutoInvestRunResponseToJSON,
+    CreateVaultMarketShareBasketBuyResponse,
+    CreateVaultMarketShareBasketBuyResponseFromJSON,
+    CreateVaultMarketShareBasketBuyResponseToJSON,
+    CreateVaultMarketShareBuyoutFundResponse,
+    CreateVaultMarketShareBuyoutFundResponseFromJSON,
+    CreateVaultMarketShareBuyoutFundResponseToJSON,
+    CreateVaultMarketSharePaperSeryOrderResponse,
+    CreateVaultMarketSharePaperSeryOrderResponseFromJSON,
+    CreateVaultMarketSharePaperSeryOrderResponseToJSON,
+    CreateVaultMarketShareRoomHideResponse,
+    CreateVaultMarketShareRoomHideResponseFromJSON,
+    CreateVaultMarketShareRoomHideResponseToJSON,
+    CreateVaultMarketShareSeryRecombineResponse,
+    CreateVaultMarketShareSeryRecombineResponseFromJSON,
+    CreateVaultMarketShareSeryRecombineResponseToJSON,
+    CreateVaultMarketShareSeryRoomResponse,
+    CreateVaultMarketShareSeryRoomResponseFromJSON,
+    CreateVaultMarketShareSeryRoomResponseToJSON,
+    CreateVaultMarketShareSeryWatchResponse,
+    CreateVaultMarketShareSeryWatchResponseFromJSON,
+    CreateVaultMarketShareSeryWatchResponseToJSON,
+    CreateVaultMarketShareViewingBookResponse,
+    CreateVaultMarketShareViewingBookResponseFromJSON,
+    CreateVaultMarketShareViewingBookResponseToJSON,
+    CreateVaultMarketShareViewingBookingCancelResponse,
+    CreateVaultMarketShareViewingBookingCancelResponseFromJSON,
+    CreateVaultMarketShareViewingBookingCancelResponseToJSON,
+    CreateVaultMarketSupplySendInResponse,
+    CreateVaultMarketSupplySendInResponseFromJSON,
+    CreateVaultMarketSupplySendInResponseToJSON,
     CreateVaultMarketSupplySendResponse,
     CreateVaultMarketSupplySendResponseFromJSON,
     CreateVaultMarketSupplySendResponseToJSON,
@@ -273,6 +417,9 @@ import {
     CreateVaultReceiptTokenWalletAllowResponse,
     CreateVaultReceiptTokenWalletAllowResponseFromJSON,
     CreateVaultReceiptTokenWalletAllowResponseToJSON,
+    DeleteVaultMarketAutoBuyResponse,
+    DeleteVaultMarketAutoBuyResponseFromJSON,
+    DeleteVaultMarketAutoBuyResponseToJSON,
     DeleteVaultMarketFollowCopyWatchResponse,
     DeleteVaultMarketFollowCopyWatchResponseFromJSON,
     DeleteVaultMarketFollowCopyWatchResponseToJSON,
@@ -315,6 +462,9 @@ import {
     GetVaultMarketAuctionMineResponse,
     GetVaultMarketAuctionMineResponseFromJSON,
     GetVaultMarketAuctionMineResponseToJSON,
+    GetVaultMarketAutoBuyResponse,
+    GetVaultMarketAutoBuyResponseFromJSON,
+    GetVaultMarketAutoBuyResponseToJSON,
     GetVaultMarketBullionForResponse,
     GetVaultMarketBullionForResponseFromJSON,
     GetVaultMarketBullionForResponseToJSON,
@@ -417,6 +567,12 @@ import {
     GetVaultMarketHealthWhatIfResponse,
     GetVaultMarketHealthWhatIfResponseFromJSON,
     GetVaultMarketHealthWhatIfResponseToJSON,
+    GetVaultMarketHoldingInventoryItemResponse,
+    GetVaultMarketHoldingInventoryItemResponseFromJSON,
+    GetVaultMarketHoldingInventoryItemResponseToJSON,
+    GetVaultMarketHoldingWithdrawQuoteResponse,
+    GetVaultMarketHoldingWithdrawQuoteResponseFromJSON,
+    GetVaultMarketHoldingWithdrawQuoteResponseToJSON,
     GetVaultMarketHomeUnitResponse,
     GetVaultMarketHomeUnitResponseFromJSON,
     GetVaultMarketHomeUnitResponseToJSON,
@@ -447,6 +603,9 @@ import {
     GetVaultMarketInstantExitResponse,
     GetVaultMarketInstantExitResponseFromJSON,
     GetVaultMarketInstantExitResponseToJSON,
+    GetVaultMarketItemLocationResponse,
+    GetVaultMarketItemLocationResponseFromJSON,
+    GetVaultMarketItemLocationResponseToJSON,
     GetVaultMarketJointByIdResponse,
     GetVaultMarketJointByIdResponseFromJSON,
     GetVaultMarketJointByIdResponseToJSON,
@@ -507,6 +666,57 @@ import {
     GetVaultMarketNavResponse,
     GetVaultMarketNavResponseFromJSON,
     GetVaultMarketNavResponseToJSON,
+    GetVaultMarketOptionAnalyticResponse,
+    GetVaultMarketOptionAnalyticResponseFromJSON,
+    GetVaultMarketOptionAnalyticResponseToJSON,
+    GetVaultMarketOptionAutoCloseResponse,
+    GetVaultMarketOptionAutoCloseResponseFromJSON,
+    GetVaultMarketOptionAutoCloseResponseToJSON,
+    GetVaultMarketOptionChainResponse,
+    GetVaultMarketOptionChainResponseFromJSON,
+    GetVaultMarketOptionChainResponseToJSON,
+    GetVaultMarketOptionComboBookResponse,
+    GetVaultMarketOptionComboBookResponseFromJSON,
+    GetVaultMarketOptionComboBookResponseToJSON,
+    GetVaultMarketOptionComboRfqResponse,
+    GetVaultMarketOptionComboRfqResponseFromJSON,
+    GetVaultMarketOptionComboRfqResponseToJSON,
+    GetVaultMarketOptionContractBookResponse,
+    GetVaultMarketOptionContractBookResponseFromJSON,
+    GetVaultMarketOptionContractBookResponseToJSON,
+    GetVaultMarketOptionContractResponse,
+    GetVaultMarketOptionContractResponseFromJSON,
+    GetVaultMarketOptionContractResponseToJSON,
+    GetVaultMarketOptionContractSettlementResponse,
+    GetVaultMarketOptionContractSettlementResponseFromJSON,
+    GetVaultMarketOptionContractSettlementResponseToJSON,
+    GetVaultMarketOptionHedgeResponse,
+    GetVaultMarketOptionHedgeResponseFromJSON,
+    GetVaultMarketOptionHedgeResponseToJSON,
+    GetVaultMarketOptionIvResponse,
+    GetVaultMarketOptionIvResponseFromJSON,
+    GetVaultMarketOptionIvResponseToJSON,
+    GetVaultMarketOptionMarginResponse,
+    GetVaultMarketOptionMarginResponseFromJSON,
+    GetVaultMarketOptionMarginResponseToJSON,
+    GetVaultMarketOptionPayoffResponse,
+    GetVaultMarketOptionPayoffResponseFromJSON,
+    GetVaultMarketOptionPayoffResponseToJSON,
+    GetVaultMarketOptionPositionResponse,
+    GetVaultMarketOptionPositionResponseFromJSON,
+    GetVaultMarketOptionPositionResponseToJSON,
+    GetVaultMarketOptionPracticeResponse,
+    GetVaultMarketOptionPracticeResponseFromJSON,
+    GetVaultMarketOptionPracticeResponseToJSON,
+    GetVaultMarketOptionResponse,
+    GetVaultMarketOptionResponseFromJSON,
+    GetVaultMarketOptionResponseToJSON,
+    GetVaultMarketOptionRfqResponse,
+    GetVaultMarketOptionRfqResponseFromJSON,
+    GetVaultMarketOptionRfqResponseToJSON,
+    GetVaultMarketOptionRiskResponse,
+    GetVaultMarketOptionRiskResponseFromJSON,
+    GetVaultMarketOptionRiskResponseToJSON,
     GetVaultMarketOracleBySlugResponse,
     GetVaultMarketOracleBySlugResponseFromJSON,
     GetVaultMarketOracleBySlugResponseToJSON,
@@ -552,6 +762,63 @@ import {
     GetVaultMarketPositionResponse,
     GetVaultMarketPositionResponseFromJSON,
     GetVaultMarketPositionResponseToJSON,
+    GetVaultMarketPredictionAccountResponse,
+    GetVaultMarketPredictionAccountResponseFromJSON,
+    GetVaultMarketPredictionAccountResponseToJSON,
+    GetVaultMarketPredictionBoardResponse,
+    GetVaultMarketPredictionBoardResponseFromJSON,
+    GetVaultMarketPredictionBoardResponseToJSON,
+    GetVaultMarketPredictionDailyPriceResponse,
+    GetVaultMarketPredictionDailyPriceResponseFromJSON,
+    GetVaultMarketPredictionDailyPriceResponseToJSON,
+    GetVaultMarketPredictionEventResponse,
+    GetVaultMarketPredictionEventResponseFromJSON,
+    GetVaultMarketPredictionEventResponseToJSON,
+    GetVaultMarketPredictionForecasterByIdResponse,
+    GetVaultMarketPredictionForecasterByIdResponseFromJSON,
+    GetVaultMarketPredictionForecasterByIdResponseToJSON,
+    GetVaultMarketPredictionForecasterResponse,
+    GetVaultMarketPredictionForecasterResponseFromJSON,
+    GetVaultMarketPredictionForecasterResponseToJSON,
+    GetVaultMarketPredictionLeaderboardResponse,
+    GetVaultMarketPredictionLeaderboardResponseFromJSON,
+    GetVaultMarketPredictionLeaderboardResponseToJSON,
+    GetVaultMarketPredictionLimitResponse,
+    GetVaultMarketPredictionLimitResponseFromJSON,
+    GetVaultMarketPredictionLimitResponseToJSON,
+    GetVaultMarketPredictionMarketForecastResponse,
+    GetVaultMarketPredictionMarketForecastResponseFromJSON,
+    GetVaultMarketPredictionMarketForecastResponseToJSON,
+    GetVaultMarketPredictionMarketHistoryResponse,
+    GetVaultMarketPredictionMarketHistoryResponseFromJSON,
+    GetVaultMarketPredictionMarketHistoryResponseToJSON,
+    GetVaultMarketPredictionMarketResponse,
+    GetVaultMarketPredictionMarketResponseFromJSON,
+    GetVaultMarketPredictionMarketResponseToJSON,
+    GetVaultMarketPredictionMarketTradeResponse,
+    GetVaultMarketPredictionMarketTradeResponseFromJSON,
+    GetVaultMarketPredictionMarketTradeResponseToJSON,
+    GetVaultMarketPredictionMissionResponse,
+    GetVaultMarketPredictionMissionResponseFromJSON,
+    GetVaultMarketPredictionMissionResponseToJSON,
+    GetVaultMarketPredictionPaperResponse,
+    GetVaultMarketPredictionPaperResponseFromJSON,
+    GetVaultMarketPredictionPaperResponseToJSON,
+    GetVaultMarketPredictionQuoteResponse,
+    GetVaultMarketPredictionQuoteResponseFromJSON,
+    GetVaultMarketPredictionQuoteResponseToJSON,
+    GetVaultMarketPredictionResponse,
+    GetVaultMarketPredictionResponseFromJSON,
+    GetVaultMarketPredictionResponseToJSON,
+    GetVaultMarketPredictionRulebookResponse,
+    GetVaultMarketPredictionRulebookResponseFromJSON,
+    GetVaultMarketPredictionRulebookResponseToJSON,
+    GetVaultMarketPredictionVenueResponse,
+    GetVaultMarketPredictionVenueResponseFromJSON,
+    GetVaultMarketPredictionVenueResponseToJSON,
+    GetVaultMarketPredictionWillItHitResponse,
+    GetVaultMarketPredictionWillItHitResponseFromJSON,
+    GetVaultMarketPredictionWillItHitResponseToJSON,
     GetVaultMarketPressResponse,
     GetVaultMarketPressResponseFromJSON,
     GetVaultMarketPressResponseToJSON,
@@ -603,6 +870,45 @@ import {
     GetVaultMarketSetGoalResponse,
     GetVaultMarketSetGoalResponseFromJSON,
     GetVaultMarketSetGoalResponseToJSON,
+    GetVaultMarketSettingResponse,
+    GetVaultMarketSettingResponseFromJSON,
+    GetVaultMarketSettingResponseToJSON,
+    GetVaultMarketShareBasketResponse,
+    GetVaultMarketShareBasketResponseFromJSON,
+    GetVaultMarketShareBasketResponseToJSON,
+    GetVaultMarketShareInvestorResponse,
+    GetVaultMarketShareInvestorResponseFromJSON,
+    GetVaultMarketShareInvestorResponseToJSON,
+    GetVaultMarketShareMeResponse,
+    GetVaultMarketShareMeResponseFromJSON,
+    GetVaultMarketShareMeResponseToJSON,
+    GetVaultMarketSharePaperResponse,
+    GetVaultMarketSharePaperResponseFromJSON,
+    GetVaultMarketSharePaperResponseToJSON,
+    GetVaultMarketSharePaperSeryBookResponse,
+    GetVaultMarketSharePaperSeryBookResponseFromJSON,
+    GetVaultMarketSharePaperSeryBookResponseToJSON,
+    GetVaultMarketSharePreviewResponse,
+    GetVaultMarketSharePreviewResponseFromJSON,
+    GetVaultMarketSharePreviewResponseToJSON,
+    GetVaultMarketShareResponse,
+    GetVaultMarketShareResponseFromJSON,
+    GetVaultMarketShareResponseToJSON,
+    GetVaultMarketShareSeryBookResponse,
+    GetVaultMarketShareSeryBookResponseFromJSON,
+    GetVaultMarketShareSeryBookResponseToJSON,
+    GetVaultMarketShareSeryHistoryResponse,
+    GetVaultMarketShareSeryHistoryResponseFromJSON,
+    GetVaultMarketShareSeryHistoryResponseToJSON,
+    GetVaultMarketShareSeryPerkResponse,
+    GetVaultMarketShareSeryPerkResponseFromJSON,
+    GetVaultMarketShareSeryPerkResponseToJSON,
+    GetVaultMarketShareSeryResponse,
+    GetVaultMarketShareSeryResponseFromJSON,
+    GetVaultMarketShareSeryResponseToJSON,
+    GetVaultMarketShareSeryRoomResponse,
+    GetVaultMarketShareSeryRoomResponseFromJSON,
+    GetVaultMarketShareSeryRoomResponseToJSON,
     GetVaultMarketStatementByMonthResponse,
     GetVaultMarketStatementByMonthResponseFromJSON,
     GetVaultMarketStatementByMonthResponseToJSON,
@@ -618,12 +924,24 @@ import {
     GetVaultMarketSupplyRoundUpResponse,
     GetVaultMarketSupplyRoundUpResponseFromJSON,
     GetVaultMarketSupplyRoundUpResponseToJSON,
+    GetVaultMarketSupplyShipmentResponse,
+    GetVaultMarketSupplyShipmentResponseFromJSON,
+    GetVaultMarketSupplyShipmentResponseToJSON,
     GetVaultMarketTaxLossSuggestionResponse,
     GetVaultMarketTaxLossSuggestionResponseFromJSON,
     GetVaultMarketTaxLossSuggestionResponseToJSON,
+    GetVaultMarketTaxOptionResponse,
+    GetVaultMarketTaxOptionResponseFromJSON,
+    GetVaultMarketTaxOptionResponseToJSON,
+    GetVaultMarketTaxPredictionResponse,
+    GetVaultMarketTaxPredictionResponseFromJSON,
+    GetVaultMarketTaxPredictionResponseToJSON,
     GetVaultMarketTaxResponse,
     GetVaultMarketTaxResponseFromJSON,
     GetVaultMarketTaxResponseToJSON,
+    GetVaultMarketTaxShareResponse,
+    GetVaultMarketTaxShareResponseFromJSON,
+    GetVaultMarketTaxShareResponseToJSON,
     GetVaultMarketTcaByOrderIdResponse,
     GetVaultMarketTcaByOrderIdResponseFromJSON,
     GetVaultMarketTcaByOrderIdResponseToJSON,
@@ -672,6 +990,9 @@ import {
     GetVaultMarketWidgetSummaryResponse,
     GetVaultMarketWidgetSummaryResponseFromJSON,
     GetVaultMarketWidgetSummaryResponseToJSON,
+    GetVaultMarketWorldFloorBoardResponse,
+    GetVaultMarketWorldFloorBoardResponseFromJSON,
+    GetVaultMarketWorldFloorBoardResponseToJSON,
     GetVaultMarketWorldFloorResponse,
     GetVaultMarketWorldFloorResponseFromJSON,
     GetVaultMarketWorldFloorResponseToJSON,
@@ -696,6 +1017,9 @@ import {
     GetVaultReceiptTokenResponse,
     GetVaultReceiptTokenResponseFromJSON,
     GetVaultReceiptTokenResponseToJSON,
+    IdResponse,
+    IdResponseFromJSON,
+    IdResponseToJSON,
     IdStatusResponse,
     IdStatusResponseFromJSON,
     IdStatusResponseToJSON,
@@ -831,6 +1155,9 @@ import {
     ListVaultMarketHallLendersResponse,
     ListVaultMarketHallLendersResponseFromJSON,
     ListVaultMarketHallLendersResponseToJSON,
+    ListVaultMarketHoldingsResponse,
+    ListVaultMarketHoldingsResponseFromJSON,
+    ListVaultMarketHoldingsResponseToJSON,
     ListVaultMarketIndexCommitteeMinutesResponse,
     ListVaultMarketIndexCommitteeMinutesResponseFromJSON,
     ListVaultMarketIndexCommitteeMinutesResponseToJSON,
@@ -909,6 +1236,45 @@ import {
     ListVaultMarketOpeningResponse,
     ListVaultMarketOpeningResponseFromJSON,
     ListVaultMarketOpeningResponseToJSON,
+    ListVaultMarketOptionComboRfqResponse,
+    ListVaultMarketOptionComboRfqResponseFromJSON,
+    ListVaultMarketOptionComboRfqResponseToJSON,
+    ListVaultMarketOptionCombosItem,
+    ListVaultMarketOptionCombosItemFromJSON,
+    ListVaultMarketOptionCombosItemToJSON,
+    ListVaultMarketOptionCombosResponse,
+    ListVaultMarketOptionCombosResponseFromJSON,
+    ListVaultMarketOptionCombosResponseToJSON,
+    ListVaultMarketOptionContractDailyResponse,
+    ListVaultMarketOptionContractDailyResponseFromJSON,
+    ListVaultMarketOptionContractDailyResponseToJSON,
+    ListVaultMarketOptionMmQuotesResponse,
+    ListVaultMarketOptionMmQuotesResponseFromJSON,
+    ListVaultMarketOptionMmQuotesResponseToJSON,
+    ListVaultMarketOptionNoticesResponse,
+    ListVaultMarketOptionNoticesResponseFromJSON,
+    ListVaultMarketOptionNoticesResponseToJSON,
+    ListVaultMarketOptionOrdersResponse,
+    ListVaultMarketOptionOrdersResponseFromJSON,
+    ListVaultMarketOptionOrdersResponseToJSON,
+    ListVaultMarketOptionPracticeFillsResponse,
+    ListVaultMarketOptionPracticeFillsResponseFromJSON,
+    ListVaultMarketOptionPracticeFillsResponseToJSON,
+    ListVaultMarketOptionPracticeOrdersItem,
+    ListVaultMarketOptionPracticeOrdersItemFromJSON,
+    ListVaultMarketOptionPracticeOrdersItemToJSON,
+    ListVaultMarketOptionPracticeOrdersResponse,
+    ListVaultMarketOptionPracticeOrdersResponseFromJSON,
+    ListVaultMarketOptionPracticeOrdersResponseToJSON,
+    ListVaultMarketOptionRfqResponse,
+    ListVaultMarketOptionRfqResponseFromJSON,
+    ListVaultMarketOptionRfqResponseToJSON,
+    ListVaultMarketOptionSeriesResponse,
+    ListVaultMarketOptionSeriesResponseFromJSON,
+    ListVaultMarketOptionSeriesResponseToJSON,
+    ListVaultMarketOptionStrategiesResponse,
+    ListVaultMarketOptionStrategiesResponseFromJSON,
+    ListVaultMarketOptionStrategiesResponseToJSON,
     ListVaultMarketOracleHistoryResponse,
     ListVaultMarketOracleHistoryResponseFromJSON,
     ListVaultMarketOracleHistoryResponseToJSON,
@@ -939,6 +1305,9 @@ import {
     ListVaultMarketPartnerAccrualsResponse,
     ListVaultMarketPartnerAccrualsResponseFromJSON,
     ListVaultMarketPartnerAccrualsResponseToJSON,
+    ListVaultMarketPartnerFinderResponse,
+    ListVaultMarketPartnerFinderResponseFromJSON,
+    ListVaultMarketPartnerFinderResponseToJSON,
     ListVaultMarketPoolStakesResponse,
     ListVaultMarketPoolStakesResponseFromJSON,
     ListVaultMarketPoolStakesResponseToJSON,
@@ -957,6 +1326,57 @@ import {
     ListVaultMarketPositionsRiskResponse,
     ListVaultMarketPositionsRiskResponseFromJSON,
     ListVaultMarketPositionsRiskResponseToJSON,
+    ListVaultMarketPredictionAlertsResponse,
+    ListVaultMarketPredictionAlertsResponseFromJSON,
+    ListVaultMarketPredictionAlertsResponseToJSON,
+    ListVaultMarketPredictionComboRfqsItem,
+    ListVaultMarketPredictionComboRfqsItemFromJSON,
+    ListVaultMarketPredictionComboRfqsItemToJSON,
+    ListVaultMarketPredictionComboRfqsResponse,
+    ListVaultMarketPredictionComboRfqsResponseFromJSON,
+    ListVaultMarketPredictionComboRfqsResponseToJSON,
+    ListVaultMarketPredictionCombosItem,
+    ListVaultMarketPredictionCombosItemFromJSON,
+    ListVaultMarketPredictionCombosItemToJSON,
+    ListVaultMarketPredictionCombosResponse,
+    ListVaultMarketPredictionCombosResponseFromJSON,
+    ListVaultMarketPredictionCombosResponseToJSON,
+    ListVaultMarketPredictionCommentsResponse,
+    ListVaultMarketPredictionCommentsResponseFromJSON,
+    ListVaultMarketPredictionCommentsResponseToJSON,
+    ListVaultMarketPredictionConversionsResponse,
+    ListVaultMarketPredictionConversionsResponseFromJSON,
+    ListVaultMarketPredictionConversionsResponseToJSON,
+    ListVaultMarketPredictionFollowingResponse,
+    ListVaultMarketPredictionFollowingResponseFromJSON,
+    ListVaultMarketPredictionFollowingResponseToJSON,
+    ListVaultMarketPredictionForecastsResponse,
+    ListVaultMarketPredictionForecastsResponseFromJSON,
+    ListVaultMarketPredictionForecastsResponseToJSON,
+    ListVaultMarketPredictionMakersItem,
+    ListVaultMarketPredictionMakersItemFromJSON,
+    ListVaultMarketPredictionMakersItemToJSON,
+    ListVaultMarketPredictionMakersResponse,
+    ListVaultMarketPredictionMakersResponseFromJSON,
+    ListVaultMarketPredictionMakersResponseToJSON,
+    ListVaultMarketPredictionMarketsResponse,
+    ListVaultMarketPredictionMarketsResponseFromJSON,
+    ListVaultMarketPredictionMarketsResponseToJSON,
+    ListVaultMarketPredictionOrdersResponse,
+    ListVaultMarketPredictionOrdersResponseFromJSON,
+    ListVaultMarketPredictionOrdersResponseToJSON,
+    ListVaultMarketPredictionPositionsResponse,
+    ListVaultMarketPredictionPositionsResponseFromJSON,
+    ListVaultMarketPredictionPositionsResponseToJSON,
+    ListVaultMarketPredictionProposalListedResponse,
+    ListVaultMarketPredictionProposalListedResponseFromJSON,
+    ListVaultMarketPredictionProposalListedResponseToJSON,
+    ListVaultMarketPredictionProposalsItem,
+    ListVaultMarketPredictionProposalsItemFromJSON,
+    ListVaultMarketPredictionProposalsItemToJSON,
+    ListVaultMarketPredictionProposalsResponse,
+    ListVaultMarketPredictionProposalsResponseFromJSON,
+    ListVaultMarketPredictionProposalsResponseToJSON,
     ListVaultMarketPriceWidgetsItem,
     ListVaultMarketPriceWidgetsItemFromJSON,
     ListVaultMarketPriceWidgetsItemToJSON,
@@ -1020,18 +1440,78 @@ import {
     ListVaultMarketSetGoalsResponse,
     ListVaultMarketSetGoalsResponseFromJSON,
     ListVaultMarketSetGoalsResponseToJSON,
+    ListVaultMarketShareAutoInvestItem,
+    ListVaultMarketShareAutoInvestItemFromJSON,
+    ListVaultMarketShareAutoInvestItemToJSON,
+    ListVaultMarketShareAutoInvestResponse,
+    ListVaultMarketShareAutoInvestResponseFromJSON,
+    ListVaultMarketShareAutoInvestResponseToJSON,
+    ListVaultMarketShareAutoInvestRunsResponse,
+    ListVaultMarketShareAutoInvestRunsResponseFromJSON,
+    ListVaultMarketShareAutoInvestRunsResponseToJSON,
+    ListVaultMarketShareBasketsResponse,
+    ListVaultMarketShareBasketsResponseFromJSON,
+    ListVaultMarketShareBasketsResponseToJSON,
     ListVaultMarketShareCardsItem,
     ListVaultMarketShareCardsItemFromJSON,
     ListVaultMarketShareCardsItemToJSON,
     ListVaultMarketShareCardsResponse,
     ListVaultMarketShareCardsResponseFromJSON,
     ListVaultMarketShareCardsResponseToJSON,
+    ListVaultMarketShareDropsResponse,
+    ListVaultMarketShareDropsResponseFromJSON,
+    ListVaultMarketShareDropsResponseToJSON,
+    ListVaultMarketShareGiftsItem,
+    ListVaultMarketShareGiftsItemFromJSON,
+    ListVaultMarketShareGiftsItemToJSON,
+    ListVaultMarketShareGiftsResponse,
+    ListVaultMarketShareGiftsResponseFromJSON,
+    ListVaultMarketShareGiftsResponseToJSON,
+    ListVaultMarketShareOrdersItem,
+    ListVaultMarketShareOrdersItemFromJSON,
+    ListVaultMarketShareOrdersItemToJSON,
+    ListVaultMarketShareOrdersResponse,
+    ListVaultMarketShareOrdersResponseFromJSON,
+    ListVaultMarketShareOrdersResponseToJSON,
+    ListVaultMarketShareSeriesItem,
+    ListVaultMarketShareSeriesItemFromJSON,
+    ListVaultMarketShareSeriesItemToJSON,
+    ListVaultMarketShareSeriesResponse,
+    ListVaultMarketShareSeriesResponseFromJSON,
+    ListVaultMarketShareSeriesResponseToJSON,
+    ListVaultMarketShareSeryAppraisalsResponse,
+    ListVaultMarketShareSeryAppraisalsResponseFromJSON,
+    ListVaultMarketShareSeryAppraisalsResponseToJSON,
+    ListVaultMarketShareSeryTapeResponse,
+    ListVaultMarketShareSeryTapeResponseFromJSON,
+    ListVaultMarketShareSeryTapeResponseToJSON,
+    ListVaultMarketShareSeryUpdatesResponse,
+    ListVaultMarketShareSeryUpdatesResponseFromJSON,
+    ListVaultMarketShareSeryUpdatesResponseToJSON,
+    ListVaultMarketShareSubscriptionsItem,
+    ListVaultMarketShareSubscriptionsItemFromJSON,
+    ListVaultMarketShareSubscriptionsItemToJSON,
+    ListVaultMarketShareSubscriptionsResponse,
+    ListVaultMarketShareSubscriptionsResponseFromJSON,
+    ListVaultMarketShareSubscriptionsResponseToJSON,
+    ListVaultMarketShareWorldResponse,
+    ListVaultMarketShareWorldResponseFromJSON,
+    ListVaultMarketShareWorldResponseToJSON,
+    ListVaultMarketSupplyDeclaredValuesResponse,
+    ListVaultMarketSupplyDeclaredValuesResponseFromJSON,
+    ListVaultMarketSupplyDeclaredValuesResponseToJSON,
     ListVaultMarketSupplyDepositsResponse,
     ListVaultMarketSupplyDepositsResponseFromJSON,
     ListVaultMarketSupplyDepositsResponseToJSON,
+    ListVaultMarketSupplyEligibilityResponse,
+    ListVaultMarketSupplyEligibilityResponseFromJSON,
+    ListVaultMarketSupplyEligibilityResponseToJSON,
     ListVaultMarketSupplyInvitesResponse,
     ListVaultMarketSupplyInvitesResponseFromJSON,
     ListVaultMarketSupplyInvitesResponseToJSON,
+    ListVaultMarketSupplyShipmentsResponse,
+    ListVaultMarketSupplyShipmentsResponseFromJSON,
+    ListVaultMarketSupplyShipmentsResponseToJSON,
     ListVaultMarketValuationStatementsResponse,
     ListVaultMarketValuationStatementsResponseFromJSON,
     ListVaultMarketValuationStatementsResponseToJSON,
@@ -1074,6 +1554,9 @@ import {
     TermsVersionResponse,
     TermsVersionResponseFromJSON,
     TermsVersionResponseToJSON,
+    UpdateVaultMarketAutoBuyResponse,
+    UpdateVaultMarketAutoBuyResponseFromJSON,
+    UpdateVaultMarketAutoBuyResponseToJSON,
     UpdateVaultMarketHomeUnitResponse,
     UpdateVaultMarketHomeUnitResponseFromJSON,
     UpdateVaultMarketHomeUnitResponseToJSON,
@@ -1083,6 +1566,9 @@ import {
     UpdateVaultMarketPaperLeaderboardResponse,
     UpdateVaultMarketPaperLeaderboardResponseFromJSON,
     UpdateVaultMarketPaperLeaderboardResponseToJSON,
+    UpdateVaultMarketPartnerMeResponse,
+    UpdateVaultMarketPartnerMeResponseFromJSON,
+    UpdateVaultMarketPartnerMeResponseToJSON,
     UpdateVaultMarketPositionExitResponse,
     UpdateVaultMarketPositionExitResponseFromJSON,
     UpdateVaultMarketPositionExitResponseToJSON,
@@ -1307,6 +1793,54 @@ export interface CreateVaultMarketOpeningWaitlistRequest {
     slug: string;
 }
 
+export interface CreateVaultMarketOptionComboCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionComboRfqAcceptRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionComboRfqCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionComboRfqRespondRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionComboRfqResponseWithdrawRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionCoveredCallReleaseRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionOrderCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionPracticeOrderCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionRfqAcceptRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionRfqCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionRfqRespondRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketOptionRfqResponseWithdrawRequest {
+    id: string;
+}
+
 export interface CreateVaultMarketP2pLoanCallRequest {
     id: string;
 }
@@ -1363,6 +1897,42 @@ export interface CreateVaultMarketPositionCoverRequest {
     id: string;
 }
 
+export interface CreateVaultMarketPredictionComboRfqAcceptRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketPredictionComboRfqCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketPredictionComboRfqQuoteRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketPredictionCommentReportRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketPredictionForecasterFollowRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketPredictionOrderAmendRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketPredictionOrderCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketPredictionProposalWithdrawRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketPredictionSettlementDisputeRequest {
+    id: string;
+}
+
 export interface CreateVaultMarketProLinkCancelRequest {
     id: string;
 }
@@ -1400,6 +1970,114 @@ export interface CreateVaultMarketSetGoalBasketRequest {
 }
 
 export interface CreateVaultMarketSetGoalBasketCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareAutoInvestRunRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareAutoInvestUpdateRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareBasketBuyRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareBuyoutFundRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareBuyoutVoteRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareBuyoutWithdrawRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareGiftAcceptRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareGiftCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareGiftDeclineRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareOrderCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketSharePaperOrderCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketSharePaperSeryOrderRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketSharePaperSerySubscribeRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareRoomHideRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryBuyoutRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryGiftRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryOrderRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryRecombineRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryRoomRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSerySubscribeRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryUnwatchRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryUpdateRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryWatchRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSeryWithdrawProposalRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareSubscriptionCancelRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareViewingBookRequest {
+    id: string;
+}
+
+export interface CreateVaultMarketShareViewingBookingCancelRequest {
     id: string;
 }
 
@@ -1482,6 +2160,22 @@ export interface DeleteVaultMarketLocateRequest {
 
 export interface DeleteVaultMarketOpeningWaitlistRequest {
     slug: string;
+}
+
+export interface DeleteVaultMarketPredictionAlertRequest {
+    id: string;
+}
+
+export interface DeleteVaultMarketPredictionCardRequest {
+    id: string;
+}
+
+export interface DeleteVaultMarketPredictionCommentRequest {
+    id: string;
+}
+
+export interface DeleteVaultMarketPredictionForecasterFollowRequest {
+    id: string;
 }
 
 export interface DeleteVaultMarketPriceWidgetRequest {
@@ -1586,6 +2280,14 @@ export interface GetVaultMarketHealthWhatIfRequest {
     moveBps: number;
 }
 
+export interface GetVaultMarketHoldingInventoryItemRequest {
+    id: string;
+}
+
+export interface GetVaultMarketHoldingWithdrawQuoteRequest {
+    id: string;
+}
+
 export interface GetVaultMarketIndexRequest {
     slug: string;
 }
@@ -1608,6 +2310,10 @@ export interface GetVaultMarketIndexFeedSettlementRequest {
 
 export interface GetVaultMarketIndexLevelRequest {
     slug: string;
+}
+
+export interface GetVaultMarketItemLocationRequest {
+    inventoryItemId: string;
 }
 
 export interface GetVaultMarketJointByIdRequest {
@@ -1647,6 +2353,38 @@ export interface GetVaultMarketOpeningRequest {
     slug: string;
 }
 
+export interface GetVaultMarketOptionAnalyticRequest {
+    underlying: string;
+}
+
+export interface GetVaultMarketOptionChainRequest {
+    underlying: string;
+}
+
+export interface GetVaultMarketOptionComboRfqRequest {
+    id: string;
+}
+
+export interface GetVaultMarketOptionContractRequest {
+    id: string;
+}
+
+export interface GetVaultMarketOptionContractBookRequest {
+    id: string;
+}
+
+export interface GetVaultMarketOptionContractSettlementRequest {
+    id: string;
+}
+
+export interface GetVaultMarketOptionIvRequest {
+    underlying: string;
+}
+
+export interface GetVaultMarketOptionRfqRequest {
+    id: string;
+}
+
 export interface GetVaultMarketOracleBySlugRequest {
     slug: string;
 }
@@ -1668,6 +2406,42 @@ export interface GetVaultMarketPositionExitRequest {
 }
 
 export interface GetVaultMarketPositionRiskRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionComboRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionComboRfqRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionEventRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionForecasterByIdRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionMarketRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionMarketForecastRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionMarketHistoryRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionMarketStreamRequest {
+    id: string;
+}
+
+export interface GetVaultMarketPredictionMarketTradeRequest {
     id: string;
 }
 
@@ -1703,7 +2477,35 @@ export interface GetVaultMarketSetGoalBasketPlanRequest {
     id: string;
 }
 
+export interface GetVaultMarketShareBasketRequest {
+    id: string;
+}
+
 export interface GetVaultMarketShareCardRequest {
+    id: string;
+}
+
+export interface GetVaultMarketSharePaperSeryBookRequest {
+    id: string;
+}
+
+export interface GetVaultMarketShareSeryRequest {
+    id: string;
+}
+
+export interface GetVaultMarketShareSeryBookRequest {
+    id: string;
+}
+
+export interface GetVaultMarketShareSeryHistoryRequest {
+    id: string;
+}
+
+export interface GetVaultMarketShareSeryPerkRequest {
+    id: string;
+}
+
+export interface GetVaultMarketShareSeryRoomRequest {
     id: string;
 }
 
@@ -1717,6 +2519,10 @@ export interface GetVaultMarketStatementFileRequest {
 }
 
 export interface GetVaultMarketSupplyBatchRequest {
+    id: string;
+}
+
+export interface GetVaultMarketSupplyShipmentRequest {
     id: string;
 }
 
@@ -1812,6 +2618,10 @@ export interface ListVaultMarketJointTradesRequest {
     id: string;
 }
 
+export interface ListVaultMarketOptionContractDailyRequest {
+    id: string;
+}
+
 export interface ListVaultMarketOracleHistoryRequest {
     slug: string;
 }
@@ -1829,6 +2639,22 @@ export interface ListVaultMarketRecurringRunsRequest {
 }
 
 export interface ListVaultMarketSetGoalBasketsRequest {
+    id: string;
+}
+
+export interface ListVaultMarketShareAutoInvestRunsRequest {
+    id: string;
+}
+
+export interface ListVaultMarketShareSeryAppraisalsRequest {
+    id: string;
+}
+
+export interface ListVaultMarketShareSeryTapeRequest {
+    id: string;
+}
+
+export interface ListVaultMarketShareSeryUpdatesRequest {
     id: string;
 }
 
@@ -1862,7 +2688,15 @@ export interface UpdateVaultMarketIndexRequest {
     slug: string;
 }
 
+export interface UpdateVaultMarketItemSellFromRequest {
+    inventoryItemId: string;
+}
+
 export interface UpdateVaultMarketPositionExitRequest {
+    id: string;
+}
+
+export interface UpdateVaultMarketPredictionCommentRequest {
     id: string;
 }
 
@@ -2324,6 +3158,74 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async createVaultMarketAuctionLotWithdraw(requestParameters: CreateVaultMarketAuctionLotWithdrawRequest, initOverrides?: RequestInit): Promise<OkResponse> {
         const response = await this.createVaultMarketAuctionLotWithdrawRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Pause Auto-buy with payouts: the budget and want list stay; no payouts are counted and nothing is bought.
+     */
+    async createVaultMarketAutoBuyPauseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketAutoBuyPauseResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/auto-buy/pause`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketAutoBuyPauseResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pause Auto-buy with payouts: the budget and want list stay; no payouts are counted and nothing is bought.
+     */
+    async createVaultMarketAutoBuyPause(initOverrides?: RequestInit): Promise<CreateVaultMarketAutoBuyPauseResponse> {
+        const response = await this.createVaultMarketAutoBuyPauseRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Resume Auto-buy with payouts: payouts released from now on count.
+     */
+    async createVaultMarketAutoBuyResumeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketAutoBuyResumeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/auto-buy/resume`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketAutoBuyResumeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Resume Auto-buy with payouts: payouts released from now on count.
+     */
+    async createVaultMarketAutoBuyResume(initOverrides?: RequestInit): Promise<CreateVaultMarketAutoBuyResumeResponse> {
+        const response = await this.createVaultMarketAutoBuyResumeRaw(initOverrides);
         return await response.value();
     }
 
@@ -5154,6 +6056,938 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs\' own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
+     */
+    async createVaultMarketOptionComboRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionComboResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionComboResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs\' own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
+     */
+    async createVaultMarketOptionCombo(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionComboResponse> {
+        const response = await this.createVaultMarketOptionComboRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel a working strategy.
+     */
+    async createVaultMarketOptionComboCancelRaw(requestParameters: CreateVaultMarketOptionComboCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionCombosItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionComboCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionCombosItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a working strategy.
+     */
+    async createVaultMarketOptionComboCancel(requestParameters: CreateVaultMarketOptionComboCancelRequest, initOverrides?: RequestInit): Promise<ListVaultMarketOptionCombosItem> {
+        const response = await this.createVaultMarketOptionComboCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ask makers for a firm net price on a whole strategy (legs, quantity, an optional limit that is never shown). Crossly venue only.
+     */
+    async createVaultMarketOptionComboRfqRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionComboRfqResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/rfq`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionComboRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ask makers for a firm net price on a whole strategy (legs, quantity, an optional limit that is never shown). Crossly venue only.
+     */
+    async createVaultMarketOptionComboRfq(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionComboRfqResponse> {
+        const response = await this.createVaultMarketOptionComboRfqRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take a live, firm answer: both strategies go through the normal path (margin, pre-trade risk), every leg at once.
+     */
+    async createVaultMarketOptionComboRfqAcceptRaw(requestParameters: CreateVaultMarketOptionComboRfqAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionComboRfqAcceptResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionComboRfqAccept.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/rfq/{id}/accept`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionComboRfqAcceptResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Take a live, firm answer: both strategies go through the normal path (margin, pre-trade risk), every leg at once.
+     */
+    async createVaultMarketOptionComboRfqAccept(requestParameters: CreateVaultMarketOptionComboRfqAcceptRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionComboRfqAcceptResponse> {
+        const response = await this.createVaultMarketOptionComboRfqAcceptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel your open strategy quote request.
+     */
+    async createVaultMarketOptionComboRfqCancelRaw(requestParameters: CreateVaultMarketOptionComboRfqCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdStatusResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionComboRfqCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/rfq/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => IdStatusResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel your open strategy quote request.
+     */
+    async createVaultMarketOptionComboRfqCancel(requestParameters: CreateVaultMarketOptionComboRfqCancelRequest, initOverrides?: RequestInit): Promise<IdStatusResponse> {
+        const response = await this.createVaultMarketOptionComboRfqCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Answer a strategy quote request with a firm net price per unit in the canonical terms, good for 60 seconds; a new answer replaces your last.
+     */
+    async createVaultMarketOptionComboRfqRespondRaw(requestParameters: CreateVaultMarketOptionComboRfqRespondRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionRfqRespondResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionComboRfqRespond.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/rfq/{id}/respond`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionRfqRespondResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Answer a strategy quote request with a firm net price per unit in the canonical terms, good for 60 seconds; a new answer replaces your last.
+     */
+    async createVaultMarketOptionComboRfqRespond(requestParameters: CreateVaultMarketOptionComboRfqRespondRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionRfqRespondResponse> {
+        const response = await this.createVaultMarketOptionComboRfqRespondRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Withdraw your live answer to a strategy quote request.
+     */
+    async createVaultMarketOptionComboRfqResponseWithdrawRaw(requestParameters: CreateVaultMarketOptionComboRfqResponseWithdrawRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdStatusResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionComboRfqResponseWithdraw.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/rfq/responses/{id}/withdraw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => IdStatusResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Withdraw your live answer to a strategy quote request.
+     */
+    async createVaultMarketOptionComboRfqResponseWithdraw(requestParameters: CreateVaultMarketOptionComboRfqResponseWithdrawRequest, initOverrides?: RequestInit): Promise<IdStatusResponse> {
+        const response = await this.createVaultMarketOptionComboRfqResponseWithdrawRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Write a covered call: lock a stored vault unit (`vaultItemId`) as collateral and sell up to one call on its own key (`contractId`, `quantity` <= 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
+     */
+    async createVaultMarketOptionCoveredCallRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionCoveredCallResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/covered-calls`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionCoveredCallResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Write a covered call: lock a stored vault unit (`vaultItemId`) as collateral and sell up to one call on its own key (`contractId`, `quantity` <= 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
+     */
+    async createVaultMarketOptionCoveredCall(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionCoveredCallResponse> {
+        const response = await this.createVaultMarketOptionCoveredCallRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Free a covered call\'s vault unit once the call it covers is closed (or covered by other units).
+     */
+    async createVaultMarketOptionCoveredCallReleaseRaw(requestParameters: CreateVaultMarketOptionCoveredCallReleaseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionCoveredCallReleaseResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionCoveredCallRelease.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/covered-calls/{id}/release`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionCoveredCallReleaseResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Free a covered call\'s vault unit once the call it covers is closed (or covered by other units).
+     */
+    async createVaultMarketOptionCoveredCallRelease(requestParameters: CreateVaultMarketOptionCoveredCallReleaseRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionCoveredCallReleaseResponse> {
+        const response = await this.createVaultMarketOptionCoveredCallReleaseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Keep your option quotes alive (cancel-on-disconnect pulls them after 30 s without a heartbeat).
+     */
+    async createVaultMarketOptionMmHeartbeatRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionMmHeartbeatResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/mm/heartbeat`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionMmHeartbeatResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Keep your option quotes alive (cancel-on-disconnect pulls them after 30 s without a heartbeat).
+     */
+    async createVaultMarketOptionMmHeartbeat(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionMmHeartbeatResponse> {
+        const response = await this.createVaultMarketOptionMmHeartbeatRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set (replace) a two-sided quote on an option contract: `bid` and / or `ask` each { priceCents, quantity in contracts }, posted as post-only GTC orders on the Crossly venue. Market-maker protection counts their fills; a quote inside 20% of its mid earns liquidity rewards (CBX).
+     */
+    async createVaultMarketOptionMmQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionMmQuoteResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/mm/quotes`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionMmQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set (replace) a two-sided quote on an option contract: `bid` and / or `ask` each { priceCents, quantity in contracts }, posted as post-only GTC orders on the Crossly venue. Market-maker protection counts their fills; a quote inside 20% of its mid earns liquidity rewards (CBX).
+     */
+    async createVaultMarketOptionMmQuote(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionMmQuoteResponse> {
+        const response = await this.createVaultMarketOptionMmQuoteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Pull your option quotes on one contract (`contractId`) or all of them.
+     */
+    async createVaultMarketOptionMmQuotePullRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteVaultMarketProQuoteResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/mm/quotes/pull`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteVaultMarketProQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pull your option quotes on one contract (`contractId`) or all of them.
+     */
+    async createVaultMarketOptionMmQuotePull(initOverrides?: RequestInit): Promise<DeleteVaultMarketProQuoteResponse> {
+        const response = await this.createVaultMarketOptionMmQuotePullRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Place an options order: `contractId`, `side`, `quantity` in contracts (three decimals), a `priceCents` or an `iv` (`quoteMode`), `tif` gtc / gtd (with `expiresAt`) / ioc, `postOnly`. Idempotent on `clientOrderId`. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its `termsVersion`). `subaccountId` trades for a firm sub-account you may trade.
+     */
+    async createVaultMarketOptionOrderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionOrderResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/orders`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Place an options order: `contractId`, `side`, `quantity` in contracts (three decimals), a `priceCents` or an `iv` (`quoteMode`), `tif` gtc / gtd (with `expiresAt`) / ioc, `postOnly`. Idempotent on `clientOrderId`. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its `termsVersion`). `subaccountId` trades for a firm sub-account you may trade.
+     */
+    async createVaultMarketOptionOrder(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionOrderResponse> {
+        const response = await this.createVaultMarketOptionOrderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel a working options order (on the partner venue it is cancelled there first). A liquidation order cannot be cancelled.
+     */
+    async createVaultMarketOptionOrderCancelRaw(requestParameters: CreateVaultMarketOptionOrderCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionOrderCancelResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionOrderCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/orders/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionOrderCancelResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a working options order (on the partner venue it is cancelled there first). A liquidation order cannot be cancelled.
+     */
+    async createVaultMarketOptionOrderCancel(requestParameters: CreateVaultMarketOptionOrderCancelRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionOrderCancelResponse> {
+        const response = await this.createVaultMarketOptionOrderCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A practice strategy (play money): the same ticket as a real one, filled at the practice maker\'s quotes when the net is inside the limit.
+     */
+    async createVaultMarketOptionPracticeComboRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionPracticeComboResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/practice/combos`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionPracticeComboResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A practice strategy (play money): the same ticket as a real one, filled at the practice maker\'s quotes when the net is inside the limit.
+     */
+    async createVaultMarketOptionPracticeCombo(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionPracticeComboResponse> {
+        const response = await this.createVaultMarketOptionPracticeComboRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Place a practice options order (the same ticket as a real one; fills against the practice maker at the reference vol). Play money only.
+     */
+    async createVaultMarketOptionPracticeOrderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionPracticeOrderResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/practice/orders`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionPracticeOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Place a practice options order (the same ticket as a real one; fills against the practice maker at the reference vol). Play money only.
+     */
+    async createVaultMarketOptionPracticeOrder(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionPracticeOrderResponse> {
+        const response = await this.createVaultMarketOptionPracticeOrderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel a working practice options order.
+     */
+    async createVaultMarketOptionPracticeOrderCancelRaw(requestParameters: CreateVaultMarketOptionPracticeOrderCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionPracticeOrdersItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionPracticeOrderCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/practice/orders/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionPracticeOrdersItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a working practice options order.
+     */
+    async createVaultMarketOptionPracticeOrderCancel(requestParameters: CreateVaultMarketOptionPracticeOrderCancelRequest, initOverrides?: RequestInit): Promise<ListVaultMarketOptionPracticeOrdersItem> {
+        const response = await this.createVaultMarketOptionPracticeOrderCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Start the options practice account again with $10,000: positions and working orders are cleared.
+     */
+    async createVaultMarketOptionPracticeResetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionPracticeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/practice/reset`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionPracticeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Start the options practice account again with $10,000: positions and working orders are cleared.
+     */
+    async createVaultMarketOptionPracticeReset(initOverrides?: RequestInit): Promise<GetVaultMarketOptionPracticeResponse> {
+        const response = await this.createVaultMarketOptionPracticeResetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Price a ticket without placing it: give a price per contract or an implied vol (`quoteMode`), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
+     */
+    async createVaultMarketOptionQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionQuoteResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/quote`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Price a ticket without placing it: give a price per contract or an implied vol (`quoteMode`), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
+     */
+    async createVaultMarketOptionQuote(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionQuoteResponse> {
+        const response = await this.createVaultMarketOptionQuoteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ask for a quote on an option contract: `side`, `quantity` in contracts, an optional `limitCents` (never shown). Makers quoting the series, the underlying\'s DMM and LPs and approved dealers are told anonymously; answers are firm for 60 s.
+     */
+    async createVaultMarketOptionRfqRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketRfqResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/rfq`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ask for a quote on an option contract: `side`, `quantity` in contracts, an optional `limitCents` (never shown). Makers quoting the series, the underlying\'s DMM and LPs and approved dealers are told anonymously; answers are firm for 60 s.
+     */
+    async createVaultMarketOptionRfq(initOverrides?: RequestInit): Promise<CreateVaultMarketRfqResponse> {
+        const response = await this.createVaultMarketOptionRfqRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take a live answer (`responseId`) to your option quote request: it trades through the options book at that price or better, with margin and self-trade prevention.
+     */
+    async createVaultMarketOptionRfqAcceptRaw(requestParameters: CreateVaultMarketOptionRfqAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionRfqAcceptResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionRfqAccept.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/rfq/{id}/accept`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionRfqAcceptResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Take a live answer (`responseId`) to your option quote request: it trades through the options book at that price or better, with margin and self-trade prevention.
+     */
+    async createVaultMarketOptionRfqAccept(requestParameters: CreateVaultMarketOptionRfqAcceptRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionRfqAcceptResponse> {
+        const response = await this.createVaultMarketOptionRfqAcceptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel your open option quote request.
+     */
+    async createVaultMarketOptionRfqCancelRaw(requestParameters: CreateVaultMarketOptionRfqCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdStatusResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionRfqCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/rfq/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => IdStatusResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel your open option quote request.
+     */
+    async createVaultMarketOptionRfqCancel(requestParameters: CreateVaultMarketOptionRfqCancelRequest, initOverrides?: RequestInit): Promise<IdStatusResponse> {
+        const response = await this.createVaultMarketOptionRfqCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Answer an option quote request with a firm price per contract for its full size (good for 60 s; a new answer replaces your last).
+     */
+    async createVaultMarketOptionRfqRespondRaw(requestParameters: CreateVaultMarketOptionRfqRespondRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionRfqRespondResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionRfqRespond.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/rfq/{id}/respond`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionRfqRespondResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Answer an option quote request with a firm price per contract for its full size (good for 60 s; a new answer replaces your last).
+     */
+    async createVaultMarketOptionRfqRespond(requestParameters: CreateVaultMarketOptionRfqRespondRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionRfqRespondResponse> {
+        const response = await this.createVaultMarketOptionRfqRespondRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Withdraw your live answer to an option quote request.
+     */
+    async createVaultMarketOptionRfqResponseWithdrawRaw(requestParameters: CreateVaultMarketOptionRfqResponseWithdrawRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdStatusResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketOptionRfqResponseWithdraw.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/rfq/responses/{id}/withdraw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => IdStatusResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Withdraw your live answer to an option quote request.
+     */
+    async createVaultMarketOptionRfqResponseWithdraw(requestParameters: CreateVaultMarketOptionRfqResponseWithdrawRequest, initOverrides?: RequestInit): Promise<IdStatusResponse> {
+        const response = await this.createVaultMarketOptionRfqResponseWithdrawRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. `practice` rolls a practice position.
+     */
+    async createVaultMarketOptionRollRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionRollResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/roll`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionRollResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. `practice` rolls a practice position.
+     */
+    async createVaultMarketOptionRoll(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionRollResponse> {
+        const response = await this.createVaultMarketOptionRollRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Preview a strategy before placing it: by template (underlying, kind, direction, strikes, expiries) or by legs. Returns each leg at its bid / ask, the net per unit (+ debit, - credit), the payoff at the first expiry, max profit and max loss (null = unbounded), breakevens, net Greeks, and the scenario margin of the whole strategy next to its legs margined one by one.
+     */
+    async createVaultMarketOptionStrategyPreviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionStrategyPreviewResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/strategies/preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionStrategyPreviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Preview a strategy before placing it: by template (underlying, kind, direction, strikes, expiries) or by legs. Returns each leg at its bid / ask, the net per unit (+ debit, - credit), the payoff at the first expiry, max profit and max loss (null = unbounded), breakevens, net Greeks, and the scenario margin of the whole strategy next to its legs margined one by one.
+     */
+    async createVaultMarketOptionStrategyPreview(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionStrategyPreviewResponse> {
+        const response = await this.createVaultMarketOptionStrategyPreviewRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Lender: call the loan (once it is a day old). A refinancing auction runs for about 30 hours, the rate a new lender gets climbing to the ceiling; repaid or refinanced, you are paid in full; neither by the end, the unit moves to your vault.
      */
     async createVaultMarketP2pLoanCallRaw(requestParameters: CreateVaultMarketP2pLoanCallRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
@@ -6026,6 +7860,994 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Open your account at the live prediction venue (the partner DCM, or your own segregated account at the settlement bank). Returns `{ venue, status, opened }`.
+     */
+    async createVaultMarketPredictionAccountRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionAccountResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/account`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionAccountResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Open your account at the live prediction venue (the partner DCM, or your own segregated account at the settlement bank). Returns `{ venue, status, opened }`.
+     */
+    async createVaultMarketPredictionAccount(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionAccountResponse> {
+        const response = await this.createVaultMarketPredictionAccountRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Tell me when a market\'s probability crosses a level: `{ marketId, levelPercent, direction }`. Returns the alert.
+     */
+    async createVaultMarketPredictionAlertRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionAlertResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/alerts`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionAlertResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Tell me when a market\'s probability crosses a level: `{ marketId, levelPercent, direction }`. Returns the alert.
+     */
+    async createVaultMarketPredictionAlert(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionAlertResponse> {
+        const response = await this.createVaultMarketPredictionAlertRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Make an \"I called it\" share card for a position of yours that settled in your favour (`showAmounts` to include what you paid and won). Returns the card with its public URL.
+     */
+    async createVaultMarketPredictionCardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionCardResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/cards`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionCardResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Make an \"I called it\" share card for a position of yours that settled in your favour (`showAmounts` to include what you paid and won). Returns the card with its public URL.
+     */
+    async createVaultMarketPredictionCard(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionCardResponse> {
+        const response = await this.createVaultMarketPredictionCardRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ask makers for a price on a combo: 2 to 6 legs (a market and a side each) on different underlyings, a size, and an optional limit makers never see. Pays $1 a contract if every leg comes true. `venue` paper or live.
+     */
+    async createVaultMarketPredictionComboRfqRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionComboRfqResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos/rfqs`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionComboRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ask makers for a price on a combo: 2 to 6 legs (a market and a side each) on different underlyings, a size, and an optional limit makers never see. Pays $1 a contract if every leg comes true. `venue` paper or live.
+     */
+    async createVaultMarketPredictionComboRfq(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionComboRfqResponse> {
+        const response = await this.createVaultMarketPredictionComboRfqRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take one live, firm answer to your combo request (`quoteId`): both stakes are locked and the combo opens. Returns the combo.
+     */
+    async createVaultMarketPredictionComboRfqAcceptRaw(requestParameters: CreateVaultMarketPredictionComboRfqAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionCombosItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionComboRfqAccept.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos/rfqs/{id}/accept`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionCombosItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Take one live, firm answer to your combo request (`quoteId`): both stakes are locked and the combo opens. Returns the combo.
+     */
+    async createVaultMarketPredictionComboRfqAccept(requestParameters: CreateVaultMarketPredictionComboRfqAcceptRequest, initOverrides?: RequestInit): Promise<ListVaultMarketPredictionCombosItem> {
+        const response = await this.createVaultMarketPredictionComboRfqAcceptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Withdraw your combo request; its answers are withdrawn too.
+     */
+    async createVaultMarketPredictionComboRfqCancelRaw(requestParameters: CreateVaultMarketPredictionComboRfqCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionComboRfqsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionComboRfqCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos/rfqs/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionComboRfqsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Withdraw your combo request; its answers are withdrawn too.
+     */
+    async createVaultMarketPredictionComboRfqCancel(requestParameters: CreateVaultMarketPredictionComboRfqCancelRequest, initOverrides?: RequestInit): Promise<ListVaultMarketPredictionComboRfqsItem> {
+        const response = await this.createVaultMarketPredictionComboRfqCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Answer a combo request with a firm price a contract for the full size (good for 30 seconds; a new answer replaces yours). Real money needs an active prediction maker programme or approved dealer status.
+     */
+    async createVaultMarketPredictionComboRfqQuoteRaw(requestParameters: CreateVaultMarketPredictionComboRfqQuoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionComboRfqQuoteResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionComboRfqQuote.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos/rfqs/{id}/quotes`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionComboRfqQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Answer a combo request with a firm price a contract for the full size (good for 30 seconds; a new answer replaces yours). Real money needs an active prediction maker programme or approved dealer status.
+     */
+    async createVaultMarketPredictionComboRfqQuote(requestParameters: CreateVaultMarketPredictionComboRfqQuoteRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionComboRfqQuoteResponse> {
+        const response = await this.createVaultMarketPredictionComboRfqQuoteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Comment on a market or a series, or reply to a comment (`parentId`). Moderated like every comment on Crossly.
+     */
+    async createVaultMarketPredictionCommentRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionCommentResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/comments`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionCommentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Comment on a market or a series, or reply to a comment (`parentId`). Moderated like every comment on Crossly.
+     */
+    async createVaultMarketPredictionComment(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionCommentResponse> {
+        const response = await this.createVaultMarketPredictionCommentRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Report a comment with a reason; enough reports hide it until ops look.
+     */
+    async createVaultMarketPredictionCommentReportRaw(requestParameters: CreateVaultMarketPredictionCommentReportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionCommentReportResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionCommentReport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/comments/{id}/report`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionCommentReportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Report a comment with a reason; enough reports hide it until ops look.
+     */
+    async createVaultMarketPredictionCommentReport(requestParameters: CreateVaultMarketPredictionCommentReportRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionCommentReportResponse> {
+        const response = await this.createVaultMarketPredictionCommentReportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Split ($1 a set buys one Yes in every bucket of an expiry), merge (one Yes in every bucket gives back $1 a set before settlement) or convert (No in one bucket becomes Yes in every other) on a full bucket set. `venue` paper or live. Returns the conversion and the event after it.
+     */
+    async createVaultMarketPredictionConversionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionConversionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/conversions`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionConversionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Split ($1 a set buys one Yes in every bucket of an expiry), merge (one Yes in every bucket gives back $1 a set before settlement) or convert (No in one bucket becomes Yes in every other) on a full bucket set. `venue` paper or live. Returns the conversion and the event after it.
+     */
+    async createVaultMarketPredictionConversion(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionConversionResponse> {
+        const response = await this.createVaultMarketPredictionConversionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Forecast a market: `probabilityPercent` 0 to 100. The one standing when trading closes is scored (Brier).
+     */
+    async createVaultMarketPredictionForecastRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionForecastResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/forecasts`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionForecastResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Forecast a market: `probabilityPercent` 0 to 100. The one standing when trading closes is scored (Brier).
+     */
+    async createVaultMarketPredictionForecast(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionForecastResponse> {
+        const response = await this.createVaultMarketPredictionForecastRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Follow a public forecaster: you are told when they open a position or forecast (copy-watch only; nothing is ever traded for you).
+     */
+    async createVaultMarketPredictionForecasterFollowRaw(requestParameters: CreateVaultMarketPredictionForecasterFollowRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionForecasterFollowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionForecasterFollow.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/forecasters/{id}/follow`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionForecasterFollowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Follow a public forecaster: you are told when they open a position or forecast (copy-watch only; nothing is ever traded for you).
+     */
+    async createVaultMarketPredictionForecasterFollow(requestParameters: CreateVaultMarketPredictionForecasterFollowRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionForecasterFollowResponse> {
+        const response = await this.createVaultMarketPredictionForecasterFollowRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Apply to make markets in prediction ladders (one series, or all with `seriesId` null). Needs the ID check; ops approve. Returns the application.
+     */
+    async createVaultMarketPredictionMakerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionMakersItem>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/makers`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionMakersItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Apply to make markets in prediction ladders (one series, or all with `seriesId` null). Needs the ID check; ops approve. Returns the application.
+     */
+    async createVaultMarketPredictionMaker(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionMakersItem> {
+        const response = await this.createVaultMarketPredictionMakerRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Mass quote: replace your resting maker quotes on up to 50 markets with one Yes bid and one Yes ask each (post-only; an ask rests as a No bid at 100 minus it). Live quotes need an active maker programme. Returns what rests.
+     */
+    async createVaultMarketPredictionMakerQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionMakerQuoteResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/makers/quotes`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionMakerQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Mass quote: replace your resting maker quotes on up to 50 markets with one Yes bid and one Yes ask each (post-only; an ask rests as a No bid at 100 minus it). Live quotes need an active maker programme. Returns what rests.
+     */
+    async createVaultMarketPredictionMakerQuote(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionMakerQuoteResponse> {
+        const response = await this.createVaultMarketPredictionMakerQuoteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Place a prediction order: buy_yes, sell_yes, buy_no or sell_no; limit (priceCents 1-99 in the action\'s own terms) or market (IOC 10 cents through the best price); GTC, GTD (expiresAt) or IOC; post-only. Sells only what you hold. `venue` paper (practice) or live (503 until a venue is registered). Returns the order with its fills.
+     */
+    async createVaultMarketPredictionOrderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionOrderResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/orders`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Place a prediction order: buy_yes, sell_yes, buy_no or sell_no; limit (priceCents 1-99 in the action\'s own terms) or market (IOC 10 cents through the best price); GTC, GTD (expiresAt) or IOC; post-only. Sells only what you hold. `venue` paper (practice) or live (503 until a venue is registered). Returns the order with its fills.
+     */
+    async createVaultMarketPredictionOrder(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionOrderResponse> {
+        const response = await this.createVaultMarketPredictionOrderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Amend a resting order\'s price (in its own terms) and/or whole size. It keeps its place in the queue only when the size goes down at the same price; otherwise it is re-queued and may trade at once. Returns the order with `keptPriority`.
+     */
+    async createVaultMarketPredictionOrderAmendRaw(requestParameters: CreateVaultMarketPredictionOrderAmendRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionOrderAmendResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionOrderAmend.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/orders/{id}/amend`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionOrderAmendResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Amend a resting order\'s price (in its own terms) and/or whole size. It keeps its place in the queue only when the size goes down at the same price; otherwise it is re-queued and may trade at once. Returns the order with `keptPriority`.
+     */
+    async createVaultMarketPredictionOrderAmend(requestParameters: CreateVaultMarketPredictionOrderAmendRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionOrderAmendResponse> {
+        const response = await this.createVaultMarketPredictionOrderAmendRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Place up to 20 orders in one call; each answers on its own (`results[]`), one refused never stops the rest.
+     */
+    async createVaultMarketPredictionOrderBatchRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionOrderBatchResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/orders/batch`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionOrderBatchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Place up to 20 orders in one call; each answers on its own (`results[]`), one refused never stops the rest.
+     */
+    async createVaultMarketPredictionOrderBatch(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionOrderBatchResponse> {
+        const response = await this.createVaultMarketPredictionOrderBatchRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel up to 20 orders in one call; each answers on its own.
+     */
+    async createVaultMarketPredictionOrderBatchCancelRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionOrderBatchCancelResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/orders/batch-cancel`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionOrderBatchCancelResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel up to 20 orders in one call; each answers on its own.
+     */
+    async createVaultMarketPredictionOrderBatchCancel(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionOrderBatchCancelResponse> {
+        const response = await this.createVaultMarketPredictionOrderBatchCancelRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel a working prediction order; the money (or practice money) it locked comes back. Returns the order.
+     */
+    async createVaultMarketPredictionOrderCancelRaw(requestParameters: CreateVaultMarketPredictionOrderCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionOrderResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionOrderCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/orders/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a working prediction order; the money (or practice money) it locked comes back. Returns the order.
+     */
+    async createVaultMarketPredictionOrderCancel(requestParameters: CreateVaultMarketPredictionOrderCancelRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionOrderResponse> {
+        const response = await this.createVaultMarketPredictionOrderCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel every working prediction order you have, or only those on one market (`marketId`). Returns `{ cancelled }`.
+     */
+    async createVaultMarketPredictionOrderCancelAllRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketProOrderCancelAllResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/orders/cancel-all`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketProOrderCancelAllResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel every working prediction order you have, or only those on one market (`marketId`). Returns `{ cancelled }`.
+     */
+    async createVaultMarketPredictionOrderCancelAll(initOverrides?: RequestInit): Promise<CreateVaultMarketProOrderCancelAllResponse> {
+        const response = await this.createVaultMarketPredictionOrderCancelAllRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Reset your practice prediction account to $1,000 of play money: working practice orders cancelled, practice positions cleared. Once a day.
+     */
+    async createVaultMarketPredictionPaperResetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionPaperResetResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/paper/reset`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionPaperResetResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Reset your practice prediction account to $1,000 of play money: working practice orders cancelled, practice positions cleared. Once a day.
+     */
+    async createVaultMarketPredictionPaperReset(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionPaperResetResponse> {
+        const response = await this.createVaultMarketPredictionPaperResetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Close a position: your resting sells on the market are cancelled and everything you hold is sold now (market, 10-cent band) or at `priceCents`. Returns the sell order.
+     */
+    async createVaultMarketPredictionPositionCloseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionOrderResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/positions/close`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Close a position: your resting sells on the market are cancelled and everything you hold is sold now (market, 10-cent band) or at `priceCents`. Returns the sell order.
+     */
+    async createVaultMarketPredictionPositionClose(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionOrderResponse> {
+        const response = await this.createVaultMarketPredictionPositionCloseRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Sell all: close every open position on a venue, or only one event\'s (`eventId`). Each answers on its own.
+     */
+    async createVaultMarketPredictionPositionCloseAllRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionPositionCloseAllResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/positions/close-all`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionPositionCloseAllResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Sell all: close every open position on a venue, or only one event\'s (`eventId`). Each answers on its own.
+     */
+    async createVaultMarketPredictionPositionCloseAll(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionPositionCloseAllResponse> {
+        const response = await this.createVaultMarketPredictionPositionCloseAllRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Propose a market: an index slug or a book key, a shape (close at or above / at or below, between, touch), its strike(s) and an expiry. Ops review it; once listed you earn the creator share of Crossly\'s take on its fees.
+     */
+    async createVaultMarketPredictionProposalRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionProposalsItem>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/proposals`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionProposalsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Propose a market: an index slug or a book key, a shape (close at or above / at or below, between, touch), its strike(s) and an expiry. Ops review it; once listed you earn the creator share of Crossly\'s take on its fees.
+     */
+    async createVaultMarketPredictionProposal(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionProposalsItem> {
+        const response = await this.createVaultMarketPredictionProposalRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Check a market proposal without sending it: whether the underlying may carry markets (a built-in index or a tier A key), and what is wrong with the strike or expiry.
+     */
+    async createVaultMarketPredictionProposalCheckRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionProposalCheckResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/proposals/check`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionProposalCheckResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Check a market proposal without sending it: whether the underlying may carry markets (a built-in index or a tier A key), and what is wrong with the strike or expiry.
+     */
+    async createVaultMarketPredictionProposalCheck(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionProposalCheckResponse> {
+        const response = await this.createVaultMarketPredictionProposalCheckRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Withdraw a proposal still waiting for review.
+     */
+    async createVaultMarketPredictionProposalWithdrawRaw(requestParameters: CreateVaultMarketPredictionProposalWithdrawRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionProposalsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionProposalWithdraw.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/proposals/{id}/withdraw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionProposalsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Withdraw a proposal still waiting for review.
+     */
+    async createVaultMarketPredictionProposalWithdraw(requestParameters: CreateVaultMarketPredictionProposalWithdrawRequest, initOverrides?: RequestInit): Promise<ListVaultMarketPredictionProposalsItem> {
+        const response = await this.createVaultMarketPredictionProposalWithdrawRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Dispute a settlement inside its 24-hour review window (you must hold a position in the market). Payout waits for the venue\'s decision. Returns `{ settlementId, status }`.
+     */
+    async createVaultMarketPredictionSettlementDisputeRaw(requestParameters: CreateVaultMarketPredictionSettlementDisputeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionSettlementDisputeResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketPredictionSettlementDispute.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/settlements/{id}/dispute`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionSettlementDisputeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Dispute a settlement inside its 24-hour review window (you must hold a position in the market). Payout waits for the venue\'s decision. Returns `{ settlementId, status }`.
+     */
+    async createVaultMarketPredictionSettlementDispute(requestParameters: CreateVaultMarketPredictionSettlementDisputeRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionSettlementDisputeResponse> {
+        const response = await this.createVaultMarketPredictionSettlementDisputeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Accept the current prediction-market contract terms (PREDICTION_TERMS_VERSION), needed for every real-money order. Returns `{ termsVersion, venue }`.
+     */
+    async createVaultMarketPredictionTermRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionTermResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/terms`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionTermResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Accept the current prediction-market contract terms (PREDICTION_TERMS_VERSION), needed for every real-money order. Returns `{ termsVersion, venue }`.
+     */
+    async createVaultMarketPredictionTerm(initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionTermResponse> {
+        const response = await this.createVaultMarketPredictionTermRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Make a price widget for one vault market (`kind` mark + `bookKey`) or one public index (`kind` index + `indexSlug`): range, layout (compact or chart), theme (auto, light, dark), optionally your own affiliate code for the link back and the sites allowed to show it (empty = any). Returns the widget with its snippets.
      */
     async createVaultMarketPriceWidgetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPriceWidgetsItem>> {
@@ -6380,7 +9202,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Keep your quotes alive (cancel-on-disconnect). Returns `{ quotes, at }`.
      */
-    async createVaultMarketProQuoteHeartbeatRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketProQuoteHeartbeatResponse>> {
+    async createVaultMarketProQuoteHeartbeatRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionMmHeartbeatResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -6400,13 +9222,13 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketProQuoteHeartbeatResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionMmHeartbeatResponseFromJSON(jsonValue));
     }
 
     /**
      * Keep your quotes alive (cancel-on-disconnect). Returns `{ quotes, at }`.
      */
-    async createVaultMarketProQuoteHeartbeat(initOverrides?: RequestInit): Promise<CreateVaultMarketProQuoteHeartbeatResponse> {
+    async createVaultMarketProQuoteHeartbeat(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionMmHeartbeatResponse> {
         const response = await this.createVaultMarketProQuoteHeartbeatRaw(initOverrides);
         return await response.value();
     }
@@ -6814,6 +9636,268 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Start auto-invest: `amountCents` ($5-$10,000) `every` week or month into `seriesIds` (equal weights) or `targets` (seriesId + weightBps summing to 10,000) or a `basketId` (with `rebalance` to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to `maxPremiumBps` over the indicative value. `practice` runs it on paper.
+     */
+    async createVaultMarketShareAutoInvestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareAutoInvestItem>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/auto-invest`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareAutoInvestItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Start auto-invest: `amountCents` ($5-$10,000) `every` week or month into `seriesIds` (equal weights) or `targets` (seriesId + weightBps summing to 10,000) or a `basketId` (with `rebalance` to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to `maxPremiumBps` over the indicative value. `practice` runs it on paper.
+     */
+    async createVaultMarketShareAutoInvest(initOverrides?: RequestInit): Promise<ListVaultMarketShareAutoInvestItem> {
+        const response = await this.createVaultMarketShareAutoInvestRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Run a plan now (once a minute at most); the schedule does not move.
+     */
+    async createVaultMarketShareAutoInvestRunRaw(requestParameters: CreateVaultMarketShareAutoInvestRunRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareAutoInvestRunResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareAutoInvestRun.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/auto-invest/{id}/run`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareAutoInvestRunResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Run a plan now (once a minute at most); the schedule does not move.
+     */
+    async createVaultMarketShareAutoInvestRun(requestParameters: CreateVaultMarketShareAutoInvestRunRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareAutoInvestRunResponse> {
+        const response = await this.createVaultMarketShareAutoInvestRunRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change a plan (amount, cadence, series or weights, cap, rebalance) or set its `status` active, paused or cancelled.
+     */
+    async createVaultMarketShareAutoInvestUpdateRaw(requestParameters: CreateVaultMarketShareAutoInvestUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareAutoInvestItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareAutoInvestUpdate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/auto-invest/{id}/update`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareAutoInvestItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Change a plan (amount, cadence, series or weights, cap, rebalance) or set its `status` active, paused or cancelled.
+     */
+    async createVaultMarketShareAutoInvestUpdate(requestParameters: CreateVaultMarketShareAutoInvestUpdateRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareAutoInvestItem> {
+        const response = await this.createVaultMarketShareAutoInvestUpdateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Buy a basket once: `amountCents` split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to `maxPremiumBps`). `practice` buys on paper.
+     */
+    async createVaultMarketShareBasketBuyRaw(requestParameters: CreateVaultMarketShareBasketBuyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBasketBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareBasketBuy.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/baskets/{id}/buy`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareBasketBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Buy a basket once: `amountCents` split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to `maxPremiumBps`). `practice` buys on paper.
+     */
+    async createVaultMarketShareBasketBuy(requestParameters: CreateVaultMarketShareBasketBuyRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBasketBuyResponse> {
+        const response = await this.createVaultMarketShareBasketBuyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your whole-unit bid reached the reserve: fund the price through your investor account within 72 hours to buy the item from its holders (no vote).
+     */
+    async createVaultMarketShareBuyoutFundRaw(requestParameters: CreateVaultMarketShareBuyoutFundRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareBuyoutFund.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/buyouts/{id}/fund`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareBuyoutFundResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your whole-unit bid reached the reserve: fund the price through your investor account within 72 hours to buy the item from its holders (no vote).
+     */
+    async createVaultMarketShareBuyoutFund(requestParameters: CreateVaultMarketShareBuyoutFundRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBuyoutFundResponse> {
+        const response = await this.createVaultMarketShareBuyoutFundRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Vote `yes` or `no` on a buyout with the shares you held when the vote opened. You can change your vote while it is open.
+     */
+    async createVaultMarketShareBuyoutVoteRaw(requestParameters: CreateVaultMarketShareBuyoutVoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareBuyoutVote.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/buyouts/{id}/vote`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareBuyoutFundResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Vote `yes` or `no` on a buyout with the shares you held when the vote opened. You can change your vote while it is open.
+     */
+    async createVaultMarketShareBuyoutVote(requestParameters: CreateVaultMarketShareBuyoutVoteRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBuyoutFundResponse> {
+        const response = await this.createVaultMarketShareBuyoutVoteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Withdraw your buyout bid before its vote opens; the escrow is refunded.
+     */
+    async createVaultMarketShareBuyoutWithdrawRaw(requestParameters: CreateVaultMarketShareBuyoutWithdrawRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareBuyoutWithdraw.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/buyouts/{id}/withdraw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareBuyoutFundResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Withdraw your buyout bid before its vote opens; the escrow is refunded.
+     */
+    async createVaultMarketShareBuyoutWithdraw(requestParameters: CreateVaultMarketShareBuyoutWithdrawRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBuyoutFundResponse> {
+        const response = await this.createVaultMarketShareBuyoutWithdrawRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Make a verified share card of a position, a vault unit, a public index or your portfolio (`kind`, `refId`). The % on it is the price move since your real fill; amounts stay hidden unless `showAmounts`.
      */
     async createVaultMarketShareCardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareCardsItem>> {
@@ -6844,6 +9928,906 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async createVaultMarketShareCard(initOverrides?: RequestInit): Promise<ListVaultMarketShareCardsItem> {
         const response = await this.createVaultMarketShareCardRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Accept a share gift. Needs your own verified Vault Shares investor account; the venue then moves the shares to you on the register.
+     */
+    async createVaultMarketShareGiftAcceptRaw(requestParameters: CreateVaultMarketShareGiftAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareGiftsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareGiftAccept.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/gifts/{id}/accept`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareGiftsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Accept a share gift. Needs your own verified Vault Shares investor account; the venue then moves the shares to you on the register.
+     */
+    async createVaultMarketShareGiftAccept(requestParameters: CreateVaultMarketShareGiftAcceptRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareGiftsItem> {
+        const response = await this.createVaultMarketShareGiftAcceptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel a gift you offered, before it is accepted: the shares are free again.
+     */
+    async createVaultMarketShareGiftCancelRaw(requestParameters: CreateVaultMarketShareGiftCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareGiftsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareGiftCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/gifts/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareGiftsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a gift you offered, before it is accepted: the shares are free again.
+     */
+    async createVaultMarketShareGiftCancel(requestParameters: CreateVaultMarketShareGiftCancelRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareGiftsItem> {
+        const response = await this.createVaultMarketShareGiftCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Decline a share gift offered to you.
+     */
+    async createVaultMarketShareGiftDeclineRaw(requestParameters: CreateVaultMarketShareGiftDeclineRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareGiftsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareGiftDecline.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/gifts/{id}/decline`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareGiftsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Decline a share gift offered to you.
+     */
+    async createVaultMarketShareGiftDecline(requestParameters: CreateVaultMarketShareGiftDeclineRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareGiftsItem> {
+        const response = await this.createVaultMarketShareGiftDeclineRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Open or update your investor account at the venue: accept the current investor terms (`acceptTerms`), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
+     */
+    async createVaultMarketShareInvestorRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareInvestorResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/investor`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareInvestorResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Open or update your investor account at the venue: accept the current investor terms (`acceptTerms`), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
+     */
+    async createVaultMarketShareInvestor(initOverrides?: RequestInit): Promise<GetVaultMarketShareInvestorResponse> {
+        const response = await this.createVaultMarketShareInvestorRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel one of your open share-book orders.
+     */
+    async createVaultMarketShareOrderCancelRaw(requestParameters: CreateVaultMarketShareOrderCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareOrdersItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareOrderCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/orders/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareOrdersItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel one of your open share-book orders.
+     */
+    async createVaultMarketShareOrderCancel(requestParameters: CreateVaultMarketShareOrderCancelRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareOrdersItem> {
+        const response = await this.createVaultMarketShareOrderCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel an open practice order.
+     */
+    async createVaultMarketSharePaperOrderCancelRaw(requestParameters: CreateVaultMarketSharePaperOrderCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketSharePaperOrderCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/paper/orders/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketSharePaperSeryOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel an open practice order.
+     */
+    async createVaultMarketSharePaperOrderCancel(requestParameters: CreateVaultMarketSharePaperOrderCancelRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketSharePaperSeryOrderResponse> {
+        const response = await this.createVaultMarketSharePaperOrderCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Start the practice account over with fresh play money (once a day).
+     */
+    async createVaultMarketSharePaperResetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSharePaperResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/paper/reset`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSharePaperResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Start the practice account over with fresh play money (once a day).
+     */
+    async createVaultMarketSharePaperReset(initOverrides?: RequestInit): Promise<GetVaultMarketSharePaperResponse> {
+        const response = await this.createVaultMarketSharePaperResetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Place a practice order (play money) with the same rules as the real share book.
+     */
+    async createVaultMarketSharePaperSeryOrderRaw(requestParameters: CreateVaultMarketSharePaperSeryOrderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketSharePaperSeryOrder.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/paper/series/{id}/orders`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketSharePaperSeryOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Place a practice order (play money) with the same rules as the real share book.
+     */
+    async createVaultMarketSharePaperSeryOrder(requestParameters: CreateVaultMarketSharePaperSeryOrderRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketSharePaperSeryOrderResponse> {
+        const response = await this.createVaultMarketSharePaperSeryOrderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Subscribe with play money to a practice series’ offering.
+     */
+    async createVaultMarketSharePaperSerySubscribeRaw(requestParameters: CreateVaultMarketSharePaperSerySubscribeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSharePaperResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketSharePaperSerySubscribe.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/paper/series/{id}/subscribe`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSharePaperResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Subscribe with play money to a practice series’ offering.
+     */
+    async createVaultMarketSharePaperSerySubscribe(requestParameters: CreateVaultMarketSharePaperSerySubscribeRequest, initOverrides?: RequestInit): Promise<GetVaultMarketSharePaperResponse> {
+        const response = await this.createVaultMarketSharePaperSerySubscribeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take down one of your own holder-room posts (`reason`).
+     */
+    async createVaultMarketShareRoomHideRaw(requestParameters: CreateVaultMarketShareRoomHideRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareRoomHideResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareRoomHide.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/room/{id}/hide`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareRoomHideResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Take down one of your own holder-room posts (`reason`).
+     */
+    async createVaultMarketShareRoomHide(requestParameters: CreateVaultMarketShareRoomHideRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareRoomHideResponse> {
+        const response = await this.createVaultMarketShareRoomHideRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Propose a Vault Shares series for one of your units (`vaultItemId`), keeping `retainedShares` (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass `requestId` to make a retry safe.
+     */
+    async createVaultMarketShareSeryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSeriesItem>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSeriesItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Propose a Vault Shares series for one of your units (`vaultItemId`), keeping `retainedShares` (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass `requestId` to make a retry safe.
+     */
+    async createVaultMarketShareSery(initOverrides?: RequestInit): Promise<ListVaultMarketShareSeriesItem> {
+        const response = await this.createVaultMarketShareSeryRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Bid for the whole item (`offerCents`, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
+     */
+    async createVaultMarketShareSeryBuyoutRaw(requestParameters: CreateVaultMarketShareSeryBuyoutRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryBuyout.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/buyouts`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareBuyoutFundResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Bid for the whole item (`offerCents`, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
+     */
+    async createVaultMarketShareSeryBuyout(requestParameters: CreateVaultMarketShareSeryBuyoutRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBuyoutFundResponse> {
+        const response = await this.createVaultMarketShareSeryBuyoutRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Give whole `shares` of a series to someone (`to`: their @handle, email or user id), with an optional `message`. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
+     */
+    async createVaultMarketShareSeryGiftRaw(requestParameters: CreateVaultMarketShareSeryGiftRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareGiftsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryGift.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/gifts`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareGiftsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Give whole `shares` of a series to someone (`to`: their @handle, email or user id), with an optional `message`. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
+     */
+    async createVaultMarketShareSeryGift(requestParameters: CreateVaultMarketShareSeryGiftRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareGiftsItem> {
+        const response = await this.createVaultMarketShareSeryGiftRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Place an order on a series’ share book: `side`, `type` limit or market (immediate-or-cancel inside a 10% band), `tif` gtc / gtd (`expiresAt`) / ioc, whole `shares` or a buy’s `amountCents` (turned into whole shares at the most it could pay), integer `limitCents` a share, `postOnly`. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass `requestId` to make a retry safe.
+     */
+    async createVaultMarketShareSeryOrderRaw(requestParameters: CreateVaultMarketShareSeryOrderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareOrdersItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryOrder.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/orders`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareOrdersItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Place an order on a series’ share book: `side`, `type` limit or market (immediate-or-cancel inside a 10% band), `tif` gtc / gtd (`expiresAt`) / ioc, whole `shares` or a buy’s `amountCents` (turned into whole shares at the most it could pay), integer `limitCents` a share, `postOnly`. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass `requestId` to make a retry safe.
+     */
+    async createVaultMarketShareSeryOrder(requestParameters: CreateVaultMarketShareSeryOrderRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareOrdersItem> {
+        const response = await this.createVaultMarketShareSeryOrderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * You hold every share: take the item back whole. With `withdraw`, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
+     */
+    async createVaultMarketShareSeryRecombineRaw(requestParameters: CreateVaultMarketShareSeryRecombineRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryRecombineResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryRecombine.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/recombine`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareSeryRecombineResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * You hold every share: take the item back whole. With `withdraw`, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
+     */
+    async createVaultMarketShareSeryRecombine(requestParameters: CreateVaultMarketShareSeryRecombineRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryRecombineResponse> {
+        const response = await this.createVaultMarketShareSeryRecombineRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Post in the holder room (shareholders only), up to 1,000 characters.
+     */
+    async createVaultMarketShareSeryRoomRaw(requestParameters: CreateVaultMarketShareSeryRoomRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryRoomResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryRoom.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/room`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareSeryRoomResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Post in the holder room (shareholders only), up to 1,000 characters.
+     */
+    async createVaultMarketShareSeryRoom(requestParameters: CreateVaultMarketShareSeryRoomRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryRoomResponse> {
+        const response = await this.createVaultMarketShareSeryRoomRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Subscribe for whole `shares` in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass `jointVaultId`. Pass `requestId` to make a retry safe.
+     */
+    async createVaultMarketShareSerySubscribeRaw(requestParameters: CreateVaultMarketShareSerySubscribeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSubscriptionsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSerySubscribe.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/subscribe`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSubscriptionsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Subscribe for whole `shares` in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass `jointVaultId`. Pass `requestId` to make a retry safe.
+     */
+    async createVaultMarketShareSerySubscribe(requestParameters: CreateVaultMarketShareSerySubscribeRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSubscriptionsItem> {
+        const response = await this.createVaultMarketShareSerySubscribeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Stop being told about a drop (`kind` notify) or leave its waitlist (`kind` waitlist).
+     */
+    async createVaultMarketShareSeryUnwatchRaw(requestParameters: CreateVaultMarketShareSeryUnwatchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryUnwatch.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/unwatch`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareSeryWatchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Stop being told about a drop (`kind` notify) or leave its waitlist (`kind` waitlist).
+     */
+    async createVaultMarketShareSeryUnwatch(requestParameters: CreateVaultMarketShareSeryUnwatchRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryWatchResponse> {
+        const response = await this.createVaultMarketShareSeryUnwatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Post an update on your own item’s series (you are its originator): `kind` story, provenance, condition, appraisal, exhibition or event, a `title`, a `body`, an optional https `mediaUrl`, `holdersOnly`. Holders are told.
+     */
+    async createVaultMarketShareSeryUpdateRaw(requestParameters: CreateVaultMarketShareSeryUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryUpdate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/updates`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => IdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Post an update on your own item’s series (you are its originator): `kind` story, provenance, condition, appraisal, exhibition or event, a `title`, a `body`, an optional https `mediaUrl`, `holdersOnly`. Holders are told.
+     */
+    async createVaultMarketShareSeryUpdate(requestParameters: CreateVaultMarketShareSeryUpdateRequest, initOverrides?: RequestInit): Promise<IdResponse> {
+        const response = await this.createVaultMarketShareSeryUpdateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ask to be told about a drop (`kind` notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (`kind` waitlist, with the `shares` you want).
+     */
+    async createVaultMarketShareSeryWatchRaw(requestParameters: CreateVaultMarketShareSeryWatchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryWatch.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/watch`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareSeryWatchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ask to be told about a drop (`kind` notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (`kind` waitlist, with the `shares` you want).
+     */
+    async createVaultMarketShareSeryWatch(requestParameters: CreateVaultMarketShareSeryWatchRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryWatchResponse> {
+        const response = await this.createVaultMarketShareSeryWatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Withdraw your own proposal before its offering opens.
+     */
+    async createVaultMarketShareSeryWithdrawProposalRaw(requestParameters: CreateVaultMarketShareSeryWithdrawProposalRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSeriesItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryWithdrawProposal.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/withdraw-proposal`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSeriesItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Withdraw your own proposal before its offering opens.
+     */
+    async createVaultMarketShareSeryWithdrawProposal(requestParameters: CreateVaultMarketShareSeryWithdrawProposalRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSeriesItem> {
+        const response = await this.createVaultMarketShareSeryWithdrawProposalRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel an escrowed subscription while its offering is still open: the escrow is refunded.
+     */
+    async createVaultMarketShareSubscriptionCancelRaw(requestParameters: CreateVaultMarketShareSubscriptionCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSubscriptionsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSubscriptionCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/subscriptions/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSubscriptionsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel an escrowed subscription while its offering is still open: the escrow is refunded.
+     */
+    async createVaultMarketShareSubscriptionCancel(requestParameters: CreateVaultMarketShareSubscriptionCancelRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSubscriptionsItem> {
+        const response = await this.createVaultMarketShareSubscriptionCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Book a place on a viewing day (shareholders only), with up to the day’s `guests`. Bookings close a day before; booking again changes your guests.
+     */
+    async createVaultMarketShareViewingBookRaw(requestParameters: CreateVaultMarketShareViewingBookRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareViewingBookResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareViewingBook.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/viewings/{id}/book`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareViewingBookResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Book a place on a viewing day (shareholders only), with up to the day’s `guests`. Bookings close a day before; booking again changes your guests.
+     */
+    async createVaultMarketShareViewingBook(requestParameters: CreateVaultMarketShareViewingBookRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareViewingBookResponse> {
+        const response = await this.createVaultMarketShareViewingBookRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel your viewing-day booking.
+     */
+    async createVaultMarketShareViewingBookingCancelRaw(requestParameters: CreateVaultMarketShareViewingBookingCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareViewingBookingCancelResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareViewingBookingCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/viewing-bookings/{id}/cancel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareViewingBookingCancelResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel your viewing-day booking.
+     */
+    async createVaultMarketShareViewingBookingCancel(requestParameters: CreateVaultMarketShareViewingBookingCancelRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareViewingBookingCancelResponse> {
+        const response = await this.createVaultMarketShareViewingBookingCancelRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -6988,6 +10972,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async createVaultMarketSupplySend(initOverrides?: RequestInit): Promise<CreateVaultMarketSupplySendResponse> {
         const response = await this.createVaultMarketSupplySendRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Send inventory items to the vault: `method: label` (one box on a prepaid label) or `dropoff` at a partner (`partnerId`, from the finder; you get a counter code). Each item can carry its declared value; `insured` insures the box for it.
+     */
+    async createVaultMarketSupplySendInRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketSupplySendInResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/supply/send-in`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketSupplySendInResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Send inventory items to the vault: `method: label` (one box on a prepaid label) or `dropoff` at a partner (`partnerId`, from the finder; you get a counter code). Each item can carry its declared value; `insured` insures the box for it.
+     */
+    async createVaultMarketSupplySendIn(initOverrides?: RequestInit): Promise<CreateVaultMarketSupplySendInResponse> {
+        const response = await this.createVaultMarketSupplySendInRaw(initOverrides);
         return await response.value();
     }
 
@@ -7682,6 +11700,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Stop Auto-buy with payouts. The history stays.
+     */
+    async deleteVaultMarketAutoBuyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteVaultMarketAutoBuyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/auto-buy`,
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteVaultMarketAutoBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Stop Auto-buy with payouts. The history stays.
+     */
+    async deleteVaultMarketAutoBuy(initOverrides?: RequestInit): Promise<DeleteVaultMarketAutoBuyResponse> {
+        const response = await this.deleteVaultMarketAutoBuyRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Stop a family-wide quote: every leg order comes off the book; what filled stays filled.
      */
     async deleteVaultMarketBullionFamilyPegRaw(requestParameters: DeleteVaultMarketBullionFamilyPegRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketBullionFamilyPegsItem>> {
@@ -7982,6 +12034,158 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async deleteVaultMarketOpeningWaitlist(requestParameters: DeleteVaultMarketOpeningWaitlistRequest, initOverrides?: RequestInit): Promise<DeleteVaultMarketOpeningWaitlistResponse> {
         const response = await this.deleteVaultMarketOpeningWaitlistRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Remove a probability alert. Returns `{ ok }`.
+     */
+    async deleteVaultMarketPredictionAlertRaw(requestParameters: DeleteVaultMarketPredictionAlertRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVaultMarketPredictionAlert.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/alerts/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove a probability alert. Returns `{ ok }`.
+     */
+    async deleteVaultMarketPredictionAlert(requestParameters: DeleteVaultMarketPredictionAlertRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.deleteVaultMarketPredictionAlertRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take an \"I called it\" card down; its link stops working. Returns `{ ok }`.
+     */
+    async deleteVaultMarketPredictionCardRaw(requestParameters: DeleteVaultMarketPredictionCardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVaultMarketPredictionCard.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/cards/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Take an \"I called it\" card down; its link stops working. Returns `{ ok }`.
+     */
+    async deleteVaultMarketPredictionCard(requestParameters: DeleteVaultMarketPredictionCardRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.deleteVaultMarketPredictionCardRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete your comment.
+     */
+    async deleteVaultMarketPredictionCommentRaw(requestParameters: DeleteVaultMarketPredictionCommentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVaultMarketPredictionComment.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/comments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete your comment.
+     */
+    async deleteVaultMarketPredictionComment(requestParameters: DeleteVaultMarketPredictionCommentRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.deleteVaultMarketPredictionCommentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Stop following a forecaster.
+     */
+    async deleteVaultMarketPredictionForecasterFollowRaw(requestParameters: DeleteVaultMarketPredictionForecasterFollowRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionForecasterFollowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVaultMarketPredictionForecasterFollow.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/forecasters/{id}/follow`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionForecasterFollowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Stop following a forecaster.
+     */
+    async deleteVaultMarketPredictionForecasterFollow(requestParameters: DeleteVaultMarketPredictionForecasterFollowRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionForecasterFollowResponse> {
+        const response = await this.deleteVaultMarketPredictionForecasterFollowRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -8706,6 +12910,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async getVaultMarketAuctionMine(initOverrides?: RequestInit): Promise<GetVaultMarketAuctionMineResponse> {
         const response = await this.getVaultMarketAuctionMineRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Auto-buy with payouts: the share of each payout set aside as a vault buying budget, the budget, your want list with max prices, the purchase history and whether it is paused. `autoBuy` is null when it is not set up.
+     */
+    async getVaultMarketAutoBuyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketAutoBuyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/auto-buy`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketAutoBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Auto-buy with payouts: the share of each payout set aside as a vault buying budget, the budget, your want list with max prices, the purchase history and whether it is paused. `autoBuy` is null when it is not set up.
+     */
+    async getVaultMarketAutoBuy(initOverrides?: RequestInit): Promise<GetVaultMarketAutoBuyResponse> {
+        const response = await this.getVaultMarketAutoBuyRaw(initOverrides);
         return await response.value();
     }
 
@@ -10074,6 +14312,82 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * The inventory item a vault unit of yours came from (null for a unit bought on the book).
+     */
+    async getVaultMarketHoldingInventoryItemRaw(requestParameters: GetVaultMarketHoldingInventoryItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketHoldingInventoryItemResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketHoldingInventoryItem.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/holdings/{id}/inventory-item`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketHoldingInventoryItemResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The inventory item a vault unit of yours came from (null for a unit bought on the book).
+     */
+    async getVaultMarketHoldingInventoryItem(requestParameters: GetVaultMarketHoldingInventoryItemRequest, initOverrides?: RequestInit): Promise<GetVaultMarketHoldingInventoryItemResponse> {
+        const response = await this.getVaultMarketHoldingInventoryItemRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What shipping one unit you own home would charge now, for `standard` and `expedited`: shipping, the storage it owes and the early-withdrawal fee (within 90 days of arriving), and the total. Read-only; ship it home with POST /api/v1/buyer/vault/:id/withdraw.
+     */
+    async getVaultMarketHoldingWithdrawQuoteRaw(requestParameters: GetVaultMarketHoldingWithdrawQuoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketHoldingWithdrawQuoteResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketHoldingWithdrawQuote.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/holdings/{id}/withdraw-quote`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketHoldingWithdrawQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What shipping one unit you own home would charge now, for `standard` and `expedited`: shipping, the storage it owes and the early-withdrawal fee (within 90 days of arriving), and the total. Read-only; ship it home with POST /api/v1/buyer/vault/:id/withdraw.
+     */
+    async getVaultMarketHoldingWithdrawQuote(requestParameters: GetVaultMarketHoldingWithdrawQuoteRequest, initOverrides?: RequestInit): Promise<GetVaultMarketHoldingWithdrawQuoteResponse> {
+        const response = await this.getVaultMarketHoldingWithdrawQuoteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * \"Show my vault\": the vault units you hold, the ones standing in your Crossly World home first. Each: vaultItemId, title, grade, imageUrl, bookKey (its market), inHome, visitors (visitors to your home see it). Also your home (slug, privacy, path), max units one home shows, shown, visitorsSee and a note on who sees what. Your home is made on first read. No prices.
      */
     async getVaultMarketHomeUnitRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketHomeUnitResponse>> {
@@ -10468,6 +14782,44 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async getVaultMarketInstantExit(initOverrides?: RequestInit): Promise<GetVaultMarketInstantExitResponse> {
         const response = await this.getVaultMarketInstantExitRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Where one inventory item\'s units are: in your own stock (warehouse) and in the vault per location, each vault unit\'s status (in transit, received, authenticated, graded, listed, shipped out), its Sell from first choice and whether it can be sent to the vault now (with the reason when not).
+     */
+    async getVaultMarketItemLocationRaw(requestParameters: GetVaultMarketItemLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketItemLocationResponse>> {
+        if (requestParameters.inventoryItemId === null || requestParameters.inventoryItemId === undefined) {
+            throw new runtime.RequiredError('inventoryItemId','Required parameter requestParameters.inventoryItemId was null or undefined when calling getVaultMarketItemLocation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/items/{inventoryItemId}/location`.replace(`{${"inventoryItemId"}}`, encodeURIComponent(String(requestParameters.inventoryItemId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketItemLocationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Where one inventory item\'s units are: in your own stock (warehouse) and in the vault per location, each vault unit\'s status (in transit, received, authenticated, graded, listed, shipped out), its Sell from first choice and whether it can be sent to the vault now (with the reason when not).
+     */
+    async getVaultMarketItemLocation(requestParameters: GetVaultMarketItemLocationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketItemLocationResponse> {
+        const response = await this.getVaultMarketItemLocationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -11260,6 +15612,616 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Fractional options: the venue mode (self = Crossly is the venue and clearing house, partner = routed to the index DCM, paper = practice only) with the env each mode still needs, the active series and the rule book in force.
+     */
+    async getVaultMarketOptionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Fractional options: the venue mode (self = Crossly is the venue and clearing house, partner = routed to the index DCM, paper = practice only) with the env each mode still needs, the active series and the rule book in force.
+     */
+    async getVaultMarketOption(initOverrides?: RequestInit): Promise<GetVaultMarketOptionResponse> {
+        const response = await this.getVaultMarketOptionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Options analytics on an underlying: the vol surface (expiry x moneyness) and one expiry\'s smile (`expiry`), IV rank and percentile against the series\' own year, open interest and volume by strike and expiry, put/call ratios, the expected move to each expiry, and the historical vol of the underlying\'s own published series. Every implied vol is derived and display only.
+     */
+    async getVaultMarketOptionAnalyticRaw(requestParameters: GetVaultMarketOptionAnalyticRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionAnalyticResponse>> {
+        if (requestParameters.underlying === null || requestParameters.underlying === undefined) {
+            throw new runtime.RequiredError('underlying','Required parameter requestParameters.underlying was null or undefined when calling getVaultMarketOptionAnalytic.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/analytics/{underlying}`.replace(`{${"underlying"}}`, encodeURIComponent(String(requestParameters.underlying))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionAnalyticResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Options analytics on an underlying: the vol surface (expiry x moneyness) and one expiry\'s smile (`expiry`), IV rank and percentile against the series\' own year, open interest and volume by strike and expiry, put/call ratios, the expected move to each expiry, and the historical vol of the underlying\'s own published series. Every implied vol is derived and display only.
+     */
+    async getVaultMarketOptionAnalytic(requestParameters: GetVaultMarketOptionAnalyticRequest, initOverrides?: RequestInit): Promise<GetVaultMarketOptionAnalyticResponse> {
+        const response = await this.getVaultMarketOptionAnalyticRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your auto-close rule: close positions (or only in-the-money ones) a set time before expiry with a marketable limit.
+     */
+    async getVaultMarketOptionAutoCloseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionAutoCloseResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/auto-close`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionAutoCloseResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your auto-close rule: close positions (or only in-the-money ones) a set time before expiry with a marketable limit.
+     */
+    async getVaultMarketOptionAutoClose(initOverrides?: RequestInit): Promise<GetVaultMarketOptionAutoCloseResponse> {
+        const response = await this.getVaultMarketOptionAutoCloseRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The option chain for an underlying (index slug or book key): its expiries, and for one expiry (`expiry`, default the nearest) each strike\'s call and put with best bid / ask, last, open interest, the theoretical price at the reference vol, the implied vol of the mid (display only, never a mark) and the Greeks. Prices are cents per contract.
+     */
+    async getVaultMarketOptionChainRaw(requestParameters: GetVaultMarketOptionChainRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionChainResponse>> {
+        if (requestParameters.underlying === null || requestParameters.underlying === undefined) {
+            throw new runtime.RequiredError('underlying','Required parameter requestParameters.underlying was null or undefined when calling getVaultMarketOptionChain.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/chain/{underlying}`.replace(`{${"underlying"}}`, encodeURIComponent(String(requestParameters.underlying))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionChainResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The option chain for an underlying (index slug or book key): its expiries, and for one expiry (`expiry`, default the nearest) each strike\'s call and put with best bid / ask, last, open interest, the theoretical price at the reference vol, the implied vol of the mid (display only, never a mark) and the Greeks. Prices are cents per contract.
+     */
+    async getVaultMarketOptionChain(requestParameters: GetVaultMarketOptionChainRequest, initOverrides?: RequestInit): Promise<GetVaultMarketOptionChainResponse> {
+        const response = await this.getVaultMarketOptionChainRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One strategy\'s combo book by its canonical key (`key`, from the preview or an order): bids and asks by net price and recent strategy trades.
+     */
+    async getVaultMarketOptionComboBookRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionComboBookResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/book`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionComboBookResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One strategy\'s combo book by its canonical key (`key`, from the preview or an order): bids and asks by net price and recent strategy trades.
+     */
+    async getVaultMarketOptionComboBook(initOverrides?: RequestInit): Promise<GetVaultMarketOptionComboBookResponse> {
+        const response = await this.getVaultMarketOptionComboBookRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One strategy quote request and its answers (all of them to the requester, your own to a responder).
+     */
+    async getVaultMarketOptionComboRfqRaw(requestParameters: GetVaultMarketOptionComboRfqRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionComboRfqResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketOptionComboRfq.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/rfq/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionComboRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One strategy quote request and its answers (all of them to the requester, your own to a responder).
+     */
+    async getVaultMarketOptionComboRfq(requestParameters: GetVaultMarketOptionComboRfqRequest, initOverrides?: RequestInit): Promise<GetVaultMarketOptionComboRfqResponse> {
+        const response = await this.getVaultMarketOptionComboRfqRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One option contract: its terms, the self-venue book and tape, its published daily settlement prices and, once settled, its settlement (value, source, flagged, and the hash chained to the previous settlement).
+     */
+    async getVaultMarketOptionContractRaw(requestParameters: GetVaultMarketOptionContractRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionContractResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketOptionContract.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/contracts/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionContractResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One option contract: its terms, the self-venue book and tape, its published daily settlement prices and, once settled, its settlement (value, source, flagged, and the hash chained to the previous settlement).
+     */
+    async getVaultMarketOptionContract(requestParameters: GetVaultMarketOptionContractRequest, initOverrides?: RequestInit): Promise<GetVaultMarketOptionContractResponse> {
+        const response = await this.getVaultMarketOptionContractRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A contract\'s order book on the Crossly venue (`levels`, default 20): bids and asks by price with milli-contract sizes, and the last 50 prints.
+     */
+    async getVaultMarketOptionContractBookRaw(requestParameters: GetVaultMarketOptionContractBookRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionContractBookResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketOptionContractBook.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/contracts/{id}/book`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionContractBookResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A contract\'s order book on the Crossly venue (`levels`, default 20): bids and asks by price with milli-contract sizes, and the last 50 prints.
+     */
+    async getVaultMarketOptionContractBook(requestParameters: GetVaultMarketOptionContractBookRequest, initOverrides?: RequestInit): Promise<GetVaultMarketOptionContractBookResponse> {
+        const response = await this.getVaultMarketOptionContractBookRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A settled contract\'s settlement: the value (cents per unit of the underlying), its source (the index\'s frozen 7-day TWAP, the item\'s expiry-day A/B mark, or the last reliable value, flagged), and the hash chained to the previous settlement. Null until it settles.
+     */
+    async getVaultMarketOptionContractSettlementRaw(requestParameters: GetVaultMarketOptionContractSettlementRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionContractSettlementResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketOptionContractSettlement.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/contracts/{id}/settlement`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionContractSettlementResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A settled contract\'s settlement: the value (cents per unit of the underlying), its source (the index\'s frozen 7-day TWAP, the item\'s expiry-day A/B mark, or the last reliable value, flagged), and the hash chained to the previous settlement. Null until it settles.
+     */
+    async getVaultMarketOptionContractSettlement(requestParameters: GetVaultMarketOptionContractSettlementRequest, initOverrides?: RequestInit): Promise<GetVaultMarketOptionContractSettlementResponse> {
+        const response = await this.getVaultMarketOptionContractSettlementRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your hedges: long puts protecting vault units you hold (protective puts) and the vault units locked as collateral for calls you wrote (covered calls).
+     */
+    async getVaultMarketOptionHedgeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionHedgeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/hedges`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionHedgeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your hedges: long puts protecting vault units you hold (protective puts) and the vault units locked as collateral for calls you wrote (covered calls).
+     */
+    async getVaultMarketOptionHedge(initOverrides?: RequestInit): Promise<GetVaultMarketOptionHedgeResponse> {
+        const response = await this.getVaultMarketOptionHedgeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The at-the-money implied volatility of the nearest expiry on an underlying, for display on its page: derived from the options book, quality C, never written as a mark.
+     */
+    async getVaultMarketOptionIvRaw(requestParameters: GetVaultMarketOptionIvRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionIvResponse>> {
+        if (requestParameters.underlying === null || requestParameters.underlying === undefined) {
+            throw new runtime.RequiredError('underlying','Required parameter requestParameters.underlying was null or undefined when calling getVaultMarketOptionIv.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/iv/{underlying}`.replace(`{${"underlying"}}`, encodeURIComponent(String(requestParameters.underlying))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionIvResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The at-the-money implied volatility of the nearest expiry on an underlying, for display on its page: derived from the options book, quality C, never written as a mark.
+     */
+    async getVaultMarketOptionIv(requestParameters: GetVaultMarketOptionIvRequest, initOverrides?: RequestInit): Promise<GetVaultMarketOptionIvResponse> {
+        const response = await this.getVaultMarketOptionIvRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your options margin: the scenario requirement (worst loss over a +/-40% price x +/-50% vol grid, with offsets from vault units and positions you hold), initial margin, equity and state (ok / call / liquidate) per underlying. Authoritative on the Crossly venue; on the partner venue the partner\'s figure decides and this is an estimate.
+     */
+    async getVaultMarketOptionMarginRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionMarginResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/margin`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionMarginResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options margin: the scenario requirement (worst loss over a +/-40% price x +/-50% vol grid, with offsets from vault units and positions you hold), initial margin, equity and state (ok / call / liquidate) per underlying. Authoritative on the Crossly venue; on the partner venue the partner\'s figure decides and this is an estimate.
+     */
+    async getVaultMarketOptionMargin(initOverrides?: RequestInit): Promise<GetVaultMarketOptionMarginResponse> {
+        const response = await this.getVaultMarketOptionMarginRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your whole options position on one `underlying` at expiry: the P&L curve over 50%..150% of spot, breakevens, and the maximum gain and loss (null when unbounded).
+     */
+    async getVaultMarketOptionPayoffRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionPayoffResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/payoff`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionPayoffResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your whole options position on one `underlying` at expiry: the P&L curve over 50%..150% of spot, breakevens, and the maximum gain and loss (null when unbounded).
+     */
+    async getVaultMarketOptionPayoff(initOverrides?: RequestInit): Promise<GetVaultMarketOptionPayoffResponse> {
+        const response = await this.getVaultMarketOptionPayoffRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your options positions: signed milli-contracts, average open price, the price it is settled to (Crossly venue), the theoretical mark, unrealised and realised P&L in cents, the Greeks for your size, the protective-put flag and your auto-deleveraging queue lights. `status` open (default) / all, `subaccountId`.
+     */
+    async getVaultMarketOptionPositionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionPositionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/positions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionPositionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options positions: signed milli-contracts, average open price, the price it is settled to (Crossly venue), the theoretical mark, unrealised and realised P&L in cents, the Greeks for your size, the protective-put flag and your auto-deleveraging queue lights. `status` open (default) / all, `subaccountId`.
+     */
+    async getVaultMarketOptionPosition(initOverrides?: RequestInit): Promise<GetVaultMarketOptionPositionResponse> {
+        const response = await this.getVaultMarketOptionPositionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your options practice account (play money only, $10,000 to start): cash, positions at the practice maker\'s price, equity and P&L.
+     */
+    async getVaultMarketOptionPracticeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionPracticeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/practice`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionPracticeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options practice account (play money only, $10,000 to start): cash, positions at the practice maker\'s price, equity and P&L.
+     */
+    async getVaultMarketOptionPractice(initOverrides?: RequestInit): Promise<GetVaultMarketOptionPracticeResponse> {
+        const response = await this.getVaultMarketOptionPracticeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One option quote request: yours with every answer, or one you were sent with your own answer.
+     */
+    async getVaultMarketOptionRfqRaw(requestParameters: GetVaultMarketOptionRfqRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionRfqResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketOptionRfq.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/rfq/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One option quote request: yours with every answer, or one you were sent with your own answer.
+     */
+    async getVaultMarketOptionRfq(requestParameters: GetVaultMarketOptionRfqRequest, initOverrides?: RequestInit): Promise<GetVaultMarketOptionRfqResponse> {
+        const response = await this.getVaultMarketOptionRfqRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your options portfolio\'s Greeks (per underlying and total, with dollar delta and 1% gamma), a scenario\'s P&L (`priceShift`, `volShift`, `daysForward`), a price x vol P&L grid, and the beta-weighted delta against an index (`betaIndex`, default the deepest). `book` live (default) or practice.
+     */
+    async getVaultMarketOptionRiskRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionRiskResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/risk`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionRiskResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options portfolio\'s Greeks (per underlying and total, with dollar delta and 1% gamma), a scenario\'s P&L (`priceShift`, `volShift`, `daysForward`), a price x vol P&L grid, and the beta-weighted delta against an index (`betaIndex`, default the deepest). `book` live (default) or practice.
+     */
+    async getVaultMarketOptionRisk(initOverrides?: RequestInit): Promise<GetVaultMarketOptionRiskResponse> {
+        const response = await this.getVaultMarketOptionRiskRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Crossly as an oracle publisher (needs CROSSLY_ORACLE_PUBLISHER_KEY + CROSSLY_ORACLE_NETWORK): the network (pyth or switchboard), the ed25519 key every value is signed with, each published index feed with its latest attempt, and 24 h counts of published, skipped and failed. Only built-in indexes priced from A/B marks are published; Crossly never reads its own feed back.
      */
     async getVaultMarketOracleRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOracleResponse>> {
@@ -11506,7 +16468,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Your Vault Drop-off Partnership (null when you never applied): status, partner code, fee share and cap, totals and batches.
+     * Your Vault Drop-off Partnership (null when you never applied): status, partner code, fee share and cap, finder profile, totals and batches; and whether your one-time ID check is done.
      */
     async getVaultMarketPartnerMeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPartnerMeResponse>> {
         const queryParameters: any = {};
@@ -11532,7 +16494,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Your Vault Drop-off Partnership (null when you never applied): status, partner code, fee share and cap, totals and batches.
+     * Your Vault Drop-off Partnership (null when you never applied): status, partner code, fee share and cap, finder profile, totals and batches; and whether your one-time ID check is done.
      */
     async getVaultMarketPartnerMe(initOverrides?: RequestInit): Promise<GetVaultMarketPartnerMeResponse> {
         const response = await this.getVaultMarketPartnerMeRaw(initOverrides);
@@ -11828,6 +16790,858 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async getVaultMarketPositionRisk(requestParameters: GetVaultMarketPositionRiskRequest, initOverrides?: RequestInit): Promise<ListVaultMarketPositionsRiskItem> {
         const response = await this.getVaultMarketPositionRiskRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The prediction markets home: the busiest and soonest-expiring \"Will it hit?\" markets with their probability (each market\'s own price, display only), the underlyings with markets, which venue is live, and how many positions you hold.
+     */
+    async getVaultMarketPredictionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The prediction markets home: the busiest and soonest-expiring \"Will it hit?\" markets with their probability (each market\'s own price, display only), the underlyings with markets, which venue is live, and how many positions you hold.
+     */
+    async getVaultMarketPrediction(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionResponse> {
+        const response = await this.getVaultMarketPredictionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your prediction-market account: the live venue, your account there and the terms you accepted, whether you may trade real money (region, age, self-exclusion) and why not, your self-set limits, and the practice account line.
+     */
+    async getVaultMarketPredictionAccountRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionAccountResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/account`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionAccountResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your prediction-market account: the live venue, your account there and the terms you accepted, whether you may trade real money (region, age, self-exclusion) and why not, your self-set limits, and the practice account line.
+     */
+    async getVaultMarketPredictionAccount(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionAccountResponse> {
+        const response = await this.getVaultMarketPredictionAccountRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The prediction board the Trading Floor and the Market Open plank show: the busiest open markets and their odds. Anonymous: never who holds what.
+     */
+    async getVaultMarketPredictionBoardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionBoardResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/board`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionBoardResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The prediction board the Trading Floor and the Market Open plank show: the busiest open markets and their odds. Anonymous: never who holds what.
+     */
+    async getVaultMarketPredictionBoard(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionBoardResponse> {
+        const response = await this.getVaultMarketPredictionBoardRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One of your combos.
+     */
+    async getVaultMarketPredictionComboRaw(requestParameters: GetVaultMarketPredictionComboRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionCombosItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionCombo.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionCombosItemFromJSON(jsonValue));
+    }
+
+    /**
+     * One of your combos.
+     */
+    async getVaultMarketPredictionCombo(requestParameters: GetVaultMarketPredictionComboRequest, initOverrides?: RequestInit): Promise<ListVaultMarketPredictionCombosItem> {
+        const response = await this.getVaultMarketPredictionComboRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One combo request: its legs and size, and the answers you can see (all of them if you asked; yours if you quoted).
+     */
+    async getVaultMarketPredictionComboRfqRaw(requestParameters: GetVaultMarketPredictionComboRfqRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionComboRfqsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionComboRfq.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos/rfqs/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionComboRfqsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * One combo request: its legs and size, and the answers you can see (all of them if you asked; yours if you quoted).
+     */
+    async getVaultMarketPredictionComboRfq(requestParameters: GetVaultMarketPredictionComboRfqRequest, initOverrides?: RequestInit): Promise<ListVaultMarketPredictionComboRfqsItem> {
+        const response = await this.getVaultMarketPredictionComboRfqRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The published daily settlement price of every listed market for a day (default yesterday): the last hour\'s volume-weighted Yes price, else the book mid, else the prior day\'s, with volume and open interest.
+     */
+    async getVaultMarketPredictionDailyPriceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionDailyPriceResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/daily-prices`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionDailyPriceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The published daily settlement price of every listed market for a day (default yesterday): the last hour\'s volume-weighted Yes price, else the book mid, else the prior day\'s, with volume and open interest.
+     */
+    async getVaultMarketPredictionDailyPrice(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionDailyPriceResponse> {
+        const response = await this.getVaultMarketPredictionDailyPriceRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One expiry of a series (an event): its markets, what you hold in each, the real worst and best case of your holdings across them (what your limit counts), and, for a full bucket set, how many sets you could merge. `venue` paper or live.
+     */
+    async getVaultMarketPredictionEventRaw(requestParameters: GetVaultMarketPredictionEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionEventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionEvent.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/events/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionEventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One expiry of a series (an event): its markets, what you hold in each, the real worst and best case of your holdings across them (what your limit counts), and, for a full bucket set, how many sets you could merge. `venue` paper or live.
+     */
+    async getVaultMarketPredictionEvent(requestParameters: GetVaultMarketPredictionEventRequest, initOverrides?: RequestInit): Promise<GetVaultMarketPredictionEventResponse> {
+        const response = await this.getVaultMarketPredictionEventRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your forecaster profile: display name, whether it is public (opt-in) and since when, and your followers.
+     */
+    async getVaultMarketPredictionForecasterRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionForecasterResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/forecaster`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionForecasterResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your forecaster profile: display name, whether it is public (opt-in) and since when, and your followers.
+     */
+    async getVaultMarketPredictionForecaster(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionForecasterResponse> {
+        const response = await this.getVaultMarketPredictionForecasterRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A public forecaster: scores (all time and this month), open sides (never sizes), recent settled calls, followers. 404 when private.
+     */
+    async getVaultMarketPredictionForecasterByIdRaw(requestParameters: GetVaultMarketPredictionForecasterByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionForecasterByIdResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionForecasterById.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/forecasters/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionForecasterByIdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A public forecaster: scores (all time and this month), open sides (never sizes), recent settled calls, followers. 404 when private.
+     */
+    async getVaultMarketPredictionForecasterById(requestParameters: GetVaultMarketPredictionForecasterByIdRequest, initOverrides?: RequestInit): Promise<GetVaultMarketPredictionForecasterByIdResponse> {
+        const response = await this.getVaultMarketPredictionForecasterByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Opt-in forecaster leaderboards: `period` week, month or all; `metric` pnl, accuracy or brier; `venue` live or paper (practice has its own board).
+     */
+    async getVaultMarketPredictionLeaderboardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionLeaderboardResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/leaderboard`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionLeaderboardResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Opt-in forecaster leaderboards: `period` week, month or all; `metric` pnl, accuracy or brier; `venue` live or paper (practice has its own board).
+     */
+    async getVaultMarketPredictionLeaderboard(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionLeaderboardResponse> {
+        const response = await this.getVaultMarketPredictionLeaderboardRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your self-set prediction limits: daily loss limit, self-exclusion, a raise waiting its 24 hours, and any hold the venue placed.
+     */
+    async getVaultMarketPredictionLimitRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionLimitResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/limits`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionLimitResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your self-set prediction limits: daily loss limit, self-exclusion, a raise waiting its 24 hours, and any hold the venue placed.
+     */
+    async getVaultMarketPredictionLimit(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionLimitResponse> {
+        const response = await this.getVaultMarketPredictionLimitRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One prediction market: its terms, the Yes ladder of the live venue and of the practice book, recent trades, settlement history (outcome, value, hash, review), the series rules text and hash, and your positions in it.
+     */
+    async getVaultMarketPredictionMarketRaw(requestParameters: GetVaultMarketPredictionMarketRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionMarketResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionMarket.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/markets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionMarketResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One prediction market: its terms, the Yes ladder of the live venue and of the practice book, recent trades, settlement history (outcome, value, hash, review), the series rules text and hash, and your positions in it.
+     */
+    async getVaultMarketPredictionMarket(requestParameters: GetVaultMarketPredictionMarketRequest, initOverrides?: RequestInit): Promise<GetVaultMarketPredictionMarketResponse> {
+        const response = await this.getVaultMarketPredictionMarketRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * How many people forecast a market and their median probability (no names).
+     */
+    async getVaultMarketPredictionMarketForecastRaw(requestParameters: GetVaultMarketPredictionMarketForecastRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionMarketForecastResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionMarketForecast.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/markets/{id}/forecasts`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionMarketForecastResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * How many people forecast a market and their median probability (no names).
+     */
+    async getVaultMarketPredictionMarketForecast(requestParameters: GetVaultMarketPredictionMarketForecastRequest, initOverrides?: RequestInit): Promise<GetVaultMarketPredictionMarketForecastResponse> {
+        const response = await this.getVaultMarketPredictionMarketForecastRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A market\'s history: probability points (display only, never a mark), candles on the Yes price, volume and open interest over `range` 1d, 1w, 1m or all; `venue` live or paper.
+     */
+    async getVaultMarketPredictionMarketHistoryRaw(requestParameters: GetVaultMarketPredictionMarketHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionMarketHistoryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionMarketHistory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/markets/{id}/history`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionMarketHistoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A market\'s history: probability points (display only, never a mark), candles on the Yes price, volume and open interest over `range` 1d, 1w, 1m or all; `venue` live or paper.
+     */
+    async getVaultMarketPredictionMarketHistory(requestParameters: GetVaultMarketPredictionMarketHistoryRequest, initOverrides?: RequestInit): Promise<GetVaultMarketPredictionMarketHistoryResponse> {
+        const response = await this.getVaultMarketPredictionMarketHistoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A server-sent event stream for one prediction market: `snapshot` first, then `pm_depth`, `pm_trades`, `pm_probability`, `pm_status` and `pm_settlement` as they change.
+     */
+    async getVaultMarketPredictionMarketStreamRaw(requestParameters: GetVaultMarketPredictionMarketStreamRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionMarketStream.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/markets/{id}/stream`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * A server-sent event stream for one prediction market: `snapshot` first, then `pm_depth`, `pm_trades`, `pm_probability`, `pm_status` and `pm_settlement` as they change.
+     */
+    async getVaultMarketPredictionMarketStream(requestParameters: GetVaultMarketPredictionMarketStreamRequest, initOverrides?: RequestInit): Promise<string> {
+        const response = await this.getVaultMarketPredictionMarketStreamRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The trade tape, newest first: Yes price, size, which side took, venue. Page with `before` (the last `seq`).
+     */
+    async getVaultMarketPredictionMarketTradeRaw(requestParameters: GetVaultMarketPredictionMarketTradeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionMarketTradeResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketPredictionMarketTrade.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/markets/{id}/trades`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionMarketTradeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The trade tape, newest first: Yes price, size, which side took, venue. Page with `before` (the last `seq`).
+     */
+    async getVaultMarketPredictionMarketTrade(requestParameters: GetVaultMarketPredictionMarketTradeRequest, initOverrides?: RequestInit): Promise<GetVaultMarketPredictionMarketTradeResponse> {
+        const response = await this.getVaultMarketPredictionMarketTradeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A server-sent event stream of your own prediction events: `pm_order` (placed, filled, amended, cancelled, expired), `pm_fill` (your side, price and fee), `pm_position`, `pm_combo` and `pm_conversion`.
+     */
+    async getVaultMarketPredictionMeStreamRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/me/stream`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * A server-sent event stream of your own prediction events: `pm_order` (placed, filled, amended, cancelled, expired), `pm_fill` (your side, price and fee), `pm_position`, `pm_combo` and `pm_conversion`.
+     */
+    async getVaultMarketPredictionMeStream(initOverrides?: RequestInit): Promise<string> {
+        const response = await this.getVaultMarketPredictionMeStreamRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The two \"Will it hit?\" practice missions (your first call; see one settle), whether the server saw each done, and the pin they lead to. Pins only.
+     */
+    async getVaultMarketPredictionMissionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionMissionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/missions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionMissionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The two \"Will it hit?\" practice missions (your first call; see one settle), whether the server saw each done, and the pin they lead to. Pins only.
+     */
+    async getVaultMarketPredictionMission(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionMissionResponse> {
+        const response = await this.getVaultMarketPredictionMissionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your practice prediction account (play money only, $1,000 to start, never real or convertible): cash, money locked by working orders, positions and working orders.
+     */
+    async getVaultMarketPredictionPaperRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionPaperResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/paper`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionPaperResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your practice prediction account (play money only, $1,000 to start, never real or convertible): cash, money locked by working orders, positions and working orders.
+     */
+    async getVaultMarketPredictionPaper(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionPaperResponse> {
+        const response = await this.getVaultMarketPredictionPaperRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What an order would do now without placing it: contracts fillable inside the limit (a market order uses the 10-cent band), average price, estimated fee (Kalshi\'s formula), the money it would lock, and the most it could pay out.
+     */
+    async getVaultMarketPredictionQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionQuoteResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/quote`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What an order would do now without placing it: contracts fillable inside the limit (a market order uses the 10-cent band), average price, estimated fee (Kalshi\'s formula), the money it would lock, and the most it could pay out.
+     */
+    async getVaultMarketPredictionQuote(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionQuoteResponse> {
+        const response = await this.getVaultMarketPredictionQuoteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The prediction venue\'s rule book now and every version, each hashed and chained to the one before (`chainOk`).
+     */
+    async getVaultMarketPredictionRulebookRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionRulebookResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/rulebook`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionRulebookResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The prediction venue\'s rule book now and every version, each hashed and chained to the one before (`chainOk`).
+     */
+    async getVaultMarketPredictionRulebook(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionRulebookResponse> {
+        const response = await this.getVaultMarketPredictionRulebookRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A server-sent event stream for up to 50 markets (`markets`=id,id): `ready`, then `pm_depth`, `pm_trades`, `pm_probability`, `pm_status` and `pm_settlement`, each carrying its marketId.
+     */
+    async getVaultMarketPredictionStreamRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/stream`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * A server-sent event stream for up to 50 markets (`markets`=id,id): `ready`, then `pm_depth`, `pm_trades`, `pm_probability`, `pm_status` and `pm_settlement`, each carrying its marketId.
+     */
+    async getVaultMarketPredictionStream(initOverrides?: RequestInit): Promise<string> {
+        const response = await this.getVaultMarketPredictionStreamRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Which prediction venue is live: self (Crossly as the DCM, money at the segregated settlement bank), partner (a partner DCM) or paper (practice only), who runs the book, where money sits, and the env each real mode still needs.
+     */
+    async getVaultMarketPredictionVenueRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionVenueResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/venue`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionVenueResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Which prediction venue is live: self (Crossly as the DCM, money at the segregated settlement bank), partner (a partner DCM) or paper (practice only), who runs the book, where money sits, and the env each real mode still needs.
+     */
+    async getVaultMarketPredictionVenue(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionVenueResponse> {
+        const response = await this.getVaultMarketPredictionVenueRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The \"Will it hit?\" panel for a key (`bookKey`) or an index (`index` slug): its open markets grouped by expiry, each with its probability. `eligible` is false when nothing is listed on it.
+     */
+    async getVaultMarketPredictionWillItHitRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionWillItHitResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/will-it-hit`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionWillItHitResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The \"Will it hit?\" panel for a key (`bookKey`) or an index (`index` slug): its open markets grouped by expiry, each with its probability. `eligible` is false when nothing is listed on it.
+     */
+    async getVaultMarketPredictionWillItHit(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionWillItHitResponse> {
+        const response = await this.getVaultMarketPredictionWillItHitRaw(initOverrides);
         return await response.value();
     }
 
@@ -12510,6 +18324,112 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your vault defaults: Sell from first, new-inventory suggestions, the insurance rule and the default grading service.
+     */
+    async getVaultMarketSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSettingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/settings`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSettingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your vault defaults: Sell from first, new-inventory suggestions, the insurance rule and the default grading service.
+     */
+    async getVaultMarketSetting(initOverrides?: RequestInit): Promise<GetVaultMarketSettingResponse> {
+        const response = await this.getVaultMarketSettingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Vault Shares at a glance: the venue mode in force (self, partner or paper) and the env it still needs, the rules (about $5 a share, 100 to 100,000 shares, originator keeps 0-50%, 3% origination, maker 0 / taker 100 bps, 90-day lockup, buyouts at the mark x 1.10 with a two-thirds vote) and the disclosure.
+     */
+    async getVaultMarketShareRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Vault Shares at a glance: the venue mode in force (self, partner or paper) and the env it still needs, the rules (about $5 a share, 100 to 100,000 shares, originator keeps 0-50%, 3% origination, maker 0 / taker 100 bps, 90-day lockup, buyouts at the mark x 1.10 with a two-thirds vote) and the disclosure.
+     */
+    async getVaultMarketShare(initOverrides?: RequestInit): Promise<GetVaultMarketShareResponse> {
+        const response = await this.getVaultMarketShareRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One theme basket (id or slug): its series, target and live weights, prices, and your own holdings against the weights.
+     */
+    async getVaultMarketShareBasketRaw(requestParameters: GetVaultMarketShareBasketRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareBasketResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketShareBasket.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/baskets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareBasketResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One theme basket (id or slug): its series, target and live weights, prices, and your own holdings against the weights.
+     */
+    async getVaultMarketShareBasket(requestParameters: GetVaultMarketShareBasketRequest, initOverrides?: RequestInit): Promise<GetVaultMarketShareBasketResponse> {
+        const response = await this.getVaultMarketShareBasketRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * One share card as the public sees it, with its image and link paths.
      */
     async getVaultMarketShareCardRaw(requestParameters: GetVaultMarketShareCardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareCardsItem>> {
@@ -12544,6 +18464,370 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async getVaultMarketShareCard(requestParameters: GetVaultMarketShareCardRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareCardsItem> {
         const response = await this.getVaultMarketShareCardRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your investor account at the venue in force: its status, the investor terms you accepted, and your Reg A+ limit for one offering (10% of the greater of income and net worth unless accredited).
+     */
+    async getVaultMarketShareInvestorRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareInvestorResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/investor`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareInvestorResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your investor account at the venue in force: its status, the investor terms you accepted, and your Reg A+ limit for one offering (10% of the greater of income and net worth unless accredited).
+     */
+    async getVaultMarketShareInvestor(initOverrides?: RequestInit): Promise<GetVaultMarketShareInvestorResponse> {
+        const response = await this.getVaultMarketShareInvestorRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your Vault Shares: shares and percent of each item, cost, implied value at the last price, your subscriptions and the payouts you were sent.
+     */
+    async getVaultMarketShareMeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareMeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/me`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareMeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your Vault Shares: shares and percent of each item, cost, implied value at the last price, your subscriptions and the payouts you were sent.
+     */
+    async getVaultMarketShareMe(initOverrides?: RequestInit): Promise<GetVaultMarketShareMeResponse> {
+        const response = await this.getVaultMarketShareMeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your practice account for Vault Shares (play money only, never real, never convertible): cash, practice holdings, open practice orders, recent practice fills.
+     */
+    async getVaultMarketSharePaperRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSharePaperResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/paper`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSharePaperResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your practice account for Vault Shares (play money only, never real, never convertible): cash, practice holdings, open practice orders, recent practice fills.
+     */
+    async getVaultMarketSharePaper(initOverrides?: RequestInit): Promise<GetVaultMarketSharePaperResponse> {
+        const response = await this.getVaultMarketSharePaperRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A series’ practice book: practice orders and the house quote 1% either side of the reference price.
+     */
+    async getVaultMarketSharePaperSeryBookRaw(requestParameters: GetVaultMarketSharePaperSeryBookRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSharePaperSeryBookResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketSharePaperSeryBook.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/paper/series/{id}/book`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSharePaperSeryBookResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A series’ practice book: practice orders and the house quote 1% either side of the reference price.
+     */
+    async getVaultMarketSharePaperSeryBook(requestParameters: GetVaultMarketSharePaperSeryBookRequest, initOverrides?: RequestInit): Promise<GetVaultMarketSharePaperSeryBookResponse> {
+        const response = await this.getVaultMarketSharePaperSeryBookRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Fractionalize instead: whether one of your vault units can become a Vault Shares series now (stored, tier A or B, reliable mark of $1,000 or more, declared and insured, free) and the offering terms it would get.
+     */
+    async getVaultMarketSharePreviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSharePreviewResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/preview`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSharePreviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Fractionalize instead: whether one of your vault units can become a Vault Shares series now (stored, tier A or B, reliable mark of $1,000 or more, declared and insured, free) and the offering terms it would get.
+     */
+    async getVaultMarketSharePreview(initOverrides?: RequestInit): Promise<GetVaultMarketSharePreviewResponse> {
+        const response = await this.getVaultMarketSharePreviewRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One series: the offering, the share book depth, the latest fills, holders as share percentages (nobody named), buyouts and your vote, your orders and subscriptions.
+     */
+    async getVaultMarketShareSeryRaw(requestParameters: GetVaultMarketShareSeryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareSeryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketShareSery.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareSeryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One series: the offering, the share book depth, the latest fills, holders as share percentages (nobody named), buyouts and your vote, your orders and subscriptions.
+     */
+    async getVaultMarketShareSery(requestParameters: GetVaultMarketShareSeryRequest, initOverrides?: RequestInit): Promise<GetVaultMarketShareSeryResponse> {
+        const response = await this.getVaultMarketShareSeryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A share book’s depth: whole shares per price level (integer cents a share), best first.
+     */
+    async getVaultMarketShareSeryBookRaw(requestParameters: GetVaultMarketShareSeryBookRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareSeryBookResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketShareSeryBook.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/book`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareSeryBookResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A share book’s depth: whole shares per price level (integer cents a share), best first.
+     */
+    async getVaultMarketShareSeryBook(requestParameters: GetVaultMarketShareSeryBookRequest, initOverrides?: RequestInit): Promise<GetVaultMarketShareSeryBookResponse> {
+        const response = await this.getVaultMarketShareSeryBookRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A series’ full price history: OHLC candles of every share-book fill (`interval` 1h, 1d or 1w), the offering price, the change since the offering, and the appraisal history beside it. Share prices are display only, never a mark.
+     */
+    async getVaultMarketShareSeryHistoryRaw(requestParameters: GetVaultMarketShareSeryHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareSeryHistoryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketShareSeryHistory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/history`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareSeryHistoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A series’ full price history: OHLC candles of every share-book fill (`interval` 1h, 1d or 1w), the offering price, the change since the offering, and the appraisal history beside it. Share prices are display only, never a mark.
+     */
+    async getVaultMarketShareSeryHistory(requestParameters: GetVaultMarketShareSeryHistoryRequest, initOverrides?: RequestInit): Promise<GetVaultMarketShareSeryHistoryResponse> {
+        const response = await this.getVaultMarketShareSeryHistoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Holder perks on a series: whether you hold it, your holder badge, the links to visit the item in the world vault room and in AR, the viewing days with places left and your bookings.
+     */
+    async getVaultMarketShareSeryPerkRaw(requestParameters: GetVaultMarketShareSeryPerkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareSeryPerkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketShareSeryPerk.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/perks`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareSeryPerkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Holder perks on a series: whether you hold it, your holder badge, the links to visit the item in the world vault room and in AR, the viewing days with places left and your bookings.
+     */
+    async getVaultMarketShareSeryPerk(requestParameters: GetVaultMarketShareSeryPerkRequest, initOverrides?: RequestInit): Promise<GetVaultMarketShareSeryPerkResponse> {
+        const response = await this.getVaultMarketShareSeryPerkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The holder room for a series (shareholders only): posts newest first under per-series aliases, never account names. `before` pages back.
+     */
+    async getVaultMarketShareSeryRoomRaw(requestParameters: GetVaultMarketShareSeryRoomRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareSeryRoomResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketShareSeryRoom.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/room`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareSeryRoomResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The holder room for a series (shareholders only): posts newest first under per-series aliases, never account names. `before` pages back.
+     */
+    async getVaultMarketShareSeryRoom(requestParameters: GetVaultMarketShareSeryRoomRequest, initOverrides?: RequestInit): Promise<GetVaultMarketShareSeryRoomResponse> {
+        const response = await this.getVaultMarketShareSeryRoomRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -12768,6 +19052,44 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * One shipment into the vault, with each unit and whether it was received.
+     */
+    async getVaultMarketSupplyShipmentRaw(requestParameters: GetVaultMarketSupplyShipmentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSupplyShipmentResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getVaultMarketSupplyShipment.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/supply/shipments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSupplyShipmentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One shipment into the vault, with each unit and whether it was received.
+     */
+    async getVaultMarketSupplyShipment(requestParameters: GetVaultMarketSupplyShipmentRequest, initOverrides?: RequestInit): Promise<GetVaultMarketSupplyShipmentResponse> {
+        const response = await this.getVaultMarketSupplyShipmentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your tax year on the vault markets: units bought and sold with cost, proceeds, gain and term; lending fees, staking interest (estimate), market-maker rewards; closed positions. Links to the CSV and PDF.
      */
     async getVaultMarketTaxRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketTaxResponse>> {
@@ -12870,6 +19192,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your fractional options tax lots for a calendar year (`year`, default this year): FIFO disposals (closed or settled) with proceeds, cost, gain in cents and holding term, each flagged as a possible Section 1256 contract, the totals with the 60/40 split, and the positions open at year end. Real fills only; practice never appears. Not tax advice.
+     */
+    async getVaultMarketTaxOptionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketTaxOptionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/tax/options`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketTaxOptionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your fractional options tax lots for a calendar year (`year`, default this year): FIFO disposals (closed or settled) with proceeds, cost, gain in cents and holding term, each flagged as a possible Section 1256 contract, the totals with the 60/40 split, and the positions open at year end. Real fills only; practice never appears. Not tax advice.
+     */
+    async getVaultMarketTaxOption(initOverrides?: RequestInit): Promise<GetVaultMarketTaxOptionResponse> {
+        const response = await this.getVaultMarketTaxOptionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * The tax year as a PDF summary.
      */
     async getVaultMarketTaxPdfRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Blob>> {
@@ -12900,6 +19256,74 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async getVaultMarketTaxPdf(initOverrides?: RequestInit): Promise<Blob> {
         const response = await this.getVaultMarketTaxPdfRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your prediction-market results for a calendar year (`year`), as the venue reports them: each settled or voided real-money position with its venue, cost, fees, payout, refund, closing-trade gains and net in cents, and the totals. Practice never appears. Not tax advice.
+     */
+    async getVaultMarketTaxPredictionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketTaxPredictionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/tax/predictions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketTaxPredictionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your prediction-market results for a calendar year (`year`), as the venue reports them: each settled or voided real-money position with its venue, cost, fees, payout, refund, closing-trade gains and net in cents, and the totals. Practice never appears. Not tax advice.
+     */
+    async getVaultMarketTaxPrediction(initOverrides?: RequestInit): Promise<GetVaultMarketTaxPredictionResponse> {
+        const response = await this.getVaultMarketTaxPredictionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your Vault Shares tax lots for a calendar year (`year`): disposals (share-book sales, exit payouts) with holding periods, proceeds, cost and gain in cents, the open lots and the totals. The broker-dealer issues the 1099-B; not tax advice.
+     */
+    async getVaultMarketTaxShareRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketTaxShareResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/tax/shares`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketTaxShareResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your Vault Shares tax lots for a calendar year (`year`): disposals (share-book sales, exit payouts) with holding periods, proceeds, cost and gain in cents, the open lots and the totals. The broker-dealer issues the 1099-B; not tax advice.
+     */
+    async getVaultMarketTaxShare(initOverrides?: RequestInit): Promise<GetVaultMarketTaxShareResponse> {
+        const response = await this.getVaultMarketTaxShareRaw(initOverrides);
         return await response.value();
     }
 
@@ -13552,6 +19976,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async getVaultMarketWorldFloor(initOverrides?: RequestInit): Promise<GetVaultMarketWorldFloorResponse> {
         const response = await this.getVaultMarketWorldFloorRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The Trading Floor boards for the round-13 products: odds (the probability ladder: the busiest open \"Will it hit?\" markets with probabilityBps, the market’s own price as a probability, display only), heat (option-chain heat: per listed underlying, open interest and the last day’s volume in milli-contracts in strike buckets around the underlying, a 0..1 heat per bucket and the at-the-money implied vol, display only) and shares (Vault Shares tickers: last share price in cents, changeBps from the last fill before today, shares traded today and the implied item value, display only). quality is always C: none of these is ever a mark. It never shows who traded.
+     */
+    async getVaultMarketWorldFloorBoardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketWorldFloorBoardResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/world/floor/boards`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketWorldFloorBoardResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The Trading Floor boards for the round-13 products: odds (the probability ladder: the busiest open \"Will it hit?\" markets with probabilityBps, the market’s own price as a probability, display only), heat (option-chain heat: per listed underlying, open interest and the last day’s volume in milli-contracts in strike buckets around the underlying, a 0..1 heat per bucket and the at-the-money implied vol, display only) and shares (Vault Shares tickers: last share price in cents, changeBps from the last fill before today, shares traded today and the implied item value, display only). quality is always C: none of these is ever a mark. It never shows who traded.
+     */
+    async getVaultMarketWorldFloorBoard(initOverrides?: RequestInit): Promise<GetVaultMarketWorldFloorBoardResponse> {
+        const response = await this.getVaultMarketWorldFloorBoardRaw(initOverrides);
         return await response.value();
     }
 
@@ -15016,6 +21474,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Everything you own in the Crossly vault, newest activity first: each unit with its status (inbound, stored, listed, withdraw_requested…) and situation (lent, pledged, in_grading…), what it is worth (`valueCents` with `valueSource` mark | last_sale | declared | none), declared and insured value, storage owed, its open ask, the deposit toggles when you sent it in, and what you may do with it now (`actions`). Units sold or shipped home in the last 90 days have `past: true`. `meta` carries the totals (units, value, declared, insured, storage owed), your recent boxes and their labels, the ship-home prices and the lending gate.
+     */
+    async listVaultMarketHoldingsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketHoldingsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/holdings`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketHoldingsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Everything you own in the Crossly vault, newest activity first: each unit with its status (inbound, stored, listed, withdraw_requested…) and situation (lent, pledged, in_grading…), what it is worth (`valueCents` with `valueSource` mark | last_sale | declared | none), declared and insured value, storage owed, its open ask, the deposit toggles when you sent it in, and what you may do with it now (`actions`). Units sold or shipped home in the last 90 days have `past: true`. `meta` carries the totals (units, value, declared, insured, storage owed), your recent boxes and their labels, the ship-home prices and the lending gate.
+     */
+    async listVaultMarketHoldings(initOverrides?: RequestInit): Promise<ListVaultMarketHoldingsResponse> {
+        const response = await this.listVaultMarketHoldingsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Published Index Committee minutes, newest first: attendees (names and roles), quorum, agenda, minutes and decisions.
      */
     async listVaultMarketIndexCommitteeMinutesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketIndexCommitteeMinutesResponse>> {
@@ -15852,6 +22344,486 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your strategy quote requests, newest first.
+     */
+    async listVaultMarketOptionComboRfqRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionComboRfqResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/rfq`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionComboRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your strategy quote requests, newest first.
+     */
+    async listVaultMarketOptionComboRfq(initOverrides?: RequestInit): Promise<ListVaultMarketOptionComboRfqResponse> {
+        const response = await this.listVaultMarketOptionComboRfqRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Open strategy quote requests you may answer (never your own; the requester stays anonymous).
+     */
+    async listVaultMarketOptionComboRfqInboxRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionComboRfqResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos/rfq/inbox`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionComboRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Open strategy quote requests you may answer (never your own; the requester stays anonymous).
+     */
+    async listVaultMarketOptionComboRfqInbox(initOverrides?: RequestInit): Promise<ListVaultMarketOptionComboRfqResponse> {
+        const response = await this.listVaultMarketOptionComboRfqInboxRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your strategies: `status` working (default), done or all, with their legs as you hold them, net per unit, filled size and status.
+     */
+    async listVaultMarketOptionCombosRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionCombosResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/combos`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionCombosResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your strategies: `status` working (default), done or all, with their legs as you hold them, net per unit, filled size and status.
+     */
+    async listVaultMarketOptionCombos(initOverrides?: RequestInit): Promise<ListVaultMarketOptionCombosResponse> {
+        const response = await this.listVaultMarketOptionCombosRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A contract\'s published daily settlement prices, newest first (`days`, default 30): the price, how it was set (volume-weighted fills, the mid, or Black-Scholes at the reference vol), its implied vol, the underlying, open interest and volume, and each row\'s chain hash.
+     */
+    async listVaultMarketOptionContractDailyRaw(requestParameters: ListVaultMarketOptionContractDailyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionContractDailyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listVaultMarketOptionContractDaily.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/contracts/{id}/daily`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionContractDailyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A contract\'s published daily settlement prices, newest first (`days`, default 30): the price, how it was set (volume-weighted fills, the mid, or Black-Scholes at the reference vol), its implied vol, the underlying, open interest and volume, and each row\'s chain hash.
+     */
+    async listVaultMarketOptionContractDaily(requestParameters: ListVaultMarketOptionContractDailyRequest, initOverrides?: RequestInit): Promise<ListVaultMarketOptionContractDailyResponse> {
+        const response = await this.listVaultMarketOptionContractDailyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your two-sided option quotes: the contract, the bid and ask orders behind them, cancel-on-disconnect and the last heartbeat.
+     */
+    async listVaultMarketOptionMmQuotesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionMmQuotesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/mm/quotes`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionMmQuotesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your two-sided option quotes: the contract, the bid and ask orders behind them, cancel-on-disconnect and the last heartbeat.
+     */
+    async listVaultMarketOptionMmQuotes(initOverrides?: RequestInit): Promise<ListVaultMarketOptionMmQuotesResponse> {
+        const response = await this.listVaultMarketOptionMmQuotesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your options notices, newest first: expiry warnings, auto-closes, exercises (a long settled in the money), assignments (a short settled in the money), expiries worthless and rolls.
+     */
+    async listVaultMarketOptionNoticesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionNoticesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/notices`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionNoticesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options notices, newest first: expiry warnings, auto-closes, exercises (a long settled in the money), assignments (a short settled in the money), expiries worthless and rolls.
+     */
+    async listVaultMarketOptionNotices(initOverrides?: RequestInit): Promise<ListVaultMarketOptionNoticesResponse> {
+        const response = await this.listVaultMarketOptionNoticesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your options orders, newest first: `status` working (default) / done / all, `limit`, `subaccountId`.
+     */
+    async listVaultMarketOptionOrdersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionOrdersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/orders`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionOrdersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options orders, newest first: `status` working (default) / done / all, `limit`, `subaccountId`.
+     */
+    async listVaultMarketOptionOrders(initOverrides?: RequestInit): Promise<ListVaultMarketOptionOrdersResponse> {
+        const response = await this.listVaultMarketOptionOrdersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your practice strategies.
+     */
+    async listVaultMarketOptionPracticeCombosRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionCombosResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/practice/combos`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionCombosResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your practice strategies.
+     */
+    async listVaultMarketOptionPracticeCombos(initOverrides?: RequestInit): Promise<ListVaultMarketOptionCombosResponse> {
+        const response = await this.listVaultMarketOptionPracticeCombosRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your practice options fills, newest first (`limit`).
+     */
+    async listVaultMarketOptionPracticeFillsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionPracticeFillsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/practice/fills`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionPracticeFillsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your practice options fills, newest first (`limit`).
+     */
+    async listVaultMarketOptionPracticeFills(initOverrides?: RequestInit): Promise<ListVaultMarketOptionPracticeFillsResponse> {
+        const response = await this.listVaultMarketOptionPracticeFillsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your practice options orders: `status` working (default) / done / all, `limit`.
+     */
+    async listVaultMarketOptionPracticeOrdersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionPracticeOrdersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/practice/orders`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionPracticeOrdersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your practice options orders: `status` working (default) / done / all, `limit`.
+     */
+    async listVaultMarketOptionPracticeOrders(initOverrides?: RequestInit): Promise<ListVaultMarketOptionPracticeOrdersResponse> {
+        const response = await this.listVaultMarketOptionPracticeOrdersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your option quote requests, newest first.
+     */
+    async listVaultMarketOptionRfqRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionRfqResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/rfq`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your option quote requests, newest first.
+     */
+    async listVaultMarketOptionRfq(initOverrides?: RequestInit): Promise<ListVaultMarketOptionRfqResponse> {
+        const response = await this.listVaultMarketOptionRfqRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Open option quote requests you can answer.
+     */
+    async listVaultMarketOptionRfqInboxRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionRfqResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/rfq/inbox`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionRfqResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Open option quote requests you can answer.
+     */
+    async listVaultMarketOptionRfqInbox(initOverrides?: RequestInit): Promise<ListVaultMarketOptionRfqResponse> {
+        const response = await this.listVaultMarketOptionRfqInboxRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Every options series: its underlying (a Crossly index, or a tier A item key with 90 days of reliable marks), status and the eligibility snapshot it last passed. `status`: active (default) or all.
+     */
+    async listVaultMarketOptionSeriesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionSeriesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/series`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionSeriesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every options series: its underlying (a Crossly index, or a tier A item key with 90 days of reliable marks), status and the eligibility snapshot it last passed. `status`: active (default) or all.
+     */
+    async listVaultMarketOptionSeries(initOverrides?: RequestInit): Promise<ListVaultMarketOptionSeriesResponse> {
+        const response = await this.listVaultMarketOptionSeriesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar): how many strikes and expiries each takes, whether it needs calls or puts, and what it does in plain words.
+     */
+    async listVaultMarketOptionStrategiesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOptionStrategiesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/strategies`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketOptionStrategiesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar): how many strikes and expiries each takes, whether it needs calls or puts, and what it does in plain words.
+     */
+    async listVaultMarketOptionStrategies(initOverrides?: RequestInit): Promise<ListVaultMarketOptionStrategiesResponse> {
+        const response = await this.listVaultMarketOptionStrategiesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Recent publish attempts for an index over 30 days, newest first: published, skipped (with the reason: too few items priced, stale marks, confidence too wide...) or failed (with the error). Filter with `status`, cap with `limit` (default 100).
      */
     async listVaultMarketOracleHistoryRaw(requestParameters: ListVaultMarketOracleHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketOracleHistoryResponse>> {
@@ -16230,6 +23202,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Vault drop-off partners near a `postalCode`, optionally offering a `service`: address, hours and services.
+     */
+    async listVaultMarketPartnerFinderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPartnerFinderResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/partners/finder`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPartnerFinderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Vault drop-off partners near a `postalCode`, optionally offering a `service`: address, hours and services.
+     */
+    async listVaultMarketPartnerFinder(initOverrides?: RequestInit): Promise<ListVaultMarketPartnerFinderResponse> {
+        const response = await this.listVaultMarketPartnerFinderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your stakes in the market pool and what each redeems for now.
      */
     async listVaultMarketPoolStakesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPoolStakesResponse>> {
@@ -16400,6 +23406,482 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async listVaultMarketPositionsRisk(initOverrides?: RequestInit): Promise<ListVaultMarketPositionsRiskResponse> {
         const response = await this.listVaultMarketPositionsRiskRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your probability alerts: a market, a level (percent) and a direction; each fires once through the alerts hub (kind prediction_odds).
+     */
+    async listVaultMarketPredictionAlertsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionAlertsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/alerts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionAlertsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your probability alerts: a market, a level (percent) and a direction; each fires once through the alerts hub (kind prediction_odds).
+     */
+    async listVaultMarketPredictionAlerts(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionAlertsResponse> {
+        const response = await this.listVaultMarketPredictionAlertsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your combo requests with every answer they got.
+     */
+    async listVaultMarketPredictionComboMyRfqsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionComboRfqsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos/my-rfqs`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionComboRfqsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your combo requests with every answer they got.
+     */
+    async listVaultMarketPredictionComboMyRfqs(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionComboRfqsResponse> {
+        const response = await this.listVaultMarketPredictionComboMyRfqsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Open combo requests makers can answer: legs, size and the legs\' own combined price; never who asked. Your own answers are shown on them.
+     */
+    async listVaultMarketPredictionComboRfqsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionComboRfqsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos/rfqs`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionComboRfqsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Open combo requests makers can answer: legs, size and the legs\' own combined price; never who asked. Your own answers are shown on them.
+     */
+    async listVaultMarketPredictionComboRfqs(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionComboRfqsResponse> {
+        const response = await this.listVaultMarketPredictionComboRfqsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your combos, as buyer or maker: legs and their outcomes, stakes, the pot, any reprice after a voided leg, and how each settled.
+     */
+    async listVaultMarketPredictionCombosRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionCombosResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/combos`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionCombosResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your combos, as buyer or maker: legs and their outcomes, stakes, the pot, any reprice after a voided leg, and how each settled.
+     */
+    async listVaultMarketPredictionCombos(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionCombosResponse> {
+        const response = await this.listVaultMarketPredictionCombosRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A discussion thread on a market (`marketId`) or a series (`seriesId`): comments newest first with their replies. A commenter\'s side shows only when their forecaster profile is public.
+     */
+    async listVaultMarketPredictionCommentsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionCommentsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/comments`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionCommentsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A discussion thread on a market (`marketId`) or a series (`seriesId`): comments newest first with their replies. A commenter\'s side shows only when their forecaster profile is public.
+     */
+    async listVaultMarketPredictionComments(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionCommentsResponse> {
+        const response = await this.listVaultMarketPredictionCommentsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your bucket-set conversions (split, merge, convert), newest first.
+     */
+    async listVaultMarketPredictionConversionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionConversionsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/conversions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionConversionsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your bucket-set conversions (split, merge, convert), newest first.
+     */
+    async listVaultMarketPredictionConversions(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionConversionsResponse> {
+        const response = await this.listVaultMarketPredictionConversionsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The forecasters you follow.
+     */
+    async listVaultMarketPredictionFollowingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionFollowingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/following`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionFollowingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The forecasters you follow.
+     */
+    async listVaultMarketPredictionFollowing(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionFollowingResponse> {
+        const response = await this.listVaultMarketPredictionFollowingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your forecasts (a probability you attached to a market, money or not) and how the markets came out.
+     */
+    async listVaultMarketPredictionForecastsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionForecastsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/forecasts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionForecastsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your forecasts (a probability you attached to a market, money or not) and how the markets came out.
+     */
+    async listVaultMarketPredictionForecasts(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionForecastsResponse> {
+        const response = await this.listVaultMarketPredictionForecastsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your prediction maker programme applications and their status (applied, active, suspended, revoked) and rebate.
+     */
+    async listVaultMarketPredictionMakersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionMakersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/makers`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionMakersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your prediction maker programme applications and their status (applied, active, suspended, revoked) and rebate.
+     */
+    async listVaultMarketPredictionMakers(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionMakersResponse> {
+        const response = await this.listVaultMarketPredictionMakersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Prediction markets, filtered by a book key, an index slug, an underlying kind (index | book_key | category_pair), a status (open | closed | settled | all), an expiry day or text. Each with its strike, expiry, best Yes bid and ask, last price, volume, open interest and probability.
+     */
+    async listVaultMarketPredictionMarketsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionMarketsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/markets`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionMarketsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Prediction markets, filtered by a book key, an index slug, an underlying kind (index | book_key | category_pair), a status (open | closed | settled | all), an expiry day or text. Each with its strike, expiry, best Yes bid and ask, last price, volume, open interest and probability.
+     */
+    async listVaultMarketPredictionMarkets(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionMarketsResponse> {
+        const response = await this.listVaultMarketPredictionMarketsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your prediction orders, newest first: working, done or all; practice, live or all.
+     */
+    async listVaultMarketPredictionOrdersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionOrdersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/orders`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionOrdersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your prediction orders, newest first: working, done or all; practice, live or all.
+     */
+    async listVaultMarketPredictionOrders(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionOrdersResponse> {
+        const response = await this.listVaultMarketPredictionOrdersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your prediction positions (practice, live or all; open, settled or all): side, contracts, cost, value at the last price, fees, realised P&L, payout or refund once settled, and the share card if you made one.
+     */
+    async listVaultMarketPredictionPositionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionPositionsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/positions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionPositionsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your prediction positions (practice, live or all; open, settled or all): side, contracts, cost, value at the last price, fees, realised P&L, payout or refund once settled, and the share card if you made one.
+     */
+    async listVaultMarketPredictionPositions(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionPositionsResponse> {
+        const response = await this.listVaultMarketPredictionPositionsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The markets you proposed that are listed: volume, status and what the creator share has earned you.
+     */
+    async listVaultMarketPredictionProposalListedRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionProposalListedResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/proposals/listed`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionProposalListedResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The markets you proposed that are listed: volume, status and what the creator share has earned you.
+     */
+    async listVaultMarketPredictionProposalListed(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionProposalListedResponse> {
+        const response = await this.listVaultMarketPredictionProposalListedRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your market proposals and where each stands (pending, listed, rejected, withdrawn).
+     */
+    async listVaultMarketPredictionProposalsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPredictionProposalsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/proposals`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketPredictionProposalsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your market proposals and where each stands (pending, listed, rejected, withdrawn).
+     */
+    async listVaultMarketPredictionProposals(initOverrides?: RequestInit): Promise<ListVaultMarketPredictionProposalsResponse> {
+        const response = await this.listVaultMarketPredictionProposalsRaw(initOverrides);
         return await response.value();
     }
 
@@ -17028,6 +24510,112 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your recurring auto-invest plans: amount, weekly or monthly, the series and weights or the basket, what rolled over (budget too small for a whole share; your money stays at the venue), the next run.
+     */
+    async listVaultMarketShareAutoInvestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareAutoInvestResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/auto-invest`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareAutoInvestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your recurring auto-invest plans: amount, weekly or monthly, the series and weights or the basket, what rolled over (budget too small for a whole share; your money stays at the venue), the next run.
+     */
+    async listVaultMarketShareAutoInvest(initOverrides?: RequestInit): Promise<ListVaultMarketShareAutoInvestResponse> {
+        const response = await this.listVaultMarketShareAutoInvestRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A plan’s runs, newest first: the budget, what each series bought, what was spent and what rolled over; rebalances too.
+     */
+    async listVaultMarketShareAutoInvestRunsRaw(requestParameters: ListVaultMarketShareAutoInvestRunsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareAutoInvestRunsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listVaultMarketShareAutoInvestRuns.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/auto-invest/{id}/runs`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareAutoInvestRunsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A plan’s runs, newest first: the budget, what each series bought, what was spent and what rolled over; rebalances too.
+     */
+    async listVaultMarketShareAutoInvestRuns(requestParameters: ListVaultMarketShareAutoInvestRunsRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareAutoInvestRunsResponse> {
+        const response = await this.listVaultMarketShareAutoInvestRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Theme baskets: curated model portfolios of Vault Shares series with target weights. You buy and own every share directly in your own name; a basket is never a fund.
+     */
+    async listVaultMarketShareBasketsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareBasketsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/baskets`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareBasketsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Theme baskets: curated model portfolios of Vault Shares series with target weights. You buy and own every share directly in your own name; a basket is never a fund.
+     */
+    async listVaultMarketShareBaskets(initOverrides?: RequestInit): Promise<ListVaultMarketShareBasketsResponse> {
+        const response = await this.listVaultMarketShareBasketsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your share cards (not taken down), each as the public sees it.
      */
     async listVaultMarketShareCardsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareCardsResponse>> {
@@ -17058,6 +24646,358 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async listVaultMarketShareCards(initOverrides?: RequestInit): Promise<ListVaultMarketShareCardsResponse> {
         const response = await this.listVaultMarketShareCardsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The Vault Shares drops calendar: announced and open offerings, soonest first, each with its phase (announced, early_access, requests, open), the countdown, the allocation (fcfs, pro_rata or lottery with a per-person cap), your Crossly One early-access time (it moves when you may ask, never the price) and whether you asked to be told.
+     */
+    async listVaultMarketShareDropsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareDropsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/drops`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareDropsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The Vault Shares drops calendar: announced and open offerings, soonest first, each with its phase (announced, early_access, requests, open), the countdown, the allocation (fcfs, pro_rata or lottery with a per-person cap), your Crossly One early-access time (it moves when you may ask, never the price) and whether you asked to be told.
+     */
+    async listVaultMarketShareDrops(initOverrides?: RequestInit): Promise<ListVaultMarketShareDropsResponse> {
+        const response = await this.listVaultMarketShareDropsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your share gifts, sent and received, newest first, with where each stands (offered, instructed, settled, declined, cancelled, expired, rejected).
+     */
+    async listVaultMarketShareGiftsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareGiftsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/gifts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareGiftsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your share gifts, sent and received, newest first, with where each stands (offered, instructed, settled, declined, cancelled, expired, rejected).
+     */
+    async listVaultMarketShareGifts(initOverrides?: RequestInit): Promise<ListVaultMarketShareGiftsResponse> {
+        const response = await this.listVaultMarketShareGiftsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your share-book orders, newest first; `seriesId` and `open` narrow it.
+     */
+    async listVaultMarketShareOrdersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareOrdersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/orders`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareOrdersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your share-book orders, newest first; `seriesId` and `open` narrow it.
+     */
+    async listVaultMarketShareOrders(initOverrides?: RequestInit): Promise<ListVaultMarketShareOrdersResponse> {
+        const response = await this.listVaultMarketShareOrdersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Vault Shares series: open offerings first, then trading, then the rest. `status` and `bookKey` narrow it. Each with its terms, progress, last share price and implied item value (display only, never a mark), and your holding.
+     */
+    async listVaultMarketShareSeriesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSeriesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSeriesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Vault Shares series: open offerings first, then trading, then the rest. `status` and `bookKey` narrow it. Each with its terms, progress, last share price and implied item value (display only, never a mark), and your holding.
+     */
+    async listVaultMarketShareSeries(initOverrides?: RequestInit): Promise<ListVaultMarketShareSeriesResponse> {
+        const response = await this.listVaultMarketShareSeriesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The item’s appraisal history: the offering valuation (sealed valuation statement), independent and insurance appraisals, and any buyout or exit price.
+     */
+    async listVaultMarketShareSeryAppraisalsRaw(requestParameters: ListVaultMarketShareSeryAppraisalsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSeryAppraisalsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listVaultMarketShareSeryAppraisals.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/appraisals`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSeryAppraisalsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The item’s appraisal history: the offering valuation (sealed valuation statement), independent and insurance appraisals, and any buyout or exit price.
+     */
+    async listVaultMarketShareSeryAppraisals(requestParameters: ListVaultMarketShareSeryAppraisalsRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSeryAppraisalsResponse> {
+        const response = await this.listVaultMarketShareSeryAppraisalsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The latest fills on a share book, newest first, with which side made the market.
+     */
+    async listVaultMarketShareSeryTapeRaw(requestParameters: ListVaultMarketShareSeryTapeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSeryTapeResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listVaultMarketShareSeryTape.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/tape`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSeryTapeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The latest fills on a share book, newest first, with which side made the market.
+     */
+    async listVaultMarketShareSeryTape(requestParameters: ListVaultMarketShareSeryTapeRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSeryTapeResponse> {
+        const response = await this.listVaultMarketShareSeryTapeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The item’s story, provenance, condition reports, appraisals and exhibitions, newest first. Holders also see holders-only updates.
+     */
+    async listVaultMarketShareSeryUpdatesRaw(requestParameters: ListVaultMarketShareSeryUpdatesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSeryUpdatesResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listVaultMarketShareSeryUpdates.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/series/{id}/updates`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSeryUpdatesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The item’s story, provenance, condition reports, appraisals and exhibitions, newest first. Holders also see holders-only updates.
+     */
+    async listVaultMarketShareSeryUpdates(requestParameters: ListVaultMarketShareSeryUpdatesRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSeryUpdatesResponse> {
+        const response = await this.listVaultMarketShareSeryUpdatesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your offering subscriptions, newest first, with where each stands (pending, escrowed, allocated, refunded).
+     */
+    async listVaultMarketShareSubscriptionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSubscriptionsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/subscriptions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSubscriptionsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your offering subscriptions, newest first, with where each stands (pending, escrowed, allocated, refunded).
+     */
+    async listVaultMarketShareSubscriptions(initOverrides?: RequestInit): Promise<ListVaultMarketShareSubscriptionsResponse> {
+        const response = await this.listVaultMarketShareSubscriptionsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The world vault home’s fractional tiles: each item you own a share of, with \"you own 3.2%\".
+     */
+    async listVaultMarketShareWorldRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareWorldResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/shares/world`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareWorldResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The world vault home’s fractional tiles: each item you own a share of, with \"you own 3.2%\".
+     */
+    async listVaultMarketShareWorld(initOverrides?: RequestInit): Promise<ListVaultMarketShareWorldResponse> {
+        const response = await this.listVaultMarketShareWorldRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What each item\'s declared value starts at, by your insurance rule (market, cost or price). `inventoryItemIds` comma-separated.
+     */
+    async listVaultMarketSupplyDeclaredValuesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/supply/declared-values`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketSupplyDeclaredValuesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What each item\'s declared value starts at, by your insurance rule (market, cost or price). `inventoryItemIds` comma-separated.
+     */
+    async listVaultMarketSupplyDeclaredValues(initOverrides?: RequestInit): Promise<ListVaultMarketSupplyDeclaredValuesResponse> {
+        const response = await this.listVaultMarketSupplyDeclaredValuesRaw(initOverrides);
         return await response.value();
     }
 
@@ -17096,6 +25036,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Can these inventory items (`inventoryItemIds`, comma-separated, or every item linked to `listingId`) be sent to the vault now? Each says why not.
+     */
+    async listVaultMarketSupplyEligibilityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyEligibilityResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/supply/eligibility`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketSupplyEligibilityResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Can these inventory items (`inventoryItemIds`, comma-separated, or every item linked to `listingId`) be sent to the vault now? Each says why not.
+     */
+    async listVaultMarketSupplyEligibility(initOverrides?: RequestInit): Promise<ListVaultMarketSupplyEligibilityResponse> {
+        const response = await this.listVaultMarketSupplyEligibilityRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Market Open invites to you as a dealer: keys Crossly is opening and asks you to quote.
      */
     async listVaultMarketSupplyInvitesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyInvitesResponse>> {
@@ -17126,6 +25100,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async listVaultMarketSupplyInvites(initOverrides?: RequestInit): Promise<ListVaultMarketSupplyInvitesResponse> {
         const response = await this.listVaultMarketSupplyInvitesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your shipments into the vault, newest first: method, label or drop-off code, tracking and how many units were received.
+     */
+    async listVaultMarketSupplyShipmentsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyShipmentsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/supply/shipments`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketSupplyShipmentsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your shipments into the vault, newest first: method, label or drop-off code, tracking and how many units were received.
+     */
+    async listVaultMarketSupplyShipments(initOverrides?: RequestInit): Promise<ListVaultMarketSupplyShipmentsResponse> {
+        const response = await this.listVaultMarketSupplyShipmentsRaw(initOverrides);
         return await response.value();
     }
 
@@ -17534,6 +25542,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async updateVaultMarketAlertPref(initOverrides?: RequestInit): Promise<GetVaultMarketAlertPrefResponse> {
         const response = await this.updateVaultMarketAlertPrefRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set up or change Auto-buy with payouts: `shareBps` (1–50%) and the whole want list in order, each with an optional `maxPriceCents` (fee included).
+     */
+    async updateVaultMarketAutoBuyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketAutoBuyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/auto-buy`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateVaultMarketAutoBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set up or change Auto-buy with payouts: `shareBps` (1–50%) and the whole want list in order, each with an optional `maxPriceCents` (fee included).
+     */
+    async updateVaultMarketAutoBuy(initOverrides?: RequestInit): Promise<UpdateVaultMarketAutoBuyResponse> {
+        const response = await this.updateVaultMarketAutoBuyRaw(initOverrides);
         return await response.value();
     }
 
@@ -17948,6 +25990,44 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Set which unit a sale of this item ships first: `vault_first`, `warehouse_first` or `cheapest` (to ship); null = your default. Quantities stay the same on every channel: only who ships changes.
+     */
+    async updateVaultMarketItemSellFromRaw(requestParameters: UpdateVaultMarketItemSellFromRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketItemLocationResponse>> {
+        if (requestParameters.inventoryItemId === null || requestParameters.inventoryItemId === undefined) {
+            throw new runtime.RequiredError('inventoryItemId','Required parameter requestParameters.inventoryItemId was null or undefined when calling updateVaultMarketItemSellFrom.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/items/{inventoryItemId}/sell-from`.replace(`{${"inventoryItemId"}}`, encodeURIComponent(String(requestParameters.inventoryItemId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketItemLocationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set which unit a sale of this item ships first: `vault_first`, `warehouse_first` or `cheapest` (to ship); null = your default. Quantities stay the same on every channel: only who ships changes.
+     */
+    async updateVaultMarketItemSellFrom(requestParameters: UpdateVaultMarketItemSellFromRequest, initOverrides?: RequestInit): Promise<GetVaultMarketItemLocationResponse> {
+        const response = await this.updateVaultMarketItemSellFromRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Change your lender election (applies to loans opened after the change). Needs lending.
      */
     async updateVaultMarketLendingElectionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketLendingElectionResponse>> {
@@ -18084,6 +26164,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Set your auto-close rule: `enabled`, `minutesBefore` (30 to 10080), `onlyItm`, `maxSlippageBps` (0 to 2000).
+     */
+    async updateVaultMarketOptionAutoCloseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketOptionAutoCloseResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/options/auto-close`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketOptionAutoCloseResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set your auto-close rule: `enabled`, `minutesBefore` (30 to 10080), `onlyItm`, `maxSlippageBps` (0 to 2000).
+     */
+    async updateVaultMarketOptionAutoClose(initOverrides?: RequestInit): Promise<GetVaultMarketOptionAutoCloseResponse> {
+        const response = await this.updateVaultMarketOptionAutoCloseRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Join or leave the weekly paper leaderboard. Joining needs a display name (2 to 24 letters, numbers, spaces, dots, dashes or underscores), never your real name. Returns `{ optIn, displayName }`.
      */
     async updateVaultMarketPaperLeaderboardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketPaperLeaderboardResponse>> {
@@ -18114,6 +26228,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async updateVaultMarketPaperLeaderboard(initOverrides?: RequestInit): Promise<UpdateVaultMarketPaperLeaderboardResponse> {
         const response = await this.updateVaultMarketPaperLeaderboardRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your drop-off partnership\'s finder profile: postal code, opening hours, services and whether you are listed.
+     */
+    async updateVaultMarketPartnerMeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketPartnerMeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/partners/me`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateVaultMarketPartnerMeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your drop-off partnership\'s finder profile: postal code, opening hours, services and whether you are listed.
+     */
+    async updateVaultMarketPartnerMe(initOverrides?: RequestInit): Promise<UpdateVaultMarketPartnerMeResponse> {
+        const response = await this.updateVaultMarketPartnerMeRaw(initOverrides);
         return await response.value();
     }
 
@@ -18152,6 +26300,112 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async updateVaultMarketPositionExit(requestParameters: UpdateVaultMarketPositionExitRequest, initOverrides?: RequestInit): Promise<UpdateVaultMarketPositionExitResponse> {
         const response = await this.updateVaultMarketPositionExitRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit your comment.
+     */
+    async updateVaultMarketPredictionCommentRaw(requestParameters: UpdateVaultMarketPredictionCommentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPredictionCommentResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateVaultMarketPredictionComment.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/comments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPredictionCommentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit your comment.
+     */
+    async updateVaultMarketPredictionComment(requestParameters: UpdateVaultMarketPredictionCommentRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPredictionCommentResponse> {
+        const response = await this.updateVaultMarketPredictionCommentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Go public under a display name (`public: true`), rename, or go private (`public: false`: nothing is shown again).
+     */
+    async updateVaultMarketPredictionForecasterRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionForecasterResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/forecaster`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionForecasterResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Go public under a display name (`public: true`), rename, or go private (`public: false`: nothing is shown again).
+     */
+    async updateVaultMarketPredictionForecaster(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionForecasterResponse> {
+        const response = await this.updateVaultMarketPredictionForecasterRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set your daily loss limit (`dailyLossLimitCents`, null = none) or exclude yourself (`excludeDays`, `excludedUntil` or \"forever\"). Tighter takes effect at once; looser waits 24 hours.
+     */
+    async updateVaultMarketPredictionLimitRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketPredictionLimitResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/predictions/limits`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketPredictionLimitResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set your daily loss limit (`dailyLossLimitCents`, null = none) or exclude yourself (`excludeDays`, `excludedUntil` or \"forever\"). Tighter takes effect at once; looser waits 24 hours.
+     */
+    async updateVaultMarketPredictionLimit(initOverrides?: RequestInit): Promise<GetVaultMarketPredictionLimitResponse> {
+        const response = await this.updateVaultMarketPredictionLimitRaw(initOverrides);
         return await response.value();
     }
 
@@ -18300,6 +26554,40 @@ export class VaultMarketsApi extends runtime.BaseAPI {
      */
     async updateVaultMarketSetGoal(requestParameters: UpdateVaultMarketSetGoalRequest, initOverrides?: RequestInit): Promise<GetVaultMarketSetGoalResponse> {
         const response = await this.updateVaultMarketSetGoalRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change your vault defaults; send only the fields you change.
+     */
+    async updateVaultMarketSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSettingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/vault-markets/settings`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSettingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change your vault defaults; send only the fields you change.
+     */
+    async updateVaultMarketSetting(initOverrides?: RequestInit): Promise<GetVaultMarketSettingResponse> {
+        const response = await this.updateVaultMarketSettingRaw(initOverrides);
         return await response.value();
     }
 

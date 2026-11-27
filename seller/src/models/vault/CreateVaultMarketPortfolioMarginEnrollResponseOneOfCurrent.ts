@@ -104,9 +104,9 @@ export interface CreateVaultMarketPortfolioMarginEnrollResponseOneOfCurrent {
 * @enum {string}
 */
 export enum CreateVaultMarketPortfolioMarginEnrollResponseOneOfCurrentStateEnum {
-    BuyIn = 'buy_in',
     Healthy = 'healthy',
-    Call = 'call'
+    Call = 'call',
+    BuyIn = 'buy_in'
 }
 
 export function CreateVaultMarketPortfolioMarginEnrollResponseOneOfCurrentFromJSON(json: any): CreateVaultMarketPortfolioMarginEnrollResponseOneOfCurrent {

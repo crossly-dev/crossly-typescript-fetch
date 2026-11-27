@@ -24,19 +24,13 @@ export interface GetBuyerListingImpactResponseData {
      * @type {string}
      * @memberof GetBuyerListingImpactResponseData
      */
-    source: string;
+    key: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerListingImpactResponseData
      */
     label: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerListingImpactResponseData
-     */
-    key: string;
     /**
      * 
      * @type {number}
@@ -49,6 +43,12 @@ export interface GetBuyerListingImpactResponseData {
      * @memberof GetBuyerListingImpactResponseData
      */
     waterL?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerListingImpactResponseData
+     */
+    source: string;
 }
 
 export function GetBuyerListingImpactResponseDataFromJSON(json: any): GetBuyerListingImpactResponseData {
@@ -61,11 +61,11 @@ export function GetBuyerListingImpactResponseDataFromJSONTyped(json: any, ignore
     }
     return {
         
-        'source': json['source'],
-        'label': json['label'],
         'key': json['key'],
+        'label': json['label'],
         'co2Kg': !exists(json, 'co2Kg') ? undefined : json['co2Kg'],
         'waterL': !exists(json, 'waterL') ? undefined : json['waterL'],
+        'source': json['source'],
     };
 }
 
@@ -78,11 +78,11 @@ export function GetBuyerListingImpactResponseDataToJSON(value?: GetBuyerListingI
     }
     return {
         
-        'source': value.source,
-        'label': value.label,
         'key': value.key,
+        'label': value.label,
         'co2Kg': value.co2Kg,
         'waterL': value.waterL,
+        'source': value.source,
     };
 }
 

@@ -64,10 +64,10 @@ export interface GetProductionCandidateResponseCandidates {
     retailPriceCents?: number | null;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof GetProductionCandidateResponseCandidates
      */
-    creatorUserId?: string | null;
+    acceptedAt?: Date | null;
     /**
      * 
      * @type {Date}
@@ -76,10 +76,16 @@ export interface GetProductionCandidateResponseCandidates {
     completedAt?: Date | null;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof GetProductionCandidateResponseCandidates
      */
-    acceptedAt?: Date | null;
+    creatorUserId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetProductionCandidateResponseCandidates
+     */
+    cosmeticId: string;
     /**
      * 
      * @type {string}
@@ -92,12 +98,6 @@ export interface GetProductionCandidateResponseCandidates {
      * @memberof GetProductionCandidateResponseCandidates
      */
     creatorSubjectId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetProductionCandidateResponseCandidates
-     */
-    cosmeticId: string;
     /**
      * 
      * @type {number}
@@ -193,12 +193,12 @@ export function GetProductionCandidateResponseCandidatesFromJSONTyped(json: any,
         'updatedAt': (new Date(json['updatedAt'])),
         'status': json['status'],
         'retailPriceCents': !exists(json, 'retailPriceCents') ? undefined : json['retailPriceCents'],
-        'creatorUserId': !exists(json, 'creatorUserId') ? undefined : json['creatorUserId'],
-        'completedAt': !exists(json, 'completedAt') ? undefined : (json['completedAt'] === null ? null : new Date(json['completedAt'])),
         'acceptedAt': !exists(json, 'acceptedAt') ? undefined : (json['acceptedAt'] === null ? null : new Date(json['acceptedAt'])),
+        'completedAt': !exists(json, 'completedAt') ? undefined : (json['completedAt'] === null ? null : new Date(json['completedAt'])),
+        'creatorUserId': !exists(json, 'creatorUserId') ? undefined : json['creatorUserId'],
+        'cosmeticId': json['cosmeticId'],
         'merchantId': json['merchantId'],
         'creatorSubjectId': json['creatorSubjectId'],
-        'cosmeticId': json['cosmeticId'],
         'editionSize': !exists(json, 'editionSize') ? undefined : json['editionSize'],
         'unitCostCents': !exists(json, 'unitCostCents') ? undefined : json['unitCostCents'],
         'runCostCents': !exists(json, 'runCostCents') ? undefined : json['runCostCents'],
@@ -229,12 +229,12 @@ export function GetProductionCandidateResponseCandidatesToJSON(value?: GetProduc
         'updatedAt': (value.updatedAt.toISOString()),
         'status': value.status,
         'retailPriceCents': value.retailPriceCents,
-        'creatorUserId': value.creatorUserId,
-        'completedAt': value.completedAt === undefined ? undefined : (value.completedAt === null ? null : value.completedAt.toISOString()),
         'acceptedAt': value.acceptedAt === undefined ? undefined : (value.acceptedAt === null ? null : value.acceptedAt.toISOString()),
+        'completedAt': value.completedAt === undefined ? undefined : (value.completedAt === null ? null : value.completedAt.toISOString()),
+        'creatorUserId': value.creatorUserId,
+        'cosmeticId': value.cosmeticId,
         'merchantId': value.merchantId,
         'creatorSubjectId': value.creatorSubjectId,
-        'cosmeticId': value.cosmeticId,
         'editionSize': value.editionSize,
         'unitCostCents': value.unitCostCents,
         'runCostCents': value.runCostCents,

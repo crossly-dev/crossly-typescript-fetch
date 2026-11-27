@@ -24,6 +24,12 @@ export interface CreateBuyerCartOptimizerResponseDataLinesPick {
      * @type {string}
      * @memberof CreateBuyerCartOptimizerResponseDataLinesPick
      */
+    slug: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerCartOptimizerResponseDataLinesPick
+     */
     title: string;
     /**
      * 
@@ -31,12 +37,6 @@ export interface CreateBuyerCartOptimizerResponseDataLinesPick {
      * @memberof CreateBuyerCartOptimizerResponseDataLinesPick
      */
     sellerUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateBuyerCartOptimizerResponseDataLinesPick
-     */
-    slug: string;
     /**
      * 
      * @type {string}
@@ -67,9 +67,9 @@ export function CreateBuyerCartOptimizerResponseDataLinesPickFromJSONTyped(json:
     }
     return {
         
+        'slug': json['slug'],
         'title': json['title'],
         'sellerUserId': json['sellerUserId'],
-        'slug': json['slug'],
         'sellerName': !exists(json, 'sellerName') ? undefined : json['sellerName'],
         'unitCents': json['unitCents'],
         'shipCents': json['shipCents'],
@@ -85,9 +85,9 @@ export function CreateBuyerCartOptimizerResponseDataLinesPickToJSON(value?: Crea
     }
     return {
         
+        'slug': value.slug,
         'title': value.title,
         'sellerUserId': value.sellerUserId,
-        'slug': value.slug,
         'sellerName': value.sellerName,
         'unitCents': value.unitCents,
         'shipCents': value.shipCents,

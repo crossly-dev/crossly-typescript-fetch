@@ -30,25 +30,13 @@ export interface ListBuyerBoardsItem {
      * @type {string}
      * @memberof ListBuyerBoardsItem
      */
-    updatedAt: string;
+    title: string;
     /**
      * 
      * @type {boolean}
      * @memberof ListBuyerBoardsItem
      */
     isPublic: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerBoardsItem
-     */
-    itemCount: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerBoardsItem
-     */
-    title: string;
     /**
      * 
      * @type {string}
@@ -61,6 +49,18 @@ export interface ListBuyerBoardsItem {
      * @memberof ListBuyerBoardsItem
      */
     coverUrl?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerBoardsItem
+     */
+    itemCount: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerBoardsItem
+     */
+    updatedAt: string;
 }
 
 export function ListBuyerBoardsItemFromJSON(json: any): ListBuyerBoardsItem {
@@ -74,12 +74,12 @@ export function ListBuyerBoardsItemFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'id': json['id'],
-        'updatedAt': json['updatedAt'],
-        'isPublic': json['isPublic'],
-        'itemCount': json['itemCount'],
         'title': json['title'],
+        'isPublic': json['isPublic'],
         'shareToken': json['shareToken'],
         'coverUrl': !exists(json, 'coverUrl') ? undefined : json['coverUrl'],
+        'itemCount': json['itemCount'],
+        'updatedAt': json['updatedAt'],
     };
 }
 
@@ -93,12 +93,12 @@ export function ListBuyerBoardsItemToJSON(value?: ListBuyerBoardsItem | null): a
     return {
         
         'id': value.id,
-        'updatedAt': value.updatedAt,
-        'isPublic': value.isPublic,
-        'itemCount': value.itemCount,
         'title': value.title,
+        'isPublic': value.isPublic,
         'shareToken': value.shareToken,
         'coverUrl': value.coverUrl,
+        'itemCount': value.itemCount,
+        'updatedAt': value.updatedAt,
     };
 }
 

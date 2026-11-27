@@ -26,6 +26,12 @@ import {
     GetVaultMarketTcaResponseItemsToJSON,
 } from './GetVaultMarketTcaResponseItems';
 import {
+    GetVaultMarketTcaResponseOptions,
+    GetVaultMarketTcaResponseOptionsFromJSON,
+    GetVaultMarketTcaResponseOptionsFromJSONTyped,
+    GetVaultMarketTcaResponseOptionsToJSON,
+} from './GetVaultMarketTcaResponseOptions';
+import {
     GetVaultMarketTcaResponseSummary,
     GetVaultMarketTcaResponseSummaryFromJSON,
     GetVaultMarketTcaResponseSummaryFromJSONTyped,
@@ -70,6 +76,12 @@ export interface GetVaultMarketTcaResponse {
     items: Array<GetVaultMarketTcaResponseItems>;
     /**
      * 
+     * @type {GetVaultMarketTcaResponseOptions}
+     * @memberof GetVaultMarketTcaResponse
+     */
+    options: GetVaultMarketTcaResponseOptions;
+    /**
+     * 
      * @type {string}
      * @memberof GetVaultMarketTcaResponse
      */
@@ -91,6 +103,7 @@ export function GetVaultMarketTcaResponseFromJSONTyped(json: any, ignoreDiscrimi
         'to': json['to'],
         'summary': GetVaultMarketTcaResponseSummaryFromJSON(json['summary']),
         'items': ((json['items'] as Array<any>).map(GetVaultMarketTcaResponseItemsFromJSON)),
+        'options': GetVaultMarketTcaResponseOptionsFromJSON(json['options']),
         'note': json['note'],
     };
 }
@@ -109,6 +122,7 @@ export function GetVaultMarketTcaResponseToJSON(value?: GetVaultMarketTcaRespons
         'to': value.to,
         'summary': GetVaultMarketTcaResponseSummaryToJSON(value.summary),
         'items': ((value.items as Array<any>).map(GetVaultMarketTcaResponseItemsToJSON)),
+        'options': GetVaultMarketTcaResponseOptionsToJSON(value.options),
         'note': value.note,
     };
 }

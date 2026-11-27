@@ -21,16 +21,16 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateBuyerTotalRequestResponseData {
     /**
      * 
-     * @type {string}
-     * @memberof CreateBuyerTotalRequestResponseData
-     */
-    id: string;
-    /**
-     * 
      * @type {boolean}
      * @memberof CreateBuyerTotalRequestResponseData
      */
     ok: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerTotalRequestResponseData
+     */
+    id: string;
 }
 
 export function CreateBuyerTotalRequestResponseDataFromJSON(json: any): CreateBuyerTotalRequestResponseData {
@@ -43,8 +43,8 @@ export function CreateBuyerTotalRequestResponseDataFromJSONTyped(json: any, igno
     }
     return {
         
-        'id': json['id'],
         'ok': json['ok'],
+        'id': json['id'],
     };
 }
 
@@ -57,8 +57,8 @@ export function CreateBuyerTotalRequestResponseDataToJSON(value?: CreateBuyerTot
     }
     return {
         
-        'id': value.id,
         'ok': value.ok,
+        'id': value.id,
     };
 }
 

@@ -27,16 +27,16 @@ export interface ListNeighbourhoodsItemNextEvent {
     id: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof ListNeighbourhoodsItemNextEvent
-     */
-    live: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof ListNeighbourhoodsItemNextEvent
      */
     title: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListNeighbourhoodsItemNextEvent
+     */
+    live: boolean;
     /**
      * 
      * @type {string}
@@ -77,8 +77,8 @@ export function ListNeighbourhoodsItemNextEventFromJSONTyped(json: any, ignoreDi
     return {
         
         'id': json['id'],
-        'live': json['live'],
         'title': json['title'],
+        'live': json['live'],
         'endsAt': json['endsAt'],
         'kind': json['kind'],
         'startsAt': json['startsAt'],
@@ -95,8 +95,8 @@ export function ListNeighbourhoodsItemNextEventToJSON(value?: ListNeighbourhoods
     return {
         
         'id': value.id,
-        'live': value.live,
         'title': value.title,
+        'live': value.live,
         'endsAt': value.endsAt,
         'kind': value.kind,
         'startsAt': value.startsAt,

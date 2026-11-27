@@ -136,6 +136,13 @@ export interface ListBuyerCatalogBrowseItem {
      */
     shipsFromCountry: string;
     /**
+     * The item has an active Crossly Passport (the tile's "Crossly Passport" chip, docs/PASSPORTS.md §7.4).
+     * Optional: only the main browse query reads it; other row builders leave it out.
+     * @type {boolean}
+     * @memberof ListBuyerCatalogBrowseItem
+     */
+    hasPassport?: boolean | null;
+    /**
      * ISO timestamp of the sale.
      * @type {string}
      * @memberof ListBuyerCatalogBrowseItem
@@ -185,6 +192,7 @@ export function ListBuyerCatalogBrowseItemFromJSONTyped(json: any, ignoreDiscrim
         'aiMedia': json['aiMedia'],
         'aiMediaDetected': json['aiMediaDetected'],
         'shipsFromCountry': json['shipsFromCountry'],
+        'hasPassport': !exists(json, 'hasPassport') ? undefined : json['hasPassport'],
         'soldAt': !exists(json, 'soldAt') ? undefined : json['soldAt'],
         'soldPriceCents': !exists(json, 'soldPriceCents') ? undefined : json['soldPriceCents'],
         'soldQuantity': !exists(json, 'soldQuantity') ? undefined : json['soldQuantity'],
@@ -219,6 +227,7 @@ export function ListBuyerCatalogBrowseItemToJSON(value?: ListBuyerCatalogBrowseI
         'aiMedia': value.aiMedia,
         'aiMediaDetected': value.aiMediaDetected,
         'shipsFromCountry': value.shipsFromCountry,
+        'hasPassport': value.hasPassport,
         'soldAt': value.soldAt,
         'soldPriceCents': value.soldPriceCents,
         'soldQuantity': value.soldQuantity,

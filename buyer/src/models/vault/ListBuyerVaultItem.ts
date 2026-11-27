@@ -30,25 +30,19 @@ export interface ListBuyerVaultItem {
      * @type {string}
      * @memberof ListBuyerVaultItem
      */
-    condition: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerVaultItem
-     */
-    gradeKey?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerVaultItem
-     */
     status: string;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerVaultItem
      */
-    receivedAt?: string | null;
+    skuId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerVaultItem
+     */
+    skuName?: string | null;
     /**
      * 
      * @type {string}
@@ -63,16 +57,40 @@ export interface ListBuyerVaultItem {
     variantId?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof ListBuyerVaultItem
+     */
+    variantLabel?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerVaultItem
+     */
+    condition: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerVaultItem
+     */
+    gradeKey?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerVaultItem
+     */
+    location?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof ListBuyerVaultItem
      */
     lastSaleCents?: number | null;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ListBuyerVaultItem
      */
-    skuId: string;
+    askPriceCents?: number | null;
     /**
      * 
      * @type {string}
@@ -90,25 +108,7 @@ export interface ListBuyerVaultItem {
      * @type {string}
      * @memberof ListBuyerVaultItem
      */
-    location?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerVaultItem
-     */
-    skuName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerVaultItem
-     */
-    variantLabel?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerVaultItem
-     */
-    askPriceCents?: number | null;
+    receivedAt?: string | null;
     /**
      * What is really going on with it: in_auction, pledged, collateral, lent, in_grading, gift_pending, else the status.
      * @type {string}
@@ -134,20 +134,20 @@ export function ListBuyerVaultItemFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'id': json['id'],
-        'condition': json['condition'],
-        'gradeKey': !exists(json, 'gradeKey') ? undefined : json['gradeKey'],
         'status': json['status'],
-        'receivedAt': !exists(json, 'receivedAt') ? undefined : json['receivedAt'],
+        'skuId': json['skuId'],
+        'skuName': !exists(json, 'skuName') ? undefined : json['skuName'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
         'variantId': !exists(json, 'variantId') ? undefined : json['variantId'],
+        'variantLabel': !exists(json, 'variantLabel') ? undefined : json['variantLabel'],
+        'condition': json['condition'],
+        'gradeKey': !exists(json, 'gradeKey') ? undefined : json['gradeKey'],
+        'location': !exists(json, 'location') ? undefined : json['location'],
         'lastSaleCents': !exists(json, 'lastSaleCents') ? undefined : json['lastSaleCents'],
-        'skuId': json['skuId'],
+        'askPriceCents': !exists(json, 'askPriceCents') ? undefined : json['askPriceCents'],
         'withdrawSpeed': !exists(json, 'withdrawSpeed') ? undefined : json['withdrawSpeed'],
         'withdrawTracking': !exists(json, 'withdrawTracking') ? undefined : json['withdrawTracking'],
-        'location': !exists(json, 'location') ? undefined : json['location'],
-        'skuName': !exists(json, 'skuName') ? undefined : json['skuName'],
-        'variantLabel': !exists(json, 'variantLabel') ? undefined : json['variantLabel'],
-        'askPriceCents': !exists(json, 'askPriceCents') ? undefined : json['askPriceCents'],
+        'receivedAt': !exists(json, 'receivedAt') ? undefined : json['receivedAt'],
         'situation': !exists(json, 'situation') ? undefined : json['situation'],
         'earlyWithdrawFeeCents': !exists(json, 'earlyWithdrawFeeCents') ? undefined : json['earlyWithdrawFeeCents'],
     };
@@ -163,20 +163,20 @@ export function ListBuyerVaultItemToJSON(value?: ListBuyerVaultItem | null): any
     return {
         
         'id': value.id,
-        'condition': value.condition,
-        'gradeKey': value.gradeKey,
         'status': value.status,
-        'receivedAt': value.receivedAt,
+        'skuId': value.skuId,
+        'skuName': value.skuName,
         'imageUrl': value.imageUrl,
         'variantId': value.variantId,
+        'variantLabel': value.variantLabel,
+        'condition': value.condition,
+        'gradeKey': value.gradeKey,
+        'location': value.location,
         'lastSaleCents': value.lastSaleCents,
-        'skuId': value.skuId,
+        'askPriceCents': value.askPriceCents,
         'withdrawSpeed': value.withdrawSpeed,
         'withdrawTracking': value.withdrawTracking,
-        'location': value.location,
-        'skuName': value.skuName,
-        'variantLabel': value.variantLabel,
-        'askPriceCents': value.askPriceCents,
+        'receivedAt': value.receivedAt,
         'situation': value.situation,
         'earlyWithdrawFeeCents': value.earlyWithdrawFeeCents,
     };

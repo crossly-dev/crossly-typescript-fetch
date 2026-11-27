@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    NameSlug,
-    NameSlugFromJSON,
-    NameSlugFromJSONTyped,
-    NameSlugToJSON,
-} from '../common/NameSlug';
+    NameSlug2,
+    NameSlug2FromJSON,
+    NameSlug2FromJSONTyped,
+    NameSlug2ToJSON,
+} from '../common/NameSlug2';
 
 /**
  * 
@@ -34,10 +34,10 @@ export interface ListDropMineItemSeller {
     name: string;
     /**
      * 
-     * @type {NameSlug}
+     * @type {NameSlug2}
      * @memberof ListDropMineItemSeller
      */
-    shop?: NameSlug | null;
+    shop?: NameSlug2 | null;
 }
 
 export function ListDropMineItemSellerFromJSON(json: any): ListDropMineItemSeller {
@@ -51,7 +51,7 @@ export function ListDropMineItemSellerFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'name': json['name'],
-        'shop': !exists(json, 'shop') ? undefined : NameSlugFromJSON(json['shop']),
+        'shop': !exists(json, 'shop') ? undefined : NameSlug2FromJSON(json['shop']),
     };
 }
 
@@ -65,7 +65,7 @@ export function ListDropMineItemSellerToJSON(value?: ListDropMineItemSeller | nu
     return {
         
         'name': value.name,
-        'shop': NameSlugToJSON(value.shop),
+        'shop': NameSlug2ToJSON(value.shop),
     };
 }
 

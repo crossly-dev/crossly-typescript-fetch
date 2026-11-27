@@ -222,15 +222,15 @@ export enum GetVaultMarketP2pLoanResponseRoleEnum {
 */
 export enum GetVaultMarketP2pLoanResponseStatusEnum {
     Active = 'active',
-    Funding = 'funding',
     Cancelled = 'cancelled',
+    Funding = 'funding',
     Auction = 'auction',
+    Repaid = 'repaid',
+    Foreclosed = 'foreclosed',
     Repaying = 'repaying',
     Refinancing = 'refinancing',
     RefiPending = 'refi_pending',
-    Repaid = 'repaid',
-    Refinanced = 'refinanced',
-    Foreclosed = 'foreclosed'
+    Refinanced = 'refinanced'
 }
 
 export function GetVaultMarketP2pLoanResponseFromJSON(json: any): GetVaultMarketP2pLoanResponse {

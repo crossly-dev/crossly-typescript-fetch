@@ -30,6 +30,12 @@ export interface GetCbxSubjectBalanceBySubjectIdResponseData {
      * @type {string}
      * @memberof GetCbxSubjectBalanceBySubjectIdResponseData
      */
+    fundingRestrictedBaseUnits: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetCbxSubjectBalanceBySubjectIdResponseData
+     */
     earnedBaseUnits: string;
     /**
      * 
@@ -68,6 +74,7 @@ export function GetCbxSubjectBalanceBySubjectIdResponseDataFromJSONTyped(json: a
     return {
         
         'grantedBaseUnits': json['grantedBaseUnits'],
+        'fundingRestrictedBaseUnits': json['fundingRestrictedBaseUnits'],
         'earnedBaseUnits': json['earnedBaseUnits'],
         'stakedBaseUnits': json['stakedBaseUnits'],
         'earnedAvailableBaseUnits': json['earnedAvailableBaseUnits'],
@@ -86,6 +93,7 @@ export function GetCbxSubjectBalanceBySubjectIdResponseDataToJSON(value?: GetCbx
     return {
         
         'grantedBaseUnits': value.grantedBaseUnits,
+        'fundingRestrictedBaseUnits': value.fundingRestrictedBaseUnits,
         'earnedBaseUnits': value.earnedBaseUnits,
         'stakedBaseUnits': value.stakedBaseUnits,
         'earnedAvailableBaseUnits': value.earnedAvailableBaseUnits,

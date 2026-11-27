@@ -88,6 +88,18 @@ export interface GetStallQuoteResponseQuote {
     rails: Array<GetStallQuoteResponseQuoteRailsItem>;
     /**
      * 
+     * @type {string}
+     * @memberof GetStallQuoteResponseQuote
+     */
+    boothKind: GetStallQuoteResponseQuoteBoothKindEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetStallQuoteResponseQuote
+     */
+    capacity: number;
+    /**
+     * 
      * @type {boolean}
      * @memberof GetStallQuoteResponseQuote
      */
@@ -98,6 +110,16 @@ export interface GetStallQuoteResponseQuote {
      * @memberof GetStallQuoteResponseQuote
      */
     unbookableReason?: string | null;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum GetStallQuoteResponseQuoteBoothKindEnum {
+    Booth = 'booth',
+    Cart = 'cart',
+    Pavilion = 'pavilion'
 }
 
 export function GetStallQuoteResponseQuoteFromJSON(json: any): GetStallQuoteResponseQuote {
@@ -117,6 +139,8 @@ export function GetStallQuoteResponseQuoteFromJSONTyped(json: any, ignoreDiscrim
         'units': ((json['units'] as Array<any>).map(GetStallQuoteResponseQuoteUnitsFromJSON)),
         'quote': CreateStallBookResponseBookingQuoteFromJSON(json['quote']),
         'rails': ((json['rails'] as Array<any>).map(GetStallQuoteResponseQuoteRailsItemFromJSON)),
+        'boothKind': json['boothKind'],
+        'capacity': json['capacity'],
         'bookable': json['bookable'],
         'unbookableReason': !exists(json, 'unbookableReason') ? undefined : json['unbookableReason'],
     };
@@ -138,6 +162,8 @@ export function GetStallQuoteResponseQuoteToJSON(value?: GetStallQuoteResponseQu
         'units': ((value.units as Array<any>).map(GetStallQuoteResponseQuoteUnitsToJSON)),
         'quote': CreateStallBookResponseBookingQuoteToJSON(value.quote),
         'rails': ((value.rails as Array<any>).map(GetStallQuoteResponseQuoteRailsItemToJSON)),
+        'boothKind': value.boothKind,
+        'capacity': value.capacity,
         'bookable': value.bookable,
         'unbookableReason': value.unbookableReason,
     };

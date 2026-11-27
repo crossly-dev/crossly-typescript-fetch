@@ -30,12 +30,6 @@ export interface CreateBuyerOfferResponseDataOffer {
      * @type {string}
      * @memberof CreateBuyerOfferResponseDataOffer
      */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateBuyerOfferResponseDataOffer
-     */
     platformListingId: string;
     /**
      * 
@@ -49,6 +43,12 @@ export interface CreateBuyerOfferResponseDataOffer {
      * @memberof CreateBuyerOfferResponseDataOffer
      */
     amountCents: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerOfferResponseDataOffer
+     */
+    status: string;
     /**
      * 
      * @type {string}
@@ -68,10 +68,10 @@ export function CreateBuyerOfferResponseDataOfferFromJSONTyped(json: any, ignore
     return {
         
         'id': json['id'],
-        'status': json['status'],
         'platformListingId': json['platformListingId'],
         'buyerUserId': json['buyerUserId'],
         'amountCents': json['amountCents'],
+        'status': json['status'],
         'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
@@ -86,10 +86,10 @@ export function CreateBuyerOfferResponseDataOfferToJSON(value?: CreateBuyerOffer
     return {
         
         'id': value.id,
-        'status': value.status,
         'platformListingId': value.platformListingId,
         'buyerUserId': value.buyerUserId,
         'amountCents': value.amountCents,
+        'status': value.status,
         'message': value.message,
     };
 }

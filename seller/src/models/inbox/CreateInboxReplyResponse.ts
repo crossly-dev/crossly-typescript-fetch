@@ -44,9 +44,9 @@ export interface CreateInboxReplyResponse {
 * @enum {string}
 */
 export enum CreateInboxReplyResponseDeliveryStatusEnum {
-    Failed = 'failed',
+    Sending = 'sending',
     Sent = 'sent',
-    Sending = 'sending'
+    Failed = 'failed'
 }
 
 export function CreateInboxReplyResponseFromJSON(json: any): CreateInboxReplyResponse {

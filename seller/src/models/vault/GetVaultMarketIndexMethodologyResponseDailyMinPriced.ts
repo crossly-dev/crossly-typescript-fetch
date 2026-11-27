@@ -42,6 +42,12 @@ export interface GetVaultMarketIndexMethodologyResponseDailyMinPriced {
      * @type {number}
      * @memberof GetVaultMarketIndexMethodologyResponseDailyMinPriced
      */
+    segment: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetVaultMarketIndexMethodologyResponseDailyMinPriced
+     */
     curated: number;
     /**
      * 
@@ -49,12 +55,6 @@ export interface GetVaultMarketIndexMethodologyResponseDailyMinPriced {
      * @memberof GetVaultMarketIndexMethodologyResponseDailyMinPriced
      */
     composite: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetVaultMarketIndexMethodologyResponseDailyMinPriced
-     */
-    segment: number;
 }
 
 export function GetVaultMarketIndexMethodologyResponseDailyMinPricedFromJSON(json: any): GetVaultMarketIndexMethodologyResponseDailyMinPriced {
@@ -70,9 +70,9 @@ export function GetVaultMarketIndexMethodologyResponseDailyMinPricedFromJSONType
         'custom': json['custom'],
         'brand': json['brand'],
         'category': json['category'],
+        'segment': json['segment'],
         'curated': json['curated'],
         'composite': json['composite'],
-        'segment': json['segment'],
     };
 }
 
@@ -88,9 +88,9 @@ export function GetVaultMarketIndexMethodologyResponseDailyMinPricedToJSON(value
         'custom': value.custom,
         'brand': value.brand,
         'category': value.category,
+        'segment': value.segment,
         'curated': value.curated,
         'composite': value.composite,
-        'segment': value.segment,
     };
 }
 

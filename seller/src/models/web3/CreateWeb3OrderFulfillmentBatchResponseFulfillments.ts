@@ -70,9 +70,9 @@ export interface CreateWeb3OrderFulfillmentBatchResponseFulfillments {
 */
 export enum CreateWeb3OrderFulfillmentBatchResponseFulfillmentsKindEnum {
     Bundle = 'bundle',
+    Offer = 'offer',
     Listing = 'listing',
     PrivateListing = 'private_listing',
-    Offer = 'offer',
     CollectionOffer = 'collection_offer',
     TraitOffer = 'trait_offer'
 }

@@ -44,12 +44,12 @@ export interface GetWeb3BrowseResponseChains {
 * @enum {string}
 */
 export enum GetWeb3BrowseResponseChainsKeyEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }
 
 export function GetWeb3BrowseResponseChainsFromJSON(json: any): GetWeb3BrowseResponseChains {

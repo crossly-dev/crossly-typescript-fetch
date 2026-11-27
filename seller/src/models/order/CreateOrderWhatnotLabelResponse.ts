@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateOrderWhatnotLabelResponseShipment,
-    CreateOrderWhatnotLabelResponseShipmentFromJSON,
-    CreateOrderWhatnotLabelResponseShipmentFromJSONTyped,
-    CreateOrderWhatnotLabelResponseShipmentToJSON,
-} from './CreateOrderWhatnotLabelResponseShipment';
+    GetOrderWhatnotShipmentResponseShipment,
+    GetOrderWhatnotShipmentResponseShipmentFromJSON,
+    GetOrderWhatnotShipmentResponseShipmentFromJSONTyped,
+    GetOrderWhatnotShipmentResponseShipmentToJSON,
+} from './GetOrderWhatnotShipmentResponseShipment';
 
 /**
  * 
@@ -28,16 +28,82 @@ import {
 export interface CreateOrderWhatnotLabelResponse {
     /**
      * 
-     * @type {CreateOrderWhatnotLabelResponseShipment}
+     * @type {GetOrderWhatnotShipmentResponseShipment}
      * @memberof CreateOrderWhatnotLabelResponse
      */
-    shipment: CreateOrderWhatnotLabelResponseShipment;
+    shipment?: GetOrderWhatnotShipmentResponseShipment;
     /**
      * 
      * @type {boolean}
      * @memberof CreateOrderWhatnotLabelResponse
      */
-    recorded: boolean;
+    recorded?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    ok?: boolean;
+    /**
+     * Absent for an additional label, which Poshmark delivers only by email.
+     * @type {string}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    downloadUrl?: string | null;
+    /**
+     * True when the label exists only in the seller's inbox.
+     * @type {boolean}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    emailOnly?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    labelUrl?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    trackingNumber?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    carrier?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    service?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    documentKind?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    webUrl?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    pending?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderWhatnotLabelResponse
+     */
+    message?: string;
 }
 
 export function CreateOrderWhatnotLabelResponseFromJSON(json: any): CreateOrderWhatnotLabelResponse {
@@ -50,8 +116,19 @@ export function CreateOrderWhatnotLabelResponseFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'shipment': CreateOrderWhatnotLabelResponseShipmentFromJSON(json['shipment']),
-        'recorded': json['recorded'],
+        'shipment': !exists(json, 'shipment') ? undefined : GetOrderWhatnotShipmentResponseShipmentFromJSON(json['shipment']),
+        'recorded': !exists(json, 'recorded') ? undefined : json['recorded'],
+        'ok': !exists(json, 'ok') ? undefined : json['ok'],
+        'downloadUrl': !exists(json, 'downloadUrl') ? undefined : json['downloadUrl'],
+        'emailOnly': !exists(json, 'emailOnly') ? undefined : json['emailOnly'],
+        'labelUrl': !exists(json, 'labelUrl') ? undefined : json['labelUrl'],
+        'trackingNumber': !exists(json, 'trackingNumber') ? undefined : json['trackingNumber'],
+        'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
+        'service': !exists(json, 'service') ? undefined : json['service'],
+        'documentKind': !exists(json, 'documentKind') ? undefined : json['documentKind'],
+        'webUrl': !exists(json, 'webUrl') ? undefined : json['webUrl'],
+        'pending': !exists(json, 'pending') ? undefined : json['pending'],
+        'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
@@ -64,8 +141,19 @@ export function CreateOrderWhatnotLabelResponseToJSON(value?: CreateOrderWhatnot
     }
     return {
         
-        'shipment': CreateOrderWhatnotLabelResponseShipmentToJSON(value.shipment),
+        'shipment': GetOrderWhatnotShipmentResponseShipmentToJSON(value.shipment),
         'recorded': value.recorded,
+        'ok': value.ok,
+        'downloadUrl': value.downloadUrl,
+        'emailOnly': value.emailOnly,
+        'labelUrl': value.labelUrl,
+        'trackingNumber': value.trackingNumber,
+        'carrier': value.carrier,
+        'service': value.service,
+        'documentKind': value.documentKind,
+        'webUrl': value.webUrl,
+        'pending': value.pending,
+        'message': value.message,
     };
 }
 

@@ -54,12 +54,6 @@ export interface CreateNftMarketListingResponseListing {
      * @type {string}
      * @memberof CreateNftMarketListingResponseListing
      */
-    sellerUserId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateNftMarketListingResponseListing
-     */
     buyerUserId?: string | null;
     /**
      * 
@@ -72,13 +66,19 @@ export interface CreateNftMarketListingResponseListing {
      * @type {string}
      * @memberof CreateNftMarketListingResponseListing
      */
-    merchantId: string;
+    sellerUserId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateNftMarketListingResponseListing
      */
     cosmeticId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateNftMarketListingResponseListing
+     */
+    merchantId: string;
     /**
      * 
      * @type {string}
@@ -114,11 +114,11 @@ export function CreateNftMarketListingResponseListingFromJSONTyped(json: any, ig
         'updatedAt': (new Date(json['updatedAt'])),
         'status': json['status'],
         'soldAt': !exists(json, 'soldAt') ? undefined : (json['soldAt'] === null ? null : new Date(json['soldAt'])),
-        'sellerUserId': !exists(json, 'sellerUserId') ? undefined : json['sellerUserId'],
         'buyerUserId': !exists(json, 'buyerUserId') ? undefined : json['buyerUserId'],
         'priceCents': json['priceCents'],
-        'merchantId': json['merchantId'],
+        'sellerUserId': !exists(json, 'sellerUserId') ? undefined : json['sellerUserId'],
         'cosmeticId': json['cosmeticId'],
+        'merchantId': json['merchantId'],
         'ownershipId': json['ownershipId'],
         'sellerSubjectId': json['sellerSubjectId'],
         'txSig': !exists(json, 'txSig') ? undefined : json['txSig'],
@@ -139,11 +139,11 @@ export function CreateNftMarketListingResponseListingToJSON(value?: CreateNftMar
         'updatedAt': (value.updatedAt.toISOString()),
         'status': value.status,
         'soldAt': value.soldAt === undefined ? undefined : (value.soldAt === null ? null : value.soldAt.toISOString()),
-        'sellerUserId': value.sellerUserId,
         'buyerUserId': value.buyerUserId,
         'priceCents': value.priceCents,
-        'merchantId': value.merchantId,
+        'sellerUserId': value.sellerUserId,
         'cosmeticId': value.cosmeticId,
+        'merchantId': value.merchantId,
         'ownershipId': value.ownershipId,
         'sellerSubjectId': value.sellerSubjectId,
         'txSig': value.txSig,

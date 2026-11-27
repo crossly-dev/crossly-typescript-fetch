@@ -107,8 +107,8 @@ export interface ListVaultMarketIndexConsultationsItem {
 export enum ListVaultMarketIndexConsultationsItemStatusEnum {
     Open = 'open',
     Closed = 'closed',
-    Adopted = 'adopted',
-    Withdrawn = 'withdrawn'
+    Withdrawn = 'withdrawn',
+    Adopted = 'adopted'
 }
 
 export function ListVaultMarketIndexConsultationsItemFromJSON(json: any): ListVaultMarketIndexConsultationsItem {

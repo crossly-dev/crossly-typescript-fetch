@@ -20,6 +20,12 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface ListBuyerCatalogListingSoldHistoryItem {
     /**
+     * Per-unit item price the buyer paid, in cents — excludes shipping and tax.
+     * @type {number}
+     * @memberof ListBuyerCatalogListingSoldHistoryItem
+     */
+    priceCents: number;
+    /**
      * 
      * @type {number}
      * @memberof ListBuyerCatalogListingSoldHistoryItem
@@ -31,12 +37,6 @@ export interface ListBuyerCatalogListingSoldHistoryItem {
      * @memberof ListBuyerCatalogListingSoldHistoryItem
      */
     soldAt: string;
-    /**
-     * Per-unit item price the buyer paid, in cents — excludes shipping and tax.
-     * @type {number}
-     * @memberof ListBuyerCatalogListingSoldHistoryItem
-     */
-    priceCents: number;
 }
 
 export function ListBuyerCatalogListingSoldHistoryItemFromJSON(json: any): ListBuyerCatalogListingSoldHistoryItem {
@@ -49,9 +49,9 @@ export function ListBuyerCatalogListingSoldHistoryItemFromJSONTyped(json: any, i
     }
     return {
         
+        'priceCents': json['priceCents'],
         'quantity': json['quantity'],
         'soldAt': json['soldAt'],
-        'priceCents': json['priceCents'],
     };
 }
 
@@ -64,9 +64,9 @@ export function ListBuyerCatalogListingSoldHistoryItemToJSON(value?: ListBuyerCa
     }
     return {
         
+        'priceCents': value.priceCents,
         'quantity': value.quantity,
         'soldAt': value.soldAt,
-        'priceCents': value.priceCents,
     };
 }
 

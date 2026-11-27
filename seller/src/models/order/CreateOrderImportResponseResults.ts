@@ -50,9 +50,9 @@ export interface CreateOrderImportResponseResults {
 * @enum {string}
 */
 export enum CreateOrderImportResponseResultsReasonEnum {
-    UnsupportedPlatform = 'unsupported_platform',
     NotConnected = 'not_connected',
-    UnknownPlatform = 'unknown_platform'
+    UnknownPlatform = 'unknown_platform',
+    UnsupportedPlatform = 'unsupported_platform'
 }
 
 export function CreateOrderImportResponseResultsFromJSON(json: any): CreateOrderImportResponseResults {

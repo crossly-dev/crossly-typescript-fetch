@@ -46,18 +46,6 @@ export interface GetSpatialShopNeighbourhoodResponseData {
     suggested?: GetSpatialShopNeighbourhoodResponseDataSuggestedEnum;
     /**
      * 
-     * @type {boolean}
-     * @memberof GetSpatialShopNeighbourhoodResponseData
-     */
-    canMove: boolean;
-    /**
-     * 
-     * @type {any}
-     * @memberof GetSpatialShopNeighbourhoodResponseData
-     */
-    move?: any | null;
-    /**
-     * 
      * @type {Array<ListNeighbourhoodsItem>}
      * @memberof GetSpatialShopNeighbourhoodResponseData
      */
@@ -88,8 +76,6 @@ export function GetSpatialShopNeighbourhoodResponseDataFromJSONTyped(json: any, 
         'shop': json['shop'],
         'home': !exists(json, 'home') ? undefined : json['home'],
         'suggested': !exists(json, 'suggested') ? undefined : json['suggested'],
-        'canMove': json['canMove'],
-        'move': !exists(json, 'move') ? undefined : json['move'],
         'options': ((json['options'] as Array<any>).map(ListNeighbourhoodsItemFromJSON)),
     };
 }
@@ -106,8 +92,6 @@ export function GetSpatialShopNeighbourhoodResponseDataToJSON(value?: GetSpatial
         'shop': value.shop,
         'home': value.home,
         'suggested': value.suggested,
-        'canMove': value.canMove,
-        'move': value.move,
         'options': ((value.options as Array<any>).map(ListNeighbourhoodsItemToJSON)),
     };
 }

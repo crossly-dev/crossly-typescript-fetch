@@ -26,6 +26,12 @@ import {
     GetWeb3LaunchToolResponseArtToJSON,
 } from './GetWeb3LaunchToolResponseArt';
 import {
+    GetWeb3LaunchToolResponseRoyalties,
+    GetWeb3LaunchToolResponseRoyaltiesFromJSON,
+    GetWeb3LaunchToolResponseRoyaltiesFromJSONTyped,
+    GetWeb3LaunchToolResponseRoyaltiesToJSON,
+} from './GetWeb3LaunchToolResponseRoyalties';
+import {
     GetWeb3LaunchToolResponseSupply,
     GetWeb3LaunchToolResponseSupplyFromJSON,
     GetWeb3LaunchToolResponseSupplyFromJSONTyped,
@@ -38,6 +44,12 @@ import {
  * @interface GetWeb3LaunchToolResponse
  */
 export interface GetWeb3LaunchToolResponse {
+    /**
+     * 
+     * @type {GetWeb3LaunchToolResponseRoyalties}
+     * @memberof GetWeb3LaunchToolResponse
+     */
+    royalties: GetWeb3LaunchToolResponseRoyalties;
     /**
      * 
      * @type {GetWeb3LaunchToolResponseAllowlist}
@@ -68,6 +80,7 @@ export function GetWeb3LaunchToolResponseFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
+        'royalties': GetWeb3LaunchToolResponseRoyaltiesFromJSON(json['royalties']),
         'allowlist': GetWeb3LaunchToolResponseAllowlistFromJSON(json['allowlist']),
         'art': GetWeb3LaunchToolResponseArtFromJSON(json['art']),
         'supply': GetWeb3LaunchToolResponseSupplyFromJSON(json['supply']),
@@ -83,6 +96,7 @@ export function GetWeb3LaunchToolResponseToJSON(value?: GetWeb3LaunchToolRespons
     }
     return {
         
+        'royalties': GetWeb3LaunchToolResponseRoyaltiesToJSON(value.royalties),
         'allowlist': GetWeb3LaunchToolResponseAllowlistToJSON(value.allowlist),
         'art': GetWeb3LaunchToolResponseArtToJSON(value.art),
         'supply': GetWeb3LaunchToolResponseSupplyToJSON(value.supply),

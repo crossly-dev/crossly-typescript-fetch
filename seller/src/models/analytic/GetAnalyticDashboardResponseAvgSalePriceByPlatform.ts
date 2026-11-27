@@ -33,10 +33,10 @@ export interface GetAnalyticDashboardResponseAvgSalePriceByPlatform {
     avgPrice: number;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof GetAnalyticDashboardResponseAvgSalePriceByPlatform
      */
-    count: string;
+    count: number;
 }
 
 export function GetAnalyticDashboardResponseAvgSalePriceByPlatformFromJSON(json: any): GetAnalyticDashboardResponseAvgSalePriceByPlatform {

@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetWorldExperiencePlaceCollabOpResponseDataFramesBy,
+    GetWorldExperiencePlaceCollabOpResponseDataFramesByFromJSON,
+    GetWorldExperiencePlaceCollabOpResponseDataFramesByFromJSONTyped,
+    GetWorldExperiencePlaceCollabOpResponseDataFramesByToJSON,
+} from './GetWorldExperiencePlaceCollabOpResponseDataFramesBy';
+import {
     ListWorldPlaceTradeTablesItemCash,
     ListWorldPlaceTradeTablesItemCashFromJSON,
     ListWorldPlaceTradeTablesItemCashFromJSONTyped,
@@ -44,12 +50,6 @@ import {
     ListWorldPlaceTradeTablesItemTotalsToJSON,
 } from './ListWorldPlaceTradeTablesItemTotals';
 import {
-    ListWorldPlaceTradeTablesItemVisitor,
-    ListWorldPlaceTradeTablesItemVisitorFromJSON,
-    ListWorldPlaceTradeTablesItemVisitorFromJSONTyped,
-    ListWorldPlaceTradeTablesItemVisitorToJSON,
-} from './ListWorldPlaceTradeTablesItemVisitor';
-import {
     UserIdName,
     UserIdNameFromJSON,
     UserIdNameFromJSONTyped,
@@ -64,10 +64,10 @@ import {
 export interface ListWorldPlaceTradeTablesItem {
     /**
      * 
-     * @type {ListWorldPlaceTradeTablesItemVisitor}
+     * @type {GetWorldExperiencePlaceCollabOpResponseDataFramesBy}
      * @memberof ListWorldPlaceTradeTablesItem
      */
-    visitor?: ListWorldPlaceTradeTablesItemVisitor | null;
+    visitor?: GetWorldExperiencePlaceCollabOpResponseDataFramesBy | null;
     /**
      * 
      * @type {ListWorldPlaceTradeTablesItemTotals}
@@ -161,8 +161,8 @@ export enum ListWorldPlaceTradeTablesItemYouEnum {
 */
 export enum ListWorldPlaceTradeTablesItemStatusEnum {
     Open = 'open',
-    Done = 'done',
-    Closed = 'closed'
+    Closed = 'closed',
+    Done = 'done'
 }
 
 export function ListWorldPlaceTradeTablesItemFromJSON(json: any): ListWorldPlaceTradeTablesItem {
@@ -175,7 +175,7 @@ export function ListWorldPlaceTradeTablesItemFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'visitor': !exists(json, 'visitor') ? undefined : ListWorldPlaceTradeTablesItemVisitorFromJSON(json['visitor']),
+        'visitor': !exists(json, 'visitor') ? undefined : GetWorldExperiencePlaceCollabOpResponseDataFramesByFromJSON(json['visitor']),
         'totals': ListWorldPlaceTradeTablesItemTotalsFromJSON(json['totals']),
         'you': !exists(json, 'you') ? undefined : json['you'],
         'line': ListWorldPlaceTradeTablesItemLineFromJSON(json['line']),
@@ -201,7 +201,7 @@ export function ListWorldPlaceTradeTablesItemToJSON(value?: ListWorldPlaceTradeT
     }
     return {
         
-        'visitor': ListWorldPlaceTradeTablesItemVisitorToJSON(value.visitor),
+        'visitor': GetWorldExperiencePlaceCollabOpResponseDataFramesByToJSON(value.visitor),
         'totals': ListWorldPlaceTradeTablesItemTotalsToJSON(value.totals),
         'you': value.you,
         'line': ListWorldPlaceTradeTablesItemLineToJSON(value.line),

@@ -30,31 +30,7 @@ export interface GetBuyerCaseResponseDataReturnShipment {
      * @type {string}
      * @memberof GetBuyerCaseResponseDataReturnShipment
      */
-    updatedAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerCaseResponseDataReturnShipment
-     */
-    status?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerCaseResponseDataReturnShipment
-     */
     carrier?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerCaseResponseDataReturnShipment
-     */
-    deliveredAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerCaseResponseDataReturnShipment
-     */
-    labelUrl?: string | null;
     /**
      * 
      * @type {string}
@@ -66,7 +42,31 @@ export interface GetBuyerCaseResponseDataReturnShipment {
      * @type {string}
      * @memberof GetBuyerCaseResponseDataReturnShipment
      */
+    labelUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCaseResponseDataReturnShipment
+     */
+    status?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCaseResponseDataReturnShipment
+     */
     statusDetail?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCaseResponseDataReturnShipment
+     */
+    updatedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCaseResponseDataReturnShipment
+     */
+    deliveredAt?: string | null;
 }
 
 export function GetBuyerCaseResponseDataReturnShipmentFromJSON(json: any): GetBuyerCaseResponseDataReturnShipment {
@@ -80,13 +80,13 @@ export function GetBuyerCaseResponseDataReturnShipmentFromJSONTyped(json: any, i
     return {
         
         'trackingCode': json['trackingCode'],
-        'updatedAt': !exists(json, 'updatedAt') ? undefined : json['updatedAt'],
-        'status': !exists(json, 'status') ? undefined : json['status'],
         'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
-        'deliveredAt': !exists(json, 'deliveredAt') ? undefined : json['deliveredAt'],
-        'labelUrl': !exists(json, 'labelUrl') ? undefined : json['labelUrl'],
         'trackingUrl': !exists(json, 'trackingUrl') ? undefined : json['trackingUrl'],
+        'labelUrl': !exists(json, 'labelUrl') ? undefined : json['labelUrl'],
+        'status': !exists(json, 'status') ? undefined : json['status'],
         'statusDetail': !exists(json, 'statusDetail') ? undefined : json['statusDetail'],
+        'updatedAt': !exists(json, 'updatedAt') ? undefined : json['updatedAt'],
+        'deliveredAt': !exists(json, 'deliveredAt') ? undefined : json['deliveredAt'],
     };
 }
 
@@ -100,13 +100,13 @@ export function GetBuyerCaseResponseDataReturnShipmentToJSON(value?: GetBuyerCas
     return {
         
         'trackingCode': value.trackingCode,
-        'updatedAt': value.updatedAt,
-        'status': value.status,
         'carrier': value.carrier,
-        'deliveredAt': value.deliveredAt,
-        'labelUrl': value.labelUrl,
         'trackingUrl': value.trackingUrl,
+        'labelUrl': value.labelUrl,
+        'status': value.status,
         'statusDetail': value.statusDetail,
+        'updatedAt': value.updatedAt,
+        'deliveredAt': value.deliveredAt,
     };
 }
 

@@ -68,13 +68,13 @@ export interface CreateCbxDisbursementRuleCheckResponseData {
 * @enum {string}
 */
 export enum CreateCbxDisbursementRuleCheckResponseDataOutcomeEnum {
-    Fired = 'fired',
     Coverage = 'coverage',
-    NoPrice = 'no_price',
-    BelowThreshold = 'below_threshold',
     Cadence = 'cadence',
-    NoRecipients = 'no_recipients',
-    Inactive = 'inactive'
+    NoPrice = 'no_price',
+    Inactive = 'inactive',
+    Fired = 'fired',
+    BelowThreshold = 'below_threshold',
+    NoRecipients = 'no_recipients'
 }
 
 export function CreateCbxDisbursementRuleCheckResponseDataFromJSON(json: any): CreateCbxDisbursementRuleCheckResponseData {

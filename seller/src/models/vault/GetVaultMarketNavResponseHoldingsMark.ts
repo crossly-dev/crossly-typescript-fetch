@@ -63,9 +63,9 @@ export interface GetVaultMarketNavResponseHoldingsMark {
 */
 export enum GetVaultMarketNavResponseHoldingsMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketNavResponseHoldingsMarkFromJSON(json: any): GetVaultMarketNavResponseHoldingsMark {

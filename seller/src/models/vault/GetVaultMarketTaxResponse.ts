@@ -32,11 +32,23 @@ import {
     GetVaultMarketTaxResponseIncomeToJSON,
 } from './GetVaultMarketTaxResponseIncome';
 import {
+    GetVaultMarketTaxResponseOptions,
+    GetVaultMarketTaxResponseOptionsFromJSON,
+    GetVaultMarketTaxResponseOptionsFromJSONTyped,
+    GetVaultMarketTaxResponseOptionsToJSON,
+} from './GetVaultMarketTaxResponseOptions';
+import {
     GetVaultMarketTaxResponsePositions,
     GetVaultMarketTaxResponsePositionsFromJSON,
     GetVaultMarketTaxResponsePositionsFromJSONTyped,
     GetVaultMarketTaxResponsePositionsToJSON,
 } from './GetVaultMarketTaxResponsePositions';
+import {
+    GetVaultMarketTaxResponsePredictions,
+    GetVaultMarketTaxResponsePredictionsFromJSON,
+    GetVaultMarketTaxResponsePredictionsFromJSONTyped,
+    GetVaultMarketTaxResponsePredictionsToJSON,
+} from './GetVaultMarketTaxResponsePredictions';
 import {
     GetVaultMarketTaxResponsePurchases,
     GetVaultMarketTaxResponsePurchasesFromJSON,
@@ -49,6 +61,12 @@ import {
     GetVaultMarketTaxResponseSalesFromJSONTyped,
     GetVaultMarketTaxResponseSalesToJSON,
 } from './GetVaultMarketTaxResponseSales';
+import {
+    GetVaultMarketTaxResponseShares,
+    GetVaultMarketTaxResponseSharesFromJSON,
+    GetVaultMarketTaxResponseSharesFromJSONTyped,
+    GetVaultMarketTaxResponseSharesToJSON,
+} from './GetVaultMarketTaxResponseShares';
 import {
     GetVaultMarketTaxResponseTotals,
     GetVaultMarketTaxResponseTotalsFromJSON,
@@ -112,10 +130,28 @@ export interface GetVaultMarketTaxResponse {
     positions: Array<GetVaultMarketTaxResponsePositions>;
     /**
      * 
+     * @type {GetVaultMarketTaxResponseOptions}
+     * @memberof GetVaultMarketTaxResponse
+     */
+    options?: GetVaultMarketTaxResponseOptions | null;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof GetVaultMarketTaxResponse
      */
     notes: Array<string>;
+    /**
+     * 
+     * @type {GetVaultMarketTaxResponseShares}
+     * @memberof GetVaultMarketTaxResponse
+     */
+    shares?: GetVaultMarketTaxResponseShares | null;
+    /**
+     * 
+     * @type {GetVaultMarketTaxResponsePredictions}
+     * @memberof GetVaultMarketTaxResponse
+     */
+    predictions?: GetVaultMarketTaxResponsePredictions | null;
 }
 
 export function GetVaultMarketTaxResponseFromJSON(json: any): GetVaultMarketTaxResponse {
@@ -136,7 +172,10 @@ export function GetVaultMarketTaxResponseFromJSONTyped(json: any, ignoreDiscrimi
         'giftsOut': ((json['giftsOut'] as Array<any>).map(GetVaultMarketTaxResponseGiftsOutFromJSON)),
         'income': GetVaultMarketTaxResponseIncomeFromJSON(json['income']),
         'positions': ((json['positions'] as Array<any>).map(GetVaultMarketTaxResponsePositionsFromJSON)),
+        'options': !exists(json, 'options') ? undefined : GetVaultMarketTaxResponseOptionsFromJSON(json['options']),
         'notes': json['notes'],
+        'shares': !exists(json, 'shares') ? undefined : GetVaultMarketTaxResponseSharesFromJSON(json['shares']),
+        'predictions': !exists(json, 'predictions') ? undefined : GetVaultMarketTaxResponsePredictionsFromJSON(json['predictions']),
     };
 }
 
@@ -157,7 +196,10 @@ export function GetVaultMarketTaxResponseToJSON(value?: GetVaultMarketTaxRespons
         'giftsOut': ((value.giftsOut as Array<any>).map(GetVaultMarketTaxResponseGiftsOutToJSON)),
         'income': GetVaultMarketTaxResponseIncomeToJSON(value.income),
         'positions': ((value.positions as Array<any>).map(GetVaultMarketTaxResponsePositionsToJSON)),
+        'options': GetVaultMarketTaxResponseOptionsToJSON(value.options),
         'notes': value.notes,
+        'shares': GetVaultMarketTaxResponseSharesToJSON(value.shares),
+        'predictions': GetVaultMarketTaxResponsePredictionsToJSON(value.predictions),
     };
 }
 

@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetTaxonomyCategoryAspectResponseAspects,
-    GetTaxonomyCategoryAspectResponseAspectsFromJSON,
-    GetTaxonomyCategoryAspectResponseAspectsFromJSONTyped,
-    GetTaxonomyCategoryAspectResponseAspectsToJSON,
-} from './GetTaxonomyCategoryAspectResponseAspects';
+    GetTaxonomyRequiredFieldResponseInlineAspects,
+    GetTaxonomyRequiredFieldResponseInlineAspectsFromJSON,
+    GetTaxonomyRequiredFieldResponseInlineAspectsFromJSONTyped,
+    GetTaxonomyRequiredFieldResponseInlineAspectsToJSON,
+} from './GetTaxonomyRequiredFieldResponseInlineAspects';
 import {
     GetTaxonomyRequiredFieldResponseRequiredFields,
     GetTaxonomyRequiredFieldResponseRequiredFieldsFromJSON,
@@ -46,10 +46,10 @@ export interface GetTaxonomyRequiredFieldResponse {
     requiredFields: Array<GetTaxonomyRequiredFieldResponseRequiredFields>;
     /**
      * 
-     * @type {Array<GetTaxonomyCategoryAspectResponseAspects>}
+     * @type {Array<GetTaxonomyRequiredFieldResponseInlineAspects>}
      * @memberof GetTaxonomyRequiredFieldResponse
      */
-    inlineAspects: Array<GetTaxonomyCategoryAspectResponseAspects>;
+    inlineAspects: Array<GetTaxonomyRequiredFieldResponseInlineAspects>;
 }
 
 /**
@@ -83,7 +83,7 @@ export function GetTaxonomyRequiredFieldResponseFromJSONTyped(json: any, ignoreD
         
         'platform': json['platform'],
         'requiredFields': ((json['requiredFields'] as Array<any>).map(GetTaxonomyRequiredFieldResponseRequiredFieldsFromJSON)),
-        'inlineAspects': ((json['inlineAspects'] as Array<any>).map(GetTaxonomyCategoryAspectResponseAspectsFromJSON)),
+        'inlineAspects': ((json['inlineAspects'] as Array<any>).map(GetTaxonomyRequiredFieldResponseInlineAspectsFromJSON)),
     };
 }
 
@@ -98,7 +98,7 @@ export function GetTaxonomyRequiredFieldResponseToJSON(value?: GetTaxonomyRequir
         
         'platform': value.platform,
         'requiredFields': ((value.requiredFields as Array<any>).map(GetTaxonomyRequiredFieldResponseRequiredFieldsToJSON)),
-        'inlineAspects': ((value.inlineAspects as Array<any>).map(GetTaxonomyCategoryAspectResponseAspectsToJSON)),
+        'inlineAspects': ((value.inlineAspects as Array<any>).map(GetTaxonomyRequiredFieldResponseInlineAspectsToJSON)),
     };
 }
 

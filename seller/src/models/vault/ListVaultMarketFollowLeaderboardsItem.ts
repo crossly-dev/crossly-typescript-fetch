@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    ListVaultMarketFollowLeaderboardsItemPerson,
+    ListVaultMarketFollowLeaderboardsItemPersonFromJSON,
+    ListVaultMarketFollowLeaderboardsItemPersonFromJSONTyped,
+    ListVaultMarketFollowLeaderboardsItemPersonToJSON,
+} from './ListVaultMarketFollowLeaderboardsItemPerson';
+
 /**
  * 
  * @export
@@ -25,6 +32,12 @@ export interface ListVaultMarketFollowLeaderboardsItem {
      * @memberof ListVaultMarketFollowLeaderboardsItem
      */
     rank: number;
+    /**
+     * 
+     * @type {ListVaultMarketFollowLeaderboardsItemPerson}
+     * @memberof ListVaultMarketFollowLeaderboardsItem
+     */
+    person: ListVaultMarketFollowLeaderboardsItemPerson;
     /**
      * 
      * @type {number}
@@ -80,6 +93,7 @@ export function ListVaultMarketFollowLeaderboardsItemFromJSONTyped(json: any, ig
     return {
         
         'rank': json['rank'],
+        'person': ListVaultMarketFollowLeaderboardsItemPersonFromJSON(json['person']),
         'returnBps': json['returnBps'],
         'volatilityBps': json['volatilityBps'],
         'riskAdjusted': json['riskAdjusted'],
@@ -100,6 +114,7 @@ export function ListVaultMarketFollowLeaderboardsItemToJSON(value?: ListVaultMar
     return {
         
         'rank': value.rank,
+        'person': ListVaultMarketFollowLeaderboardsItemPersonToJSON(value.person),
         'returnBps': value.returnBps,
         'volatilityBps': value.volatilityBps,
         'riskAdjusted': value.riskAdjusted,

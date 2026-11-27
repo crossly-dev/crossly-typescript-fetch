@@ -33,18 +33,6 @@ export interface CreateCosmCosmeticBuyCbxResponseDataOwnership {
     acquiredAt: Date;
     /**
      * 
-     * @type {Date}
-     * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
-     */
-    retiredAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
-     */
-    merchantId: string;
-    /**
-     * 
      * @type {string}
      * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
      */
@@ -54,19 +42,19 @@ export interface CreateCosmCosmeticBuyCbxResponseDataOwnership {
      * @type {string}
      * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
      */
-    subjectId: string;
+    merchantId: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
+     */
+    retiredAt?: Date | null;
     /**
      * 
      * @type {string}
      * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
      */
-    ledgerId?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
-     */
-    editionNumber?: number | null;
+    subjectId: string;
     /**
      * 
      * @type {string}
@@ -85,6 +73,18 @@ export interface CreateCosmCosmeticBuyCbxResponseDataOwnership {
      * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
      */
     paidCents?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
+     */
+    ledgerId?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateCosmCosmeticBuyCbxResponseDataOwnership
+     */
+    editionNumber?: number | null;
     /**
      * 
      * @type {string}
@@ -117,15 +117,15 @@ export function CreateCosmCosmeticBuyCbxResponseDataOwnershipFromJSONTyped(json:
         
         'id': json['id'],
         'acquiredAt': (new Date(json['acquiredAt'])),
-        'retiredAt': !exists(json, 'retiredAt') ? undefined : (json['retiredAt'] === null ? null : new Date(json['retiredAt'])),
-        'merchantId': json['merchantId'],
         'cosmeticId': json['cosmeticId'],
+        'merchantId': json['merchantId'],
+        'retiredAt': !exists(json, 'retiredAt') ? undefined : (json['retiredAt'] === null ? null : new Date(json['retiredAt'])),
         'subjectId': json['subjectId'],
-        'ledgerId': !exists(json, 'ledgerId') ? undefined : json['ledgerId'],
-        'editionNumber': !exists(json, 'editionNumber') ? undefined : json['editionNumber'],
         'acquiredVia': json['acquiredVia'],
         'bound': json['bound'],
         'paidCents': !exists(json, 'paidCents') ? undefined : json['paidCents'],
+        'ledgerId': !exists(json, 'ledgerId') ? undefined : json['ledgerId'],
+        'editionNumber': !exists(json, 'editionNumber') ? undefined : json['editionNumber'],
         'paymentRef': !exists(json, 'paymentRef') ? undefined : json['paymentRef'],
         'retiredReason': !exists(json, 'retiredReason') ? undefined : json['retiredReason'],
         'requestRef': !exists(json, 'requestRef') ? undefined : json['requestRef'],
@@ -143,15 +143,15 @@ export function CreateCosmCosmeticBuyCbxResponseDataOwnershipToJSON(value?: Crea
         
         'id': value.id,
         'acquiredAt': (value.acquiredAt.toISOString()),
-        'retiredAt': value.retiredAt === undefined ? undefined : (value.retiredAt === null ? null : value.retiredAt.toISOString()),
-        'merchantId': value.merchantId,
         'cosmeticId': value.cosmeticId,
+        'merchantId': value.merchantId,
+        'retiredAt': value.retiredAt === undefined ? undefined : (value.retiredAt === null ? null : value.retiredAt.toISOString()),
         'subjectId': value.subjectId,
-        'ledgerId': value.ledgerId,
-        'editionNumber': value.editionNumber,
         'acquiredVia': value.acquiredVia,
         'bound': value.bound,
         'paidCents': value.paidCents,
+        'ledgerId': value.ledgerId,
+        'editionNumber': value.editionNumber,
         'paymentRef': value.paymentRef,
         'retiredReason': value.retiredReason,
         'requestRef': value.requestRef,

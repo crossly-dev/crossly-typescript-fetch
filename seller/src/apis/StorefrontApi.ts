@@ -15,15 +15,809 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateStorefrontHighlightResponse,
+    CreateStorefrontHighlightResponseFromJSON,
+    CreateStorefrontHighlightResponseToJSON,
+    CreateStorefrontProfileSuggestShelveResponse,
+    CreateStorefrontProfileSuggestShelveResponseFromJSON,
+    CreateStorefrontProfileSuggestShelveResponseToJSON,
+    CreateStorefrontSitePreviewResponse,
+    CreateStorefrontSitePreviewResponseFromJSON,
+    CreateStorefrontSitePreviewResponseToJSON,
+    CreateStorefrontSiteResolveResponse,
+    CreateStorefrontSiteResolveResponseFromJSON,
+    CreateStorefrontSiteResolveResponseToJSON,
+    CreateStorefrontSiteSuggestResponse,
+    CreateStorefrontSiteSuggestResponseFromJSON,
+    CreateStorefrontSiteSuggestResponseToJSON,
+    DeleteStoryResponse,
+    DeleteStoryResponseFromJSON,
+    DeleteStoryResponseToJSON,
+    GetStorefrontMerchResponse,
+    GetStorefrontMerchResponseFromJSON,
+    GetStorefrontMerchResponseToJSON,
+    GetStorefrontProfileResponse,
+    GetStorefrontProfileResponseFromJSON,
+    GetStorefrontProfileResponseToJSON,
+    GetStorefrontResponse,
+    GetStorefrontResponseFromJSON,
+    GetStorefrontResponseToJSON,
     GetStorefrontShippingResponse,
     GetStorefrontShippingResponseFromJSON,
     GetStorefrontShippingResponseToJSON,
+    ListStorefrontHighlightsResponse,
+    ListStorefrontHighlightsResponseFromJSON,
+    ListStorefrontHighlightsResponseToJSON,
+    ListStorefrontSiteVersionsResponse,
+    ListStorefrontSiteVersionsResponseFromJSON,
+    ListStorefrontSiteVersionsResponseToJSON,
+    ListStorefrontStoryArchiveResponse,
+    ListStorefrontStoryArchiveResponseFromJSON,
+    ListStorefrontStoryArchiveResponseToJSON,
+    StorefrontHighlightResponse,
+    StorefrontHighlightResponseFromJSON,
+    StorefrontHighlightResponseToJSON,
+    StorefrontResponse2,
+    StorefrontResponse2FromJSON,
+    StorefrontResponse2ToJSON,
+    StorefrontResponse3,
+    StorefrontResponse3FromJSON,
+    StorefrontResponse3ToJSON,
+    StorefrontResponse4,
+    StorefrontResponse4FromJSON,
+    StorefrontResponse4ToJSON,
+    StorefrontSectionResponse,
+    StorefrontSectionResponseFromJSON,
+    StorefrontSectionResponseToJSON,
+    UpdateGroupBuyResponse,
+    UpdateGroupBuyResponseFromJSON,
+    UpdateGroupBuyResponseToJSON,
+    UpdateStorefrontProfileResponse,
+    UpdateStorefrontProfileResponseFromJSON,
+    UpdateStorefrontProfileResponseToJSON,
 } from '../models';
+
+export interface CreateStorefrontHighlightItemRequest {
+    id: string;
+}
+
+export interface CreateStorefrontSiteVersionRestoreRequest {
+    id: string;
+}
+
+export interface DeleteStorefrontHighlightRequest {
+    id: string;
+}
+
+export interface DeleteStorefrontHighlightItemRequest {
+    id: string;
+    itemId: string;
+}
+
+export interface DeleteStorefrontSectionRequest {
+    id: string;
+}
+
+export interface UpdateStorefrontHighlightRequest {
+    id: string;
+}
+
+export interface UpdateStorefrontHighlightItemOrderRequest {
+    id: string;
+}
+
+export interface UpdateStorefrontSectionRequest {
+    id: string;
+}
 
 /**
  * 
  */
 export class StorefrontApi extends runtime.BaseAPI {
+
+    /**
+     * Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store.
+     */
+    async createStorefrontHighlightRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStorefrontHighlightResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/highlights`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateStorefrontHighlightResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store.
+     */
+    async createStorefrontHighlight(initOverrides?: RequestInit): Promise<CreateStorefrontHighlightResponse> {
+        const response = await this.createStorefrontHighlightRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save stories into a highlight (appended in the order given). Each is copied, so it stays after the story expires. A story already in the highlight is skipped.
+     */
+    async createStorefrontHighlightItemRaw(requestParameters: CreateStorefrontHighlightItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontHighlightResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createStorefrontHighlightItem.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/highlights/{id}/items`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontHighlightResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save stories into a highlight (appended in the order given). Each is copied, so it stays after the story expires. A story already in the highlight is skipped.
+     */
+    async createStorefrontHighlightItem(requestParameters: CreateStorefrontHighlightItemRequest, initOverrides?: RequestInit): Promise<StorefrontHighlightResponse> {
+        const response = await this.createStorefrontHighlightItemRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Profile shelves proposed from your top tags and categories (not saved).
+     */
+    async createStorefrontProfileSuggestShelveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStorefrontProfileSuggestShelveResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/profile/suggest-shelves`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateStorefrontProfileSuggestShelveResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Profile shelves proposed from your top tags and categories (not saved).
+     */
+    async createStorefrontProfileSuggestShelve(initOverrides?: RequestInit): Promise<CreateStorefrontProfileSuggestShelveResponse> {
+        const response = await this.createStorefrontProfileSuggestShelveRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config.
+     */
+    async createStorefrontSectionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontSectionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/sections`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontSectionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config.
+     */
+    async createStorefrontSection(initOverrides?: RequestInit): Promise<StorefrontSectionResponse> {
+        const response = await this.createStorefrontSectionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Resolve an unsaved design page like the live site would: every section with its listings and extras (preview: true).
+     */
+    async createStorefrontSitePreviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStorefrontSitePreviewResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateStorefrontSitePreviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Resolve an unsaved design page like the live site would: every section with its listings and extras (preview: true).
+     */
+    async createStorefrontSitePreview(initOverrides?: RequestInit): Promise<CreateStorefrontSitePreviewResponse> {
+        const response = await this.createStorefrontSitePreviewRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Publish the draft: it becomes the live site and a publish version is kept (the last 30 versions are kept).
+     */
+    async createStorefrontSitePublishRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse2>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/publish`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse2FromJSON(jsonValue));
+    }
+
+    /**
+     * Publish the draft: it becomes the live site and a publish version is kept (the last 30 versions are kept).
+     */
+    async createStorefrontSitePublish(initOverrides?: RequestInit): Promise<StorefrontResponse2> {
+        const response = await this.createStorefrontSitePublishRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The live listings a ListingSource (manual, tags, category, smart rule or all) selects from your store, and how many match.
+     */
+    async createStorefrontSiteResolveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStorefrontSiteResolveResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/resolve`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateStorefrontSiteResolveResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The live listings a ListingSource (manual, tags, category, smart rule or all) selects from your store, and how many match.
+     */
+    async createStorefrontSiteResolve(initOverrides?: RequestInit): Promise<CreateStorefrontSiteResolveResponse> {
+        const response = await this.createStorefrontSiteResolveRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Replace the draft with a starter site (vintage, sneakers, streetwear, collectibles, boutique, home, minimal, drop, general). The current draft is kept as a version first.
+     */
+    async createStorefrontSiteStarterRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse2>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/starter`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse2FromJSON(jsonValue));
+    }
+
+    /**
+     * Replace the draft with a starter site (vintage, sneakers, streetwear, collectibles, boutique, home, minimal, drop, general). The current draft is kept as a version first.
+     */
+    async createStorefrontSiteStarter(initOverrides?: RequestInit): Promise<StorefrontResponse2> {
+        const response = await this.createStorefrontSiteStarterRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Auto-build: website sections proposed from your top tags and categories (not saved).
+     */
+    async createStorefrontSiteSuggestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStorefrontSiteSuggestResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/suggest`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateStorefrontSiteSuggestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Auto-build: website sections proposed from your top tags and categories (not saved).
+     */
+    async createStorefrontSiteSuggest(initOverrides?: RequestInit): Promise<CreateStorefrontSiteSuggestResponse> {
+        const response = await this.createStorefrontSiteSuggestRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Copy a saved version into the draft (the current draft is kept as a version first). Publish to make it live.
+     */
+    async createStorefrontSiteVersionRestoreRaw(requestParameters: CreateStorefrontSiteVersionRestoreRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse3>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createStorefrontSiteVersionRestore.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/versions/{id}/restore`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Copy a saved version into the draft (the current draft is kept as a version first). Publish to make it live.
+     */
+    async createStorefrontSiteVersionRestore(requestParameters: CreateStorefrontSiteVersionRestoreRequest, initOverrides?: RequestInit): Promise<StorefrontResponse3> {
+        const response = await this.createStorefrontSiteVersionRestoreRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Publish the trade site draft (a version is kept).
+     */
+    async createStorefrontTradeSitePublishRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse2>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/trade-site/publish`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse2FromJSON(jsonValue));
+    }
+
+    /**
+     * Publish the trade site draft (a version is kept).
+     */
+    async createStorefrontTradeSitePublish(initOverrides?: RequestInit): Promise<StorefrontResponse2> {
+        const response = await this.createStorefrontTradeSitePublishRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match.
+     */
+    async createStorefrontTradeSiteResolveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStorefrontSiteResolveResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/trade-site/resolve`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateStorefrontSiteResolveResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match.
+     */
+    async createStorefrontTradeSiteResolve(initOverrides?: RequestInit): Promise<CreateStorefrontSiteResolveResponse> {
+        const response = await this.createStorefrontTradeSiteResolveRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first.
+     */
+    async createStorefrontTradeSiteStarterRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse2>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/trade-site/starter`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse2FromJSON(jsonValue));
+    }
+
+    /**
+     * Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first.
+     */
+    async createStorefrontTradeSiteStarter(initOverrides?: RequestInit): Promise<StorefrontResponse2> {
+        const response = await this.createStorefrontTradeSiteStarterRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Trade Auto-build: trade site sections proposed from your wholesale catalogs (a spotlight, a rail per catalog, terms, apply banner). Not saved.
+     */
+    async createStorefrontTradeSiteSuggestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStorefrontSiteSuggestResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/trade-site/suggest`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateStorefrontSiteSuggestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Trade Auto-build: trade site sections proposed from your wholesale catalogs (a spotlight, a rail per catalog, terms, apply banner). Not saved.
+     */
+    async createStorefrontTradeSiteSuggest(initOverrides?: RequestInit): Promise<CreateStorefrontSiteSuggestResponse> {
+        const response = await this.createStorefrontTradeSiteSuggestRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete a highlight and its saved stories. The original stories are unaffected.
+     */
+    async deleteStorefrontHighlightRaw(requestParameters: DeleteStorefrontHighlightRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteStoryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteStorefrontHighlight.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/highlights/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteStoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete a highlight and its saved stories. The original stories are unaffected.
+     */
+    async deleteStorefrontHighlight(requestParameters: DeleteStorefrontHighlightRequest, initOverrides?: RequestInit): Promise<DeleteStoryResponse> {
+        const response = await this.deleteStorefrontHighlightRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Remove one saved story from a highlight.
+     */
+    async deleteStorefrontHighlightItemRaw(requestParameters: DeleteStorefrontHighlightItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontHighlightResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteStorefrontHighlightItem.');
+        }
+
+        if (requestParameters.itemId === null || requestParameters.itemId === undefined) {
+            throw new runtime.RequiredError('itemId','Required parameter requestParameters.itemId was null or undefined when calling deleteStorefrontHighlightItem.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/highlights/{id}/items/{itemId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"itemId"}}`, encodeURIComponent(String(requestParameters.itemId))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontHighlightResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove one saved story from a highlight.
+     */
+    async deleteStorefrontHighlightItem(requestParameters: DeleteStorefrontHighlightItemRequest, initOverrides?: RequestInit): Promise<StorefrontHighlightResponse> {
+        const response = await this.deleteStorefrontHighlightItemRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Remove a section. Listings on a removed shelf stay live.
+     */
+    async deleteStorefrontSectionRaw(requestParameters: DeleteStorefrontSectionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteStorefrontSection.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/sections/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove a section. Listings on a removed shelf stay live.
+     */
+    async deleteStorefrontSection(requestParameters: DeleteStorefrontSectionRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.deleteStorefrontSectionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your storefront design: banner, logo, tagline, bio, theme, SEO title and description, social links, and whether it is published.
+     */
+    async getStorefrontRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStorefrontResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetStorefrontResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your storefront design: banner, logo, tagline, bio, theme, SEO title and description, social links, and whether it is published.
+     */
+    async getStorefront(initOverrides?: RequestInit): Promise<GetStorefrontResponse> {
+        const response = await this.getStorefrontRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your store\'s live listings by tag, category, condition and brand, with the price range: what product sources can select.
+     */
+    async getStorefrontMerchRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStorefrontMerchResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/merch`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetStorefrontMerchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your store\'s live listings by tag, category, condition and brand, with the price range: what product sources can select.
+     */
+    async getStorefrontMerch(initOverrides?: RequestInit): Promise<GetStorefrontMerchResponse> {
+        const response = await this.getStorefrontMerchRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your shop profile (the Crossly Shop page): banner, logo, tagline, bio, accent, announcement, shelves, blocks and All items options.
+     */
+    async getStorefrontProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStorefrontProfileResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/profile`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetStorefrontProfileResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your shop profile (the Crossly Shop page): banner, logo, tagline, bio, accent, announcement, shelves, blocks and All items options.
+     */
+    async getStorefrontProfile(initOverrides?: RequestInit): Promise<GetStorefrontProfileResponse> {
+        const response = await this.getStorefrontProfileRaw(initOverrides);
+        return await response.value();
+    }
 
     /**
      * Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address.
@@ -60,6 +854,460 @@ export class StorefrontApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your store website: the draft design, what is live, when each changed, whether the site is switched on, and its custom domain.
+     */
+    async getStorefrontSiteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Your store website: the draft design, what is live, when each changed, whether the site is switched on, and its custom domain.
+     */
+    async getStorefrontSite(initOverrides?: RequestInit): Promise<StorefrontResponse3> {
+        const response = await this.getStorefrontSiteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your store\'s trade (wholesale) site at /site/:slug/trade: the draft, what is live, whether it is on and its gating (public | prices_private | approved_only).
+     */
+    async getStorefrontTradeSiteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/trade-site`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Your store\'s trade (wholesale) site at /site/:slug/trade: the draft, what is live, whether it is on and its gating (public | prices_private | approved_only).
+     */
+    async getStorefrontTradeSite(initOverrides?: RequestInit): Promise<StorefrontResponse3> {
+        const response = await this.getStorefrontTradeSiteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your store’s story highlights in display order, each with its saved stories (media, overlays, product tie-in, when posted). Empty highlights included.
+     */
+    async listStorefrontHighlightsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListStorefrontHighlightsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/highlights`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListStorefrontHighlightsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your store’s story highlights in display order, each with its saved stories (media, overlays, product tie-in, when posted). Empty highlights included.
+     */
+    async listStorefrontHighlights(initOverrides?: RequestInit): Promise<ListStorefrontHighlightsResponse> {
+        const response = await this.listStorefrontHighlightsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your storefront sections in display order: kind, title, visible, config, and listing ids for listings shelves.
+     */
+    async listStorefrontSectionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse4>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/sections`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse4FromJSON(jsonValue));
+    }
+
+    /**
+     * Your storefront sections in display order: kind, title, visible, config, and listing ids for listings shelves.
+     */
+    async listStorefrontSections(initOverrides?: RequestInit): Promise<StorefrontResponse4> {
+        const response = await this.listStorefrontSectionsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Saved versions of the website, newest first (publish, restore and template points; up to 30).
+     */
+    async listStorefrontSiteVersionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListStorefrontSiteVersionsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/versions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListStorefrontSiteVersionsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Saved versions of the website, newest first (publish, restore and template points; up to 30).
+     */
+    async listStorefrontSiteVersions(initOverrides?: RequestInit): Promise<ListStorefrontSiteVersionsResponse> {
+        const response = await this.listStorefrontSiteVersionsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before = meta.nextCursor of the previous page.
+     */
+    async listStorefrontStoryArchiveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListStorefrontStoryArchiveResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/stories/archive`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListStorefrontStoryArchiveResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before = meta.nextCursor of the previous page.
+     */
+    async listStorefrontStoryArchive(initOverrides?: RequestInit): Promise<ListStorefrontStoryArchiveResponse> {
+        const response = await this.listStorefrontStoryArchiveRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update your storefront design. Omitted fields are unchanged, null clears. published=false keeps the design as a draft and buyers see the standard storefront.
+     */
+    async updateStorefrontRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStorefrontResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetStorefrontResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Update your storefront design. Omitted fields are unchanged, null clears. published=false keeps the design as a draft and buyers see the standard storefront.
+     */
+    async updateStorefront(initOverrides?: RequestInit): Promise<GetStorefrontResponse> {
+        const response = await this.updateStorefrontRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Rename a highlight or change its cover (coverUrl null = use the first story).
+     */
+    async updateStorefrontHighlightRaw(requestParameters: UpdateStorefrontHighlightRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontHighlightResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateStorefrontHighlight.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/highlights/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontHighlightResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Rename a highlight or change its cover (coverUrl null = use the first story).
+     */
+    async updateStorefrontHighlight(requestParameters: UpdateStorefrontHighlightRequest, initOverrides?: RequestInit): Promise<StorefrontHighlightResponse> {
+        const response = await this.updateStorefrontHighlightRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set the order of a highlight’s saved stories: every item id, first to last.
+     */
+    async updateStorefrontHighlightItemOrderRaw(requestParameters: UpdateStorefrontHighlightItemOrderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontHighlightResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateStorefrontHighlightItemOrder.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/highlights/{id}/items/order`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontHighlightResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set the order of a highlight’s saved stories: every item id, first to last.
+     */
+    async updateStorefrontHighlightItemOrder(requestParameters: UpdateStorefrontHighlightItemOrderRequest, initOverrides?: RequestInit): Promise<StorefrontHighlightResponse> {
+        const response = await this.updateStorefrontHighlightItemOrderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set the highlight order in one call: every highlight id, first to last.
+     */
+    async updateStorefrontHighlightOrderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListStorefrontHighlightsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/highlights/order`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListStorefrontHighlightsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set the highlight order in one call: every highlight id, first to last.
+     */
+    async updateStorefrontHighlightOrder(initOverrides?: RequestInit): Promise<ListStorefrontHighlightsResponse> {
+        const response = await this.updateStorefrontHighlightOrderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Replace your shop profile (a complete ShopProfile). Saved straight away.
+     */
+    async updateStorefrontProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateStorefrontProfileResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/profile`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateStorefrontProfileResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Replace your shop profile (a complete ShopProfile). Saved straight away.
+     */
+    async updateStorefrontProfile(initOverrides?: RequestInit): Promise<UpdateStorefrontProfileResponse> {
+        const response = await this.updateStorefrontProfileRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Rename, show/hide, refill (listings shelves) or reconfigure a section.
+     */
+    async updateStorefrontSectionRaw(requestParameters: UpdateStorefrontSectionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontSectionResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateStorefrontSection.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/sections/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontSectionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Rename, show/hide, refill (listings shelves) or reconfigure a section.
+     */
+    async updateStorefrontSection(requestParameters: UpdateStorefrontSectionRequest, initOverrides?: RequestInit): Promise<StorefrontSectionResponse> {
+        const response = await this.updateStorefrontSectionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set the section order in one atomic call: every section id, top to bottom.
+     */
+    async updateStorefrontSectionReorderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse4>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/sections/reorder`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse4FromJSON(jsonValue));
+    }
+
+    /**
+     * Set the section order in one atomic call: every section id, top to bottom.
+     */
+    async updateStorefrontSectionReorder(initOverrides?: RequestInit): Promise<StorefrontResponse4> {
+        const response = await this.updateStorefrontSectionReorderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin).
      */
     async updateStorefrontShippingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStorefrontShippingResponse>> {
@@ -90,6 +1338,176 @@ export class StorefrontApi extends runtime.BaseAPI {
      */
     async updateStorefrontShipping(initOverrides?: RequestInit): Promise<GetStorefrontShippingResponse> {
         const response = await this.updateStorefrontShippingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save the website draft (a complete SiteDesign). Validated strictly (a bad field is a 400 naming its path) and sanitized; buyers see nothing until you publish.
+     */
+    async updateStorefrontSiteDraftRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse2>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/draft`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse2FromJSON(jsonValue));
+    }
+
+    /**
+     * Save the website draft (a complete SiteDesign). Validated strictly (a bad field is a 400 naming its path) and sanitized; buyers see nothing until you publish.
+     */
+    async updateStorefrontSiteDraft(initOverrides?: RequestInit): Promise<StorefrontResponse2> {
+        const response = await this.updateStorefrontSiteDraftRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Switch the website on or off. On requires a publish first; off makes /site/:slug 404 and the custom domain show the shop profile.
+     */
+    async updateStorefrontSiteEnabledRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/site/enabled`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Switch the website on or off. On requires a publish first; off makes /site/:slug 404 and the custom domain show the shop profile.
+     */
+    async updateStorefrontSiteEnabled(initOverrides?: RequestInit): Promise<StorefrontResponse3> {
+        const response = await this.updateStorefrontSiteEnabledRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized.
+     */
+    async updateStorefrontTradeSiteDraftRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse2>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/trade-site/draft`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse2FromJSON(jsonValue));
+    }
+
+    /**
+     * Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized.
+     */
+    async updateStorefrontTradeSiteDraft(initOverrides?: RequestInit): Promise<StorefrontResponse2> {
+        const response = await this.updateStorefrontTradeSiteDraftRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Switch the trade site on (needs a publish first) or off.
+     */
+    async updateStorefrontTradeSiteEnabledRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/trade-site/enabled`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Switch the trade site on (needs a publish first) or off.
+     */
+    async updateStorefrontTradeSiteEnabled(initOverrides?: RequestInit): Promise<StorefrontResponse3> {
+        const response = await this.updateStorefrontTradeSiteEnabledRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page).
+     */
+    async updateStorefrontTradeSiteGatingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefront/trade-site/gating`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page).
+     */
+    async updateStorefrontTradeSiteGating(initOverrides?: RequestInit): Promise<StorefrontResponse3> {
+        const response = await this.updateStorefrontTradeSiteGatingRaw(initOverrides);
         return await response.value();
     }
 

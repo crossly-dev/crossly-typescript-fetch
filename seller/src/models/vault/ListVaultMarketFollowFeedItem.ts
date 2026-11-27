@@ -14,17 +14,23 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListVaultMarketFeedItemMark,
-    ListVaultMarketFeedItemMarkFromJSON,
-    ListVaultMarketFeedItemMarkFromJSONTyped,
-    ListVaultMarketFeedItemMarkToJSON,
-} from './ListVaultMarketFeedItemMark';
+    ListVaultMarketFollowFeedItemBy,
+    ListVaultMarketFollowFeedItemByFromJSON,
+    ListVaultMarketFollowFeedItemByFromJSONTyped,
+    ListVaultMarketFollowFeedItemByToJSON,
+} from './ListVaultMarketFollowFeedItemBy';
 import {
     ListVaultMarketFollowFeedItemExhibition,
     ListVaultMarketFollowFeedItemExhibitionFromJSON,
     ListVaultMarketFollowFeedItemExhibitionFromJSONTyped,
     ListVaultMarketFollowFeedItemExhibitionToJSON,
 } from './ListVaultMarketFollowFeedItemExhibition';
+import {
+    ListVaultMarketOpeningItemMark,
+    ListVaultMarketOpeningItemMarkFromJSON,
+    ListVaultMarketOpeningItemMarkFromJSONTyped,
+    ListVaultMarketOpeningItemMarkToJSON,
+} from './ListVaultMarketOpeningItemMark';
 
 /**
  * 
@@ -58,6 +64,12 @@ export interface ListVaultMarketFollowFeedItem {
     at: string;
     /**
      * 
+     * @type {ListVaultMarketFollowFeedItemBy}
+     * @memberof ListVaultMarketFollowFeedItem
+     */
+    by: ListVaultMarketFollowFeedItemBy;
+    /**
+     * 
      * @type {string}
      * @memberof ListVaultMarketFollowFeedItem
      */
@@ -82,10 +94,10 @@ export interface ListVaultMarketFollowFeedItem {
     imageUrl?: string | null;
     /**
      * 
-     * @type {ListVaultMarketFeedItemMark}
+     * @type {ListVaultMarketOpeningItemMark}
      * @memberof ListVaultMarketFollowFeedItem
      */
-    mark: ListVaultMarketFeedItemMark;
+    mark: ListVaultMarketOpeningItemMark;
     /**
      * 
      * @type {ListVaultMarketFollowFeedItemExhibition}
@@ -105,8 +117,8 @@ export interface ListVaultMarketFollowFeedItem {
 * @enum {string}
 */
 export enum ListVaultMarketFollowFeedItemKindEnum {
-    Deposit = 'deposit',
     Sale = 'sale',
+    Deposit = 'deposit',
     Buy = 'buy',
     HallLoan = 'hall_loan'
 }
@@ -125,11 +137,12 @@ export function ListVaultMarketFollowFeedItemFromJSONTyped(json: any, ignoreDisc
         'kind': json['kind'],
         'verb': json['verb'],
         'at': json['at'],
+        'by': ListVaultMarketFollowFeedItemByFromJSON(json['by']),
         'bookKey': json['bookKey'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'label': !exists(json, 'label') ? undefined : json['label'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
-        'mark': ListVaultMarketFeedItemMarkFromJSON(json['mark']),
+        'mark': ListVaultMarketOpeningItemMarkFromJSON(json['mark']),
         'exhibition': !exists(json, 'exhibition') ? undefined : ListVaultMarketFollowFeedItemExhibitionFromJSON(json['exhibition']),
         'buyHref': json['buyHref'],
     };
@@ -148,11 +161,12 @@ export function ListVaultMarketFollowFeedItemToJSON(value?: ListVaultMarketFollo
         'kind': value.kind,
         'verb': value.verb,
         'at': value.at,
+        'by': ListVaultMarketFollowFeedItemByToJSON(value.by),
         'bookKey': value.bookKey,
         'name': value.name,
         'label': value.label,
         'imageUrl': value.imageUrl,
-        'mark': ListVaultMarketFeedItemMarkToJSON(value.mark),
+        'mark': ListVaultMarketOpeningItemMarkToJSON(value.mark),
         'exhibition': ListVaultMarketFollowFeedItemExhibitionToJSON(value.exhibition),
         'buyHref': value.buyHref,
     };

@@ -42,6 +42,12 @@ export interface CreateWorldConventionResponseData {
      * @type {string}
      * @memberof CreateWorldConventionResponseData
      */
+    description?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
     status: CreateWorldConventionResponseDataStatusEnum;
     /**
      * 
@@ -51,22 +57,16 @@ export interface CreateWorldConventionResponseData {
     title: string;
     /**
      * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
+    storefrontId?: string | null;
+    /**
+     * 
      * @type {Date}
      * @memberof CreateWorldConventionResponseData
      */
     endsAt: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateWorldConventionResponseData
-     */
-    categorySlug?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateWorldConventionResponseData
-     */
-    hostUserId: string;
     /**
      * 
      * @type {Date}
@@ -78,7 +78,37 @@ export interface CreateWorldConventionResponseData {
      * @type {string}
      * @memberof CreateWorldConventionResponseData
      */
+    timezone: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
+    categorySlug?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
+    theme: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
+    sellerEventId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
     sceneId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
+    hostUserId: string;
     /**
      * 
      * @type {string}
@@ -103,6 +133,42 @@ export interface CreateWorldConventionResponseData {
      * @memberof CreateWorldConventionResponseData
      */
     tableCount: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
+    venueBookingId?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateWorldConventionResponseData
+     */
+    opensHour: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateWorldConventionResponseData
+     */
+    closesHour: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateWorldConventionResponseData
+     */
+    floorPlanVersion: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldConventionResponseData
+     */
+    bookingMode: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateWorldConventionResponseData
+     */
+    walkIns: number;
 }
 
 /**
@@ -110,10 +176,10 @@ export interface CreateWorldConventionResponseData {
 * @enum {string}
 */
 export enum CreateWorldConventionResponseDataStatusEnum {
-    Live = 'live',
     Draft = 'draft',
-    Open = 'open',
+    Live = 'live',
     Cancelled = 'cancelled',
+    Open = 'open',
     Ended = 'ended'
 }/**
 * @export
@@ -121,8 +187,8 @@ export enum CreateWorldConventionResponseDataStatusEnum {
 */
 export enum CreateWorldConventionResponseDataEntryModelEnum {
     Free = 'free',
-    Invite = 'invite',
     Fee = 'fee',
+    Invite = 'invite',
     RevenueShare = 'revenue_share'
 }
 
@@ -139,17 +205,28 @@ export function CreateWorldConventionResponseDataFromJSONTyped(json: any, ignore
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
+        'description': !exists(json, 'description') ? undefined : json['description'],
         'status': json['status'],
         'title': json['title'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'endsAt': (new Date(json['endsAt'])),
-        'categorySlug': !exists(json, 'categorySlug') ? undefined : json['categorySlug'],
-        'hostUserId': json['hostUserId'],
         'startsAt': (new Date(json['startsAt'])),
+        'timezone': json['timezone'],
+        'categorySlug': !exists(json, 'categorySlug') ? undefined : json['categorySlug'],
+        'theme': json['theme'],
+        'sellerEventId': !exists(json, 'sellerEventId') ? undefined : json['sellerEventId'],
         'sceneId': json['sceneId'],
+        'hostUserId': json['hostUserId'],
         'entryModel': json['entryModel'],
         'entryFeeCents': !exists(json, 'entryFeeCents') ? undefined : json['entryFeeCents'],
         'revenueShareBps': !exists(json, 'revenueShareBps') ? undefined : json['revenueShareBps'],
         'tableCount': json['tableCount'],
+        'venueBookingId': !exists(json, 'venueBookingId') ? undefined : json['venueBookingId'],
+        'opensHour': json['opensHour'],
+        'closesHour': json['closesHour'],
+        'floorPlanVersion': json['floorPlanVersion'],
+        'bookingMode': json['bookingMode'],
+        'walkIns': json['walkIns'],
     };
 }
 
@@ -165,17 +242,28 @@ export function CreateWorldConventionResponseDataToJSON(value?: CreateWorldConve
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
+        'description': value.description,
         'status': value.status,
         'title': value.title,
+        'storefrontId': value.storefrontId,
         'endsAt': (value.endsAt.toISOString()),
-        'categorySlug': value.categorySlug,
-        'hostUserId': value.hostUserId,
         'startsAt': (value.startsAt.toISOString()),
+        'timezone': value.timezone,
+        'categorySlug': value.categorySlug,
+        'theme': value.theme,
+        'sellerEventId': value.sellerEventId,
         'sceneId': value.sceneId,
+        'hostUserId': value.hostUserId,
         'entryModel': value.entryModel,
         'entryFeeCents': value.entryFeeCents,
         'revenueShareBps': value.revenueShareBps,
         'tableCount': value.tableCount,
+        'venueBookingId': value.venueBookingId,
+        'opensHour': value.opensHour,
+        'closesHour': value.closesHour,
+        'floorPlanVersion': value.floorPlanVersion,
+        'bookingMode': value.bookingMode,
+        'walkIns': value.walkIns,
     };
 }
 

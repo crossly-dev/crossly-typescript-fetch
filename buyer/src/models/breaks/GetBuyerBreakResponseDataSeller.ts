@@ -24,13 +24,13 @@ export interface GetBuyerBreakResponseDataSeller {
      * @type {string}
      * @memberof GetBuyerBreakResponseDataSeller
      */
-    displayName?: string | null;
+    username?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerBreakResponseDataSeller
      */
-    username?: string | null;
+    displayName?: string | null;
 }
 
 export function GetBuyerBreakResponseDataSellerFromJSON(json: any): GetBuyerBreakResponseDataSeller {
@@ -43,8 +43,8 @@ export function GetBuyerBreakResponseDataSellerFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'displayName': !exists(json, 'displayName') ? undefined : json['displayName'],
         'username': !exists(json, 'username') ? undefined : json['username'],
+        'displayName': !exists(json, 'displayName') ? undefined : json['displayName'],
     };
 }
 
@@ -57,8 +57,8 @@ export function GetBuyerBreakResponseDataSellerToJSON(value?: GetBuyerBreakRespo
     }
     return {
         
-        'displayName': value.displayName,
         'username': value.username,
+        'displayName': value.displayName,
     };
 }
 

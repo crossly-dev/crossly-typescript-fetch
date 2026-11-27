@@ -30,31 +30,7 @@ export interface ListBuyerGiftSentItem {
      * @type {string}
      * @memberof ListBuyerGiftSentItem
      */
-    createdAt: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerGiftSentItem
-     */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerGiftSentItem
-     */
-    url: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerGiftSentItem
-     */
-    openedAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerGiftSentItem
-     */
-    revealedAt?: string | null;
+    recipientName: string;
     /**
      * 
      * @type {string}
@@ -66,7 +42,7 @@ export interface ListBuyerGiftSentItem {
      * @type {string}
      * @memberof ListBuyerGiftSentItem
      */
-    recipientName: string;
+    status: string;
     /**
      * 
      * @type {string}
@@ -78,7 +54,31 @@ export interface ListBuyerGiftSentItem {
      * @type {string}
      * @memberof ListBuyerGiftSentItem
      */
+    revealedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerGiftSentItem
+     */
+    openedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerGiftSentItem
+     */
     thanksMessage?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerGiftSentItem
+     */
+    createdAt: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerGiftSentItem
+     */
+    url: string;
 }
 
 export function ListBuyerGiftSentItemFromJSON(json: any): ListBuyerGiftSentItem {
@@ -92,15 +92,15 @@ export function ListBuyerGiftSentItemFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'status': json['status'],
-        'url': json['url'],
-        'openedAt': !exists(json, 'openedAt') ? undefined : json['openedAt'],
-        'revealedAt': !exists(json, 'revealedAt') ? undefined : json['revealedAt'],
-        'recipientEmail': json['recipientEmail'],
         'recipientName': json['recipientName'],
+        'recipientEmail': json['recipientEmail'],
+        'status': json['status'],
         'teaserSentAt': !exists(json, 'teaserSentAt') ? undefined : json['teaserSentAt'],
+        'revealedAt': !exists(json, 'revealedAt') ? undefined : json['revealedAt'],
+        'openedAt': !exists(json, 'openedAt') ? undefined : json['openedAt'],
         'thanksMessage': !exists(json, 'thanksMessage') ? undefined : json['thanksMessage'],
+        'createdAt': json['createdAt'],
+        'url': json['url'],
     };
 }
 
@@ -114,15 +114,15 @@ export function ListBuyerGiftSentItemToJSON(value?: ListBuyerGiftSentItem | null
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'status': value.status,
-        'url': value.url,
-        'openedAt': value.openedAt,
-        'revealedAt': value.revealedAt,
-        'recipientEmail': value.recipientEmail,
         'recipientName': value.recipientName,
+        'recipientEmail': value.recipientEmail,
+        'status': value.status,
         'teaserSentAt': value.teaserSentAt,
+        'revealedAt': value.revealedAt,
+        'openedAt': value.openedAt,
         'thanksMessage': value.thanksMessage,
+        'createdAt': value.createdAt,
+        'url': value.url,
     };
 }
 

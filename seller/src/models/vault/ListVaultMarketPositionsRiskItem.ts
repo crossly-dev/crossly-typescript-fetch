@@ -117,15 +117,15 @@ export enum ListVaultMarketPositionsRiskItemDirectionEnum {
 * @enum {string}
 */
 export enum ListVaultMarketPositionsRiskItemKindEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListVaultMarketPositionsRiskItemTierEnum {
-    Standard = 'standard',
     Closed = 'closed',
+    Standard = 'standard',
     Deep = 'deep',
     Thin = 'thin'
 }/**
@@ -133,9 +133,9 @@ export enum ListVaultMarketPositionsRiskItemTierEnum {
 * @enum {string}
 */
 export enum ListVaultMarketPositionsRiskItemMarginStateEnum {
-    BuyIn = 'buy_in',
     Healthy = 'healthy',
-    Call = 'call'
+    Call = 'call',
+    BuyIn = 'buy_in'
 }
 
 export function ListVaultMarketPositionsRiskItemFromJSON(json: any): ListVaultMarketPositionsRiskItem {

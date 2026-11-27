@@ -36,7 +36,7 @@ export interface ListBuyerOffersItemItems {
      * @type {string}
      * @memberof ListBuyerOffersItemItems
      */
-    status?: string | null;
+    slug?: string | null;
     /**
      * 
      * @type {string}
@@ -48,13 +48,13 @@ export interface ListBuyerOffersItemItems {
      * @type {string}
      * @memberof ListBuyerOffersItemItems
      */
-    slug?: string | null;
+    thumbnail?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerOffersItemItems
      */
-    thumbnail?: string | null;
+    status?: string | null;
 }
 
 export function ListBuyerOffersItemItemsFromJSON(json: any): ListBuyerOffersItemItems {
@@ -69,10 +69,10 @@ export function ListBuyerOffersItemItemsFromJSONTyped(json: any, ignoreDiscrimin
         
         'id': json['id'],
         'priceCents': json['priceCents'],
-        'status': !exists(json, 'status') ? undefined : json['status'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
         'thumbnail': !exists(json, 'thumbnail') ? undefined : json['thumbnail'],
+        'status': !exists(json, 'status') ? undefined : json['status'],
     };
 }
 
@@ -87,10 +87,10 @@ export function ListBuyerOffersItemItemsToJSON(value?: ListBuyerOffersItemItems 
         
         'id': value.id,
         'priceCents': value.priceCents,
-        'status': value.status,
-        'title': value.title,
         'slug': value.slug,
+        'title': value.title,
         'thumbnail': value.thumbnail,
+        'status': value.status,
     };
 }
 

@@ -79,6 +79,24 @@ export interface GetInventoryValueHistoryResponseDataPoints {
      * @memberof GetInventoryValueHistoryResponseDataPoints
      */
     stuckCostCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryValueHistoryResponseDataPoints
+     */
+    over90CostCents?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryValueHistoryResponseDataPoints
+     */
+    costKnownItems?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetInventoryValueHistoryResponseDataPoints
+     */
+    reconstructed: boolean;
 }
 
 export function GetInventoryValueHistoryResponseDataPointsFromJSON(json: any): GetInventoryValueHistoryResponseDataPoints {
@@ -101,6 +119,9 @@ export function GetInventoryValueHistoryResponseDataPointsFromJSONTyped(json: an
         'retailCents': json['retailCents'],
         'marketCents': !exists(json, 'marketCents') ? undefined : json['marketCents'],
         'stuckCostCents': json['stuckCostCents'],
+        'over90CostCents': !exists(json, 'over90CostCents') ? undefined : json['over90CostCents'],
+        'costKnownItems': !exists(json, 'costKnownItems') ? undefined : json['costKnownItems'],
+        'reconstructed': json['reconstructed'],
     };
 }
 
@@ -123,6 +144,9 @@ export function GetInventoryValueHistoryResponseDataPointsToJSON(value?: GetInve
         'retailCents': value.retailCents,
         'marketCents': value.marketCents,
         'stuckCostCents': value.stuckCostCents,
+        'over90CostCents': value.over90CostCents,
+        'costKnownItems': value.costKnownItems,
+        'reconstructed': value.reconstructed,
     };
 }
 

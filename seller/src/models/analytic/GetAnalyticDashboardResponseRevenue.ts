@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetAnalyticOverviewResponseDataKpisNetSalesDelta,
+    GetAnalyticOverviewResponseDataKpisNetSalesDeltaFromJSON,
+    GetAnalyticOverviewResponseDataKpisNetSalesDeltaFromJSONTyped,
+    GetAnalyticOverviewResponseDataKpisNetSalesDeltaToJSON,
+} from './GetAnalyticOverviewResponseDataKpisNetSalesDelta';
+
 /**
  * 
  * @export
@@ -37,6 +44,12 @@ export interface GetAnalyticDashboardResponseRevenue {
      * @memberof GetAnalyticDashboardResponseRevenue
      */
     pctChange?: number | null;
+    /**
+     * 
+     * @type {GetAnalyticOverviewResponseDataKpisNetSalesDelta}
+     * @memberof GetAnalyticDashboardResponseRevenue
+     */
+    delta: GetAnalyticOverviewResponseDataKpisNetSalesDelta;
 }
 
 export function GetAnalyticDashboardResponseRevenueFromJSON(json: any): GetAnalyticDashboardResponseRevenue {
@@ -52,6 +65,7 @@ export function GetAnalyticDashboardResponseRevenueFromJSONTyped(json: any, igno
         'current': json['current'],
         'previous': json['previous'],
         'pctChange': !exists(json, 'pctChange') ? undefined : json['pctChange'],
+        'delta': GetAnalyticOverviewResponseDataKpisNetSalesDeltaFromJSON(json['delta']),
     };
 }
 
@@ -67,6 +81,7 @@ export function GetAnalyticDashboardResponseRevenueToJSON(value?: GetAnalyticDas
         'current': value.current,
         'previous': value.previous,
         'pctChange': value.pctChange,
+        'delta': GetAnalyticOverviewResponseDataKpisNetSalesDeltaToJSON(value.delta),
     };
 }
 

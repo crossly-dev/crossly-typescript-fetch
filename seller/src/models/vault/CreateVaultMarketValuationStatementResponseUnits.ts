@@ -130,9 +130,9 @@ export interface CreateVaultMarketValuationStatementResponseUnits {
 */
 export enum CreateVaultMarketValuationStatementResponseUnitsMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function CreateVaultMarketValuationStatementResponseUnitsFromJSON(json: any): CreateVaultMarketValuationStatementResponseUnits {

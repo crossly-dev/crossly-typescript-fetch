@@ -55,6 +55,12 @@ export interface CreateProductionDesignSpecResponsePrefs {
      * @type {string}
      * @memberof CreateProductionDesignSpecResponsePrefs
      */
+    cosmeticId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateProductionDesignSpecResponsePrefs
+     */
     merchantId: string;
     /**
      * 
@@ -62,12 +68,6 @@ export interface CreateProductionDesignSpecResponsePrefs {
      * @memberof CreateProductionDesignSpecResponsePrefs
      */
     creatorSubjectId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateProductionDesignSpecResponsePrefs
-     */
-    cosmeticId: string;
     /**
      * 
      * @type {CreateProductionDesignSpecResponsePrefsSpec}
@@ -107,9 +107,9 @@ export function CreateProductionDesignSpecResponsePrefsFromJSONTyped(json: any, 
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
+        'cosmeticId': json['cosmeticId'],
         'merchantId': json['merchantId'],
         'creatorSubjectId': json['creatorSubjectId'],
-        'cosmeticId': json['cosmeticId'],
         'spec': !exists(json, 'spec') ? undefined : CreateProductionDesignSpecResponsePrefsSpecFromJSON(json['spec']),
         'physicalOptOut': json['physicalOptOut'],
         'brief': !exists(json, 'brief') ? undefined : CreateProductionDesignSpecResponsePrefsBriefFromJSON(json['brief']),
@@ -129,9 +129,9 @@ export function CreateProductionDesignSpecResponsePrefsToJSON(value?: CreateProd
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
+        'cosmeticId': value.cosmeticId,
         'merchantId': value.merchantId,
         'creatorSubjectId': value.creatorSubjectId,
-        'cosmeticId': value.cosmeticId,
         'spec': CreateProductionDesignSpecResponsePrefsSpecToJSON(value.spec),
         'physicalOptOut': value.physicalOptOut,
         'brief': CreateProductionDesignSpecResponsePrefsBriefToJSON(value.brief),

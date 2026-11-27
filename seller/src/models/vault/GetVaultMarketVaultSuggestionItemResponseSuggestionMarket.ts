@@ -68,9 +68,9 @@ export interface GetVaultMarketVaultSuggestionItemResponseSuggestionMarket {
 * @enum {string}
 */
 export enum GetVaultMarketVaultSuggestionItemResponseSuggestionMarketTierEnum {
+    C = 'C',
     A = 'A',
     B = 'B',
-    C = 'C',
     D = 'D'
 }
 

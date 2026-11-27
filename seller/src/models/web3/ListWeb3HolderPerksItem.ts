@@ -62,12 +62,12 @@ export interface ListWeb3HolderPerksItem {
 * @enum {string}
 */
 export enum ListWeb3HolderPerksItemChainEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }
 
 export function ListWeb3HolderPerksItemFromJSON(json: any): ListWeb3HolderPerksItem {

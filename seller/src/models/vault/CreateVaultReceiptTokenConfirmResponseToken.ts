@@ -161,9 +161,9 @@ export enum CreateVaultReceiptTokenConfirmResponseTokenStatusEnum {
     Pending = 'pending',
     Live = 'live',
     Expired = 'expired',
+    Conflict = 'conflict',
     Frozen = 'frozen',
-    Burned = 'burned',
-    Conflict = 'conflict'
+    Burned = 'burned'
 }
 
 export function CreateVaultReceiptTokenConfirmResponseTokenFromJSON(json: any): CreateVaultReceiptTokenConfirmResponseToken {

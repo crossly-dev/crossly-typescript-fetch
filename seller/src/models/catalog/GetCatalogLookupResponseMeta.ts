@@ -26,8 +26,7 @@ export interface GetCatalogLookupResponseMeta {
      */
     count: number;
     /**
-     * Cheapest first, and capped — say so rather than let a caller
-     * infer this is everything Crossly holds.
+     * Cheapest first, and capped — say so rather than let a caller infer this is everything Crossly holds.
      * @type {number}
      * @memberof GetCatalogLookupResponseMeta
      */

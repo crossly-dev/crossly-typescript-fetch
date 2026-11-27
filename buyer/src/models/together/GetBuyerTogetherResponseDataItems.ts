@@ -27,22 +27,16 @@ export interface GetBuyerTogetherResponseDataItems {
     id: string;
     /**
      * 
-     * @type {boolean}
+     * @type {string}
      * @memberof GetBuyerTogetherResponseDataItems
      */
-    available: boolean;
+    slug: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerTogetherResponseDataItems
      */
     title?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerTogetherResponseDataItems
-     */
-    slug: string;
     /**
      * 
      * @type {number}
@@ -55,6 +49,12 @@ export interface GetBuyerTogetherResponseDataItems {
      * @memberof GetBuyerTogetherResponseDataItems
      */
     image?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetBuyerTogetherResponseDataItems
+     */
+    available: boolean;
     /**
      * 
      * @type {string}
@@ -92,11 +92,11 @@ export function GetBuyerTogetherResponseDataItemsFromJSONTyped(json: any, ignore
     return {
         
         'id': json['id'],
-        'available': json['available'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
         'slug': json['slug'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
         'priceCents': json['priceCents'],
         'image': !exists(json, 'image') ? undefined : json['image'],
+        'available': json['available'],
         'addedBy': json['addedBy'],
         'up': json['up'],
         'down': json['down'],
@@ -114,11 +114,11 @@ export function GetBuyerTogetherResponseDataItemsToJSON(value?: GetBuyerTogether
     return {
         
         'id': value.id,
-        'available': value.available,
-        'title': value.title,
         'slug': value.slug,
+        'title': value.title,
         'priceCents': value.priceCents,
         'image': value.image,
+        'available': value.available,
         'addedBy': value.addedBy,
         'up': value.up,
         'down': value.down,

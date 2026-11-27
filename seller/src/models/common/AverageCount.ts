@@ -14,7 +14,7 @@
 
 import { exists, mapValues } from '../../runtime';
 /**
- * 
+ * 1172 ratings: average stars (null before the first) and how many.
  * @export
  * @interface AverageCount
  */

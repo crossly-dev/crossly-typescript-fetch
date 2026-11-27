@@ -93,6 +93,24 @@ export interface GetBuyerCatalogListingShippingResponse {
      */
     noShipReason?: string | null;
     /**
+     * Why it doesn't ship here, as the buyer should read it; null when it does.
+     * @type {string}
+     * @memberof GetBuyerCatalogListingShippingResponse
+     */
+    noShipMessage?: string | null;
+    /**
+     * The seller's ship-to rule that decided a refusal; null when none did.
+     * @type {{ [key: string]: any; }}
+     * @memberof GetBuyerCatalogListingShippingResponse
+     */
+    rule?: { [key: string]: any; } | null;
+    /**
+     * True when a fuller address (ZIP / postcode) could change the answer.
+     * @type {boolean}
+     * @memberof GetBuyerCatalogListingShippingResponse
+     */
+    partial: boolean;
+    /**
      * 
      * @type {Array<GetBuyerCatalogListingShippingResponseServices>}
      * @memberof GetBuyerCatalogListingShippingResponse
@@ -104,6 +122,12 @@ export interface GetBuyerCatalogListingShippingResponse {
      * @memberof GetBuyerCatalogListingShippingResponse
      */
     defaultServiceId?: string | null;
+    /**
+     * Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); `cents` is null.
+     * @type {boolean}
+     * @memberof GetBuyerCatalogListingShippingResponse
+     */
+    calculatedAtCheckout?: boolean | null;
     /**
      * 
      * @type {GetBuyerCatalogListingShippingResponseInternational}
@@ -138,8 +162,12 @@ export function GetBuyerCatalogListingShippingResponseFromJSONTyped(json: any, i
         'destinationCountry': !exists(json, 'destinationCountry') ? undefined : json['destinationCountry'],
         'shipsToCountry': json['shipsToCountry'],
         'noShipReason': !exists(json, 'noShipReason') ? undefined : json['noShipReason'],
+        'noShipMessage': !exists(json, 'noShipMessage') ? undefined : json['noShipMessage'],
+        'rule': !exists(json, 'rule') ? undefined : json['rule'],
+        'partial': json['partial'],
         'services': ((json['services'] as Array<any>).map(GetBuyerCatalogListingShippingResponseServicesFromJSON)),
         'defaultServiceId': !exists(json, 'defaultServiceId') ? undefined : json['defaultServiceId'],
+        'calculatedAtCheckout': !exists(json, 'calculatedAtCheckout') ? undefined : json['calculatedAtCheckout'],
         'international': GetBuyerCatalogListingShippingResponseInternationalFromJSON(json['international']),
         'importChargesNote': json['importChargesNote'],
     };
@@ -164,8 +192,12 @@ export function GetBuyerCatalogListingShippingResponseToJSON(value?: GetBuyerCat
         'destinationCountry': value.destinationCountry,
         'shipsToCountry': value.shipsToCountry,
         'noShipReason': value.noShipReason,
+        'noShipMessage': value.noShipMessage,
+        'rule': value.rule,
+        'partial': value.partial,
         'services': ((value.services as Array<any>).map(GetBuyerCatalogListingShippingResponseServicesToJSON)),
         'defaultServiceId': value.defaultServiceId,
+        'calculatedAtCheckout': value.calculatedAtCheckout,
         'international': GetBuyerCatalogListingShippingResponseInternationalToJSON(value.international),
         'importChargesNote': value.importChargesNote,
     };

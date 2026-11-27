@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetSpatialStreetPlotQuoteResponseDataClaim,
+    GetSpatialStreetPlotQuoteResponseDataClaimFromJSON,
+    GetSpatialStreetPlotQuoteResponseDataClaimFromJSONTyped,
+    GetSpatialStreetPlotQuoteResponseDataClaimToJSON,
+} from './GetSpatialStreetPlotQuoteResponseDataClaim';
+
 /**
  * 
  * @export
@@ -73,6 +80,12 @@ export interface GetSpatialStreetPlotQuoteResponseData {
      * @memberof GetSpatialStreetPlotQuoteResponseData
      */
     enabled: boolean;
+    /**
+     * 
+     * @type {GetSpatialStreetPlotQuoteResponseDataClaim}
+     * @memberof GetSpatialStreetPlotQuoteResponseData
+     */
+    claim?: GetSpatialStreetPlotQuoteResponseDataClaim | null;
 }
 
 export function GetSpatialStreetPlotQuoteResponseDataFromJSON(json: any): GetSpatialStreetPlotQuoteResponseData {
@@ -94,6 +107,7 @@ export function GetSpatialStreetPlotQuoteResponseDataFromJSONTyped(json: any, ig
         'vacant': json['vacant'],
         'buyable': json['buyable'],
         'enabled': json['enabled'],
+        'claim': !exists(json, 'claim') ? undefined : GetSpatialStreetPlotQuoteResponseDataClaimFromJSON(json['claim']),
     };
 }
 
@@ -115,6 +129,7 @@ export function GetSpatialStreetPlotQuoteResponseDataToJSON(value?: GetSpatialSt
         'vacant': value.vacant,
         'buyable': value.buyable,
         'enabled': value.enabled,
+        'claim': GetSpatialStreetPlotQuoteResponseDataClaimToJSON(value.claim),
     };
 }
 

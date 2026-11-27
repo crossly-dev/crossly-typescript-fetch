@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    StartEnd,
+    StartEndFromJSON,
+    StartEndFromJSONTyped,
+    StartEndToJSON,
+} from '../common/StartEnd';
+
 /**
  * 
  * @export
@@ -63,10 +70,28 @@ export interface ListRentalOffersItem {
     active: boolean;
     /**
      * 
+     * @type {number}
+     * @memberof ListRentalOffersItem
+     */
+    quantity: number;
+    /**
+     * 
      * @type {string}
      * @memberof ListRentalOffersItem
      */
     platformListingId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalOffersItem
+     */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListRentalOffersItem
+     */
+    options: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -84,18 +109,6 @@ export interface ListRentalOffersItem {
      * @type {number}
      * @memberof ListRentalOffersItem
      */
-    dailyCents: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListRentalOffersItem
-     */
-    weeklyCents?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListRentalOffersItem
-     */
     minDays: number;
     /**
      * 
@@ -103,6 +116,18 @@ export interface ListRentalOffersItem {
      * @memberof ListRentalOffersItem
      */
     maxDays: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalOffersItem
+     */
+    dailyCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListRentalOffersItem
+     */
+    weeklyCents?: number | null;
     /**
      * 
      * @type {number}
@@ -121,6 +146,18 @@ export interface ListRentalOffersItem {
      * @memberof ListRentalOffersItem
      */
     requireApproval: boolean;
+    /**
+     * 
+     * @type {Array<StartEnd>}
+     * @memberof ListRentalOffersItem
+     */
+    blackoutRanges: Array<StartEnd>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRentalOffersItem
+     */
+    returnPolicy?: string | null;
 }
 
 export function ListRentalOffersItemFromJSON(json: any): ListRentalOffersItem {
@@ -140,16 +177,21 @@ export function ListRentalOffersItemFromJSONTyped(json: any, ignoreDiscriminator
         'createdAt': json['createdAt'],
         'updatedAt': json['updatedAt'],
         'active': json['active'],
+        'quantity': json['quantity'],
         'platformListingId': json['platformListingId'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'options': json['options'],
         'sellerUserId': json['sellerUserId'],
         'depositCents': json['depositCents'],
-        'dailyCents': json['dailyCents'],
-        'weeklyCents': !exists(json, 'weeklyCents') ? undefined : json['weeklyCents'],
         'minDays': json['minDays'],
         'maxDays': json['maxDays'],
+        'dailyCents': json['dailyCents'],
+        'weeklyCents': !exists(json, 'weeklyCents') ? undefined : json['weeklyCents'],
         'bufferDays': json['bufferDays'],
         'rentOnly': json['rentOnly'],
         'requireApproval': json['requireApproval'],
+        'blackoutRanges': ((json['blackoutRanges'] as Array<any>).map(StartEndFromJSON)),
+        'returnPolicy': !exists(json, 'returnPolicy') ? undefined : json['returnPolicy'],
     };
 }
 
@@ -169,16 +211,21 @@ export function ListRentalOffersItemToJSON(value?: ListRentalOffersItem | null):
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,
         'active': value.active,
+        'quantity': value.quantity,
         'platformListingId': value.platformListingId,
+        'storefrontId': value.storefrontId,
+        'options': value.options,
         'sellerUserId': value.sellerUserId,
         'depositCents': value.depositCents,
-        'dailyCents': value.dailyCents,
-        'weeklyCents': value.weeklyCents,
         'minDays': value.minDays,
         'maxDays': value.maxDays,
+        'dailyCents': value.dailyCents,
+        'weeklyCents': value.weeklyCents,
         'bufferDays': value.bufferDays,
         'rentOnly': value.rentOnly,
         'requireApproval': value.requireApproval,
+        'blackoutRanges': ((value.blackoutRanges as Array<any>).map(StartEndToJSON)),
+        'returnPolicy': value.returnPolicy,
     };
 }
 

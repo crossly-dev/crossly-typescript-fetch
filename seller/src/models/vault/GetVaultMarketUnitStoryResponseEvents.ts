@@ -117,17 +117,17 @@ export interface GetVaultMarketUnitStoryResponseEvents {
 * @enum {string}
 */
 export enum GetVaultMarketUnitStoryResponseEventsKindEnum {
-    Transfer = 'transfer',
-    Evidence = 'evidence',
     Sale = 'sale',
-    Graded = 'graded',
-    Pledged = 'pledged',
-    Released = 'released',
-    Received = 'received',
     Receipt = 'receipt',
+    Received = 'received',
+    Released = 'released',
+    Evidence = 'evidence',
+    Graded = 'graded',
+    Transfer = 'transfer',
+    Pledged = 'pledged',
     Lent = 'lent',
-    Recalled = 'recalled',
     Foreclosed = 'foreclosed',
+    Recalled = 'recalled',
     SentIn = 'sent_in',
     VaultedFromGrading = 'vaulted_from_grading',
     BoughtIn = 'bought_in',
@@ -144,14 +144,14 @@ export enum GetVaultMarketUnitStoryResponseEventsKindEnum {
 * @enum {string}
 */
 export enum GetVaultMarketUnitStoryResponseEventsGroupEnum {
-    Token = 'token',
     Grade = 'grade',
-    Loan = 'loan',
-    Hall = 'hall',
+    Token = 'token',
     Receipt = 'receipt',
-    Intake = 'intake',
     Owner = 'owner',
-    Custody = 'custody'
+    Hall = 'hall',
+    Intake = 'intake',
+    Custody = 'custody',
+    Loan = 'loan'
 }
 
 export function GetVaultMarketUnitStoryResponseEventsFromJSON(json: any): GetVaultMarketUnitStoryResponseEvents {

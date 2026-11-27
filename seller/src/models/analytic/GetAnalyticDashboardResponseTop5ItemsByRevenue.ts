@@ -45,10 +45,10 @@ export interface GetAnalyticDashboardResponseTop5ItemsByRevenue {
     netProfit?: number | null;
     /**
      * 
-     * @type {Date}
+     * @type {number}
      * @memberof GetAnalyticDashboardResponseTop5ItemsByRevenue
      */
-    detectedAt: Date;
+    revenue: number;
     /**
      * 
      * @type {string}
@@ -60,7 +60,7 @@ export interface GetAnalyticDashboardResponseTop5ItemsByRevenue {
      * @type {string}
      * @memberof GetAnalyticDashboardResponseTop5ItemsByRevenue
      */
-    itemImage: string;
+    itemImage?: string | null;
 }
 
 export function GetAnalyticDashboardResponseTop5ItemsByRevenueFromJSON(json: any): GetAnalyticDashboardResponseTop5ItemsByRevenue {
@@ -77,9 +77,9 @@ export function GetAnalyticDashboardResponseTop5ItemsByRevenueFromJSONTyped(json
         'platform': json['platform'],
         'salePrice': !exists(json, 'salePrice') ? undefined : json['salePrice'],
         'netProfit': !exists(json, 'netProfit') ? undefined : json['netProfit'],
-        'detectedAt': (new Date(json['detectedAt'])),
+        'revenue': json['revenue'],
         'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
-        'itemImage': json['itemImage'],
+        'itemImage': !exists(json, 'itemImage') ? undefined : json['itemImage'],
     };
 }
 
@@ -96,7 +96,7 @@ export function GetAnalyticDashboardResponseTop5ItemsByRevenueToJSON(value?: Get
         'platform': value.platform,
         'salePrice': value.salePrice,
         'netProfit': value.netProfit,
-        'detectedAt': (value.detectedAt.toISOString()),
+        'revenue': value.revenue,
         'itemTitle': value.itemTitle,
         'itemImage': value.itemImage,
     };

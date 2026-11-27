@@ -54,6 +54,12 @@ export interface GetVaultMarketMmResponseObligations {
      * @type {string}
      * @memberof GetVaultMarketMmResponseObligations
      */
+    program: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetVaultMarketMmResponseObligations
+     */
     tier?: string | null;
     /**
      * 
@@ -67,12 +73,6 @@ export interface GetVaultMarketMmResponseObligations {
      * @memberof GetVaultMarketMmResponseObligations
      */
     level?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetVaultMarketMmResponseObligations
-     */
-    program: string;
     /**
      * 
      * @type {number}
@@ -144,10 +144,10 @@ export function GetVaultMarketMmResponseObligationsFromJSONTyped(json: any, igno
         'userId': json['userId'],
         'day': json['day'],
         'reasons': !exists(json, 'reasons') ? undefined : json['reasons'],
+        'program': json['program'],
         'tier': !exists(json, 'tier') ? undefined : json['tier'],
         'bookKey': json['bookKey'],
         'level': !exists(json, 'level') ? undefined : json['level'],
-        'program': json['program'],
         'samples': json['samples'],
         'inSpread': json['inSpread'],
         'inHalfSpread': json['inHalfSpread'],
@@ -174,10 +174,10 @@ export function GetVaultMarketMmResponseObligationsToJSON(value?: GetVaultMarket
         'userId': value.userId,
         'day': value.day,
         'reasons': value.reasons,
+        'program': value.program,
         'tier': value.tier,
         'bookKey': value.bookKey,
         'level': value.level,
-        'program': value.program,
         'samples': value.samples,
         'inSpread': value.inSpread,
         'inHalfSpread': value.inHalfSpread,

@@ -147,8 +147,8 @@ export interface ListVaultMarketPriceWidgetsItem {
 * @enum {string}
 */
 export enum ListVaultMarketPriceWidgetsItemKindEnum {
-    Mark = 'mark',
-    Index = 'index'
+    Index = 'index',
+    Mark = 'mark'
 }/**
 * @export
 * @enum {string}

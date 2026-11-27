@@ -58,16 +58,16 @@ export interface CreateWeb3OrderResponseOrder {
     userId?: string | null;
     /**
      * 
-     * @type {number}
-     * @memberof CreateWeb3OrderResponseOrder
-     */
-    quantity: number;
-    /**
-     * 
      * @type {string}
      * @memberof CreateWeb3OrderResponseOrder
      */
     status: CreateWeb3OrderResponseOrderStatusEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateWeb3OrderResponseOrder
+     */
+    quantity: number;
     /**
      * 
      * @type {string}
@@ -97,19 +97,31 @@ export interface CreateWeb3OrderResponseOrder {
      * @type {string}
      * @memberof CreateWeb3OrderResponseOrder
      */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWeb3OrderResponseOrder
+     */
     kind: CreateWeb3OrderResponseOrderKindEnum;
     /**
      * 
      * @type {string}
      * @memberof CreateWeb3OrderResponseOrder
      */
-    externalUrl?: string | null;
+    marketplace: string;
     /**
      * 
      * @type {string}
      * @memberof CreateWeb3OrderResponseOrder
      */
-    walletId?: string | null;
+    tokenId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWeb3OrderResponseOrder
+     */
+    externalUrl?: string | null;
     /**
      * 
      * @type {string}
@@ -127,25 +139,13 @@ export interface CreateWeb3OrderResponseOrder {
      * @type {string}
      * @memberof CreateWeb3OrderResponseOrder
      */
-    tokenId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateWeb3OrderResponseOrder
-     */
-    collectionName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateWeb3OrderResponseOrder
-     */
     orderHash: string;
     /**
      * 
      * @type {string}
      * @memberof CreateWeb3OrderResponseOrder
      */
-    marketplace: string;
+    walletId?: string | null;
     /**
      * 
      * @type {string}
@@ -205,6 +205,12 @@ export interface CreateWeb3OrderResponseOrder {
      * @type {string}
      * @memberof CreateWeb3OrderResponseOrder
      */
+    collectionName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWeb3OrderResponseOrder
+     */
     taker?: string | null;
     /**
      * 
@@ -237,10 +243,10 @@ export interface CreateWeb3OrderResponseOrder {
 * @enum {string}
 */
 export enum CreateWeb3OrderResponseOrderStatusEnum {
-    Open = 'open',
-    Filled = 'filled',
     Cancelled = 'cancelled',
+    Open = 'open',
     Expired = 'expired',
+    Filled = 'filled',
     Invalid = 'invalid'
 }/**
 * @export
@@ -248,9 +254,9 @@ export enum CreateWeb3OrderResponseOrderStatusEnum {
 */
 export enum CreateWeb3OrderResponseOrderKindEnum {
     Bundle = 'bundle',
+    Offer = 'offer',
     Listing = 'listing',
     PrivateListing = 'private_listing',
-    Offer = 'offer',
     CollectionOffer = 'collection_offer',
     TraitOffer = 'trait_offer'
 }
@@ -269,21 +275,21 @@ export function CreateWeb3OrderResponseOrderFromJSONTyped(json: any, ignoreDiscr
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': !exists(json, 'userId') ? undefined : json['userId'],
-        'quantity': json['quantity'],
         'status': json['status'],
+        'quantity': json['quantity'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
         'currency': json['currency'],
         'bundle': !exists(json, 'bundle') ? undefined : (json['bundle'] === null ? null : (json['bundle'] as Array<any>).map(CreateWeb3OrderResponseOrderBundleFromJSON)),
         'lastCheckedAt': !exists(json, 'lastCheckedAt') ? undefined : (json['lastCheckedAt'] === null ? null : new Date(json['lastCheckedAt'])),
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'kind': json['kind'],
+        'marketplace': json['marketplace'],
+        'tokenId': !exists(json, 'tokenId') ? undefined : json['tokenId'],
         'externalUrl': !exists(json, 'externalUrl') ? undefined : json['externalUrl'],
-        'walletId': !exists(json, 'walletId') ? undefined : json['walletId'],
         'chain': json['chain'],
         'contract': json['contract'],
-        'tokenId': !exists(json, 'tokenId') ? undefined : json['tokenId'],
-        'collectionName': !exists(json, 'collectionName') ? undefined : json['collectionName'],
         'orderHash': json['orderHash'],
-        'marketplace': json['marketplace'],
+        'walletId': !exists(json, 'walletId') ? undefined : json['walletId'],
         'maker': json['maker'],
         'priceWei': json['priceWei'],
         'endPriceWei': !exists(json, 'endPriceWei') ? undefined : json['endPriceWei'],
@@ -293,6 +299,7 @@ export function CreateWeb3OrderResponseOrderFromJSONTyped(json: any, ignoreDiscr
         'statusReason': !exists(json, 'statusReason') ? undefined : json['statusReason'],
         'itemName': !exists(json, 'itemName') ? undefined : json['itemName'],
         'itemImage': !exists(json, 'itemImage') ? undefined : json['itemImage'],
+        'collectionName': !exists(json, 'collectionName') ? undefined : json['collectionName'],
         'taker': !exists(json, 'taker') ? undefined : json['taker'],
         'filledTx': !exists(json, 'filledTx') ? undefined : json['filledTx'],
         'filledAt': !exists(json, 'filledAt') ? undefined : (json['filledAt'] === null ? null : new Date(json['filledAt'])),
@@ -314,21 +321,21 @@ export function CreateWeb3OrderResponseOrderToJSON(value?: CreateWeb3OrderRespon
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
-        'quantity': value.quantity,
         'status': value.status,
+        'quantity': value.quantity,
         'inventoryItemId': value.inventoryItemId,
         'currency': value.currency,
         'bundle': value.bundle === undefined ? undefined : (value.bundle === null ? null : (value.bundle as Array<any>).map(CreateWeb3OrderResponseOrderBundleToJSON)),
         'lastCheckedAt': value.lastCheckedAt === undefined ? undefined : (value.lastCheckedAt === null ? null : value.lastCheckedAt.toISOString()),
+        'storefrontId': value.storefrontId,
         'kind': value.kind,
+        'marketplace': value.marketplace,
+        'tokenId': value.tokenId,
         'externalUrl': value.externalUrl,
-        'walletId': value.walletId,
         'chain': value.chain,
         'contract': value.contract,
-        'tokenId': value.tokenId,
-        'collectionName': value.collectionName,
         'orderHash': value.orderHash,
-        'marketplace': value.marketplace,
+        'walletId': value.walletId,
         'maker': value.maker,
         'priceWei': value.priceWei,
         'endPriceWei': value.endPriceWei,
@@ -338,6 +345,7 @@ export function CreateWeb3OrderResponseOrderToJSON(value?: CreateWeb3OrderRespon
         'statusReason': value.statusReason,
         'itemName': value.itemName,
         'itemImage': value.itemImage,
+        'collectionName': value.collectionName,
         'taker': value.taker,
         'filledTx': value.filledTx,
         'filledAt': value.filledAt === undefined ? undefined : (value.filledAt === null ? null : value.filledAt.toISOString()),

@@ -158,11 +158,11 @@ export interface GetVaultAttestationResponseAttestations {
 * @enum {string}
 */
 export enum GetVaultAttestationResponseAttestationsKindEnum {
+    Other = 'other',
     PhysicalCount = 'physical_count',
     InsuranceCertificate = 'insurance_certificate',
     Soc1Type2 = 'soc1_type2',
-    Soc2 = 'soc2',
-    Other = 'other'
+    Soc2 = 'soc2'
 }
 
 export function GetVaultAttestationResponseAttestationsFromJSON(json: any): GetVaultAttestationResponseAttestations {

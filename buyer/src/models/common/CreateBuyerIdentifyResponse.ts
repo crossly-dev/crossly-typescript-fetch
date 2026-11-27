@@ -175,8 +175,8 @@ export interface CreateBuyerIdentifyResponse {
 * @enum {string}
 */
 export enum CreateBuyerIdentifyResponseTierEnum {
-    Identifier = 'identifier',
     None = 'none',
+    Identifier = 'identifier',
     Visual = 'visual',
     Vision = 'vision'
 }/**

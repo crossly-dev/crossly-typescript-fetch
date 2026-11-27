@@ -14,12 +14,6 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListVaultMarketFeedItemMark,
-    ListVaultMarketFeedItemMarkFromJSON,
-    ListVaultMarketFeedItemMarkFromJSONTyped,
-    ListVaultMarketFeedItemMarkToJSON,
-} from './ListVaultMarketFeedItemMark';
-import {
     ListVaultMarketOpeningItemEarlyAccess,
     ListVaultMarketOpeningItemEarlyAccessFromJSON,
     ListVaultMarketOpeningItemEarlyAccessFromJSONTyped,
@@ -31,6 +25,12 @@ import {
     ListVaultMarketOpeningItemKeyFromJSONTyped,
     ListVaultMarketOpeningItemKeyToJSON,
 } from './ListVaultMarketOpeningItemKey';
+import {
+    ListVaultMarketOpeningItemMark,
+    ListVaultMarketOpeningItemMarkFromJSON,
+    ListVaultMarketOpeningItemMarkFromJSONTyped,
+    ListVaultMarketOpeningItemMarkToJSON,
+} from './ListVaultMarketOpeningItemMark';
 import {
     ListVaultMarketOpeningItemMe,
     ListVaultMarketOpeningItemMeFromJSON,
@@ -124,10 +124,10 @@ export interface ListVaultMarketOpeningItem {
     waitlist: number;
     /**
      * 
-     * @type {ListVaultMarketFeedItemMark}
+     * @type {ListVaultMarketOpeningItemMark}
      * @memberof ListVaultMarketOpeningItem
      */
-    mark: ListVaultMarketFeedItemMark;
+    mark: ListVaultMarketOpeningItemMark;
     /**
      * 
      * @type {string}
@@ -183,7 +183,7 @@ export function ListVaultMarketOpeningItemFromJSONTyped(json: any, ignoreDiscrim
         'unitsOnShelf': json['unitsOnShelf'],
         'dealersQuoting': json['dealersQuoting'],
         'waitlist': json['waitlist'],
-        'mark': ListVaultMarketFeedItemMarkFromJSON(json['mark']),
+        'mark': ListVaultMarketOpeningItemMarkFromJSON(json['mark']),
         'marketHref': json['marketHref'],
         'me': !exists(json, 'me') ? undefined : ListVaultMarketOpeningItemMeFromJSON(json['me']),
         'earlyAccess': !exists(json, 'earlyAccess') ? undefined : ListVaultMarketOpeningItemEarlyAccessFromJSON(json['earlyAccess']),
@@ -212,7 +212,7 @@ export function ListVaultMarketOpeningItemToJSON(value?: ListVaultMarketOpeningI
         'unitsOnShelf': value.unitsOnShelf,
         'dealersQuoting': value.dealersQuoting,
         'waitlist': value.waitlist,
-        'mark': ListVaultMarketFeedItemMarkToJSON(value.mark),
+        'mark': ListVaultMarketOpeningItemMarkToJSON(value.mark),
         'marketHref': value.marketHref,
         'me': ListVaultMarketOpeningItemMeToJSON(value.me),
         'earlyAccess': ListVaultMarketOpeningItemEarlyAccessToJSON(value.earlyAccess),

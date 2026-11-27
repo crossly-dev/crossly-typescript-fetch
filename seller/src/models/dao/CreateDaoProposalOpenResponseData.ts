@@ -138,6 +138,18 @@ export interface CreateDaoProposalOpenResponseData {
      * @type {string}
      * @memberof CreateDaoProposalOpenResponseData
      */
+    proposalKind: string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof CreateDaoProposalOpenResponseData
+     */
+    params?: { [key: string]: any; } | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateDaoProposalOpenResponseData
+     */
     createdAt: string;
 }
 
@@ -170,6 +182,8 @@ export function CreateDaoProposalOpenResponseDataFromJSONTyped(json: any, ignore
         'talliedAt': !exists(json, 'talliedAt') ? undefined : json['talliedAt'],
         'vetoedReason': !exists(json, 'vetoedReason') ? undefined : json['vetoedReason'],
         'charityGoalId': !exists(json, 'charityGoalId') ? undefined : json['charityGoalId'],
+        'proposalKind': json['proposalKind'],
+        'params': !exists(json, 'params') ? undefined : json['params'],
         'createdAt': json['createdAt'],
     };
 }
@@ -202,6 +216,8 @@ export function CreateDaoProposalOpenResponseDataToJSON(value?: CreateDaoProposa
         'talliedAt': value.talliedAt,
         'vetoedReason': value.vetoedReason,
         'charityGoalId': value.charityGoalId,
+        'proposalKind': value.proposalKind,
+        'params': value.params,
         'createdAt': value.createdAt,
     };
 }

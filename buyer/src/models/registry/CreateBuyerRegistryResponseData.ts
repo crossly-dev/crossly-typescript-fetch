@@ -42,7 +42,7 @@ export interface CreateBuyerRegistryResponseData {
      * @type {string}
      * @memberof CreateBuyerRegistryResponseData
      */
-    token: string;
+    ownerUserId: string;
     /**
      * 
      * @type {string}
@@ -60,13 +60,13 @@ export interface CreateBuyerRegistryResponseData {
      * @type {string}
      * @memberof CreateBuyerRegistryResponseData
      */
-    ownerUserId: string;
+    wishlistId: string;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerRegistryResponseData
      */
-    wishlistId: string;
+    token: string;
     /**
      * 
      * @type {string}
@@ -94,11 +94,11 @@ export function CreateBuyerRegistryResponseDataFromJSONTyped(json: any, ignoreDi
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
-        'token': json['token'],
+        'ownerUserId': json['ownerUserId'],
         'kind': json['kind'],
         'message': !exists(json, 'message') ? undefined : json['message'],
-        'ownerUserId': json['ownerUserId'],
         'wishlistId': json['wishlistId'],
+        'token': json['token'],
         'eventDate': !exists(json, 'eventDate') ? undefined : json['eventDate'],
         'shipAddressId': !exists(json, 'shipAddressId') ? undefined : json['shipAddressId'],
     };
@@ -116,11 +116,11 @@ export function CreateBuyerRegistryResponseDataToJSON(value?: CreateBuyerRegistr
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
-        'token': value.token,
+        'ownerUserId': value.ownerUserId,
         'kind': value.kind,
         'message': value.message,
-        'ownerUserId': value.ownerUserId,
         'wishlistId': value.wishlistId,
+        'token': value.token,
         'eventDate': value.eventDate,
         'shipAddressId': value.shipAddressId,
     };

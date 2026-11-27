@@ -24,6 +24,12 @@ export interface GetAnalyticSummaryResponse {
      * @type {number}
      * @memberof GetAnalyticSummaryResponse
      */
+    days: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticSummaryResponse
+     */
     sales: number;
     /**
      * 
@@ -42,7 +48,31 @@ export interface GetAnalyticSummaryResponse {
      * @type {number}
      * @memberof GetAnalyticSummaryResponse
      */
-    days: number;
+    pendingDetailsCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticSummaryResponse
+     */
+    unitsSold: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticSummaryResponse
+     */
+    netSalesCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticSummaryResponse
+     */
+    feesCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetAnalyticSummaryResponse
+     */
+    netProfitCents?: number | null;
 }
 
 export function GetAnalyticSummaryResponseFromJSON(json: any): GetAnalyticSummaryResponse {
@@ -55,10 +85,15 @@ export function GetAnalyticSummaryResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
+        'days': json['days'],
         'sales': json['sales'],
         'revenue': json['revenue'],
         'fees': json['fees'],
-        'days': json['days'],
+        'pendingDetailsCount': json['pendingDetailsCount'],
+        'unitsSold': json['unitsSold'],
+        'netSalesCents': json['netSalesCents'],
+        'feesCents': json['feesCents'],
+        'netProfitCents': !exists(json, 'netProfitCents') ? undefined : json['netProfitCents'],
     };
 }
 
@@ -71,10 +106,15 @@ export function GetAnalyticSummaryResponseToJSON(value?: GetAnalyticSummaryRespo
     }
     return {
         
+        'days': value.days,
         'sales': value.sales,
         'revenue': value.revenue,
         'fees': value.fees,
-        'days': value.days,
+        'pendingDetailsCount': value.pendingDetailsCount,
+        'unitsSold': value.unitsSold,
+        'netSalesCents': value.netSalesCents,
+        'feesCents': value.feesCents,
+        'netProfitCents': value.netProfitCents,
     };
 }
 

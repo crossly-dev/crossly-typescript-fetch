@@ -50,8 +50,8 @@ export interface GetVaultMarketFeeQuoteResponsePrograms {
 * @enum {string}
 */
 export enum GetVaultMarketFeeQuoteResponseProgramsMemberTierEnum {
-    Classic = 'classic',
-    Pro = 'pro'
+    Pro = 'pro',
+    Classic = 'classic'
 }
 
 export function GetVaultMarketFeeQuoteResponseProgramsFromJSON(json: any): GetVaultMarketFeeQuoteResponsePrograms {

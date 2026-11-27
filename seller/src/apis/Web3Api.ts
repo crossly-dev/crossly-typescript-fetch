@@ -69,9 +69,24 @@ import {
     CreateWeb3SolanaOrderBuyTxResponse,
     CreateWeb3SolanaOrderBuyTxResponseFromJSON,
     CreateWeb3SolanaOrderBuyTxResponseToJSON,
+    CreateWeb3SolanaTensorBidConfirmResponse,
+    CreateWeb3SolanaTensorBidConfirmResponseFromJSON,
+    CreateWeb3SolanaTensorBidConfirmResponseToJSON,
     CreateWeb3SolanaTensorBidPlaceTxResponse,
     CreateWeb3SolanaTensorBidPlaceTxResponseFromJSON,
     CreateWeb3SolanaTensorBidPlaceTxResponseToJSON,
+    CreateWeb3StakingStakeResponse,
+    CreateWeb3StakingStakeResponseFromJSON,
+    CreateWeb3StakingStakeResponseToJSON,
+    CreateWeb3StakingUnstakeResponse,
+    CreateWeb3StakingUnstakeResponseFromJSON,
+    CreateWeb3StakingUnstakeResponseToJSON,
+    CreateWeb3StoreWalletResponse,
+    CreateWeb3StoreWalletResponseFromJSON,
+    CreateWeb3StoreWalletResponseToJSON,
+    CreateWeb3StoreWalletSyncResponse,
+    CreateWeb3StoreWalletSyncResponseFromJSON,
+    CreateWeb3StoreWalletSyncResponseToJSON,
     CreateWeb3TokenRefreshResponse,
     CreateWeb3TokenRefreshResponseFromJSON,
     CreateWeb3TokenRefreshResponseToJSON,
@@ -81,6 +96,9 @@ import {
     CreateWeb3WalletChallengeResponse,
     CreateWeb3WalletChallengeResponseFromJSON,
     CreateWeb3WalletChallengeResponseToJSON,
+    CreateWeb3WalletImportResponse,
+    CreateWeb3WalletImportResponseFromJSON,
+    CreateWeb3WalletImportResponseToJSON,
     CreateWeb3WalletSyncResponse,
     CreateWeb3WalletSyncResponseFromJSON,
     CreateWeb3WalletSyncResponseToJSON,
@@ -90,6 +108,9 @@ import {
     GetWeb3AuctionResponse,
     GetWeb3AuctionResponseFromJSON,
     GetWeb3AuctionResponseToJSON,
+    GetWeb3BalanceResponse,
+    GetWeb3BalanceResponseFromJSON,
+    GetWeb3BalanceResponseToJSON,
     GetWeb3BrowseResponse,
     GetWeb3BrowseResponseFromJSON,
     GetWeb3BrowseResponseToJSON,
@@ -132,6 +153,9 @@ import {
     GetWeb3LaunchDeployTxResponse,
     GetWeb3LaunchDeployTxResponseFromJSON,
     GetWeb3LaunchDeployTxResponseToJSON,
+    GetWeb3LaunchStatResponse,
+    GetWeb3LaunchStatResponseFromJSON,
+    GetWeb3LaunchStatResponseToJSON,
     GetWeb3LaunchToolResponse,
     GetWeb3LaunchToolResponseFromJSON,
     GetWeb3LaunchToolResponseToJSON,
@@ -159,9 +183,18 @@ import {
     GetWeb3SolanaCollectionTensorBidResponse,
     GetWeb3SolanaCollectionTensorBidResponseFromJSON,
     GetWeb3SolanaCollectionTensorBidResponseToJSON,
+    GetWeb3StakingResponse,
+    GetWeb3StakingResponseFromJSON,
+    GetWeb3StakingResponseToJSON,
+    GetWeb3StoreWalletNftResponse,
+    GetWeb3StoreWalletNftResponseFromJSON,
+    GetWeb3StoreWalletNftResponseToJSON,
     GetWeb3TokenResponse,
     GetWeb3TokenResponseFromJSON,
     GetWeb3TokenResponseToJSON,
+    GetWeb3WalletHoldingResponse,
+    GetWeb3WalletHoldingResponseFromJSON,
+    GetWeb3WalletHoldingResponseToJSON,
     IdResponse,
     IdResponseFromJSON,
     IdResponseToJSON,
@@ -198,12 +231,12 @@ import {
     ListWeb3DropsResponse,
     ListWeb3DropsResponseFromJSON,
     ListWeb3DropsResponseToJSON,
-    ListWeb3HolderPerksItem,
-    ListWeb3HolderPerksItemFromJSON,
-    ListWeb3HolderPerksItemToJSON,
     ListWeb3HolderPerksResponse,
     ListWeb3HolderPerksResponseFromJSON,
     ListWeb3HolderPerksResponseToJSON,
+    ListWeb3LaunchPerksResponse,
+    ListWeb3LaunchPerksResponseFromJSON,
+    ListWeb3LaunchPerksResponseToJSON,
     ListWeb3LaunchesItem,
     ListWeb3LaunchesItemFromJSON,
     ListWeb3LaunchesItemToJSON,
@@ -240,6 +273,12 @@ import {
     ListWeb3SearchTokensResponse,
     ListWeb3SearchTokensResponseFromJSON,
     ListWeb3SearchTokensResponseToJSON,
+    ListWeb3StoreWalletBalancesResponse,
+    ListWeb3StoreWalletBalancesResponseFromJSON,
+    ListWeb3StoreWalletBalancesResponseToJSON,
+    ListWeb3StoreWalletsResponse,
+    ListWeb3StoreWalletsResponseFromJSON,
+    ListWeb3StoreWalletsResponseToJSON,
     ListWeb3WalletsResponse,
     ListWeb3WalletsResponseFromJSON,
     ListWeb3WalletsResponseToJSON,
@@ -252,9 +291,21 @@ import {
     OrderHashResponse,
     OrderHashResponseFromJSON,
     OrderHashResponseToJSON,
+    UpdateWeb3HolderPerkResponse,
+    UpdateWeb3HolderPerkResponseFromJSON,
+    UpdateWeb3HolderPerkResponseToJSON,
     UpdateWeb3LaunchAllowlistResponse,
     UpdateWeb3LaunchAllowlistResponseFromJSON,
     UpdateWeb3LaunchAllowlistResponseToJSON,
+    UpdateWeb3LaunchResponse,
+    UpdateWeb3LaunchResponseFromJSON,
+    UpdateWeb3LaunchResponseToJSON,
+    UpdateWeb3StoreWalletResponse,
+    UpdateWeb3StoreWalletResponseFromJSON,
+    UpdateWeb3StoreWalletResponseToJSON,
+    UpdateWeb3WalletResponse,
+    UpdateWeb3WalletResponseFromJSON,
+    UpdateWeb3WalletResponseToJSON,
 } from '../models';
 
 export interface CreateWeb3AuctionCancelRequest {
@@ -330,10 +381,22 @@ export interface CreateWeb3SolanaOrderDelistTxRequest {
     hash: string;
 }
 
+export interface CreateWeb3StoreWalletImportRequest {
+    walletId: string;
+}
+
+export interface CreateWeb3StoreWalletSyncRequest {
+    walletId: string;
+}
+
 export interface CreateWeb3TokenRefreshRequest {
     chain: string;
     contract: string;
     tokenId: string;
+}
+
+export interface CreateWeb3WalletImportRequest {
+    id: string;
 }
 
 export interface CreateWeb3WalletSyncRequest {
@@ -356,8 +419,16 @@ export interface DeleteWeb3LaunchFollowCreatorRequest {
     id: string;
 }
 
+export interface DeleteWeb3LaunchPerkRequest {
+    id: string;
+}
+
 export interface DeleteWeb3MarketplaceKeyRequest {
     marketplace: DeleteWeb3MarketplaceKeyMarketplaceEnum;
+}
+
+export interface DeleteWeb3StoreWalletRequest {
+    walletId: string;
 }
 
 export interface DeleteWeb3WalletRequest {
@@ -417,6 +488,10 @@ export interface GetWeb3LaunchDeployTxRequest {
     id: string;
 }
 
+export interface GetWeb3LaunchStatRequest {
+    id: string;
+}
+
 export interface GetWeb3LaunchToolRequest {
     id: string;
 }
@@ -445,15 +520,27 @@ export interface GetWeb3SolanaCollectionTensorBidRequest {
     collection: string;
 }
 
+export interface GetWeb3StoreWalletHoldingRequest {
+    walletId: string;
+}
+
 export interface GetWeb3TokenRequest {
     chain: string;
     contract: string;
     tokenId: string;
 }
 
+export interface GetWeb3WalletHoldingRequest {
+    id: string;
+}
+
 export interface ListWeb3CollectionHistoryRequest {
     chain: string;
     contract: string;
+}
+
+export interface ListWeb3LaunchPerksRequest {
+    id: string;
 }
 
 export interface ListWeb3NftsRequest {
@@ -463,12 +550,32 @@ export interface ListWeb3NftsRequest {
     limit?: number;
 }
 
+export interface UpdateWeb3LaunchRequest {
+    id: string;
+}
+
 export interface UpdateWeb3LaunchAllowlistRequest {
+    id: string;
+}
+
+export interface UpdateWeb3LaunchPerkRequest {
     id: string;
 }
 
 export interface UpdateWeb3MarketplaceKeyRequest {
     marketplace: UpdateWeb3MarketplaceKeyMarketplaceEnum;
+}
+
+export interface UpdateWeb3StoreWalletRequest {
+    walletId: string;
+}
+
+export interface UpdateWeb3StoreWalletDefaultRequest {
+    walletId: string;
+}
+
+export interface UpdateWeb3WalletRequest {
+    id: string;
 }
 
 /**
@@ -1675,6 +1782,40 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
+     * After your wallet’s Tensor transaction confirms: `action` place, cancel or accept, with its `signature` and the `wallet` that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
+     */
+    async createWeb3SolanaTensorBidConfirmRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3SolanaTensorBidConfirmResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/solana/tensor-bids/confirm`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3SolanaTensorBidConfirmResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * After your wallet’s Tensor transaction confirms: `action` place, cancel or accept, with its `signature` and the `wallet` that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
+     */
+    async createWeb3SolanaTensorBidConfirm(initOverrides?: RequestInit): Promise<CreateWeb3SolanaTensorBidConfirmResponse> {
+        const response = await this.createWeb3SolanaTensorBidConfirmRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Build a Tensor collection bid (or trait bid with `trait`) for your Solana wallet to sign. Price in lamports.
      */
     async createWeb3SolanaTensorBidPlaceTxRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3SolanaTensorBidPlaceTxResponse>> {
@@ -1705,6 +1846,252 @@ export class Web3Api extends runtime.BaseAPI {
      */
     async createWeb3SolanaTensorBidPlaceTx(initOverrides?: RequestInit): Promise<CreateWeb3SolanaTensorBidPlaceTxResponse> {
         const response = await this.createWeb3SolanaTensorBidPlaceTxRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Lock earned CBX (`baseUnits`, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+     */
+    async createWeb3StakingStakeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3StakingStakeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/staking/stake`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3StakingStakeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Lock earned CBX (`baseUnits`, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+     */
+    async createWeb3StakingStake(initOverrides?: RequestInit): Promise<CreateWeb3StakingStakeResponse> {
+        const response = await this.createWeb3StakingStakeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns `{ unlocksAt, cooldownDays }`.
+     */
+    async createWeb3StakingUnstakeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3StakingUnstakeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/staking/unstake`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3StakingUnstakeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns `{ unlocksAt, cooldownDays }`.
+     */
+    async createWeb3StakingUnstake(initOverrides?: RequestInit): Promise<CreateWeb3StakingUnstakeResponse> {
+        const response = await this.createWeb3StakingUnstakeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+     */
+    async createWeb3StoreWalletRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3StoreWalletResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3StoreWalletResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+     */
+    async createWeb3StoreWallet(initOverrides?: RequestInit): Promise<CreateWeb3StoreWalletResponse> {
+        const response = await this.createWeb3StoreWalletRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Start adding a selling wallet to the store: the message the wallet signs.
+     */
+    async createWeb3StoreWalletChallengeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3WalletChallengeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/challenge`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3WalletChallengeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Start adding a selling wallet to the store: the message the wallet signs.
+     */
+    async createWeb3StoreWalletChallenge(initOverrides?: RequestInit): Promise<CreateWeb3WalletChallengeResponse> {
+        const response = await this.createWeb3StoreWalletChallengeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Add picked NFTs (`tokens: [{ chain, contract, tokenId }]`) from a store wallet to inventory.
+     */
+    async createWeb3StoreWalletImportRaw(requestParameters: CreateWeb3StoreWalletImportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3WalletImportResponse>> {
+        if (requestParameters.walletId === null || requestParameters.walletId === undefined) {
+            throw new runtime.RequiredError('walletId','Required parameter requestParameters.walletId was null or undefined when calling createWeb3StoreWalletImport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/{walletId}/import`.replace(`{${"walletId"}}`, encodeURIComponent(String(requestParameters.walletId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3WalletImportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Add picked NFTs (`tokens: [{ chain, contract, tokenId }]`) from a store wallet to inventory.
+     */
+    async createWeb3StoreWalletImport(requestParameters: CreateWeb3StoreWalletImportRequest, initOverrides?: RequestInit): Promise<CreateWeb3WalletImportResponse> {
+        const response = await this.createWeb3StoreWalletImportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store\'s link auto-imports.
+     */
+    async createWeb3StoreWalletSyncRaw(requestParameters: CreateWeb3StoreWalletSyncRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3StoreWalletSyncResponse>> {
+        if (requestParameters.walletId === null || requestParameters.walletId === undefined) {
+            throw new runtime.RequiredError('walletId','Required parameter requestParameters.walletId was null or undefined when calling createWeb3StoreWalletSync.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/{walletId}/sync`.replace(`{${"walletId"}}`, encodeURIComponent(String(requestParameters.walletId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3StoreWalletSyncResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store\'s link auto-imports.
+     */
+    async createWeb3StoreWalletSync(requestParameters: CreateWeb3StoreWalletSyncRequest, initOverrides?: RequestInit): Promise<CreateWeb3StoreWalletSyncResponse> {
+        const response = await this.createWeb3StoreWalletSyncRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Finish adding a selling wallet: verify its signature and link it to the store.
+     */
+    async createWeb3StoreWalletVerifyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3StoreWalletResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/verify`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3StoreWalletResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Finish adding a selling wallet: verify its signature and link it to the store.
+     */
+    async createWeb3StoreWalletVerify(initOverrides?: RequestInit): Promise<CreateWeb3StoreWalletResponse> {
+        const response = await this.createWeb3StoreWalletVerifyRaw(initOverrides);
         return await response.value();
     }
 
@@ -1823,6 +2210,44 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
+     * Add picked NFTs (`tokens`: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in `notInWallet`, never added.
+     */
+    async createWeb3WalletImportRaw(requestParameters: CreateWeb3WalletImportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3WalletImportResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWeb3WalletImport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/wallets/{id}/import`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWeb3WalletImportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Add picked NFTs (`tokens`: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in `notInWallet`, never added.
+     */
+    async createWeb3WalletImport(requestParameters: CreateWeb3WalletImportRequest, initOverrides?: RequestInit): Promise<CreateWeb3WalletImportResponse> {
+        const response = await this.createWeb3WalletImportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Import a linked wallet\'s NFTs into inventory; archives ones that have left the wallet.
      */
     async createWeb3WalletSyncRaw(requestParameters: CreateWeb3WalletSyncRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWeb3WalletSyncResponse>> {
@@ -1933,7 +2358,7 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
-     * Remove a holder perk. Returns `{ ok }`.
+     * DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns `{ ok }`.
      */
     async deleteWeb3HolderPerkRaw(requestParameters: DeleteWeb3HolderPerkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -1963,7 +2388,7 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
-     * Remove a holder perk. Returns `{ ok }`.
+     * DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns `{ ok }`.
      */
     async deleteWeb3HolderPerk(requestParameters: DeleteWeb3HolderPerkRequest, initOverrides?: RequestInit): Promise<OkResponse> {
         const response = await this.deleteWeb3HolderPerkRaw(requestParameters, initOverrides);
@@ -2047,6 +2472,44 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
+     * Remove every collection perk of a launch. Returns `{ ok }`.
+     */
+    async deleteWeb3LaunchPerkRaw(requestParameters: DeleteWeb3LaunchPerkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteWeb3LaunchPerk.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/launches/{id}/perks`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove every collection perk of a launch. Returns `{ ok }`.
+     */
+    async deleteWeb3LaunchPerk(requestParameters: DeleteWeb3LaunchPerkRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.deleteWeb3LaunchPerkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Remove your own key for a marketplace; Crossly\'s key is used again.
      */
     async deleteWeb3MarketplaceKeyRaw(requestParameters: DeleteWeb3MarketplaceKeyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
@@ -2081,6 +2544,43 @@ export class Web3Api extends runtime.BaseAPI {
      */
     async deleteWeb3MarketplaceKey(requestParameters: DeleteWeb3MarketplaceKeyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.deleteWeb3MarketplaceKeyRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Stop the store selling from a wallet (the wallet and its other stores are unaffected).
+     */
+    async deleteWeb3StoreWalletRaw(requestParameters: DeleteWeb3StoreWalletRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.walletId === null || requestParameters.walletId === undefined) {
+            throw new runtime.RequiredError('walletId','Required parameter requestParameters.walletId was null or undefined when calling deleteWeb3StoreWallet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/{walletId}`.replace(`{${"walletId"}}`, encodeURIComponent(String(requestParameters.walletId))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Stop the store selling from a wallet (the wallet and its other stores are unaffected).
+     */
+    async deleteWeb3StoreWallet(requestParameters: DeleteWeb3StoreWalletRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteWeb3StoreWalletRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -2164,6 +2664,42 @@ export class Web3Api extends runtime.BaseAPI {
      */
     async getWeb3Auction(requestParameters: GetWeb3AuctionRequest, initOverrides?: RequestInit): Promise<GetWeb3AuctionResponse> {
         const response = await this.getWeb3AuctionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * `credit`: EARNED (withdrawable once matured; `withdrawableBaseUnits` is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). `connected`: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. `wallets`: each linked wallet with its own on-chain CBX (`status` read / not_solana / not_live / unavailable). `totals.allBaseUnits` is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (`decimals`).
+     * Every CBX you have, in one read, with the three balances kept apart.
+     */
+    async getWeb3BalanceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWeb3BalanceResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/balances`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWeb3BalanceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * `credit`: EARNED (withdrawable once matured; `withdrawableBaseUnits` is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). `connected`: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. `wallets`: each linked wallet with its own on-chain CBX (`status` read / not_solana / not_live / unavailable). `totals.allBaseUnits` is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (`decimals`).
+     * Every CBX you have, in one read, with the three balances kept apart.
+     */
+    async getWeb3Balance(initOverrides?: RequestInit): Promise<GetWeb3BalanceResponse> {
+        const response = await this.getWeb3BalanceRaw(initOverrides);
         return await response.value();
     }
 
@@ -2712,6 +3248,44 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
+     * A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
+     */
+    async getWeb3LaunchStatRaw(requestParameters: GetWeb3LaunchStatRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWeb3LaunchStatResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getWeb3LaunchStat.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/launches/{id}/stats`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWeb3LaunchStatResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
+     */
+    async getWeb3LaunchStat(requestParameters: GetWeb3LaunchStatRequest, initOverrides?: RequestInit): Promise<GetWeb3LaunchStatResponse> {
+        const response = await this.getWeb3LaunchStatRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * A launch’s creator tools: allowlist size and root (and whether the contract has it yet), uploaded art and reveal, supply minted.
      */
     async getWeb3LaunchToolRaw(requestParameters: GetWeb3LaunchToolRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWeb3LaunchToolResponse>> {
@@ -3058,6 +3632,114 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
+     * A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+     * Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+     */
+    async getWeb3StakingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWeb3StakingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/staking`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWeb3StakingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+     * Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+     */
+    async getWeb3Staking(initOverrides?: RequestInit): Promise<GetWeb3StakingResponse> {
+        const response = await this.getWeb3StakingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+     */
+    async getWeb3StoreWalletHoldingRaw(requestParameters: GetWeb3StoreWalletHoldingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWeb3WalletHoldingResponse>> {
+        if (requestParameters.walletId === null || requestParameters.walletId === undefined) {
+            throw new runtime.RequiredError('walletId','Required parameter requestParameters.walletId was null or undefined when calling getWeb3StoreWalletHolding.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/{walletId}/holdings`.replace(`{${"walletId"}}`, encodeURIComponent(String(requestParameters.walletId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWeb3WalletHoldingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+     */
+    async getWeb3StoreWalletHolding(requestParameters: GetWeb3StoreWalletHoldingRequest, initOverrides?: RequestInit): Promise<GetWeb3WalletHoldingResponse> {
+        const response = await this.getWeb3StoreWalletHoldingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The store\'s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
+     */
+    async getWeb3StoreWalletNftRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWeb3StoreWalletNftResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/nfts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWeb3StoreWalletNftResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The store\'s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
+     */
+    async getWeb3StoreWalletNft(initOverrides?: RequestInit): Promise<GetWeb3StoreWalletNftResponse> {
+        const response = await this.getWeb3StoreWalletNftRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * One NFT: metadata, traits, owner, open listings and offers, activity.
      */
     async getWeb3TokenRaw(requestParameters: GetWeb3TokenRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWeb3TokenResponse>> {
@@ -3100,6 +3782,44 @@ export class Web3Api extends runtime.BaseAPI {
      */
     async getWeb3Token(requestParameters: GetWeb3TokenRequest, initOverrides?: RequestInit): Promise<GetWeb3TokenResponse> {
         const response = await this.getWeb3TokenRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What a linked wallet holds right now, each NFT marked `inInventory` or not. Reads the chain; writes nothing.
+     */
+    async getWeb3WalletHoldingRaw(requestParameters: GetWeb3WalletHoldingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWeb3WalletHoldingResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getWeb3WalletHolding.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/wallets/{id}/holdings`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWeb3WalletHoldingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What a linked wallet holds right now, each NFT marked `inInventory` or not. Reads the chain; writes nothing.
+     */
+    async getWeb3WalletHolding(requestParameters: GetWeb3WalletHoldingRequest, initOverrides?: RequestInit): Promise<GetWeb3WalletHoldingResponse> {
+        const response = await this.getWeb3WalletHoldingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3486,7 +4206,7 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
-     * Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+     * DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
      */
     async listWeb3HolderPerksRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3HolderPerksResponse>> {
         const queryParameters: any = {};
@@ -3512,10 +4232,48 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
-     * Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+     * DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
      */
     async listWeb3HolderPerks(initOverrides?: RequestInit): Promise<ListWeb3HolderPerksResponse> {
         const response = await this.listWeb3HolderPerksRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
+     */
+    async listWeb3LaunchPerksRaw(requestParameters: ListWeb3LaunchPerksRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3LaunchPerksResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listWeb3LaunchPerks.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/launches/{id}/perks`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWeb3LaunchPerksResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
+     */
+    async listWeb3LaunchPerks(requestParameters: ListWeb3LaunchPerksRequest, initOverrides?: RequestInit): Promise<ListWeb3LaunchPerksResponse> {
+        const response = await this.listWeb3LaunchPerksRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3672,7 +4430,7 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
-     * Your orders in the Crossly book (listings and offers), any status.
+     * Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store\'s listings (offers always).
      */
     async listWeb3OrdersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3OrdersResponse>> {
         const queryParameters: any = {};
@@ -3698,7 +4456,7 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
-     * Your orders in the Crossly book (listings and offers), any status.
+     * Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store\'s listings (offers always).
      */
     async listWeb3Orders(initOverrides?: RequestInit): Promise<ListWeb3OrdersResponse> {
         const response = await this.listWeb3OrdersRaw(initOverrides);
@@ -3910,6 +4668,74 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
+     * The native-coin balance (SOL, ETH, POL, …) of each of the store\'s selling wallets, read on chain.
+     */
+    async listWeb3StoreWalletBalancesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3StoreWalletBalancesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/balances`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWeb3StoreWalletBalancesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The native-coin balance (SOL, ETH, POL, …) of each of the store\'s selling wallets, read on chain.
+     */
+    async listWeb3StoreWalletBalances(initOverrides?: RequestInit): Promise<ListWeb3StoreWalletBalancesResponse> {
+        const response = await this.listWeb3StoreWalletBalancesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List the store\'s selling wallets (X-Storefront-Id; default store when omitted).
+     */
+    async listWeb3StoreWalletsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3StoreWalletsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWeb3StoreWalletsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List the store\'s selling wallets (X-Storefront-Id; default store when omitted).
+     */
+    async listWeb3StoreWallets(initOverrides?: RequestInit): Promise<ListWeb3StoreWalletsResponse> {
+        const response = await this.listWeb3StoreWalletsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * List your verified, linked wallets (EVM and Solana).
      */
     async listWeb3WalletsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3WalletsResponse>> {
@@ -3978,9 +4804,9 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
-     * Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+     * DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
      */
-    async updateWeb3HolderPerkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3HolderPerksItem>> {
+    async updateWeb3HolderPerkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWeb3HolderPerkResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -4000,14 +4826,52 @@ export class Web3Api extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListWeb3HolderPerksItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWeb3HolderPerkResponseFromJSON(jsonValue));
     }
 
     /**
-     * Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+     * DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
      */
-    async updateWeb3HolderPerk(initOverrides?: RequestInit): Promise<ListWeb3HolderPerksItem> {
+    async updateWeb3HolderPerk(initOverrides?: RequestInit): Promise<UpdateWeb3HolderPerkResponse> {
         const response = await this.updateWeb3HolderPerkRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
+     */
+    async updateWeb3LaunchRaw(requestParameters: UpdateWeb3LaunchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWeb3LaunchResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWeb3Launch.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/launches/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWeb3LaunchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
+     */
+    async updateWeb3Launch(requestParameters: UpdateWeb3LaunchRequest, initOverrides?: RequestInit): Promise<UpdateWeb3LaunchResponse> {
+        const response = await this.updateWeb3LaunchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4050,6 +4914,44 @@ export class Web3Api extends runtime.BaseAPI {
     }
 
     /**
+     * Replace a launch’s collection perks: `{ perks: [{ config: { type, ... }, active }] }`, one per type; a type left out is removed.
+     */
+    async updateWeb3LaunchPerkRaw(requestParameters: UpdateWeb3LaunchPerkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3LaunchPerksResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWeb3LaunchPerk.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/launches/{id}/perks`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWeb3LaunchPerksResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Replace a launch’s collection perks: `{ perks: [{ config: { type, ... }, active }] }`, one per type; a type left out is removed.
+     */
+    async updateWeb3LaunchPerk(requestParameters: UpdateWeb3LaunchPerkRequest, initOverrides?: RequestInit): Promise<ListWeb3LaunchPerksResponse> {
+        const response = await this.updateWeb3LaunchPerkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
      */
     async updateWeb3MarketplaceKeyRaw(requestParameters: UpdateWeb3MarketplaceKeyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3MarketplaceKeysItem>> {
@@ -4084,6 +4986,120 @@ export class Web3Api extends runtime.BaseAPI {
      */
     async updateWeb3MarketplaceKey(requestParameters: UpdateWeb3MarketplaceKeyRequest, initOverrides?: RequestInit): Promise<ListWeb3MarketplaceKeysItem> {
         const response = await this.updateWeb3MarketplaceKeyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+     */
+    async updateWeb3StoreWalletRaw(requestParameters: UpdateWeb3StoreWalletRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWeb3StoreWalletResponse>> {
+        if (requestParameters.walletId === null || requestParameters.walletId === undefined) {
+            throw new runtime.RequiredError('walletId','Required parameter requestParameters.walletId was null or undefined when calling updateWeb3StoreWallet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/{walletId}`.replace(`{${"walletId"}}`, encodeURIComponent(String(requestParameters.walletId))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWeb3StoreWalletResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+     */
+    async updateWeb3StoreWallet(requestParameters: UpdateWeb3StoreWalletRequest, initOverrides?: RequestInit): Promise<UpdateWeb3StoreWalletResponse> {
+        const response = await this.updateWeb3StoreWalletRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Make a linked wallet the store\'s default selling wallet on its network (EVM or Solana).
+     */
+    async updateWeb3StoreWalletDefaultRaw(requestParameters: UpdateWeb3StoreWalletDefaultRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWeb3StoreWalletsResponse>> {
+        if (requestParameters.walletId === null || requestParameters.walletId === undefined) {
+            throw new runtime.RequiredError('walletId','Required parameter requestParameters.walletId was null or undefined when calling updateWeb3StoreWalletDefault.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/store-wallets/{walletId}/default`.replace(`{${"walletId"}}`, encodeURIComponent(String(requestParameters.walletId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWeb3StoreWalletsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Make a linked wallet the store\'s default selling wallet on its network (EVM or Solana).
+     */
+    async updateWeb3StoreWalletDefault(requestParameters: UpdateWeb3StoreWalletDefaultRequest, initOverrides?: RequestInit): Promise<ListWeb3StoreWalletsResponse> {
+        const response = await this.updateWeb3StoreWalletDefaultRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change a linked wallet: `autoImport` (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and `label`.
+     */
+    async updateWeb3WalletRaw(requestParameters: UpdateWeb3WalletRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWeb3WalletResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWeb3Wallet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/web3/wallets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWeb3WalletResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change a linked wallet: `autoImport` (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and `label`.
+     */
+    async updateWeb3Wallet(requestParameters: UpdateWeb3WalletRequest, initOverrides?: RequestInit): Promise<UpdateWeb3WalletResponse> {
+        const response = await this.updateWeb3WalletRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

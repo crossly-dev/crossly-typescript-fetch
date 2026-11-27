@@ -45,7 +45,7 @@ export interface UpdateTeamRequest {
 export class TeamApi extends runtime.BaseAPI {
 
     /**
-     * Accept a pending team invitation by raw token.
+     * Accept a team invitation by the raw token from its link.
      */
     async createTeamAcceptRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamAcceptResponse>> {
         const queryParameters: any = {};
@@ -71,7 +71,7 @@ export class TeamApi extends runtime.BaseAPI {
     }
 
     /**
-     * Accept a pending team invitation by raw token.
+     * Accept a team invitation by the raw token from its link.
      */
     async createTeamAccept(initOverrides?: RequestInit): Promise<CreateTeamAcceptResponse> {
         const response = await this.createTeamAcceptRaw(initOverrides);
@@ -79,7 +79,7 @@ export class TeamApi extends runtime.BaseAPI {
     }
 
     /**
-     * Mint a team invitation; returns the one-time accept URL.
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      */
     async createTeamInviteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamInviteResponse>> {
         const queryParameters: any = {};
@@ -105,7 +105,7 @@ export class TeamApi extends runtime.BaseAPI {
     }
 
     /**
-     * Mint a team invitation; returns the one-time accept URL.
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      */
     async createTeamInvite(initOverrides?: RequestInit): Promise<CreateTeamInviteResponse> {
         const response = await this.createTeamInviteRaw(initOverrides);

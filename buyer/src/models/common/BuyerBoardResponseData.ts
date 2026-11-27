@@ -37,13 +37,7 @@ export interface BuyerBoardResponseData {
      * @type {string}
      * @memberof BuyerBoardResponseData
      */
-    updatedAt: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BuyerBoardResponseData
-     */
-    isPublic: boolean;
+    title: string;
     /**
      * 
      * @type {string}
@@ -52,16 +46,10 @@ export interface BuyerBoardResponseData {
     description?: string | null;
     /**
      * 
-     * @type {string}
+     * @type {boolean}
      * @memberof BuyerBoardResponseData
      */
-    title: string;
-    /**
-     * 
-     * @type {Array<BuyerBoardResponseDataItems>}
-     * @memberof BuyerBoardResponseData
-     */
-    items: Array<BuyerBoardResponseDataItems>;
+    isPublic: boolean;
     /**
      * 
      * @type {string}
@@ -76,16 +64,28 @@ export interface BuyerBoardResponseData {
     coverUrl?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof BuyerBoardResponseData
+     */
+    ownerName: string;
+    /**
+     * 
      * @type {boolean}
      * @memberof BuyerBoardResponseData
      */
     mine: boolean;
     /**
      * 
+     * @type {Array<BuyerBoardResponseDataItems>}
+     * @memberof BuyerBoardResponseData
+     */
+    items: Array<BuyerBoardResponseDataItems>;
+    /**
+     * 
      * @type {string}
      * @memberof BuyerBoardResponseData
      */
-    ownerName: string;
+    updatedAt: string;
 }
 
 export function BuyerBoardResponseDataFromJSON(json: any): BuyerBoardResponseData {
@@ -99,15 +99,15 @@ export function BuyerBoardResponseDataFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'id': json['id'],
-        'updatedAt': json['updatedAt'],
-        'isPublic': json['isPublic'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
         'title': json['title'],
-        'items': ((json['items'] as Array<any>).map(BuyerBoardResponseDataItemsFromJSON)),
+        'description': !exists(json, 'description') ? undefined : json['description'],
+        'isPublic': json['isPublic'],
         'shareToken': !exists(json, 'shareToken') ? undefined : json['shareToken'],
         'coverUrl': !exists(json, 'coverUrl') ? undefined : json['coverUrl'],
-        'mine': json['mine'],
         'ownerName': json['ownerName'],
+        'mine': json['mine'],
+        'items': ((json['items'] as Array<any>).map(BuyerBoardResponseDataItemsFromJSON)),
+        'updatedAt': json['updatedAt'],
     };
 }
 
@@ -121,15 +121,15 @@ export function BuyerBoardResponseDataToJSON(value?: BuyerBoardResponseData | nu
     return {
         
         'id': value.id,
-        'updatedAt': value.updatedAt,
-        'isPublic': value.isPublic,
-        'description': value.description,
         'title': value.title,
-        'items': ((value.items as Array<any>).map(BuyerBoardResponseDataItemsToJSON)),
+        'description': value.description,
+        'isPublic': value.isPublic,
         'shareToken': value.shareToken,
         'coverUrl': value.coverUrl,
-        'mine': value.mine,
         'ownerName': value.ownerName,
+        'mine': value.mine,
+        'items': ((value.items as Array<any>).map(BuyerBoardResponseDataItemsToJSON)),
+        'updatedAt': value.updatedAt,
     };
 }
 

@@ -20,11 +20,11 @@ import {
     GetVaultMarketIndexFeedSettlementResponseSeriesToJSON,
 } from './GetVaultMarketIndexFeedSettlementResponseSeries';
 import {
-    SlugName,
-    SlugNameFromJSON,
-    SlugNameFromJSONTyped,
-    SlugNameToJSON,
-} from '../common/SlugName';
+    NameSlug,
+    NameSlugFromJSON,
+    NameSlugFromJSONTyped,
+    NameSlugToJSON,
+} from '../common/NameSlug';
 
 /**
  * 
@@ -34,10 +34,10 @@ import {
 export interface GetVaultMarketIndexFeedSettlementResponse {
     /**
      * 
-     * @type {SlugName}
+     * @type {NameSlug}
      * @memberof GetVaultMarketIndexFeedSettlementResponse
      */
-    index: SlugName;
+    index: NameSlug;
     /**
      * 
      * @type {string}
@@ -62,7 +62,7 @@ export function GetVaultMarketIndexFeedSettlementResponseFromJSONTyped(json: any
     }
     return {
         
-        'index': SlugNameFromJSON(json['index']),
+        'index': NameSlugFromJSON(json['index']),
         'method': json['method'],
         'series': ((json['series'] as Array<any>).map(GetVaultMarketIndexFeedSettlementResponseSeriesFromJSON)),
     };
@@ -77,7 +77,7 @@ export function GetVaultMarketIndexFeedSettlementResponseToJSON(value?: GetVault
     }
     return {
         
-        'index': SlugNameToJSON(value.index),
+        'index': NameSlugToJSON(value.index),
         'method': value.method,
         'series': ((value.series as Array<any>).map(GetVaultMarketIndexFeedSettlementResponseSeriesToJSON)),
     };

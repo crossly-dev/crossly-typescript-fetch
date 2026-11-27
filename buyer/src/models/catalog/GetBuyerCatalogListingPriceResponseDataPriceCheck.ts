@@ -30,19 +30,7 @@ export interface GetBuyerCatalogListingPriceResponseDataPriceCheck {
      * @type {number}
      * @memberof GetBuyerCatalogListingPriceResponseDataPriceCheck
      */
-    sales: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetBuyerCatalogListingPriceResponseDataPriceCheck
-     */
     medianCents: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetBuyerCatalogListingPriceResponseDataPriceCheck
-     */
-    days: number;
     /**
      * 
      * @type {number}
@@ -57,6 +45,18 @@ export interface GetBuyerCatalogListingPriceResponseDataPriceCheck {
     highCents: number;
     /**
      * 
+     * @type {number}
+     * @memberof GetBuyerCatalogListingPriceResponseDataPriceCheck
+     */
+    sales: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerCatalogListingPriceResponseDataPriceCheck
+     */
+    days: number;
+    /**
+     * 
      * @type {string}
      * @memberof GetBuyerCatalogListingPriceResponseDataPriceCheck
      */
@@ -68,9 +68,9 @@ export interface GetBuyerCatalogListingPriceResponseDataPriceCheck {
 * @enum {string}
 */
 export enum GetBuyerCatalogListingPriceResponseDataPriceCheckVerdictEnum {
-    High = 'high',
-    Fair = 'fair',
     Good = 'good',
+    Fair = 'fair',
+    High = 'high',
     Great = 'great'
 }
 
@@ -85,11 +85,11 @@ export function GetBuyerCatalogListingPriceResponseDataPriceCheckFromJSONTyped(j
     return {
         
         'verdict': json['verdict'],
-        'sales': json['sales'],
         'medianCents': json['medianCents'],
-        'days': json['days'],
         'lowCents': json['lowCents'],
         'highCents': json['highCents'],
+        'sales': json['sales'],
+        'days': json['days'],
         'lastSoldAt': json['lastSoldAt'],
     };
 }
@@ -104,11 +104,11 @@ export function GetBuyerCatalogListingPriceResponseDataPriceCheckToJSON(value?: 
     return {
         
         'verdict': value.verdict,
-        'sales': value.sales,
         'medianCents': value.medianCents,
-        'days': value.days,
         'lowCents': value.lowCents,
         'highCents': value.highCents,
+        'sales': value.sales,
+        'days': value.days,
         'lastSoldAt': value.lastSoldAt,
     };
 }

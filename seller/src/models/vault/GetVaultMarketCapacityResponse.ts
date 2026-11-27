@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetVaultMarketCapacityResponsePerKeyItem,
+    GetVaultMarketCapacityResponsePerKeyItemFromJSON,
+    GetVaultMarketCapacityResponsePerKeyItemFromJSONTyped,
+    GetVaultMarketCapacityResponsePerKeyItemToJSON,
+} from './GetVaultMarketCapacityResponsePerKeyItem';
+
 /**
  * 
  * @export
@@ -81,10 +88,10 @@ export interface GetVaultMarketCapacityResponse {
     unpriced: Array<string>;
     /**
      * 
-     * @type {Array<any>}
+     * @type {Array<GetVaultMarketCapacityResponsePerKeyItem>}
      * @memberof GetVaultMarketCapacityResponse
      */
-    perKey: Array<any>;
+    perKey: Array<GetVaultMarketCapacityResponsePerKeyItem>;
     /**
      * 
      * @type {Array<string>}
@@ -113,7 +120,7 @@ export function GetVaultMarketCapacityResponseFromJSONTyped(json: any, ignoreDis
         'plannedCents': json['plannedCents'],
         'daysToComplete': json['daysToComplete'],
         'unpriced': json['unpriced'],
-        'perKey': json['perKey'],
+        'perKey': ((json['perKey'] as Array<any>).map(GetVaultMarketCapacityResponsePerKeyItemFromJSON)),
         'notes': json['notes'],
     };
 }
@@ -137,7 +144,7 @@ export function GetVaultMarketCapacityResponseToJSON(value?: GetVaultMarketCapac
         'plannedCents': value.plannedCents,
         'daysToComplete': value.daysToComplete,
         'unpriced': value.unpriced,
-        'perKey': value.perKey,
+        'perKey': ((value.perKey as Array<any>).map(GetVaultMarketCapacityResponsePerKeyItemToJSON)),
         'notes': value.notes,
     };
 }

@@ -25,6 +25,12 @@ import {
     GetVaultMarketPortfolioHistoryResponseSeriesFromJSONTyped,
     GetVaultMarketPortfolioHistoryResponseSeriesToJSON,
 } from './GetVaultMarketPortfolioHistoryResponseSeries';
+import {
+    GetVaultMarketPortfolioHistoryResponseToday,
+    GetVaultMarketPortfolioHistoryResponseTodayFromJSON,
+    GetVaultMarketPortfolioHistoryResponseTodayFromJSONTyped,
+    GetVaultMarketPortfolioHistoryResponseTodayToJSON,
+} from './GetVaultMarketPortfolioHistoryResponseToday';
 
 /**
  * 
@@ -44,6 +50,12 @@ export interface GetVaultMarketPortfolioHistoryResponse {
      * @memberof GetVaultMarketPortfolioHistoryResponse
      */
     now: GetVaultMarketPortfolioHistoryResponseNow;
+    /**
+     * 
+     * @type {GetVaultMarketPortfolioHistoryResponseToday}
+     * @memberof GetVaultMarketPortfolioHistoryResponse
+     */
+    today: GetVaultMarketPortfolioHistoryResponseToday;
 }
 
 export function GetVaultMarketPortfolioHistoryResponseFromJSON(json: any): GetVaultMarketPortfolioHistoryResponse {
@@ -58,6 +70,7 @@ export function GetVaultMarketPortfolioHistoryResponseFromJSONTyped(json: any, i
         
         'series': ((json['series'] as Array<any>).map(GetVaultMarketPortfolioHistoryResponseSeriesFromJSON)),
         'now': GetVaultMarketPortfolioHistoryResponseNowFromJSON(json['now']),
+        'today': GetVaultMarketPortfolioHistoryResponseTodayFromJSON(json['today']),
     };
 }
 
@@ -72,6 +85,7 @@ export function GetVaultMarketPortfolioHistoryResponseToJSON(value?: GetVaultMar
         
         'series': ((value.series as Array<any>).map(GetVaultMarketPortfolioHistoryResponseSeriesToJSON)),
         'now': GetVaultMarketPortfolioHistoryResponseNowToJSON(value.now),
+        'today': GetVaultMarketPortfolioHistoryResponseTodayToJSON(value.today),
     };
 }
 

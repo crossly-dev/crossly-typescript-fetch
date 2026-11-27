@@ -54,7 +54,13 @@ export interface ListVaultMarketProEventsItem {
      * @type {number}
      * @memberof ListVaultMarketProEventsItem
      */
-    seq: number;
+    priceCents?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListVaultMarketProEventsItem
+     */
+    tradeId?: string | null;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -66,13 +72,7 @@ export interface ListVaultMarketProEventsItem {
      * @type {number}
      * @memberof ListVaultMarketProEventsItem
      */
-    priceCents?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListVaultMarketProEventsItem
-     */
-    tradeId?: string | null;
+    seq: number;
 }
 
 export function ListVaultMarketProEventsItemFromJSON(json: any): ListVaultMarketProEventsItem {
@@ -90,10 +90,10 @@ export function ListVaultMarketProEventsItemFromJSONTyped(json: any, ignoreDiscr
         'quantity': !exists(json, 'quantity') ? undefined : json['quantity'],
         'orderId': json['orderId'],
         'kind': json['kind'],
-        'seq': json['seq'],
-        'detail': !exists(json, 'detail') ? undefined : json['detail'],
         'priceCents': !exists(json, 'priceCents') ? undefined : json['priceCents'],
         'tradeId': !exists(json, 'tradeId') ? undefined : json['tradeId'],
+        'detail': !exists(json, 'detail') ? undefined : json['detail'],
+        'seq': json['seq'],
     };
 }
 
@@ -111,10 +111,10 @@ export function ListVaultMarketProEventsItemToJSON(value?: ListVaultMarketProEve
         'quantity': value.quantity,
         'orderId': value.orderId,
         'kind': value.kind,
-        'seq': value.seq,
-        'detail': value.detail,
         'priceCents': value.priceCents,
         'tradeId': value.tradeId,
+        'detail': value.detail,
+        'seq': value.seq,
     };
 }
 

@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListPassportsItem,
-    ListPassportsItemFromJSON,
-    ListPassportsItemFromJSONTyped,
-    ListPassportsItemToJSON,
-} from './ListPassportsItem';
+    PassportResponseData,
+    PassportResponseDataFromJSON,
+    PassportResponseDataFromJSONTyped,
+    PassportResponseDataToJSON,
+} from './PassportResponseData';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface PassportResponse {
     /**
      * 
-     * @type {ListPassportsItem}
+     * @type {PassportResponseData}
      * @memberof PassportResponse
      */
-    data: ListPassportsItem;
+    data: PassportResponseData;
 }
 
 export function PassportResponseFromJSON(json: any): PassportResponse {
@@ -44,7 +44,7 @@ export function PassportResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'data': ListPassportsItemFromJSON(json['data']),
+        'data': PassportResponseDataFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function PassportResponseToJSON(value?: PassportResponse | null): any {
     }
     return {
         
-        'data': ListPassportsItemToJSON(value.data),
+        'data': PassportResponseDataToJSON(value.data),
     };
 }
 

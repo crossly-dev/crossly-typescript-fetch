@@ -51,16 +51,22 @@ export interface CreateTradeBlockEvolutionRecipeResponseRecipe {
     updatedAt: Date;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
      */
-    note?: string | null;
+    version: number;
     /**
      * 
      * @type {Date}
      * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
      */
     reviewedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
+     */
+    note?: string | null;
     /**
      * 
      * @type {string}
@@ -73,6 +79,12 @@ export interface CreateTradeBlockEvolutionRecipeResponseRecipe {
      * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
      */
     creatorSubjectId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
+     */
+    outputCosmeticId: string;
     /**
      * 
      * @type {string}
@@ -111,18 +123,6 @@ export interface CreateTradeBlockEvolutionRecipeResponseRecipe {
     inputBGradeKey?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
-     */
-    outputCosmeticId: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
-     */
-    version: number;
-    /**
-     * 
      * @type {Date}
      * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
      */
@@ -144,18 +144,18 @@ export function CreateTradeBlockEvolutionRecipeResponseRecipeFromJSONTyped(json:
         'active': json['active'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
-        'note': !exists(json, 'note') ? undefined : json['note'],
+        'version': json['version'],
         'reviewedAt': !exists(json, 'reviewedAt') ? undefined : (json['reviewedAt'] === null ? null : new Date(json['reviewedAt'])),
+        'note': !exists(json, 'note') ? undefined : json['note'],
         'merchantId': json['merchantId'],
         'creatorSubjectId': json['creatorSubjectId'],
+        'outputCosmeticId': json['outputCosmeticId'],
         'inputAVariantId': json['inputAVariantId'],
         'inputACondition': !exists(json, 'inputACondition') ? undefined : json['inputACondition'],
         'inputAGradeKey': !exists(json, 'inputAGradeKey') ? undefined : json['inputAGradeKey'],
         'inputBVariantId': !exists(json, 'inputBVariantId') ? undefined : json['inputBVariantId'],
         'inputBCondition': !exists(json, 'inputBCondition') ? undefined : json['inputBCondition'],
         'inputBGradeKey': !exists(json, 'inputBGradeKey') ? undefined : json['inputBGradeKey'],
-        'outputCosmeticId': json['outputCosmeticId'],
-        'version': json['version'],
         'frozenAt': !exists(json, 'frozenAt') ? undefined : (json['frozenAt'] === null ? null : new Date(json['frozenAt'])),
     };
 }
@@ -174,18 +174,18 @@ export function CreateTradeBlockEvolutionRecipeResponseRecipeToJSON(value?: Crea
         'active': value.active,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
-        'note': value.note,
+        'version': value.version,
         'reviewedAt': value.reviewedAt === undefined ? undefined : (value.reviewedAt === null ? null : value.reviewedAt.toISOString()),
+        'note': value.note,
         'merchantId': value.merchantId,
         'creatorSubjectId': value.creatorSubjectId,
+        'outputCosmeticId': value.outputCosmeticId,
         'inputAVariantId': value.inputAVariantId,
         'inputACondition': value.inputACondition,
         'inputAGradeKey': value.inputAGradeKey,
         'inputBVariantId': value.inputBVariantId,
         'inputBCondition': value.inputBCondition,
         'inputBGradeKey': value.inputBGradeKey,
-        'outputCosmeticId': value.outputCosmeticId,
-        'version': value.version,
         'frozenAt': value.frozenAt === undefined ? undefined : (value.frozenAt === null ? null : value.frozenAt.toISOString()),
     };
 }

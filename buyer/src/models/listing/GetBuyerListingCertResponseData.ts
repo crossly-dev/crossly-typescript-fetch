@@ -93,8 +93,8 @@ export interface GetBuyerListingCertResponseData {
 */
 export enum GetBuyerListingCertResponseDataStatusEnum {
     Verified = 'verified',
-    NotFound = 'not_found',
     Mismatch = 'mismatch',
+    NotFound = 'not_found',
     Unchecked = 'unchecked'
 }
 

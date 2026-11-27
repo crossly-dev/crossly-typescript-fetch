@@ -106,8 +106,8 @@ export enum GetVaultMarketTaxResponseSalesHowEnum {
 * @enum {string}
 */
 export enum GetVaultMarketTaxResponseSalesTermEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function GetVaultMarketTaxResponseSalesFromJSON(json: any): GetVaultMarketTaxResponseSales {

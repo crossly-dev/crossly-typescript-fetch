@@ -39,8 +39,8 @@ export interface GetStallQuoteResponseQuoteOwner {
 */
 export enum GetStallQuoteResponseQuoteOwnerKindEnum {
     Platform = 'platform',
-    Street = 'street',
-    Plot = 'plot'
+    Plot = 'plot',
+    Street = 'street'
 }
 
 export function GetStallQuoteResponseQuoteOwnerFromJSON(json: any): GetStallQuoteResponseQuoteOwner {

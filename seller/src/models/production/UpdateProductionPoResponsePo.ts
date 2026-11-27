@@ -42,13 +42,25 @@ export interface UpdateProductionPoResponsePo {
      * @type {string}
      * @memberof UpdateProductionPoResponsePo
      */
+    status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateProductionPoResponsePo
+     */
     notes?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateProductionPoResponsePo
      */
-    status: string;
+    supplierName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateProductionPoResponsePo
+     */
+    trackingCode?: string | null;
     /**
      * 
      * @type {string}
@@ -61,18 +73,6 @@ export interface UpdateProductionPoResponsePo {
      * @memberof UpdateProductionPoResponsePo
      */
     candidateId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateProductionPoResponsePo
-     */
-    trackingCode?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateProductionPoResponsePo
-     */
-    supplierName?: string | null;
     /**
      * 
      * @type {string}
@@ -172,12 +172,12 @@ export function UpdateProductionPoResponsePoFromJSONTyped(json: any, ignoreDiscr
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
-        'notes': !exists(json, 'notes') ? undefined : json['notes'],
         'status': json['status'],
+        'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'supplierName': !exists(json, 'supplierName') ? undefined : json['supplierName'],
+        'trackingCode': !exists(json, 'trackingCode') ? undefined : json['trackingCode'],
         'merchantId': json['merchantId'],
         'candidateId': json['candidateId'],
-        'trackingCode': !exists(json, 'trackingCode') ? undefined : json['trackingCode'],
-        'supplierName': !exists(json, 'supplierName') ? undefined : json['supplierName'],
         'supplierContact': !exists(json, 'supplierContact') ? undefined : json['supplierContact'],
         'freightMode': !exists(json, 'freightMode') ? undefined : json['freightMode'],
         'estimateLandedCents': !exists(json, 'estimateLandedCents') ? undefined : json['estimateLandedCents'],
@@ -207,12 +207,12 @@ export function UpdateProductionPoResponsePoToJSON(value?: UpdateProductionPoRes
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
-        'notes': value.notes,
         'status': value.status,
+        'notes': value.notes,
+        'supplierName': value.supplierName,
+        'trackingCode': value.trackingCode,
         'merchantId': value.merchantId,
         'candidateId': value.candidateId,
-        'trackingCode': value.trackingCode,
-        'supplierName': value.supplierName,
         'supplierContact': value.supplierContact,
         'freightMode': value.freightMode,
         'estimateLandedCents': value.estimateLandedCents,

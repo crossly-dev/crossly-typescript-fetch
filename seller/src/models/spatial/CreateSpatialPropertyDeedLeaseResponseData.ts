@@ -39,6 +39,12 @@ export interface CreateSpatialPropertyDeedLeaseResponseData {
     status: string;
     /**
      * 
+     * @type {string}
+     * @memberof CreateSpatialPropertyDeedLeaseResponseData
+     */
+    ownerUserId: string;
+    /**
+     * 
      * @type {Date}
      * @memberof CreateSpatialPropertyDeedLeaseResponseData
      */
@@ -48,25 +54,19 @@ export interface CreateSpatialPropertyDeedLeaseResponseData {
      * @type {string}
      * @memberof CreateSpatialPropertyDeedLeaseResponseData
      */
-    ownerUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSpatialPropertyDeedLeaseResponseData
-     */
-    endReason?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof CreateSpatialPropertyDeedLeaseResponseData
-     */
-    paidThrough?: Date | null;
+    rail?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateSpatialPropertyDeedLeaseResponseData
      */
     plotId: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CreateSpatialPropertyDeedLeaseResponseData
+     */
+    paidThrough?: Date | null;
     /**
      * 
      * @type {string}
@@ -97,6 +97,18 @@ export interface CreateSpatialPropertyDeedLeaseResponseData {
      * @memberof CreateSpatialPropertyDeedLeaseResponseData
      */
     termsFrozenAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialPropertyDeedLeaseResponseData
+     */
+    endReason?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateSpatialPropertyDeedLeaseResponseData
+     */
+    autopay: boolean;
 }
 
 export function CreateSpatialPropertyDeedLeaseResponseDataFromJSON(json: any): CreateSpatialPropertyDeedLeaseResponseData {
@@ -112,16 +124,18 @@ export function CreateSpatialPropertyDeedLeaseResponseDataFromJSONTyped(json: an
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
-        'endedAt': !exists(json, 'endedAt') ? undefined : (json['endedAt'] === null ? null : new Date(json['endedAt'])),
         'ownerUserId': json['ownerUserId'],
-        'endReason': !exists(json, 'endReason') ? undefined : json['endReason'],
-        'paidThrough': !exists(json, 'paidThrough') ? undefined : (json['paidThrough'] === null ? null : new Date(json['paidThrough'])),
+        'endedAt': !exists(json, 'endedAt') ? undefined : (json['endedAt'] === null ? null : new Date(json['endedAt'])),
+        'rail': !exists(json, 'rail') ? undefined : json['rail'],
         'plotId': json['plotId'],
+        'paidThrough': !exists(json, 'paidThrough') ? undefined : (json['paidThrough'] === null ? null : new Date(json['paidThrough'])),
         'deedId': json['deedId'],
         'tenantUserId': !exists(json, 'tenantUserId') ? undefined : json['tenantUserId'],
         'tenantSceneId': !exists(json, 'tenantSceneId') ? undefined : json['tenantSceneId'],
         'rentWeeklyCents': json['rentWeeklyCents'],
         'termsFrozenAt': !exists(json, 'termsFrozenAt') ? undefined : (json['termsFrozenAt'] === null ? null : new Date(json['termsFrozenAt'])),
+        'endReason': !exists(json, 'endReason') ? undefined : json['endReason'],
+        'autopay': json['autopay'],
     };
 }
 
@@ -137,16 +151,18 @@ export function CreateSpatialPropertyDeedLeaseResponseDataToJSON(value?: CreateS
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
-        'endedAt': value.endedAt === undefined ? undefined : (value.endedAt === null ? null : value.endedAt.toISOString()),
         'ownerUserId': value.ownerUserId,
-        'endReason': value.endReason,
-        'paidThrough': value.paidThrough === undefined ? undefined : (value.paidThrough === null ? null : value.paidThrough.toISOString()),
+        'endedAt': value.endedAt === undefined ? undefined : (value.endedAt === null ? null : value.endedAt.toISOString()),
+        'rail': value.rail,
         'plotId': value.plotId,
+        'paidThrough': value.paidThrough === undefined ? undefined : (value.paidThrough === null ? null : value.paidThrough.toISOString()),
         'deedId': value.deedId,
         'tenantUserId': value.tenantUserId,
         'tenantSceneId': value.tenantSceneId,
         'rentWeeklyCents': value.rentWeeklyCents,
         'termsFrozenAt': value.termsFrozenAt === undefined ? undefined : (value.termsFrozenAt === null ? null : value.termsFrozenAt.toISOString()),
+        'endReason': value.endReason,
+        'autopay': value.autopay,
     };
 }
 

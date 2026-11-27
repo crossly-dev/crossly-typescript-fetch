@@ -74,7 +74,8 @@ export enum CreateVaultMarketLearnQuizResponseConceptEnum {
     Liens = 'liens',
     Auctions = 'auctions',
     Indexes = 'indexes',
-    Marks = 'marks'
+    Marks = 'marks',
+    VaultShares = 'vault-shares'
 }
 
 export function CreateVaultMarketLearnQuizResponseFromJSON(json: any): CreateVaultMarketLearnQuizResponse {

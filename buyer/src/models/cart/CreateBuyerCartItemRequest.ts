@@ -32,6 +32,12 @@ export interface CreateBuyerCartItemRequest {
      */
     quantity?: number;
     /**
+     * The option (variants[].id) on a listing with options.
+     * @type {string}
+     * @memberof CreateBuyerCartItemRequest
+     */
+    listingVariantId?: string;
+    /**
      * Where in Crossly World it was added, e.g. room:<publicSlug>.
      * @type {string}
      * @memberof CreateBuyerCartItemRequest
@@ -51,6 +57,7 @@ export function CreateBuyerCartItemRequestFromJSONTyped(json: any, ignoreDiscrim
         
         'listingSlug': json['listingSlug'],
         'quantity': !exists(json, 'quantity') ? undefined : json['quantity'],
+        'listingVariantId': !exists(json, 'listingVariantId') ? undefined : json['listingVariantId'],
         'via': !exists(json, 'via') ? undefined : json['via'],
     };
 }
@@ -66,6 +73,7 @@ export function CreateBuyerCartItemRequestToJSON(value?: CreateBuyerCartItemRequ
         
         'listingSlug': value.listingSlug,
         'quantity': value.quantity,
+        'listingVariantId': value.listingVariantId,
         'via': value.via,
     };
 }

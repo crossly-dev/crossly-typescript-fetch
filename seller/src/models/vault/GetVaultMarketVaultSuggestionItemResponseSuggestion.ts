@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize,
+    GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalizeFromJSON,
+    GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalizeFromJSONTyped,
+    GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalizeToJSON,
+} from './GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize';
+import {
     GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit,
     GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExitFromJSON,
     GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExitFromJSONTyped,
@@ -164,6 +170,12 @@ export interface GetVaultMarketVaultSuggestionItemResponseSuggestion {
      * @memberof GetVaultMarketVaultSuggestionItemResponseSuggestion
      */
     marketPath: string;
+    /**
+     * 
+     * @type {GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize}
+     * @memberof GetVaultMarketVaultSuggestionItemResponseSuggestion
+     */
+    fractionalize?: GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize | null;
 }
 
 /**
@@ -213,6 +225,7 @@ export function GetVaultMarketVaultSuggestionItemResponseSuggestionFromJSONTyped
         'parts': GetVaultMarketVaultSuggestionItemResponseSuggestionPartsFromJSON(json['parts']),
         'reasons': json['reasons'],
         'marketPath': json['marketPath'],
+        'fractionalize': !exists(json, 'fractionalize') ? undefined : GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalizeFromJSON(json['fractionalize']),
     };
 }
 
@@ -245,6 +258,7 @@ export function GetVaultMarketVaultSuggestionItemResponseSuggestionToJSON(value?
         'parts': GetVaultMarketVaultSuggestionItemResponseSuggestionPartsToJSON(value.parts),
         'reasons': value.reasons,
         'marketPath': value.marketPath,
+        'fractionalize': GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalizeToJSON(value.fractionalize),
     };
 }
 

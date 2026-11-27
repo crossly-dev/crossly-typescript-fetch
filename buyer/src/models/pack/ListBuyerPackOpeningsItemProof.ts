@@ -28,16 +28,10 @@ import {
 export interface ListBuyerPackOpeningsItemProof {
     /**
      * 
-     * @type {number}
-     * @memberof ListBuyerPackOpeningsItemProof
-     */
-    nonce: number;
-    /**
-     * 
      * @type {string}
      * @memberof ListBuyerPackOpeningsItemProof
      */
-    tierId?: string | null;
+    serverSeedHash: string;
     /**
      * 
      * @type {string}
@@ -49,19 +43,13 @@ export interface ListBuyerPackOpeningsItemProof {
      * @type {string}
      * @memberof ListBuyerPackOpeningsItemProof
      */
-    serverSeedHash: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPackOpeningsItemProof
-     */
     clientSeed: string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ListBuyerPackOpeningsItemProof
      */
-    poolItemId?: string | null;
+    nonce: number;
     /**
      * 
      * @type {Array<string>}
@@ -74,6 +62,18 @@ export interface ListBuyerPackOpeningsItemProof {
      * @memberof ListBuyerPackOpeningsItemProof
      */
     tierWeights?: Array<ListBuyerPackOpeningsItemProofTierWeights> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPackOpeningsItemProof
+     */
+    tierId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPackOpeningsItemProof
+     */
+    poolItemId?: string | null;
 }
 
 export function ListBuyerPackOpeningsItemProofFromJSON(json: any): ListBuyerPackOpeningsItemProof {
@@ -86,14 +86,14 @@ export function ListBuyerPackOpeningsItemProofFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'nonce': json['nonce'],
-        'tierId': !exists(json, 'tierId') ? undefined : json['tierId'],
-        'serverSeed': !exists(json, 'serverSeed') ? undefined : json['serverSeed'],
         'serverSeedHash': json['serverSeedHash'],
+        'serverSeed': !exists(json, 'serverSeed') ? undefined : json['serverSeed'],
         'clientSeed': json['clientSeed'],
-        'poolItemId': !exists(json, 'poolItemId') ? undefined : json['poolItemId'],
+        'nonce': json['nonce'],
         'tierItemIds': !exists(json, 'tierItemIds') ? undefined : json['tierItemIds'],
         'tierWeights': !exists(json, 'tierWeights') ? undefined : (json['tierWeights'] === null ? null : (json['tierWeights'] as Array<any>).map(ListBuyerPackOpeningsItemProofTierWeightsFromJSON)),
+        'tierId': !exists(json, 'tierId') ? undefined : json['tierId'],
+        'poolItemId': !exists(json, 'poolItemId') ? undefined : json['poolItemId'],
     };
 }
 
@@ -106,14 +106,14 @@ export function ListBuyerPackOpeningsItemProofToJSON(value?: ListBuyerPackOpenin
     }
     return {
         
-        'nonce': value.nonce,
-        'tierId': value.tierId,
-        'serverSeed': value.serverSeed,
         'serverSeedHash': value.serverSeedHash,
+        'serverSeed': value.serverSeed,
         'clientSeed': value.clientSeed,
-        'poolItemId': value.poolItemId,
+        'nonce': value.nonce,
         'tierItemIds': value.tierItemIds,
         'tierWeights': value.tierWeights === undefined ? undefined : (value.tierWeights === null ? null : (value.tierWeights as Array<any>).map(ListBuyerPackOpeningsItemProofTierWeightsToJSON)),
+        'tierId': value.tierId,
+        'poolItemId': value.poolItemId,
     };
 }
 

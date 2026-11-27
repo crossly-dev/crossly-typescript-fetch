@@ -44,9 +44,9 @@ export interface CreateBuyerLockonConfirmResponseHudFacts {
 * @enum {string}
 */
 export enum CreateBuyerLockonConfirmResponseHudFactsToneEnum {
-    Good = 'good',
+    Neutral = 'neutral',
     Warn = 'warn',
-    Neutral = 'neutral'
+    Good = 'good'
 }
 
 export function CreateBuyerLockonConfirmResponseHudFactsFromJSON(json: any): CreateBuyerLockonConfirmResponseHudFacts {

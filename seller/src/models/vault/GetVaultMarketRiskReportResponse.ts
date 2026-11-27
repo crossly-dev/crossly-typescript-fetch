@@ -32,6 +32,12 @@ import {
     GetVaultMarketRiskReportResponseConcentrationToJSON,
 } from './GetVaultMarketRiskReportResponseConcentration';
 import {
+    GetVaultMarketRiskReportResponseCounterparty,
+    GetVaultMarketRiskReportResponseCounterpartyFromJSON,
+    GetVaultMarketRiskReportResponseCounterpartyFromJSONTyped,
+    GetVaultMarketRiskReportResponseCounterpartyToJSON,
+} from './GetVaultMarketRiskReportResponseCounterparty';
+import {
     GetVaultMarketRiskReportResponseLvar,
     GetVaultMarketRiskReportResponseLvarFromJSON,
     GetVaultMarketRiskReportResponseLvarFromJSONTyped,
@@ -106,6 +112,12 @@ export interface GetVaultMarketRiskReportResponse {
     concentration: GetVaultMarketRiskReportResponseConcentration;
     /**
      * 
+     * @type {GetVaultMarketRiskReportResponseCounterparty}
+     * @memberof GetVaultMarketRiskReportResponse
+     */
+    counterparty: GetVaultMarketRiskReportResponseCounterparty;
+    /**
+     * 
      * @type {GetVaultMarketRiskReportResponsePartnerDcm}
      * @memberof GetVaultMarketRiskReportResponse
      */
@@ -129,6 +141,7 @@ export function GetVaultMarketRiskReportResponseFromJSONTyped(json: any, ignoreD
         'lvar': GetVaultMarketRiskReportResponseLvarFromJSON(json['lvar']),
         'stress': GetVaultMarketRiskReportResponseStressFromJSON(json['stress']),
         'concentration': GetVaultMarketRiskReportResponseConcentrationFromJSON(json['concentration']),
+        'counterparty': GetVaultMarketRiskReportResponseCounterpartyFromJSON(json['counterparty']),
         'partnerDcm': GetVaultMarketRiskReportResponsePartnerDcmFromJSON(json['partnerDcm']),
     };
 }
@@ -149,6 +162,7 @@ export function GetVaultMarketRiskReportResponseToJSON(value?: GetVaultMarketRis
         'lvar': GetVaultMarketRiskReportResponseLvarToJSON(value.lvar),
         'stress': GetVaultMarketRiskReportResponseStressToJSON(value.stress),
         'concentration': GetVaultMarketRiskReportResponseConcentrationToJSON(value.concentration),
+        'counterparty': GetVaultMarketRiskReportResponseCounterpartyToJSON(value.counterparty),
         'partnerDcm': GetVaultMarketRiskReportResponsePartnerDcmToJSON(value.partnerDcm),
     };
 }

@@ -50,6 +50,12 @@ export interface GetAnalyticBookkeepingResponseMonthlyPL {
      */
     shippingCosts: number;
     /**
+     * Mileage and manual expenses.
+     * @type {number}
+     * @memberof GetAnalyticBookkeepingResponseMonthlyPL
+     */
+    otherExpenses: number;
+    /**
      * 
      * @type {number}
      * @memberof GetAnalyticBookkeepingResponseMonthlyPL
@@ -72,6 +78,7 @@ export function GetAnalyticBookkeepingResponseMonthlyPLFromJSONTyped(json: any, 
         'cogs': json['cogs'],
         'platformFees': json['platformFees'],
         'shippingCosts': json['shippingCosts'],
+        'otherExpenses': json['otherExpenses'],
         'netProfit': json['netProfit'],
     };
 }
@@ -90,6 +97,7 @@ export function GetAnalyticBookkeepingResponseMonthlyPLToJSON(value?: GetAnalyti
         'cogs': value.cogs,
         'platformFees': value.platformFees,
         'shippingCosts': value.shippingCosts,
+        'otherExpenses': value.otherExpenses,
         'netProfit': value.netProfit,
     };
 }

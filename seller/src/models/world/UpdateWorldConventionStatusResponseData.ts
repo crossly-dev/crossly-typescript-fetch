@@ -33,8 +33,8 @@ export interface UpdateWorldConventionStatusResponseData {
 */
 export enum UpdateWorldConventionStatusResponseDataStatusEnum {
     Live = 'live',
-    Open = 'open',
     Cancelled = 'cancelled',
+    Open = 'open',
     Ended = 'ended'
 }
 

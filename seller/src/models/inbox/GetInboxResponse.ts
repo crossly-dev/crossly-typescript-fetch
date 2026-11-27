@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetInboxResponseMessages,
-    GetInboxResponseMessagesFromJSON,
-    GetInboxResponseMessagesFromJSONTyped,
-    GetInboxResponseMessagesToJSON,
-} from './GetInboxResponseMessages';
+    CreateInboxSendOfferResponseMessage,
+    CreateInboxSendOfferResponseMessageFromJSON,
+    CreateInboxSendOfferResponseMessageFromJSONTyped,
+    CreateInboxSendOfferResponseMessageToJSON,
+} from './CreateInboxSendOfferResponseMessage';
 
 /**
  * 
@@ -28,10 +28,58 @@ import {
 export interface GetInboxResponse {
     /**
      * 
-     * @type {Array<GetInboxResponseMessages>}
+     * @type {Array<CreateInboxSendOfferResponseMessage>}
      * @memberof GetInboxResponse
      */
-    messages: Array<GetInboxResponseMessages>;
+    messages: Array<CreateInboxSendOfferResponseMessage>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    listingId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    itemTitle?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    itemThumbnail?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    itemUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    crosslyListingSlug?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInboxResponse
+     */
+    itemPrice?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    itemCurrency?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetInboxResponse
+     */
+    canSendOffer: boolean;
     /**
      * 
      * @type {string}
@@ -55,25 +103,31 @@ export interface GetInboxResponse {
      * @type {string}
      * @memberof GetInboxResponse
      */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetInboxResponse
-     */
     platform: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetInboxResponse
-     */
-    listingId?: string | null;
     /**
      * 
      * @type {number}
      * @memberof GetInboxResponse
      */
     accountSlot: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    source?: string | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetInboxResponse
+     */
+    labels: Array<string>;
     /**
      * 
      * @type {string}
@@ -97,12 +151,6 @@ export interface GetInboxResponse {
      * @type {string}
      * @memberof GetInboxResponse
      */
-    subject?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetInboxResponse
-     */
     platformConversationId: string;
     /**
      * 
@@ -110,6 +158,18 @@ export interface GetInboxResponse {
      * @memberof GetInboxResponse
      */
     buyerPlatformId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    buyerAvatarUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInboxResponse
+     */
+    subject?: string | null;
     /**
      * 
      * @type {boolean}
@@ -152,6 +212,18 @@ export interface GetInboxResponse {
      * @memberof GetInboxResponse
      */
     lastMessageAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetInboxResponse
+     */
+    supersededAt?: Date | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetInboxResponse
+     */
+    isStarred: boolean;
 }
 
 export function GetInboxResponseFromJSON(json: any): GetInboxResponse {
@@ -164,20 +236,30 @@ export function GetInboxResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'messages': ((json['messages'] as Array<any>).map(GetInboxResponseMessagesFromJSON)),
+        'messages': ((json['messages'] as Array<any>).map(CreateInboxSendOfferResponseMessageFromJSON)),
+        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
+        'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
+        'itemThumbnail': !exists(json, 'itemThumbnail') ? undefined : json['itemThumbnail'],
+        'itemUrl': !exists(json, 'itemUrl') ? undefined : json['itemUrl'],
+        'crosslyListingSlug': !exists(json, 'crosslyListingSlug') ? undefined : json['crosslyListingSlug'],
+        'itemPrice': !exists(json, 'itemPrice') ? undefined : json['itemPrice'],
+        'itemCurrency': !exists(json, 'itemCurrency') ? undefined : json['itemCurrency'],
+        'canSendOffer': json['canSendOffer'],
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
-        'status': json['status'],
         'platform': json['platform'],
-        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'accountSlot': json['accountSlot'],
+        'status': json['status'],
+        'source': !exists(json, 'source') ? undefined : json['source'],
+        'labels': json['labels'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
         'buyerUsername': !exists(json, 'buyerUsername') ? undefined : json['buyerUsername'],
-        'subject': !exists(json, 'subject') ? undefined : json['subject'],
         'platformConversationId': json['platformConversationId'],
         'buyerPlatformId': !exists(json, 'buyerPlatformId') ? undefined : json['buyerPlatformId'],
+        'buyerAvatarUrl': !exists(json, 'buyerAvatarUrl') ? undefined : json['buyerAvatarUrl'],
+        'subject': !exists(json, 'subject') ? undefined : json['subject'],
         'isRead': json['isRead'],
         'isHidden': json['isHidden'],
         'hasOffer': json['hasOffer'],
@@ -185,6 +267,8 @@ export function GetInboxResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
         'offerStatus': !exists(json, 'offerStatus') ? undefined : json['offerStatus'],
         'platformConversationUrl': !exists(json, 'platformConversationUrl') ? undefined : json['platformConversationUrl'],
         'lastMessageAt': !exists(json, 'lastMessageAt') ? undefined : (json['lastMessageAt'] === null ? null : new Date(json['lastMessageAt'])),
+        'supersededAt': !exists(json, 'supersededAt') ? undefined : (json['supersededAt'] === null ? null : new Date(json['supersededAt'])),
+        'isStarred': json['isStarred'],
     };
 }
 
@@ -197,20 +281,30 @@ export function GetInboxResponseToJSON(value?: GetInboxResponse | null): any {
     }
     return {
         
-        'messages': ((value.messages as Array<any>).map(GetInboxResponseMessagesToJSON)),
+        'messages': ((value.messages as Array<any>).map(CreateInboxSendOfferResponseMessageToJSON)),
+        'listingId': value.listingId,
+        'itemTitle': value.itemTitle,
+        'itemThumbnail': value.itemThumbnail,
+        'itemUrl': value.itemUrl,
+        'crosslyListingSlug': value.crosslyListingSlug,
+        'itemPrice': value.itemPrice,
+        'itemCurrency': value.itemCurrency,
+        'canSendOffer': value.canSendOffer,
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
-        'status': value.status,
         'platform': value.platform,
-        'listingId': value.listingId,
         'accountSlot': value.accountSlot,
+        'status': value.status,
+        'source': value.source,
+        'labels': value.labels,
         'inventoryItemId': value.inventoryItemId,
         'platformListingId': value.platformListingId,
         'buyerUsername': value.buyerUsername,
-        'subject': value.subject,
         'platformConversationId': value.platformConversationId,
         'buyerPlatformId': value.buyerPlatformId,
+        'buyerAvatarUrl': value.buyerAvatarUrl,
+        'subject': value.subject,
         'isRead': value.isRead,
         'isHidden': value.isHidden,
         'hasOffer': value.hasOffer,
@@ -218,6 +312,8 @@ export function GetInboxResponseToJSON(value?: GetInboxResponse | null): any {
         'offerStatus': value.offerStatus,
         'platformConversationUrl': value.platformConversationUrl,
         'lastMessageAt': value.lastMessageAt === undefined ? undefined : (value.lastMessageAt === null ? null : value.lastMessageAt.toISOString()),
+        'supersededAt': value.supersededAt === undefined ? undefined : (value.supersededAt === null ? null : value.supersededAt.toISOString()),
+        'isStarred': value.isStarred,
     };
 }
 

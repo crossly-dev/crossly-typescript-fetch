@@ -24,13 +24,13 @@ export interface GetBuyerFitVocabularyResponseDataKinds {
      * @type {string}
      * @memberof GetBuyerFitVocabularyResponseDataKinds
      */
-    label: string;
+    key: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerFitVocabularyResponseDataKinds
      */
-    key: string;
+    label: string;
     /**
      * 
      * @type {Array<{ [key: string]: any; }>}
@@ -49,8 +49,8 @@ export function GetBuyerFitVocabularyResponseDataKindsFromJSONTyped(json: any, i
     }
     return {
         
-        'label': json['label'],
         'key': json['key'],
+        'label': json['label'],
         'measures': json['measures'],
     };
 }
@@ -64,8 +64,8 @@ export function GetBuyerFitVocabularyResponseDataKindsToJSON(value?: GetBuyerFit
     }
     return {
         
-        'label': value.label,
         'key': value.key,
+        'label': value.label,
         'measures': value.measures,
     };
 }

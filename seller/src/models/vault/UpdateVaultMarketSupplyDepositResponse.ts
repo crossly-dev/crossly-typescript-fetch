@@ -51,12 +51,12 @@ export interface UpdateVaultMarketSupplyDepositResponse {
 */
 export enum UpdateVaultMarketSupplyDepositResponseStatusEnum {
     Stored = 'stored',
-    Listed = 'listed',
-    Inbound = 'inbound',
     Cancelled = 'cancelled',
+    Listed = 'listed',
+    Shipped = 'shipped',
+    Inbound = 'inbound',
     SoldOnBook = 'sold_on_book',
-    ChannelSold = 'channel_sold',
-    Shipped = 'shipped'
+    ChannelSold = 'channel_sold'
 }
 
 export function UpdateVaultMarketSupplyDepositResponseFromJSON(json: any): UpdateVaultMarketSupplyDepositResponse {

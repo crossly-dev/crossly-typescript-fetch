@@ -20,11 +20,11 @@ import {
     GetVaultMarketWidgetMarkResponsePointsToJSON,
 } from './GetVaultMarketWidgetMarkResponsePoints';
 import {
-    ListVaultMarketFeedItemMark,
-    ListVaultMarketFeedItemMarkFromJSON,
-    ListVaultMarketFeedItemMarkFromJSONTyped,
-    ListVaultMarketFeedItemMarkToJSON,
-} from './ListVaultMarketFeedItemMark';
+    ListVaultMarketOpeningItemMark,
+    ListVaultMarketOpeningItemMarkFromJSON,
+    ListVaultMarketOpeningItemMarkFromJSONTyped,
+    ListVaultMarketOpeningItemMarkToJSON,
+} from './ListVaultMarketOpeningItemMark';
 
 /**
  * 
@@ -70,10 +70,10 @@ export interface GetVaultMarketWidgetMarkResponse {
     gradeKey?: string | null;
     /**
      * 
-     * @type {ListVaultMarketFeedItemMark}
+     * @type {ListVaultMarketOpeningItemMark}
      * @memberof GetVaultMarketWidgetMarkResponse
      */
-    mark: ListVaultMarketFeedItemMark;
+    mark: ListVaultMarketOpeningItemMark;
     /**
      * 
      * @type {number}
@@ -116,7 +116,7 @@ export function GetVaultMarketWidgetMarkResponseFromJSONTyped(json: any, ignoreD
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
         'condition': json['condition'],
         'gradeKey': !exists(json, 'gradeKey') ? undefined : json['gradeKey'],
-        'mark': ListVaultMarketFeedItemMarkFromJSON(json['mark']),
+        'mark': ListVaultMarketOpeningItemMarkFromJSON(json['mark']),
         'trades30d': json['trades30d'],
         'insufficient': json['insufficient'],
         'points': ((json['points'] as Array<any>).map(GetVaultMarketWidgetMarkResponsePointsFromJSON)),
@@ -139,7 +139,7 @@ export function GetVaultMarketWidgetMarkResponseToJSON(value?: GetVaultMarketWid
         'imageUrl': value.imageUrl,
         'condition': value.condition,
         'gradeKey': value.gradeKey,
-        'mark': ListVaultMarketFeedItemMarkToJSON(value.mark),
+        'mark': ListVaultMarketOpeningItemMarkToJSON(value.mark),
         'trades30d': value.trades30d,
         'insufficient': value.insufficient,
         'points': ((value.points as Array<any>).map(GetVaultMarketWidgetMarkResponsePointsToJSON)),

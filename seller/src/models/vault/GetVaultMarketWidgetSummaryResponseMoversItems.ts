@@ -81,9 +81,9 @@ export interface GetVaultMarketWidgetSummaryResponseMoversItems {
 */
 export enum GetVaultMarketWidgetSummaryResponseMoversItemsMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketWidgetSummaryResponseMoversItemsFromJSON(json: any): GetVaultMarketWidgetSummaryResponseMoversItems {

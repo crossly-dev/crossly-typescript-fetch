@@ -62,10 +62,10 @@ export interface ListWorldProvenanceItem {
 * @enum {string}
 */
 export enum ListWorldProvenanceItemKindEnum {
-    Auction = 'auction',
     Window = 'window',
-    Agent = 'agent',
+    Auction = 'auction',
     Room = 'room',
+    Agent = 'agent',
     Stall = 'stall',
     Worn = 'worn',
     Drop = 'drop',

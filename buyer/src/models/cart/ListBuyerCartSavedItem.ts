@@ -27,18 +27,6 @@ export interface ListBuyerCartSavedItem {
     id: string;
     /**
      * 
-     * @type {number}
-     * @memberof ListBuyerCartSavedItem
-     */
-    quantity: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerCartSavedItem
-     */
-    title: string;
-    /**
-     * 
      * @type {string}
      * @memberof ListBuyerCartSavedItem
      */
@@ -48,19 +36,25 @@ export interface ListBuyerCartSavedItem {
      * @type {string}
      * @memberof ListBuyerCartSavedItem
      */
-    sellerUserId: string;
+    slug: string;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerCartSavedItem
      */
-    slug: string;
+    title: string;
     /**
      * The listing's price NOW, in cents — what moving it back would charge.
      * @type {number}
      * @memberof ListBuyerCartSavedItem
      */
     priceCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerCartSavedItem
+     */
+    quantity: number;
     /**
      * 
      * @type {boolean}
@@ -78,7 +72,19 @@ export interface ListBuyerCartSavedItem {
      * @type {string}
      * @memberof ListBuyerCartSavedItem
      */
+    sellerUserId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerCartSavedItem
+     */
     savedAt: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerCartSavedItem
+     */
+    thumbnail?: string | null;
     /**
      * 
      * @type {string}
@@ -86,11 +92,23 @@ export interface ListBuyerCartSavedItem {
      */
     sellerDisplayName?: string | null;
     /**
-     * 
+     * The option it was saved as (catalog `variants[].id`), restored on move-to-cart; null otherwise.
      * @type {string}
      * @memberof ListBuyerCartSavedItem
      */
-    thumbnail?: string | null;
+    listingVariantId?: string | null;
+    /**
+     * That option's label ("M").
+     * @type {string}
+     * @memberof ListBuyerCartSavedItem
+     */
+    variantName?: string | null;
+    /**
+     * The listing has options and this item names none: add it again with an option (move-to-cart refuses).
+     * @type {boolean}
+     * @memberof ListBuyerCartSavedItem
+     */
+    needsOption?: boolean | null;
 }
 
 export function ListBuyerCartSavedItemFromJSON(json: any): ListBuyerCartSavedItem {
@@ -104,17 +122,20 @@ export function ListBuyerCartSavedItemFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'id': json['id'],
-        'quantity': json['quantity'],
-        'title': json['title'],
         'platformListingId': json['platformListingId'],
-        'sellerUserId': json['sellerUserId'],
         'slug': json['slug'],
+        'title': json['title'],
         'priceCents': json['priceCents'],
+        'quantity': json['quantity'],
         'inStock': json['inStock'],
         'availableQuantity': json['availableQuantity'],
+        'sellerUserId': json['sellerUserId'],
         'savedAt': json['savedAt'],
-        'sellerDisplayName': !exists(json, 'sellerDisplayName') ? undefined : json['sellerDisplayName'],
         'thumbnail': !exists(json, 'thumbnail') ? undefined : json['thumbnail'],
+        'sellerDisplayName': !exists(json, 'sellerDisplayName') ? undefined : json['sellerDisplayName'],
+        'listingVariantId': !exists(json, 'listingVariantId') ? undefined : json['listingVariantId'],
+        'variantName': !exists(json, 'variantName') ? undefined : json['variantName'],
+        'needsOption': !exists(json, 'needsOption') ? undefined : json['needsOption'],
     };
 }
 
@@ -128,17 +149,20 @@ export function ListBuyerCartSavedItemToJSON(value?: ListBuyerCartSavedItem | nu
     return {
         
         'id': value.id,
-        'quantity': value.quantity,
-        'title': value.title,
         'platformListingId': value.platformListingId,
-        'sellerUserId': value.sellerUserId,
         'slug': value.slug,
+        'title': value.title,
         'priceCents': value.priceCents,
+        'quantity': value.quantity,
         'inStock': value.inStock,
         'availableQuantity': value.availableQuantity,
+        'sellerUserId': value.sellerUserId,
         'savedAt': value.savedAt,
-        'sellerDisplayName': value.sellerDisplayName,
         'thumbnail': value.thumbnail,
+        'sellerDisplayName': value.sellerDisplayName,
+        'listingVariantId': value.listingVariantId,
+        'variantName': value.variantName,
+        'needsOption': value.needsOption,
     };
 }
 

@@ -24,13 +24,13 @@ export interface CreateBuyerTogetherResponseData {
      * @type {string}
      * @memberof CreateBuyerTogetherResponseData
      */
-    id: string;
+    code: string;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerTogetherResponseData
      */
-    code: string;
+    id: string;
 }
 
 export function CreateBuyerTogetherResponseDataFromJSON(json: any): CreateBuyerTogetherResponseData {
@@ -43,8 +43,8 @@ export function CreateBuyerTogetherResponseDataFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'id': json['id'],
         'code': json['code'],
+        'id': json['id'],
     };
 }
 
@@ -57,8 +57,8 @@ export function CreateBuyerTogetherResponseDataToJSON(value?: CreateBuyerTogethe
     }
     return {
         
-        'id': value.id,
         'code': value.code,
+        'id': value.id,
     };
 }
 

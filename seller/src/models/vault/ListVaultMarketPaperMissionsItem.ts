@@ -92,31 +92,36 @@ export interface ListVaultMarketPaperMissionsItem {
 * @enum {string}
 */
 export enum ListVaultMarketPaperMissionsItemKeyEnum {
-    RoundTrip = 'round_trip',
     FirstFill = 'first_fill',
     ReadMark = 'read_mark',
     BidBelow = 'bid_below',
     MakerFill = 'maker_fill',
     InstantExit = 'instant_exit',
     PriceWatch = 'price_watch',
-    MiniSet = 'mini_set'
+    RoundTrip = 'round_trip',
+    MiniSet = 'mini_set',
+    ShareFirst = 'share_first',
+    ShareQueue = 'share_queue',
+    OptionFirst = 'option_first',
+    OptionExpiry = 'option_expiry'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListVaultMarketPaperMissionsItemActionEnum {
     Market = 'market',
-    Assistant = 'assistant',
     Paper = 'paper',
-    MarkCheck = 'mark_check',
-    Sets = 'sets'
+    Assistant = 'assistant',
+    Sets = 'sets',
+    MarkCheck = 'mark_check'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListVaultMarketPaperMissionsItemLearnEnum {
     InstantExit = 'instant-exit',
-    Marks = 'marks'
+    Marks = 'marks',
+    VaultShares = 'vault-shares'
 }
 
 export function ListVaultMarketPaperMissionsItemFromJSON(json: any): ListVaultMarketPaperMissionsItem {

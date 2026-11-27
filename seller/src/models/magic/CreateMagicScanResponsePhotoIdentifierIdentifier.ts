@@ -38,8 +38,8 @@ export interface CreateMagicScanResponsePhotoIdentifierIdentifier {
 * @enum {string}
 */
 export enum CreateMagicScanResponsePhotoIdentifierIdentifierNamespaceEnum {
-    StyleCode = 'style_code',
     Gtin = 'gtin',
+    StyleCode = 'style_code',
     LegoSet = 'lego_set',
     Tcgplayer = 'tcgplayer',
     Discogs = 'discogs',

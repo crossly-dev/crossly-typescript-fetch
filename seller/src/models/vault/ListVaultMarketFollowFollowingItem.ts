@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    ListVaultMarketFollowFollowingItemPerson,
+    ListVaultMarketFollowFollowingItemPersonFromJSON,
+    ListVaultMarketFollowFollowingItemPersonFromJSONTyped,
+    ListVaultMarketFollowFollowingItemPersonToJSON,
+} from './ListVaultMarketFollowFollowingItemPerson';
+import {
     ListVaultMarketFollowFollowingItemShares,
     ListVaultMarketFollowFollowingItemSharesFromJSON,
     ListVaultMarketFollowFollowingItemSharesFromJSONTyped,
@@ -26,6 +32,12 @@ import {
  * @interface ListVaultMarketFollowFollowingItem
  */
 export interface ListVaultMarketFollowFollowingItem {
+    /**
+     * 
+     * @type {ListVaultMarketFollowFollowingItemPerson}
+     * @memberof ListVaultMarketFollowFollowingItem
+     */
+    person: ListVaultMarketFollowFollowingItemPerson;
     /**
      * 
      * @type {string}
@@ -56,6 +68,7 @@ export function ListVaultMarketFollowFollowingItemFromJSONTyped(json: any, ignor
     }
     return {
         
+        'person': ListVaultMarketFollowFollowingItemPersonFromJSON(json['person']),
         'since': !exists(json, 'since') ? undefined : json['since'],
         'shares': ListVaultMarketFollowFollowingItemSharesFromJSON(json['shares']),
         'copyWatching': json['copyWatching'],
@@ -71,6 +84,7 @@ export function ListVaultMarketFollowFollowingItemToJSON(value?: ListVaultMarket
     }
     return {
         
+        'person': ListVaultMarketFollowFollowingItemPersonToJSON(value.person),
         'since': value.since,
         'shares': ListVaultMarketFollowFollowingItemSharesToJSON(value.shares),
         'copyWatching': value.copyWatching,

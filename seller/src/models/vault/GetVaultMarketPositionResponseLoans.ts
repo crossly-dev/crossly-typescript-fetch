@@ -39,6 +39,12 @@ export interface GetVaultMarketPositionResponseLoans {
     closedAt?: Date | null;
     /**
      * 
+     * @type {Date}
+     * @memberof GetVaultMarketPositionResponseLoans
+     */
+    openedAt: Date;
+    /**
+     * 
      * @type {string}
      * @memberof GetVaultMarketPositionResponseLoans
      */
@@ -51,10 +57,10 @@ export interface GetVaultMarketPositionResponseLoans {
     holderAccountId?: string | null;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof GetVaultMarketPositionResponseLoans
      */
-    openedAt: Date;
+    positionId: string;
     /**
      * 
      * @type {string}
@@ -79,12 +85,6 @@ export interface GetVaultMarketPositionResponseLoans {
      * @memberof GetVaultMarketPositionResponseLoans
      */
     lenderUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetVaultMarketPositionResponseLoans
-     */
-    positionId: string;
     /**
      * 
      * @type {number}
@@ -148,14 +148,14 @@ export function GetVaultMarketPositionResponseLoansFromJSONTyped(json: any, igno
         'id': json['id'],
         'status': json['status'],
         'closedAt': !exists(json, 'closedAt') ? undefined : (json['closedAt'] === null ? null : new Date(json['closedAt'])),
+        'openedAt': (new Date(json['openedAt'])),
         'vaultItemId': json['vaultItemId'],
         'holderAccountId': !exists(json, 'holderAccountId') ? undefined : json['holderAccountId'],
-        'openedAt': (new Date(json['openedAt'])),
+        'positionId': json['positionId'],
         'bookKey': json['bookKey'],
         'feesPaidCents': json['feesPaidCents'],
         'latePenaltyPaidCents': json['latePenaltyPaidCents'],
         'lenderUserId': json['lenderUserId'],
-        'positionId': json['positionId'],
         'aprBps': json['aprBps'],
         'markCentsAtOpen': json['markCentsAtOpen'],
         'feesAccruedCents': json['feesAccruedCents'],
@@ -179,14 +179,14 @@ export function GetVaultMarketPositionResponseLoansToJSON(value?: GetVaultMarket
         'id': value.id,
         'status': value.status,
         'closedAt': value.closedAt === undefined ? undefined : (value.closedAt === null ? null : value.closedAt.toISOString()),
+        'openedAt': (value.openedAt.toISOString()),
         'vaultItemId': value.vaultItemId,
         'holderAccountId': value.holderAccountId,
-        'openedAt': (value.openedAt.toISOString()),
+        'positionId': value.positionId,
         'bookKey': value.bookKey,
         'feesPaidCents': value.feesPaidCents,
         'latePenaltyPaidCents': value.latePenaltyPaidCents,
         'lenderUserId': value.lenderUserId,
-        'positionId': value.positionId,
         'aprBps': value.aprBps,
         'markCentsAtOpen': value.markCentsAtOpen,
         'feesAccruedCents': value.feesAccruedCents,

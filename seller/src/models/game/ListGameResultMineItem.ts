@@ -78,7 +78,8 @@ export enum ListGameResultMineItemGameEnum {
     PriceGuessSolo = 'price_guess_solo',
     Hunt = 'hunt',
     SpeedTrade = 'speed_trade',
-    BreakHost = 'break_host'
+    BreakHost = 'break_host',
+    PackBreak = 'pack_break'
 }
 
 export function ListGameResultMineItemFromJSON(json: any): ListGameResultMineItem {

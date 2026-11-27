@@ -28,6 +28,12 @@ import {
 export interface CreateSpatialSceneNodeResponseData {
     /**
      * 
+     * @type {CreateSpatialSceneNodeResponseDataTransform}
+     * @memberof CreateSpatialSceneNodeResponseData
+     */
+    transform: CreateSpatialSceneNodeResponseDataTransform;
+    /**
+     * 
      * @type {string}
      * @memberof CreateSpatialSceneNodeResponseData
      */
@@ -46,12 +52,6 @@ export interface CreateSpatialSceneNodeResponseData {
     updatedAt: Date;
     /**
      * 
-     * @type {CreateSpatialSceneNodeResponseDataTransform}
-     * @memberof CreateSpatialSceneNodeResponseData
-     */
-    transform: CreateSpatialSceneNodeResponseDataTransform;
-    /**
-     * 
      * @type {string}
      * @memberof CreateSpatialSceneNodeResponseData
      */
@@ -62,12 +62,6 @@ export interface CreateSpatialSceneNodeResponseData {
      * @memberof CreateSpatialSceneNodeResponseData
      */
     sort: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSpatialSceneNodeResponseData
-     */
-    segment?: string | null;
     /**
      * 
      * @type {string}
@@ -86,6 +80,12 @@ export interface CreateSpatialSceneNodeResponseData {
      * @memberof CreateSpatialSceneNodeResponseData
      */
     unitKey: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateSpatialSceneNodeResponseData
+     */
+    segment?: string | null;
 }
 
 export function CreateSpatialSceneNodeResponseDataFromJSON(json: any): CreateSpatialSceneNodeResponseData {
@@ -98,16 +98,16 @@ export function CreateSpatialSceneNodeResponseDataFromJSONTyped(json: any, ignor
     }
     return {
         
+        'transform': CreateSpatialSceneNodeResponseDataTransformFromJSON(json['transform']),
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
-        'transform': CreateSpatialSceneNodeResponseDataTransformFromJSON(json['transform']),
         'label': !exists(json, 'label') ? undefined : json['label'],
         'sort': json['sort'],
-        'segment': !exists(json, 'segment') ? undefined : json['segment'],
         'sceneId': json['sceneId'],
         'parentId': !exists(json, 'parentId') ? undefined : json['parentId'],
         'unitKey': json['unitKey'],
+        'segment': !exists(json, 'segment') ? undefined : json['segment'],
     };
 }
 
@@ -120,16 +120,16 @@ export function CreateSpatialSceneNodeResponseDataToJSON(value?: CreateSpatialSc
     }
     return {
         
+        'transform': CreateSpatialSceneNodeResponseDataTransformToJSON(value.transform),
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
-        'transform': CreateSpatialSceneNodeResponseDataTransformToJSON(value.transform),
         'label': value.label,
         'sort': value.sort,
-        'segment': value.segment,
         'sceneId': value.sceneId,
         'parentId': value.parentId,
         'unitKey': value.unitKey,
+        'segment': value.segment,
     };
 }
 

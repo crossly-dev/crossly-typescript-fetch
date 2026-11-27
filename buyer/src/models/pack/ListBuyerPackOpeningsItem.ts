@@ -37,6 +37,18 @@ export interface ListBuyerPackOpeningsItem {
      * @type {string}
      * @memberof ListBuyerPackOpeningsItem
      */
+    packTitle: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPackOpeningsItem
+     */
+    packSlug: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPackOpeningsItem
+     */
     status: string;
     /**
      * 
@@ -44,30 +56,6 @@ export interface ListBuyerPackOpeningsItem {
      * @memberof ListBuyerPackOpeningsItem
      */
     priceCents: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPackOpeningsItem
-     */
-    imageUrl?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPackOpeningsItem
-     */
-    vaultItemId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPackOpeningsItem
-     */
-    openedAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPackOpeningsItem
-     */
-    tierName?: string | null;
     /**
      * 
      * @type {number}
@@ -88,22 +76,34 @@ export interface ListBuyerPackOpeningsItem {
     itemTitle?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof ListBuyerPackOpeningsItem
+     */
+    imageUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPackOpeningsItem
+     */
+    tierName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPackOpeningsItem
+     */
+    vaultItemId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPackOpeningsItem
+     */
+    openedAt?: string | null;
+    /**
+     * 
      * @type {ListBuyerPackOpeningsItemProof}
      * @memberof ListBuyerPackOpeningsItem
      */
     proof: ListBuyerPackOpeningsItemProof;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPackOpeningsItem
-     */
-    packTitle: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPackOpeningsItem
-     */
-    packSlug: string;
 }
 
 export function ListBuyerPackOpeningsItemFromJSON(json: any): ListBuyerPackOpeningsItem {
@@ -117,18 +117,18 @@ export function ListBuyerPackOpeningsItemFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'id': json['id'],
+        'packTitle': json['packTitle'],
+        'packSlug': json['packSlug'],
         'status': json['status'],
         'priceCents': json['priceCents'],
-        'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
-        'vaultItemId': !exists(json, 'vaultItemId') ? undefined : json['vaultItemId'],
-        'openedAt': !exists(json, 'openedAt') ? undefined : json['openedAt'],
-        'tierName': !exists(json, 'tierName') ? undefined : json['tierName'],
         'valueCents': !exists(json, 'valueCents') ? undefined : json['valueCents'],
         'buybackCents': !exists(json, 'buybackCents') ? undefined : json['buybackCents'],
         'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
+        'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
+        'tierName': !exists(json, 'tierName') ? undefined : json['tierName'],
+        'vaultItemId': !exists(json, 'vaultItemId') ? undefined : json['vaultItemId'],
+        'openedAt': !exists(json, 'openedAt') ? undefined : json['openedAt'],
         'proof': ListBuyerPackOpeningsItemProofFromJSON(json['proof']),
-        'packTitle': json['packTitle'],
-        'packSlug': json['packSlug'],
     };
 }
 
@@ -142,18 +142,18 @@ export function ListBuyerPackOpeningsItemToJSON(value?: ListBuyerPackOpeningsIte
     return {
         
         'id': value.id,
+        'packTitle': value.packTitle,
+        'packSlug': value.packSlug,
         'status': value.status,
         'priceCents': value.priceCents,
-        'imageUrl': value.imageUrl,
-        'vaultItemId': value.vaultItemId,
-        'openedAt': value.openedAt,
-        'tierName': value.tierName,
         'valueCents': value.valueCents,
         'buybackCents': value.buybackCents,
         'itemTitle': value.itemTitle,
+        'imageUrl': value.imageUrl,
+        'tierName': value.tierName,
+        'vaultItemId': value.vaultItemId,
+        'openedAt': value.openedAt,
         'proof': ListBuyerPackOpeningsItemProofToJSON(value.proof),
-        'packTitle': value.packTitle,
-        'packSlug': value.packSlug,
     };
 }
 

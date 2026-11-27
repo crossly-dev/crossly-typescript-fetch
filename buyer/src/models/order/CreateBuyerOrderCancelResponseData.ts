@@ -20,17 +20,17 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface CreateBuyerOrderCancelResponseData {
     /**
-     * false only for an order paid entirely with credit, which has no card charge to refund.
-     * @type {boolean}
-     * @memberof CreateBuyerOrderCancelResponseData
-     */
-    refunded: boolean;
-    /**
      * 
      * @type {boolean}
      * @memberof CreateBuyerOrderCancelResponseData
      */
     ok: boolean;
+    /**
+     * false only for an order paid entirely with credit, which has no card charge to refund.
+     * @type {boolean}
+     * @memberof CreateBuyerOrderCancelResponseData
+     */
+    refunded: boolean;
 }
 
 export function CreateBuyerOrderCancelResponseDataFromJSON(json: any): CreateBuyerOrderCancelResponseData {
@@ -43,8 +43,8 @@ export function CreateBuyerOrderCancelResponseDataFromJSONTyped(json: any, ignor
     }
     return {
         
-        'refunded': json['refunded'],
         'ok': json['ok'],
+        'refunded': json['refunded'],
     };
 }
 
@@ -57,8 +57,8 @@ export function CreateBuyerOrderCancelResponseDataToJSON(value?: CreateBuyerOrde
     }
     return {
         
-        'refunded': value.refunded,
         'ok': value.ok,
+        'refunded': value.refunded,
     };
 }
 

@@ -69,8 +69,7 @@ export interface GetCatalogLookupResponseDataOffers {
      */
     url: string;
     /**
-     * Null on an order-book ask, which is a price rather than a
-     * purchasable listing.
+     * Null on an order-book ask, which is a price rather than a purchasable listing.
      * @type {string}
      * @memberof GetCatalogLookupResponseDataOffers
      */

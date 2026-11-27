@@ -68,9 +68,9 @@ export interface GetVaultMarketHealthResponseLiquidityTiers {
 * @enum {string}
 */
 export enum GetVaultMarketHealthResponseLiquidityTiersTierEnum {
+    C = 'C',
     A = 'A',
     B = 'B',
-    C = 'C',
     D = 'D',
     Unclassified = 'unclassified'
 }

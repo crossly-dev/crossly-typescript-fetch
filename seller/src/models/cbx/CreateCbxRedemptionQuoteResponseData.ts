@@ -69,8 +69,8 @@ export interface CreateCbxRedemptionQuoteResponseData {
 */
 export enum CreateCbxRedemptionQuoteResponseDataServiceKindEnum {
     Grading = 'grading',
-    Authentication = 'authentication',
-    Subscription = 'subscription'
+    Subscription = 'subscription',
+    Authentication = 'authentication'
 }
 
 export function CreateCbxRedemptionQuoteResponseDataFromJSON(json: any): CreateCbxRedemptionQuoteResponseData {

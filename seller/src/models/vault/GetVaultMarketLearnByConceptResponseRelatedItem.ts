@@ -24,7 +24,8 @@ export enum GetVaultMarketLearnByConceptResponseRelatedItem {
     Liens = 'liens',
     Auctions = 'auctions',
     Indexes = 'indexes',
-    Marks = 'marks'
+    Marks = 'marks',
+    VaultShares = 'vault-shares'
 }
 
 export function GetVaultMarketLearnByConceptResponseRelatedItemFromJSON(json: any): GetVaultMarketLearnByConceptResponseRelatedItem {

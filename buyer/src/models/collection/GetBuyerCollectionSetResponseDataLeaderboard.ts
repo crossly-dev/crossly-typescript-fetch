@@ -21,16 +21,16 @@ import { exists, mapValues } from '../../runtime';
 export interface GetBuyerCollectionSetResponseDataLeaderboard {
     /**
      * 
-     * @type {string}
-     * @memberof GetBuyerCollectionSetResponseDataLeaderboard
-     */
-    name: string;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerCollectionSetResponseDataLeaderboard
      */
     rank: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCollectionSetResponseDataLeaderboard
+     */
+    name: string;
     /**
      * 
      * @type {number}
@@ -49,8 +49,8 @@ export function GetBuyerCollectionSetResponseDataLeaderboardFromJSONTyped(json: 
     }
     return {
         
-        'name': json['name'],
         'rank': json['rank'],
+        'name': json['name'],
         'owned': json['owned'],
     };
 }
@@ -64,8 +64,8 @@ export function GetBuyerCollectionSetResponseDataLeaderboardToJSON(value?: GetBu
     }
     return {
         
-        'name': value.name,
         'rank': value.rank,
+        'name': value.name,
         'owned': value.owned,
     };
 }

@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    NameSlug,
-    NameSlugFromJSON,
-    NameSlugFromJSONTyped,
-    NameSlugToJSON,
-} from '../common/NameSlug';
+    NameSlug2,
+    NameSlug2FromJSON,
+    NameSlug2FromJSONTyped,
+    NameSlug2ToJSON,
+} from '../common/NameSlug2';
 
 /**
  * 
@@ -40,10 +40,10 @@ export interface ListWorldFriendsItem {
     displayName?: string | null;
     /**
      * 
-     * @type {NameSlug}
+     * @type {NameSlug2}
      * @memberof ListWorldFriendsItem
      */
-    room?: NameSlug | null;
+    room?: NameSlug2 | null;
     /**
      * 
      * @type {string}
@@ -64,7 +64,7 @@ export function ListWorldFriendsItemFromJSONTyped(json: any, ignoreDiscriminator
         
         'userId': json['userId'],
         'displayName': !exists(json, 'displayName') ? undefined : json['displayName'],
-        'room': !exists(json, 'room') ? undefined : NameSlugFromJSON(json['room']),
+        'room': !exists(json, 'room') ? undefined : NameSlug2FromJSON(json['room']),
         'homeSlug': !exists(json, 'homeSlug') ? undefined : json['homeSlug'],
     };
 }
@@ -80,7 +80,7 @@ export function ListWorldFriendsItemToJSON(value?: ListWorldFriendsItem | null):
         
         'userId': value.userId,
         'displayName': value.displayName,
-        'room': NameSlugToJSON(value.room),
+        'room': NameSlug2ToJSON(value.room),
         'homeSlug': value.homeSlug,
     };
 }

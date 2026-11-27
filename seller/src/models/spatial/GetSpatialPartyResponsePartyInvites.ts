@@ -76,9 +76,9 @@ export interface GetSpatialPartyResponsePartyInvites {
 export enum GetSpatialPartyResponsePartyInvitesStatusEnum {
     Pending = 'pending',
     Cancelled = 'cancelled',
-    Expired = 'expired',
     Accepted = 'accepted',
-    Declined = 'declined'
+    Declined = 'declined',
+    Expired = 'expired'
 }
 
 export function GetSpatialPartyResponsePartyInvitesFromJSON(json: any): GetSpatialPartyResponsePartyInvites {

@@ -27,12 +27,6 @@ export interface ListAutomationRunsItem {
     id: string;
     /**
      * 
-     * @type {Date}
-     * @memberof ListAutomationRunsItem
-     */
-    createdAt: Date;
-    /**
-     * 
      * @type {string}
      * @memberof ListAutomationRunsItem
      */
@@ -42,7 +36,31 @@ export interface ListAutomationRunsItem {
      * @type {string}
      * @memberof ListAutomationRunsItem
      */
+    ruleId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAutomationRunsItem
+     */
+    chainId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAutomationRunsItem
+     */
     status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAutomationRunsItem
+     */
+    actionType: string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListAutomationRunsItem
+     */
+    summary: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -57,22 +75,16 @@ export interface ListAutomationRunsItem {
     durationMs?: number | null;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof ListAutomationRunsItem
      */
-    ruleId?: string | null;
+    createdAt: Date;
     /**
-     * 
+     * Set for runs of the converted workflow.
      * @type {string}
      * @memberof ListAutomationRunsItem
      */
-    actionType: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListAutomationRunsItem
-     */
-    chainId?: string | null;
+    workflowRunId?: string | null;
 }
 
 export function ListAutomationRunsItemFromJSON(json: any): ListAutomationRunsItem {
@@ -86,14 +98,16 @@ export function ListAutomationRunsItemFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'id': json['id'],
-        'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
+        'ruleId': !exists(json, 'ruleId') ? undefined : json['ruleId'],
+        'chainId': !exists(json, 'chainId') ? undefined : json['chainId'],
         'status': json['status'],
+        'actionType': json['actionType'],
+        'summary': json['summary'],
         'errorMessage': !exists(json, 'errorMessage') ? undefined : json['errorMessage'],
         'durationMs': !exists(json, 'durationMs') ? undefined : json['durationMs'],
-        'ruleId': !exists(json, 'ruleId') ? undefined : json['ruleId'],
-        'actionType': json['actionType'],
-        'chainId': !exists(json, 'chainId') ? undefined : json['chainId'],
+        'createdAt': (new Date(json['createdAt'])),
+        'workflowRunId': !exists(json, 'workflowRunId') ? undefined : json['workflowRunId'],
     };
 }
 
@@ -107,14 +121,16 @@ export function ListAutomationRunsItemToJSON(value?: ListAutomationRunsItem | nu
     return {
         
         'id': value.id,
-        'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
+        'ruleId': value.ruleId,
+        'chainId': value.chainId,
         'status': value.status,
+        'actionType': value.actionType,
+        'summary': value.summary,
         'errorMessage': value.errorMessage,
         'durationMs': value.durationMs,
-        'ruleId': value.ruleId,
-        'actionType': value.actionType,
-        'chainId': value.chainId,
+        'createdAt': (value.createdAt.toISOString()),
+        'workflowRunId': value.workflowRunId,
     };
 }
 

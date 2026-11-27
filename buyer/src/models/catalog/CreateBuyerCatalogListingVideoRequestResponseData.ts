@@ -36,13 +36,13 @@ export interface CreateBuyerCatalogListingVideoRequestResponseData {
      * @type {string}
      * @memberof CreateBuyerCatalogListingVideoRequestResponseData
      */
-    videoUrl?: string | null;
+    status: string;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerCatalogListingVideoRequestResponseData
      */
-    status: string;
+    videoUrl?: string | null;
     /**
      * 
      * @type {string}
@@ -54,13 +54,13 @@ export interface CreateBuyerCatalogListingVideoRequestResponseData {
      * @type {string}
      * @memberof CreateBuyerCatalogListingVideoRequestResponseData
      */
-    sellerUserId: string;
+    buyerUserId: string;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerCatalogListingVideoRequestResponseData
      */
-    buyerUserId: string;
+    sellerUserId: string;
     /**
      * 
      * @type {string}
@@ -93,11 +93,11 @@ export function CreateBuyerCatalogListingVideoRequestResponseDataFromJSONTyped(j
         
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
-        'videoUrl': !exists(json, 'videoUrl') ? undefined : json['videoUrl'],
         'status': json['status'],
+        'videoUrl': !exists(json, 'videoUrl') ? undefined : json['videoUrl'],
         'platformListingId': json['platformListingId'],
-        'sellerUserId': json['sellerUserId'],
         'buyerUserId': json['buyerUserId'],
+        'sellerUserId': json['sellerUserId'],
         'note': !exists(json, 'note') ? undefined : json['note'],
         'answeredAt': !exists(json, 'answeredAt') ? undefined : (json['answeredAt'] === null ? null : new Date(json['answeredAt'])),
         'sellerNote': !exists(json, 'sellerNote') ? undefined : json['sellerNote'],
@@ -115,11 +115,11 @@ export function CreateBuyerCatalogListingVideoRequestResponseDataToJSON(value?: 
         
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
-        'videoUrl': value.videoUrl,
         'status': value.status,
+        'videoUrl': value.videoUrl,
         'platformListingId': value.platformListingId,
-        'sellerUserId': value.sellerUserId,
         'buyerUserId': value.buyerUserId,
+        'sellerUserId': value.sellerUserId,
         'note': value.note,
         'answeredAt': value.answeredAt === undefined ? undefined : (value.answeredAt === null ? null : value.answeredAt.toISOString()),
         'sellerNote': value.sellerNote,

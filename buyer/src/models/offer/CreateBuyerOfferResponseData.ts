@@ -28,16 +28,16 @@ import {
 export interface CreateBuyerOfferResponseData {
     /**
      * 
-     * @type {CreateBuyerOfferResponseDataOffer}
-     * @memberof CreateBuyerOfferResponseData
-     */
-    offer: CreateBuyerOfferResponseDataOffer;
-    /**
-     * 
      * @type {boolean}
      * @memberof CreateBuyerOfferResponseData
      */
     ok: boolean;
+    /**
+     * 
+     * @type {CreateBuyerOfferResponseDataOffer}
+     * @memberof CreateBuyerOfferResponseData
+     */
+    offer: CreateBuyerOfferResponseDataOffer;
 }
 
 export function CreateBuyerOfferResponseDataFromJSON(json: any): CreateBuyerOfferResponseData {
@@ -50,8 +50,8 @@ export function CreateBuyerOfferResponseDataFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'offer': CreateBuyerOfferResponseDataOfferFromJSON(json['offer']),
         'ok': json['ok'],
+        'offer': CreateBuyerOfferResponseDataOfferFromJSON(json['offer']),
     };
 }
 
@@ -64,8 +64,8 @@ export function CreateBuyerOfferResponseDataToJSON(value?: CreateBuyerOfferRespo
     }
     return {
         
-        'offer': CreateBuyerOfferResponseDataOfferToJSON(value.offer),
         'ok': value.ok,
+        'offer': CreateBuyerOfferResponseDataOfferToJSON(value.offer),
     };
 }
 

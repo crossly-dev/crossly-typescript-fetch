@@ -55,37 +55,19 @@ export interface ListVaultMarketSetGoalsItem {
      * @type {string}
      * @memberof ListVaultMarketSetGoalsItem
      */
-    title: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListVaultMarketSetGoalsItem
-     */
     category: string;
     /**
      * 
      * @type {string}
      * @memberof ListVaultMarketSetGoalsItem
      */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListVaultMarketSetGoalsItem
+     */
     completedAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListVaultMarketSetGoalsItem
-     */
-    progress: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListVaultMarketSetGoalsItem
-     */
-    brandSlug: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListVaultMarketSetGoalsItem
-     */
-    modelSlug: string;
     /**
      * 
      * @type {GetVaultMarketSetGoalResponseTarget}
@@ -97,13 +79,7 @@ export interface ListVaultMarketSetGoalsItem {
      * @type {number}
      * @memberof ListVaultMarketSetGoalsItem
      */
-    held: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListVaultMarketSetGoalsItem
-     */
-    complete: boolean;
+    total: number;
     /**
      * 
      * @type {string}
@@ -112,22 +88,46 @@ export interface ListVaultMarketSetGoalsItem {
     href: string;
     /**
      * 
+     * @type {string}
+     * @memberof ListVaultMarketSetGoalsItem
+     */
+    brandSlug: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListVaultMarketSetGoalsItem
+     */
+    progress: string;
+    /**
+     * 
      * @type {number}
      * @memberof ListVaultMarketSetGoalsItem
      */
-    total: number;
+    held: number;
     /**
      * 
-     * @type {boolean}
+     * @type {string}
      * @memberof ListVaultMarketSetGoalsItem
      */
-    setFound: boolean;
+    modelSlug: string;
     /**
      * 
      * @type {ListVaultMarketSetGoalsItemBasket}
      * @memberof ListVaultMarketSetGoalsItem
      */
     basket?: ListVaultMarketSetGoalsItemBasket | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListVaultMarketSetGoalsItem
+     */
+    complete: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListVaultMarketSetGoalsItem
+     */
+    setFound: boolean;
     /**
      * 
      * @type {string}
@@ -142,8 +142,8 @@ export interface ListVaultMarketSetGoalsItem {
 */
 export enum ListVaultMarketSetGoalsItemStatusEnum {
     Active = 'active',
-    Complete = 'complete',
-    Archived = 'archived'
+    Archived = 'archived',
+    Complete = 'complete'
 }
 
 export function ListVaultMarketSetGoalsItemFromJSON(json: any): ListVaultMarketSetGoalsItem {
@@ -159,19 +159,19 @@ export function ListVaultMarketSetGoalsItemFromJSONTyped(json: any, ignoreDiscri
         'id': json['id'],
         'createdAt': json['createdAt'],
         'status': json['status'],
-        'title': json['title'],
         'category': json['category'],
+        'title': json['title'],
         'completedAt': !exists(json, 'completedAt') ? undefined : json['completedAt'],
-        'progress': json['progress'],
-        'brandSlug': json['brandSlug'],
-        'modelSlug': json['modelSlug'],
         'target': GetVaultMarketSetGoalResponseTargetFromJSON(json['target']),
-        'held': json['held'],
-        'complete': json['complete'],
-        'href': json['href'],
         'total': json['total'],
-        'setFound': json['setFound'],
+        'href': json['href'],
+        'brandSlug': json['brandSlug'],
+        'progress': json['progress'],
+        'held': json['held'],
+        'modelSlug': json['modelSlug'],
         'basket': !exists(json, 'basket') ? undefined : ListVaultMarketSetGoalsItemBasketFromJSON(json['basket']),
+        'complete': json['complete'],
+        'setFound': json['setFound'],
         'cardSetHref': json['cardSetHref'],
     };
 }
@@ -188,19 +188,19 @@ export function ListVaultMarketSetGoalsItemToJSON(value?: ListVaultMarketSetGoal
         'id': value.id,
         'createdAt': value.createdAt,
         'status': value.status,
-        'title': value.title,
         'category': value.category,
+        'title': value.title,
         'completedAt': value.completedAt,
-        'progress': value.progress,
-        'brandSlug': value.brandSlug,
-        'modelSlug': value.modelSlug,
         'target': GetVaultMarketSetGoalResponseTargetToJSON(value.target),
-        'held': value.held,
-        'complete': value.complete,
-        'href': value.href,
         'total': value.total,
-        'setFound': value.setFound,
+        'href': value.href,
+        'brandSlug': value.brandSlug,
+        'progress': value.progress,
+        'held': value.held,
+        'modelSlug': value.modelSlug,
         'basket': ListVaultMarketSetGoalsItemBasketToJSON(value.basket),
+        'complete': value.complete,
+        'setFound': value.setFound,
         'cardSetHref': value.cardSetHref,
     };
 }

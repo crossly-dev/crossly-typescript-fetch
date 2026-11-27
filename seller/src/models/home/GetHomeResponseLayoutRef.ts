@@ -38,13 +38,13 @@ export interface GetHomeResponseLayoutRef {
 * @enum {string}
 */
 export enum GetHomeResponseLayoutRefKindEnum {
-    Token = 'token',
-    Portal = 'portal',
-    Portfolio = 'portfolio',
     Inventory = 'inventory',
+    Vault = 'vault',
+    Portal = 'portal',
+    Token = 'token',
     Purchase = 'purchase',
     Nft = 'nft',
-    Vault = 'vault'
+    Portfolio = 'portfolio'
 }
 
 export function GetHomeResponseLayoutRefFromJSON(json: any): GetHomeResponseLayoutRef {

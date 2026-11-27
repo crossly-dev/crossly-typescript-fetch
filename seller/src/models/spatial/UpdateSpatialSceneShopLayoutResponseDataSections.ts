@@ -55,6 +55,19 @@ export interface UpdateSpatialSceneShopLayoutResponseDataSections {
      * @memberof UpdateSpatialSceneShopLayoutResponseDataSections
      */
     hidden?: boolean | null;
+    /**
+     * How many units (cases, bays, pages) it stands with, at least; absent = as many as its stock needs.
+     * Set from the showroom organizer so an empty display has slots to fill (shared showroom/).
+     * @type {number}
+     * @memberof UpdateSpatialSceneShopLayoutResponseDataSections
+     */
+    units?: number | null;
+    /**
+     * The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent = its type's free holder.
+     * @type {string}
+     * @memberof UpdateSpatialSceneShopLayoutResponseDataSections
+     */
+    holder?: string | null;
 }
 
 export function UpdateSpatialSceneShopLayoutResponseDataSectionsFromJSON(json: any): UpdateSpatialSceneShopLayoutResponseDataSections {
@@ -73,6 +86,8 @@ export function UpdateSpatialSceneShopLayoutResponseDataSectionsFromJSONTyped(js
         'rotationY': !exists(json, 'rotationY') ? undefined : json['rotationY'],
         'sign': !exists(json, 'sign') ? undefined : json['sign'],
         'hidden': !exists(json, 'hidden') ? undefined : json['hidden'],
+        'units': !exists(json, 'units') ? undefined : json['units'],
+        'holder': !exists(json, 'holder') ? undefined : json['holder'],
     };
 }
 
@@ -91,6 +106,8 @@ export function UpdateSpatialSceneShopLayoutResponseDataSectionsToJSON(value?: U
         'rotationY': value.rotationY,
         'sign': value.sign,
         'hidden': value.hidden,
+        'units': value.units,
+        'holder': value.holder,
     };
 }
 

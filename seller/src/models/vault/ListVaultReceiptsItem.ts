@@ -135,11 +135,11 @@ export enum ListVaultReceiptsItemFormEnum {
 * @enum {string}
 */
 export enum ListVaultReceiptsItemStatusEnum {
+    Void = 'void',
     Pledged = 'pledged',
     Issued = 'issued',
     Transferred = 'transferred',
-    Surrendered = 'surrendered',
-    Void = 'void'
+    Surrendered = 'surrendered'
 }
 
 export function ListVaultReceiptsItemFromJSON(json: any): ListVaultReceiptsItem {

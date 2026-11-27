@@ -74,7 +74,7 @@ export interface GetHomeResponseLayoutItem {
      */
     object?: string | null;
     /**
-     * A `vault` ref: the unit's market (a book key), so a click opens /shop/vault/markets/<market>.
+     * A `vault` ref: the unit's market (a book key), so a click opens /trading/<market>.
      * @type {string}
      * @memberof GetHomeResponseLayoutItem
      */
@@ -85,6 +85,12 @@ export interface GetHomeResponseLayoutItem {
      * @memberof GetHomeResponseLayoutItem
      */
     visitors?: boolean | null;
+    /**
+     * The owner's open Trade Block post for this same product (trade-posts.ts): "Offer a trade" opens it.
+     * @type {string}
+     * @memberof GetHomeResponseLayoutItem
+     */
+    tradePostId?: string | null;
 }
 
 export function GetHomeResponseLayoutItemFromJSON(json: any): GetHomeResponseLayoutItem {
@@ -108,6 +114,7 @@ export function GetHomeResponseLayoutItemFromJSONTyped(json: any, ignoreDiscrimi
         'object': !exists(json, 'object') ? undefined : json['object'],
         'market': !exists(json, 'market') ? undefined : json['market'],
         'visitors': !exists(json, 'visitors') ? undefined : json['visitors'],
+        'tradePostId': !exists(json, 'tradePostId') ? undefined : json['tradePostId'],
     };
 }
 
@@ -131,6 +138,7 @@ export function GetHomeResponseLayoutItemToJSON(value?: GetHomeResponseLayoutIte
         'object': value.object,
         'market': value.market,
         'visitors': value.visitors,
+        'tradePostId': value.tradePostId,
     };
 }
 

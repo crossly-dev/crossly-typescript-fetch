@@ -21,16 +21,16 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateBuyerCartOptimizerResponseDataLinesLine {
     /**
      * 
-     * @type {number}
-     * @memberof CreateBuyerCartOptimizerResponseDataLinesLine
-     */
-    quantity: number;
-    /**
-     * 
      * @type {string}
      * @memberof CreateBuyerCartOptimizerResponseDataLinesLine
      */
     query: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateBuyerCartOptimizerResponseDataLinesLine
+     */
+    quantity: number;
 }
 
 export function CreateBuyerCartOptimizerResponseDataLinesLineFromJSON(json: any): CreateBuyerCartOptimizerResponseDataLinesLine {
@@ -43,8 +43,8 @@ export function CreateBuyerCartOptimizerResponseDataLinesLineFromJSONTyped(json:
     }
     return {
         
-        'quantity': json['quantity'],
         'query': json['query'],
+        'quantity': json['quantity'],
     };
 }
 
@@ -57,8 +57,8 @@ export function CreateBuyerCartOptimizerResponseDataLinesLineToJSON(value?: Crea
     }
     return {
         
-        'quantity': value.quantity,
         'query': value.query,
+        'quantity': value.quantity,
     };
 }
 

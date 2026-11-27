@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetVaultMarketPositionResponseAuctionsItem,
+    GetVaultMarketPositionResponseAuctionsItemFromJSON,
+    GetVaultMarketPositionResponseAuctionsItemFromJSONTyped,
+    GetVaultMarketPositionResponseAuctionsItemToJSON,
+} from './GetVaultMarketPositionResponseAuctionsItem';
+import {
     GetVaultMarketPositionResponseInstructions,
     GetVaultMarketPositionResponseInstructionsFromJSON,
     GetVaultMarketPositionResponseInstructionsFromJSONTyped,
@@ -52,10 +58,10 @@ export interface GetVaultMarketPositionResponse {
     loans: Array<GetVaultMarketPositionResponseLoans>;
     /**
      * 
-     * @type {Array<any>}
+     * @type {Array<GetVaultMarketPositionResponseAuctionsItem>}
      * @memberof GetVaultMarketPositionResponse
      */
-    auctions: Array<any>;
+    auctions: Array<GetVaultMarketPositionResponseAuctionsItem>;
     /**
      * 
      * @type {Array<GetVaultMarketPositionResponseInstructions>}
@@ -285,8 +291,8 @@ export interface GetVaultMarketPositionResponse {
 * @enum {string}
 */
 export enum GetVaultMarketPositionResponseKindEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function GetVaultMarketPositionResponseFromJSON(json: any): GetVaultMarketPositionResponse {
@@ -300,7 +306,7 @@ export function GetVaultMarketPositionResponseFromJSONTyped(json: any, ignoreDis
     return {
         
         'loans': ((json['loans'] as Array<any>).map(GetVaultMarketPositionResponseLoansFromJSON)),
-        'auctions': json['auctions'],
+        'auctions': ((json['auctions'] as Array<any>).map(GetVaultMarketPositionResponseAuctionsItemFromJSON)),
         'instructions': ((json['instructions'] as Array<any>).map(GetVaultMarketPositionResponseInstructionsFromJSON)),
         'legs': ((json['legs'] as Array<any>).map(GetVaultMarketPositionResponseLegsFromJSON)),
         'splits': ((json['splits'] as Array<any>).map(GetVaultMarketPositionResponseSplitsFromJSON)),
@@ -351,7 +357,7 @@ export function GetVaultMarketPositionResponseToJSON(value?: GetVaultMarketPosit
     return {
         
         'loans': ((value.loans as Array<any>).map(GetVaultMarketPositionResponseLoansToJSON)),
-        'auctions': value.auctions,
+        'auctions': ((value.auctions as Array<any>).map(GetVaultMarketPositionResponseAuctionsItemToJSON)),
         'instructions': ((value.instructions as Array<any>).map(GetVaultMarketPositionResponseInstructionsToJSON)),
         'legs': ((value.legs as Array<any>).map(GetVaultMarketPositionResponseLegsToJSON)),
         'splits': ((value.splits as Array<any>).map(GetVaultMarketPositionResponseSplitsToJSON)),

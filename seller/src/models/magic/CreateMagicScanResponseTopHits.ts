@@ -50,17 +50,49 @@ export interface CreateMagicScanResponseTopHits {
      */
     listingUrl?: string | null;
     /**
-     * Origin marker for the UI badge.
+     * Origin marker for the UI badge. Every eBay hit is an image-search hit ('ebay-image');
+     * 'ebay-text' is kept in the union only for rows cached before that was fixed.
      * @type {string}
      * @memberof CreateMagicScanResponseTopHits
      */
     origin: string;
     /**
-     * CLIP cosine [0,1]; populated after the visual-rank pass.
+     * CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT = unscored (no image,
+     * CLIP down) — never filled in with a made-up value.
      * @type {number}
      * @memberof CreateMagicScanResponseTopHits
      */
     visualSim?: number | null;
+    /**
+     * Title agreement with the match reference after the hard gates (rank.ts).
+     * @type {number}
+     * @memberof CreateMagicScanResponseTopHits
+     */
+    agreement?: number | null;
+    /**
+     * True when the comp states the photo's own identifier (GTIN / style code).
+     * @type {boolean}
+     * @memberof CreateMagicScanResponseTopHits
+     */
+    carriesIdentifier?: boolean | null;
+    /**
+     * Price outlier within its condition / grade bucket: shown, but not used for pricing.
+     * @type {boolean}
+     * @memberof CreateMagicScanResponseTopHits
+     */
+    priceOutlier?: boolean | null;
+    /**
+     * Condition text the platform reported, for the pricing buckets.
+     * @type {string}
+     * @memberof CreateMagicScanResponseTopHits
+     */
+    condition?: string | null;
+    /**
+     * Brand the platform reported, for the brand gate at verdict time.
+     * @type {string}
+     * @memberof CreateMagicScanResponseTopHits
+     */
+    brand?: string | null;
     /**
      * 'active' = currently for sale; 'sold' = historical comp. UI
      * renders distinct badges so the seller can see both at a glance.
@@ -68,6 +100,18 @@ export interface CreateMagicScanResponseTopHits {
      * @memberof CreateMagicScanResponseTopHits
      */
     state: CreateMagicScanResponseTopHitsStateEnum;
+    /**
+     * Shipping in cents (0 = free), where the platform reports it (ExternalSoldComp.shippingCents).
+     * @type {number}
+     * @memberof CreateMagicScanResponseTopHits
+     */
+    shippingCents?: number | null;
+    /**
+     * Auction vs fixed price, where the platform says; an active auction's price is a bid (compPriceIsBid).
+     * @type {string}
+     * @memberof CreateMagicScanResponseTopHits
+     */
+    format?: CreateMagicScanResponseTopHitsFormatEnum;
 }
 
 /**
@@ -77,6 +121,13 @@ export interface CreateMagicScanResponseTopHits {
 export enum CreateMagicScanResponseTopHitsStateEnum {
     Active = 'active',
     Sold = 'sold'
+}/**
+* @export
+* @enum {string}
+*/
+export enum CreateMagicScanResponseTopHitsFormatEnum {
+    Auction = 'auction',
+    FixedPrice = 'fixed_price'
 }
 
 export function CreateMagicScanResponseTopHitsFromJSON(json: any): CreateMagicScanResponseTopHits {
@@ -96,7 +147,14 @@ export function CreateMagicScanResponseTopHitsFromJSONTyped(json: any, ignoreDis
         'listingUrl': !exists(json, 'listingUrl') ? undefined : json['listingUrl'],
         'origin': json['origin'],
         'visualSim': !exists(json, 'visualSim') ? undefined : json['visualSim'],
+        'agreement': !exists(json, 'agreement') ? undefined : json['agreement'],
+        'carriesIdentifier': !exists(json, 'carriesIdentifier') ? undefined : json['carriesIdentifier'],
+        'priceOutlier': !exists(json, 'priceOutlier') ? undefined : json['priceOutlier'],
+        'condition': !exists(json, 'condition') ? undefined : json['condition'],
+        'brand': !exists(json, 'brand') ? undefined : json['brand'],
         'state': json['state'],
+        'shippingCents': !exists(json, 'shippingCents') ? undefined : json['shippingCents'],
+        'format': !exists(json, 'format') ? undefined : json['format'],
     };
 }
 
@@ -116,7 +174,14 @@ export function CreateMagicScanResponseTopHitsToJSON(value?: CreateMagicScanResp
         'listingUrl': value.listingUrl,
         'origin': value.origin,
         'visualSim': value.visualSim,
+        'agreement': value.agreement,
+        'carriesIdentifier': value.carriesIdentifier,
+        'priceOutlier': value.priceOutlier,
+        'condition': value.condition,
+        'brand': value.brand,
         'state': value.state,
+        'shippingCents': value.shippingCents,
+        'format': value.format,
     };
 }
 

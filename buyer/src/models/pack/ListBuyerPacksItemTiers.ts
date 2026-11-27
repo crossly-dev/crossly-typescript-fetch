@@ -36,18 +36,6 @@ export interface ListBuyerPacksItemTiers {
      * @type {number}
      * @memberof ListBuyerPacksItemTiers
      */
-    available: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerPacksItemTiers
-     */
-    minValueCents?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerPacksItemTiers
-     */
     weight: number;
     /**
      * 
@@ -55,6 +43,18 @@ export interface ListBuyerPacksItemTiers {
      * @memberof ListBuyerPacksItemTiers
      */
     oddsPct: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerPacksItemTiers
+     */
+    available: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerPacksItemTiers
+     */
+    minValueCents?: number | null;
     /**
      * 
      * @type {number}
@@ -81,10 +81,10 @@ export function ListBuyerPacksItemTiersFromJSONTyped(json: any, ignoreDiscrimina
         
         'id': json['id'],
         'name': json['name'],
-        'available': json['available'],
-        'minValueCents': !exists(json, 'minValueCents') ? undefined : json['minValueCents'],
         'weight': json['weight'],
         'oddsPct': json['oddsPct'],
+        'available': json['available'],
+        'minValueCents': !exists(json, 'minValueCents') ? undefined : json['minValueCents'],
         'maxValueCents': !exists(json, 'maxValueCents') ? undefined : json['maxValueCents'],
         'avgValueCents': json['avgValueCents'],
     };
@@ -101,10 +101,10 @@ export function ListBuyerPacksItemTiersToJSON(value?: ListBuyerPacksItemTiers | 
         
         'id': value.id,
         'name': value.name,
-        'available': value.available,
-        'minValueCents': value.minValueCents,
         'weight': value.weight,
         'oddsPct': value.oddsPct,
+        'available': value.available,
+        'minValueCents': value.minValueCents,
         'maxValueCents': value.maxValueCents,
         'avgValueCents': value.avgValueCents,
     };

@@ -37,6 +37,12 @@ import {
     GetVaultMarketTodResponseUnitsFromJSONTyped,
     GetVaultMarketTodResponseUnitsToJSON,
 } from './GetVaultMarketTodResponseUnits';
+import {
+    GetVaultMarketTodResponseVaultShares,
+    GetVaultMarketTodResponseVaultSharesFromJSON,
+    GetVaultMarketTodResponseVaultSharesFromJSONTyped,
+    GetVaultMarketTodResponseVaultSharesToJSON,
+} from './GetVaultMarketTodResponseVaultShares';
 
 /**
  * 
@@ -98,6 +104,12 @@ export interface GetVaultMarketTodResponse {
      * @memberof GetVaultMarketTodResponse
      */
     claims: Array<GetVaultMarketTodResponseClaims>;
+    /**
+     * 
+     * @type {GetVaultMarketTodResponseVaultShares}
+     * @memberof GetVaultMarketTodResponse
+     */
+    vaultShares?: GetVaultMarketTodResponseVaultShares | null;
 }
 
 export function GetVaultMarketTodResponseFromJSON(json: any): GetVaultMarketTodResponse {
@@ -119,6 +131,7 @@ export function GetVaultMarketTodResponseFromJSONTyped(json: any, ignoreDiscrimi
         'sharesProblem': !exists(json, 'sharesProblem') ? undefined : json['sharesProblem'],
         'units': ((json['units'] as Array<any>).map(GetVaultMarketTodResponseUnitsFromJSON)),
         'claims': ((json['claims'] as Array<any>).map(GetVaultMarketTodResponseClaimsFromJSON)),
+        'vaultShares': !exists(json, 'vaultShares') ? undefined : GetVaultMarketTodResponseVaultSharesFromJSON(json['vaultShares']),
     };
 }
 
@@ -140,6 +153,7 @@ export function GetVaultMarketTodResponseToJSON(value?: GetVaultMarketTodRespons
         'sharesProblem': value.sharesProblem,
         'units': ((value.units as Array<any>).map(GetVaultMarketTodResponseUnitsToJSON)),
         'claims': ((value.claims as Array<any>).map(GetVaultMarketTodResponseClaimsToJSON)),
+        'vaultShares': GetVaultMarketTodResponseVaultSharesToJSON(value.vaultShares),
     };
 }
 

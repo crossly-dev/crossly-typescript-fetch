@@ -33,6 +33,12 @@ export interface GetPayoutConnectResponseData {
     defaultCountry?: string;
     /**
      * 
+     * @type {string}
+     * @memberof GetPayoutConnectResponseData
+     */
+    accountSource: string;
+    /**
+     * 
      * @type {boolean}
      * @memberof GetPayoutConnectResponseData
      */
@@ -120,6 +126,7 @@ export function GetPayoutConnectResponseDataFromJSONTyped(json: any, ignoreDiscr
         
         'status': json['status'],
         'defaultCountry': !exists(json, 'defaultCountry') ? undefined : json['defaultCountry'],
+        'accountSource': json['accountSource'],
         'payoutsEnabled': !exists(json, 'payoutsEnabled') ? undefined : json['payoutsEnabled'],
         'chargesEnabled': !exists(json, 'chargesEnabled') ? undefined : json['chargesEnabled'],
         'transfersActive': !exists(json, 'transfersActive') ? undefined : json['transfersActive'],
@@ -145,6 +152,7 @@ export function GetPayoutConnectResponseDataToJSON(value?: GetPayoutConnectRespo
         
         'status': value.status,
         'defaultCountry': value.defaultCountry,
+        'accountSource': value.accountSource,
         'payoutsEnabled': value.payoutsEnabled,
         'chargesEnabled': value.chargesEnabled,
         'transfersActive': value.transfersActive,

@@ -27,15 +27,15 @@ import {
     CreateInventoryBulkQuantityResponse,
     CreateInventoryBulkQuantityResponseFromJSON,
     CreateInventoryBulkQuantityResponseToJSON,
+    CreateInventoryBulkRestoreResponse,
+    CreateInventoryBulkRestoreResponseFromJSON,
+    CreateInventoryBulkRestoreResponseToJSON,
     CreateInventoryCatalogMatchRefreshResponse,
     CreateInventoryCatalogMatchRefreshResponseFromJSON,
     CreateInventoryCatalogMatchRefreshResponseToJSON,
     CreateInventoryCsvImportResponse,
     CreateInventoryCsvImportResponseFromJSON,
     CreateInventoryCsvImportResponseToJSON,
-    CreateInventoryLabelRenameResponse,
-    CreateInventoryLabelRenameResponseFromJSON,
-    CreateInventoryLabelRenameResponseToJSON,
     CreateInventoryMergeResponse,
     CreateInventoryMergeResponseFromJSON,
     CreateInventoryMergeResponseToJSON,
@@ -60,9 +60,6 @@ import {
     CreateSpatialPropertyDeedMaintenanceResponse,
     CreateSpatialPropertyDeedMaintenanceResponseFromJSON,
     CreateSpatialPropertyDeedMaintenanceResponseToJSON,
-    CreateSpatialPropertyLeaseAcceptResponse,
-    CreateSpatialPropertyLeaseAcceptResponseFromJSON,
-    CreateSpatialPropertyLeaseAcceptResponseToJSON,
     CreateSpatialPropertyLeaseEndResponse,
     CreateSpatialPropertyLeaseEndResponseFromJSON,
     CreateSpatialPropertyLeaseEndResponseToJSON,
@@ -87,12 +84,24 @@ import {
     CreateWorldCrewLeaveResponse,
     CreateWorldCrewLeaveResponseFromJSON,
     CreateWorldCrewLeaveResponseToJSON,
+    CreateWorldMarketPlotRentResponse,
+    CreateWorldMarketPlotRentResponseFromJSON,
+    CreateWorldMarketPlotRentResponseToJSON,
     CreateWorldPartyWishlistResponse,
     CreateWorldPartyWishlistResponseFromJSON,
     CreateWorldPartyWishlistResponseToJSON,
     DeleteWorldJobShiftResponse,
     DeleteWorldJobShiftResponseFromJSON,
     DeleteWorldJobShiftResponseToJSON,
+    GetAnalyticInventoryResponse,
+    GetAnalyticInventoryResponseFromJSON,
+    GetAnalyticInventoryResponseToJSON,
+    GetGameEventSummaryResponse,
+    GetGameEventSummaryResponseFromJSON,
+    GetGameEventSummaryResponseToJSON,
+    GetGameHuntBuildResponse,
+    GetGameHuntBuildResponseFromJSON,
+    GetGameHuntBuildResponseToJSON,
     GetGameLeaderboardResponse,
     GetGameLeaderboardResponseFromJSON,
     GetGameLeaderboardResponseToJSON,
@@ -180,6 +189,9 @@ import {
     GetSpatialStreetResponse,
     GetSpatialStreetResponseFromJSON,
     GetSpatialStreetResponseToJSON,
+    GetWorldPulseResponse,
+    GetWorldPulseResponseFromJSON,
+    GetWorldPulseResponseToJSON,
     GetWorldRoomFunnelResponse,
     GetWorldRoomFunnelResponseFromJSON,
     GetWorldRoomFunnelResponseToJSON,
@@ -198,6 +210,9 @@ import {
     ListGameBreakUpcomingResponse,
     ListGameBreakUpcomingResponseFromJSON,
     ListGameBreakUpcomingResponseToJSON,
+    ListGameHuntMineResponse,
+    ListGameHuntMineResponseFromJSON,
+    ListGameHuntMineResponseToJSON,
     ListGameHuntsResponse,
     ListGameHuntsResponseFromJSON,
     ListGameHuntsResponseToJSON,
@@ -294,6 +309,9 @@ import {
     UpdateSpatialShopStaffWageResponse,
     UpdateSpatialShopStaffWageResponseFromJSON,
     UpdateSpatialShopStaffWageResponseToJSON,
+    UpdatedResponse,
+    UpdatedResponseFromJSON,
+    UpdatedResponseToJSON,
 } from '../models';
 
 export interface CreateCatalogMatchConfirmRequest {
@@ -371,6 +389,29 @@ export interface DeleteInventoryRequest {
 
 export interface DeleteSpatialStreetPlotRequest {
     slug: string;
+}
+
+export interface InventoryApiGetAnalyticInventoryRequest {
+    range?: InventoryApiGetAnalyticInventoryRangeEnum;
+    from?: string;
+    to?: string;
+    compare?: InventoryApiGetAnalyticInventoryCompareEnum;
+    cmpFrom?: string;
+    cmpTo?: string;
+    labels?: string;
+    platforms?: string;
+    category?: string;
+    brand?: string;
+    tz?: string;
+    maturity?: InventoryApiGetAnalyticInventoryMaturityEnum;
+}
+
+export interface GetGameEventSummaryRequest {
+    eventId: string;
+}
+
+export interface GetGameHuntBuildRequest {
+    id: string;
 }
 
 export interface GetHomeRequest {
@@ -461,6 +502,8 @@ export interface ListInventoryRequest {
     kind?: ListInventoryKindEnum;
     platforms?: string;
     platformMode?: ListInventoryPlatformModeEnum;
+    sku?: string;
+    updatedSince?: Date;
 }
 
 export interface ListInventoryActivityRequest {
@@ -747,7 +790,8 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Set / add / subtract stock across many items, syncing live listings.
+     * Two bodies. {ids, mode: \"set\"|\"increase\"|\"decrease\", value, syncMarketplaces?} applies one value to every id. {mode: \"set\", items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped = ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
      */
     async createInventoryBulkQuantityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryBulkQuantityResponse>> {
         const queryParameters: any = {};
@@ -773,10 +817,45 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Set / add / subtract stock across many items, syncing live listings.
+     * Two bodies. {ids, mode: \"set\"|\"increase\"|\"decrease\", value, syncMarketplaces?} applies one value to every id. {mode: \"set\", items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped = ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
      */
     async createInventoryBulkQuantity(initOverrides?: RequestInit): Promise<CreateInventoryBulkQuantityResponse> {
         const response = await this.createInventoryBulkQuantityRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Restore archived inventory items (status returns to active, or sold_out when no stock).
+     */
+    async createInventoryBulkRestoreRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryBulkRestoreResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inventory/bulk-restore`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryBulkRestoreResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Restore archived inventory items (status returns to active, or sold_out when no stock).
+     */
+    async createInventoryBulkRestore(initOverrides?: RequestInit): Promise<CreateInventoryBulkRestoreResponse> {
+        const response = await this.createInventoryBulkRestoreRaw(initOverrides);
         return await response.value();
     }
 
@@ -889,7 +968,7 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Rename a label across every inventory item.
      */
-    async createInventoryLabelRenameRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryLabelRenameResponse>> {
+    async createInventoryLabelRenameRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatedResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -909,13 +988,13 @@ export class InventoryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryLabelRenameResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdatedResponseFromJSON(jsonValue));
     }
 
     /**
      * Rename a label across every inventory item.
      */
-    async createInventoryLabelRename(initOverrides?: RequestInit): Promise<CreateInventoryLabelRenameResponse> {
+    async createInventoryLabelRename(initOverrides?: RequestInit): Promise<UpdatedResponse> {
         const response = await this.createInventoryLabelRenameRaw(initOverrides);
         return await response.value();
     }
@@ -1154,7 +1233,7 @@ export class InventoryApi extends runtime.BaseAPI {
      * Pays the first week to the owner from your EARNED CBX and moves your (public) shop onto the plot.
      * Take a plot on lease.
      */
-    async createSpatialPropertyLeaseAcceptRaw(requestParameters: CreateSpatialPropertyLeaseAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialPropertyLeaseAcceptResponse>> {
+    async createSpatialPropertyLeaseAcceptRaw(requestParameters: CreateSpatialPropertyLeaseAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldMarketPlotRentResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialPropertyLeaseAccept.');
         }
@@ -1178,20 +1257,20 @@ export class InventoryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialPropertyLeaseAcceptResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldMarketPlotRentResponseFromJSON(jsonValue));
     }
 
     /**
      * Pays the first week to the owner from your EARNED CBX and moves your (public) shop onto the plot.
      * Take a plot on lease.
      */
-    async createSpatialPropertyLeaseAccept(requestParameters: CreateSpatialPropertyLeaseAcceptRequest, initOverrides?: RequestInit): Promise<CreateSpatialPropertyLeaseAcceptResponse> {
+    async createSpatialPropertyLeaseAccept(requestParameters: CreateSpatialPropertyLeaseAcceptRequest, initOverrides?: RequestInit): Promise<CreateWorldMarketPlotRentResponse> {
         const response = await this.createSpatialPropertyLeaseAcceptRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * The tenant\'s shop gets a free Main Street address again.
+     * The tenant\'s showroom leaves the plot.
      * End a lease (owner or tenant).
      */
     async createSpatialPropertyLeaseEndRaw(requestParameters: CreateSpatialPropertyLeaseEndRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialPropertyLeaseEndResponse>> {
@@ -1222,7 +1301,7 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * The tenant\'s shop gets a free Main Street address again.
+     * The tenant\'s showroom leaves the plot.
      * End a lease (owner or tenant).
      */
     async createSpatialPropertyLeaseEnd(requestParameters: CreateSpatialPropertyLeaseEndRequest, initOverrides?: RequestInit): Promise<CreateSpatialPropertyLeaseEndResponse> {
@@ -1669,6 +1748,164 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     */
+    async getAnalyticInventoryRaw(requestParameters: InventoryApiGetAnalyticInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticInventoryResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.compare !== undefined) {
+            queryParameters['compare'] = requestParameters.compare;
+        }
+
+        if (requestParameters.cmpFrom !== undefined) {
+            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
+        }
+
+        if (requestParameters.cmpTo !== undefined) {
+            queryParameters['cmpTo'] = requestParameters.cmpTo;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.platforms !== undefined) {
+            queryParameters['platforms'] = requestParameters.platforms;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        if (requestParameters.maturity !== undefined) {
+            queryParameters['maturity'] = requestParameters.maturity;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/inventory`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticInventoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     */
+    async getAnalyticInventory(requestParameters: InventoryApiGetAnalyticInventoryRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticInventoryResponse> {
+        const response = await this.getAnalyticInventoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+     */
+    async getGameEventSummaryRaw(requestParameters: GetGameEventSummaryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetGameEventSummaryResponse>> {
+        if (requestParameters.eventId === null || requestParameters.eventId === undefined) {
+            throw new runtime.RequiredError('eventId','Required parameter requestParameters.eventId was null or undefined when calling getGameEventSummary.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/games/events/{eventId}/summary`.replace(`{${"eventId"}}`, encodeURIComponent(String(requestParameters.eventId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetGameEventSummaryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+     */
+    async getGameEventSummary(requestParameters: GetGameEventSummaryRequest, initOverrides?: RequestInit): Promise<GetGameEventSummaryResponse> {
+        const response = await this.getGameEventSummaryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+     */
+    async getGameHuntBuildRaw(requestParameters: GetGameHuntBuildRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetGameHuntBuildResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getGameHuntBuild.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/games/hunts/{id}/build`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetGameHuntBuildResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+     */
+    async getGameHuntBuild(requestParameters: GetGameHuntBuildRequest, initOverrides?: RequestInit): Promise<GetGameHuntBuildResponse> {
+        const response = await this.getGameHuntBuildRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all -- rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \"A player\" in their place.
      */
     async getGameLeaderboardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetGameLeaderboardResponse>> {
@@ -1813,7 +2050,7 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
      */
     async getInventoryAgingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInventoryAgingResponse>> {
         const queryParameters: any = {};
@@ -1839,7 +2076,7 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
      */
     async getInventoryAging(initOverrides?: RequestInit): Promise<GetInventoryAgingResponse> {
         const response = await this.getInventoryAgingRaw(initOverrides);
@@ -1987,7 +2224,7 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      */
     async getInventorySellThroughRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInventorySellThroughResponse>> {
         const queryParameters: any = {};
@@ -2013,7 +2250,7 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      */
     async getInventorySellThrough(initOverrides?: RequestInit): Promise<GetInventorySellThroughResponse> {
         const response = await this.getInventorySellThroughRaw(initOverrides);
@@ -2063,7 +2300,7 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      */
     async getInventoryValueHistoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInventoryValueHistoryResponse>> {
         const queryParameters: any = {};
@@ -2089,7 +2326,7 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      */
     async getInventoryValueHistory(initOverrides?: RequestInit): Promise<GetInventoryValueHistoryResponse> {
         const response = await this.getInventoryValueHistoryRaw(initOverrides);
@@ -2785,6 +3022,40 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
+     * Crossly World\'s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world\'s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain\'s mark.
+     */
+    async getWorldPulseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldPulseResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/world/pulse`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldPulseResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Crossly World\'s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world\'s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain\'s mark.
+     */
+    async getWorldPulse(initOverrides?: RequestInit): Promise<GetWorldPulseResponse> {
+        const response = await this.getWorldPulseRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your room\'s funnel over the last `days` (1-35, default 30): visitors (people, once a day), looks, items opened, checkouts started from the room, paid sales and revenueCents. Sales count only lines the room itself put in a cart.
      */
     async getWorldRoomFunnelRaw(requestParameters: GetWorldRoomFunnelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldRoomFunnelResponse>> {
@@ -3013,6 +3284,40 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+     */
+    async listGameHuntMineRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListGameHuntMineResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/games/hunts/mine`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListGameHuntMineResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+     */
+    async listGameHuntMine(initOverrides?: RequestInit): Promise<ListGameHuntMineResponse> {
+        const response = await this.listGameHuntMineRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Scavenger hunts running now in Crossly World shops and pop-up stalls, ending soonest first: title, shop (name and slug -- for a hunt at a stall, the street slug, with stall.bookingId set), how many tokens, what finishing unlocks (\"10% off\" -- never the code), when it ends and how many people have finished. Optional place filters to one shop or street slug.
      */
     async listGameHuntsRaw(requestParameters: ListGameHuntsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListGameHuntsResponse>> {
@@ -3184,6 +3489,14 @@ export class InventoryApi extends runtime.BaseAPI {
 
         if (requestParameters.platformMode !== undefined) {
             queryParameters['platformMode'] = requestParameters.platformMode;
+        }
+
+        if (requestParameters.sku !== undefined) {
+            queryParameters['sku'] = requestParameters.sku;
+        }
+
+        if (requestParameters.updatedSince !== undefined) {
+            queryParameters['updatedSince'] = (requestParameters.updatedSince as any).toISOString();
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -4262,6 +4575,38 @@ export class InventoryApi extends runtime.BaseAPI {
 
 }
 
+/**
+    * @export
+    * @enum {string}
+    */
+export enum InventoryApiGetAnalyticInventoryRangeEnum {
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y',
+    Ytd = 'ytd',
+    All = 'all',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum InventoryApiGetAnalyticInventoryCompareEnum {
+    Prev = 'prev',
+    Yoy = 'yoy',
+    None = 'none',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum InventoryApiGetAnalyticInventoryMaturityEnum {
+    NUMBER_30 = 30,
+    NUMBER_60 = 60,
+    NUMBER_90 = 90
+}
 /**
     * @export
     * @enum {string}

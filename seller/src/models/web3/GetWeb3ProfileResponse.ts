@@ -81,8 +81,8 @@ export interface GetWeb3ProfileResponse {
 * @enum {string}
 */
 export enum GetWeb3ProfileResponseFamilyEnum {
-    Evm = 'evm',
-    Solana = 'solana'
+    Solana = 'solana',
+    Evm = 'evm'
 }
 
 export function GetWeb3ProfileResponseFromJSON(json: any): GetWeb3ProfileResponse {

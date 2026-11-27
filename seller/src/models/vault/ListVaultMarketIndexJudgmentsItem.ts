@@ -69,8 +69,8 @@ export interface ListVaultMarketIndexJudgmentsItem {
 */
 export enum ListVaultMarketIndexJudgmentsItemActionEnum {
     Method = 'method',
-    Halt = 'halt',
     Resume = 'resume',
+    Halt = 'halt',
     ExcludeKey = 'exclude_key',
     VoidTrade = 'void_trade',
     Restate = 'restate',

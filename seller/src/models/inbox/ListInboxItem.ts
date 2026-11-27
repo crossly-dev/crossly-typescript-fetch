@@ -21,6 +21,12 @@ import { exists, mapValues } from '../../runtime';
 export interface ListInboxItem {
     /**
      * 
+     * @type {boolean}
+     * @memberof ListInboxItem
+     */
+    canSendOffer: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof ListInboxItem
      */
@@ -42,19 +48,7 @@ export interface ListInboxItem {
      * @type {string}
      * @memberof ListInboxItem
      */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListInboxItem
-     */
     platform: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListInboxItem
-     */
-    listingId?: string | null;
     /**
      * 
      * @type {number}
@@ -66,7 +60,31 @@ export interface ListInboxItem {
      * @type {string}
      * @memberof ListInboxItem
      */
+    status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInboxItem
+     */
+    source?: string | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListInboxItem
+     */
+    labels: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInboxItem
+     */
     inventoryItemId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInboxItem
+     */
+    listingId?: string | null;
     /**
      * 
      * @type {string}
@@ -84,12 +102,6 @@ export interface ListInboxItem {
      * @type {string}
      * @memberof ListInboxItem
      */
-    subject?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListInboxItem
-     */
     platformConversationId: string;
     /**
      * 
@@ -97,6 +109,18 @@ export interface ListInboxItem {
      * @memberof ListInboxItem
      */
     buyerPlatformId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInboxItem
+     */
+    buyerAvatarUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInboxItem
+     */
+    subject?: string | null;
     /**
      * 
      * @type {boolean}
@@ -139,6 +163,18 @@ export interface ListInboxItem {
      * @memberof ListInboxItem
      */
     lastMessageAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListInboxItem
+     */
+    supersededAt?: Date | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListInboxItem
+     */
+    isStarred: boolean;
 }
 
 export function ListInboxItemFromJSON(json: any): ListInboxItem {
@@ -151,19 +187,23 @@ export function ListInboxItemFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
+        'canSendOffer': json['canSendOffer'],
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
-        'status': json['status'],
         'platform': json['platform'],
-        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'accountSlot': json['accountSlot'],
+        'status': json['status'],
+        'source': !exists(json, 'source') ? undefined : json['source'],
+        'labels': json['labels'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
+        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
         'buyerUsername': !exists(json, 'buyerUsername') ? undefined : json['buyerUsername'],
-        'subject': !exists(json, 'subject') ? undefined : json['subject'],
         'platformConversationId': json['platformConversationId'],
         'buyerPlatformId': !exists(json, 'buyerPlatformId') ? undefined : json['buyerPlatformId'],
+        'buyerAvatarUrl': !exists(json, 'buyerAvatarUrl') ? undefined : json['buyerAvatarUrl'],
+        'subject': !exists(json, 'subject') ? undefined : json['subject'],
         'isRead': json['isRead'],
         'isHidden': json['isHidden'],
         'hasOffer': json['hasOffer'],
@@ -171,6 +211,8 @@ export function ListInboxItemFromJSONTyped(json: any, ignoreDiscriminator: boole
         'offerStatus': !exists(json, 'offerStatus') ? undefined : json['offerStatus'],
         'platformConversationUrl': !exists(json, 'platformConversationUrl') ? undefined : json['platformConversationUrl'],
         'lastMessageAt': !exists(json, 'lastMessageAt') ? undefined : (json['lastMessageAt'] === null ? null : new Date(json['lastMessageAt'])),
+        'supersededAt': !exists(json, 'supersededAt') ? undefined : (json['supersededAt'] === null ? null : new Date(json['supersededAt'])),
+        'isStarred': json['isStarred'],
     };
 }
 
@@ -183,19 +225,23 @@ export function ListInboxItemToJSON(value?: ListInboxItem | null): any {
     }
     return {
         
+        'canSendOffer': value.canSendOffer,
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
-        'status': value.status,
         'platform': value.platform,
-        'listingId': value.listingId,
         'accountSlot': value.accountSlot,
+        'status': value.status,
+        'source': value.source,
+        'labels': value.labels,
         'inventoryItemId': value.inventoryItemId,
+        'listingId': value.listingId,
         'platformListingId': value.platformListingId,
         'buyerUsername': value.buyerUsername,
-        'subject': value.subject,
         'platformConversationId': value.platformConversationId,
         'buyerPlatformId': value.buyerPlatformId,
+        'buyerAvatarUrl': value.buyerAvatarUrl,
+        'subject': value.subject,
         'isRead': value.isRead,
         'isHidden': value.isHidden,
         'hasOffer': value.hasOffer,
@@ -203,6 +249,8 @@ export function ListInboxItemToJSON(value?: ListInboxItem | null): any {
         'offerStatus': value.offerStatus,
         'platformConversationUrl': value.platformConversationUrl,
         'lastMessageAt': value.lastMessageAt === undefined ? undefined : (value.lastMessageAt === null ? null : value.lastMessageAt.toISOString()),
+        'supersededAt': value.supersededAt === undefined ? undefined : (value.supersededAt === null ? null : value.supersededAt.toISOString()),
+        'isStarred': value.isStarred,
     };
 }
 

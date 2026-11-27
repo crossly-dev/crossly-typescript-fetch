@@ -86,8 +86,8 @@ export interface ListVaultMarketValuationStatementsItem {
 * @enum {string}
 */
 export enum ListVaultMarketValuationStatementsItemPurposeEnum {
-    Insurance = 'insurance',
-    Appraisal = 'appraisal'
+    Appraisal = 'appraisal',
+    Insurance = 'insurance'
 }
 
 export function ListVaultMarketValuationStatementsItemFromJSON(json: any): ListVaultMarketValuationStatementsItem {

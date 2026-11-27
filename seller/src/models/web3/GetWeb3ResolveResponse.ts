@@ -44,12 +44,12 @@ export interface GetWeb3ResolveResponse {
 * @enum {string}
 */
 export enum GetWeb3ResolveResponseChainEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }
 
 export function GetWeb3ResolveResponseFromJSON(json: any): GetWeb3ResolveResponse {

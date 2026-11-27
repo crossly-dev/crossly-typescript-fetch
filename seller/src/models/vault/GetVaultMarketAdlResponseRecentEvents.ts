@@ -68,8 +68,8 @@ export interface GetVaultMarketAdlResponseRecentEvents {
 * @enum {string}
 */
 export enum GetVaultMarketAdlResponseRecentEventsBankruptSideEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function GetVaultMarketAdlResponseRecentEventsFromJSON(json: any): GetVaultMarketAdlResponseRecentEvents {

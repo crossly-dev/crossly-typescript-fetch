@@ -27,10 +27,10 @@ export interface CreateAutomationRuleImportResponseErrors {
     name: string;
     /**
      * 
-     * @type {Array<{ [key: string]: any; }>}
+     * @type {Array<any>}
      * @memberof CreateAutomationRuleImportResponseErrors
      */
-    errors: Array<{ [key: string]: any; }>;
+    errors: Array<any>;
 }
 
 export function CreateAutomationRuleImportResponseErrorsFromJSON(json: any): CreateAutomationRuleImportResponseErrors {

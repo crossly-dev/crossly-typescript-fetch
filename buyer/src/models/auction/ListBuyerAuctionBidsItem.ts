@@ -20,17 +20,17 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface ListBuyerAuctionBidsItem {
     /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerAuctionBidsItem
-     */
-    amountCents: number;
-    /**
      * "You" for your own bids; otherwise anonymised, e.g. "a***e (12)".
      * @type {string}
      * @memberof ListBuyerAuctionBidsItem
      */
     bidder: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerAuctionBidsItem
+     */
+    amountCents: number;
     /**
      * 
      * @type {string}
@@ -49,8 +49,8 @@ export function ListBuyerAuctionBidsItemFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'amountCents': json['amountCents'],
         'bidder': json['bidder'],
+        'amountCents': json['amountCents'],
         'placedAt': !exists(json, 'placedAt') ? undefined : json['placedAt'],
     };
 }
@@ -64,8 +64,8 @@ export function ListBuyerAuctionBidsItemToJSON(value?: ListBuyerAuctionBidsItem 
     }
     return {
         
-        'amountCents': value.amountCents,
         'bidder': value.bidder,
+        'amountCents': value.amountCents,
         'placedAt': value.placedAt,
     };
 }

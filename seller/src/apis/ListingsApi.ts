@@ -18,9 +18,6 @@ import {
     CreateAiDetectionDisputeResponse,
     CreateAiDetectionDisputeResponseFromJSON,
     CreateAiDetectionDisputeResponseToJSON,
-    CreateBreakCancelResponse,
-    CreateBreakCancelResponseFromJSON,
-    CreateBreakCancelResponseToJSON,
     CreateListingBulkDeleteResponse,
     CreateListingBulkDeleteResponseFromJSON,
     CreateListingBulkDeleteResponseToJSON,
@@ -30,6 +27,9 @@ import {
     CreateListingBulkHardDeleteResponse,
     CreateListingBulkHardDeleteResponseFromJSON,
     CreateListingBulkHardDeleteResponseToJSON,
+    CreateListingBulkResponse,
+    CreateListingBulkResponseFromJSON,
+    CreateListingBulkResponseToJSON,
     CreateListingBulkUpdateResponse,
     CreateListingBulkUpdateResponseFromJSON,
     CreateListingBulkUpdateResponseToJSON,
@@ -57,6 +57,36 @@ import {
     CreateListingResponse,
     CreateListingResponseFromJSON,
     CreateListingResponseToJSON,
+    CreateListingTagBulkResponse,
+    CreateListingTagBulkResponseFromJSON,
+    CreateListingTagBulkResponseToJSON,
+    CreateListingTagRenameResponse,
+    CreateListingTagRenameResponseFromJSON,
+    CreateListingTagRenameResponseToJSON,
+    CreateLiveStreamConnectionResponse,
+    CreateLiveStreamConnectionResponseFromJSON,
+    CreateLiveStreamConnectionResponseToJSON,
+    CreatePassportDraftCaptureLinkResponse,
+    CreatePassportDraftCaptureLinkResponseFromJSON,
+    CreatePassportDraftCaptureLinkResponseToJSON,
+    CreatePassportPrintResponse,
+    CreatePassportPrintResponseFromJSON,
+    CreatePassportPrintResponseToJSON,
+    CreateRentalBulkRentableResponse,
+    CreateRentalBulkRentableResponseFromJSON,
+    CreateRentalBulkRentableResponseToJSON,
+    CreateShopLimitRequestRequest,
+    CreateShopLimitRequestRequestFromJSON,
+    CreateShopLimitRequestRequestToJSON,
+    CreateShopLimitRequestResponse,
+    CreateShopLimitRequestResponseFromJSON,
+    CreateShopLimitRequestResponseToJSON,
+    CreateStoryResponse,
+    CreateStoryResponseFromJSON,
+    CreateStoryResponseToJSON,
+    CreateVariationGroupGenerateMatrixResponse,
+    CreateVariationGroupGenerateMatrixResponseFromJSON,
+    CreateVariationGroupGenerateMatrixResponseToJSON,
     CreateVariationGroupGenerateResponse,
     CreateVariationGroupGenerateResponseFromJSON,
     CreateVariationGroupGenerateResponseToJSON,
@@ -66,9 +96,27 @@ import {
     CreateVariationGroupResponse,
     CreateVariationGroupResponseFromJSON,
     CreateVariationGroupResponseToJSON,
+    CreateVideoStudioFinalizeResponse,
+    CreateVideoStudioFinalizeResponseFromJSON,
+    CreateVideoStudioFinalizeResponseToJSON,
+    CreateVideoStudioUploadUrlResponse,
+    CreateVideoStudioUploadUrlResponseFromJSON,
+    CreateVideoStudioUploadUrlResponseToJSON,
+    DeleteEventResponse,
+    DeleteEventResponseFromJSON,
+    DeleteEventResponseToJSON,
     DeleteListingResponse,
     DeleteListingResponseFromJSON,
     DeleteListingResponseToJSON,
+    DeleteStoryResponse,
+    DeleteStoryResponseFromJSON,
+    DeleteStoryResponseToJSON,
+    EventResponse,
+    EventResponseFromJSON,
+    EventResponseToJSON,
+    GetEventAnalyticResponse,
+    GetEventAnalyticResponseFromJSON,
+    GetEventAnalyticResponseToJSON,
     GetListingFacetResponse,
     GetListingFacetResponseFromJSON,
     GetListingFacetResponseToJSON,
@@ -78,12 +126,33 @@ import {
     GetListingSkuExistResponse,
     GetListingSkuExistResponseFromJSON,
     GetListingSkuExistResponseToJSON,
+    GetLiveStreamRecapResponse,
+    GetLiveStreamRecapResponseFromJSON,
+    GetLiveStreamRecapResponseToJSON,
+    GetPassportPrintResponse,
+    GetPassportPrintResponseFromJSON,
+    GetPassportPrintResponseToJSON,
+    GetPassportResponse,
+    GetPassportResponseFromJSON,
+    GetPassportResponseToJSON,
     GetPricingSettingResponse,
     GetPricingSettingResponseFromJSON,
     GetPricingSettingResponseToJSON,
     GetPricingSoldCompResponse,
     GetPricingSoldCompResponseFromJSON,
     GetPricingSoldCompResponseToJSON,
+    GetRentalSettingResponse,
+    GetRentalSettingResponseFromJSON,
+    GetRentalSettingResponseToJSON,
+    GetShopLimitResponse,
+    GetShopLimitResponseFromJSON,
+    GetShopLimitResponseToJSON,
+    ListEventAttendeesResponse,
+    ListEventAttendeesResponseFromJSON,
+    ListEventAttendeesResponseToJSON,
+    ListEventsResponse,
+    ListEventsResponseFromJSON,
+    ListEventsResponseToJSON,
     ListListingAiDetectionsResponse,
     ListListingAiDetectionsResponseFromJSON,
     ListListingAiDetectionsResponseToJSON,
@@ -93,21 +162,48 @@ import {
     ListListingIdsResponse,
     ListListingIdsResponseFromJSON,
     ListListingIdsResponseToJSON,
+    ListListingTagSuggestResponse,
+    ListListingTagSuggestResponseFromJSON,
+    ListListingTagSuggestResponseToJSON,
+    ListListingTagsResponse,
+    ListListingTagsResponseFromJSON,
+    ListListingTagsResponseToJSON,
     ListListingsResponse,
     ListListingsResponseFromJSON,
     ListListingsResponseToJSON,
+    ListLiveStreamsResponse,
+    ListLiveStreamsResponseFromJSON,
+    ListLiveStreamsResponseToJSON,
+    ListPassportEventsResponse,
+    ListPassportEventsResponseFromJSON,
+    ListPassportEventsResponseToJSON,
+    ListPassportPrintTargetsResponse,
+    ListPassportPrintTargetsResponseFromJSON,
+    ListPassportPrintTargetsResponseToJSON,
     ListPassportsResponse,
     ListPassportsResponseFromJSON,
     ListPassportsResponseToJSON,
     ListRentalOffersResponse,
     ListRentalOffersResponseFromJSON,
     ListRentalOffersResponseToJSON,
+    ListStoriesResponse,
+    ListStoriesResponseFromJSON,
+    ListStoriesResponseToJSON,
+    LiveStreamResponse,
+    LiveStreamResponseFromJSON,
+    LiveStreamResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    PassportDraftResponse,
+    PassportDraftResponseFromJSON,
+    PassportDraftResponseToJSON,
     PassportResponse,
     PassportResponseFromJSON,
     PassportResponseToJSON,
+    UpdateGroupBuyResponse,
+    UpdateGroupBuyResponseFromJSON,
+    UpdateGroupBuyResponseToJSON,
     UpdateHotspotResponse,
     UpdateHotspotResponseFromJSON,
     UpdateHotspotResponseToJSON,
@@ -123,12 +219,22 @@ import {
     UpdateLiveStreamLineupResponse,
     UpdateLiveStreamLineupResponseFromJSON,
     UpdateLiveStreamLineupResponseToJSON,
+    UpdatePassportResponse,
+    UpdatePassportResponseFromJSON,
+    UpdatePassportResponseToJSON,
     UpdateRentalOfferResponse,
     UpdateRentalOfferResponseFromJSON,
     UpdateRentalOfferResponseToJSON,
+    UpdatedResponse,
+    UpdatedResponseFromJSON,
+    UpdatedResponseToJSON,
 } from '../models';
 
 export interface CreateAiDetectionDisputeRequest {
+    id: string;
+}
+
+export interface CreateEventPublishRequest {
     id: string;
 }
 
@@ -145,7 +251,31 @@ export interface CreateListingMagicFillRequest {
     id: string;
 }
 
+export interface CreateLiveStreamConnectionRequest {
+    id: string;
+}
+
+export interface CreateLiveStreamConnectionRotateRequest {
+    id: string;
+}
+
+export interface CreateLiveStreamEndRequest {
+    id: string;
+}
+
 export interface CreateLiveStreamPinLaunchRequest {
+    id: string;
+}
+
+export interface CreateLiveStreamStartRequest {
+    id: string;
+}
+
+export interface CreatePassportDraftActivateRequest {
+    id: string;
+}
+
+export interface CreatePassportDraftCaptureLinkRequest {
     id: string;
 }
 
@@ -157,7 +287,15 @@ export interface CreatePassportTagRequest {
     id: string;
 }
 
+export interface CreateShopLimitRequestOperationRequest {
+    createShopLimitRequestRequest: CreateShopLimitRequestRequest;
+}
+
 export interface CreateVariationGroupPublishRequest {
+    id: string;
+}
+
+export interface DeleteEventRequest {
     id: string;
 }
 
@@ -165,6 +303,10 @@ export interface DeleteListingRequest {
     id: string;
     platforms?: string;
     platformListingIds?: string;
+}
+
+export interface DeleteListingTagRequest {
+    tag: string;
 }
 
 export interface DeleteLiveStreamPinLaunchRequest {
@@ -175,7 +317,19 @@ export interface DeleteRentalOfferRequest {
     platformListingId: string;
 }
 
+export interface DeleteStoryRequest {
+    id: string;
+}
+
 export interface DeleteVariationGroupRequest {
+    id: string;
+}
+
+export interface GetEventRequest {
+    id: string;
+}
+
+export interface GetEventAnalyticRequest {
     id: string;
 }
 
@@ -187,6 +341,26 @@ export interface GetListingSkuExistRequest {
     sku: string;
 }
 
+export interface GetLiveStreamRecapRequest {
+    id: string;
+}
+
+export interface GetPassportRequest {
+    id: string;
+}
+
+export interface GetPassportDraftRequest {
+    id: string;
+}
+
+export interface GetPassportPrintRequest {
+    jobId: string;
+}
+
+export interface ListEventAttendeesRequest {
+    id: string;
+}
+
 export interface ListListingAiDetectionsRequest {
     id: string;
 }
@@ -195,12 +369,33 @@ export interface ListListingDiscrepanciesRequest {
     id: string;
 }
 
+export interface ListListingTagSuggestRequest {
+    listingId: string;
+}
+
+export interface ListListingTagsRequest {
+    q?: string;
+    limit?: number;
+}
+
 export interface ListListingsRequest {
     page?: number;
     limit?: number;
     platform?: string;
     status?: string;
+    sku?: string;
+    updatedSince?: Date;
     kind?: ListListingsKindEnum;
+    tag?: string | Array<string>;
+    stillLive?: boolean;
+}
+
+export interface ListPassportEventsRequest {
+    id: string;
+}
+
+export interface UpdateEventRequest {
+    id: string;
 }
 
 export interface UpdateListingRequest {
@@ -216,7 +411,19 @@ export interface UpdateListingPlatformListingRequest {
     plId: string;
 }
 
+export interface UpdateLiveStreamRequest {
+    id: string;
+}
+
 export interface UpdateLiveStreamLineupRequest {
+    id: string;
+}
+
+export interface UpdatePassportRequest {
+    id: string;
+}
+
+export interface UpdatePassportDraftRequest {
     id: string;
 }
 
@@ -272,6 +479,79 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Create an event. A draft unless publish:true. Linked listings, the live show, the drop and the discount code must all be yours.
+     */
+    async createEventRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<EventResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/events`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => EventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create an event. A draft unless publish:true. Linked listings, the live show, the drop and the discount code must all be yours.
+     */
+    async createEvent(initOverrides?: RequestInit): Promise<EventResponse> {
+        const response = await this.createEventRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Publish an event: its page goes live, and with notifyFollowers your followers are told once.
+     */
+    async createEventPublishRaw(requestParameters: CreateEventPublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createEventPublish.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/events/{id}/publish`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => EventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Publish an event: its page goes live, and with notifyFollowers your followers are told once.
+     */
+    async createEventPublish(requestParameters: CreateEventPublishRequest, initOverrides?: RequestInit): Promise<EventResponse> {
+        const response = await this.createEventPublishRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Listing fields go in `data`. Channel apps can also send `categoryId` (GET /v1/categories/search), `itemSpecifics` (validated against GET /v1/categories/:id/aspects; `warnings` lists soft problems), `condition`, `brand`, per-marketplace `overrides` and `policies` (preset ids from GET /v1/policies), folded in the way the web form does: an override replaces the master value on that marketplace, anything derived only fills blanks.
      * Create a listing and fan out crosspost jobs across platforms.
      */
     async createListingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingResponse>> {
@@ -298,10 +578,47 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Listing fields go in `data`. Channel apps can also send `categoryId` (GET /v1/categories/search), `itemSpecifics` (validated against GET /v1/categories/:id/aspects; `warnings` lists soft problems), `condition`, `brand`, per-marketplace `overrides` and `policies` (preset ids from GET /v1/policies), folded in the way the web form does: an override replaces the master value on that marketplace, anything derived only fills blanks.
      * Create a listing and fan out crosspost jobs across platforms.
      */
     async createListing(initOverrides?: RequestInit): Promise<CreateListingResponse> {
         const response = await this.createListingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Each item is a POST /v1/listings body plus a required `clientReferenceId` (your id for it). Items run in order and independently: `data[i].status` is `created`, `existing` (that reference was already used — the listing is returned, nothing is created) or `error` with the code the single route would give. `error` means no listing exists for the item. A listing that was saved but could not be sent to a platform (e.g. no weight) is `created`, with that platform in `skipped` (reason, code, details). `meta` counts each. Retrying a batch only creates what is missing.
+     * Create up to 50 listings in one call, with a result per item.
+     */
+    async createListingBulkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingBulkResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listings/bulk`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingBulkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Each item is a POST /v1/listings body plus a required `clientReferenceId` (your id for it). Items run in order and independently: `data[i].status` is `created`, `existing` (that reference was already used — the listing is returned, nothing is created) or `error` with the code the single route would give. `error` means no listing exists for the item. A listing that was saved but could not be sent to a platform (e.g. no weight) is `created`, with that platform in `skipped` (reason, code, details). `meta` counts each. Retrying a batch only creates what is missing.
+     * Create up to 50 listings in one call, with a result per item.
+     */
+    async createListingBulk(initOverrides?: RequestInit): Promise<CreateListingBulkResponse> {
+        const response = await this.createListingBulkRaw(initOverrides);
         return await response.value();
     }
 
@@ -832,6 +1149,222 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Add and/or remove tags on many listings (yours only; max 30 tags a listing, 40 chars a tag). `dryRun` reports what would change.
+     */
+    async createListingTagBulkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingTagBulkResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listings/tags/bulk`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingTagBulkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Add and/or remove tags on many listings (yours only; max 30 tags a listing, 40 chars a tag). `dryRun` reports what would change.
+     */
+    async createListingTagBulk(initOverrides?: RequestInit): Promise<CreateListingTagBulkResponse> {
+        const response = await this.createListingTagBulkRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Rename a tag on every listing; merges into `to` when it already exists.
+     */
+    async createListingTagRenameRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingTagRenameResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listings/tags/rename`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingTagRenameResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Rename a tag on every listing; merges into `to` when it already exists.
+     */
+    async createListingTagRename(initOverrides?: RequestInit): Promise<CreateListingTagRenameResponse> {
+        const response = await this.createListingTagRenameRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Schedule a live show: title, start time, optional cover, category and the listings to feature (becomes the lineup, in order).
+     */
+    async createLiveStreamRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<LiveStreamResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/live-streams`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LiveStreamResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Schedule a live show: title, start time, optional cover, category and the listings to feature (becomes the lineup, in order).
+     */
+    async createLiveStream(initOverrides?: RequestInit): Promise<LiveStreamResponse> {
+        const response = await this.createLiveStreamRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The show’s video connection, minted on first call and identical after: RTMP(S) server + stream key, SRT URL, WHIP URL for browser publishing (null where the ingest has none) and the HLS playback URL. configured=false (with a reason) when the deployment has no streaming provider.
+     */
+    async createLiveStreamConnectionRaw(requestParameters: CreateLiveStreamConnectionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLiveStreamConnectionResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLiveStreamConnection.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/live-streams/{id}/connection`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateLiveStreamConnectionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The show’s video connection, minted on first call and identical after: RTMP(S) server + stream key, SRT URL, WHIP URL for browser publishing (null where the ingest has none) and the HLS playback URL. configured=false (with a reason) when the deployment has no streaming provider.
+     */
+    async createLiveStreamConnection(requestParameters: CreateLiveStreamConnectionRequest, initOverrides?: RequestInit): Promise<CreateLiveStreamConnectionResponse> {
+        const response = await this.createLiveStreamConnectionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Replace the show’s stream key (e.g. after it was shown on screen). Refused while the show is live.
+     */
+    async createLiveStreamConnectionRotateRaw(requestParameters: CreateLiveStreamConnectionRotateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLiveStreamConnectionResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLiveStreamConnectionRotate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/live-streams/{id}/connection/rotate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateLiveStreamConnectionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Replace the show’s stream key (e.g. after it was shown on screen). Refused while the show is live.
+     */
+    async createLiveStreamConnectionRotate(requestParameters: CreateLiveStreamConnectionRotateRequest, initOverrides?: RequestInit): Promise<CreateLiveStreamConnectionResponse> {
+        const response = await this.createLiveStreamConnectionRotateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * End the show. Idempotent.
+     */
+    async createLiveStreamEndRaw(requestParameters: CreateLiveStreamEndRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LiveStreamResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLiveStreamEnd.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/live-streams/{id}/end`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LiveStreamResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * End the show. Idempotent.
+     */
+    async createLiveStreamEnd(requestParameters: CreateLiveStreamEndRequest, initOverrides?: RequestInit): Promise<LiveStreamResponse> {
+        const response = await this.createLiveStreamEndRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Pin one of your live NFT launches on your live show; viewers mint it from the stream. Returns `{ ok }`.
      */
     async createLiveStreamPinLaunchRaw(requestParameters: CreateLiveStreamPinLaunchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
@@ -870,7 +1403,45 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Register a product passport for a Crossly listing you sell, optionally bound to an NFC tag UID (hex). Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s paid sales.
+     * Go live: the show’s status becomes live and followers are notified once. Idempotent while live; refused once ended.
+     */
+    async createLiveStreamStartRaw(requestParameters: CreateLiveStreamStartRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LiveStreamResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLiveStreamStart.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/live-streams/{id}/start`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LiveStreamResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Go live: the show’s status becomes live and followers are notified once. Idempotent while live; refused once ended.
+     */
+    async createLiveStreamStart(requestParameters: CreateLiveStreamStartRequest, initOverrides?: RequestInit): Promise<LiveStreamResponse> {
+        const response = await this.createLiveStreamStartRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Register a product passport for a Crossly listing or an inventory item you sell, optionally bound to an NFC tag UID (hex). Active at once. Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s sales. For several items with photos and labels, use the drafts flow (POST /passports/drafts).
      */
     async createPassportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<PassportResponse>> {
         const queryParameters: any = {};
@@ -896,10 +1467,154 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Register a product passport for a Crossly listing you sell, optionally bound to an NFC tag UID (hex). Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s paid sales.
+     * Register a product passport for a Crossly listing or an inventory item you sell, optionally bound to an NFC tag UID (hex). Active at once. Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s sales. For several items with photos and labels, use the drafts flow (POST /passports/drafts).
      */
     async createPassport(initOverrides?: RequestInit): Promise<PassportResponse> {
         const response = await this.createPassportRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Start a passport draft for up to 100 inventory items (or Crossly listings): one draft passport per item with its code reserved. Items whose every unit already has a passport come back in skipped.
+     */
+    async createPassportDraftRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<PassportDraftResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/drafts`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PassportDraftResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Start a passport draft for up to 100 inventory items (or Crossly listings): one draft passport per item with its code reserved. Items whose every unit already has a passport come back in skipped.
+     */
+    async createPassportDraft(initOverrides?: RequestInit): Promise<PassportDraftResponse> {
+        const response = await this.createPassportDraftRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Activate every passport of a draft: their pages open for anyone who scans the tag or QR. Closes the draft’s capture link.
+     */
+    async createPassportDraftActivateRaw(requestParameters: CreatePassportDraftActivateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PassportDraftResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createPassportDraftActivate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/drafts/{id}/activate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PassportDraftResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Activate every passport of a draft: their pages open for anyone who scans the tag or QR. Closes the draft’s capture link.
+     */
+    async createPassportDraftActivate(requestParameters: CreatePassportDraftActivateRequest, initOverrides?: RequestInit): Promise<PassportDraftResponse> {
+        const response = await this.createPassportDraftActivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A link (and its QR as SVG) any phone opens with no sign-in to add photos, serials and NFC tags to this draft. Open 30 minutes after its last use, 4 hours at most; minting a new one closes the old.
+     */
+    async createPassportDraftCaptureLinkRaw(requestParameters: CreatePassportDraftCaptureLinkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePassportDraftCaptureLinkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createPassportDraftCaptureLink.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/drafts/{id}/capture-link`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePassportDraftCaptureLinkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A link (and its QR as SVG) any phone opens with no sign-in to add photos, serials and NFC tags to this draft. Open 30 minutes after its last use, 4 hours at most; minting a new one closes the old.
+     */
+    async createPassportDraftCaptureLink(requestParameters: CreatePassportDraftCaptureLinkRequest, initOverrides?: RequestInit): Promise<CreatePassportDraftCaptureLinkResponse> {
+        const response = await this.createPassportDraftCaptureLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Print passport labels: sent to your printer agent (the Crossly desktop app includes one) when it is online and prints the template, else a signed PDF link with the reason. Templates: sticker-2in, sticker-1in, label-4x6, hang-tag, sheet-letter, sheet-a4, transfer-card.
+     */
+    async createPassportPrintRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePassportPrintResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/print`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePassportPrintResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Print passport labels: sent to your printer agent (the Crossly desktop app includes one) when it is online and prints the template, else a signed PDF link with the reason. Templates: sticker-2in, sticker-1in, label-4x6, hang-tag, sheet-letter, sheet-a4, transfer-card.
+     */
+    async createPassportPrint(initOverrides?: RequestInit): Promise<CreatePassportPrintResponse> {
+        const response = await this.createPassportPrintRaw(initOverrides);
         return await response.value();
     }
 
@@ -980,6 +1695,117 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Make up to 200 Crossly listings rentable with the same options (a day rate, or a share of each price).
+     */
+    async createRentalBulkRentableRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateRentalBulkRentableResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/rentals/bulk-rentable`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateRentalBulkRentableResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Make up to 200 Crossly listings rentable with the same options (a day rate, or a share of each price).
+     */
+    async createRentalBulkRentable(initOverrides?: RequestInit): Promise<CreateRentalBulkRentableResponse> {
+        const response = await this.createRentalBulkRentableRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One pending request at a time (409 otherwise). Approved on the spot when your last 90 days are clean (no auto-cancelled orders, disputes lost or chargebacks lost) and every number asked is at most twice your current limit; otherwise Crossly staff review it. `valueCents` is US cents.
+     * Ask for a higher Crossly Shop selling limit.
+     */
+    async createShopLimitRequestRaw(requestParameters: CreateShopLimitRequestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateShopLimitRequestResponse>> {
+        if (requestParameters.createShopLimitRequestRequest === null || requestParameters.createShopLimitRequestRequest === undefined) {
+            throw new runtime.RequiredError('createShopLimitRequestRequest','Required parameter requestParameters.createShopLimitRequestRequest was null or undefined when calling createShopLimitRequest.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/shop-limits/requests`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateShopLimitRequestRequestToJSON(requestParameters.createShopLimitRequestRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateShopLimitRequestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One pending request at a time (409 otherwise). Approved on the spot when your last 90 days are clean (no auto-cancelled orders, disputes lost or chargebacks lost) and every number asked is at most twice your current limit; otherwise Crossly staff review it. `valueCents` is US cents.
+     * Ask for a higher Crossly Shop selling limit.
+     */
+    async createShopLimitRequest(requestParameters: CreateShopLimitRequestOperationRequest, initOverrides?: RequestInit): Promise<CreateShopLimitRequestResponse> {
+        const response = await this.createShopLimitRequestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Share a story: 1–10 slides played in order. Each slide is a photo or video plus optional overlays (positions are fractions of the 9:16 frame). Listing stickers must be your own Crossly listings and also tag the slide; @mentions must be real shops. audience: everyone | followers; expiresInHours: 6, 12, 24 or 48.
+     */
+    async createStoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStoryResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/stories`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateStoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Share a story: 1–10 slides played in order. Each slide is a photo or video plus optional overlays (positions are fractions of the 9:16 frame). Listing stickers must be your own Crossly listings and also tag the slide; @mentions must be real shops. audience: everyone | followers; expiresInHours: 6, 12, 24 or 48.
+     */
+    async createStory(initOverrides?: RequestInit): Promise<CreateStoryResponse> {
+        const response = await this.createStoryRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Group listings you already have: a variation (one product, an axis such as Size) or a purchase-rule group (\"buy any 3\").
      */
     async createVariationGroupRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVariationGroupResponse>> {
@@ -1048,6 +1874,40 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Turn one listing into a variation group over up to three axes (Size × Color): each other cell is a listing you already have (listingId) or a new copy of this one with its own price, quantity and SKU.
+     */
+    async createVariationGroupGenerateMatrixRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVariationGroupGenerateMatrixResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/variation-groups/generate-matrix`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVariationGroupGenerateMatrixResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Turn one listing into a variation group over up to three axes (Size × Color): each other cell is a listing you already have (listingId) or a new copy of this one with its own price, quantity and SKU.
+     */
+    async createVariationGroupGenerateMatrix(initOverrides?: RequestInit): Promise<CreateVariationGroupGenerateMatrixResponse> {
+        const response = await this.createVariationGroupGenerateMatrixRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Publish a variation group per platform: one listing with a variation picker where the platform supports it (eBay, Shopify, Etsy), one per option elsewhere. Each platform reports its own outcome.
      */
     async createVariationGroupPublishRaw(requestParameters: CreateVariationGroupPublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVariationGroupPublishResponse>> {
@@ -1082,6 +1942,112 @@ export class ListingsApi extends runtime.BaseAPI {
      */
     async createVariationGroupPublish(requestParameters: CreateVariationGroupPublishRequest, initOverrides?: RequestInit): Promise<CreateVariationGroupPublishResponse> {
         const response = await this.createVariationGroupPublishRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Check an uploaded listing video (exists, MP4, size) and, with listingId, set it as that listing\'s video.
+     */
+    async createVideoStudioFinalizeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoStudioFinalizeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/video-studio/finalize`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVideoStudioFinalizeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Check an uploaded listing video (exists, MP4, size) and, with listingId, set it as that listing\'s video.
+     */
+    async createVideoStudioFinalize(initOverrides?: RequestInit): Promise<CreateVideoStudioFinalizeResponse> {
+        const response = await this.createVideoStudioFinalizeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Presign an R2 PUT (video/mp4, 15 min) for a listing video; finalize it after the upload.
+     */
+    async createVideoStudioUploadUrlRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoStudioUploadUrlResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/video-studio/upload-url`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateVideoStudioUploadUrlResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Presign an R2 PUT (video/mp4, 15 min) for a listing video; finalize it after the upload.
+     */
+    async createVideoStudioUploadUrl(initOverrides?: RequestInit): Promise<CreateVideoStudioUploadUrlResponse> {
+        const response = await this.createVideoStudioUploadUrlRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete a draft, or cancel a published event (its page then says it was called off).
+     */
+    async deleteEventRaw(requestParameters: DeleteEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteEventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteEvent.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/events/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteEventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete a draft, or cancel a published event (its page then says it was called off).
+     */
+    async deleteEvent(requestParameters: DeleteEventRequest, initOverrides?: RequestInit): Promise<DeleteEventResponse> {
+        const response = await this.deleteEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1132,6 +2098,44 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Remove a tag (any case) from every listing.
+     */
+    async deleteListingTagRaw(requestParameters: DeleteListingTagRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatedResponse>> {
+        if (requestParameters.tag === null || requestParameters.tag === undefined) {
+            throw new runtime.RequiredError('tag','Required parameter requestParameters.tag was null or undefined when calling deleteListingTag.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listings/tags/{tag}`.replace(`{${"tag"}}`, encodeURIComponent(String(requestParameters.tag))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdatedResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove a tag (any case) from every listing.
+     */
+    async deleteListingTag(requestParameters: DeleteListingTagRequest, initOverrides?: RequestInit): Promise<UpdatedResponse> {
+        const response = await this.deleteListingTagRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Unpin the launch from your live show. Returns `{ ok }`.
      */
     async deleteLiveStreamPinLaunchRaw(requestParameters: DeleteLiveStreamPinLaunchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
@@ -1172,7 +2176,7 @@ export class ListingsApi extends runtime.BaseAPI {
     /**
      * Stop offering a listing for rent (existing bookings stand).
      */
-    async deleteRentalOfferRaw(requestParameters: DeleteRentalOfferRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakCancelResponse>> {
+    async deleteRentalOfferRaw(requestParameters: DeleteRentalOfferRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.platformListingId === null || requestParameters.platformListingId === undefined) {
             throw new runtime.RequiredError('platformListingId','Required parameter requestParameters.platformListingId was null or undefined when calling deleteRentalOffer.');
         }
@@ -1196,21 +2200,59 @@ export class ListingsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBreakCancelResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
     }
 
     /**
      * Stop offering a listing for rent (existing bookings stand).
      */
-    async deleteRentalOffer(requestParameters: DeleteRentalOfferRequest, initOverrides?: RequestInit): Promise<CreateBreakCancelResponse> {
+    async deleteRentalOffer(requestParameters: DeleteRentalOfferRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.deleteRentalOfferRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take one story slide down before it expires.
+     */
+    async deleteStoryRaw(requestParameters: DeleteStoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteStoryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteStory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/stories/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteStoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Take one story slide down before it expires.
+     */
+    async deleteStory(requestParameters: DeleteStoryRequest, initOverrides?: RequestInit): Promise<DeleteStoryResponse> {
+        const response = await this.deleteStoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Dissolve a group. Its options stay as ordinary listings.
      */
-    async deleteVariationGroupRaw(requestParameters: DeleteVariationGroupRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakCancelResponse>> {
+    async deleteVariationGroupRaw(requestParameters: DeleteVariationGroupRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVariationGroup.');
         }
@@ -1234,14 +2276,90 @@ export class ListingsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBreakCancelResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
     }
 
     /**
      * Dissolve a group. Its options stay as ordinary listings.
      */
-    async deleteVariationGroup(requestParameters: DeleteVariationGroupRequest, initOverrides?: RequestInit): Promise<CreateBreakCancelResponse> {
+    async deleteVariationGroup(requestParameters: DeleteVariationGroupRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.deleteVariationGroupRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One of your events.
+     */
+    async getEventRaw(requestParameters: GetEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getEvent.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/events/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => EventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One of your events.
+     */
+    async getEvent(requestParameters: GetEventRequest, initOverrides?: RequestInit): Promise<EventResponse> {
+        const response = await this.getEventRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Views, RSVPs, and what the linked listings sold on Crossly during the event (orders, units, revenue in cents).
+     */
+    async getEventAnalyticRaw(requestParameters: GetEventAnalyticRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetEventAnalyticResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getEventAnalytic.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/events/{id}/analytics`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetEventAnalyticResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Views, RSVPs, and what the linked listings sold on Crossly during the event (orders, units, revenue in cents).
+     */
+    async getEventAnalytic(requestParameters: GetEventAnalyticRequest, initOverrides?: RequestInit): Promise<GetEventAnalyticResponse> {
+        const response = await this.getEventAnalyticRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1360,6 +2478,158 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * The show’s numbers: duration, peak viewers, items sold and gross, tips, chat messages, auctions run, lineup size and the replay URL.
+     */
+    async getLiveStreamRecapRaw(requestParameters: GetLiveStreamRecapRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLiveStreamRecapResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getLiveStreamRecap.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/live-streams/{id}/recap`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLiveStreamRecapResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The show’s numbers: duration, peak viewers, items sold and gross, tips, chat messages, auctions run, lineup size and the replay URL.
+     */
+    async getLiveStreamRecap(requestParameters: GetLiveStreamRecapRequest, initOverrides?: RequestInit): Promise<GetLiveStreamRecapResponse> {
+        const response = await this.getLiveStreamRecapRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One passport: its item and every listing of it, the event history (created, printed, tag bound, transferred, claimed…), scans per day for 30 days, custody, grading.
+     */
+    async getPassportRaw(requestParameters: GetPassportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPassportResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getPassport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPassportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One passport: its item and every listing of it, the event history (created, printed, tag bound, transferred, claimed…), scans per day for 30 days, custody, grading.
+     */
+    async getPassport(requestParameters: GetPassportRequest, initOverrides?: RequestInit): Promise<GetPassportResponse> {
+        const response = await this.getPassportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A passport draft and its passports (photos, serial, tag and label state of each).
+     */
+    async getPassportDraftRaw(requestParameters: GetPassportDraftRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PassportDraftResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getPassportDraft.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/drafts/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PassportDraftResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A passport draft and its passports (photos, serial, tag and label state of each).
+     */
+    async getPassportDraft(requestParameters: GetPassportDraftRequest, initOverrides?: RequestInit): Promise<PassportDraftResponse> {
+        const response = await this.getPassportDraftRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Where a passport print job sent to your agent is: queued, sent, done, failed, expired or duplicate.
+     */
+    async getPassportPrintRaw(requestParameters: GetPassportPrintRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPassportPrintResponse>> {
+        if (requestParameters.jobId === null || requestParameters.jobId === undefined) {
+            throw new runtime.RequiredError('jobId','Required parameter requestParameters.jobId was null or undefined when calling getPassportPrint.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/print/{jobId}`.replace(`{${"jobId"}}`, encodeURIComponent(String(requestParameters.jobId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPassportPrintResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Where a passport print job sent to your agent is: queued, sent, done, failed, expired or duplicate.
+     */
+    async getPassportPrint(requestParameters: GetPassportPrintRequest, initOverrides?: RequestInit): Promise<GetPassportPrintResponse> {
+        const response = await this.getPassportPrintRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Selling options: own-price match (Crossly sells your items at your own lower price for the same item on another marketplace; dollar-priced copies only) and layaway (buyers may put items on layaway). Both on by default.
      */
     async getPricingSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPricingSettingResponse>> {
@@ -1424,6 +2694,148 @@ export class ListingsApi extends runtime.BaseAPI {
      */
     async getPricingSoldComp(initOverrides?: RequestInit): Promise<GetPricingSoldCompResponse> {
         const response = await this.getPricingSoldCompRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The store’s rental defaults (every item inherits them) and its payout timing.
+     */
+    async getRentalSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRentalSettingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/rentals/settings`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetRentalSettingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The store’s rental defaults (every item inherits them) and its payout timing.
+     */
+    async getRentalSetting(initOverrides?: RequestInit): Promise<GetRentalSettingResponse> {
+        const response = await this.getRentalSettingRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Per seller account, shared by all your stores. Counts live + scheduled Crossly Shop listings once each; value is the US-dollar shop price x quantity (an auction at max(start, reserve, buy-now)). Drafts, sold/ended listings and Trade Block posts are not counted, and selling frees space at once. `unlimited` is true for sandbox sellers.
+     * Your Crossly Shop selling limit: live listings and listed value, used of limit, per store, and the next step.
+     */
+    async getShopLimitRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetShopLimitResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/shop-limits`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetShopLimitResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Per seller account, shared by all your stores. Counts live + scheduled Crossly Shop listings once each; value is the US-dollar shop price x quantity (an auction at max(start, reserve, buy-now)). Drafts, sold/ended listings and Trade Block posts are not counted, and selling frees space at once. `unlimited` is true for sandbox sellers.
+     * Your Crossly Shop selling limit: live listings and listed value, used of limit, per store, and the next step.
+     */
+    async getShopLimit(initOverrides?: RequestInit): Promise<GetShopLimitResponse> {
+        const response = await this.getShopLimitRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Who RSVPd: display name, avatar, going or interested, and when. No contact details.
+     */
+    async listEventAttendeesRaw(requestParameters: ListEventAttendeesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListEventAttendeesResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listEventAttendees.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/events/{id}/attendees`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListEventAttendeesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Who RSVPd: display name, avatar, going or interested, and when. No contact details.
+     */
+    async listEventAttendees(requestParameters: ListEventAttendeesRequest, initOverrides?: RequestInit): Promise<ListEventAttendeesResponse> {
+        const response = await this.listEventAttendeesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your events (launches, sales, live shows, drops, meetups, pop-ups, workshops, parties): schedule, status, phase, and going/interested counts.
+     */
+    async listEventsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListEventsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/events`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListEventsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your events (launches, sales, live shows, drops, meetups, pop-ups, workshops, parties): schedule, status, phase, and going/interested counts.
+     */
+    async listEvents(initOverrides?: RequestInit): Promise<ListEventsResponse> {
+        const response = await this.listEventsRaw(initOverrides);
         return await response.value();
     }
 
@@ -1538,6 +2950,91 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deterministic tag suggestions for one listing (brand, category, size, condition, colors, style tags, era words in the title); `known` = you already use the tag.
+     */
+    async listListingTagSuggestRaw(requestParameters: ListListingTagSuggestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingTagSuggestResponse>> {
+        if (requestParameters.listingId === null || requestParameters.listingId === undefined) {
+            throw new runtime.RequiredError('listingId','Required parameter requestParameters.listingId was null or undefined when calling listListingTagSuggest.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.listingId !== undefined) {
+            queryParameters['listingId'] = requestParameters.listingId;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listings/tags/suggest`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListListingTagSuggestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Deterministic tag suggestions for one listing (brand, category, size, condition, colors, style tags, era words in the title); `known` = you already use the tag.
+     */
+    async listListingTagSuggest(requestParameters: ListListingTagSuggestRequest, initOverrides?: RequestInit): Promise<ListListingTagSuggestResponse> {
+        const response = await this.listListingTagSuggestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your listing tags with how many listings carry each, most used first (case-insensitive; `q` filters).
+     */
+    async listListingTagsRaw(requestParameters: ListListingTagsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingTagsResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listings/tags`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListListingTagsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your listing tags with how many listings carry each, most used first (case-insensitive; `q` filters).
+     */
+    async listListingTags(requestParameters: ListListingTagsRequest = {}, initOverrides?: RequestInit): Promise<ListListingTagsResponse> {
+        const response = await this.listListingTagsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Each row carries `pricing`: `avgAsking` (average price across its active marketplace rows, per-platform overrides and price rules applied) and `avgSale` (average price per unit sold, refunds netted), each `{ amount, currency, count }` or null. Never averaged across currencies.
      * List active platform listings.
      */
     async listListingsRaw(requestParameters: ListListingsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingsResponse>> {
@@ -1559,8 +3056,24 @@ export class ListingsApi extends runtime.BaseAPI {
             queryParameters['status'] = requestParameters.status;
         }
 
+        if (requestParameters.sku !== undefined) {
+            queryParameters['sku'] = requestParameters.sku;
+        }
+
+        if (requestParameters.updatedSince !== undefined) {
+            queryParameters['updatedSince'] = (requestParameters.updatedSince as any).toISOString();
+        }
+
         if (requestParameters.kind !== undefined) {
             queryParameters['kind'] = requestParameters.kind;
+        }
+
+        if (requestParameters.tag !== undefined) {
+            queryParameters['tag'] = requestParameters.tag;
+        }
+
+        if (requestParameters.stillLive !== undefined) {
+            queryParameters['stillLive'] = requestParameters.stillLive;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1584,10 +3097,117 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Each row carries `pricing`: `avgAsking` (average price across its active marketplace rows, per-platform overrides and price rules applied) and `avgSale` (average price per unit sold, refunds netted), each `{ amount, currency, count }` or null. Never averaged across currencies.
      * List active platform listings.
      */
     async listListings(requestParameters: ListListingsRequest = {}, initOverrides?: RequestInit): Promise<ListListingsResponse> {
         const response = await this.listListingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your live shows, newest scheduled first: status, cover, category, connection method and peak viewers.
+     */
+    async listLiveStreamsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLiveStreamsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/live-streams`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListLiveStreamsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your live shows, newest scheduled first: status, cover, category, connection method and peak viewers.
+     */
+    async listLiveStreams(initOverrides?: RequestInit): Promise<ListLiveStreamsResponse> {
+        const response = await this.listLiveStreamsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A passport’s event history, newest first (never a buyer or a price).
+     */
+    async listPassportEventsRaw(requestParameters: ListPassportEventsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPassportEventsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listPassportEvents.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/{id}/events`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListPassportEventsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A passport’s event history, newest first (never a buyer or a price).
+     */
+    async listPassportEvents(requestParameters: ListPassportEventsRequest, initOverrides?: RequestInit): Promise<ListPassportEventsResponse> {
+        const response = await this.listPassportEventsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your printer agents (online, printers, default) and the passport label templates each can print.
+     */
+    async listPassportPrintTargetsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPassportPrintTargetsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/print-targets`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListPassportPrintTargetsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your printer agents (online, printers, default) and the passport label templates each can print.
+     */
+    async listPassportPrintTargets(initOverrides?: RequestInit): Promise<ListPassportPrintTargetsResponse> {
+        const response = await this.listPassportPrintTargetsRaw(initOverrides);
         return await response.value();
     }
 
@@ -1660,6 +3280,78 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your active story slides (newest run first, each run in play order), with their overlays: text, listing stickers, @mentions, links, emoji and drawing.
+     */
+    async listStoriesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListStoriesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/stories`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListStoriesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your active story slides (newest run first, each run in play order), with their overlays: text, listing stickers, @mentions, links, emoji and drawing.
+     */
+    async listStories(initOverrides?: RequestInit): Promise<ListStoriesResponse> {
+        const response = await this.listStoriesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit an event. Omitted fields are unchanged; null clears.
+     */
+    async updateEventRaw(requestParameters: UpdateEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateEvent.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/events/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => EventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit an event. Omitted fields are unchanged; null clears.
+     */
+    async updateEvent(requestParameters: UpdateEventRequest, initOverrides?: RequestInit): Promise<EventResponse> {
+        const response = await this.updateEventRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Tag your listings at points on a story or lookbook photo (shop the look). Replaces that photo’s tags; at most 12.
      */
     async updateHotspotRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateHotspotResponse>> {
@@ -1694,6 +3386,7 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * The fields to change go in `changes` (a sparse object, e.g. `{ \"changes\": { \"price\": 24.99 } }`). `data` is accepted as an alias of `changes` (the name create and bulk create use); sending both is a 400. Omit `platforms` to push the edit everywhere the listing is live.
      * Edit a listing and fan out update jobs to existing platform listings.
      */
     async updateListingRaw(requestParameters: UpdateListingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateListingResponse>> {
@@ -1724,6 +3417,7 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * The fields to change go in `changes` (a sparse object, e.g. `{ \"changes\": { \"price\": 24.99 } }`). `data` is accepted as an alias of `changes` (the name create and bulk create use); sending both is a 400. Omit `platforms` to push the edit everywhere the listing is live.
      * Edit a listing and fan out update jobs to existing platform listings.
      */
     async updateListing(requestParameters: UpdateListingRequest, initOverrides?: RequestInit): Promise<UpdateListingResponse> {
@@ -1812,6 +3506,44 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Edit a show that has not ended: title, description, cover, category, start time (not once live) or connection method (browser | phone | encoder).
+     */
+    async updateLiveStreamRaw(requestParameters: UpdateLiveStreamRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LiveStreamResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLiveStream.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/live-streams/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LiveStreamResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit a show that has not ended: title, description, cover, category, start time (not once live) or connection method (browser | phone | encoder).
+     */
+    async updateLiveStream(requestParameters: UpdateLiveStreamRequest, initOverrides?: RequestInit): Promise<LiveStreamResponse> {
+        const response = await this.updateLiveStreamRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Set a live show’s lineup: your Crossly listings, in the order you will sell them. Buyers see it before they join; a sale of a lineup item while the show is live is recorded at its replay moment.
      */
     async updateLiveStreamLineupRaw(requestParameters: UpdateLiveStreamLineupRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateLiveStreamLineupResponse>> {
@@ -1850,7 +3582,83 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Turn own-price match and/or layaway on or off.
+     * Change what a passport says (title, condition, maker, year, materials, notes) or add photo URLs (photos append: a passport keeps the ones it was registered with).
+     */
+    async updatePassportRaw(requestParameters: UpdatePassportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatePassportResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePassport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdatePassportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change what a passport says (title, condition, maker, year, materials, notes) or add photo URLs (photos append: a passport keeps the ones it was registered with).
+     */
+    async updatePassport(requestParameters: UpdatePassportRequest, initOverrides?: RequestInit): Promise<UpdatePassportResponse> {
+        const response = await this.updatePassportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Move a draft to a step, pick its label template, add items or remove draft passports.
+     */
+    async updatePassportDraftRaw(requestParameters: UpdatePassportDraftRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PassportDraftResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePassportDraft.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/passports/drafts/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PassportDraftResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Move a draft to a step, pick its label template, add items or remove draft passports.
+     */
+    async updatePassportDraft(requestParameters: UpdatePassportDraftRequest, initOverrides?: RequestInit): Promise<PassportDraftResponse> {
+        const response = await this.updatePassportDraftRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Turn own-price match and/or layaway on or off for every one of your stores. One store: PUT /v1/storefronts/{id}/settings.
      */
     async updatePricingSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPricingSettingResponse>> {
         const queryParameters: any = {};
@@ -1876,7 +3684,7 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Turn own-price match and/or layaway on or off.
+     * Turn own-price match and/or layaway on or off for every one of your stores. One store: PUT /v1/storefronts/{id}/settings.
      */
     async updatePricingSetting(initOverrides?: RequestInit): Promise<GetPricingSettingResponse> {
         const response = await this.updatePricingSettingRaw(initOverrides);
@@ -1884,7 +3692,7 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, and rent-only (off sale while offered). Needs a ship-from address.
+     * Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, rent-only (off sale while offered), seller approval, unavailable date ranges (blackoutRanges, inclusive YYYY-MM-DD) and a return policy. Keeps the listing’s own rental terms in step. Needs a ship-from address.
      */
     async updateRentalOfferRaw(requestParameters: UpdateRentalOfferRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateRentalOfferResponse>> {
         if (requestParameters.platformListingId === null || requestParameters.platformListingId === undefined) {
@@ -1914,10 +3722,44 @@ export class ListingsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, and rent-only (off sale while offered). Needs a ship-from address.
+     * Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, rent-only (off sale while offered), seller approval, unavailable date ranges (blackoutRanges, inclusive YYYY-MM-DD) and a return policy. Keeps the listing’s own rental terms in step. Needs a ship-from address.
      */
     async updateRentalOffer(requestParameters: UpdateRentalOfferRequest, initOverrides?: RequestInit): Promise<UpdateRentalOfferResponse> {
         const response = await this.updateRentalOfferRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set the store’s rental defaults and payout timing (on_start needs 3 rentals that came back).
+     */
+    async updateRentalSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRentalSettingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/rentals/settings`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetRentalSettingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set the store’s rental defaults and payout timing (on_start needs 3 rentals that came back).
+     */
+    async updateRentalSetting(initOverrides?: RequestInit): Promise<GetRentalSettingResponse> {
+        const response = await this.updateRentalSettingRaw(initOverrides);
         return await response.value();
     }
 

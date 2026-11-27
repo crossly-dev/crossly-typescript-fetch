@@ -20,6 +20,8 @@
 export enum CreateMeTemplateRenderResponseTokensUsedItem {
     Date = 'date',
     Brand = 'brand',
+    Category = 'category',
+    Month = 'month',
     Sku = 'sku',
     Condition = 'condition',
     Size = 'size',
@@ -27,11 +29,9 @@ export enum CreateMeTemplateRenderResponseTokensUsedItem {
     Style = 'style',
     Color = 'color',
     Price = 'price',
-    Category = 'category',
     Year = 'year',
     Model = 'model',
-    ItemName = 'item_name',
-    Month = 'month'
+    ItemName = 'item_name'
 }
 
 export function CreateMeTemplateRenderResponseTokensUsedItemFromJSON(json: any): CreateMeTemplateRenderResponseTokensUsedItem {

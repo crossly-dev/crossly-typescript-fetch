@@ -20,11 +20,11 @@ import {
     CreateVaultMarketPartnerBatchResponseCreatedToJSON,
 } from './CreateVaultMarketPartnerBatchResponseCreated';
 import {
-    CreateVaultMarketPartnerBatchResponseLabel,
-    CreateVaultMarketPartnerBatchResponseLabelFromJSON,
-    CreateVaultMarketPartnerBatchResponseLabelFromJSONTyped,
-    CreateVaultMarketPartnerBatchResponseLabelToJSON,
-} from './CreateVaultMarketPartnerBatchResponseLabel';
+    LabelUrlTrackingCode,
+    LabelUrlTrackingCodeFromJSON,
+    LabelUrlTrackingCodeFromJSONTyped,
+    LabelUrlTrackingCodeToJSON,
+} from '../common/LabelUrlTrackingCode';
 
 /**
  * 
@@ -52,10 +52,10 @@ export interface CreateVaultMarketPartnerBatchResponse {
     created: Array<CreateVaultMarketPartnerBatchResponseCreated>;
     /**
      * 
-     * @type {CreateVaultMarketPartnerBatchResponseLabel}
+     * @type {LabelUrlTrackingCode}
      * @memberof CreateVaultMarketPartnerBatchResponse
      */
-    label?: CreateVaultMarketPartnerBatchResponseLabel | null;
+    label?: LabelUrlTrackingCode | null;
     /**
      * 
      * @type {string}
@@ -77,7 +77,7 @@ export function CreateVaultMarketPartnerBatchResponseFromJSONTyped(json: any, ig
         'batchId': json['batchId'],
         'partnerCode': json['partnerCode'],
         'created': ((json['created'] as Array<any>).map(CreateVaultMarketPartnerBatchResponseCreatedFromJSON)),
-        'label': !exists(json, 'label') ? undefined : CreateVaultMarketPartnerBatchResponseLabelFromJSON(json['label']),
+        'label': !exists(json, 'label') ? undefined : LabelUrlTrackingCodeFromJSON(json['label']),
         'labelError': !exists(json, 'labelError') ? undefined : json['labelError'],
     };
 }
@@ -94,7 +94,7 @@ export function CreateVaultMarketPartnerBatchResponseToJSON(value?: CreateVaultM
         'batchId': value.batchId,
         'partnerCode': value.partnerCode,
         'created': ((value.created as Array<any>).map(CreateVaultMarketPartnerBatchResponseCreatedToJSON)),
-        'label': CreateVaultMarketPartnerBatchResponseLabelToJSON(value.label),
+        'label': LabelUrlTrackingCodeToJSON(value.label),
         'labelError': value.labelError,
     };
 }

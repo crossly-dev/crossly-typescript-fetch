@@ -92,8 +92,8 @@ export interface GetVaultMarketAdvanceQuoteResponseUnit {
 * @enum {string}
 */
 export enum GetVaultMarketAdvanceQuoteResponseUnitTierEnum {
-    Standard = 'standard',
     Closed = 'closed',
+    Standard = 'standard',
     Deep = 'deep',
     Thin = 'thin'
 }

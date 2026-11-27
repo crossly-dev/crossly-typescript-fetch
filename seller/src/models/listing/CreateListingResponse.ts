@@ -26,6 +26,12 @@ import {
     CreateListingResponseSkippedToJSON,
 } from './CreateListingResponseSkipped';
 import {
+    CreateListingResponseWarnings,
+    CreateListingResponseWarningsFromJSON,
+    CreateListingResponseWarningsFromJSONTyped,
+    CreateListingResponseWarningsToJSON,
+} from './CreateListingResponseWarnings';
+import {
     IdResponse,
     IdResponseFromJSON,
     IdResponseFromJSONTyped,
@@ -45,13 +51,14 @@ export interface CreateListingResponse {
      */
     listing: IdResponse;
     /**
-     * 
+     * One dispatched crosspost job per accepted platform.
      * @type {Array<CreateListingResponseJobs>}
      * @memberof CreateListingResponse
      */
     jobs: Array<CreateListingResponseJobs>;
     /**
-     * 
+     * Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch
+     * refusal such as validation_error "Add a weight before listing", ...). The listing itself was created.
      * @type {Array<CreateListingResponseSkipped>}
      * @memberof CreateListingResponse
      */
@@ -62,6 +69,24 @@ export interface CreateListingResponse {
      * @memberof CreateListingResponse
      */
     bulkJobId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateListingResponse
+     */
+    clientReferenceId?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateListingResponse
+     */
+    existing?: boolean | null;
+    /**
+     * Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored.
+     * @type {Array<CreateListingResponseWarnings>}
+     * @memberof CreateListingResponse
+     */
+    warnings?: Array<CreateListingResponseWarnings> | null;
 }
 
 export function CreateListingResponseFromJSON(json: any): CreateListingResponse {
@@ -78,6 +103,9 @@ export function CreateListingResponseFromJSONTyped(json: any, ignoreDiscriminato
         'jobs': ((json['jobs'] as Array<any>).map(CreateListingResponseJobsFromJSON)),
         'skipped': ((json['skipped'] as Array<any>).map(CreateListingResponseSkippedFromJSON)),
         'bulkJobId': !exists(json, 'bulkJobId') ? undefined : json['bulkJobId'],
+        'clientReferenceId': !exists(json, 'clientReferenceId') ? undefined : json['clientReferenceId'],
+        'existing': !exists(json, 'existing') ? undefined : json['existing'],
+        'warnings': !exists(json, 'warnings') ? undefined : (json['warnings'] === null ? null : (json['warnings'] as Array<any>).map(CreateListingResponseWarningsFromJSON)),
     };
 }
 
@@ -94,6 +122,9 @@ export function CreateListingResponseToJSON(value?: CreateListingResponse | null
         'jobs': ((value.jobs as Array<any>).map(CreateListingResponseJobsToJSON)),
         'skipped': ((value.skipped as Array<any>).map(CreateListingResponseSkippedToJSON)),
         'bulkJobId': value.bulkJobId,
+        'clientReferenceId': value.clientReferenceId,
+        'existing': value.existing,
+        'warnings': value.warnings === undefined ? undefined : (value.warnings === null ? null : (value.warnings as Array<any>).map(CreateListingResponseWarningsToJSON)),
     };
 }
 

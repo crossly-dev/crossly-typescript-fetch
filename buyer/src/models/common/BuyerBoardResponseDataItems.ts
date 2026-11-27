@@ -21,18 +21,6 @@ import { exists, mapValues } from '../../runtime';
 export interface BuyerBoardResponseDataItems {
     /**
      * 
-     * @type {boolean}
-     * @memberof BuyerBoardResponseDataItems
-     */
-    available: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof BuyerBoardResponseDataItems
-     */
-    title?: string | null;
-    /**
-     * 
      * @type {string}
      * @memberof BuyerBoardResponseDataItems
      */
@@ -45,6 +33,12 @@ export interface BuyerBoardResponseDataItems {
     slug?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof BuyerBoardResponseDataItems
+     */
+    title?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof BuyerBoardResponseDataItems
      */
@@ -54,13 +48,13 @@ export interface BuyerBoardResponseDataItems {
      * @type {string}
      * @memberof BuyerBoardResponseDataItems
      */
-    note?: string | null;
+    imageUrl?: string | null;
     /**
      * 
-     * @type {string}
+     * @type {boolean}
      * @memberof BuyerBoardResponseDataItems
      */
-    imageUrl?: string | null;
+    available: boolean;
     /**
      * 
      * @type {number}
@@ -85,6 +79,12 @@ export interface BuyerBoardResponseDataItems {
      * @memberof BuyerBoardResponseDataItems
      */
     z: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BuyerBoardResponseDataItems
+     */
+    note?: string | null;
 }
 
 export function BuyerBoardResponseDataItemsFromJSON(json: any): BuyerBoardResponseDataItems {
@@ -97,17 +97,17 @@ export function BuyerBoardResponseDataItemsFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'available': json['available'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
         'platformListingId': json['platformListingId'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
         'priceCents': json['priceCents'],
-        'note': !exists(json, 'note') ? undefined : json['note'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
+        'available': json['available'],
         'x': json['x'],
         'y': json['y'],
         'w': json['w'],
         'z': json['z'],
+        'note': !exists(json, 'note') ? undefined : json['note'],
     };
 }
 
@@ -120,17 +120,17 @@ export function BuyerBoardResponseDataItemsToJSON(value?: BuyerBoardResponseData
     }
     return {
         
-        'available': value.available,
-        'title': value.title,
         'platformListingId': value.platformListingId,
         'slug': value.slug,
+        'title': value.title,
         'priceCents': value.priceCents,
-        'note': value.note,
         'imageUrl': value.imageUrl,
+        'available': value.available,
         'x': value.x,
         'y': value.y,
         'w': value.w,
         'z': value.z,
+        'note': value.note,
     };
 }
 

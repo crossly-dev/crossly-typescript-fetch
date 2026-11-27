@@ -87,9 +87,10 @@ export interface GetSpatialEmployeeConfigResponseDataConfig {
 * @enum {string}
 */
 export enum GetSpatialEmployeeConfigResponseDataConfigBrainKindEnum {
-    Idle = 'idle',
     Rules = 'rules',
-    Agent = 'agent'
+    Idle = 'idle',
+    Agent = 'agent',
+    Byok = 'byok'
 }
 
 export function GetSpatialEmployeeConfigResponseDataConfigFromJSON(json: any): GetSpatialEmployeeConfigResponseDataConfig {

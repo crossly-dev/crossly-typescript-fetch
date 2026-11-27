@@ -14,17 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetAnalyticInventoryResponseDataWorst,
+    GetAnalyticInventoryResponseDataWorstFromJSON,
+    GetAnalyticInventoryResponseDataWorstFromJSONTyped,
+    GetAnalyticInventoryResponseDataWorstToJSON,
+} from '../analytic/GetAnalyticInventoryResponseDataWorst';
+import {
     GetInventoryAgingResponseDataBuckets,
     GetInventoryAgingResponseDataBucketsFromJSON,
     GetInventoryAgingResponseDataBucketsFromJSONTyped,
     GetInventoryAgingResponseDataBucketsToJSON,
 } from './GetInventoryAgingResponseDataBuckets';
-import {
-    GetInventoryAgingResponseDataWorst,
-    GetInventoryAgingResponseDataWorstFromJSON,
-    GetInventoryAgingResponseDataWorstFromJSONTyped,
-    GetInventoryAgingResponseDataWorstToJSON,
-} from './GetInventoryAgingResponseDataWorst';
 
 /**
  * 
@@ -40,16 +40,35 @@ export interface GetInventoryAgingResponseData {
     buckets: Array<GetInventoryAgingResponseDataBuckets>;
     /**
      * 
-     * @type {Array<GetInventoryAgingResponseDataWorst>}
+     * @type {Array<GetAnalyticInventoryResponseDataWorst>}
      * @memberof GetInventoryAgingResponseData
      */
-    worst: Array<GetInventoryAgingResponseDataWorst>;
+    worst: Array<GetAnalyticInventoryResponseDataWorst>;
+    /**
+     * Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents.
+     * Not "older than three months"; that is over90CostCents.
+     * @type {number}
+     * @memberof GetInventoryAgingResponseData
+     */
+    stuckCapitalCents: number;
     /**
      * 
      * @type {number}
      * @memberof GetInventoryAgingResponseData
      */
-    stuckCapitalCents: number;
+    attentionCostCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseData
+     */
+    over90CostCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseData
+     */
+    over90ListedValueCents: number;
     /**
      * 
      * @type {number}
@@ -62,6 +81,46 @@ export interface GetInventoryAgingResponseData {
      * @memberof GetInventoryAgingResponseData
      */
     totalUnits: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseData
+     */
+    costKnownItems: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseData
+     */
+    costUnknownItems: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseData
+     */
+    listedValueCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetInventoryAgingResponseData
+     */
+    marketValueCents?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryAgingResponseData
+     */
+    sizeBy: GetInventoryAgingResponseDataSizeByEnum;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum GetInventoryAgingResponseDataSizeByEnum {
+    valueOption = 'value',
+    cost = 'cost',
+    units = 'units'
 }
 
 export function GetInventoryAgingResponseDataFromJSON(json: any): GetInventoryAgingResponseData {
@@ -75,10 +134,18 @@ export function GetInventoryAgingResponseDataFromJSONTyped(json: any, ignoreDisc
     return {
         
         'buckets': ((json['buckets'] as Array<any>).map(GetInventoryAgingResponseDataBucketsFromJSON)),
-        'worst': ((json['worst'] as Array<any>).map(GetInventoryAgingResponseDataWorstFromJSON)),
+        'worst': ((json['worst'] as Array<any>).map(GetAnalyticInventoryResponseDataWorstFromJSON)),
         'stuckCapitalCents': json['stuckCapitalCents'],
+        'attentionCostCents': json['attentionCostCents'],
+        'over90CostCents': json['over90CostCents'],
+        'over90ListedValueCents': json['over90ListedValueCents'],
         'totalItems': json['totalItems'],
         'totalUnits': json['totalUnits'],
+        'costKnownItems': json['costKnownItems'],
+        'costUnknownItems': json['costUnknownItems'],
+        'listedValueCents': json['listedValueCents'],
+        'marketValueCents': !exists(json, 'marketValueCents') ? undefined : json['marketValueCents'],
+        'sizeBy': json['sizeBy'],
     };
 }
 
@@ -92,10 +159,18 @@ export function GetInventoryAgingResponseDataToJSON(value?: GetInventoryAgingRes
     return {
         
         'buckets': ((value.buckets as Array<any>).map(GetInventoryAgingResponseDataBucketsToJSON)),
-        'worst': ((value.worst as Array<any>).map(GetInventoryAgingResponseDataWorstToJSON)),
+        'worst': ((value.worst as Array<any>).map(GetAnalyticInventoryResponseDataWorstToJSON)),
         'stuckCapitalCents': value.stuckCapitalCents,
+        'attentionCostCents': value.attentionCostCents,
+        'over90CostCents': value.over90CostCents,
+        'over90ListedValueCents': value.over90ListedValueCents,
         'totalItems': value.totalItems,
         'totalUnits': value.totalUnits,
+        'costKnownItems': value.costKnownItems,
+        'costUnknownItems': value.costUnknownItems,
+        'listedValueCents': value.listedValueCents,
+        'marketValueCents': value.marketValueCents,
+        'sizeBy': value.sizeBy,
     };
 }
 

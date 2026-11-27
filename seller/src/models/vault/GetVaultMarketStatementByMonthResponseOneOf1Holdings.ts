@@ -87,9 +87,9 @@ export interface GetVaultMarketStatementByMonthResponseOneOf1Holdings {
 */
 export enum GetVaultMarketStatementByMonthResponseOneOf1HoldingsMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketStatementByMonthResponseOneOf1HoldingsFromJSON(json: any): GetVaultMarketStatementByMonthResponseOneOf1Holdings {

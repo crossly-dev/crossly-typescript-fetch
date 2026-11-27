@@ -21,10 +21,10 @@ import { exists, mapValues } from '../../runtime';
 export interface GetBuyerCollectionSetResponseDataPieces {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof GetBuyerCollectionSetResponseDataPieces
      */
-    number: number;
+    skuId: string;
     /**
      * 
      * @type {string}
@@ -39,22 +39,22 @@ export interface GetBuyerCollectionSetResponseDataPieces {
     imageUrl?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof GetBuyerCollectionSetResponseDataPieces
-     */
-    skuId: string;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerCollectionSetResponseDataPieces
      */
-    bestAskCents?: number | null;
+    number: number;
     /**
      * 
      * @type {boolean}
      * @memberof GetBuyerCollectionSetResponseDataPieces
      */
     owned: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerCollectionSetResponseDataPieces
+     */
+    bestAskCents?: number | null;
 }
 
 export function GetBuyerCollectionSetResponseDataPiecesFromJSON(json: any): GetBuyerCollectionSetResponseDataPieces {
@@ -67,12 +67,12 @@ export function GetBuyerCollectionSetResponseDataPiecesFromJSONTyped(json: any, 
     }
     return {
         
-        'number': json['number'],
+        'skuId': json['skuId'],
         'title': json['title'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
-        'skuId': json['skuId'],
-        'bestAskCents': !exists(json, 'bestAskCents') ? undefined : json['bestAskCents'],
+        'number': json['number'],
         'owned': json['owned'],
+        'bestAskCents': !exists(json, 'bestAskCents') ? undefined : json['bestAskCents'],
     };
 }
 
@@ -85,12 +85,12 @@ export function GetBuyerCollectionSetResponseDataPiecesToJSON(value?: GetBuyerCo
     }
     return {
         
-        'number': value.number,
+        'skuId': value.skuId,
         'title': value.title,
         'imageUrl': value.imageUrl,
-        'skuId': value.skuId,
-        'bestAskCents': value.bestAskCents,
+        'number': value.number,
         'owned': value.owned,
+        'bestAskCents': value.bestAskCents,
     };
 }
 

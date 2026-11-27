@@ -39,6 +39,12 @@ export interface GetSpatialPropertyResponseDataDeedsLease {
     status: string;
     /**
      * 
+     * @type {string}
+     * @memberof GetSpatialPropertyResponseDataDeedsLease
+     */
+    ownerUserId: string;
+    /**
+     * 
      * @type {Date}
      * @memberof GetSpatialPropertyResponseDataDeedsLease
      */
@@ -48,25 +54,19 @@ export interface GetSpatialPropertyResponseDataDeedsLease {
      * @type {string}
      * @memberof GetSpatialPropertyResponseDataDeedsLease
      */
-    ownerUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetSpatialPropertyResponseDataDeedsLease
-     */
-    endReason?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof GetSpatialPropertyResponseDataDeedsLease
-     */
-    paidThrough?: Date | null;
+    rail?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetSpatialPropertyResponseDataDeedsLease
      */
     plotId: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetSpatialPropertyResponseDataDeedsLease
+     */
+    paidThrough?: Date | null;
     /**
      * 
      * @type {string}
@@ -97,6 +97,36 @@ export interface GetSpatialPropertyResponseDataDeedsLease {
      * @memberof GetSpatialPropertyResponseDataDeedsLease
      */
     termsFrozenAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSpatialPropertyResponseDataDeedsLease
+     */
+    endReason?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetSpatialPropertyResponseDataDeedsLease
+     */
+    autopay: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSpatialPropertyResponseDataDeedsLease
+     */
+    address?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSpatialPropertyResponseDataDeedsLease
+     */
+    label?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetSpatialPropertyResponseDataDeedsLease
+     */
+    tenantName?: string | null;
 }
 
 export function GetSpatialPropertyResponseDataDeedsLeaseFromJSON(json: any): GetSpatialPropertyResponseDataDeedsLease {
@@ -112,16 +142,21 @@ export function GetSpatialPropertyResponseDataDeedsLeaseFromJSONTyped(json: any,
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
-        'endedAt': !exists(json, 'endedAt') ? undefined : (json['endedAt'] === null ? null : new Date(json['endedAt'])),
         'ownerUserId': json['ownerUserId'],
-        'endReason': !exists(json, 'endReason') ? undefined : json['endReason'],
-        'paidThrough': !exists(json, 'paidThrough') ? undefined : (json['paidThrough'] === null ? null : new Date(json['paidThrough'])),
+        'endedAt': !exists(json, 'endedAt') ? undefined : (json['endedAt'] === null ? null : new Date(json['endedAt'])),
+        'rail': !exists(json, 'rail') ? undefined : json['rail'],
         'plotId': json['plotId'],
+        'paidThrough': !exists(json, 'paidThrough') ? undefined : (json['paidThrough'] === null ? null : new Date(json['paidThrough'])),
         'deedId': json['deedId'],
         'tenantUserId': !exists(json, 'tenantUserId') ? undefined : json['tenantUserId'],
         'tenantSceneId': !exists(json, 'tenantSceneId') ? undefined : json['tenantSceneId'],
         'rentWeeklyCents': json['rentWeeklyCents'],
         'termsFrozenAt': !exists(json, 'termsFrozenAt') ? undefined : (json['termsFrozenAt'] === null ? null : new Date(json['termsFrozenAt'])),
+        'endReason': !exists(json, 'endReason') ? undefined : json['endReason'],
+        'autopay': json['autopay'],
+        'address': !exists(json, 'address') ? undefined : json['address'],
+        'label': !exists(json, 'label') ? undefined : json['label'],
+        'tenantName': !exists(json, 'tenantName') ? undefined : json['tenantName'],
     };
 }
 
@@ -137,16 +172,21 @@ export function GetSpatialPropertyResponseDataDeedsLeaseToJSON(value?: GetSpatia
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
-        'endedAt': value.endedAt === undefined ? undefined : (value.endedAt === null ? null : value.endedAt.toISOString()),
         'ownerUserId': value.ownerUserId,
-        'endReason': value.endReason,
-        'paidThrough': value.paidThrough === undefined ? undefined : (value.paidThrough === null ? null : value.paidThrough.toISOString()),
+        'endedAt': value.endedAt === undefined ? undefined : (value.endedAt === null ? null : value.endedAt.toISOString()),
+        'rail': value.rail,
         'plotId': value.plotId,
+        'paidThrough': value.paidThrough === undefined ? undefined : (value.paidThrough === null ? null : value.paidThrough.toISOString()),
         'deedId': value.deedId,
         'tenantUserId': value.tenantUserId,
         'tenantSceneId': value.tenantSceneId,
         'rentWeeklyCents': value.rentWeeklyCents,
         'termsFrozenAt': value.termsFrozenAt === undefined ? undefined : (value.termsFrozenAt === null ? null : value.termsFrozenAt.toISOString()),
+        'endReason': value.endReason,
+        'autopay': value.autopay,
+        'address': value.address,
+        'label': value.label,
+        'tenantName': value.tenantName,
     };
 }
 

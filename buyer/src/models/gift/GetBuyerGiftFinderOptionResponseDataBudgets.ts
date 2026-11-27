@@ -24,13 +24,13 @@ export interface GetBuyerGiftFinderOptionResponseDataBudgets {
      * @type {string}
      * @memberof GetBuyerGiftFinderOptionResponseDataBudgets
      */
-    label: string;
+    key: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerGiftFinderOptionResponseDataBudgets
      */
-    key: string;
+    label: string;
 }
 
 export function GetBuyerGiftFinderOptionResponseDataBudgetsFromJSON(json: any): GetBuyerGiftFinderOptionResponseDataBudgets {
@@ -43,8 +43,8 @@ export function GetBuyerGiftFinderOptionResponseDataBudgetsFromJSONTyped(json: a
     }
     return {
         
-        'label': json['label'],
         'key': json['key'],
+        'label': json['label'],
     };
 }
 
@@ -57,8 +57,8 @@ export function GetBuyerGiftFinderOptionResponseDataBudgetsToJSON(value?: GetBuy
     }
     return {
         
-        'label': value.label,
         'key': value.key,
+        'label': value.label,
     };
 }
 

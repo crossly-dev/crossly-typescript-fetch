@@ -39,16 +39,16 @@ export interface UpdateBuyerWishlistResponseData {
     name: string;
     /**
      * 
-     * @type {string}
-     * @memberof UpdateBuyerWishlistResponseData
-     */
-    createdAt: string;
-    /**
-     * 
      * @type {boolean}
      * @memberof UpdateBuyerWishlistResponseData
      */
     isPublic: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateBuyerWishlistResponseData
+     */
+    createdAt: string;
     /**
      * 
      * @type {string}
@@ -70,8 +70,8 @@ export function UpdateBuyerWishlistResponseDataFromJSONTyped(json: any, ignoreDi
         'shareUrl': !exists(json, 'shareUrl') ? undefined : json['shareUrl'],
         'id': json['id'],
         'name': json['name'],
-        'createdAt': json['createdAt'],
         'isPublic': json['isPublic'],
+        'createdAt': json['createdAt'],
         'shareToken': !exists(json, 'shareToken') ? undefined : json['shareToken'],
     };
 }
@@ -88,8 +88,8 @@ export function UpdateBuyerWishlistResponseDataToJSON(value?: UpdateBuyerWishlis
         'shareUrl': value.shareUrl,
         'id': value.id,
         'name': value.name,
-        'createdAt': value.createdAt,
         'isPublic': value.isPublic,
+        'createdAt': value.createdAt,
         'shareToken': value.shareToken,
     };
 }

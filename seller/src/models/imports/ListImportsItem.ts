@@ -49,13 +49,13 @@ export interface ListImportsItem {
      * @type {string}
      * @memberof ListImportsItem
      */
-    status: string;
+    platform: string;
     /**
      * 
      * @type {string}
      * @memberof ListImportsItem
      */
-    platform: string;
+    status: string;
     /**
      * 
      * @type {string}
@@ -68,12 +68,6 @@ export interface ListImportsItem {
      * @memberof ListImportsItem
      */
     startedAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListImportsItem
-     */
-    batchId?: string | null;
     /**
      * 
      * @type {Date}
@@ -136,6 +130,12 @@ export interface ListImportsItem {
     errorCount: number;
     /**
      * 
+     * @type {string}
+     * @memberof ListImportsItem
+     */
+    batchId?: string | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof ListImportsItem
      */
@@ -161,11 +161,10 @@ export function ListImportsItemFromJSONTyped(json: any, ignoreDiscriminator: boo
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
-        'status': json['status'],
         'platform': json['platform'],
+        'status': json['status'],
         'lastError': !exists(json, 'lastError') ? undefined : json['lastError'],
         'startedAt': !exists(json, 'startedAt') ? undefined : (json['startedAt'] === null ? null : new Date(json['startedAt'])),
-        'batchId': !exists(json, 'batchId') ? undefined : json['batchId'],
         'finishedAt': !exists(json, 'finishedAt') ? undefined : (json['finishedAt'] === null ? null : new Date(json['finishedAt'])),
         'filters': !exists(json, 'filters') ? undefined : ListImportsItemFiltersFromJSON(json['filters']),
         'importMode': json['importMode'],
@@ -176,6 +175,7 @@ export function ListImportsItemFromJSONTyped(json: any, ignoreDiscriminator: boo
         'importedCount': json['importedCount'],
         'skippedCount': json['skippedCount'],
         'errorCount': json['errorCount'],
+        'batchId': !exists(json, 'batchId') ? undefined : json['batchId'],
         'listOnCrossly': json['listOnCrossly'],
         'crosslyListedAt': !exists(json, 'crosslyListedAt') ? undefined : (json['crosslyListedAt'] === null ? null : new Date(json['crosslyListedAt'])),
     };
@@ -193,11 +193,10 @@ export function ListImportsItemToJSON(value?: ListImportsItem | null): any {
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
-        'status': value.status,
         'platform': value.platform,
+        'status': value.status,
         'lastError': value.lastError,
         'startedAt': value.startedAt === undefined ? undefined : (value.startedAt === null ? null : value.startedAt.toISOString()),
-        'batchId': value.batchId,
         'finishedAt': value.finishedAt === undefined ? undefined : (value.finishedAt === null ? null : value.finishedAt.toISOString()),
         'filters': ListImportsItemFiltersToJSON(value.filters),
         'importMode': value.importMode,
@@ -208,6 +207,7 @@ export function ListImportsItemToJSON(value?: ListImportsItem | null): any {
         'importedCount': value.importedCount,
         'skippedCount': value.skippedCount,
         'errorCount': value.errorCount,
+        'batchId': value.batchId,
         'listOnCrossly': value.listOnCrossly,
         'crosslyListedAt': value.crosslyListedAt === undefined ? undefined : (value.crosslyListedAt === null ? null : value.crosslyListedAt.toISOString()),
     };

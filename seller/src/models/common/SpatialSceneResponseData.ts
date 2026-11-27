@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    SpatialSceneResponseDataSettings,
+    SpatialSceneResponseDataSettingsFromJSON,
+    SpatialSceneResponseDataSettingsFromJSONTyped,
+    SpatialSceneResponseDataSettingsToJSON,
+} from './SpatialSceneResponseDataSettings';
+
 /**
  * 
  * @export
@@ -27,6 +34,74 @@ export interface SpatialSceneResponseData {
     id: string;
     /**
      * 
+     * @type {string}
+     * @memberof SpatialSceneResponseData
+     */
+    userId: string;
+    /**
+     * 'collection' | 'warehouse'
+     * 
+     * Same renderer, opposite contracts. A collection may be arranged for
+     * beauty; a warehouse must match the physical room or it is worse than no
+     * warehouse, because someone will walk to the wrong shelf.
+     * @type {string}
+     * @memberof SpatialSceneResponseData
+     */
+    kind: string;
+    /**
+     * NULL for warehouses and for the generic catch-all room.
+     * @type {string}
+     * @memberof SpatialSceneResponseData
+     */
+    categorySlug?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpatialSceneResponseData
+     */
+    name: string;
+    /**
+     * Public share handle. NULL until someone chooses to share.
+     * @type {string}
+     * @memberof SpatialSceneResponseData
+     */
+    publicSlug?: string | null;
+    /**
+     * 'private' | 'unlisted' | 'public'
+     * 
+     * Defaults CLOSED. A collection is the one surface in this product that
+     * routinely contains things which are not for sale and were never meant to
+     * be seen by anybody — that is most of what makes it a collection.
+     * @type {string}
+     * @memberof SpatialSceneResponseData
+     */
+    visibility: string;
+    /**
+     * 
+     * @type {SpatialSceneResponseDataSettings}
+     * @memberof SpatialSceneResponseData
+     */
+    settings: SpatialSceneResponseDataSettings;
+    /**
+     * kind='shop': the store this showroom belongs to (0830). NULL = a legacy row of the default store.
+     * @type {string}
+     * @memberof SpatialSceneResponseData
+     */
+    storefrontId?: string | null;
+    /**
+     * 1147 kind='shop': a store's showrooms in order; 0 = its primary (one per store, the unique index below).
+     * @type {number}
+     * @memberof SpatialSceneResponseData
+     */
+    showroomPosition: number;
+    /**
+     * 1147 kind='shop': opt-in, stand every live item automatically. Off = only what is pinned shows.
+     * @type {boolean}
+     * @memberof SpatialSceneResponseData
+     */
+    autoIncludeInventory: boolean;
+    /**
+     * 
      * @type {Date}
      * @memberof SpatialSceneResponseData
      */
@@ -37,42 +112,6 @@ export interface SpatialSceneResponseData {
      * @memberof SpatialSceneResponseData
      */
     updatedAt: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof SpatialSceneResponseData
-     */
-    inventoryItemId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SpatialSceneResponseData
-     */
-    sceneId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SpatialSceneResponseData
-     */
-    inventoryUnitId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SpatialSceneResponseData
-     */
-    nodeId: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof SpatialSceneResponseData
-     */
-    slotIndex: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SpatialSceneResponseData
-     */
-    pinned: boolean;
 }
 
 export function SpatialSceneResponseDataFromJSON(json: any): SpatialSceneResponseData {
@@ -86,14 +125,18 @@ export function SpatialSceneResponseDataFromJSONTyped(json: any, ignoreDiscrimin
     return {
         
         'id': json['id'],
+        'userId': json['userId'],
+        'kind': json['kind'],
+        'categorySlug': !exists(json, 'categorySlug') ? undefined : json['categorySlug'],
+        'name': json['name'],
+        'publicSlug': !exists(json, 'publicSlug') ? undefined : json['publicSlug'],
+        'visibility': json['visibility'],
+        'settings': SpatialSceneResponseDataSettingsFromJSON(json['settings']),
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'showroomPosition': json['showroomPosition'],
+        'autoIncludeInventory': json['autoIncludeInventory'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
-        'inventoryItemId': json['inventoryItemId'],
-        'sceneId': json['sceneId'],
-        'inventoryUnitId': !exists(json, 'inventoryUnitId') ? undefined : json['inventoryUnitId'],
-        'nodeId': json['nodeId'],
-        'slotIndex': json['slotIndex'],
-        'pinned': json['pinned'],
     };
 }
 
@@ -107,14 +150,18 @@ export function SpatialSceneResponseDataToJSON(value?: SpatialSceneResponseData 
     return {
         
         'id': value.id,
+        'userId': value.userId,
+        'kind': value.kind,
+        'categorySlug': value.categorySlug,
+        'name': value.name,
+        'publicSlug': value.publicSlug,
+        'visibility': value.visibility,
+        'settings': SpatialSceneResponseDataSettingsToJSON(value.settings),
+        'storefrontId': value.storefrontId,
+        'showroomPosition': value.showroomPosition,
+        'autoIncludeInventory': value.autoIncludeInventory,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
-        'inventoryItemId': value.inventoryItemId,
-        'sceneId': value.sceneId,
-        'inventoryUnitId': value.inventoryUnitId,
-        'nodeId': value.nodeId,
-        'slotIndex': value.slotIndex,
-        'pinned': value.pinned,
     };
 }
 

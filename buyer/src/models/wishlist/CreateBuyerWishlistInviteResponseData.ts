@@ -24,13 +24,13 @@ export interface CreateBuyerWishlistInviteResponseData {
      * @type {string}
      * @memberof CreateBuyerWishlistInviteResponseData
      */
-    url: string;
+    token: string;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerWishlistInviteResponseData
      */
-    token: string;
+    url: string;
     /**
      * 
      * @type {string}
@@ -49,8 +49,8 @@ export function CreateBuyerWishlistInviteResponseDataFromJSONTyped(json: any, ig
     }
     return {
         
-        'url': json['url'],
         'token': json['token'],
+        'url': json['url'],
         'expiresAt': json['expiresAt'],
     };
 }
@@ -64,8 +64,8 @@ export function CreateBuyerWishlistInviteResponseDataToJSON(value?: CreateBuyerW
     }
     return {
         
-        'url': value.url,
         'token': value.token,
+        'url': value.url,
         'expiresAt': value.expiresAt,
     };
 }

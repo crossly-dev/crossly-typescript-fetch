@@ -24,6 +24,24 @@ export interface ListPolicyPresetsItem {
      * @type {string}
      * @memberof ListPolicyPresetsItem
      */
+    summary: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListPolicyPresetsItem
+     */
+    incomplete: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListPolicyPresetsItem
+     */
+    listingCount: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListPolicyPresetsItem
+     */
     id: string;
     /**
      * 
@@ -61,6 +79,18 @@ export interface ListPolicyPresetsItem {
      * @memberof ListPolicyPresetsItem
      */
     kind: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListPolicyPresetsItem
+     */
+    revision: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListPolicyPresetsItem
+     */
+    hasDomesticRules: boolean;
 }
 
 export function ListPolicyPresetsItemFromJSON(json: any): ListPolicyPresetsItem {
@@ -73,6 +103,9 @@ export function ListPolicyPresetsItemFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
+        'summary': json['summary'],
+        'incomplete': json['incomplete'],
+        'listingCount': json['listingCount'],
         'id': json['id'],
         'name': json['name'],
         'createdAt': (new Date(json['createdAt'])),
@@ -80,6 +113,8 @@ export function ListPolicyPresetsItemFromJSONTyped(json: any, ignoreDiscriminato
         'userId': json['userId'],
         'isDefault': json['isDefault'],
         'kind': json['kind'],
+        'revision': json['revision'],
+        'hasDomesticRules': json['hasDomesticRules'],
     };
 }
 
@@ -92,6 +127,9 @@ export function ListPolicyPresetsItemToJSON(value?: ListPolicyPresetsItem | null
     }
     return {
         
+        'summary': value.summary,
+        'incomplete': value.incomplete,
+        'listingCount': value.listingCount,
         'id': value.id,
         'name': value.name,
         'createdAt': (value.createdAt.toISOString()),
@@ -99,6 +137,8 @@ export function ListPolicyPresetsItemToJSON(value?: ListPolicyPresetsItem | null
         'userId': value.userId,
         'isDefault': value.isDefault,
         'kind': value.kind,
+        'revision': value.revision,
+        'hasDomesticRules': value.hasDomesticRules,
     };
 }
 

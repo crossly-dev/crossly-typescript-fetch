@@ -51,10 +51,10 @@ export interface ListWeb3MarketplaceKeysItem {
 * @enum {string}
 */
 export enum ListWeb3MarketplaceKeysItemMarketplaceEnum {
-    Opensea = 'opensea',
-    Tensor = 'tensor',
+    Rarible = 'rarible',
     MagicEden = 'magic_eden',
-    Rarible = 'rarible'
+    Tensor = 'tensor',
+    Opensea = 'opensea'
 }
 
 export function ListWeb3MarketplaceKeysItemFromJSON(json: any): ListWeb3MarketplaceKeysItem {

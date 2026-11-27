@@ -92,10 +92,10 @@ export interface GetVaultMarketCreatorRoomResponseRoom {
 * @enum {string}
 */
 export enum GetVaultMarketCreatorRoomResponseRoomStatusEnum {
-    Applied = 'applied',
+    Paused = 'paused',
     Verified = 'verified',
-    Rejected = 'rejected',
-    Paused = 'paused'
+    Applied = 'applied',
+    Rejected = 'rejected'
 }
 
 export function GetVaultMarketCreatorRoomResponseRoomFromJSON(json: any): GetVaultMarketCreatorRoomResponseRoom {

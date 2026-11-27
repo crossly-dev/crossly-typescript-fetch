@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    CreateBulkBatchItemResponseGrading,
+    CreateBulkBatchItemResponseGradingFromJSON,
+    CreateBulkBatchItemResponseGradingFromJSONTyped,
+    CreateBulkBatchItemResponseGradingToJSON,
+} from '../bulk/CreateBulkBatchItemResponseGrading';
+import {
     CreateMagicScanSynthesizeResponsePayloadCategory,
     CreateMagicScanSynthesizeResponsePayloadCategoryFromJSON,
     CreateMagicScanSynthesizeResponsePayloadCategoryFromJSONTyped,
@@ -31,12 +37,6 @@ import {
     CreateMagicScanSynthesizeResponsePayloadSectionApplicabilityFromJSONTyped,
     CreateMagicScanSynthesizeResponsePayloadSectionApplicabilityToJSON,
 } from './CreateMagicScanSynthesizeResponsePayloadSectionApplicability';
-import {
-    ListGradingSubmissionsItemGrading,
-    ListGradingSubmissionsItemGradingFromJSON,
-    ListGradingSubmissionsItemGradingFromJSONTyped,
-    ListGradingSubmissionsItemGradingToJSON,
-} from '../grading/ListGradingSubmissionsItemGrading';
 
 /**
  * 
@@ -72,10 +72,10 @@ export interface CreateMagicScanSynthesizeResponsePayload {
     condition?: CreateMagicScanSynthesizeResponsePayloadConditionEnum;
     /**
      * 
-     * @type {ListGradingSubmissionsItemGrading}
+     * @type {CreateBulkBatchItemResponseGrading}
      * @memberof CreateMagicScanSynthesizeResponsePayload
      */
-    grading?: ListGradingSubmissionsItemGrading | null;
+    grading?: CreateBulkBatchItemResponseGrading | null;
     /**
      * 
      * @type {string}
@@ -331,8 +331,8 @@ export interface CreateMagicScanSynthesizeResponsePayload {
 */
 export enum CreateMagicScanSynthesizeResponsePayloadConditionEnum {
     New = 'new',
-    Fair = 'fair',
     Good = 'good',
+    Fair = 'fair',
     LikeNew = 'like_new',
     Poor = 'poor',
     Refurbished = 'refurbished'
@@ -348,8 +348,8 @@ export enum CreateMagicScanSynthesizeResponsePayloadShippingPaidByEnum {
 * @enum {string}
 */
 export enum CreateMagicScanSynthesizeResponsePayloadReturnsAcceptedEnum {
-    Yes = 'yes',
-    No = 'no'
+    No = 'no',
+    Yes = 'yes'
 }
 
 export function CreateMagicScanSynthesizeResponsePayloadFromJSON(json: any): CreateMagicScanSynthesizeResponsePayload {
@@ -366,7 +366,7 @@ export function CreateMagicScanSynthesizeResponsePayloadFromJSONTyped(json: any,
         'description': json['description'],
         'brand': !exists(json, 'brand') ? undefined : json['brand'],
         'condition': !exists(json, 'condition') ? undefined : json['condition'],
-        'grading': !exists(json, 'grading') ? undefined : ListGradingSubmissionsItemGradingFromJSON(json['grading']),
+        'grading': !exists(json, 'grading') ? undefined : CreateBulkBatchItemResponseGradingFromJSON(json['grading']),
         'color': !exists(json, 'color') ? undefined : json['color'],
         'material': !exists(json, 'material') ? undefined : json['material'],
         'size': !exists(json, 'size') ? undefined : json['size'],
@@ -418,7 +418,7 @@ export function CreateMagicScanSynthesizeResponsePayloadToJSON(value?: CreateMag
         'description': value.description,
         'brand': value.brand,
         'condition': value.condition,
-        'grading': ListGradingSubmissionsItemGradingToJSON(value.grading),
+        'grading': CreateBulkBatchItemResponseGradingToJSON(value.grading),
         'color': value.color,
         'material': value.material,
         'size': value.size,

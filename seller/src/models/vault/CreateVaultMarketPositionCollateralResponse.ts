@@ -243,8 +243,8 @@ export interface CreateVaultMarketPositionCollateralResponse {
 * @enum {string}
 */
 export enum CreateVaultMarketPositionCollateralResponseKindEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function CreateVaultMarketPositionCollateralResponseFromJSON(json: any): CreateVaultMarketPositionCollateralResponse {

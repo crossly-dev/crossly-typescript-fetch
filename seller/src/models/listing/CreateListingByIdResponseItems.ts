@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListGradingSubmissionsItemGrading,
-    ListGradingSubmissionsItemGradingFromJSON,
-    ListGradingSubmissionsItemGradingFromJSONTyped,
-    ListGradingSubmissionsItemGradingToJSON,
-} from '../grading/ListGradingSubmissionsItemGrading';
+    CreateBulkBatchItemResponseGrading,
+    CreateBulkBatchItemResponseGradingFromJSON,
+    CreateBulkBatchItemResponseGradingFromJSONTyped,
+    CreateBulkBatchItemResponseGradingToJSON,
+} from '../bulk/CreateBulkBatchItemResponseGrading';
 
 /**
  * 
@@ -208,10 +208,10 @@ export interface CreateListingByIdResponseItems {
     gradeKey?: string | null;
     /**
      * 
-     * @type {ListGradingSubmissionsItemGrading}
+     * @type {CreateBulkBatchItemResponseGrading}
      * @memberof CreateListingByIdResponseItems
      */
-    grading?: ListGradingSubmissionsItemGrading | null;
+    grading?: CreateBulkBatchItemResponseGrading | null;
     /**
      * 
      * @type {string}
@@ -446,6 +446,22 @@ export interface CreateListingByIdResponseItems {
      */
     automationBlockedChainIds: Array<string>;
     /**
+     * Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids
+     * above map here on conversion; `find.listings` and listing action nodes honour them.
+     * 
+     *  workflowBlockedIds  — workflows (workflows.id) this listing is exempt from
+     *  workflowAssignedIds — workflows this listing is force-included in
+     * @type {Array<string>}
+     * @memberof CreateListingByIdResponseItems
+     */
+    workflowBlockedIds: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreateListingByIdResponseItems
+     */
+    workflowAssignedIds: Array<string>;
+    /**
      * Harmonised System customs code — international shipping declarations.
      * @type {string}
      * @memberof CreateListingByIdResponseItems
@@ -534,6 +550,32 @@ export interface CreateListingByIdResponseItems {
      */
     clientDraftId?: string | null;
     /**
+     * The third-party OAuth app that created this listing (via its access
+     * token), if any — the anchor for developer revenue-share: the app that
+     * created the item earns a cut of its sales. Stamped once at create time
+     * (first writer wins, never overwritten); null for the web app, a PAT, or
+     * anything first-party. `attributedGrantId` pins the specific install whose
+     * agreed terms apply. See services/developer-earnings/.
+     * @type {string}
+     * @memberof CreateListingByIdResponseItems
+     */
+    attributedOauthAppId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateListingByIdResponseItems
+     */
+    attributedGrantId?: string | null;
+    /**
+     * Which quota this listing is counted in (migration 1064): 'app_allowance' = the
+     * attributed app's per-seller allowance (services/app-allowance/), 'plan' = the
+     * seller's plan, null = created before allowances / by no app (plan rules).
+     * Stays 'app_allowance' after an unlink (grandfathered, no longer counted).
+     * @type {string}
+     * @memberof CreateListingByIdResponseItems
+     */
+    quotaBucket?: string | null;
+    /**
      * 
      * @type {Date}
      * @memberof CreateListingByIdResponseItems
@@ -595,7 +637,7 @@ export function CreateListingByIdResponseItemsFromJSONTyped(json: any, ignoreDis
         'status': json['status'],
         'condition': !exists(json, 'condition') ? undefined : json['condition'],
         'gradeKey': !exists(json, 'gradeKey') ? undefined : json['gradeKey'],
-        'grading': !exists(json, 'grading') ? undefined : ListGradingSubmissionsItemGradingFromJSON(json['grading']),
+        'grading': !exists(json, 'grading') ? undefined : CreateBulkBatchItemResponseGradingFromJSON(json['grading']),
         'brand': !exists(json, 'brand') ? undefined : json['brand'],
         'size': !exists(json, 'size') ? undefined : json['size'],
         'material': !exists(json, 'material') ? undefined : json['material'],
@@ -625,6 +667,8 @@ export function CreateListingByIdResponseItemsFromJSONTyped(json: any, ignoreDis
         'automationBlockedRuleIds': json['automationBlockedRuleIds'],
         'automationAssignedChainIds': json['automationAssignedChainIds'],
         'automationBlockedChainIds': json['automationBlockedChainIds'],
+        'workflowBlockedIds': json['workflowBlockedIds'],
+        'workflowAssignedIds': json['workflowAssignedIds'],
         'hsCode': !exists(json, 'hsCode') ? undefined : json['hsCode'],
         'countryOfOrigin': !exists(json, 'countryOfOrigin') ? undefined : json['countryOfOrigin'],
         'priceFloorCents': !exists(json, 'priceFloorCents') ? undefined : json['priceFloorCents'],
@@ -635,6 +679,9 @@ export function CreateListingByIdResponseItemsFromJSONTyped(json: any, ignoreDis
         'source': json['source'],
         'duplicateOfListingId': !exists(json, 'duplicateOfListingId') ? undefined : json['duplicateOfListingId'],
         'clientDraftId': !exists(json, 'clientDraftId') ? undefined : json['clientDraftId'],
+        'attributedOauthAppId': !exists(json, 'attributedOauthAppId') ? undefined : json['attributedOauthAppId'],
+        'attributedGrantId': !exists(json, 'attributedGrantId') ? undefined : json['attributedGrantId'],
+        'quotaBucket': !exists(json, 'quotaBucket') ? undefined : json['quotaBucket'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
     };
@@ -677,7 +724,7 @@ export function CreateListingByIdResponseItemsToJSON(value?: CreateListingByIdRe
         'status': value.status,
         'condition': value.condition,
         'gradeKey': value.gradeKey,
-        'grading': ListGradingSubmissionsItemGradingToJSON(value.grading),
+        'grading': CreateBulkBatchItemResponseGradingToJSON(value.grading),
         'brand': value.brand,
         'size': value.size,
         'material': value.material,
@@ -707,6 +754,8 @@ export function CreateListingByIdResponseItemsToJSON(value?: CreateListingByIdRe
         'automationBlockedRuleIds': value.automationBlockedRuleIds,
         'automationAssignedChainIds': value.automationAssignedChainIds,
         'automationBlockedChainIds': value.automationBlockedChainIds,
+        'workflowBlockedIds': value.workflowBlockedIds,
+        'workflowAssignedIds': value.workflowAssignedIds,
         'hsCode': value.hsCode,
         'countryOfOrigin': value.countryOfOrigin,
         'priceFloorCents': value.priceFloorCents,
@@ -717,6 +766,9 @@ export function CreateListingByIdResponseItemsToJSON(value?: CreateListingByIdRe
         'source': value.source,
         'duplicateOfListingId': value.duplicateOfListingId,
         'clientDraftId': value.clientDraftId,
+        'attributedOauthAppId': value.attributedOauthAppId,
+        'attributedGrantId': value.attributedGrantId,
+        'quotaBucket': value.quotaBucket,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
     };

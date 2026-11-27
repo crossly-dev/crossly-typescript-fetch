@@ -31,6 +31,12 @@ export interface GetVaultMarketAccountResponseGates {
      * @type {ListVaultMarketGradeToVaultItemGatesGradingRuns}
      * @memberof GetVaultMarketAccountResponseGates
      */
+    shares: ListVaultMarketGradeToVaultItemGatesGradingRuns;
+    /**
+     * 
+     * @type {ListVaultMarketGradeToVaultItemGatesGradingRuns}
+     * @memberof GetVaultMarketAccountResponseGates
+     */
     custody: ListVaultMarketGradeToVaultItemGatesGradingRuns;
     /**
      * 
@@ -50,6 +56,42 @@ export interface GetVaultMarketAccountResponseGates {
      * @memberof GetVaultMarketAccountResponseGates
      */
     staking: ListVaultMarketGradeToVaultItemGatesGradingRuns;
+    /**
+     * 
+     * @type {ListVaultMarketGradeToVaultItemGatesGradingRuns}
+     * @memberof GetVaultMarketAccountResponseGates
+     */
+    sharesPartner: ListVaultMarketGradeToVaultItemGatesGradingRuns;
+    /**
+     * 
+     * @type {ListVaultMarketGradeToVaultItemGatesGradingRuns}
+     * @memberof GetVaultMarketAccountResponseGates
+     */
+    sharesSelf: ListVaultMarketGradeToVaultItemGatesGradingRuns;
+    /**
+     * 
+     * @type {ListVaultMarketGradeToVaultItemGatesGradingRuns}
+     * @memberof GetVaultMarketAccountResponseGates
+     */
+    optionsRouting: ListVaultMarketGradeToVaultItemGatesGradingRuns;
+    /**
+     * 
+     * @type {ListVaultMarketGradeToVaultItemGatesGradingRuns}
+     * @memberof GetVaultMarketAccountResponseGates
+     */
+    optionsVenue: ListVaultMarketGradeToVaultItemGatesGradingRuns;
+    /**
+     * 
+     * @type {ListVaultMarketGradeToVaultItemGatesGradingRuns}
+     * @memberof GetVaultMarketAccountResponseGates
+     */
+    predictionPartner: ListVaultMarketGradeToVaultItemGatesGradingRuns;
+    /**
+     * 
+     * @type {ListVaultMarketGradeToVaultItemGatesGradingRuns}
+     * @memberof GetVaultMarketAccountResponseGates
+     */
+    predictionSelf: ListVaultMarketGradeToVaultItemGatesGradingRuns;
 }
 
 export function GetVaultMarketAccountResponseGatesFromJSON(json: any): GetVaultMarketAccountResponseGates {
@@ -62,10 +104,17 @@ export function GetVaultMarketAccountResponseGatesFromJSONTyped(json: any, ignor
     }
     return {
         
+        'shares': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['shares']),
         'custody': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['custody']),
         'lending': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['lending']),
         'leverage': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['leverage']),
         'staking': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['staking']),
+        'sharesPartner': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['shares_partner']),
+        'sharesSelf': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['shares_self']),
+        'optionsRouting': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['options_routing']),
+        'optionsVenue': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['options_venue']),
+        'predictionPartner': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['prediction_partner']),
+        'predictionSelf': ListVaultMarketGradeToVaultItemGatesGradingRunsFromJSON(json['prediction_self']),
     };
 }
 
@@ -78,10 +127,17 @@ export function GetVaultMarketAccountResponseGatesToJSON(value?: GetVaultMarketA
     }
     return {
         
+        'shares': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.shares),
         'custody': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.custody),
         'lending': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.lending),
         'leverage': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.leverage),
         'staking': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.staking),
+        'shares_partner': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.sharesPartner),
+        'shares_self': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.sharesSelf),
+        'options_routing': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.optionsRouting),
+        'options_venue': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.optionsVenue),
+        'prediction_partner': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.predictionPartner),
+        'prediction_self': ListVaultMarketGradeToVaultItemGatesGradingRunsToJSON(value.predictionSelf),
     };
 }
 

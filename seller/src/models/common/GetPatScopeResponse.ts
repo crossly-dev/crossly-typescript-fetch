@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetPatScopeResponseScopes,
-    GetPatScopeResponseScopesFromJSON,
-    GetPatScopeResponseScopesFromJSONTyped,
-    GetPatScopeResponseScopesToJSON,
-} from './GetPatScopeResponseScopes';
+    ListAppsItemCapabilities,
+    ListAppsItemCapabilitiesFromJSON,
+    ListAppsItemCapabilitiesFromJSONTyped,
+    ListAppsItemCapabilitiesToJSON,
+} from '../app/ListAppsItemCapabilities';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface GetPatScopeResponse {
     /**
      * 
-     * @type {Array<GetPatScopeResponseScopes>}
+     * @type {Array<ListAppsItemCapabilities>}
      * @memberof GetPatScopeResponse
      */
-    scopes: Array<GetPatScopeResponseScopes>;
+    scopes: Array<ListAppsItemCapabilities>;
 }
 
 export function GetPatScopeResponseFromJSON(json: any): GetPatScopeResponse {
@@ -44,7 +44,7 @@ export function GetPatScopeResponseFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'scopes': ((json['scopes'] as Array<any>).map(GetPatScopeResponseScopesFromJSON)),
+        'scopes': ((json['scopes'] as Array<any>).map(ListAppsItemCapabilitiesFromJSON)),
     };
 }
 
@@ -57,7 +57,7 @@ export function GetPatScopeResponseToJSON(value?: GetPatScopeResponse | null): a
     }
     return {
         
-        'scopes': ((value.scopes as Array<any>).map(GetPatScopeResponseScopesToJSON)),
+        'scopes': ((value.scopes as Array<any>).map(ListAppsItemCapabilitiesToJSON)),
     };
 }
 

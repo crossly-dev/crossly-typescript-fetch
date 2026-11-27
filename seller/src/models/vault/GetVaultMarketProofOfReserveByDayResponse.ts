@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetVaultMarketProofOfReserveByDayResponseAnchor,
+    GetVaultMarketProofOfReserveByDayResponseAnchorFromJSON,
+    GetVaultMarketProofOfReserveByDayResponseAnchorFromJSONTyped,
+    GetVaultMarketProofOfReserveByDayResponseAnchorToJSON,
+} from './GetVaultMarketProofOfReserveByDayResponseAnchor';
+import {
     GetVaultMarketProofOfReserveByDayResponseUnits,
     GetVaultMarketProofOfReserveByDayResponseUnitsFromJSON,
     GetVaultMarketProofOfReserveByDayResponseUnitsFromJSONTyped,
@@ -80,6 +86,12 @@ export interface GetVaultMarketProofOfReserveByDayResponse {
      * @memberof GetVaultMarketProofOfReserveByDayResponse
      */
     memo: string;
+    /**
+     * 
+     * @type {GetVaultMarketProofOfReserveByDayResponseAnchor}
+     * @memberof GetVaultMarketProofOfReserveByDayResponse
+     */
+    anchor: GetVaultMarketProofOfReserveByDayResponseAnchor;
 }
 
 export function GetVaultMarketProofOfReserveByDayResponseFromJSON(json: any): GetVaultMarketProofOfReserveByDayResponse {
@@ -101,6 +113,7 @@ export function GetVaultMarketProofOfReserveByDayResponseFromJSONTyped(json: any
         'loansOpen': json['loansOpen'],
         'totalInsuredCents': json['totalInsuredCents'],
         'memo': json['memo'],
+        'anchor': GetVaultMarketProofOfReserveByDayResponseAnchorFromJSON(json['anchor']),
     };
 }
 
@@ -122,6 +135,7 @@ export function GetVaultMarketProofOfReserveByDayResponseToJSON(value?: GetVault
         'loansOpen': value.loansOpen,
         'totalInsuredCents': value.totalInsuredCents,
         'memo': value.memo,
+        'anchor': GetVaultMarketProofOfReserveByDayResponseAnchorToJSON(value.anchor),
     };
 }
 

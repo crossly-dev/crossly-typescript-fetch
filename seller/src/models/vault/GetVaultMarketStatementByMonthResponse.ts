@@ -148,6 +148,12 @@ export interface GetVaultMarketStatementByMonthResponse {
     fees?: GetVaultMarketStatementByMonthResponseOneOf1Fees;
     /**
      * 
+     * @type {any}
+     * @memberof GetVaultMarketStatementByMonthResponse
+     */
+    cash?: any | null;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof GetVaultMarketStatementByMonthResponse
      */
@@ -180,6 +186,7 @@ export function GetVaultMarketStatementByMonthResponseFromJSONTyped(json: any, i
         'pledges': !exists(json, 'pledges') ? undefined : json['pledges'],
         'activity': !exists(json, 'activity') ? undefined : ((json['activity'] as Array<any>).map(ListVaultMarketConfirmationsItemFromJSON)),
         'fees': !exists(json, 'fees') ? undefined : GetVaultMarketStatementByMonthResponseOneOf1FeesFromJSON(json['fees']),
+        'cash': !exists(json, 'cash') ? undefined : json['cash'],
         'notes': !exists(json, 'notes') ? undefined : json['notes'],
     };
 }
@@ -209,6 +216,7 @@ export function GetVaultMarketStatementByMonthResponseToJSON(value?: GetVaultMar
         'pledges': value.pledges,
         'activity': value.activity === undefined ? undefined : ((value.activity as Array<any>).map(ListVaultMarketConfirmationsItemToJSON)),
         'fees': GetVaultMarketStatementByMonthResponseOneOf1FeesToJSON(value.fees),
+        'cash': value.cash,
         'notes': value.notes,
     };
 }

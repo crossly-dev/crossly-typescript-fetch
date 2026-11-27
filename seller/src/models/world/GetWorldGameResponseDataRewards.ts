@@ -57,9 +57,9 @@ export interface GetWorldGameResponseDataRewards {
 */
 export enum GetWorldGameResponseDataRewardsGrantEnum {
     Item = 'item',
+    Cosm = 'cosm',
     Decor = 'decor',
     Cbx = 'cbx',
-    Cosm = 'cosm',
     Pin = 'pin',
     Emote = 'emote'
 }/**

@@ -48,18 +48,6 @@ export interface ListPolicyReturnsItem {
      * @type {string}
      * @memberof ListPolicyReturnsItem
      */
-    reason: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ListPolicyReturnsItem
-     */
-    receivedAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListPolicyReturnsItem
-     */
     carrier?: string | null;
     /**
      * 
@@ -78,25 +66,19 @@ export interface ListPolicyReturnsItem {
      * @type {string}
      * @memberof ListPolicyReturnsItem
      */
-    fit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListPolicyReturnsItem
-     */
-    sellerUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListPolicyReturnsItem
-     */
     buyerUserId: string;
     /**
      * 
      * @type {string}
      * @memberof ListPolicyReturnsItem
      */
-    purchaseId: string;
+    reason: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListPolicyReturnsItem
+     */
+    receivedAt?: Date | null;
     /**
      * 
      * @type {string}
@@ -108,7 +90,19 @@ export interface ListPolicyReturnsItem {
      * @type {string}
      * @memberof ListPolicyReturnsItem
      */
+    sellerUserId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListPolicyReturnsItem
+     */
     refundStripeId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListPolicyReturnsItem
+     */
+    purchaseId: string;
     /**
      * 
      * @type {string}
@@ -127,6 +121,12 @@ export interface ListPolicyReturnsItem {
      * @memberof ListPolicyReturnsItem
      */
     trackingCode?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListPolicyReturnsItem
+     */
+    fit?: string | null;
     /**
      * 
      * @type {number}
@@ -155,20 +155,20 @@ export function ListPolicyReturnsItemFromJSONTyped(json: any, ignoreDiscriminato
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
-        'reason': json['reason'],
-        'receivedAt': !exists(json, 'receivedAt') ? undefined : (json['receivedAt'] === null ? null : new Date(json['receivedAt'])),
         'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
         'shippedAt': !exists(json, 'shippedAt') ? undefined : (json['shippedAt'] === null ? null : new Date(json['shippedAt'])),
         'refundedAt': !exists(json, 'refundedAt') ? undefined : (json['refundedAt'] === null ? null : new Date(json['refundedAt'])),
-        'fit': !exists(json, 'fit') ? undefined : json['fit'],
-        'sellerUserId': json['sellerUserId'],
         'buyerUserId': json['buyerUserId'],
-        'purchaseId': json['purchaseId'],
+        'reason': json['reason'],
+        'receivedAt': !exists(json, 'receivedAt') ? undefined : (json['receivedAt'] === null ? null : new Date(json['receivedAt'])),
         'labelUrl': !exists(json, 'labelUrl') ? undefined : json['labelUrl'],
+        'sellerUserId': json['sellerUserId'],
         'refundStripeId': !exists(json, 'refundStripeId') ? undefined : json['refundStripeId'],
+        'purchaseId': json['purchaseId'],
         'note': !exists(json, 'note') ? undefined : json['note'],
         'feeCents': json['feeCents'],
         'trackingCode': !exists(json, 'trackingCode') ? undefined : json['trackingCode'],
+        'fit': !exists(json, 'fit') ? undefined : json['fit'],
         'refundCents': json['refundCents'],
         'prepaidLabel': json['prepaidLabel'],
     };
@@ -187,20 +187,20 @@ export function ListPolicyReturnsItemToJSON(value?: ListPolicyReturnsItem | null
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
-        'reason': value.reason,
-        'receivedAt': value.receivedAt === undefined ? undefined : (value.receivedAt === null ? null : value.receivedAt.toISOString()),
         'carrier': value.carrier,
         'shippedAt': value.shippedAt === undefined ? undefined : (value.shippedAt === null ? null : value.shippedAt.toISOString()),
         'refundedAt': value.refundedAt === undefined ? undefined : (value.refundedAt === null ? null : value.refundedAt.toISOString()),
-        'fit': value.fit,
-        'sellerUserId': value.sellerUserId,
         'buyerUserId': value.buyerUserId,
-        'purchaseId': value.purchaseId,
+        'reason': value.reason,
+        'receivedAt': value.receivedAt === undefined ? undefined : (value.receivedAt === null ? null : value.receivedAt.toISOString()),
         'labelUrl': value.labelUrl,
+        'sellerUserId': value.sellerUserId,
         'refundStripeId': value.refundStripeId,
+        'purchaseId': value.purchaseId,
         'note': value.note,
         'feeCents': value.feeCents,
         'trackingCode': value.trackingCode,
+        'fit': value.fit,
         'refundCents': value.refundCents,
         'prepaidLabel': value.prepaidLabel,
     };

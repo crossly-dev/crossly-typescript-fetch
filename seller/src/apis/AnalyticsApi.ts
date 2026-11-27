@@ -15,18 +15,60 @@
 
 import * as runtime from '../runtime';
 import {
+    AnalyticExperimentResponse,
+    AnalyticExperimentResponseFromJSON,
+    AnalyticExperimentResponseToJSON,
+    DeleteStoryResponse,
+    DeleteStoryResponseFromJSON,
+    DeleteStoryResponseToJSON,
     GetAnalyticBookkeepingResponse,
     GetAnalyticBookkeepingResponseFromJSON,
     GetAnalyticBookkeepingResponseToJSON,
     GetAnalyticByPlatformResponse,
     GetAnalyticByPlatformResponseFromJSON,
     GetAnalyticByPlatformResponseToJSON,
+    GetAnalyticCompareResponse,
+    GetAnalyticCompareResponseFromJSON,
+    GetAnalyticCompareResponseToJSON,
     GetAnalyticDashboardResponse,
     GetAnalyticDashboardResponseFromJSON,
     GetAnalyticDashboardResponseToJSON,
+    GetAnalyticExperimentByIdResponse,
+    GetAnalyticExperimentByIdResponseFromJSON,
+    GetAnalyticExperimentByIdResponseToJSON,
+    GetAnalyticExperimentResponse,
+    GetAnalyticExperimentResponseFromJSON,
+    GetAnalyticExperimentResponseToJSON,
+    GetAnalyticInventoryResponse,
+    GetAnalyticInventoryResponseFromJSON,
+    GetAnalyticInventoryResponseToJSON,
+    GetAnalyticItemByListingIdResponse,
+    GetAnalyticItemByListingIdResponseFromJSON,
+    GetAnalyticItemByListingIdResponseToJSON,
     GetAnalyticItemResponse,
     GetAnalyticItemResponseFromJSON,
     GetAnalyticItemResponseToJSON,
+    GetAnalyticMarketplaceByPlatformResponse,
+    GetAnalyticMarketplaceByPlatformResponseFromJSON,
+    GetAnalyticMarketplaceByPlatformResponseToJSON,
+    GetAnalyticMarketplaceResponse,
+    GetAnalyticMarketplaceResponseFromJSON,
+    GetAnalyticMarketplaceResponseToJSON,
+    GetAnalyticOverviewResponse,
+    GetAnalyticOverviewResponseFromJSON,
+    GetAnalyticOverviewResponseToJSON,
+    GetAnalyticPerformanceResponse,
+    GetAnalyticPerformanceResponseFromJSON,
+    GetAnalyticPerformanceResponseToJSON,
+    GetAnalyticProgramResponse,
+    GetAnalyticProgramResponseFromJSON,
+    GetAnalyticProgramResponseToJSON,
+    GetAnalyticSegmentByKeyResponse,
+    GetAnalyticSegmentByKeyResponseFromJSON,
+    GetAnalyticSegmentByKeyResponseToJSON,
+    GetAnalyticSegmentResponse,
+    GetAnalyticSegmentResponseFromJSON,
+    GetAnalyticSegmentResponseToJSON,
     GetAnalyticSummaryResponse,
     GetAnalyticSummaryResponseFromJSON,
     GetAnalyticSummaryResponseToJSON,
@@ -41,14 +83,341 @@ import {
     ListInsightByPlatformResponseToJSON,
 } from '../models';
 
+export interface CreateAnalyticExperimentDeclareRequest {
+    id: string;
+}
+
+export interface CreateAnalyticExperimentStopRequest {
+    id: string;
+}
+
+export interface DeleteAnalyticExperimentRequest {
+    id: string;
+}
+
+export interface GetAnalyticByPlatformRequest {
+    days?: number;
+    tz?: string;
+}
+
+export interface GetAnalyticCompareRequest {
+    ids: string;
+    align?: GetAnalyticCompareAlignEnum;
+    platform?: string;
+    tz?: string;
+}
+
+export interface GetAnalyticExperimentRequest {
+    status?: GetAnalyticExperimentStatusEnum;
+    page?: number;
+    size?: number;
+}
+
+export interface GetAnalyticExperimentByIdRequest {
+    id: string;
+}
+
+export interface GetAnalyticInventoryRequest {
+    range?: GetAnalyticInventoryRangeEnum;
+    from?: string;
+    to?: string;
+    compare?: GetAnalyticInventoryCompareEnum;
+    cmpFrom?: string;
+    cmpTo?: string;
+    labels?: string;
+    platforms?: string;
+    category?: string;
+    brand?: string;
+    tz?: string;
+    maturity?: GetAnalyticInventoryMaturityEnum;
+}
+
+export interface GetAnalyticItemByListingIdRequest {
+    listingId: string;
+    by?: GetAnalyticItemByListingIdByEnum;
+    tz?: string;
+}
+
+export interface GetAnalyticMarketplaceRequest {
+    range?: GetAnalyticMarketplaceRangeEnum;
+    from?: string;
+    to?: string;
+    compare?: GetAnalyticMarketplaceCompareEnum;
+    cmpFrom?: string;
+    cmpTo?: string;
+    labels?: string;
+    platforms?: string;
+    category?: string;
+    brand?: string;
+    tz?: string;
+    vs?: string;
+    sort?: GetAnalyticMarketplaceSortEnum;
+    dir?: GetAnalyticMarketplaceDirEnum;
+}
+
+export interface GetAnalyticMarketplaceByPlatformRequest {
+    platform: string;
+    range?: GetAnalyticMarketplaceByPlatformRangeEnum;
+    from?: string;
+    to?: string;
+    compare?: GetAnalyticMarketplaceByPlatformCompareEnum;
+    cmpFrom?: string;
+    cmpTo?: string;
+    labels?: string;
+    platforms?: string;
+    category?: string;
+    brand?: string;
+    tz?: string;
+}
+
+export interface GetAnalyticOverviewRequest {
+    range?: GetAnalyticOverviewRangeEnum;
+    from?: string;
+    to?: string;
+    compare?: GetAnalyticOverviewCompareEnum;
+    cmpFrom?: string;
+    cmpTo?: string;
+    labels?: string;
+    platforms?: string;
+    category?: string;
+    brand?: string;
+    tz?: string;
+    stores?: string;
+}
+
+export interface GetAnalyticPerformanceRequest {
+    range?: GetAnalyticPerformanceRangeEnum;
+    from?: string;
+    to?: string;
+    compare?: GetAnalyticPerformanceCompareEnum;
+    cmpFrom?: string;
+    cmpTo?: string;
+    labels?: string;
+    platforms?: string;
+    category?: string;
+    brand?: string;
+    tz?: string;
+    status?: GetAnalyticPerformanceStatusEnum;
+    q?: string;
+    sort?: GetAnalyticPerformanceSortEnum;
+    dir?: GetAnalyticPerformanceDirEnum;
+    page?: number;
+    size?: GetAnalyticPerformanceSizeEnum;
+    minDays?: number;
+}
+
+export interface GetAnalyticProgramRequest {
+    program: GetAnalyticProgramProgramEnum;
+    from?: Date;
+    to?: Date;
+    by?: string;
+}
+
+export interface GetAnalyticSegmentRequest {
+    range?: GetAnalyticSegmentRangeEnum;
+    from?: string;
+    to?: string;
+    compare?: GetAnalyticSegmentCompareEnum;
+    cmpFrom?: string;
+    cmpTo?: string;
+    labels?: string;
+    platforms?: string;
+    category?: string;
+    brand?: string;
+    tz?: string;
+    dim?: GetAnalyticSegmentDimEnum;
+    sort?: GetAnalyticSegmentSortEnum;
+    dir?: GetAnalyticSegmentDirEnum;
+    minN?: number;
+    q?: string;
+}
+
+export interface GetAnalyticSegmentByKeyRequest {
+    dim: string;
+    key: string;
+    range?: GetAnalyticSegmentByKeyRangeEnum;
+    from?: string;
+    to?: string;
+    compare?: GetAnalyticSegmentByKeyCompareEnum;
+    cmpFrom?: string;
+    cmpTo?: string;
+    labels?: string;
+    platforms?: string;
+    category?: string;
+    brand?: string;
+    tz?: string;
+}
+
 export interface GetAnalyticSummaryRequest {
     days?: number;
+    tz?: string;
+}
+
+export interface GetAnalyticTimeseryRequest {
+    days?: number;
+    tz?: string;
+}
+
+export interface ListInsightByPlatformRequest {
+    tz?: string;
+}
+
+export interface UpdateAnalyticExperimentRequest {
+    id: string;
 }
 
 /**
  * 
  */
 export class AnalyticsApi extends runtime.BaseAPI {
+
+    /**
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+     */
+    async createAnalyticExperimentRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<AnalyticExperimentResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/experiments`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticExperimentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+     */
+    async createAnalyticExperiment(initOverrides?: RequestInit): Promise<AnalyticExperimentResponse> {
+        const response = await this.createAnalyticExperimentRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+     */
+    async createAnalyticExperimentDeclareRaw(requestParameters: CreateAnalyticExperimentDeclareRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AnalyticExperimentResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createAnalyticExperimentDeclare.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/experiments/{id}/declare`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticExperimentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+     */
+    async createAnalyticExperimentDeclare(requestParameters: CreateAnalyticExperimentDeclareRequest, initOverrides?: RequestInit): Promise<AnalyticExperimentResponse> {
+        const response = await this.createAnalyticExperimentDeclareRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Stop an experiment: no more data is counted after now.
+     */
+    async createAnalyticExperimentStopRaw(requestParameters: CreateAnalyticExperimentStopRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AnalyticExperimentResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createAnalyticExperimentStop.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/experiments/{id}/stop`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticExperimentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Stop an experiment: no more data is counted after now.
+     */
+    async createAnalyticExperimentStop(requestParameters: CreateAnalyticExperimentStopRequest, initOverrides?: RequestInit): Promise<AnalyticExperimentResponse> {
+        const response = await this.createAnalyticExperimentStopRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete an experiment. The listings are untouched.
+     */
+    async deleteAnalyticExperimentRaw(requestParameters: DeleteAnalyticExperimentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteStoryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteAnalyticExperiment.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/experiments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteStoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete an experiment. The listings are untouched.
+     */
+    async deleteAnalyticExperiment(requestParameters: DeleteAnalyticExperimentRequest, initOverrides?: RequestInit): Promise<DeleteStoryResponse> {
+        const response = await this.deleteAnalyticExperimentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Monthly P&L + per-platform breakdown for a calendar year.
@@ -85,10 +454,18 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Sales + revenue grouped by platform for the last N days.
+     * Sales, net sales, fees and net profit by platform for the last N days.
      */
-    async getAnalyticByPlatformRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticByPlatformResponse>> {
+    async getAnalyticByPlatformRaw(requestParameters: GetAnalyticByPlatformRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticByPlatformResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -111,10 +488,64 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Sales + revenue grouped by platform for the last N days.
+     * Sales, net sales, fees and net profit by platform for the last N days.
      */
-    async getAnalyticByPlatform(initOverrides?: RequestInit): Promise<GetAnalyticByPlatformResponse> {
-        const response = await this.getAnalyticByPlatformRaw(initOverrides);
+    async getAnalyticByPlatform(requestParameters: GetAnalyticByPlatformRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticByPlatformResponse> {
+        const response = await this.getAnalyticByPlatformRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+     */
+    async getAnalyticCompareRaw(requestParameters: GetAnalyticCompareRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticCompareResponse>> {
+        if (requestParameters.ids === null || requestParameters.ids === undefined) {
+            throw new runtime.RequiredError('ids','Required parameter requestParameters.ids was null or undefined when calling getAnalyticCompare.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.ids !== undefined) {
+            queryParameters['ids'] = requestParameters.ids;
+        }
+
+        if (requestParameters.align !== undefined) {
+            queryParameters['align'] = requestParameters.align;
+        }
+
+        if (requestParameters.platform !== undefined) {
+            queryParameters['platform'] = requestParameters.platform;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/compare`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticCompareResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+     */
+    async getAnalyticCompare(requestParameters: GetAnalyticCompareRequest, initOverrides?: RequestInit): Promise<GetAnalyticCompareResponse> {
+        const response = await this.getAnalyticCompareRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -153,6 +584,172 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict.
+     */
+    async getAnalyticExperimentRaw(requestParameters: GetAnalyticExperimentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticExperimentResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.size !== undefined) {
+            queryParameters['size'] = requestParameters.size;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/experiments`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticExperimentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict.
+     */
+    async getAnalyticExperiment(requestParameters: GetAnalyticExperimentRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticExperimentResponse> {
+        const response = await this.getAnalyticExperimentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+     */
+    async getAnalyticExperimentByIdRaw(requestParameters: GetAnalyticExperimentByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticExperimentByIdResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getAnalyticExperimentById.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/experiments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticExperimentByIdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+     */
+    async getAnalyticExperimentById(requestParameters: GetAnalyticExperimentByIdRequest, initOverrides?: RequestInit): Promise<GetAnalyticExperimentByIdResponse> {
+        const response = await this.getAnalyticExperimentByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     */
+    async getAnalyticInventoryRaw(requestParameters: GetAnalyticInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticInventoryResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.compare !== undefined) {
+            queryParameters['compare'] = requestParameters.compare;
+        }
+
+        if (requestParameters.cmpFrom !== undefined) {
+            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
+        }
+
+        if (requestParameters.cmpTo !== undefined) {
+            queryParameters['cmpTo'] = requestParameters.cmpTo;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.platforms !== undefined) {
+            queryParameters['platforms'] = requestParameters.platforms;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        if (requestParameters.maturity !== undefined) {
+            queryParameters['maturity'] = requestParameters.maturity;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/inventory`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticInventoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     */
+    async getAnalyticInventory(requestParameters: GetAnalyticInventoryRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticInventoryResponse> {
+        const response = await this.getAnalyticInventoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Per-item P&L for sold inventory.
      */
     async getAnalyticItemRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticItemResponse>> {
@@ -187,13 +784,657 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Headline KPIs for the last N days.
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+     */
+    async getAnalyticItemByListingIdRaw(requestParameters: GetAnalyticItemByListingIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticItemByListingIdResponse>> {
+        if (requestParameters.listingId === null || requestParameters.listingId === undefined) {
+            throw new runtime.RequiredError('listingId','Required parameter requestParameters.listingId was null or undefined when calling getAnalyticItemByListingId.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.by !== undefined) {
+            queryParameters['by'] = requestParameters.by;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/items/{listingId}`.replace(`{${"listingId"}}`, encodeURIComponent(String(requestParameters.listingId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticItemByListingIdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+     */
+    async getAnalyticItemByListingId(requestParameters: GetAnalyticItemByListingIdRequest, initOverrides?: RequestInit): Promise<GetAnalyticItemByListingIdResponse> {
+        const response = await this.getAnalyticItemByListingIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs=2-3 platforms, a head-to-head over listings live on all of them.
+     */
+    async getAnalyticMarketplaceRaw(requestParameters: GetAnalyticMarketplaceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticMarketplaceResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.compare !== undefined) {
+            queryParameters['compare'] = requestParameters.compare;
+        }
+
+        if (requestParameters.cmpFrom !== undefined) {
+            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
+        }
+
+        if (requestParameters.cmpTo !== undefined) {
+            queryParameters['cmpTo'] = requestParameters.cmpTo;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.platforms !== undefined) {
+            queryParameters['platforms'] = requestParameters.platforms;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        if (requestParameters.vs !== undefined) {
+            queryParameters['vs'] = requestParameters.vs;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.dir !== undefined) {
+            queryParameters['dir'] = requestParameters.dir;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/marketplaces`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticMarketplaceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs=2-3 platforms, a head-to-head over listings live on all of them.
+     */
+    async getAnalyticMarketplace(requestParameters: GetAnalyticMarketplaceRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticMarketplaceResponse> {
+        const response = await this.getAnalyticMarketplaceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+     */
+    async getAnalyticMarketplaceByPlatformRaw(requestParameters: GetAnalyticMarketplaceByPlatformRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticMarketplaceByPlatformResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling getAnalyticMarketplaceByPlatform.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.compare !== undefined) {
+            queryParameters['compare'] = requestParameters.compare;
+        }
+
+        if (requestParameters.cmpFrom !== undefined) {
+            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
+        }
+
+        if (requestParameters.cmpTo !== undefined) {
+            queryParameters['cmpTo'] = requestParameters.cmpTo;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.platforms !== undefined) {
+            queryParameters['platforms'] = requestParameters.platforms;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/marketplaces/{platform}`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticMarketplaceByPlatformResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+     */
+    async getAnalyticMarketplaceByPlatform(requestParameters: GetAnalyticMarketplaceByPlatformRequest, initOverrides?: RequestInit): Promise<GetAnalyticMarketplaceByPlatformResponse> {
+        const response = await this.getAnalyticMarketplaceByPlatformRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+     */
+    async getAnalyticOverviewRaw(requestParameters: GetAnalyticOverviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticOverviewResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.compare !== undefined) {
+            queryParameters['compare'] = requestParameters.compare;
+        }
+
+        if (requestParameters.cmpFrom !== undefined) {
+            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
+        }
+
+        if (requestParameters.cmpTo !== undefined) {
+            queryParameters['cmpTo'] = requestParameters.cmpTo;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.platforms !== undefined) {
+            queryParameters['platforms'] = requestParameters.platforms;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        if (requestParameters.stores !== undefined) {
+            queryParameters['stores'] = requestParameters.stores;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/overview`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticOverviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+     */
+    async getAnalyticOverview(requestParameters: GetAnalyticOverviewRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticOverviewResponse> {
+        const response = await this.getAnalyticOverviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+     */
+    async getAnalyticPerformanceRaw(requestParameters: GetAnalyticPerformanceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticPerformanceResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.compare !== undefined) {
+            queryParameters['compare'] = requestParameters.compare;
+        }
+
+        if (requestParameters.cmpFrom !== undefined) {
+            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
+        }
+
+        if (requestParameters.cmpTo !== undefined) {
+            queryParameters['cmpTo'] = requestParameters.cmpTo;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.platforms !== undefined) {
+            queryParameters['platforms'] = requestParameters.platforms;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.dir !== undefined) {
+            queryParameters['dir'] = requestParameters.dir;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.size !== undefined) {
+            queryParameters['size'] = requestParameters.size;
+        }
+
+        if (requestParameters.minDays !== undefined) {
+            queryParameters['minDays'] = requestParameters.minDays;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/performance`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticPerformanceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+     */
+    async getAnalyticPerformance(requestParameters: GetAnalyticPerformanceRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticPerformanceResponse> {
+        const response = await this.getAnalyticPerformanceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One program\'s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+     */
+    async getAnalyticProgramRaw(requestParameters: GetAnalyticProgramRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticProgramResponse>> {
+        if (requestParameters.program === null || requestParameters.program === undefined) {
+            throw new runtime.RequiredError('program','Required parameter requestParameters.program was null or undefined when calling getAnalyticProgram.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = (requestParameters.from as any).toISOString().substr(0,10);
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = (requestParameters.to as any).toISOString().substr(0,10);
+        }
+
+        if (requestParameters.by !== undefined) {
+            queryParameters['by'] = requestParameters.by;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/programs/{program}`.replace(`{${"program"}}`, encodeURIComponent(String(requestParameters.program))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticProgramResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One program\'s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+     */
+    async getAnalyticProgram(requestParameters: GetAnalyticProgramRequest, initOverrides?: RequestInit): Promise<GetAnalyticProgramResponse> {
+        const response = await this.getAnalyticProgramRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+     */
+    async getAnalyticSegmentRaw(requestParameters: GetAnalyticSegmentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticSegmentResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.compare !== undefined) {
+            queryParameters['compare'] = requestParameters.compare;
+        }
+
+        if (requestParameters.cmpFrom !== undefined) {
+            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
+        }
+
+        if (requestParameters.cmpTo !== undefined) {
+            queryParameters['cmpTo'] = requestParameters.cmpTo;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.platforms !== undefined) {
+            queryParameters['platforms'] = requestParameters.platforms;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        if (requestParameters.dim !== undefined) {
+            queryParameters['dim'] = requestParameters.dim;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.dir !== undefined) {
+            queryParameters['dir'] = requestParameters.dir;
+        }
+
+        if (requestParameters.minN !== undefined) {
+            queryParameters['minN'] = requestParameters.minN;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/segments`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticSegmentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+     */
+    async getAnalyticSegment(requestParameters: GetAnalyticSegmentRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticSegmentResponse> {
+        const response = await this.getAnalyticSegmentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+     */
+    async getAnalyticSegmentByKeyRaw(requestParameters: GetAnalyticSegmentByKeyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticSegmentByKeyResponse>> {
+        if (requestParameters.dim === null || requestParameters.dim === undefined) {
+            throw new runtime.RequiredError('dim','Required parameter requestParameters.dim was null or undefined when calling getAnalyticSegmentByKey.');
+        }
+
+        if (requestParameters.key === null || requestParameters.key === undefined) {
+            throw new runtime.RequiredError('key','Required parameter requestParameters.key was null or undefined when calling getAnalyticSegmentByKey.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.compare !== undefined) {
+            queryParameters['compare'] = requestParameters.compare;
+        }
+
+        if (requestParameters.cmpFrom !== undefined) {
+            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
+        }
+
+        if (requestParameters.cmpTo !== undefined) {
+            queryParameters['cmpTo'] = requestParameters.cmpTo;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.platforms !== undefined) {
+            queryParameters['platforms'] = requestParameters.platforms;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/segments/{dim}/{key}`.replace(`{${"dim"}}`, encodeURIComponent(String(requestParameters.dim))).replace(`{${"key"}}`, encodeURIComponent(String(requestParameters.key))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticSegmentByKeyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+     */
+    async getAnalyticSegmentByKey(requestParameters: GetAnalyticSegmentByKeyRequest, initOverrides?: RequestInit): Promise<GetAnalyticSegmentByKeyResponse> {
+        const response = await this.getAnalyticSegmentByKeyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Headline KPIs for the last N days (the same numbers as the analytics overview).
      */
     async getAnalyticSummaryRaw(requestParameters: GetAnalyticSummaryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticSummaryResponse>> {
         const queryParameters: any = {};
 
         if (requestParameters.days !== undefined) {
             queryParameters['days'] = requestParameters.days;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -217,7 +1458,7 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Headline KPIs for the last N days.
+     * Headline KPIs for the last N days (the same numbers as the analytics overview).
      */
     async getAnalyticSummary(requestParameters: GetAnalyticSummaryRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticSummaryResponse> {
         const response = await this.getAnalyticSummaryRaw(requestParameters, initOverrides);
@@ -225,10 +1466,18 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Daily sales + revenue series for the last N days.
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day.
      */
-    async getAnalyticTimeseryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticTimeseryResponse>> {
+    async getAnalyticTimeseryRaw(requestParameters: GetAnalyticTimeseryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticTimeseryResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -251,10 +1500,10 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Daily sales + revenue series for the last N days.
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day.
      */
-    async getAnalyticTimesery(initOverrides?: RequestInit): Promise<GetAnalyticTimeseryResponse> {
-        const response = await this.getAnalyticTimeseryRaw(initOverrides);
+    async getAnalyticTimesery(requestParameters: GetAnalyticTimeseryRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticTimeseryResponse> {
+        const response = await this.getAnalyticTimeseryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -293,10 +1542,14 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Platform velocity + margin insight (90-day window).
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
      */
-    async listInsightByPlatformRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListInsightByPlatformResponse>> {
+    async listInsightByPlatformRaw(requestParameters: ListInsightByPlatformRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListInsightByPlatformResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -319,11 +1572,387 @@ export class AnalyticsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Platform velocity + margin insight (90-day window).
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
      */
-    async listInsightByPlatform(initOverrides?: RequestInit): Promise<ListInsightByPlatformResponse> {
-        const response = await this.listInsightByPlatformRaw(initOverrides);
+    async listInsightByPlatform(requestParameters: ListInsightByPlatformRequest = {}, initOverrides?: RequestInit): Promise<ListInsightByPlatformResponse> {
+        const response = await this.listInsightByPlatformRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+    /**
+     * Rename an experiment or change its hypothesis, notes or planned end.
+     */
+    async updateAnalyticExperimentRaw(requestParameters: UpdateAnalyticExperimentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AnalyticExperimentResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateAnalyticExperiment.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/analytics/experiments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AnalyticExperimentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Rename an experiment or change its hypothesis, notes or planned end.
+     */
+    async updateAnalyticExperiment(requestParameters: UpdateAnalyticExperimentRequest, initOverrides?: RequestInit): Promise<AnalyticExperimentResponse> {
+        const response = await this.updateAnalyticExperimentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticCompareAlignEnum {
+    Age = 'age',
+    Calendar = 'calendar'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticExperimentStatusEnum {
+    All = 'all',
+    Running = 'running',
+    Concluded = 'concluded',
+    Draft = 'draft'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticInventoryRangeEnum {
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y',
+    Ytd = 'ytd',
+    All = 'all',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticInventoryCompareEnum {
+    Prev = 'prev',
+    Yoy = 'yoy',
+    None = 'none',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticInventoryMaturityEnum {
+    NUMBER_30 = 30,
+    NUMBER_60 = 60,
+    NUMBER_90 = 90
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticItemByListingIdByEnum {
+    Listing = 'listing',
+    Inventory = 'inventory'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticMarketplaceRangeEnum {
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y',
+    Ytd = 'ytd',
+    All = 'all',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticMarketplaceCompareEnum {
+    Prev = 'prev',
+    Yoy = 'yoy',
+    None = 'none',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticMarketplaceSortEnum {
+    NetSales = 'netSales',
+    NetProfit = 'netProfit',
+    UnitsSold = 'unitsSold',
+    Asp = 'asp',
+    TakeRate = 'takeRate',
+    MarginRate = 'marginRate',
+    ShippingSubsidy = 'shippingSubsidy',
+    MedianDaysToSell = 'medianDaysToSell',
+    SellThroughRate = 'sellThroughRate',
+    CancelRate = 'cancelRate',
+    ReturnRate = 'returnRate',
+    OfferAcceptRate = 'offerAcceptRate',
+    AvgOfferPctOfAsk = 'avgOfferPctOfAsk',
+    ViewsPerListingDay = 'viewsPerListingDay',
+    FavoriteRate = 'favoriteRate',
+    Platform = 'platform',
+    ActiveListings = 'activeListings',
+    StaleListings = 'staleListings'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticMarketplaceDirEnum {
+    Asc = 'asc',
+    Desc = 'desc'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticMarketplaceByPlatformRangeEnum {
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y',
+    Ytd = 'ytd',
+    All = 'all',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticMarketplaceByPlatformCompareEnum {
+    Prev = 'prev',
+    Yoy = 'yoy',
+    None = 'none',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticOverviewRangeEnum {
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y',
+    Ytd = 'ytd',
+    All = 'all',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticOverviewCompareEnum {
+    Prev = 'prev',
+    Yoy = 'yoy',
+    None = 'none',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticPerformanceRangeEnum {
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y',
+    Ytd = 'ytd',
+    All = 'all',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticPerformanceCompareEnum {
+    Prev = 'prev',
+    Yoy = 'yoy',
+    None = 'none',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticPerformanceStatusEnum {
+    All = 'all',
+    Active = 'active',
+    Sold = 'sold',
+    Unsold = 'unsold',
+    Ended = 'ended'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticPerformanceSortEnum {
+    LastActivity = 'lastActivity',
+    Title = 'title',
+    Price = 'price',
+    DaysListed = 'daysListed',
+    Views = 'views',
+    Favorites = 'favorites',
+    Offers = 'offers',
+    UnitsSold = 'unitsSold',
+    NetSales = 'netSales',
+    NetProfit = 'netProfit',
+    Margin = 'margin',
+    DaysToSell = 'daysToSell',
+    Health = 'health'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticPerformanceDirEnum {
+    Asc = 'asc',
+    Desc = 'desc'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticPerformanceSizeEnum {
+    NUMBER_25 = 25,
+    NUMBER_50 = 50,
+    NUMBER_100 = 100
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticProgramProgramEnum {
+    Wholesale = 'wholesale',
+    Ads = 'ads',
+    Rentals = 'rentals',
+    Branding = 'branding',
+    Events = 'events',
+    Drops = 'drops',
+    Discounts = 'discounts',
+    Market = 'market',
+    Worlds = 'worlds',
+    Funding = 'funding',
+    Vault = 'vault',
+    Team = 'team',
+    Referrals = 'referrals',
+    DeveloperApps = 'developer-apps'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticSegmentRangeEnum {
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y',
+    Ytd = 'ytd',
+    All = 'all',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticSegmentCompareEnum {
+    Prev = 'prev',
+    Yoy = 'yoy',
+    None = 'none',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticSegmentDimEnum {
+    Category = 'category',
+    Subcategory = 'subcategory',
+    Brand = 'brand',
+    Condition = 'condition',
+    Size = 'size',
+    Source = 'source',
+    Department = 'department',
+    PriceBand = 'priceBand',
+    AgeBand = 'ageBand'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticSegmentSortEnum {
+    Label = 'label',
+    ListedCount = 'listedCount',
+    ActiveCount = 'activeCount',
+    UnitsSold = 'unitsSold',
+    SellThrough = 'sellThrough',
+    MedianDaysToSell = 'medianDaysToSell',
+    NetSales = 'netSales',
+    NetProfit = 'netProfit',
+    MarginRate = 'marginRate',
+    Margin = 'margin',
+    Roi = 'roi',
+    Asp = 'asp',
+    Share = 'share'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticSegmentDirEnum {
+    Asc = 'asc',
+    Desc = 'desc'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticSegmentByKeyRangeEnum {
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y',
+    Ytd = 'ytd',
+    All = 'all',
+    Custom = 'custom'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticSegmentByKeyCompareEnum {
+    Prev = 'prev',
+    Yoy = 'yoy',
+    None = 'none',
+    Custom = 'custom'
 }

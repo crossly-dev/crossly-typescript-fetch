@@ -54,6 +54,12 @@ export interface ListCompWatchlistsItem {
      * @type {string}
      * @memberof ListCompWatchlistsItem
      */
+    platform?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListCompWatchlistsItem
+     */
     condition?: string | null;
     /**
      * 
@@ -61,12 +67,6 @@ export interface ListCompWatchlistsItem {
      * @memberof ListCompWatchlistsItem
      */
     categoryMain?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListCompWatchlistsItem
-     */
-    platform?: string | null;
     /**
      * 
      * @type {string}
@@ -108,9 +108,9 @@ export function ListCompWatchlistsItemFromJSONTyped(json: any, ignoreDiscriminat
         'name': json['name'],
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
+        'platform': !exists(json, 'platform') ? undefined : json['platform'],
         'condition': !exists(json, 'condition') ? undefined : json['condition'],
         'categoryMain': !exists(json, 'categoryMain') ? undefined : json['categoryMain'],
-        'platform': !exists(json, 'platform') ? undefined : json['platform'],
         'minPrice': !exists(json, 'minPrice') ? undefined : json['minPrice'],
         'maxPrice': !exists(json, 'maxPrice') ? undefined : json['maxPrice'],
         'lastMatchedAt': !exists(json, 'lastMatchedAt') ? undefined : (json['lastMatchedAt'] === null ? null : new Date(json['lastMatchedAt'])),
@@ -132,9 +132,9 @@ export function ListCompWatchlistsItemToJSON(value?: ListCompWatchlistsItem | nu
         'name': value.name,
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
+        'platform': value.platform,
         'condition': value.condition,
         'categoryMain': value.categoryMain,
-        'platform': value.platform,
         'minPrice': value.minPrice,
         'maxPrice': value.maxPrice,
         'lastMatchedAt': value.lastMatchedAt === undefined ? undefined : (value.lastMatchedAt === null ? null : value.lastMatchedAt.toISOString()),

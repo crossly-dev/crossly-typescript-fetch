@@ -54,13 +54,19 @@ export interface CreateInboxCannedResponseResponseCannedResponse {
      * @type {string}
      * @memberof CreateInboxCannedResponseResponseCannedResponse
      */
-    surface: string;
+    body: string;
     /**
      * 
      * @type {string}
      * @memberof CreateInboxCannedResponseResponseCannedResponse
      */
-    body: string;
+    surface: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateInboxCannedResponseResponseCannedResponse
+     */
+    sortOrder: number;
 }
 
 export function CreateInboxCannedResponseResponseCannedResponseFromJSON(json: any): CreateInboxCannedResponseResponseCannedResponse {
@@ -78,8 +84,9 @@ export function CreateInboxCannedResponseResponseCannedResponseFromJSONTyped(jso
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
         'title': !exists(json, 'title') ? undefined : json['title'],
-        'surface': json['surface'],
         'body': json['body'],
+        'surface': json['surface'],
+        'sortOrder': json['sortOrder'],
     };
 }
 
@@ -97,8 +104,9 @@ export function CreateInboxCannedResponseResponseCannedResponseToJSON(value?: Cr
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
         'title': value.title,
-        'surface': value.surface,
         'body': value.body,
+        'surface': value.surface,
+        'sortOrder': value.sortOrder,
     };
 }
 

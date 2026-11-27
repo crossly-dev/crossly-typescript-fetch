@@ -44,8 +44,8 @@ export interface GetWorldGameLeaderboardResponseDataScoring {
 * @enum {string}
 */
 export enum GetWorldGameLeaderboardResponseDataScoringKindEnum {
-    Wins = 'wins',
     Points = 'points',
+    Wins = 'wins',
     Time = 'time'
 }/**
 * @export

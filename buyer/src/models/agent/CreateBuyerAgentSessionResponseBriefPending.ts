@@ -62,9 +62,9 @@ export interface CreateBuyerAgentSessionResponseBriefPending {
 * @enum {string}
 */
 export enum CreateBuyerAgentSessionResponseBriefPendingKindEnum {
-    Dispute = 'dispute',
+    Return = 'return',
     Cancel = 'cancel',
-    Return = 'return'
+    Dispute = 'dispute'
 }
 
 export function CreateBuyerAgentSessionResponseBriefPendingFromJSON(json: any): CreateBuyerAgentSessionResponseBriefPending {

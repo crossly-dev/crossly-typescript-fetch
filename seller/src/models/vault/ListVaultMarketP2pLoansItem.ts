@@ -210,15 +210,15 @@ export enum ListVaultMarketP2pLoansItemRoleEnum {
 */
 export enum ListVaultMarketP2pLoansItemStatusEnum {
     Active = 'active',
-    Funding = 'funding',
     Cancelled = 'cancelled',
+    Funding = 'funding',
     Auction = 'auction',
+    Repaid = 'repaid',
+    Foreclosed = 'foreclosed',
     Repaying = 'repaying',
     Refinancing = 'refinancing',
     RefiPending = 'refi_pending',
-    Repaid = 'repaid',
-    Refinanced = 'refinanced',
-    Foreclosed = 'foreclosed'
+    Refinanced = 'refinanced'
 }
 
 export function ListVaultMarketP2pLoansItemFromJSON(json: any): ListVaultMarketP2pLoansItem {

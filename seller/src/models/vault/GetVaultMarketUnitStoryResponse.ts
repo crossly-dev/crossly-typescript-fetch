@@ -50,11 +50,11 @@ import {
     GetVaultMarketUnitStoryResponseUnitToJSON,
 } from './GetVaultMarketUnitStoryResponseUnit';
 import {
-    ListVaultMarketFeedItemMark,
-    ListVaultMarketFeedItemMarkFromJSON,
-    ListVaultMarketFeedItemMarkFromJSONTyped,
-    ListVaultMarketFeedItemMarkToJSON,
-} from './ListVaultMarketFeedItemMark';
+    ListVaultMarketOpeningItemMark,
+    ListVaultMarketOpeningItemMarkFromJSON,
+    ListVaultMarketOpeningItemMarkFromJSONTyped,
+    ListVaultMarketOpeningItemMarkToJSON,
+} from './ListVaultMarketOpeningItemMark';
 
 /**
  * 
@@ -76,10 +76,10 @@ export interface GetVaultMarketUnitStoryResponse {
     holder: GetVaultMarketUnitStoryResponseHolder;
     /**
      * 
-     * @type {ListVaultMarketFeedItemMark}
+     * @type {ListVaultMarketOpeningItemMark}
      * @memberof GetVaultMarketUnitStoryResponse
      */
-    mark: ListVaultMarketFeedItemMark;
+    mark: ListVaultMarketOpeningItemMark;
     /**
      * 'holder' sees everything about their unit; 'public' is the share page.
      * @type {string}
@@ -135,8 +135,8 @@ export interface GetVaultMarketUnitStoryResponse {
 * @enum {string}
 */
 export enum GetVaultMarketUnitStoryResponseViewerEnum {
-    Holder = 'holder',
-    Public = 'public'
+    Public = 'public',
+    Holder = 'holder'
 }
 
 export function GetVaultMarketUnitStoryResponseFromJSON(json: any): GetVaultMarketUnitStoryResponse {
@@ -151,7 +151,7 @@ export function GetVaultMarketUnitStoryResponseFromJSONTyped(json: any, ignoreDi
         
         'unit': GetVaultMarketUnitStoryResponseUnitFromJSON(json['unit']),
         'holder': GetVaultMarketUnitStoryResponseHolderFromJSON(json['holder']),
-        'mark': ListVaultMarketFeedItemMarkFromJSON(json['mark']),
+        'mark': ListVaultMarketOpeningItemMarkFromJSON(json['mark']),
         'viewer': json['viewer'],
         'shareable': json['shareable'],
         'shareUrl': json['shareUrl'],
@@ -174,7 +174,7 @@ export function GetVaultMarketUnitStoryResponseToJSON(value?: GetVaultMarketUnit
         
         'unit': GetVaultMarketUnitStoryResponseUnitToJSON(value.unit),
         'holder': GetVaultMarketUnitStoryResponseHolderToJSON(value.holder),
-        'mark': ListVaultMarketFeedItemMarkToJSON(value.mark),
+        'mark': ListVaultMarketOpeningItemMarkToJSON(value.mark),
         'viewer': value.viewer,
         'shareable': value.shareable,
         'shareUrl': value.shareUrl,

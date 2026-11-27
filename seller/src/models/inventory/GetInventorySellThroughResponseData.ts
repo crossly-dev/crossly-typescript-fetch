@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetAnalyticDashboardResponseSellThrough,
-    GetAnalyticDashboardResponseSellThroughFromJSON,
-    GetAnalyticDashboardResponseSellThroughFromJSONTyped,
-    GetAnalyticDashboardResponseSellThroughToJSON,
-} from '../analytic/GetAnalyticDashboardResponseSellThrough';
+    GetAnalyticDashboardResponseSellThroughCohort,
+    GetAnalyticDashboardResponseSellThroughCohortFromJSON,
+    GetAnalyticDashboardResponseSellThroughCohortFromJSONTyped,
+    GetAnalyticDashboardResponseSellThroughCohortToJSON,
+} from '../analytic/GetAnalyticDashboardResponseSellThroughCohort';
 import {
     GetInventorySellThroughResponseDataComparison,
     GetInventorySellThroughResponseDataComparisonFromJSON,
@@ -26,11 +26,17 @@ import {
     GetInventorySellThroughResponseDataComparisonToJSON,
 } from './GetInventorySellThroughResponseDataComparison';
 import {
-    GetInventorySellThroughResponseDataWindow,
-    GetInventorySellThroughResponseDataWindowFromJSON,
-    GetInventorySellThroughResponseDataWindowFromJSONTyped,
-    GetInventorySellThroughResponseDataWindowToJSON,
-} from './GetInventorySellThroughResponseDataWindow';
+    GetInventorySellThroughResponseDataCurrent,
+    GetInventorySellThroughResponseDataCurrentFromJSON,
+    GetInventorySellThroughResponseDataCurrentFromJSONTyped,
+    GetInventorySellThroughResponseDataCurrentToJSON,
+} from './GetInventorySellThroughResponseDataCurrent';
+import {
+    StartEnd,
+    StartEndFromJSON,
+    StartEndFromJSONTyped,
+    StartEndToJSON,
+} from '../common/StartEnd';
 
 /**
  * 
@@ -40,16 +46,16 @@ import {
 export interface GetInventorySellThroughResponseData {
     /**
      * 
-     * @type {GetAnalyticDashboardResponseSellThrough}
+     * @type {GetInventorySellThroughResponseDataCurrent}
      * @memberof GetInventorySellThroughResponseData
      */
-    current: GetAnalyticDashboardResponseSellThrough;
+    current: GetInventorySellThroughResponseDataCurrent;
     /**
      * 
-     * @type {GetAnalyticDashboardResponseSellThrough}
+     * @type {GetInventorySellThroughResponseDataCurrent}
      * @memberof GetInventorySellThroughResponseData
      */
-    previous: GetAnalyticDashboardResponseSellThrough;
+    previous: GetInventorySellThroughResponseDataCurrent;
     /**
      * 
      * @type {GetInventorySellThroughResponseDataComparison}
@@ -58,10 +64,16 @@ export interface GetInventorySellThroughResponseData {
     comparison: GetInventorySellThroughResponseDataComparison;
     /**
      * 
-     * @type {GetInventorySellThroughResponseDataWindow}
+     * @type {StartEnd}
      * @memberof GetInventorySellThroughResponseData
      */
-    window: GetInventorySellThroughResponseDataWindow;
+    window: StartEnd;
+    /**
+     * 
+     * @type {GetAnalyticDashboardResponseSellThroughCohort}
+     * @memberof GetInventorySellThroughResponseData
+     */
+    cohort: GetAnalyticDashboardResponseSellThroughCohort;
 }
 
 export function GetInventorySellThroughResponseDataFromJSON(json: any): GetInventorySellThroughResponseData {
@@ -74,10 +86,11 @@ export function GetInventorySellThroughResponseDataFromJSONTyped(json: any, igno
     }
     return {
         
-        'current': GetAnalyticDashboardResponseSellThroughFromJSON(json['current']),
-        'previous': GetAnalyticDashboardResponseSellThroughFromJSON(json['previous']),
+        'current': GetInventorySellThroughResponseDataCurrentFromJSON(json['current']),
+        'previous': GetInventorySellThroughResponseDataCurrentFromJSON(json['previous']),
         'comparison': GetInventorySellThroughResponseDataComparisonFromJSON(json['comparison']),
-        'window': GetInventorySellThroughResponseDataWindowFromJSON(json['window']),
+        'window': StartEndFromJSON(json['window']),
+        'cohort': GetAnalyticDashboardResponseSellThroughCohortFromJSON(json['cohort']),
     };
 }
 
@@ -90,10 +103,11 @@ export function GetInventorySellThroughResponseDataToJSON(value?: GetInventorySe
     }
     return {
         
-        'current': GetAnalyticDashboardResponseSellThroughToJSON(value.current),
-        'previous': GetAnalyticDashboardResponseSellThroughToJSON(value.previous),
+        'current': GetInventorySellThroughResponseDataCurrentToJSON(value.current),
+        'previous': GetInventorySellThroughResponseDataCurrentToJSON(value.previous),
         'comparison': GetInventorySellThroughResponseDataComparisonToJSON(value.comparison),
-        'window': GetInventorySellThroughResponseDataWindowToJSON(value.window),
+        'window': StartEndToJSON(value.window),
+        'cohort': GetAnalyticDashboardResponseSellThroughCohortToJSON(value.cohort),
     };
 }
 

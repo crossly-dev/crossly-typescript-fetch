@@ -117,9 +117,9 @@ export interface GetVaultMarketLiquidityResponse {
 * @enum {string}
 */
 export enum GetVaultMarketLiquidityResponseBucketEnum {
-    High = 'high',
     Mid = 'mid',
-    Low = 'low'
+    Low = 'low',
+    High = 'high'
 }/**
 * @export
 * @enum {string}

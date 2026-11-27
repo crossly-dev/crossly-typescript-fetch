@@ -143,16 +143,16 @@ export enum ListMarketBullionItemMetalEnum {
 * @enum {string}
 */
 export enum ListMarketBullionItemFormEnum {
-    Round = 'round',
     BullionCoin = 'bullion_coin',
-    Bar = 'bar'
+    Bar = 'bar',
+    Round = 'round'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListMarketBullionItemSizeEnum {
-    Quarter = 'quarter',
     Fractional = 'fractional',
+    Quarter = 'quarter',
     Half = 'half',
     One = 'one',
     TwoFive = 'two-five',

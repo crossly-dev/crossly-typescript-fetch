@@ -25,6 +25,12 @@ export interface GetBuyerCatalogListingPriceResponseDataLowestAnywhere {
      * @memberof GetBuyerCatalogListingPriceResponseDataLowestAnywhere
      */
     platforms: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GetBuyerCatalogListingPriceResponseDataLowestAnywhere
+     */
+    platformNames?: Array<string> | null;
 }
 
 export function GetBuyerCatalogListingPriceResponseDataLowestAnywhereFromJSON(json: any): GetBuyerCatalogListingPriceResponseDataLowestAnywhere {
@@ -38,6 +44,7 @@ export function GetBuyerCatalogListingPriceResponseDataLowestAnywhereFromJSONTyp
     return {
         
         'platforms': json['platforms'],
+        'platformNames': !exists(json, 'platformNames') ? undefined : json['platformNames'],
     };
 }
 
@@ -51,6 +58,7 @@ export function GetBuyerCatalogListingPriceResponseDataLowestAnywhereToJSON(valu
     return {
         
         'platforms': value.platforms,
+        'platformNames': value.platformNames,
     };
 }
 

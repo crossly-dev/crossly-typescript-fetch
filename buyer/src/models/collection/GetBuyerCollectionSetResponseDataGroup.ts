@@ -24,13 +24,13 @@ export interface GetBuyerCollectionSetResponseDataGroup {
      * @type {string}
      * @memberof GetBuyerCollectionSetResponseDataGroup
      */
-    brand: string;
+    category: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerCollectionSetResponseDataGroup
      */
-    category: string;
+    brand: string;
     /**
      * 
      * @type {string}
@@ -73,8 +73,8 @@ export function GetBuyerCollectionSetResponseDataGroupFromJSONTyped(json: any, i
     }
     return {
         
-        'brand': json['brand'],
         'category': json['category'],
+        'brand': json['brand'],
         'model': json['model'],
         'brandSlug': json['brandSlug'],
         'modelSlug': json['modelSlug'],
@@ -92,8 +92,8 @@ export function GetBuyerCollectionSetResponseDataGroupToJSON(value?: GetBuyerCol
     }
     return {
         
-        'brand': value.brand,
         'category': value.category,
+        'brand': value.brand,
         'model': value.model,
         'brandSlug': value.brandSlug,
         'modelSlug': value.modelSlug,

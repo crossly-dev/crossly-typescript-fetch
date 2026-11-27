@@ -166,9 +166,9 @@ export enum CreateVaultMarketAgentDraftCancelResponseDraftSideEnum {
 * @enum {string}
 */
 export enum CreateVaultMarketAgentDraftCancelResponseDraftFundingEnum {
+    Vault = 'vault',
     Card = 'card',
-    Custodian = 'custodian',
-    Vault = 'vault'
+    Custodian = 'custodian'
 }/**
 * @export
 * @enum {string}
@@ -176,9 +176,9 @@ export enum CreateVaultMarketAgentDraftCancelResponseDraftFundingEnum {
 export enum CreateVaultMarketAgentDraftCancelResponseDraftStatusEnum {
     Cancelled = 'cancelled',
     Expired = 'expired',
+    Drafted = 'drafted',
     Rejected = 'rejected',
     Placing = 'placing',
-    Drafted = 'drafted',
     Placed = 'placed'
 }
 

@@ -92,8 +92,8 @@ export interface CreateCbxWalletPaymentConfirmResponseData {
 * @enum {string}
 */
 export enum CreateCbxWalletPaymentConfirmResponseDataReleaseDecisionEnum {
-    Review = 'review',
     Release = 'release',
+    Review = 'review',
     Refuse = 'refuse'
 }
 

@@ -105,12 +105,12 @@ export interface GetWeb3InventoryResponseNft {
 * @enum {string}
 */
 export enum GetWeb3InventoryResponseNftChainEnum {
-    Solana = 'solana',
     Ethereum = 'ethereum',
     Base = 'base',
     Polygon = 'polygon',
     Arbitrum = 'arbitrum',
-    Optimism = 'optimism'
+    Optimism = 'optimism',
+    Solana = 'solana'
 }
 
 export function GetWeb3InventoryResponseNftFromJSON(json: any): GetWeb3InventoryResponseNft {

@@ -1,4 +1,7 @@
 {
   "version": "0.2.0",
-  "specs": {}
+  "specs": {
+    "seller": "551c1433857ad3bc5dc4472b1ba26b9095bcb50eb76b72af4149026d43acb876",
+    "buyer": "d64567faf31c1bcfe1d3c5c391c69d5fedd9346adbb9ecb3c9334d313488afd7"
+  }
 }

@@ -54,9 +54,6 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
-    UpdateAutomationRuleResponse,
-    UpdateAutomationRuleResponseFromJSON,
-    UpdateAutomationRuleResponseToJSON,
 } from '../models';
 
 export interface CreateAutomationRuleImportRequest {
@@ -107,6 +104,7 @@ export interface UpdateAutomationRuleRequest {
 export class AutomationApi extends runtime.BaseAPI {
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Create an automation rule.
      */
     async createAutomationRuleRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListAutomationRulesItem>> {
@@ -133,6 +131,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Create an automation rule.
      */
     async createAutomationRule(initOverrides?: RequestInit): Promise<ListAutomationRulesItem> {
@@ -141,6 +140,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Import one or more rules from recipe JSON (single or bundle).
      */
     async createAutomationRuleImportRaw(requestParameters: CreateAutomationRuleImportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomationRuleImportResponse>> {
@@ -171,6 +171,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Import one or more rules from recipe JSON (single or bundle).
      */
     async createAutomationRuleImport(requestParameters: CreateAutomationRuleImportRequest = {}, initOverrides?: RequestInit): Promise<CreateAutomationRuleImportResponse> {
@@ -179,6 +180,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Fire an automation rule immediately.
      */
     async createAutomationRuleRunNowRaw(requestParameters: CreateAutomationRuleRunNowRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomationRuleRunNowResponse>> {
@@ -209,6 +211,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Fire an automation rule immediately.
      */
     async createAutomationRuleRunNow(requestParameters: CreateAutomationRuleRunNowRequest, initOverrides?: RequestInit): Promise<CreateAutomationRuleRunNowResponse> {
@@ -217,9 +220,10 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Flip an automation rule between active and inactive.
      */
-    async createAutomationRuleToggleRaw(requestParameters: CreateAutomationRuleToggleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateAutomationRuleResponse>> {
+    async createAutomationRuleToggleRaw(requestParameters: CreateAutomationRuleToggleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAutomationRuleResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createAutomationRuleToggle.');
         }
@@ -243,18 +247,20 @@ export class AutomationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateAutomationRuleResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAutomationRuleResponseFromJSON(jsonValue));
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Flip an automation rule between active and inactive.
      */
-    async createAutomationRuleToggle(requestParameters: CreateAutomationRuleToggleRequest, initOverrides?: RequestInit): Promise<UpdateAutomationRuleResponse> {
+    async createAutomationRuleToggle(requestParameters: CreateAutomationRuleToggleRequest, initOverrides?: RequestInit): Promise<GetAutomationRuleResponse> {
         const response = await this.createAutomationRuleToggleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Dry-run validate one or more recipes against the live catalog.
      */
     async createAutomationRuleValidateRecipeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomationRuleValidateRecipeResponse>> {
@@ -281,6 +287,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Dry-run validate one or more recipes against the live catalog.
      */
     async createAutomationRuleValidateRecipe(initOverrides?: RequestInit): Promise<CreateAutomationRuleValidateRecipeResponse> {
@@ -365,6 +372,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Delete an automation rule.
      */
     async deleteAutomationRuleRaw(requestParameters: DeleteAutomationRuleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
@@ -395,6 +403,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Delete an automation rule.
      */
     async deleteAutomationRule(requestParameters: DeleteAutomationRuleRequest, initOverrides?: RequestInit): Promise<OkResponse> {
@@ -437,6 +446,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Get a single automation rule.
      */
     async getAutomationRuleRaw(requestParameters: GetAutomationRuleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAutomationRuleResponse>> {
@@ -467,6 +477,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Get a single automation rule.
      */
     async getAutomationRule(requestParameters: GetAutomationRuleRequest, initOverrides?: RequestInit): Promise<GetAutomationRuleResponse> {
@@ -475,6 +486,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Export the user\'s full rule library as a portable recipe bundle.
      */
     async getAutomationRuleExportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAutomationRuleExportResponse>> {
@@ -501,6 +513,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Export the user\'s full rule library as a portable recipe bundle.
      */
     async getAutomationRuleExport(initOverrides?: RequestInit): Promise<GetAutomationRuleExportResponse> {
@@ -509,6 +522,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Export a single automation rule as a portable recipe.
      */
     async getAutomationRuleExportByIdRaw(requestParameters: GetAutomationRuleExportByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAutomationRuleExportByIdResponse>> {
@@ -539,6 +553,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Export a single automation rule as a portable recipe.
      */
     async getAutomationRuleExportById(requestParameters: GetAutomationRuleExportByIdRequest, initOverrides?: RequestInit): Promise<GetAutomationRuleExportByIdResponse> {
@@ -547,6 +562,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * List automation rules.
      */
     async listAutomationRulesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListAutomationRulesResponse>> {
@@ -573,6 +589,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * List automation rules.
      */
     async listAutomationRules(initOverrides?: RequestInit): Promise<ListAutomationRulesResponse> {
@@ -581,6 +598,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: use /v1/workflow-runs.
      * Per-fire history for automation rules and workflow chain runs.
      */
     async listAutomationRunsRaw(requestParameters: ListAutomationRunsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListAutomationRunsResponse>> {
@@ -619,6 +637,7 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: use /v1/workflow-runs.
      * Per-fire history for automation rules and workflow chain runs.
      */
     async listAutomationRuns(requestParameters: ListAutomationRunsRequest = {}, initOverrides?: RequestInit): Promise<ListAutomationRunsResponse> {
@@ -661,9 +680,10 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Update an automation rule (full replace).
      */
-    async updateAutomationRuleRaw(requestParameters: UpdateAutomationRuleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateAutomationRuleResponse>> {
+    async updateAutomationRuleRaw(requestParameters: UpdateAutomationRuleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAutomationRuleResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateAutomationRule.');
         }
@@ -687,13 +707,14 @@ export class AutomationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateAutomationRuleResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAutomationRuleResponseFromJSON(jsonValue));
     }
 
     /**
+     * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Update an automation rule (full replace).
      */
-    async updateAutomationRule(requestParameters: UpdateAutomationRuleRequest, initOverrides?: RequestInit): Promise<UpdateAutomationRuleResponse> {
+    async updateAutomationRule(requestParameters: UpdateAutomationRuleRequest, initOverrides?: RequestInit): Promise<GetAutomationRuleResponse> {
         const response = await this.updateAutomationRuleRaw(requestParameters, initOverrides);
         return await response.value();
     }

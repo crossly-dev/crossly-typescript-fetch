@@ -93,9 +93,9 @@ export interface GetWeb3ProfileResponseListings {
 */
 export enum GetWeb3ProfileResponseListingsKindEnum {
     Bundle = 'bundle',
+    Offer = 'offer',
     Listing = 'listing',
     PrivateListing = 'private_listing',
-    Offer = 'offer',
     CollectionOffer = 'collection_offer',
     TraitOffer = 'trait_offer'
 }

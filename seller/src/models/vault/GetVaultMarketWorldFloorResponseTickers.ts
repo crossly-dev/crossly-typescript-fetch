@@ -93,9 +93,9 @@ export interface GetVaultMarketWorldFloorResponseTickers {
 */
 export enum GetVaultMarketWorldFloorResponseTickersMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketWorldFloorResponseTickersFromJSON(json: any): GetVaultMarketWorldFloorResponseTickers {

@@ -177,11 +177,11 @@ export interface ListDropMineItem {
 * @enum {string}
 */
 export enum ListDropMineItemStatusEnum {
-    Scheduled = 'scheduled',
     Cancelled = 'cancelled',
+    Scheduled = 'scheduled',
     Closed = 'closed',
-    Released = 'released',
-    LineOpen = 'line_open'
+    LineOpen = 'line_open',
+    Released = 'released'
 }/**
 * @export
 * @enum {string}

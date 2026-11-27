@@ -30,13 +30,13 @@ export interface ListBuyerLiveShipmentsItemOrders {
      * @type {string}
      * @memberof ListBuyerLiveShipmentsItemOrders
      */
-    title?: string | null;
+    purchaseId: string;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerLiveShipmentsItemOrders
      */
-    purchaseId: string;
+    title?: string | null;
     /**
      * 
      * @type {number}
@@ -62,8 +62,8 @@ export function ListBuyerLiveShipmentsItemOrdersFromJSONTyped(json: any, ignoreD
     return {
         
         'orderId': json['orderId'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
         'purchaseId': json['purchaseId'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
         'shippingCents': json['shippingCents'],
         'orderStatus': !exists(json, 'orderStatus') ? undefined : json['orderStatus'],
     };
@@ -79,8 +79,8 @@ export function ListBuyerLiveShipmentsItemOrdersToJSON(value?: ListBuyerLiveShip
     return {
         
         'orderId': value.orderId,
-        'title': value.title,
         'purchaseId': value.purchaseId,
+        'title': value.title,
         'shippingCents': value.shippingCents,
         'orderStatus': value.orderStatus,
     };

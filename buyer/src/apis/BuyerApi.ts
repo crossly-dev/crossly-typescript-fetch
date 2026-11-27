@@ -21,12 +21,21 @@ import {
     BuyerCartResponse,
     BuyerCartResponseFromJSON,
     BuyerCartResponseToJSON,
+    BuyerCompanyResponse,
+    BuyerCompanyResponseFromJSON,
+    BuyerCompanyResponseToJSON,
+    BuyerHomeResponse,
+    BuyerHomeResponseFromJSON,
+    BuyerHomeResponseToJSON,
     BuyerLayawayResponse,
     BuyerLayawayResponseFromJSON,
     BuyerLayawayResponseToJSON,
     BuyerRegistryResponse,
     BuyerRegistryResponseFromJSON,
     BuyerRegistryResponseToJSON,
+    BuyerRentalResponse,
+    BuyerRentalResponseFromJSON,
+    BuyerRentalResponseToJSON,
     BuyerResponse,
     BuyerResponseFromJSON,
     BuyerResponseToJSON,
@@ -36,6 +45,12 @@ import {
     BuyerResponse3,
     BuyerResponse3FromJSON,
     BuyerResponse3ToJSON,
+    BuyerWholesaleOrderSheetResponse,
+    BuyerWholesaleOrderSheetResponseFromJSON,
+    BuyerWholesaleOrderSheetResponseToJSON,
+    BuyerWholesaleQuoteResponse,
+    BuyerWholesaleQuoteResponseFromJSON,
+    BuyerWholesaleQuoteResponseToJSON,
     CreateBuyerActivityRequest,
     CreateBuyerActivityRequestFromJSON,
     CreateBuyerActivityRequestToJSON,
@@ -93,9 +108,15 @@ import {
     CreateBuyerCatalogListingVideoRequestResponse,
     CreateBuyerCatalogListingVideoRequestResponseFromJSON,
     CreateBuyerCatalogListingVideoRequestResponseToJSON,
+    CreateBuyerCompanyApprovalResponse,
+    CreateBuyerCompanyApprovalResponseFromJSON,
+    CreateBuyerCompanyApprovalResponseToJSON,
     CreateBuyerConversationJoinResponse,
     CreateBuyerConversationJoinResponseFromJSON,
     CreateBuyerConversationJoinResponseToJSON,
+    CreateBuyerEventRsvpResponse,
+    CreateBuyerEventRsvpResponseFromJSON,
+    CreateBuyerEventRsvpResponseToJSON,
     CreateBuyerFeedbackRequest,
     CreateBuyerFeedbackRequestFromJSON,
     CreateBuyerFeedbackRequestToJSON,
@@ -168,18 +189,21 @@ import {
     CreateBuyerProtectionPlanCancelResponse,
     CreateBuyerProtectionPlanCancelResponseFromJSON,
     CreateBuyerProtectionPlanCancelResponseToJSON,
-    CreateBuyerPurchaseDownloadResponse,
-    CreateBuyerPurchaseDownloadResponseFromJSON,
-    CreateBuyerPurchaseDownloadResponseToJSON,
     CreateBuyerRegistryGiftThankedResponse,
     CreateBuyerRegistryGiftThankedResponseFromJSON,
     CreateBuyerRegistryGiftThankedResponseToJSON,
     CreateBuyerRegistryResponse,
     CreateBuyerRegistryResponseFromJSON,
     CreateBuyerRegistryResponseToJSON,
-    CreateBuyerRentalArrivalPhotoResponse,
-    CreateBuyerRentalArrivalPhotoResponseFromJSON,
-    CreateBuyerRentalArrivalPhotoResponseToJSON,
+    CreateBuyerRentalBuyoutResponse,
+    CreateBuyerRentalBuyoutResponseFromJSON,
+    CreateBuyerRentalBuyoutResponseToJSON,
+    CreateBuyerRentalExtensionPayResponse,
+    CreateBuyerRentalExtensionPayResponseFromJSON,
+    CreateBuyerRentalExtensionPayResponseToJSON,
+    CreateBuyerRentalExtensionResponse,
+    CreateBuyerRentalExtensionResponseFromJSON,
+    CreateBuyerRentalExtensionResponseToJSON,
     CreateBuyerRentalIdentityStartResponse,
     CreateBuyerRentalIdentityStartResponseFromJSON,
     CreateBuyerRentalIdentityStartResponseToJSON,
@@ -189,9 +213,9 @@ import {
     CreateBuyerSellerReportRequest,
     CreateBuyerSellerReportRequestFromJSON,
     CreateBuyerSellerReportRequestToJSON,
-    CreateBuyerSellerReportResponse,
-    CreateBuyerSellerReportResponseFromJSON,
-    CreateBuyerSellerReportResponseToJSON,
+    CreateBuyerStoreReportResponse,
+    CreateBuyerStoreReportResponseFromJSON,
+    CreateBuyerStoreReportResponseToJSON,
     CreateBuyerTogetherResponse,
     CreateBuyerTogetherResponseFromJSON,
     CreateBuyerTogetherResponseToJSON,
@@ -207,6 +231,21 @@ import {
     CreateBuyerVaultWithdrawResponse,
     CreateBuyerVaultWithdrawResponseFromJSON,
     CreateBuyerVaultWithdrawResponseToJSON,
+    CreateBuyerWholesaleCatalogApplyResponse,
+    CreateBuyerWholesaleCatalogApplyResponseFromJSON,
+    CreateBuyerWholesaleCatalogApplyResponseToJSON,
+    CreateBuyerWholesaleFreightRequestResponse,
+    CreateBuyerWholesaleFreightRequestResponseFromJSON,
+    CreateBuyerWholesaleFreightRequestResponseToJSON,
+    CreateBuyerWholesaleInvoicePayLinkResponse,
+    CreateBuyerWholesaleInvoicePayLinkResponseFromJSON,
+    CreateBuyerWholesaleInvoicePayLinkResponseToJSON,
+    CreateBuyerWholesaleQuoteAcceptResponse,
+    CreateBuyerWholesaleQuoteAcceptResponseFromJSON,
+    CreateBuyerWholesaleQuoteAcceptResponseToJSON,
+    CreateBuyerWholesaleUploadValidateResponse,
+    CreateBuyerWholesaleUploadValidateResponseFromJSON,
+    CreateBuyerWholesaleUploadValidateResponseToJSON,
     CreateBuyerWishlistInviteResponse,
     CreateBuyerWishlistInviteResponseFromJSON,
     CreateBuyerWishlistInviteResponseToJSON,
@@ -231,6 +270,9 @@ import {
     DeleteBuyerTryOnResponse,
     DeleteBuyerTryOnResponseFromJSON,
     DeleteBuyerTryOnResponseToJSON,
+    DeleteBuyerWholesaleOrderSheetResponse,
+    DeleteBuyerWholesaleOrderSheetResponseFromJSON,
+    DeleteBuyerWholesaleOrderSheetResponseToJSON,
     DeleteBuyerWishlistItemResponse,
     DeleteBuyerWishlistItemResponseFromJSON,
     DeleteBuyerWishlistItemResponseToJSON,
@@ -264,15 +306,24 @@ import {
     GetBuyerCollectionSetResponse,
     GetBuyerCollectionSetResponseFromJSON,
     GetBuyerCollectionSetResponseToJSON,
+    GetBuyerCreationResponse,
+    GetBuyerCreationResponseFromJSON,
+    GetBuyerCreationResponseToJSON,
     GetBuyerCreatorResponse,
     GetBuyerCreatorResponseFromJSON,
     GetBuyerCreatorResponseToJSON,
+    GetBuyerEventResponse,
+    GetBuyerEventResponseFromJSON,
+    GetBuyerEventResponseToJSON,
     GetBuyerFitVocabularyResponse,
     GetBuyerFitVocabularyResponseFromJSON,
     GetBuyerFitVocabularyResponseToJSON,
     GetBuyerGiftFinderOptionResponse,
     GetBuyerGiftFinderOptionResponseFromJSON,
     GetBuyerGiftFinderOptionResponseToJSON,
+    GetBuyerHomePlaceableResponse,
+    GetBuyerHomePlaceableResponseFromJSON,
+    GetBuyerHomePlaceableResponseToJSON,
     GetBuyerImpactResponse,
     GetBuyerImpactResponseFromJSON,
     GetBuyerImpactResponseToJSON,
@@ -357,9 +408,15 @@ import {
     GetBuyerRentalEligibilityResponse,
     GetBuyerRentalEligibilityResponseFromJSON,
     GetBuyerRentalEligibilityResponseToJSON,
+    GetBuyerRentalResponse,
+    GetBuyerRentalResponseFromJSON,
+    GetBuyerRentalResponseToJSON,
     GetBuyerSellerClubResponse,
     GetBuyerSellerClubResponseFromJSON,
     GetBuyerSellerClubResponseToJSON,
+    GetBuyerSellerLoyaltyResponse,
+    GetBuyerSellerLoyaltyResponseFromJSON,
+    GetBuyerSellerLoyaltyResponseToJSON,
     GetBuyerSellerTrustResponse,
     GetBuyerSellerTrustResponseFromJSON,
     GetBuyerSellerTrustResponseToJSON,
@@ -375,9 +432,69 @@ import {
     GetBuyerVaultMarketInstantExitResponse,
     GetBuyerVaultMarketInstantExitResponseFromJSON,
     GetBuyerVaultMarketInstantExitResponseToJSON,
+    GetBuyerVaultMarketOptionAnalyticResponse,
+    GetBuyerVaultMarketOptionAnalyticResponseFromJSON,
+    GetBuyerVaultMarketOptionAnalyticResponseToJSON,
+    GetBuyerVaultMarketOptionChainResponse,
+    GetBuyerVaultMarketOptionChainResponseFromJSON,
+    GetBuyerVaultMarketOptionChainResponseToJSON,
+    GetBuyerVaultMarketOptionIvResponse,
+    GetBuyerVaultMarketOptionIvResponseFromJSON,
+    GetBuyerVaultMarketOptionIvResponseToJSON,
+    GetBuyerVaultMarketOptionPositionResponse,
+    GetBuyerVaultMarketOptionPositionResponseFromJSON,
+    GetBuyerVaultMarketOptionPositionResponseToJSON,
+    GetBuyerVaultMarketOptionRiskResponse,
+    GetBuyerVaultMarketOptionRiskResponseFromJSON,
+    GetBuyerVaultMarketOptionRiskResponseToJSON,
+    GetBuyerVaultMarketPredictionBoardResponse,
+    GetBuyerVaultMarketPredictionBoardResponseFromJSON,
+    GetBuyerVaultMarketPredictionBoardResponseToJSON,
+    GetBuyerVaultMarketPredictionEventResponse,
+    GetBuyerVaultMarketPredictionEventResponseFromJSON,
+    GetBuyerVaultMarketPredictionEventResponseToJSON,
+    GetBuyerVaultMarketPredictionLeaderboardResponse,
+    GetBuyerVaultMarketPredictionLeaderboardResponseFromJSON,
+    GetBuyerVaultMarketPredictionLeaderboardResponseToJSON,
+    GetBuyerVaultMarketPredictionMarketHistoryResponse,
+    GetBuyerVaultMarketPredictionMarketHistoryResponseFromJSON,
+    GetBuyerVaultMarketPredictionMarketHistoryResponseToJSON,
+    GetBuyerVaultMarketPredictionMarketResponse,
+    GetBuyerVaultMarketPredictionMarketResponseFromJSON,
+    GetBuyerVaultMarketPredictionMarketResponseToJSON,
+    GetBuyerVaultMarketShareBasketResponse,
+    GetBuyerVaultMarketShareBasketResponseFromJSON,
+    GetBuyerVaultMarketShareBasketResponseToJSON,
+    GetBuyerVaultMarketShareResponse,
+    GetBuyerVaultMarketShareResponseFromJSON,
+    GetBuyerVaultMarketShareResponseToJSON,
+    GetBuyerVaultMarketShareSeryHistoryResponse,
+    GetBuyerVaultMarketShareSeryHistoryResponseFromJSON,
+    GetBuyerVaultMarketShareSeryHistoryResponseToJSON,
+    GetBuyerVaultMarketShareSeryPerkResponse,
+    GetBuyerVaultMarketShareSeryPerkResponseFromJSON,
+    GetBuyerVaultMarketShareSeryPerkResponseToJSON,
+    GetBuyerVaultMarketShareSeryResponse,
+    GetBuyerVaultMarketShareSeryResponseFromJSON,
+    GetBuyerVaultMarketShareSeryResponseToJSON,
     GetBuyerVaultMarketWorthResponse,
     GetBuyerVaultMarketWorthResponseFromJSON,
     GetBuyerVaultMarketWorthResponseToJSON,
+    GetBuyerWholesaleCartResponse,
+    GetBuyerWholesaleCartResponseFromJSON,
+    GetBuyerWholesaleCartResponseToJSON,
+    GetBuyerWholesaleCatalogApplyResponse,
+    GetBuyerWholesaleCatalogApplyResponseFromJSON,
+    GetBuyerWholesaleCatalogApplyResponseToJSON,
+    GetBuyerWholesaleDropResponse,
+    GetBuyerWholesaleDropResponseFromJSON,
+    GetBuyerWholesaleDropResponseToJSON,
+    GetBuyerWholesaleInvoicePayQuoteResponse,
+    GetBuyerWholesaleInvoicePayQuoteResponseFromJSON,
+    GetBuyerWholesaleInvoicePayQuoteResponseToJSON,
+    GetBuyerWholesaleReorderResponse,
+    GetBuyerWholesaleReorderResponseFromJSON,
+    GetBuyerWholesaleReorderResponseToJSON,
     ListBuyerActivityResponse,
     ListBuyerActivityResponseFromJSON,
     ListBuyerActivityResponseToJSON,
@@ -405,6 +522,12 @@ import {
     ListBuyerClubsResponse,
     ListBuyerClubsResponseFromJSON,
     ListBuyerClubsResponseToJSON,
+    ListBuyerCreationReviewableResponse,
+    ListBuyerCreationReviewableResponseFromJSON,
+    ListBuyerCreationReviewableResponseToJSON,
+    ListBuyerEventsResponse,
+    ListBuyerEventsResponseFromJSON,
+    ListBuyerEventsResponseToJSON,
     ListBuyerFeedbackPendingResponse,
     ListBuyerFeedbackPendingResponseFromJSON,
     ListBuyerFeedbackPendingResponseToJSON,
@@ -426,6 +549,12 @@ import {
     ListBuyerGiftSentResponse,
     ListBuyerGiftSentResponseFromJSON,
     ListBuyerGiftSentResponseToJSON,
+    ListBuyerHomeBuildersResponse,
+    ListBuyerHomeBuildersResponseFromJSON,
+    ListBuyerHomeBuildersResponseToJSON,
+    ListBuyerHomeBuildingResponse,
+    ListBuyerHomeBuildingResponseFromJSON,
+    ListBuyerHomeBuildingResponseToJSON,
     ListBuyerHotspotsResponse,
     ListBuyerHotspotsResponseFromJSON,
     ListBuyerHotspotsResponseToJSON,
@@ -447,6 +576,9 @@ import {
     ListBuyerLiveStreamLineupResponse,
     ListBuyerLiveStreamLineupResponseFromJSON,
     ListBuyerLiveStreamLineupResponseToJSON,
+    ListBuyerLoyaltyResponse,
+    ListBuyerLoyaltyResponseFromJSON,
+    ListBuyerLoyaltyResponseToJSON,
     ListBuyerOffersResponse,
     ListBuyerOffersResponseFromJSON,
     ListBuyerOffersResponseToJSON,
@@ -462,6 +594,9 @@ import {
     ListBuyerPartiesResponse,
     ListBuyerPartiesResponseFromJSON,
     ListBuyerPartiesResponseToJSON,
+    ListBuyerPaymentMethodsResponse,
+    ListBuyerPaymentMethodsResponseFromJSON,
+    ListBuyerPaymentMethodsResponseToJSON,
     ListBuyerProtectionPlansResponse,
     ListBuyerProtectionPlansResponseFromJSON,
     ListBuyerProtectionPlansResponseToJSON,
@@ -483,6 +618,9 @@ import {
     ListBuyerSizeMemorySizesResponse,
     ListBuyerSizeMemorySizesResponseFromJSON,
     ListBuyerSizeMemorySizesResponseToJSON,
+    ListBuyerStoreListingsResponse,
+    ListBuyerStoreListingsResponseFromJSON,
+    ListBuyerStoreListingsResponseToJSON,
     ListBuyerSubscriptionsResponse,
     ListBuyerSubscriptionsResponseFromJSON,
     ListBuyerSubscriptionsResponseToJSON,
@@ -504,6 +642,42 @@ import {
     ListBuyerVaultMarketInstantExitResponse,
     ListBuyerVaultMarketInstantExitResponseFromJSON,
     ListBuyerVaultMarketInstantExitResponseToJSON,
+    ListBuyerVaultMarketOptionCombosResponse,
+    ListBuyerVaultMarketOptionCombosResponseFromJSON,
+    ListBuyerVaultMarketOptionCombosResponseToJSON,
+    ListBuyerVaultMarketOptionNoticesResponse,
+    ListBuyerVaultMarketOptionNoticesResponseFromJSON,
+    ListBuyerVaultMarketOptionNoticesResponseToJSON,
+    ListBuyerVaultMarketOptionSeriesResponse,
+    ListBuyerVaultMarketOptionSeriesResponseFromJSON,
+    ListBuyerVaultMarketOptionSeriesResponseToJSON,
+    ListBuyerVaultMarketOptionStrategiesResponse,
+    ListBuyerVaultMarketOptionStrategiesResponseFromJSON,
+    ListBuyerVaultMarketOptionStrategiesResponseToJSON,
+    ListBuyerVaultMarketPredictionCommentsResponse,
+    ListBuyerVaultMarketPredictionCommentsResponseFromJSON,
+    ListBuyerVaultMarketPredictionCommentsResponseToJSON,
+    ListBuyerVaultMarketPredictionMarketsResponse,
+    ListBuyerVaultMarketPredictionMarketsResponseFromJSON,
+    ListBuyerVaultMarketPredictionMarketsResponseToJSON,
+    ListBuyerVaultMarketPredictionPositionsResponse,
+    ListBuyerVaultMarketPredictionPositionsResponseFromJSON,
+    ListBuyerVaultMarketPredictionPositionsResponseToJSON,
+    ListBuyerVaultMarketShareAutoInvestResponse,
+    ListBuyerVaultMarketShareAutoInvestResponseFromJSON,
+    ListBuyerVaultMarketShareAutoInvestResponseToJSON,
+    ListBuyerVaultMarketShareBasketsResponse,
+    ListBuyerVaultMarketShareBasketsResponseFromJSON,
+    ListBuyerVaultMarketShareBasketsResponseToJSON,
+    ListBuyerVaultMarketShareDropsResponse,
+    ListBuyerVaultMarketShareDropsResponseFromJSON,
+    ListBuyerVaultMarketShareDropsResponseToJSON,
+    ListBuyerVaultMarketShareGiftsResponse,
+    ListBuyerVaultMarketShareGiftsResponseFromJSON,
+    ListBuyerVaultMarketShareGiftsResponseToJSON,
+    ListBuyerVaultMarketShareSeriesResponse,
+    ListBuyerVaultMarketShareSeriesResponseFromJSON,
+    ListBuyerVaultMarketShareSeriesResponseToJSON,
     ListBuyerVaultMarketWatchlistResponse,
     ListBuyerVaultMarketWatchlistResponseFromJSON,
     ListBuyerVaultMarketWatchlistResponseToJSON,
@@ -513,6 +687,15 @@ import {
     ListBuyerVideoRequestsResponse,
     ListBuyerVideoRequestsResponseFromJSON,
     ListBuyerVideoRequestsResponseToJSON,
+    ListBuyerWalletPerksResponse,
+    ListBuyerWalletPerksResponseFromJSON,
+    ListBuyerWalletPerksResponseToJSON,
+    ListBuyerWholesaleDropsResponse,
+    ListBuyerWholesaleDropsResponseFromJSON,
+    ListBuyerWholesaleDropsResponseToJSON,
+    ListBuyerWholesalePrebooksResponse,
+    ListBuyerWholesalePrebooksResponseFromJSON,
+    ListBuyerWholesalePrebooksResponseToJSON,
     ListBuyerWishlistItemsResponse,
     ListBuyerWishlistItemsResponseFromJSON,
     ListBuyerWishlistItemsResponseToJSON,
@@ -525,12 +708,24 @@ import {
     UpdateBuyerCollectionSetLeaderboardResponse,
     UpdateBuyerCollectionSetLeaderboardResponseFromJSON,
     UpdateBuyerCollectionSetLeaderboardResponseToJSON,
+    UpdateBuyerCreationReviewRequest,
+    UpdateBuyerCreationReviewRequestFromJSON,
+    UpdateBuyerCreationReviewRequestToJSON,
+    UpdateBuyerCreationReviewResponse,
+    UpdateBuyerCreationReviewResponseFromJSON,
+    UpdateBuyerCreationReviewResponseToJSON,
     UpdateBuyerFeedbackRequest,
     UpdateBuyerFeedbackRequestFromJSON,
     UpdateBuyerFeedbackRequestToJSON,
+    UpdateBuyerPaymentMethodDefaultResponse,
+    UpdateBuyerPaymentMethodDefaultResponseFromJSON,
+    UpdateBuyerPaymentMethodDefaultResponseToJSON,
     UpdateBuyerRegistryItemResponse,
     UpdateBuyerRegistryItemResponseFromJSON,
     UpdateBuyerRegistryItemResponseToJSON,
+    UpdateBuyerWholesaleCartPoResponse,
+    UpdateBuyerWholesaleCartPoResponseFromJSON,
+    UpdateBuyerWholesaleCartPoResponseToJSON,
     UpdateBuyerWishlistRequest,
     UpdateBuyerWishlistRequestFromJSON,
     UpdateBuyerWishlistRequestToJSON,
@@ -617,12 +812,20 @@ export interface CreateBuyerCatalogListingVideoRequestRequest {
     slug: string;
 }
 
+export interface CreateBuyerCompanyApprovalDecideRequest {
+    id: string;
+}
+
 export interface CreateBuyerConversationInviteRequest {
     id: string;
 }
 
 export interface CreateBuyerConversationJoinRequest {
     token: string;
+}
+
+export interface CreateBuyerEventRsvpRequest {
+    slug: string;
 }
 
 export interface CreateBuyerFeedbackOperationRequest {
@@ -719,10 +922,6 @@ export interface CreateBuyerProtectionPlanCancelRequest {
     id: string;
 }
 
-export interface CreateBuyerPurchaseDownloadRequest {
-    id: string;
-}
-
 export interface CreateBuyerPurchaseFitRequest {
     id: string;
 }
@@ -740,11 +939,32 @@ export interface CreateBuyerRentalArrivalPhotoRequest {
     id: string;
 }
 
+export interface CreateBuyerRentalBuyoutRequest {
+    id: string;
+}
+
 export interface CreateBuyerRentalCancelRequest {
     id: string;
 }
 
 export interface CreateBuyerRentalClaimResponseRequest {
+    id: string;
+}
+
+export interface CreateBuyerRentalDeliveredRequest {
+    id: string;
+}
+
+export interface CreateBuyerRentalExtensionRequest {
+    id: string;
+}
+
+export interface CreateBuyerRentalExtensionPayRequest {
+    id: string;
+    extensionId: string;
+}
+
+export interface CreateBuyerRentalReturnShippedRequest {
     id: string;
 }
 
@@ -760,6 +980,10 @@ export interface CreateBuyerSellerClubJoinRequest {
     sellerUserId: string;
 }
 
+export interface CreateBuyerSellerLoyaltyJoinRequest {
+    sellerUserId: string;
+}
+
 export interface CreateBuyerSellerReportOperationRequest {
     username: string;
     createBuyerSellerReportRequest: CreateBuyerSellerReportRequest;
@@ -767,6 +991,11 @@ export interface CreateBuyerSellerReportOperationRequest {
 
 export interface CreateBuyerSplitCancelRequest {
     id: string;
+}
+
+export interface CreateBuyerStoreReportRequest {
+    slug: string;
+    createBuyerSellerReportRequest: CreateBuyerSellerReportRequest;
 }
 
 export interface CreateBuyerTogetherItemRequest {
@@ -803,6 +1032,23 @@ export interface CreateBuyerVaultUnlistRequest {
 }
 
 export interface CreateBuyerVaultWithdrawRequest {
+    id: string;
+}
+
+export interface CreateBuyerWholesaleCatalogApplyRequest {
+    storeSlug: string;
+    catalogSlug: string;
+}
+
+export interface CreateBuyerWholesaleInvoicePayLinkRequest {
+    id: string;
+}
+
+export interface CreateBuyerWholesaleQuoteAcceptRequest {
+    id: string;
+}
+
+export interface CreateBuyerWholesaleQuoteWithdrawRequest {
     id: string;
 }
 
@@ -850,12 +1096,29 @@ export interface DeleteBuyerCartSavedRequest {
     id: string;
 }
 
+export interface DeleteBuyerCompanyMemberRequest {
+    id: string;
+}
+
 export interface DeleteBuyerConversationGuestRequest {
     id: string;
     userId: string;
 }
 
+export interface DeleteBuyerCreationReviewRequest {
+    format: DeleteBuyerCreationReviewFormatEnum;
+    id: string;
+}
+
+export interface DeleteBuyerEventRsvpRequest {
+    slug: string;
+}
+
 export interface DeleteBuyerFitRefRequest {
+    id: string;
+}
+
+export interface DeleteBuyerHomeGuestbookRequest {
     id: string;
 }
 
@@ -883,6 +1146,10 @@ export interface DeleteBuyerSellerClubJoinRequest {
     sellerUserId: string;
 }
 
+export interface DeleteBuyerSellerLoyaltyJoinRequest {
+    sellerUserId: string;
+}
+
 export interface DeleteBuyerTogetherItemRequest {
     code: string;
     id: string;
@@ -893,6 +1160,10 @@ export interface DeleteBuyerTotalRequestRequest {
 }
 
 export interface DeleteBuyerTryOnRequest {
+    id: string;
+}
+
+export interface DeleteBuyerWholesaleOrderSheetRequest {
     id: string;
 }
 
@@ -952,8 +1223,17 @@ export interface GetBuyerCollectionSetRequest {
     model: string;
 }
 
+export interface GetBuyerCreationRequest {
+    format: GetBuyerCreationFormatEnum;
+    id: string;
+}
+
 export interface GetBuyerCreatorRequest {
     handle: string;
+}
+
+export interface GetBuyerEventRequest {
+    slug: string;
 }
 
 export interface GetBuyerLayawayRequest {
@@ -1053,7 +1333,15 @@ export interface GetBuyerRegistryByTokenRequest {
     token: string;
 }
 
+export interface GetBuyerRentalRequest {
+    id: string;
+}
+
 export interface GetBuyerSellerClubRequest {
+    sellerUserId: string;
+}
+
+export interface GetBuyerSellerLoyaltyRequest {
     sellerUserId: string;
 }
 
@@ -1070,6 +1358,71 @@ export interface GetBuyerVaultMarketIndexRequest {
 }
 
 export interface GetBuyerVaultMarketInstantExitRequest {
+    id: string;
+}
+
+export interface GetBuyerVaultMarketOptionAnalyticRequest {
+    underlying: string;
+}
+
+export interface GetBuyerVaultMarketOptionChainRequest {
+    underlying: string;
+}
+
+export interface GetBuyerVaultMarketOptionIvRequest {
+    underlying: string;
+}
+
+export interface GetBuyerVaultMarketPredictionEventRequest {
+    id: string;
+}
+
+export interface GetBuyerVaultMarketPredictionMarketRequest {
+    id: string;
+}
+
+export interface GetBuyerVaultMarketPredictionMarketHistoryRequest {
+    id: string;
+}
+
+export interface GetBuyerVaultMarketShareBasketRequest {
+    id: string;
+}
+
+export interface GetBuyerVaultMarketShareSeryRequest {
+    id: string;
+}
+
+export interface GetBuyerVaultMarketShareSeryHistoryRequest {
+    id: string;
+}
+
+export interface GetBuyerVaultMarketShareSeryPerkRequest {
+    id: string;
+}
+
+export interface GetBuyerWholesaleCatalogApplyRequest {
+    storeSlug: string;
+    catalogSlug: string;
+}
+
+export interface GetBuyerWholesaleDropRequest {
+    id: string;
+}
+
+export interface GetBuyerWholesaleInvoicePayQuoteRequest {
+    id: string;
+}
+
+export interface GetBuyerWholesaleOrderSheetRequest {
+    id: string;
+}
+
+export interface GetBuyerWholesaleQuoteRequest {
+    id: string;
+}
+
+export interface GetBuyerWholesaleReorderRequest {
     id: string;
 }
 
@@ -1097,6 +1450,10 @@ export interface ListBuyerCatalogListingVideosRequest {
 
 export interface ListBuyerConversationGuestsRequest {
     id: string;
+}
+
+export interface ListBuyerCreationReviewableRequest {
+    purchaseRef?: string;
 }
 
 export interface ListBuyerListingQuickQuestionsRequest {
@@ -1128,6 +1485,10 @@ export interface ListBuyerRegistryGiftsRequest {
     id: string;
 }
 
+export interface ListBuyerStoreListingsRequest {
+    slug: string;
+}
+
 export interface ListBuyerWishlistItemsRequest {
     id: string;
 }
@@ -1144,12 +1505,26 @@ export interface UpdateBuyerBoardLayoutRequest {
     id: string;
 }
 
+export interface UpdateBuyerCompanyMemberRequest {
+    id: string;
+}
+
+export interface UpdateBuyerCreationReviewOperationRequest {
+    format: UpdateBuyerCreationReviewFormatEnum;
+    id: string;
+    updateBuyerCreationReviewRequest: UpdateBuyerCreationReviewRequest;
+}
+
 export interface UpdateBuyerFeedbackOperationRequest {
     id: string;
     updateBuyerFeedbackRequest: UpdateBuyerFeedbackRequest;
 }
 
 export interface UpdateBuyerHuntRequest {
+    id: string;
+}
+
+export interface UpdateBuyerPaymentMethodDefaultRequest {
     id: string;
 }
 
@@ -1167,6 +1542,10 @@ export interface UpdateBuyerRegistryItemRequest {
 }
 
 export interface UpdateBuyerSubscriptionRequest {
+    id: string;
+}
+
+export interface UpdateBuyerWholesaleOrderSheetRequest {
     id: string;
 }
 
@@ -2034,6 +2413,146 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+     */
+    async createBuyerCompanyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerCompanyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerCompanyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+     */
+    async createBuyerCompany(initOverrides?: RequestInit): Promise<BuyerCompanyResponse> {
+        const response = await this.createBuyerCompanyRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+     */
+    async createBuyerCompanyApprovalRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCompanyApprovalResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company/approvals`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerCompanyApprovalResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+     */
+    async createBuyerCompanyApproval(initOverrides?: RequestInit): Promise<CreateBuyerCompanyApprovalResponse> {
+        const response = await this.createBuyerCompanyApprovalRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+     */
+    async createBuyerCompanyApprovalDecideRaw(requestParameters: CreateBuyerCompanyApprovalDecideRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCompanyApprovalResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerCompanyApprovalDecide.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company/approvals/{id}/decide`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerCompanyApprovalResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+     */
+    async createBuyerCompanyApprovalDecide(requestParameters: CreateBuyerCompanyApprovalDecideRequest, initOverrides?: RequestInit): Promise<CreateBuyerCompanyApprovalResponse> {
+        const response = await this.createBuyerCompanyApprovalDecideRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
+     */
+    async createBuyerCompanyMemberRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerCompanyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company/members`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerCompanyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
+     */
+    async createBuyerCompanyMember(initOverrides?: RequestInit): Promise<BuyerCompanyResponse> {
+        const response = await this.createBuyerCompanyMemberRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Invite a friend into a chat with a seller: a single-use link (7 days) that makes whoever opens it a guest who can read and post. Only the thread’s buyer can invite; at most 5 guests.
      */
     async createBuyerConversationInviteRaw(requestParameters: CreateBuyerConversationInviteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerWishlistInviteResponse>> {
@@ -2106,6 +2625,44 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async createBuyerConversationJoin(requestParameters: CreateBuyerConversationJoinRequest, initOverrides?: RequestInit): Promise<CreateBuyerConversationJoinResponse> {
         const response = await this.createBuyerConversationJoinRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * RSVP to an event: going (counts against its capacity) or interested.
+     */
+    async createBuyerEventRsvpRaw(requestParameters: CreateBuyerEventRsvpRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerEventRsvpResponse>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
+            throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createBuyerEventRsvp.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/events/{slug}/rsvp`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerEventRsvpResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * RSVP to an event: going (counts against its capacity) or interested.
+     */
+    async createBuyerEventRsvp(requestParameters: CreateBuyerEventRsvpRequest, initOverrides?: RequestInit): Promise<CreateBuyerEventRsvpResponse> {
+        const response = await this.createBuyerEventRsvpRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2314,7 +2871,7 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+     * Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. `linkToken` opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
      */
     async createBuyerGroupBuyJoinRaw(requestParameters: CreateBuyerGroupBuyJoinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerGroupBuyJoinResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -2344,7 +2901,7 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+     * Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. `linkToken` opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
      */
     async createBuyerGroupBuyJoin(requestParameters: CreateBuyerGroupBuyJoinRequest, initOverrides?: RequestInit): Promise<CreateBuyerGroupBuyJoinResponse> {
         const response = await this.createBuyerGroupBuyJoinRaw(requestParameters, initOverrides);
@@ -3123,7 +3680,7 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+     * Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
      */
     async createBuyerPassportClaimRaw(requestParameters: CreateBuyerPassportClaimRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerPassportResponse>> {
         if (requestParameters.code === null || requestParameters.code === undefined) {
@@ -3153,7 +3710,7 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+     * Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
      */
     async createBuyerPassportClaim(requestParameters: CreateBuyerPassportClaimRequest, initOverrides?: RequestInit): Promise<GetBuyerPassportResponse> {
         const response = await this.createBuyerPassportClaimRaw(requestParameters, initOverrides);
@@ -3195,44 +3752,6 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async createBuyerProtectionPlanCancel(requestParameters: CreateBuyerProtectionPlanCancelRequest, initOverrides?: RequestInit): Promise<CreateBuyerProtectionPlanCancelResponse> {
         const response = await this.createBuyerProtectionPlanCancelRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
-     */
-    async createBuyerPurchaseDownloadRaw(requestParameters: CreateBuyerPurchaseDownloadRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerPurchaseDownloadResponse>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerPurchaseDownload.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("BuyerOAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/v1/buyer/purchases/{id}/download`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerPurchaseDownloadResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
-     */
-    async createBuyerPurchaseDownload(requestParameters: CreateBuyerPurchaseDownloadRequest, initOverrides?: RequestInit): Promise<CreateBuyerPurchaseDownloadResponse> {
-        const response = await this.createBuyerPurchaseDownloadRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3391,7 +3910,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
      */
-    async createBuyerRentalArrivalPhotoRaw(requestParameters: CreateBuyerRentalArrivalPhotoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRentalArrivalPhotoResponse>> {
+    async createBuyerRentalArrivalPhotoRaw(requestParameters: CreateBuyerRentalArrivalPhotoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerRentalResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalArrivalPhoto.');
         }
@@ -3415,14 +3934,52 @@ export class BuyerApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerRentalArrivalPhotoResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerRentalResponseFromJSON(jsonValue));
     }
 
     /**
      * Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
      */
-    async createBuyerRentalArrivalPhoto(requestParameters: CreateBuyerRentalArrivalPhotoRequest, initOverrides?: RequestInit): Promise<CreateBuyerRentalArrivalPhotoResponse> {
+    async createBuyerRentalArrivalPhoto(requestParameters: CreateBuyerRentalArrivalPhotoRequest, initOverrides?: RequestInit): Promise<BuyerRentalResponse> {
         const response = await this.createBuyerRentalArrivalPhotoRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
+     */
+    async createBuyerRentalBuyoutRaw(requestParameters: CreateBuyerRentalBuyoutRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRentalBuyoutResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalBuyout.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/rentals/{id}/buyout`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerRentalBuyoutResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
+     */
+    async createBuyerRentalBuyout(requestParameters: CreateBuyerRentalBuyoutRequest, initOverrides?: RequestInit): Promise<CreateBuyerRentalBuyoutResponse> {
+        const response = await this.createBuyerRentalBuyoutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3503,6 +4060,124 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Confirm your rental arrived.
+     */
+    async createBuyerRentalDeliveredRaw(requestParameters: CreateBuyerRentalDeliveredRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerRentalResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalDelivered.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/rentals/{id}/delivered`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerRentalResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Confirm your rental arrived.
+     */
+    async createBuyerRentalDelivered(requestParameters: CreateBuyerRentalDeliveredRequest, initOverrides?: RequestInit): Promise<BuyerRentalResponse> {
+        const response = await this.createBuyerRentalDeliveredRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+     */
+    async createBuyerRentalExtensionRaw(requestParameters: CreateBuyerRentalExtensionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRentalExtensionResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalExtension.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/rentals/{id}/extensions`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerRentalExtensionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+     */
+    async createBuyerRentalExtension(requestParameters: CreateBuyerRentalExtensionRequest, initOverrides?: RequestInit): Promise<CreateBuyerRentalExtensionResponse> {
+        const response = await this.createBuyerRentalExtensionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Pay for an extension the seller approved → clientSecret.
+     */
+    async createBuyerRentalExtensionPayRaw(requestParameters: CreateBuyerRentalExtensionPayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRentalExtensionPayResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalExtensionPay.');
+        }
+
+        if (requestParameters.extensionId === null || requestParameters.extensionId === undefined) {
+            throw new runtime.RequiredError('extensionId','Required parameter requestParameters.extensionId was null or undefined when calling createBuyerRentalExtensionPay.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/rentals/{id}/extensions/{extensionId}/pay`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"extensionId"}}`, encodeURIComponent(String(requestParameters.extensionId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerRentalExtensionPayResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pay for an extension the seller approved → clientSecret.
+     */
+    async createBuyerRentalExtensionPay(requestParameters: CreateBuyerRentalExtensionPayRequest, initOverrides?: RequestInit): Promise<CreateBuyerRentalExtensionPayResponse> {
+        const response = await this.createBuyerRentalExtensionPayRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Start the ID check renting needs (Stripe Identity: photo ID + selfie). Open `url` (hosted) or use `clientSecret` with Stripe.js.
      */
     async createBuyerRentalIdentityStartRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRentalIdentityStartResponse>> {
@@ -3533,6 +4208,44 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async createBuyerRentalIdentityStart(initOverrides?: RequestInit): Promise<CreateBuyerRentalIdentityStartResponse> {
         const response = await this.createBuyerRentalIdentityStartRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Say you sent your rental back (optionally with photos).
+     */
+    async createBuyerRentalReturnShippedRaw(requestParameters: CreateBuyerRentalReturnShippedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerRentalResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalReturnShipped.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/rentals/{id}/return-shipped`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerRentalResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Say you sent your rental back (optionally with photos).
+     */
+    async createBuyerRentalReturnShipped(requestParameters: CreateBuyerRentalReturnShippedRequest, initOverrides?: RequestInit): Promise<BuyerRentalResponse> {
+        const response = await this.createBuyerRentalReturnShippedRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3651,10 +4364,48 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
+     */
+    async createBuyerSellerLoyaltyJoinRaw(requestParameters: CreateBuyerSellerLoyaltyJoinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerSellerLoyaltyResponse>> {
+        if (requestParameters.sellerUserId === null || requestParameters.sellerUserId === undefined) {
+            throw new runtime.RequiredError('sellerUserId','Required parameter requestParameters.sellerUserId was null or undefined when calling createBuyerSellerLoyaltyJoin.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/sellers/{sellerUserId}/loyalty/join`.replace(`{${"sellerUserId"}}`, encodeURIComponent(String(requestParameters.sellerUserId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerSellerLoyaltyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
+     */
+    async createBuyerSellerLoyaltyJoin(requestParameters: CreateBuyerSellerLoyaltyJoinRequest, initOverrides?: RequestInit): Promise<GetBuyerSellerLoyaltyResponse> {
+        const response = await this.createBuyerSellerLoyaltyJoinRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * A second report while your first is still under review updates that report instead of filing another. `purchaseId` is attached only if it is your order from this seller.
      * Report a seller to Crossly’s trust team.
      */
-    async createBuyerSellerReportRaw(requestParameters: CreateBuyerSellerReportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerSellerReportResponse>> {
+    async createBuyerSellerReportRaw(requestParameters: CreateBuyerSellerReportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerStoreReportResponse>> {
         if (requestParameters.username === null || requestParameters.username === undefined) {
             throw new runtime.RequiredError('username','Required parameter requestParameters.username was null or undefined when calling createBuyerSellerReport.');
         }
@@ -3685,14 +4436,14 @@ export class BuyerApi extends runtime.BaseAPI {
             body: CreateBuyerSellerReportRequestToJSON(requestParameters.createBuyerSellerReportRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerSellerReportResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerStoreReportResponseFromJSON(jsonValue));
     }
 
     /**
      * A second report while your first is still under review updates that report instead of filing another. `purchaseId` is attached only if it is your order from this seller.
      * Report a seller to Crossly’s trust team.
      */
-    async createBuyerSellerReport(requestParameters: CreateBuyerSellerReportOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerSellerReportResponse> {
+    async createBuyerSellerReport(requestParameters: CreateBuyerSellerReportOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerStoreReportResponse> {
         const response = await this.createBuyerSellerReportRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3732,6 +4483,53 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async createBuyerSplitCancel(requestParameters: CreateBuyerSplitCancelRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
         const response = await this.createBuyerSplitCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Files against whoever runs the store. A second report while your first is still under review updates that report instead of filing another. `purchaseId` is attached only if it is your order from this seller.
+     * Report a store to Crossly’s trust team.
+     */
+    async createBuyerStoreReportRaw(requestParameters: CreateBuyerStoreReportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerStoreReportResponse>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
+            throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createBuyerStoreReport.');
+        }
+
+        if (requestParameters.createBuyerSellerReportRequest === null || requestParameters.createBuyerSellerReportRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerSellerReportRequest','Required parameter requestParameters.createBuyerSellerReportRequest was null or undefined when calling createBuyerStoreReport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/stores/{slug}/report`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateBuyerSellerReportRequestToJSON(requestParameters.createBuyerSellerReportRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerStoreReportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Files against whoever runs the store. A second report while your first is still under review updates that report instead of filing another. `purchaseId` is attached only if it is your order from this seller.
+     * Report a store to Crossly’s trust team.
+     */
+    async createBuyerStoreReport(requestParameters: CreateBuyerStoreReportRequest, initOverrides?: RequestInit): Promise<CreateBuyerStoreReportResponse> {
+        const response = await this.createBuyerStoreReportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4117,6 +4915,298 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async createBuyerVaultWithdraw(requestParameters: CreateBuyerVaultWithdrawRequest, initOverrides?: RequestInit): Promise<CreateBuyerVaultWithdrawResponse> {
         const response = await this.createBuyerVaultWithdrawRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Apply to a store\'s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller\'s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+     */
+    async createBuyerWholesaleCatalogApplyRaw(requestParameters: CreateBuyerWholesaleCatalogApplyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerWholesaleCatalogApplyResponse>> {
+        if (requestParameters.storeSlug === null || requestParameters.storeSlug === undefined) {
+            throw new runtime.RequiredError('storeSlug','Required parameter requestParameters.storeSlug was null or undefined when calling createBuyerWholesaleCatalogApply.');
+        }
+
+        if (requestParameters.catalogSlug === null || requestParameters.catalogSlug === undefined) {
+            throw new runtime.RequiredError('catalogSlug','Required parameter requestParameters.catalogSlug was null or undefined when calling createBuyerWholesaleCatalogApply.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply`.replace(`{${"storeSlug"}}`, encodeURIComponent(String(requestParameters.storeSlug))).replace(`{${"catalogSlug"}}`, encodeURIComponent(String(requestParameters.catalogSlug))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerWholesaleCatalogApplyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Apply to a store\'s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller\'s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+     */
+    async createBuyerWholesaleCatalogApply(requestParameters: CreateBuyerWholesaleCatalogApplyRequest, initOverrides?: RequestInit): Promise<CreateBuyerWholesaleCatalogApplyResponse> {
+        const response = await this.createBuyerWholesaleCatalogApplyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+     */
+    async createBuyerWholesaleFreightRequestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerWholesaleFreightRequestResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/freight-requests`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerWholesaleFreightRequestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+     */
+    async createBuyerWholesaleFreightRequest(initOverrides?: RequestInit): Promise<CreateBuyerWholesaleFreightRequestResponse> {
+        const response = await this.createBuyerWholesaleFreightRequestRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+     */
+    async createBuyerWholesaleInvoicePayLinkRaw(requestParameters: CreateBuyerWholesaleInvoicePayLinkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerWholesaleInvoicePayLinkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerWholesaleInvoicePayLink.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/invoices/{id}/pay-link`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerWholesaleInvoicePayLinkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+     */
+    async createBuyerWholesaleInvoicePayLink(requestParameters: CreateBuyerWholesaleInvoicePayLinkRequest, initOverrides?: RequestInit): Promise<CreateBuyerWholesaleInvoicePayLinkResponse> {
+        const response = await this.createBuyerWholesaleInvoicePayLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+     */
+    async createBuyerWholesaleOrderSheetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerWholesaleOrderSheetResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/order-sheets`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerWholesaleOrderSheetResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+     */
+    async createBuyerWholesaleOrderSheet(initOverrides?: RequestInit): Promise<BuyerWholesaleOrderSheetResponse> {
+        const response = await this.createBuyerWholesaleOrderSheetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+     */
+    async createBuyerWholesaleQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerWholesaleQuoteResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/quotes`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerWholesaleQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+     */
+    async createBuyerWholesaleQuote(initOverrides?: RequestInit): Promise<BuyerWholesaleQuoteResponse> {
+        const response = await this.createBuyerWholesaleQuoteRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line\'s quantity drops the lock). Paying happens at checkout on Crossly.
+     */
+    async createBuyerWholesaleQuoteAcceptRaw(requestParameters: CreateBuyerWholesaleQuoteAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerWholesaleQuoteAcceptResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerWholesaleQuoteAccept.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/quotes/{id}/accept`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerWholesaleQuoteAcceptResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line\'s quantity drops the lock). Paying happens at checkout on Crossly.
+     */
+    async createBuyerWholesaleQuoteAccept(requestParameters: CreateBuyerWholesaleQuoteAcceptRequest, initOverrides?: RequestInit): Promise<CreateBuyerWholesaleQuoteAcceptResponse> {
+        const response = await this.createBuyerWholesaleQuoteAcceptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Withdraw a quote request that is still requested or answered.
+     */
+    async createBuyerWholesaleQuoteWithdrawRaw(requestParameters: CreateBuyerWholesaleQuoteWithdrawRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerWholesaleQuoteResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerWholesaleQuoteWithdraw.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/quotes/{id}/withdraw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerWholesaleQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Withdraw a quote request that is still requested or answered.
+     */
+    async createBuyerWholesaleQuoteWithdraw(requestParameters: CreateBuyerWholesaleQuoteWithdrawRequest, initOverrides?: RequestInit): Promise<BuyerWholesaleQuoteResponse> {
+        const response = await this.createBuyerWholesaleQuoteWithdrawRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
+     */
+    async createBuyerWholesaleUploadValidateRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerWholesaleUploadValidateResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/upload/validate`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerWholesaleUploadValidateResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
+     */
+    async createBuyerWholesaleUploadValidate(initOverrides?: RequestInit): Promise<CreateBuyerWholesaleUploadValidateResponse> {
+        const response = await this.createBuyerWholesaleUploadValidateRaw(initOverrides);
         return await response.value();
     }
 
@@ -4527,6 +5617,44 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Remove a member or cancel an invite (owner), or leave the company (your own member id).
+     */
+    async deleteBuyerCompanyMemberRaw(requestParameters: DeleteBuyerCompanyMemberRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerCompanyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteBuyerCompanyMember.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company/members/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerCompanyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove a member or cancel an invite (owner), or leave the company (your own member id).
+     */
+    async deleteBuyerCompanyMember(requestParameters: DeleteBuyerCompanyMemberRequest, initOverrides?: RequestInit): Promise<BuyerCompanyResponse> {
+        const response = await this.deleteBuyerCompanyMemberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Remove a guest (the thread’s buyer), or leave (a guest, with your own user id).
      */
     async deleteBuyerConversationGuestRaw(requestParameters: DeleteBuyerConversationGuestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
@@ -4569,6 +5697,86 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Remove your review of a creation (its vote leaves the rating with it).
+     */
+    async deleteBuyerCreationReviewRaw(requestParameters: DeleteBuyerCreationReviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
+        if (requestParameters.format === null || requestParameters.format === undefined) {
+            throw new runtime.RequiredError('format','Required parameter requestParameters.format was null or undefined when calling deleteBuyerCreationReview.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteBuyerCreationReview.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/creations/{format}/{id}/review`.replace(`{${"format"}}`, encodeURIComponent(String(requestParameters.format))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove your review of a creation (its vote leaves the rating with it).
+     */
+    async deleteBuyerCreationReview(requestParameters: DeleteBuyerCreationReviewRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
+        const response = await this.deleteBuyerCreationReviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take back your RSVP.
+     */
+    async deleteBuyerEventRsvpRaw(requestParameters: DeleteBuyerEventRsvpRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
+            throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling deleteBuyerEventRsvp.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/events/{slug}/rsvp`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Take back your RSVP.
+     */
+    async deleteBuyerEventRsvp(requestParameters: DeleteBuyerEventRsvpRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
+        const response = await this.deleteBuyerEventRsvpRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Delete a reference garment.
      */
     async deleteBuyerFitRefRaw(requestParameters: DeleteBuyerFitRefRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
@@ -4604,6 +5812,43 @@ export class BuyerApi extends runtime.BaseAPI {
     async deleteBuyerFitRef(requestParameters: DeleteBuyerFitRefRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
         const response = await this.deleteBuyerFitRefRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Hide a line from your home’s guestbook.
+     */
+    async deleteBuyerHomeGuestbookRaw(requestParameters: DeleteBuyerHomeGuestbookRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteBuyerHomeGuestbook.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home/guestbook/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Hide a line from your home’s guestbook.
+     */
+    async deleteBuyerHomeGuestbook(requestParameters: DeleteBuyerHomeGuestbookRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteBuyerHomeGuestbookRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -4873,6 +6118,44 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Leave a seller’s loyalty club.
+     */
+    async deleteBuyerSellerLoyaltyJoinRaw(requestParameters: DeleteBuyerSellerLoyaltyJoinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
+        if (requestParameters.sellerUserId === null || requestParameters.sellerUserId === undefined) {
+            throw new runtime.RequiredError('sellerUserId','Required parameter requestParameters.sellerUserId was null or undefined when calling deleteBuyerSellerLoyaltyJoin.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/sellers/{sellerUserId}/loyalty/join`.replace(`{${"sellerUserId"}}`, encodeURIComponent(String(requestParameters.sellerUserId))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Leave a seller’s loyalty club.
+     */
+    async deleteBuyerSellerLoyaltyJoin(requestParameters: DeleteBuyerSellerLoyaltyJoinRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
+        const response = await this.deleteBuyerSellerLoyaltyJoinRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Take an item you added off a room’s board.
      */
     async deleteBuyerTogetherItemRaw(requestParameters: DeleteBuyerTogetherItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
@@ -4987,6 +6270,44 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async deleteBuyerTryOn(requestParameters: DeleteBuyerTryOnRequest, initOverrides?: RequestInit): Promise<DeleteBuyerTryOnResponse> {
         const response = await this.deleteBuyerTryOnRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete an order sheet.
+     */
+    async deleteBuyerWholesaleOrderSheetRaw(requestParameters: DeleteBuyerWholesaleOrderSheetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteBuyerWholesaleOrderSheetResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteBuyerWholesaleOrderSheet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/order-sheets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteBuyerWholesaleOrderSheetResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete an order sheet.
+     */
+    async deleteBuyerWholesaleOrderSheet(requestParameters: DeleteBuyerWholesaleOrderSheetRequest, initOverrides?: RequestInit): Promise<DeleteBuyerWholesaleOrderSheetResponse> {
+        const response = await this.deleteBuyerWholesaleOrderSheetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -5569,6 +6890,82 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+     */
+    async getBuyerCompanyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerCompanyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerCompanyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+     */
+    async getBuyerCompany(initOverrides?: RequestInit): Promise<BuyerCompanyResponse> {
+        const response = await this.getBuyerCompanyRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A live creation\'s public page: its rating breakdown, recent reviews and whether you can review it.
+     */
+    async getBuyerCreationRaw(requestParameters: GetBuyerCreationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerCreationResponse>> {
+        if (requestParameters.format === null || requestParameters.format === undefined) {
+            throw new runtime.RequiredError('format','Required parameter requestParameters.format was null or undefined when calling getBuyerCreation.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerCreation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/creations/{format}/{id}`.replace(`{${"format"}}`, encodeURIComponent(String(requestParameters.format))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerCreationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A live creation\'s public page: its rating breakdown, recent reviews and whether you can review it.
+     */
+    async getBuyerCreation(requestParameters: GetBuyerCreationRequest, initOverrides?: RequestInit): Promise<GetBuyerCreationResponse> {
+        const response = await this.getBuyerCreationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * A creator storefront: profile, affiliate code, and shelves of live picks.
      */
     async getBuyerCreatorRaw(requestParameters: GetBuyerCreatorRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerCreatorResponse>> {
@@ -5603,6 +7000,44 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async getBuyerCreator(requestParameters: GetBuyerCreatorRequest, initOverrides?: RequestInit): Promise<GetBuyerCreatorResponse> {
         const response = await this.getBuyerCreatorRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
+     */
+    async getBuyerEventRaw(requestParameters: GetBuyerEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerEventResponse>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
+            throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling getBuyerEvent.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/events/{slug}`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerEventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
+     */
+    async getBuyerEvent(requestParameters: GetBuyerEventRequest, initOverrides?: RequestInit): Promise<GetBuyerEventResponse> {
+        const response = await this.getBuyerEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -5671,6 +7106,74 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async getBuyerGiftFinderOption(initOverrides?: RequestInit): Promise<GetBuyerGiftFinderOptionResponse> {
         const response = await this.getBuyerGiftFinderOptionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your home in Crossly World (made on first read).
+     */
+    async getBuyerHomeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerHomeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerHomeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your home in Crossly World (made on first read).
+     */
+    async getBuyerHome(initOverrides?: RequestInit): Promise<BuyerHomeResponse> {
+        const response = await this.getBuyerHomeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What you could place in your home: your items and delivered furniture.
+     */
+    async getBuyerHomePlaceableRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerHomePlaceableResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home/placeable`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerHomePlaceableResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What you could place in your home: your items and delivered furniture.
+     */
+    async getBuyerHomePlaceable(initOverrides?: RequestInit): Promise<GetBuyerHomePlaceableResponse> {
+        const response = await this.getBuyerHomePlaceableRaw(initOverrides);
         return await response.value();
     }
 
@@ -6431,7 +7934,7 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
-     * What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+     * What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid=, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
      */
     async getBuyerPassportRaw(requestParameters: GetBuyerPassportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerPassportResponse>> {
         if (requestParameters.code === null || requestParameters.code === undefined) {
@@ -6461,7 +7964,7 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
-     * What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+     * What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid=, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
      */
     async getBuyerPassport(requestParameters: GetBuyerPassportRequest, initOverrides?: RequestInit): Promise<GetBuyerPassportResponse> {
         const response = await this.getBuyerPassportRaw(requestParameters, initOverrides);
@@ -6801,6 +8304,44 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * One of your rentals: timeline, payments, the return label, extension and buy-out terms.
+     */
+    async getBuyerRentalRaw(requestParameters: GetBuyerRentalRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerRentalResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerRental.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/rentals/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerRentalResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One of your rentals: timeline, payments, the return label, extension and buy-out terms.
+     */
+    async getBuyerRental(requestParameters: GetBuyerRentalRequest, initOverrides?: RequestInit): Promise<GetBuyerRentalResponse> {
+        const response = await this.getBuyerRentalRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Can you rent right now: ID-verified (a photo ID and a matching selfie, once), the verified name rentals ship to, and your standing (one rental at a time until your first comes back; none after one that never did).
      */
     async getBuyerRentalEligibilityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerRentalEligibilityResponse>> {
@@ -6869,6 +8410,44 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async getBuyerSellerClub(requestParameters: GetBuyerSellerClubRequest, initOverrides?: RequestInit): Promise<GetBuyerSellerClubResponse> {
         const response = await this.getBuyerSellerClubRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
+     */
+    async getBuyerSellerLoyaltyRaw(requestParameters: GetBuyerSellerLoyaltyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerSellerLoyaltyResponse>> {
+        if (requestParameters.sellerUserId === null || requestParameters.sellerUserId === undefined) {
+            throw new runtime.RequiredError('sellerUserId','Required parameter requestParameters.sellerUserId was null or undefined when calling getBuyerSellerLoyalty.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/sellers/{sellerUserId}/loyalty`.replace(`{${"sellerUserId"}}`, encodeURIComponent(String(requestParameters.sellerUserId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerSellerLoyaltyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
+     */
+    async getBuyerSellerLoyalty(requestParameters: GetBuyerSellerLoyaltyRequest, initOverrides?: RequestInit): Promise<GetBuyerSellerLoyaltyResponse> {
+        const response = await this.getBuyerSellerLoyaltyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -7059,6 +8638,556 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+     */
+    async getBuyerVaultMarketOptionAnalyticRaw(requestParameters: GetBuyerVaultMarketOptionAnalyticRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketOptionAnalyticResponse>> {
+        if (requestParameters.underlying === null || requestParameters.underlying === undefined) {
+            throw new runtime.RequiredError('underlying','Required parameter requestParameters.underlying was null or undefined when calling getBuyerVaultMarketOptionAnalytic.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/analytics/{underlying}`.replace(`{${"underlying"}}`, encodeURIComponent(String(requestParameters.underlying))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketOptionAnalyticResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+     */
+    async getBuyerVaultMarketOptionAnalytic(requestParameters: GetBuyerVaultMarketOptionAnalyticRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketOptionAnalyticResponse> {
+        const response = await this.getBuyerVaultMarketOptionAnalyticRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+     */
+    async getBuyerVaultMarketOptionChainRaw(requestParameters: GetBuyerVaultMarketOptionChainRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketOptionChainResponse>> {
+        if (requestParameters.underlying === null || requestParameters.underlying === undefined) {
+            throw new runtime.RequiredError('underlying','Required parameter requestParameters.underlying was null or undefined when calling getBuyerVaultMarketOptionChain.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/chain/{underlying}`.replace(`{${"underlying"}}`, encodeURIComponent(String(requestParameters.underlying))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketOptionChainResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+     */
+    async getBuyerVaultMarketOptionChain(requestParameters: GetBuyerVaultMarketOptionChainRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketOptionChainResponse> {
+        const response = await this.getBuyerVaultMarketOptionChainRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+     */
+    async getBuyerVaultMarketOptionIvRaw(requestParameters: GetBuyerVaultMarketOptionIvRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketOptionIvResponse>> {
+        if (requestParameters.underlying === null || requestParameters.underlying === undefined) {
+            throw new runtime.RequiredError('underlying','Required parameter requestParameters.underlying was null or undefined when calling getBuyerVaultMarketOptionIv.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/iv/{underlying}`.replace(`{${"underlying"}}`, encodeURIComponent(String(requestParameters.underlying))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketOptionIvResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+     */
+    async getBuyerVaultMarketOptionIv(requestParameters: GetBuyerVaultMarketOptionIvRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketOptionIvResponse> {
+        const response = await this.getBuyerVaultMarketOptionIvRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your fractional options positions with their marks, P&L and Greeks (open by default; `status` all for closed and settled too). Read only.
+     */
+    async getBuyerVaultMarketOptionPositionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketOptionPositionResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/positions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketOptionPositionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your fractional options positions with their marks, P&L and Greeks (open by default; `status` all for closed and settled too). Read only.
+     */
+    async getBuyerVaultMarketOptionPosition(initOverrides?: RequestInit): Promise<GetBuyerVaultMarketOptionPositionResponse> {
+        const response = await this.getBuyerVaultMarketOptionPositionRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your options portfolio Greeks, a scenario\'s P&L (`priceShift`, `volShift`, `daysForward`) and the beta-weighted delta against an index. Read only.
+     */
+    async getBuyerVaultMarketOptionRiskRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketOptionRiskResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/risk`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketOptionRiskResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options portfolio Greeks, a scenario\'s P&L (`priceShift`, `volShift`, `daysForward`) and the beta-weighted delta against an index. Read only.
+     */
+    async getBuyerVaultMarketOptionRisk(initOverrides?: RequestInit): Promise<GetBuyerVaultMarketOptionRiskResponse> {
+        const response = await this.getBuyerVaultMarketOptionRiskRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+     */
+    async getBuyerVaultMarketPredictionBoardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketPredictionBoardResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/predictions/board`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketPredictionBoardResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+     */
+    async getBuyerVaultMarketPredictionBoard(initOverrides?: RequestInit): Promise<GetBuyerVaultMarketPredictionBoardResponse> {
+        const response = await this.getBuyerVaultMarketPredictionBoardRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One expiry’s markets with your holdings in each and their real worst and best case across them.
+     */
+    async getBuyerVaultMarketPredictionEventRaw(requestParameters: GetBuyerVaultMarketPredictionEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketPredictionEventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerVaultMarketPredictionEvent.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/predictions/events/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketPredictionEventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One expiry’s markets with your holdings in each and their real worst and best case across them.
+     */
+    async getBuyerVaultMarketPredictionEvent(requestParameters: GetBuyerVaultMarketPredictionEventRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketPredictionEventResponse> {
+        const response = await this.getBuyerVaultMarketPredictionEventRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Opt-in forecaster leaderboards (`period` week | month | all; `metric` pnl | accuracy | brier; `venue` live | paper).
+     */
+    async getBuyerVaultMarketPredictionLeaderboardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketPredictionLeaderboardResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/predictions/leaderboard`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketPredictionLeaderboardResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Opt-in forecaster leaderboards (`period` week | month | all; `metric` pnl | accuracy | brier; `venue` live | paper).
+     */
+    async getBuyerVaultMarketPredictionLeaderboard(initOverrides?: RequestInit): Promise<GetBuyerVaultMarketPredictionLeaderboardResponse> {
+        const response = await this.getBuyerVaultMarketPredictionLeaderboardRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+     */
+    async getBuyerVaultMarketPredictionMarketRaw(requestParameters: GetBuyerVaultMarketPredictionMarketRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketPredictionMarketResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerVaultMarketPredictionMarket.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/predictions/markets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketPredictionMarketResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+     */
+    async getBuyerVaultMarketPredictionMarket(requestParameters: GetBuyerVaultMarketPredictionMarketRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketPredictionMarketResponse> {
+        const response = await this.getBuyerVaultMarketPredictionMarketRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (`range` 1d, 1w, 1m, all; `venue` live or paper).
+     */
+    async getBuyerVaultMarketPredictionMarketHistoryRaw(requestParameters: GetBuyerVaultMarketPredictionMarketHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketPredictionMarketHistoryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerVaultMarketPredictionMarketHistory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/predictions/markets/{id}/history`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketPredictionMarketHistoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (`range` 1d, 1w, 1m, all; `venue` live or paper).
+     */
+    async getBuyerVaultMarketPredictionMarketHistory(requestParameters: GetBuyerVaultMarketPredictionMarketHistoryRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketPredictionMarketHistoryResponse> {
+        const response = await this.getBuyerVaultMarketPredictionMarketHistoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+     */
+    async getBuyerVaultMarketShareRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketShareResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketShareResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+     */
+    async getBuyerVaultMarketShare(initOverrides?: RequestInit): Promise<GetBuyerVaultMarketShareResponse> {
+        const response = await this.getBuyerVaultMarketShareRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One theme basket: its series, weights and prices, and your holdings against them.
+     */
+    async getBuyerVaultMarketShareBasketRaw(requestParameters: GetBuyerVaultMarketShareBasketRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketShareBasketResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerVaultMarketShareBasket.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/baskets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketShareBasketResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One theme basket: its series, weights and prices, and your holdings against them.
+     */
+    async getBuyerVaultMarketShareBasket(requestParameters: GetBuyerVaultMarketShareBasketRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketShareBasketResponse> {
+        const response = await this.getBuyerVaultMarketShareBasketRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+     */
+    async getBuyerVaultMarketShareSeryRaw(requestParameters: GetBuyerVaultMarketShareSeryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketShareSeryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerVaultMarketShareSery.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/series/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketShareSeryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+     */
+    async getBuyerVaultMarketShareSery(requestParameters: GetBuyerVaultMarketShareSeryRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketShareSeryResponse> {
+        const response = await this.getBuyerVaultMarketShareSeryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+     */
+    async getBuyerVaultMarketShareSeryHistoryRaw(requestParameters: GetBuyerVaultMarketShareSeryHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketShareSeryHistoryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerVaultMarketShareSeryHistory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/series/{id}/history`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketShareSeryHistoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+     */
+    async getBuyerVaultMarketShareSeryHistory(requestParameters: GetBuyerVaultMarketShareSeryHistoryRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketShareSeryHistoryResponse> {
+        const response = await this.getBuyerVaultMarketShareSeryHistoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your holder perks on a series: badge, visit links, viewing days and your bookings.
+     */
+    async getBuyerVaultMarketShareSeryPerkRaw(requestParameters: GetBuyerVaultMarketShareSeryPerkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketShareSeryPerkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerVaultMarketShareSeryPerk.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/series/{id}/perks`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerVaultMarketShareSeryPerkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your holder perks on a series: badge, visit links, viewing days and your bookings.
+     */
+    async getBuyerVaultMarketShareSeryPerk(requestParameters: GetBuyerVaultMarketShareSeryPerkRequest, initOverrides?: RequestInit): Promise<GetBuyerVaultMarketShareSeryPerkResponse> {
+        const response = await this.getBuyerVaultMarketShareSeryPerkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * What your vault is worth now: value at the market prices (marks come only from trades) split into reliable and indicative marks, cost and P&L, today’s change, and an estimate of what the units free to sell would fetch from the bids resting on the book now. Read only.
      */
     async getBuyerVaultMarketWorthRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerVaultMarketWorthResponse>> {
@@ -7089,6 +9218,272 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async getBuyerVaultMarketWorth(initOverrides?: RequestInit): Promise<GetBuyerVaultMarketWorthResponse> {
         const response = await this.getBuyerVaultMarketWorthRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+     */
+    async getBuyerWholesaleCartRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerWholesaleCartResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/cart`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerWholesaleCartResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+     */
+    async getBuyerWholesaleCart(initOverrides?: RequestInit): Promise<GetBuyerWholesaleCartResponse> {
+        const response = await this.getBuyerWholesaleCartRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The application form for a store\'s wholesale catalog: the seller\'s requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable=false for a catalog you cannot apply to.
+     */
+    async getBuyerWholesaleCatalogApplyRaw(requestParameters: GetBuyerWholesaleCatalogApplyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerWholesaleCatalogApplyResponse>> {
+        if (requestParameters.storeSlug === null || requestParameters.storeSlug === undefined) {
+            throw new runtime.RequiredError('storeSlug','Required parameter requestParameters.storeSlug was null or undefined when calling getBuyerWholesaleCatalogApply.');
+        }
+
+        if (requestParameters.catalogSlug === null || requestParameters.catalogSlug === undefined) {
+            throw new runtime.RequiredError('catalogSlug','Required parameter requestParameters.catalogSlug was null or undefined when calling getBuyerWholesaleCatalogApply.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply`.replace(`{${"storeSlug"}}`, encodeURIComponent(String(requestParameters.storeSlug))).replace(`{${"catalogSlug"}}`, encodeURIComponent(String(requestParameters.catalogSlug))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerWholesaleCatalogApplyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The application form for a store\'s wholesale catalog: the seller\'s requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable=false for a catalog you cannot apply to.
+     */
+    async getBuyerWholesaleCatalogApply(requestParameters: GetBuyerWholesaleCatalogApplyRequest, initOverrides?: RequestInit): Promise<GetBuyerWholesaleCatalogApplyResponse> {
+        const response = await this.getBuyerWholesaleCatalogApplyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+     */
+    async getBuyerWholesaleDropRaw(requestParameters: GetBuyerWholesaleDropRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerWholesaleDropResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerWholesaleDrop.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/drops/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerWholesaleDropResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+     */
+    async getBuyerWholesaleDrop(requestParameters: GetBuyerWholesaleDropRequest, initOverrides?: RequestInit): Promise<GetBuyerWholesaleDropResponse> {
+        const response = await this.getBuyerWholesaleDropRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+     */
+    async getBuyerWholesaleInvoicePayQuoteRaw(requestParameters: GetBuyerWholesaleInvoicePayQuoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerWholesaleInvoicePayQuoteResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerWholesaleInvoicePayQuote.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/invoices/{id}/pay-quote`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerWholesaleInvoicePayQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+     */
+    async getBuyerWholesaleInvoicePayQuote(requestParameters: GetBuyerWholesaleInvoicePayQuoteRequest, initOverrides?: RequestInit): Promise<GetBuyerWholesaleInvoicePayQuoteResponse> {
+        const response = await this.getBuyerWholesaleInvoicePayQuoteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+     */
+    async getBuyerWholesaleOrderSheetRaw(requestParameters: GetBuyerWholesaleOrderSheetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerWholesaleOrderSheetResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerWholesaleOrderSheet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/order-sheets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerWholesaleOrderSheetResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+     */
+    async getBuyerWholesaleOrderSheet(requestParameters: GetBuyerWholesaleOrderSheetRequest, initOverrides?: RequestInit): Promise<BuyerWholesaleOrderSheetResponse> {
+        const response = await this.getBuyerWholesaleOrderSheetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One of your quotes with its items, the seller\'s prices and expiry.
+     */
+    async getBuyerWholesaleQuoteRaw(requestParameters: GetBuyerWholesaleQuoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerWholesaleQuoteResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerWholesaleQuote.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/quotes/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerWholesaleQuoteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One of your quotes with its items, the seller\'s prices and expiry.
+     */
+    async getBuyerWholesaleQuote(requestParameters: GetBuyerWholesaleQuoteRequest, initOverrides?: RequestInit): Promise<BuyerWholesaleQuoteResponse> {
+        const response = await this.getBuyerWholesaleQuoteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
+     */
+    async getBuyerWholesaleReorderRaw(requestParameters: GetBuyerWholesaleReorderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerWholesaleReorderResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerWholesaleReorder.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/reorder/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerWholesaleReorderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
+     */
+    async getBuyerWholesaleReorder(requestParameters: GetBuyerWholesaleReorderRequest, initOverrides?: RequestInit): Promise<GetBuyerWholesaleReorderResponse> {
+        const response = await this.getBuyerWholesaleReorderRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -7571,6 +9966,40 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Spend approval requests (owners and accounts payable see all; others their own). ?status=pending|approved|declined|used|expired.
+     */
+    async listBuyerCompanyApprovalsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company/approvals`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Spend approval requests (owners and accounts payable see all; others their own). ?status=pending|approved|declined|used|expired.
+     */
+    async listBuyerCompanyApprovals(initOverrides?: RequestInit): Promise<BuyerResponse3> {
+        const response = await this.listBuyerCompanyApprovalsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your ship-together orders: parcels at the hub, and the one box out.
      */
     async listBuyerConsolidationsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse3>> {
@@ -7639,6 +10068,78 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async listBuyerConversationGuests(requestParameters: ListBuyerConversationGuestsRequest, initOverrides?: RequestInit): Promise<ListBuyerWishlistMembersResponse> {
         const response = await this.listBuyerConversationGuestsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+     */
+    async listBuyerCreationReviewableRaw(requestParameters: ListBuyerCreationReviewableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerCreationReviewableResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.purchaseRef !== undefined) {
+            queryParameters['purchaseRef'] = requestParameters.purchaseRef;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/creations/reviewable`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerCreationReviewableResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+     */
+    async listBuyerCreationReviewable(requestParameters: ListBuyerCreationReviewableRequest = {}, initOverrides?: RequestInit): Promise<ListBuyerCreationReviewableResponse> {
+        const response = await this.listBuyerCreationReviewableRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Upcoming and live seller events across Crossly, soonest first.
+     */
+    async listBuyerEventsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerEventsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/events`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerEventsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Upcoming and live seller events across Crossly, soonest first.
+     */
+    async listBuyerEvents(initOverrides?: RequestInit): Promise<ListBuyerEventsResponse> {
+        const response = await this.listBuyerEventsRaw(initOverrides);
         return await response.value();
     }
 
@@ -7915,6 +10416,74 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async listBuyerGiftSent(initOverrides?: RequestInit): Promise<ListBuyerGiftSentResponse> {
         const response = await this.listBuyerGiftSentRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your co-builders: friends who may arrange your home with you.
+     */
+    async listBuyerHomeBuildersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerHomeBuildersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home/builders`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerHomeBuildersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your co-builders: friends who may arrange your home with you.
+     */
+    async listBuyerHomeBuilders(initOverrides?: RequestInit): Promise<ListBuyerHomeBuildersResponse> {
+        const response = await this.listBuyerHomeBuildersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The homes you co-build, to visit and arrange.
+     */
+    async listBuyerHomeBuildingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerHomeBuildingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/homes/building`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerHomeBuildingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The homes you co-build, to visit and arrange.
+     */
+    async listBuyerHomeBuilding(initOverrides?: RequestInit): Promise<ListBuyerHomeBuildingResponse> {
+        const response = await this.listBuyerHomeBuildingRaw(initOverrides);
         return await response.value();
     }
 
@@ -8199,6 +10768,40 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async listBuyerLiveStreamLineup(requestParameters: ListBuyerLiveStreamLineupRequest, initOverrides?: RequestInit): Promise<ListBuyerLiveStreamLineupResponse> {
         const response = await this.listBuyerLiveStreamLineupRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
+     */
+    async listBuyerLoyaltyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerLoyaltyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/loyalty`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerLoyaltyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
+     */
+    async listBuyerLoyalty(initOverrides?: RequestInit): Promise<ListBuyerLoyaltyResponse> {
+        const response = await this.listBuyerLoyaltyRaw(initOverrides);
         return await response.value();
     }
 
@@ -8489,6 +11092,42 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async listBuyerPartyListings(requestParameters: ListBuyerPartyListingsRequest, initOverrides?: RequestInit): Promise<BuyerResponse3> {
         const response = await this.listBuyerPartyListingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Brand, last 4, expiry and whether it is your default. The `id` is what checkout and auction bids take as `paymentMethodId`.
+     * Your saved cards, the default first.
+     */
+    async listBuyerPaymentMethodsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerPaymentMethodsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/payment-methods`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerPaymentMethodsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Brand, last 4, expiry and whether it is your default. The `id` is what checkout and auction bids take as `paymentMethodId`.
+     * Your saved cards, the default first.
+     */
+    async listBuyerPaymentMethods(initOverrides?: RequestInit): Promise<ListBuyerPaymentMethodsResponse> {
+        const response = await this.listBuyerPaymentMethodsRaw(initOverrides);
         return await response.value();
     }
 
@@ -8803,6 +11442,44 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * A store\'s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
+     */
+    async listBuyerStoreListingsRaw(requestParameters: ListBuyerStoreListingsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerStoreListingsResponse>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
+            throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling listBuyerStoreListings.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/stores/{slug}/listings`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerStoreListingsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A store\'s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
+     */
+    async listBuyerStoreListings(requestParameters: ListBuyerStoreListingsRequest, initOverrides?: RequestInit): Promise<ListBuyerStoreListingsResponse> {
+        const response = await this.listBuyerStoreListingsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your subscribe & save standing orders.
      */
     async listBuyerSubscriptionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerSubscriptionsResponse>> {
@@ -9077,6 +11754,414 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+     */
+    async listBuyerVaultMarketOptionCombosRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketOptionCombosResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/combos`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketOptionCombosResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+     */
+    async listBuyerVaultMarketOptionCombos(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketOptionCombosResponse> {
+        const response = await this.listBuyerVaultMarketOptionCombosRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+     */
+    async listBuyerVaultMarketOptionNoticesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketOptionNoticesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/notices`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketOptionNoticesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+     */
+    async listBuyerVaultMarketOptionNotices(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketOptionNoticesResponse> {
+        const response = await this.listBuyerVaultMarketOptionNoticesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+     */
+    async listBuyerVaultMarketOptionSeriesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketOptionSeriesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/series`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketOptionSeriesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+     */
+    async listBuyerVaultMarketOptionSeries(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketOptionSeriesResponse> {
+        const response = await this.listBuyerVaultMarketOptionSeriesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+     */
+    async listBuyerVaultMarketOptionStrategiesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketOptionStrategiesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/options/strategies`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketOptionStrategiesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+     */
+    async listBuyerVaultMarketOptionStrategies(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketOptionStrategiesResponse> {
+        const response = await this.listBuyerVaultMarketOptionStrategiesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A prediction market’s (or series’) discussion thread. Read only.
+     */
+    async listBuyerVaultMarketPredictionCommentsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketPredictionCommentsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/predictions/comments`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketPredictionCommentsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A prediction market’s (or series’) discussion thread. Read only.
+     */
+    async listBuyerVaultMarketPredictionComments(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketPredictionCommentsResponse> {
+        const response = await this.listBuyerVaultMarketPredictionCommentsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * \"Will it hit?\" prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market\'s own price, display only).
+     */
+    async listBuyerVaultMarketPredictionMarketsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketPredictionMarketsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/predictions/markets`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketPredictionMarketsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * \"Will it hit?\" prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market\'s own price, display only).
+     */
+    async listBuyerVaultMarketPredictionMarkets(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketPredictionMarketsResponse> {
+        const response = await this.listBuyerVaultMarketPredictionMarketsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+     */
+    async listBuyerVaultMarketPredictionPositionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketPredictionPositionsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/predictions/positions`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketPredictionPositionsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+     */
+    async listBuyerVaultMarketPredictionPositions(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketPredictionPositionsResponse> {
+        const response = await this.listBuyerVaultMarketPredictionPositionsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your recurring Vault Shares auto-invest plans.
+     */
+    async listBuyerVaultMarketShareAutoInvestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketShareAutoInvestResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/auto-invest`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketShareAutoInvestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your recurring Vault Shares auto-invest plans.
+     */
+    async listBuyerVaultMarketShareAutoInvest(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketShareAutoInvestResponse> {
+        const response = await this.listBuyerVaultMarketShareAutoInvestRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+     */
+    async listBuyerVaultMarketShareBasketsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketShareBasketsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/baskets`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketShareBasketsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+     */
+    async listBuyerVaultMarketShareBaskets(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketShareBasketsResponse> {
+        const response = await this.listBuyerVaultMarketShareBasketsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+     */
+    async listBuyerVaultMarketShareDropsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketShareDropsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/drops`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketShareDropsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+     */
+    async listBuyerVaultMarketShareDrops(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketShareDropsResponse> {
+        const response = await this.listBuyerVaultMarketShareDropsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Vault Shares gifts you sent or were offered.
+     */
+    async listBuyerVaultMarketShareGiftsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketShareGiftsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/gifts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketShareGiftsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Vault Shares gifts you sent or were offered.
+     */
+    async listBuyerVaultMarketShareGifts(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketShareGiftsResponse> {
+        const response = await this.listBuyerVaultMarketShareGiftsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
+     */
+    async listBuyerVaultMarketShareSeriesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketShareSeriesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/vault-markets/shares/series`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerVaultMarketShareSeriesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
+     */
+    async listBuyerVaultMarketShareSeries(initOverrides?: RequestInit): Promise<ListBuyerVaultMarketShareSeriesResponse> {
+        const response = await this.listBuyerVaultMarketShareSeriesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * The book keys you watch, with mark and its quality, 24 h and 7 d change, and the last 30 daily marks.
      */
     async listBuyerVaultMarketWatchlistRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerVaultMarketWatchlistResponse>> {
@@ -9141,6 +12226,312 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async listBuyerVideoRequests(initOverrides?: RequestInit): Promise<ListBuyerVideoRequestsResponse> {
         const response = await this.listBuyerVideoRequestsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+     */
+    async listBuyerWalletPerksRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerWalletPerksResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wallet/perks`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerWalletPerksResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+     */
+    async listBuyerWalletPerks(initOverrides?: RequestInit): Promise<ListBuyerWalletPerksResponse> {
+        const response = await this.listBuyerWalletPerksRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook = reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+     */
+    async listBuyerWholesaleDropsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerWholesaleDropsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/drops`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerWholesaleDropsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook = reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+     */
+    async listBuyerWholesaleDrops(initOverrides?: RequestInit): Promise<ListBuyerWholesaleDropsResponse> {
+        const response = await this.listBuyerWholesaleDropsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your freight (LTL) quote requests to sellers, with the seller\'s figure in cents once quoted.
+     */
+    async listBuyerWholesaleFreightRequestsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/freight-requests`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Your freight (LTL) quote requests to sellers, with the seller\'s figure in cents once quoted.
+     */
+    async listBuyerWholesaleFreightRequests(initOverrides?: RequestInit): Promise<BuyerResponse3> {
+        const response = await this.listBuyerWholesaleFreightRequestsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your saved wholesale order sheets (one seller each), newest first.
+     */
+    async listBuyerWholesaleOrderSheetsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/order-sheets`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Your saved wholesale order sheets (one seller each), newest first.
+     */
+    async listBuyerWholesaleOrderSheets(initOverrides?: RequestInit): Promise<BuyerResponse3> {
+        const response = await this.listBuyerWholesaleOrderSheetsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+     */
+    async listBuyerWholesaleOrdersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/orders`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+     */
+    async listBuyerWholesaleOrders(initOverrides?: RequestInit): Promise<BuyerResponse3> {
+        const response = await this.listBuyerWholesaleOrdersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+     */
+    async listBuyerWholesalePrebooksRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerWholesalePrebooksResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/prebooks`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerWholesalePrebooksResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+     */
+    async listBuyerWholesalePrebooks(initOverrides?: RequestInit): Promise<ListBuyerWholesalePrebooksResponse> {
+        const response = await this.listBuyerWholesalePrebooksRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your requests for a quote (RFQ) to wholesale sellers. ?status=open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+     */
+    async listBuyerWholesaleQuotesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/quotes`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Your requests for a quote (RFQ) to wholesale sellers. ?status=open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+     */
+    async listBuyerWholesaleQuotes(initOverrides?: RequestInit): Promise<BuyerResponse3> {
+        const response = await this.listBuyerWholesaleQuotesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+     */
+    async listBuyerWholesaleStatementRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/statement`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+     */
+    async listBuyerWholesaleStatement(initOverrides?: RequestInit): Promise<BuyerResponse3> {
+        const response = await this.listBuyerWholesaleStatementRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
+     */
+    async listBuyerWholesaleSuppliersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse3>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/suppliers`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponse3FromJSON(jsonValue));
+    }
+
+    /**
+     * The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
+     */
+    async listBuyerWholesaleSuppliers(initOverrides?: RequestInit): Promise<BuyerResponse3> {
+        const response = await this.listBuyerWholesaleSuppliersRaw(initOverrides);
         return await response.value();
     }
 
@@ -9365,6 +12756,163 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Rename the company or change its tax id / website (owner).
+     */
+    async updateBuyerCompanyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerCompanyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerCompanyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Rename the company or change its tax id / website (owner).
+     */
+    async updateBuyerCompany(initOverrides?: RequestInit): Promise<BuyerCompanyResponse> {
+        const response = await this.updateBuyerCompanyRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+     */
+    async updateBuyerCompanyAddressRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerCompanyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company/addresses`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerCompanyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+     */
+    async updateBuyerCompanyAddress(initOverrides?: RequestInit): Promise<BuyerCompanyResponse> {
+        const response = await this.updateBuyerCompanyAddressRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change a member\'s role or approval limit (owner). The last owner stays an owner.
+     */
+    async updateBuyerCompanyMemberRaw(requestParameters: UpdateBuyerCompanyMemberRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerCompanyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBuyerCompanyMember.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/company/members/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerCompanyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change a member\'s role or approval limit (owner). The last owner stays an owner.
+     */
+    async updateBuyerCompanyMember(requestParameters: UpdateBuyerCompanyMemberRequest, initOverrides?: RequestInit): Promise<BuyerCompanyResponse> {
+        const response = await this.updateBuyerCompanyMemberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Only a buyer of it may review it (a bought copy, or a pack that held the card). One review per creation; a second call replaces it. The comment is moderated.
+     * Review a creation you bought (or change your review): 1-5 stars and an optional comment.
+     */
+    async updateBuyerCreationReviewRaw(requestParameters: UpdateBuyerCreationReviewOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBuyerCreationReviewResponse>> {
+        if (requestParameters.format === null || requestParameters.format === undefined) {
+            throw new runtime.RequiredError('format','Required parameter requestParameters.format was null or undefined when calling updateBuyerCreationReview.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBuyerCreationReview.');
+        }
+
+        if (requestParameters.updateBuyerCreationReviewRequest === null || requestParameters.updateBuyerCreationReviewRequest === undefined) {
+            throw new runtime.RequiredError('updateBuyerCreationReviewRequest','Required parameter requestParameters.updateBuyerCreationReviewRequest was null or undefined when calling updateBuyerCreationReview.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/creations/{format}/{id}/review`.replace(`{${"format"}}`, encodeURIComponent(String(requestParameters.format))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateBuyerCreationReviewRequestToJSON(requestParameters.updateBuyerCreationReviewRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateBuyerCreationReviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Only a buyer of it may review it (a bought copy, or a pack that held the card). One review per creation; a second call replaces it. The comment is moderated.
+     * Review a creation you bought (or change your review): 1-5 stars and an optional comment.
+     */
+    async updateBuyerCreationReview(requestParameters: UpdateBuyerCreationReviewOperationRequest, initOverrides?: RequestInit): Promise<UpdateBuyerCreationReviewResponse> {
+        const response = await this.updateBuyerCreationReviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Replaces the stars and comment; detailed ratings you omit stay as they were.
      * Revise feedback you left, within 60 days.
      */
@@ -9412,6 +12960,108 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+     */
+    async updateBuyerHomeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerHomeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerHomeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+     */
+    async updateBuyerHome(initOverrides?: RequestInit): Promise<BuyerHomeResponse> {
+        const response = await this.updateBuyerHomeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set your co-builders (friends only, at most 4).
+     */
+    async updateBuyerHomeBuilderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerHomeBuildersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home/builders`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerHomeBuildersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set your co-builders (friends only, at most 4).
+     */
+    async updateBuyerHomeBuilder(initOverrides?: RequestInit): Promise<ListBuyerHomeBuildersResponse> {
+        const response = await this.updateBuyerHomeBuilderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Arrange your home: the whole layout, checked against what you own.
+     */
+    async updateBuyerHomeLayoutRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerHomeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home/layout`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerHomeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Arrange your home: the whole layout, checked against what you own.
+     */
+    async updateBuyerHomeLayout(initOverrides?: RequestInit): Promise<BuyerHomeResponse> {
+        const response = await this.updateBuyerHomeLayoutRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Pause, resume or stop a hunt.
      */
     async updateBuyerHuntRaw(requestParameters: UpdateBuyerHuntRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
@@ -9446,6 +13096,46 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async updateBuyerHunt(requestParameters: UpdateBuyerHuntRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
         const response = await this.updateBuyerHuntRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The default is the card express checkout offers first. Only your own saved card: any other id is a 404.
+     * Make one of your saved cards the default.
+     */
+    async updateBuyerPaymentMethodDefaultRaw(requestParameters: UpdateBuyerPaymentMethodDefaultRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBuyerPaymentMethodDefaultResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBuyerPaymentMethodDefault.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/payment-methods/{id}/default`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateBuyerPaymentMethodDefaultResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The default is the card express checkout offers first. Only your own saved card: any other id is a 404.
+     * Make one of your saved cards the default.
+     */
+    async updateBuyerPaymentMethodDefault(requestParameters: UpdateBuyerPaymentMethodDefaultRequest, initOverrides?: RequestInit): Promise<UpdateBuyerPaymentMethodDefaultResponse> {
+        const response = await this.updateBuyerPaymentMethodDefaultRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -9606,6 +13296,78 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Set the PO reference for one seller\'s group of your cart: { sellerUserId, poReference } (empty clears it).
+     */
+    async updateBuyerWholesaleCartPoRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBuyerWholesaleCartPoResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/cart/po`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateBuyerWholesaleCartPoResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set the PO reference for one seller\'s group of your cart: { sellerUserId, poReference } (empty clears it).
+     */
+    async updateBuyerWholesaleCartPo(initOverrides?: RequestInit): Promise<UpdateBuyerWholesaleCartPoResponse> {
+        const response = await this.updateBuyerWholesaleCartPoRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Rename an order sheet, change its PO reference or note, or replace its lines.
+     */
+    async updateBuyerWholesaleOrderSheetRaw(requestParameters: UpdateBuyerWholesaleOrderSheetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerWholesaleOrderSheetResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBuyerWholesaleOrderSheet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/wholesale/order-sheets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BuyerWholesaleOrderSheetResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Rename an order sheet, change its PO reference or note, or replace its lines.
+     */
+    async updateBuyerWholesaleOrderSheet(requestParameters: UpdateBuyerWholesaleOrderSheetRequest, initOverrides?: RequestInit): Promise<BuyerWholesaleOrderSheetResponse> {
+        const response = await this.updateBuyerWholesaleOrderSheetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * A public list can be opened by anyone holding its share link; making it private again stops that link working.
      * Rename a wishlist, or make it public / private.
      */
@@ -9658,6 +13420,26 @@ export class BuyerApi extends runtime.BaseAPI {
     * @export
     * @enum {string}
     */
+export enum DeleteBuyerCreationReviewFormatEnum {
+    Wearable = 'wearable',
+    Decor = 'decor',
+    Interactive = 'interactive',
+    Card = 'card'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetBuyerCreationFormatEnum {
+    Wearable = 'wearable',
+    Decor = 'decor',
+    Interactive = 'interactive',
+    Card = 'card'
+}
+/**
+    * @export
+    * @enum {string}
+    */
 export enum ListBuyerAuctionsTabEnum {
     Bidding = 'bidding',
     Won = 'won',
@@ -9690,4 +13472,14 @@ export enum ListBuyerCashbackStatusEnum {
 export enum ListBuyerOffersAwaitingBuyerEnum {
     True = 'true',
     False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum UpdateBuyerCreationReviewFormatEnum {
+    Wearable = 'wearable',
+    Decor = 'decor',
+    Interactive = 'interactive',
+    Card = 'card'
 }

@@ -48,7 +48,7 @@ export interface CreateRestockPromptRepublishResponse {
      * @type {string}
      * @memberof CreateRestockPromptRepublishResponse
      */
-    bulkJobId: string;
+    bulkJobId?: string | null;
 }
 
 export function CreateRestockPromptRepublishResponseFromJSON(json: any): CreateRestockPromptRepublishResponse {
@@ -65,7 +65,7 @@ export function CreateRestockPromptRepublishResponseFromJSONTyped(json: any, ign
         'platforms': json['platforms'],
         'remainingPlatforms': json['remainingPlatforms'],
         'jobIds': json['jobIds'],
-        'bulkJobId': json['bulkJobId'],
+        'bulkJobId': !exists(json, 'bulkJobId') ? undefined : json['bulkJobId'],
     };
 }
 

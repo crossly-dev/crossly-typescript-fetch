@@ -51,9 +51,9 @@ export interface GetVaultMarketDigestPreviewResponseFirstMarks {
 */
 export enum GetVaultMarketDigestPreviewResponseFirstMarksQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketDigestPreviewResponseFirstMarksFromJSON(json: any): GetVaultMarketDigestPreviewResponseFirstMarks {

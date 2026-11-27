@@ -33,12 +33,6 @@ export interface CreateWorldSpaceEventResponseData {
     createdAt: Date;
     /**
      * 
-     * @type {Date}
-     * @memberof CreateWorldSpaceEventResponseData
-     */
-    cancelledAt?: Date | null;
-    /**
-     * 
      * @type {string}
      * @memberof CreateWorldSpaceEventResponseData
      */
@@ -51,6 +45,12 @@ export interface CreateWorldSpaceEventResponseData {
     endsAt: Date;
     /**
      * 
+     * @type {Date}
+     * @memberof CreateWorldSpaceEventResponseData
+     */
+    cancelledAt?: Date | null;
+    /**
+     * 
      * @type {string}
      * @memberof CreateWorldSpaceEventResponseData
      */
@@ -61,12 +61,6 @@ export interface CreateWorldSpaceEventResponseData {
      * @memberof CreateWorldSpaceEventResponseData
      */
     startsAt: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof CreateWorldSpaceEventResponseData
-     */
-    remindedAt?: Date | null;
     /**
      * 
      * @type {string}
@@ -87,6 +81,12 @@ export interface CreateWorldSpaceEventResponseData {
     spaceId: string;
     /**
      * 
+     * @type {Date}
+     * @memberof CreateWorldSpaceEventResponseData
+     */
+    remindedAt?: Date | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof CreateWorldSpaceEventResponseData
      */
@@ -105,15 +105,15 @@ export function CreateWorldSpaceEventResponseDataFromJSONTyped(json: any, ignore
         
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
-        'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
         'title': json['title'],
         'endsAt': (new Date(json['endsAt'])),
+        'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
         'kind': json['kind'],
         'startsAt': (new Date(json['startsAt'])),
-        'remindedAt': !exists(json, 'remindedAt') ? undefined : (json['remindedAt'] === null ? null : new Date(json['remindedAt'])),
         'createdBy': !exists(json, 'createdBy') ? undefined : json['createdBy'],
         'about': !exists(json, 'about') ? undefined : json['about'],
         'spaceId': json['spaceId'],
+        'remindedAt': !exists(json, 'remindedAt') ? undefined : (json['remindedAt'] === null ? null : new Date(json['remindedAt'])),
         'clubOnly': json['clubOnly'],
     };
 }
@@ -129,15 +129,15 @@ export function CreateWorldSpaceEventResponseDataToJSON(value?: CreateWorldSpace
         
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
-        'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
         'title': value.title,
         'endsAt': (value.endsAt.toISOString()),
+        'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
         'kind': value.kind,
         'startsAt': (value.startsAt.toISOString()),
-        'remindedAt': value.remindedAt === undefined ? undefined : (value.remindedAt === null ? null : value.remindedAt.toISOString()),
         'createdBy': value.createdBy,
         'about': value.about,
         'spaceId': value.spaceId,
+        'remindedAt': value.remindedAt === undefined ? undefined : (value.remindedAt === null ? null : value.remindedAt.toISOString()),
         'clubOnly': value.clubOnly,
     };
 }

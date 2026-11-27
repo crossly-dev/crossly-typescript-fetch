@@ -51,8 +51,8 @@ export interface ListWorldOutfitsItemItems {
 */
 export enum ListWorldOutfitsItemItemsDoorEnum {
     Receipt = 'receipt',
-    Cosmetic = 'cosmetic',
-    Stock = 'stock'
+    Stock = 'stock',
+    Cosmetic = 'cosmetic'
 }
 
 export function ListWorldOutfitsItemItemsFromJSON(json: any): ListWorldOutfitsItemItems {

@@ -98,8 +98,8 @@ export interface GetVaultMarketMarketResponseTier {
 * @enum {string}
 */
 export enum GetVaultMarketMarketResponseTierTierEnum {
-    Standard = 'standard',
     Closed = 'closed',
+    Standard = 'standard',
     Deep = 'deep',
     Thin = 'thin'
 }/**
@@ -107,9 +107,9 @@ export enum GetVaultMarketMarketResponseTierTierEnum {
 * @enum {string}
 */
 export enum GetVaultMarketMarketResponseTierLiquidityTierEnum {
+    C = 'C',
     A = 'A',
     B = 'B',
-    C = 'C',
     D = 'D'
 }
 

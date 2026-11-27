@@ -74,10 +74,10 @@ export interface GetSpatialSpaceResponseDataWarehouseUnits {
 */
 export enum GetSpatialSpaceResponseDataWarehouseUnitsSegmentKindEnum {
     Level = 'level',
+    Bin = 'bin',
     Zone = 'zone',
     Aisle = 'aisle',
-    Bay = 'bay',
-    Bin = 'bin'
+    Bay = 'bay'
 }
 
 export function GetSpatialSpaceResponseDataWarehouseUnitsFromJSON(json: any): GetSpatialSpaceResponseDataWarehouseUnits {

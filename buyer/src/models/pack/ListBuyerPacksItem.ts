@@ -43,13 +43,7 @@ export interface ListBuyerPacksItem {
      * @type {string}
      * @memberof ListBuyerPacksItem
      */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerPacksItem
-     */
-    description?: string | null;
+    slug: string;
     /**
      * 
      * @type {string}
@@ -61,7 +55,13 @@ export interface ListBuyerPacksItem {
      * @type {string}
      * @memberof ListBuyerPacksItem
      */
-    slug: string;
+    description?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerPacksItem
+     */
+    imageUrl?: string | null;
     /**
      * 
      * @type {number}
@@ -73,13 +73,7 @@ export interface ListBuyerPacksItem {
      * @type {string}
      * @memberof ListBuyerPacksItem
      */
-    imageUrl?: string | null;
-    /**
-     * 
-     * @type {Array<ListBuyerPacksItemTiers>}
-     * @memberof ListBuyerPacksItem
-     */
-    tiers: Array<ListBuyerPacksItemTiers>;
+    status: string;
     /**
      * 
      * @type {number}
@@ -92,6 +86,12 @@ export interface ListBuyerPacksItem {
      * @memberof ListBuyerPacksItem
      */
     buybackDays: number;
+    /**
+     * 
+     * @type {Array<ListBuyerPacksItemTiers>}
+     * @memberof ListBuyerPacksItem
+     */
+    tiers: Array<ListBuyerPacksItemTiers>;
     /**
      * 
      * @type {number}
@@ -123,15 +123,15 @@ export function ListBuyerPacksItemFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'id': json['id'],
-        'status': json['status'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'title': json['title'],
         'slug': json['slug'],
-        'priceCents': json['priceCents'],
+        'title': json['title'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
-        'tiers': ((json['tiers'] as Array<any>).map(ListBuyerPacksItemTiersFromJSON)),
+        'priceCents': json['priceCents'],
+        'status': json['status'],
         'buybackBps': json['buybackBps'],
         'buybackDays': json['buybackDays'],
+        'tiers': ((json['tiers'] as Array<any>).map(ListBuyerPacksItemTiersFromJSON)),
         'expectedValueCents': json['expectedValueCents'],
         'openable': json['openable'],
         'chase': ((json['chase'] as Array<any>).map(ListBuyerPacksItemChaseFromJSON)),
@@ -148,15 +148,15 @@ export function ListBuyerPacksItemToJSON(value?: ListBuyerPacksItem | null): any
     return {
         
         'id': value.id,
-        'status': value.status,
-        'description': value.description,
-        'title': value.title,
         'slug': value.slug,
-        'priceCents': value.priceCents,
+        'title': value.title,
+        'description': value.description,
         'imageUrl': value.imageUrl,
-        'tiers': ((value.tiers as Array<any>).map(ListBuyerPacksItemTiersToJSON)),
+        'priceCents': value.priceCents,
+        'status': value.status,
         'buybackBps': value.buybackBps,
         'buybackDays': value.buybackDays,
+        'tiers': ((value.tiers as Array<any>).map(ListBuyerPacksItemTiersToJSON)),
         'expectedValueCents': value.expectedValueCents,
         'openable': value.openable,
         'chase': ((value.chase as Array<any>).map(ListBuyerPacksItemChaseToJSON)),

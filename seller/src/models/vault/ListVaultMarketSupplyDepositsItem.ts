@@ -37,6 +37,12 @@ export interface ListVaultMarketSupplyDepositsItem {
      * @type {string}
      * @memberof ListVaultMarketSupplyDepositsItem
      */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListVaultMarketSupplyDepositsItem
+     */
     vaultItemId: string;
     /**
      * 
@@ -160,12 +166,12 @@ export interface ListVaultMarketSupplyDepositsItem {
 */
 export enum ListVaultMarketSupplyDepositsItemStatusEnum {
     Stored = 'stored',
-    Listed = 'listed',
-    Inbound = 'inbound',
     Cancelled = 'cancelled',
+    Listed = 'listed',
+    Shipped = 'shipped',
+    Inbound = 'inbound',
     SoldOnBook = 'sold_on_book',
-    ChannelSold = 'channel_sold',
-    Shipped = 'shipped'
+    ChannelSold = 'channel_sold'
 }
 
 export function ListVaultMarketSupplyDepositsItemFromJSON(json: any): ListVaultMarketSupplyDepositsItem {
@@ -179,6 +185,7 @@ export function ListVaultMarketSupplyDepositsItemFromJSONTyped(json: any, ignore
     return {
         
         'id': json['id'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'vaultItemId': json['vaultItemId'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
         'batchId': !exists(json, 'batchId') ? undefined : json['batchId'],
@@ -212,6 +219,7 @@ export function ListVaultMarketSupplyDepositsItemToJSON(value?: ListVaultMarketS
     return {
         
         'id': value.id,
+        'storefrontId': value.storefrontId,
         'vaultItemId': value.vaultItemId,
         'inventoryItemId': value.inventoryItemId,
         'batchId': value.batchId,

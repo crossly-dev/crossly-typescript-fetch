@@ -69,10 +69,10 @@ export enum GetVaultMarketFeeQuoteResponseMakerRoleEnum {
 * @enum {string}
 */
 export enum GetVaultMarketFeeQuoteResponseMakerProgramEnum {
+    Retail = 'retail',
     Volume = 'volume',
     Lp = 'lp',
-    Dmm = 'dmm',
-    Retail = 'retail'
+    Dmm = 'dmm'
 }
 
 export function GetVaultMarketFeeQuoteResponseMakerFromJSON(json: any): GetVaultMarketFeeQuoteResponseMaker {

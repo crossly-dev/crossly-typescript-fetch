@@ -14,29 +14,29 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetWeb3CreatorResponseDaily,
-    GetWeb3CreatorResponseDailyFromJSON,
-    GetWeb3CreatorResponseDailyFromJSONTyped,
-    GetWeb3CreatorResponseDailyToJSON,
-} from './GetWeb3CreatorResponseDaily';
+    GetCreatorCollectionResponseDataDashboardDaily,
+    GetCreatorCollectionResponseDataDashboardDailyFromJSON,
+    GetCreatorCollectionResponseDataDashboardDailyFromJSONTyped,
+    GetCreatorCollectionResponseDataDashboardDailyToJSON,
+} from '../creator/GetCreatorCollectionResponseDataDashboardDaily';
+import {
+    GetCreatorCollectionResponseDataDashboardMint,
+    GetCreatorCollectionResponseDataDashboardMintFromJSON,
+    GetCreatorCollectionResponseDataDashboardMintFromJSONTyped,
+    GetCreatorCollectionResponseDataDashboardMintToJSON,
+} from '../creator/GetCreatorCollectionResponseDataDashboardMint';
+import {
+    GetCreatorCollectionResponseDataDashboardRecent,
+    GetCreatorCollectionResponseDataDashboardRecentFromJSON,
+    GetCreatorCollectionResponseDataDashboardRecentFromJSONTyped,
+    GetCreatorCollectionResponseDataDashboardRecentToJSON,
+} from '../creator/GetCreatorCollectionResponseDataDashboardRecent';
 import {
     GetWeb3CreatorResponseHolders,
     GetWeb3CreatorResponseHoldersFromJSON,
     GetWeb3CreatorResponseHoldersFromJSONTyped,
     GetWeb3CreatorResponseHoldersToJSON,
 } from './GetWeb3CreatorResponseHolders';
-import {
-    GetWeb3CreatorResponseMint,
-    GetWeb3CreatorResponseMintFromJSON,
-    GetWeb3CreatorResponseMintFromJSONTyped,
-    GetWeb3CreatorResponseMintToJSON,
-} from './GetWeb3CreatorResponseMint';
-import {
-    GetWeb3CreatorResponseRecent,
-    GetWeb3CreatorResponseRecentFromJSON,
-    GetWeb3CreatorResponseRecentFromJSONTyped,
-    GetWeb3CreatorResponseRecentToJSON,
-} from './GetWeb3CreatorResponseRecent';
 import {
     GetWeb3CreatorResponseSales,
     GetWeb3CreatorResponseSalesFromJSON,
@@ -94,16 +94,16 @@ export interface GetWeb3CreatorResponse {
     sales: GetWeb3CreatorResponseSales;
     /**
      * 
-     * @type {Array<GetWeb3CreatorResponseDaily>}
+     * @type {Array<GetCreatorCollectionResponseDataDashboardDaily>}
      * @memberof GetWeb3CreatorResponse
      */
-    daily: Array<GetWeb3CreatorResponseDaily>;
+    daily: Array<GetCreatorCollectionResponseDataDashboardDaily>;
     /**
      * 
-     * @type {Array<GetWeb3CreatorResponseRecent>}
+     * @type {Array<GetCreatorCollectionResponseDataDashboardRecent>}
      * @memberof GetWeb3CreatorResponse
      */
-    recent: Array<GetWeb3CreatorResponseRecent>;
+    recent: Array<GetCreatorCollectionResponseDataDashboardRecent>;
     /**
      * 
      * @type {GetWeb3CreatorResponseHolders}
@@ -112,10 +112,10 @@ export interface GetWeb3CreatorResponse {
     holders?: GetWeb3CreatorResponseHolders | null;
     /**
      * 
-     * @type {GetWeb3CreatorResponseMint}
+     * @type {GetCreatorCollectionResponseDataDashboardMint}
      * @memberof GetWeb3CreatorResponse
      */
-    mint?: GetWeb3CreatorResponseMint | null;
+    mint?: GetCreatorCollectionResponseDataDashboardMint | null;
 }
 
 export function GetWeb3CreatorResponseFromJSON(json: any): GetWeb3CreatorResponse {
@@ -135,10 +135,10 @@ export function GetWeb3CreatorResponseFromJSONTyped(json: any, ignoreDiscriminat
         'royaltyBps': !exists(json, 'royaltyBps') ? undefined : json['royaltyBps'],
         'royaltyEstimateWei': json['royaltyEstimateWei'],
         'sales': GetWeb3CreatorResponseSalesFromJSON(json['sales']),
-        'daily': ((json['daily'] as Array<any>).map(GetWeb3CreatorResponseDailyFromJSON)),
-        'recent': ((json['recent'] as Array<any>).map(GetWeb3CreatorResponseRecentFromJSON)),
+        'daily': ((json['daily'] as Array<any>).map(GetCreatorCollectionResponseDataDashboardDailyFromJSON)),
+        'recent': ((json['recent'] as Array<any>).map(GetCreatorCollectionResponseDataDashboardRecentFromJSON)),
         'holders': !exists(json, 'holders') ? undefined : GetWeb3CreatorResponseHoldersFromJSON(json['holders']),
-        'mint': !exists(json, 'mint') ? undefined : GetWeb3CreatorResponseMintFromJSON(json['mint']),
+        'mint': !exists(json, 'mint') ? undefined : GetCreatorCollectionResponseDataDashboardMintFromJSON(json['mint']),
     };
 }
 
@@ -158,10 +158,10 @@ export function GetWeb3CreatorResponseToJSON(value?: GetWeb3CreatorResponse | nu
         'royaltyBps': value.royaltyBps,
         'royaltyEstimateWei': value.royaltyEstimateWei,
         'sales': GetWeb3CreatorResponseSalesToJSON(value.sales),
-        'daily': ((value.daily as Array<any>).map(GetWeb3CreatorResponseDailyToJSON)),
-        'recent': ((value.recent as Array<any>).map(GetWeb3CreatorResponseRecentToJSON)),
+        'daily': ((value.daily as Array<any>).map(GetCreatorCollectionResponseDataDashboardDailyToJSON)),
+        'recent': ((value.recent as Array<any>).map(GetCreatorCollectionResponseDataDashboardRecentToJSON)),
         'holders': GetWeb3CreatorResponseHoldersToJSON(value.holders),
-        'mint': GetWeb3CreatorResponseMintToJSON(value.mint),
+        'mint': GetCreatorCollectionResponseDataDashboardMintToJSON(value.mint),
     };
 }
 

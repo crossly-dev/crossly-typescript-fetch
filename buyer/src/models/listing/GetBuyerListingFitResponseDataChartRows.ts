@@ -24,13 +24,13 @@ export interface GetBuyerListingFitResponseDataChartRows {
      * @type {string}
      * @memberof GetBuyerListingFitResponseDataChartRows
      */
-    label: string;
+    key: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerListingFitResponseDataChartRows
      */
-    key: string;
+    label: string;
     /**
      * 
      * @type {number}
@@ -49,8 +49,8 @@ export function GetBuyerListingFitResponseDataChartRowsFromJSONTyped(json: any, 
     }
     return {
         
-        'label': json['label'],
         'key': json['key'],
+        'label': json['label'],
         'inches': json['inches'],
     };
 }
@@ -64,8 +64,8 @@ export function GetBuyerListingFitResponseDataChartRowsToJSON(value?: GetBuyerLi
     }
     return {
         
-        'label': value.label,
         'key': value.key,
+        'label': value.label,
         'inches': value.inches,
     };
 }

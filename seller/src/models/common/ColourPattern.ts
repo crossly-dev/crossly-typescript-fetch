@@ -38,25 +38,25 @@ export interface ColourPattern {
 * @enum {string}
 */
 export enum ColourPatternColourEnum {
+    Yellow = 'yellow',
+    Blue = 'blue',
+    Green = 'green',
+    Pink = 'pink',
+    Purple = 'purple',
+    Charcoal = 'charcoal',
     Red = 'red',
     Orange = 'orange',
-    Yellow = 'yellow',
-    Green = 'green',
     Teal = 'teal',
-    Blue = 'blue',
-    Purple = 'purple',
-    Pink = 'pink',
-    Cream = 'cream',
-    Charcoal = 'charcoal'
+    Cream = 'cream'
 }/**
 * @export
 * @enum {string}
 */
 export enum ColourPatternPatternEnum {
-    Solid = 'solid',
+    Check = 'check',
     Stripe = 'stripe',
-    Scallop = 'scallop',
-    Check = 'check'
+    Solid = 'solid',
+    Scallop = 'scallop'
 }
 
 export function ColourPatternFromJSON(json: any): ColourPattern {

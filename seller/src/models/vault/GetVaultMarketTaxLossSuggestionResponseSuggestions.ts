@@ -124,16 +124,16 @@ export interface GetVaultMarketTaxLossSuggestionResponseSuggestions {
 */
 export enum GetVaultMarketTaxLossSuggestionResponseSuggestionsMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }/**
 * @export
 * @enum {string}
 */
 export enum GetVaultMarketTaxLossSuggestionResponseSuggestionsTermEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function GetVaultMarketTaxLossSuggestionResponseSuggestionsFromJSON(json: any): GetVaultMarketTaxLossSuggestionResponseSuggestions {

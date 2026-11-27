@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateVaultMarketProQuoteResponseBid,
-    CreateVaultMarketProQuoteResponseBidFromJSON,
-    CreateVaultMarketProQuoteResponseBidFromJSONTyped,
-    CreateVaultMarketProQuoteResponseBidToJSON,
-} from './CreateVaultMarketProQuoteResponseBid';
+    OrderIdError,
+    OrderIdErrorFromJSON,
+    OrderIdErrorFromJSONTyped,
+    OrderIdErrorToJSON,
+} from '../common/OrderIdError';
 
 /**
  * 
@@ -34,16 +34,16 @@ export interface CreateVaultMarketProQuoteResponse {
     bookKey: string;
     /**
      * 
-     * @type {CreateVaultMarketProQuoteResponseBid}
+     * @type {OrderIdError}
      * @memberof CreateVaultMarketProQuoteResponse
      */
-    bid: CreateVaultMarketProQuoteResponseBid;
+    bid: OrderIdError;
     /**
      * 
-     * @type {CreateVaultMarketProQuoteResponseBid}
+     * @type {OrderIdError}
      * @memberof CreateVaultMarketProQuoteResponse
      */
-    ask: CreateVaultMarketProQuoteResponseBid;
+    ask: OrderIdError;
 }
 
 export function CreateVaultMarketProQuoteResponseFromJSON(json: any): CreateVaultMarketProQuoteResponse {
@@ -57,8 +57,8 @@ export function CreateVaultMarketProQuoteResponseFromJSONTyped(json: any, ignore
     return {
         
         'bookKey': json['bookKey'],
-        'bid': CreateVaultMarketProQuoteResponseBidFromJSON(json['bid']),
-        'ask': CreateVaultMarketProQuoteResponseBidFromJSON(json['ask']),
+        'bid': OrderIdErrorFromJSON(json['bid']),
+        'ask': OrderIdErrorFromJSON(json['ask']),
     };
 }
 
@@ -72,8 +72,8 @@ export function CreateVaultMarketProQuoteResponseToJSON(value?: CreateVaultMarke
     return {
         
         'bookKey': value.bookKey,
-        'bid': CreateVaultMarketProQuoteResponseBidToJSON(value.bid),
-        'ask': CreateVaultMarketProQuoteResponseBidToJSON(value.ask),
+        'bid': OrderIdErrorToJSON(value.bid),
+        'ask': OrderIdErrorToJSON(value.ask),
     };
 }
 

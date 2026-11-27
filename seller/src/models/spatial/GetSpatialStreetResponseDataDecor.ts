@@ -56,14 +56,14 @@ export interface GetSpatialStreetResponseDataDecor {
 * @enum {string}
 */
 export enum GetSpatialStreetResponseDataDecorBannerColourEnum {
-    Red = 'red',
-    Green = 'green',
-    Teal = 'teal',
     Blue = 'blue',
+    Green = 'green',
     Purple = 'purple',
+    Red = 'red',
+    Teal = 'teal',
     Cream = 'cream',
-    Amber = 'amber',
-    Ink = 'ink'
+    Ink = 'ink',
+    Amber = 'amber'
 }
 
 export function GetSpatialStreetResponseDataDecorFromJSON(json: any): GetSpatialStreetResponseDataDecor {

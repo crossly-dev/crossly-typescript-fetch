@@ -51,22 +51,22 @@ export interface ListAuthSessionsItem {
     ipCountry?: string | null;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof ListAuthSessionsItem
      */
-    createdAt: Date;
+    createdAt?: string | null;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof ListAuthSessionsItem
      */
-    lastUsedAt: Date;
+    lastUsedAt?: string | null;
     /**
      * 
-     * @type {Date}
+     * @type {string}
      * @memberof ListAuthSessionsItem
      */
-    expiresAt: Date;
+    expiresAt?: string | null;
 }
 
 export function ListAuthSessionsItemFromJSON(json: any): ListAuthSessionsItem {
@@ -84,9 +84,9 @@ export function ListAuthSessionsItemFromJSONTyped(json: any, ignoreDiscriminator
         'userAgent': !exists(json, 'userAgent') ? undefined : json['userAgent'],
         'ipAddress': !exists(json, 'ipAddress') ? undefined : json['ipAddress'],
         'ipCountry': !exists(json, 'ipCountry') ? undefined : json['ipCountry'],
-        'createdAt': (new Date(json['createdAt'])),
-        'lastUsedAt': (new Date(json['lastUsedAt'])),
-        'expiresAt': (new Date(json['expiresAt'])),
+        'createdAt': !exists(json, 'createdAt') ? undefined : json['createdAt'],
+        'lastUsedAt': !exists(json, 'lastUsedAt') ? undefined : json['lastUsedAt'],
+        'expiresAt': !exists(json, 'expiresAt') ? undefined : json['expiresAt'],
     };
 }
 
@@ -104,9 +104,9 @@ export function ListAuthSessionsItemToJSON(value?: ListAuthSessionsItem | null):
         'userAgent': value.userAgent,
         'ipAddress': value.ipAddress,
         'ipCountry': value.ipCountry,
-        'createdAt': (value.createdAt.toISOString()),
-        'lastUsedAt': (value.lastUsedAt.toISOString()),
-        'expiresAt': (value.expiresAt.toISOString()),
+        'createdAt': value.createdAt,
+        'lastUsedAt': value.lastUsedAt,
+        'expiresAt': value.expiresAt,
     };
 }
 

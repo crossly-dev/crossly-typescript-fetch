@@ -30,13 +30,19 @@ export interface GetBuyerListingBreakResponseData {
      * @type {string}
      * @memberof GetBuyerListingBreakResponseData
      */
-    status: string;
+    title: string;
     /**
      * 
      * @type {string}
      * @memberof GetBuyerListingBreakResponseData
      */
-    title: string;
+    format: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerListingBreakResponseData
+     */
+    status: string;
     /**
      * 
      * @type {string}
@@ -51,16 +57,10 @@ export interface GetBuyerListingBreakResponseData {
     priceCents: number;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof GetBuyerListingBreakResponseData
      */
-    format: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetBuyerListingBreakResponseData
-     */
-    seed?: string | null;
+    spotsLeft: number;
     /**
      * 
      * @type {string}
@@ -69,10 +69,10 @@ export interface GetBuyerListingBreakResponseData {
     seedCommit: string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof GetBuyerListingBreakResponseData
      */
-    spotsLeft: number;
+    seed?: string | null;
 }
 
 export function GetBuyerListingBreakResponseDataFromJSON(json: any): GetBuyerListingBreakResponseData {
@@ -86,14 +86,14 @@ export function GetBuyerListingBreakResponseDataFromJSONTyped(json: any, ignoreD
     return {
         
         'id': json['id'],
-        'status': json['status'],
         'title': json['title'],
+        'format': json['format'],
+        'status': json['status'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'priceCents': json['priceCents'],
-        'format': json['format'],
-        'seed': !exists(json, 'seed') ? undefined : json['seed'],
-        'seedCommit': json['seedCommit'],
         'spotsLeft': json['spotsLeft'],
+        'seedCommit': json['seedCommit'],
+        'seed': !exists(json, 'seed') ? undefined : json['seed'],
     };
 }
 
@@ -107,14 +107,14 @@ export function GetBuyerListingBreakResponseDataToJSON(value?: GetBuyerListingBr
     return {
         
         'id': value.id,
-        'status': value.status,
         'title': value.title,
+        'format': value.format,
+        'status': value.status,
         'slug': value.slug,
         'priceCents': value.priceCents,
-        'format': value.format,
-        'seed': value.seed,
-        'seedCommit': value.seedCommit,
         'spotsLeft': value.spotsLeft,
+        'seedCommit': value.seedCommit,
+        'seed': value.seed,
     };
 }
 

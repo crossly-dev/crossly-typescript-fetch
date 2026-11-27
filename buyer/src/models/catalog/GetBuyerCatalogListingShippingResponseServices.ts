@@ -61,6 +61,24 @@ export interface GetBuyerCatalogListingShippingResponseServices {
      * @memberof GetBuyerCatalogListingShippingResponseServices
      */
     maxDays?: number | null;
+    /**
+     * Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside `cents`.
+     * @type {string}
+     * @memberof GetBuyerCatalogListingShippingResponseServices
+     */
+    carrier?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCatalogListingShippingResponseServices
+     */
+    carrierService?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerCatalogListingShippingResponseServices
+     */
+    handlingFeeCents?: number | null;
 }
 
 export function GetBuyerCatalogListingShippingResponseServicesFromJSON(json: any): GetBuyerCatalogListingShippingResponseServices {
@@ -80,6 +98,9 @@ export function GetBuyerCatalogListingShippingResponseServicesFromJSONTyped(json
         'costType': json['costType'],
         'minDays': !exists(json, 'minDays') ? undefined : json['minDays'],
         'maxDays': !exists(json, 'maxDays') ? undefined : json['maxDays'],
+        'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
+        'carrierService': !exists(json, 'carrierService') ? undefined : json['carrierService'],
+        'handlingFeeCents': !exists(json, 'handlingFeeCents') ? undefined : json['handlingFeeCents'],
     };
 }
 
@@ -99,6 +120,9 @@ export function GetBuyerCatalogListingShippingResponseServicesToJSON(value?: Get
         'costType': value.costType,
         'minDays': value.minDays,
         'maxDays': value.maxDays,
+        'carrier': value.carrier,
+        'carrierService': value.carrierService,
+        'handlingFeeCents': value.handlingFeeCents,
     };
 }
 

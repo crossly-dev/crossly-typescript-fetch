@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    RentalResponseDataInspection,
+    RentalResponseDataInspectionFromJSON,
+    RentalResponseDataInspectionFromJSONTyped,
+    RentalResponseDataInspectionToJSON,
+} from './RentalResponseDataInspection';
+
 /**
  * 
  * @export
@@ -39,6 +46,36 @@ export interface RentalResponseData {
     status: string;
     /**
      * 
+     * @type {number}
+     * @memberof RentalResponseData
+     */
+    days: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof RentalResponseData
+     */
+    platformListingId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RentalResponseData
+     */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof RentalResponseData
+     */
+    shippedAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof RentalResponseData
+     */
+    deliveredAt?: Date | null;
+    /**
+     * 
      * @type {Date}
      * @memberof RentalResponseData
      */
@@ -48,13 +85,19 @@ export interface RentalResponseData {
      * @type {string}
      * @memberof RentalResponseData
      */
-    platformListingId: string;
+    orderId?: string | null;
     /**
      * 
      * @type {Date}
      * @memberof RentalResponseData
      */
-    shippedAt?: Date | null;
+    inspectedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof RentalResponseData
+     */
+    stripePaymentIntentId?: string | null;
     /**
      * 
      * @type {string}
@@ -66,7 +109,7 @@ export interface RentalResponseData {
      * @type {string}
      * @memberof RentalResponseData
      */
-    stripePaymentIntentId?: string | null;
+    payoutAccountId?: string | null;
     /**
      * 
      * @type {number}
@@ -93,10 +136,16 @@ export interface RentalResponseData {
     closedAt?: Date | null;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof RentalResponseData
      */
-    outboundLabelUrl?: string | null;
+    approvedAt?: Date | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof RentalResponseData
+     */
+    terms: { [key: string]: any; };
     /**
      * 
      * @type {number}
@@ -105,22 +154,28 @@ export interface RentalResponseData {
     depositCents: number;
     /**
      * 
+     * @type {string}
+     * @memberof RentalResponseData
+     */
+    outboundLabelUrl?: string | null;
+    /**
+     * 
      * @type {Date}
      * @memberof RentalResponseData
      */
     claimedAt?: Date | null;
     /**
      * 
+     * @type {string}
+     * @memberof RentalResponseData
+     */
+    fulfilment: string;
+    /**
+     * 
      * @type {{ [key: string]: any; }}
      * @memberof RentalResponseData
      */
     shipTo: { [key: string]: any; };
-    /**
-     * 
-     * @type {string}
-     * @memberof RentalResponseData
-     */
-    outboundTracking?: string | null;
     /**
      * 
      * @type {string}
@@ -144,12 +199,6 @@ export interface RentalResponseData {
      * @type {number}
      * @memberof RentalResponseData
      */
-    days: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RentalResponseData
-     */
     rentCents: number;
     /**
      * 
@@ -157,6 +206,12 @@ export interface RentalResponseData {
      * @memberof RentalResponseData
      */
     shipFrom?: { [key: string]: any; } | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof RentalResponseData
+     */
+    outboundTracking?: string | null;
     /**
      * 
      * @type {string}
@@ -217,6 +272,96 @@ export interface RentalResponseData {
      * @memberof RentalResponseData
      */
     conditionPhotosIn: Array<string>;
+    /**
+     * 
+     * @type {number}
+     * @memberof RentalResponseData
+     */
+    unitIndex: number;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof RentalResponseData
+     */
+    charges: { [key: string]: any; };
+    /**
+     * 
+     * @type {boolean}
+     * @memberof RentalResponseData
+     */
+    damageWaiver: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof RentalResponseData
+     */
+    cleaningFeeCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof RentalResponseData
+     */
+    damageWaiverCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof RentalResponseData
+     */
+    lateFeeCents: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof RentalResponseData
+     */
+    rentRefundedCents: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof RentalResponseData
+     */
+    payoutTiming: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof RentalResponseData
+     */
+    payoutReleasedAt?: Date | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof RentalResponseData
+     */
+    returnShippedAt?: Date | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof RentalResponseData
+     */
+    conditionPhotosReturn: Array<string>;
+    /**
+     * 
+     * @type {Array<RentalResponseDataInspection>}
+     * @memberof RentalResponseData
+     */
+    inspection: Array<RentalResponseDataInspection>;
+    /**
+     * 
+     * @type {Date}
+     * @memberof RentalResponseData
+     */
+    boughtOutAt?: Date | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof RentalResponseData
+     */
+    buyoutCents?: number | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof RentalResponseData
+     */
+    notReturnedAt?: Date | null;
 }
 
 export function RentalResponseDataFromJSON(json: any): RentalResponseData {
@@ -232,26 +377,34 @@ export function RentalResponseDataFromJSONTyped(json: any, ignoreDiscriminator: 
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
-        'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
+        'days': json['days'],
         'platformListingId': json['platformListingId'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'shippedAt': !exists(json, 'shippedAt') ? undefined : (json['shippedAt'] === null ? null : new Date(json['shippedAt'])),
-        'sellerUserId': json['sellerUserId'],
+        'deliveredAt': !exists(json, 'deliveredAt') ? undefined : (json['deliveredAt'] === null ? null : new Date(json['deliveredAt'])),
+        'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
+        'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
+        'inspectedAt': !exists(json, 'inspectedAt') ? undefined : (json['inspectedAt'] === null ? null : new Date(json['inspectedAt'])),
         'stripePaymentIntentId': !exists(json, 'stripePaymentIntentId') ? undefined : json['stripePaymentIntentId'],
+        'sellerUserId': json['sellerUserId'],
+        'payoutAccountId': !exists(json, 'payoutAccountId') ? undefined : json['payoutAccountId'],
         'crosslyFeeCents': json['crosslyFeeCents'],
         'shippingCents': json['shippingCents'],
         'returnLabelUrl': !exists(json, 'returnLabelUrl') ? undefined : json['returnLabelUrl'],
         'closedAt': !exists(json, 'closedAt') ? undefined : (json['closedAt'] === null ? null : new Date(json['closedAt'])),
-        'outboundLabelUrl': !exists(json, 'outboundLabelUrl') ? undefined : json['outboundLabelUrl'],
+        'approvedAt': !exists(json, 'approvedAt') ? undefined : (json['approvedAt'] === null ? null : new Date(json['approvedAt'])),
+        'terms': json['terms'],
         'depositCents': json['depositCents'],
+        'outboundLabelUrl': !exists(json, 'outboundLabelUrl') ? undefined : json['outboundLabelUrl'],
         'claimedAt': !exists(json, 'claimedAt') ? undefined : (json['claimedAt'] === null ? null : new Date(json['claimedAt'])),
+        'fulfilment': json['fulfilment'],
         'shipTo': json['shipTo'],
-        'outboundTracking': !exists(json, 'outboundTracking') ? undefined : json['outboundTracking'],
         'renterUserId': json['renterUserId'],
         'startDate': json['startDate'],
         'endDate': json['endDate'],
-        'days': json['days'],
         'rentCents': json['rentCents'],
         'shipFrom': !exists(json, 'shipFrom') ? undefined : json['shipFrom'],
+        'outboundTracking': !exists(json, 'outboundTracking') ? undefined : json['outboundTracking'],
         'returnTracking': !exists(json, 'returnTracking') ? undefined : json['returnTracking'],
         'returnedAt': !exists(json, 'returnedAt') ? undefined : (json['returnedAt'] === null ? null : new Date(json['returnedAt'])),
         'claimCents': json['claimCents'],
@@ -262,6 +415,21 @@ export function RentalResponseDataFromJSONTyped(json: any, ignoreDiscriminator: 
         'approvalDueAt': !exists(json, 'approvalDueAt') ? undefined : (json['approvalDueAt'] === null ? null : new Date(json['approvalDueAt'])),
         'conditionPhotosOut': json['conditionPhotosOut'],
         'conditionPhotosIn': json['conditionPhotosIn'],
+        'unitIndex': json['unitIndex'],
+        'charges': json['charges'],
+        'damageWaiver': json['damageWaiver'],
+        'cleaningFeeCents': json['cleaningFeeCents'],
+        'damageWaiverCents': json['damageWaiverCents'],
+        'lateFeeCents': json['lateFeeCents'],
+        'rentRefundedCents': json['rentRefundedCents'],
+        'payoutTiming': json['payoutTiming'],
+        'payoutReleasedAt': !exists(json, 'payoutReleasedAt') ? undefined : (json['payoutReleasedAt'] === null ? null : new Date(json['payoutReleasedAt'])),
+        'returnShippedAt': !exists(json, 'returnShippedAt') ? undefined : (json['returnShippedAt'] === null ? null : new Date(json['returnShippedAt'])),
+        'conditionPhotosReturn': json['conditionPhotosReturn'],
+        'inspection': ((json['inspection'] as Array<any>).map(RentalResponseDataInspectionFromJSON)),
+        'boughtOutAt': !exists(json, 'boughtOutAt') ? undefined : (json['boughtOutAt'] === null ? null : new Date(json['boughtOutAt'])),
+        'buyoutCents': !exists(json, 'buyoutCents') ? undefined : json['buyoutCents'],
+        'notReturnedAt': !exists(json, 'notReturnedAt') ? undefined : (json['notReturnedAt'] === null ? null : new Date(json['notReturnedAt'])),
     };
 }
 
@@ -277,26 +445,34 @@ export function RentalResponseDataToJSON(value?: RentalResponseData | null): any
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
-        'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
+        'days': value.days,
         'platformListingId': value.platformListingId,
+        'storefrontId': value.storefrontId,
         'shippedAt': value.shippedAt === undefined ? undefined : (value.shippedAt === null ? null : value.shippedAt.toISOString()),
-        'sellerUserId': value.sellerUserId,
+        'deliveredAt': value.deliveredAt === undefined ? undefined : (value.deliveredAt === null ? null : value.deliveredAt.toISOString()),
+        'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
+        'orderId': value.orderId,
+        'inspectedAt': value.inspectedAt === undefined ? undefined : (value.inspectedAt === null ? null : value.inspectedAt.toISOString()),
         'stripePaymentIntentId': value.stripePaymentIntentId,
+        'sellerUserId': value.sellerUserId,
+        'payoutAccountId': value.payoutAccountId,
         'crosslyFeeCents': value.crosslyFeeCents,
         'shippingCents': value.shippingCents,
         'returnLabelUrl': value.returnLabelUrl,
         'closedAt': value.closedAt === undefined ? undefined : (value.closedAt === null ? null : value.closedAt.toISOString()),
-        'outboundLabelUrl': value.outboundLabelUrl,
+        'approvedAt': value.approvedAt === undefined ? undefined : (value.approvedAt === null ? null : value.approvedAt.toISOString()),
+        'terms': value.terms,
         'depositCents': value.depositCents,
+        'outboundLabelUrl': value.outboundLabelUrl,
         'claimedAt': value.claimedAt === undefined ? undefined : (value.claimedAt === null ? null : value.claimedAt.toISOString()),
+        'fulfilment': value.fulfilment,
         'shipTo': value.shipTo,
-        'outboundTracking': value.outboundTracking,
         'renterUserId': value.renterUserId,
         'startDate': value.startDate,
         'endDate': value.endDate,
-        'days': value.days,
         'rentCents': value.rentCents,
         'shipFrom': value.shipFrom,
+        'outboundTracking': value.outboundTracking,
         'returnTracking': value.returnTracking,
         'returnedAt': value.returnedAt === undefined ? undefined : (value.returnedAt === null ? null : value.returnedAt.toISOString()),
         'claimCents': value.claimCents,
@@ -307,6 +483,21 @@ export function RentalResponseDataToJSON(value?: RentalResponseData | null): any
         'approvalDueAt': value.approvalDueAt === undefined ? undefined : (value.approvalDueAt === null ? null : value.approvalDueAt.toISOString()),
         'conditionPhotosOut': value.conditionPhotosOut,
         'conditionPhotosIn': value.conditionPhotosIn,
+        'unitIndex': value.unitIndex,
+        'charges': value.charges,
+        'damageWaiver': value.damageWaiver,
+        'cleaningFeeCents': value.cleaningFeeCents,
+        'damageWaiverCents': value.damageWaiverCents,
+        'lateFeeCents': value.lateFeeCents,
+        'rentRefundedCents': value.rentRefundedCents,
+        'payoutTiming': value.payoutTiming,
+        'payoutReleasedAt': value.payoutReleasedAt === undefined ? undefined : (value.payoutReleasedAt === null ? null : value.payoutReleasedAt.toISOString()),
+        'returnShippedAt': value.returnShippedAt === undefined ? undefined : (value.returnShippedAt === null ? null : value.returnShippedAt.toISOString()),
+        'conditionPhotosReturn': value.conditionPhotosReturn,
+        'inspection': ((value.inspection as Array<any>).map(RentalResponseDataInspectionToJSON)),
+        'boughtOutAt': value.boughtOutAt === undefined ? undefined : (value.boughtOutAt === null ? null : value.boughtOutAt.toISOString()),
+        'buyoutCents': value.buyoutCents,
+        'notReturnedAt': value.notReturnedAt === undefined ? undefined : (value.notReturnedAt === null ? null : value.notReturnedAt.toISOString()),
     };
 }
 

@@ -24,13 +24,13 @@ export interface ListBuyerWishlistMembersItem {
      * @type {string}
      * @memberof ListBuyerWishlistMembersItem
      */
-    name: string;
+    userId: string;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerWishlistMembersItem
      */
-    userId: string;
+    name: string;
     /**
      * 
      * @type {string}
@@ -49,8 +49,8 @@ export function ListBuyerWishlistMembersItemFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'name': json['name'],
         'userId': json['userId'],
+        'name': json['name'],
         'joinedAt': json['joinedAt'],
     };
 }
@@ -64,8 +64,8 @@ export function ListBuyerWishlistMembersItemToJSON(value?: ListBuyerWishlistMemb
     }
     return {
         
-        'name': value.name,
         'userId': value.userId,
+        'name': value.name,
         'joinedAt': value.joinedAt,
     };
 }

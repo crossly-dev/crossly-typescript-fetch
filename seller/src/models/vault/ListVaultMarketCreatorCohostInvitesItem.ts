@@ -93,10 +93,10 @@ export interface ListVaultMarketCreatorCohostInvitesItem {
 * @enum {string}
 */
 export enum ListVaultMarketCreatorCohostInvitesItemStatusEnum {
-    Invited = 'invited',
-    Withdrawn = 'withdrawn',
     Accepted = 'accepted',
-    Declined = 'declined'
+    Declined = 'declined',
+    Withdrawn = 'withdrawn',
+    Invited = 'invited'
 }
 
 export function ListVaultMarketCreatorCohostInvitesItemFromJSON(json: any): ListVaultMarketCreatorCohostInvitesItem {

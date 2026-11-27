@@ -44,6 +44,12 @@ import {
     GetHomeResponsePinCaseToJSON,
 } from './GetHomeResponsePinCase';
 import {
+    GetHomeResponsePullsShelf,
+    GetHomeResponsePullsShelfFromJSON,
+    GetHomeResponsePullsShelfFromJSONTyped,
+    GetHomeResponsePullsShelfToJSON,
+} from './GetHomeResponsePullsShelf';
+import {
     GetHomeResponseRoom,
     GetHomeResponseRoomFromJSON,
     GetHomeResponseRoomFromJSONTyped,
@@ -147,6 +153,12 @@ export interface GetHomeResponse {
      */
     giftShelf?: GetHomeResponseGiftShelf | null;
     /**
+     * 
+     * @type {GetHomeResponsePullsShelf}
+     * @memberof GetHomeResponse
+     */
+    pullsShelf?: GetHomeResponsePullsShelf | null;
+    /**
      * The owner's earned pins, rarest first, when a pin case stands here (pin-case.ts).
      * @type {Array<GetHomeResponsePinCase>}
      * @memberof GetHomeResponse
@@ -184,18 +196,18 @@ export interface GetHomeResponse {
 */
 export enum GetHomeResponsePrivacyEnum {
     Open = 'open',
-    Locked = 'locked',
-    Friends = 'friends'
+    Friends = 'friends',
+    Locked = 'locked'
 }/**
 * @export
 * @enum {string}
 */
 export enum GetHomeResponseThemeEnum {
-    Storybook = 'storybook',
     Studio = 'studio',
     Noir = 'noir',
     Daylight = 'daylight',
-    Vitrine = 'vitrine'
+    Vitrine = 'vitrine',
+    Storybook = 'storybook'
 }
 
 export function GetHomeResponseFromJSON(json: any): GetHomeResponse {
@@ -220,6 +232,7 @@ export function GetHomeResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
         'layout': ((json['layout'] as Array<any>).map(GetHomeResponseLayoutFromJSON)),
         'guestbook': ((json['guestbook'] as Array<any>).map(GetHomeResponseGuestbookFromJSON)),
         'giftShelf': !exists(json, 'giftShelf') ? undefined : GetHomeResponseGiftShelfFromJSON(json['giftShelf']),
+        'pullsShelf': !exists(json, 'pullsShelf') ? undefined : GetHomeResponsePullsShelfFromJSON(json['pullsShelf']),
         'pinCase': !exists(json, 'pinCase') ? undefined : (json['pinCase'] === null ? null : (json['pinCase'] as Array<any>).map(GetHomeResponsePinCaseFromJSON)),
         'vaultWall': !exists(json, 'vaultWall') ? undefined : GetHomeResponseVaultWallFromJSON(json['vaultWall']),
         'setWall': !exists(json, 'setWall') ? undefined : GetHomeResponseSetWallFromJSON(json['setWall']),
@@ -249,6 +262,7 @@ export function GetHomeResponseToJSON(value?: GetHomeResponse | null): any {
         'layout': ((value.layout as Array<any>).map(GetHomeResponseLayoutToJSON)),
         'guestbook': ((value.guestbook as Array<any>).map(GetHomeResponseGuestbookToJSON)),
         'giftShelf': GetHomeResponseGiftShelfToJSON(value.giftShelf),
+        'pullsShelf': GetHomeResponsePullsShelfToJSON(value.pullsShelf),
         'pinCase': value.pinCase === undefined ? undefined : (value.pinCase === null ? null : (value.pinCase as Array<any>).map(GetHomeResponsePinCaseToJSON)),
         'vaultWall': GetHomeResponseVaultWallToJSON(value.vaultWall),
         'setWall': GetHomeResponseSetWallToJSON(value.setWall),

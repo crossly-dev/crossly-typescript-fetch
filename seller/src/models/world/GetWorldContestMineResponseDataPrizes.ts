@@ -51,6 +51,12 @@ export interface GetWorldContestMineResponseDataPrizes {
     status: GetWorldContestMineResponseDataPrizesStatusEnum;
     /**
      * 
+     * @type {number}
+     * @memberof GetWorldContestMineResponseDataPrizes
+     */
+    amount: number;
+    /**
+     * 
      * @type {string}
      * @memberof GetWorldContestMineResponseDataPrizes
      */
@@ -73,12 +79,6 @@ export interface GetWorldContestMineResponseDataPrizes {
      * @memberof GetWorldContestMineResponseDataPrizes
      */
     contestId: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetWorldContestMineResponseDataPrizes
-     */
-    amount: number;
 }
 
 /**
@@ -109,11 +109,11 @@ export function GetWorldContestMineResponseDataPrizesFromJSONTyped(json: any, ig
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
         'status': json['status'],
+        'amount': json['amount'],
         'kind': json['kind'],
         'note': !exists(json, 'note') ? undefined : json['note'],
         'place': json['place'],
         'contestId': json['contestId'],
-        'amount': json['amount'],
     };
 }
 
@@ -131,11 +131,11 @@ export function GetWorldContestMineResponseDataPrizesToJSON(value?: GetWorldCont
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
         'status': value.status,
+        'amount': value.amount,
         'kind': value.kind,
         'note': value.note,
         'place': value.place,
         'contestId': value.contestId,
-        'amount': value.amount,
     };
 }
 

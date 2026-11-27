@@ -69,8 +69,8 @@ export interface GetVaultMarketDcmOptionsInputResponseListed {
 * @enum {string}
 */
 export enum GetVaultMarketDcmOptionsInputResponseListedOptionTypeEnum {
-    Call = 'call',
-    Put = 'put'
+    Put = 'put',
+    Call = 'call'
 }
 
 export function GetVaultMarketDcmOptionsInputResponseListedFromJSON(json: any): GetVaultMarketDcmOptionsInputResponseListed {

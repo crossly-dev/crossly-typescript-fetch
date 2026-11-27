@@ -106,8 +106,8 @@ export enum GetVaultMarketDcmContractResponseContractKindEnum {
 * @enum {string}
 */
 export enum GetVaultMarketDcmContractResponseContractOptionTypeEnum {
-    Call = 'call',
-    Put = 'put'
+    Put = 'put',
+    Call = 'call'
 }
 
 export function GetVaultMarketDcmContractResponseContractFromJSON(json: any): GetVaultMarketDcmContractResponseContract {

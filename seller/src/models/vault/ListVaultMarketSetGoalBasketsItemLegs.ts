@@ -87,9 +87,9 @@ export interface ListVaultMarketSetGoalBasketsItemLegs {
 */
 export enum ListVaultMarketSetGoalBasketsItemLegsStatusEnum {
     Pending = 'pending',
-    Filled = 'filled',
     Cancelled = 'cancelled',
     Rejected = 'rejected',
+    Filled = 'filled',
     Working = 'working'
 }
 

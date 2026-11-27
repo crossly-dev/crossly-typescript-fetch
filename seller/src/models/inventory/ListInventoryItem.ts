@@ -14,11 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListGradingSubmissionsItemGrading,
-    ListGradingSubmissionsItemGradingFromJSON,
-    ListGradingSubmissionsItemGradingFromJSONTyped,
-    ListGradingSubmissionsItemGradingToJSON,
-} from '../grading/ListGradingSubmissionsItemGrading';
+    CreateBulkBatchItemResponseGrading,
+    CreateBulkBatchItemResponseGradingFromJSON,
+    CreateBulkBatchItemResponseGradingFromJSONTyped,
+    CreateBulkBatchItemResponseGradingToJSON,
+} from '../bulk/CreateBulkBatchItemResponseGrading';
+import {
+    ListInventoryItemSupplier,
+    ListInventoryItemSupplierFromJSON,
+    ListInventoryItemSupplierFromJSONTyped,
+    ListInventoryItemSupplierToJSON,
+} from './ListInventoryItemSupplier';
 import {
     MainSub,
     MainSubFromJSON,
@@ -67,6 +73,24 @@ export interface ListInventoryItem {
      * @type {string}
      * @memberof ListInventoryItem
      */
+    status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInventoryItem
+     */
+    notes?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInventoryItem
+     */
+    source: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInventoryItem
+     */
     sku?: string | null;
     /**
      * 
@@ -86,6 +110,12 @@ export interface ListInventoryItem {
      * @memberof ListInventoryItem
      */
     quantityReserved: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListInventoryItem
+     */
+    wholesaleReserve: number;
     /**
      * 
      * @type {number}
@@ -199,12 +229,6 @@ export interface ListInventoryItem {
      * @type {string}
      * @memberof ListInventoryItem
      */
-    notes?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListInventoryItem
-     */
     customLabel?: string | null;
     /**
      * 
@@ -244,10 +268,16 @@ export interface ListInventoryItem {
     gradeKey?: string | null;
     /**
      * 
-     * @type {ListGradingSubmissionsItemGrading}
+     * @type {string}
      * @memberof ListInventoryItem
      */
-    grading?: ListGradingSubmissionsItemGrading | null;
+    vaultSellFrom?: ListInventoryItemVaultSellFromEnum;
+    /**
+     * 
+     * @type {CreateBulkBatchItemResponseGrading}
+     * @memberof ListInventoryItem
+     */
+    grading?: CreateBulkBatchItemResponseGrading | null;
     /**
      * 
      * @type {Date}
@@ -266,6 +296,12 @@ export interface ListInventoryItem {
      * @memberof ListInventoryItem
      */
     costBasisCents?: number | null;
+    /**
+     * 
+     * @type {ListInventoryItemSupplier}
+     * @memberof ListInventoryItem
+     */
+    supplier?: ListInventoryItemSupplier | null;
     /**
      * 
      * @type {number}
@@ -325,19 +361,23 @@ export interface ListInventoryItem {
      * @type {string}
      * @memberof ListInventoryItem
      */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListInventoryItem
-     */
-    source: string;
+    allowanceAppId?: string | null;
     /**
      * 
      * @type {MainSub}
      * @memberof ListInventoryItem
      */
     category?: MainSub | null;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum ListInventoryItemVaultSellFromEnum {
+    VaultFirst = 'vault_first',
+    WarehouseFirst = 'warehouse_first',
+    Cheapest = 'cheapest'
 }
 
 export function ListInventoryItemFromJSON(json: any): ListInventoryItem {
@@ -355,10 +395,14 @@ export function ListInventoryItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': json['userId'],
+        'status': json['status'],
+        'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'source': json['source'],
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'quantity': json['quantity'],
         'quantityAvailable': json['quantityAvailable'],
         'quantityReserved': json['quantityReserved'],
+        'wholesaleReserve': json['wholesaleReserve'],
         'quantitySold': json['quantitySold'],
         'originalPrice': !exists(json, 'originalPrice') ? undefined : json['originalPrice'],
         'condition': !exists(json, 'condition') ? undefined : json['condition'],
@@ -377,7 +421,6 @@ export function ListInventoryItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'provenanceReceiptId': !exists(json, 'provenanceReceiptId') ? undefined : json['provenanceReceiptId'],
         'tags': json['tags'],
         'labels': json['labels'],
-        'notes': !exists(json, 'notes') ? undefined : json['notes'],
         'customLabel': !exists(json, 'customLabel') ? undefined : json['customLabel'],
         'warehouseLocation': !exists(json, 'warehouseLocation') ? undefined : json['warehouseLocation'],
         'storageBin': !exists(json, 'storageBin') ? undefined : json['storageBin'],
@@ -385,10 +428,12 @@ export function ListInventoryItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'marketSkuId': !exists(json, 'marketSkuId') ? undefined : json['marketSkuId'],
         'marketVariantId': !exists(json, 'marketVariantId') ? undefined : json['marketVariantId'],
         'gradeKey': !exists(json, 'gradeKey') ? undefined : json['gradeKey'],
-        'grading': !exists(json, 'grading') ? undefined : ListGradingSubmissionsItemGradingFromJSON(json['grading']),
+        'vaultSellFrom': !exists(json, 'vaultSellFrom') ? undefined : json['vaultSellFrom'],
+        'grading': !exists(json, 'grading') ? undefined : CreateBulkBatchItemResponseGradingFromJSON(json['grading']),
         'firstListedAt': !exists(json, 'firstListedAt') ? undefined : (json['firstListedAt'] === null ? null : new Date(json['firstListedAt'])),
         'includeTaxInLanded': json['includeTaxInLanded'],
         'costBasisCents': !exists(json, 'costBasisCents') ? undefined : json['costBasisCents'],
+        'supplier': !exists(json, 'supplier') ? undefined : ListInventoryItemSupplierFromJSON(json['supplier']),
         'priceFloorCents': !exists(json, 'priceFloorCents') ? undefined : json['priceFloorCents'],
         'floorIsNet': json['floorIsNet'],
         'acquiredAt': !exists(json, 'acquiredAt') ? undefined : (json['acquiredAt'] === null ? null : new Date(json['acquiredAt'])),
@@ -398,8 +443,7 @@ export function ListInventoryItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'dimensionLIn': !exists(json, 'dimensionLIn') ? undefined : json['dimensionLIn'],
         'dimensionWIn': !exists(json, 'dimensionWIn') ? undefined : json['dimensionWIn'],
         'dimensionHIn': !exists(json, 'dimensionHIn') ? undefined : json['dimensionHIn'],
-        'status': json['status'],
-        'source': json['source'],
+        'allowanceAppId': !exists(json, 'allowanceAppId') ? undefined : json['allowanceAppId'],
         'category': !exists(json, 'category') ? undefined : MainSubFromJSON(json['category']),
     };
 }
@@ -418,10 +462,14 @@ export function ListInventoryItemToJSON(value?: ListInventoryItem | null): any {
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
+        'status': value.status,
+        'notes': value.notes,
+        'source': value.source,
         'sku': value.sku,
         'quantity': value.quantity,
         'quantityAvailable': value.quantityAvailable,
         'quantityReserved': value.quantityReserved,
+        'wholesaleReserve': value.wholesaleReserve,
         'quantitySold': value.quantitySold,
         'originalPrice': value.originalPrice,
         'condition': value.condition,
@@ -440,7 +488,6 @@ export function ListInventoryItemToJSON(value?: ListInventoryItem | null): any {
         'provenanceReceiptId': value.provenanceReceiptId,
         'tags': value.tags,
         'labels': value.labels,
-        'notes': value.notes,
         'customLabel': value.customLabel,
         'warehouseLocation': value.warehouseLocation,
         'storageBin': value.storageBin,
@@ -448,10 +495,12 @@ export function ListInventoryItemToJSON(value?: ListInventoryItem | null): any {
         'marketSkuId': value.marketSkuId,
         'marketVariantId': value.marketVariantId,
         'gradeKey': value.gradeKey,
-        'grading': ListGradingSubmissionsItemGradingToJSON(value.grading),
+        'vaultSellFrom': value.vaultSellFrom,
+        'grading': CreateBulkBatchItemResponseGradingToJSON(value.grading),
         'firstListedAt': value.firstListedAt === undefined ? undefined : (value.firstListedAt === null ? null : value.firstListedAt.toISOString()),
         'includeTaxInLanded': value.includeTaxInLanded,
         'costBasisCents': value.costBasisCents,
+        'supplier': ListInventoryItemSupplierToJSON(value.supplier),
         'priceFloorCents': value.priceFloorCents,
         'floorIsNet': value.floorIsNet,
         'acquiredAt': value.acquiredAt === undefined ? undefined : (value.acquiredAt === null ? null : value.acquiredAt.toISOString()),
@@ -461,8 +510,7 @@ export function ListInventoryItemToJSON(value?: ListInventoryItem | null): any {
         'dimensionLIn': value.dimensionLIn,
         'dimensionWIn': value.dimensionWIn,
         'dimensionHIn': value.dimensionHIn,
-        'status': value.status,
-        'source': value.source,
+        'allowanceAppId': value.allowanceAppId,
         'category': MainSubToJSON(value.category),
     };
 }

@@ -70,9 +70,9 @@ export interface CreateVaultMarketDealerPoolPreviewResponse {
 */
 export enum CreateVaultMarketDealerPoolPreviewResponseBidLimitEnum {
     Floor = 'floor',
+    Ceiling = 'ceiling',
     NoUnits = 'no_units',
     NoCash = 'no_cash',
-    Ceiling = 'ceiling',
     CurveEnd = 'curve_end'
 }/**
 * @export
@@ -80,9 +80,9 @@ export enum CreateVaultMarketDealerPoolPreviewResponseBidLimitEnum {
 */
 export enum CreateVaultMarketDealerPoolPreviewResponseAskLimitEnum {
     Floor = 'floor',
+    Ceiling = 'ceiling',
     NoUnits = 'no_units',
     NoCash = 'no_cash',
-    Ceiling = 'ceiling',
     CurveEnd = 'curve_end'
 }
 

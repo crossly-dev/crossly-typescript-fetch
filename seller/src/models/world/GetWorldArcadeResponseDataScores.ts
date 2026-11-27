@@ -50,9 +50,9 @@ export interface GetWorldArcadeResponseDataScores {
 * @enum {string}
 */
 export enum GetWorldArcadeResponseDataScoresKindEnum {
+    Record = 'record',
     Top = 'top',
-    Leaderboard = 'leaderboard',
-    Record = 'record'
+    Leaderboard = 'leaderboard'
 }
 
 export function GetWorldArcadeResponseDataScoresFromJSON(json: any): GetWorldArcadeResponseDataScores {

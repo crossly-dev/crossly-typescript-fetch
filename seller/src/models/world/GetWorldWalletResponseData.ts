@@ -13,6 +13,19 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetWorldWalletResponseDataCbx,
+    GetWorldWalletResponseDataCbxFromJSON,
+    GetWorldWalletResponseDataCbxFromJSONTyped,
+    GetWorldWalletResponseDataCbxToJSON,
+} from './GetWorldWalletResponseDataCbx';
+import {
+    GetWorldWalletResponseDataCosm,
+    GetWorldWalletResponseDataCosmFromJSON,
+    GetWorldWalletResponseDataCosmFromJSONTyped,
+    GetWorldWalletResponseDataCosmToJSON,
+} from './GetWorldWalletResponseDataCosm';
+
 /**
  * 
  * @export
@@ -25,6 +38,18 @@ export interface GetWorldWalletResponseData {
      * @memberof GetWorldWalletResponseData
      */
     bucksCents: number;
+    /**
+     * 
+     * @type {GetWorldWalletResponseDataCbx}
+     * @memberof GetWorldWalletResponseData
+     */
+    cbx: GetWorldWalletResponseDataCbx;
+    /**
+     * 
+     * @type {GetWorldWalletResponseDataCosm}
+     * @memberof GetWorldWalletResponseData
+     */
+    cosm: GetWorldWalletResponseDataCosm;
 }
 
 export function GetWorldWalletResponseDataFromJSON(json: any): GetWorldWalletResponseData {
@@ -38,6 +63,8 @@ export function GetWorldWalletResponseDataFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'bucksCents': json['bucksCents'],
+        'cbx': GetWorldWalletResponseDataCbxFromJSON(json['cbx']),
+        'cosm': GetWorldWalletResponseDataCosmFromJSON(json['cosm']),
     };
 }
 
@@ -51,6 +78,8 @@ export function GetWorldWalletResponseDataToJSON(value?: GetWorldWalletResponseD
     return {
         
         'bucksCents': value.bucksCents,
+        'cbx': GetWorldWalletResponseDataCbxToJSON(value.cbx),
+        'cosm': GetWorldWalletResponseDataCosmToJSON(value.cosm),
     };
 }
 

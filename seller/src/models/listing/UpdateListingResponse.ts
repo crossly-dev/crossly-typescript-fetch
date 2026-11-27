@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    CreateListingResponseWarnings,
+    CreateListingResponseWarningsFromJSON,
+    CreateListingResponseWarningsFromJSONTyped,
+    CreateListingResponseWarningsToJSON,
+} from './CreateListingResponseWarnings';
+import {
     UpdateListingResponseJobs,
     UpdateListingResponseJobsFromJSON,
     UpdateListingResponseJobsFromJSONTyped,
@@ -26,6 +32,12 @@ import {
  * @interface UpdateListingResponse
  */
 export interface UpdateListingResponse {
+    /**
+     * 
+     * @type {Array<CreateListingResponseWarnings>}
+     * @memberof UpdateListingResponse
+     */
+    warnings?: Array<CreateListingResponseWarnings> | null;
     /**
      * 
      * @type {Array<UpdateListingResponseJobs>}
@@ -44,6 +56,7 @@ export function UpdateListingResponseFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
+        'warnings': !exists(json, 'warnings') ? undefined : (json['warnings'] === null ? null : (json['warnings'] as Array<any>).map(CreateListingResponseWarningsFromJSON)),
         'jobs': ((json['jobs'] as Array<any>).map(UpdateListingResponseJobsFromJSON)),
     };
 }
@@ -57,6 +70,7 @@ export function UpdateListingResponseToJSON(value?: UpdateListingResponse | null
     }
     return {
         
+        'warnings': value.warnings === undefined ? undefined : (value.warnings === null ? null : (value.warnings as Array<any>).map(CreateListingResponseWarningsToJSON)),
         'jobs': ((value.jobs as Array<any>).map(UpdateListingResponseJobsToJSON)),
     };
 }

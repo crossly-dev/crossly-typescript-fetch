@@ -92,9 +92,9 @@ export interface ListWeb3ActivityItem {
 * @enum {string}
 */
 export enum ListWeb3ActivityItemEventEnum {
-    Listing = 'listing',
-    Offer = 'offer',
     Sale = 'sale',
+    Offer = 'offer',
+    Listing = 'listing',
     Cancel = 'cancel'
 }
 

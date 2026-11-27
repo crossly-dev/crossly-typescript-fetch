@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListGradingSubmissionsItemGrading,
-    ListGradingSubmissionsItemGradingFromJSON,
-    ListGradingSubmissionsItemGradingFromJSONTyped,
-    ListGradingSubmissionsItemGradingToJSON,
-} from './ListGradingSubmissionsItemGrading';
+    CreateBulkBatchItemResponseGrading,
+    CreateBulkBatchItemResponseGradingFromJSON,
+    CreateBulkBatchItemResponseGradingFromJSONTyped,
+    CreateBulkBatchItemResponseGradingToJSON,
+} from '../bulk/CreateBulkBatchItemResponseGrading';
 
 /**
  * 
@@ -38,6 +38,12 @@ export interface ListGradingSubmissionsItem {
      * @memberof ListGradingSubmissionsItem
      */
     mode: ListGradingSubmissionsItemModeEnum;
+    /**
+     * The grading order (submission through Crossly) this card is in.
+     * @type {string}
+     * @memberof ListGradingSubmissionsItem
+     */
+    orderId?: string | null;
     /**
      * 
      * @type {string}
@@ -154,10 +160,10 @@ export interface ListGradingSubmissionsItem {
     prescreenNote?: string | null;
     /**
      * 
-     * @type {ListGradingSubmissionsItemGrading}
+     * @type {CreateBulkBatchItemResponseGrading}
      * @memberof ListGradingSubmissionsItem
      */
-    grading?: ListGradingSubmissionsItemGrading | null;
+    grading?: CreateBulkBatchItemResponseGrading | null;
     /**
      * 
      * @type {boolean}
@@ -183,24 +189,25 @@ export interface ListGradingSubmissionsItem {
 * @enum {string}
 */
 export enum ListGradingSubmissionsItemModeEnum {
-    Run = 'run',
-    Direct = 'direct'
+    Direct = 'direct',
+    Order = 'order',
+    Run = 'run'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListGradingSubmissionsItemStatusEnum {
-    Graded = 'graded',
-    Returned = 'returned',
-    Released = 'released',
     Refunded = 'refunded',
-    Reserved = 'reserved',
     Received = 'received',
+    Released = 'released',
+    Reserved = 'reserved',
     Charged = 'charged',
     ShippedToHub = 'shipped_to_hub',
     PrescreenFailed = 'prescreen_failed',
     AtGrader = 'at_grader',
+    Graded = 'graded',
     Returning = 'returning',
+    Returned = 'returned',
     Vaulted = 'vaulted'
 }
 
@@ -216,6 +223,7 @@ export function ListGradingSubmissionsItemFromJSONTyped(json: any, ignoreDiscrim
         
         'id': json['id'],
         'mode': json['mode'],
+        'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
         'runId': !exists(json, 'runId') ? undefined : json['runId'],
         'runCutoffAt': !exists(json, 'runCutoffAt') ? undefined : json['runCutoffAt'],
         'runStatus': !exists(json, 'runStatus') ? undefined : json['runStatus'],
@@ -235,7 +243,7 @@ export function ListGradingSubmissionsItemFromJSONTyped(json: any, ignoreDiscrim
         'inboundTracking': !exists(json, 'inboundTracking') ? undefined : json['inboundTracking'],
         'returnTracking': !exists(json, 'returnTracking') ? undefined : json['returnTracking'],
         'prescreenNote': !exists(json, 'prescreenNote') ? undefined : json['prescreenNote'],
-        'grading': !exists(json, 'grading') ? undefined : ListGradingSubmissionsItemGradingFromJSON(json['grading']),
+        'grading': !exists(json, 'grading') ? undefined : CreateBulkBatchItemResponseGradingFromJSON(json['grading']),
         'certVerified': json['certVerified'],
         'createdAt': json['createdAt'],
         'updatedAt': json['updatedAt'],
@@ -253,6 +261,7 @@ export function ListGradingSubmissionsItemToJSON(value?: ListGradingSubmissionsI
         
         'id': value.id,
         'mode': value.mode,
+        'orderId': value.orderId,
         'runId': value.runId,
         'runCutoffAt': value.runCutoffAt,
         'runStatus': value.runStatus,
@@ -272,7 +281,7 @@ export function ListGradingSubmissionsItemToJSON(value?: ListGradingSubmissionsI
         'inboundTracking': value.inboundTracking,
         'returnTracking': value.returnTracking,
         'prescreenNote': value.prescreenNote,
-        'grading': ListGradingSubmissionsItemGradingToJSON(value.grading),
+        'grading': CreateBulkBatchItemResponseGradingToJSON(value.grading),
         'certVerified': value.certVerified,
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,

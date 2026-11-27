@@ -67,26 +67,26 @@ export interface GetWorldCapabilityCatalogueResponseDataKinds {
 */
 export enum GetWorldCapabilityCatalogueResponseDataKindsReviewEnum {
     Always = 'always',
-    Asset = 'asset',
-    Never = 'never'
+    Never = 'never',
+    Asset = 'asset'
 }/**
 * @export
 * @enum {string}
 */
 export enum GetWorldCapabilityCatalogueResponseDataKindsKindEnum {
     Portal = 'portal',
-    Display = 'display',
+    Interactive = 'interactive',
     Place = 'place',
+    Display = 'display',
     Badge = 'badge',
+    Perk = 'perk',
     Wear = 'wear',
     Emote = 'emote',
     RoomTheme = 'room_theme',
     Pet = 'pet',
     Gate = 'gate',
     Quest = 'quest',
-    GamePass = 'game_pass',
-    Perk = 'perk',
-    Interactive = 'interactive'
+    GamePass = 'game_pass'
 }
 
 export function GetWorldCapabilityCatalogueResponseDataKindsFromJSON(json: any): GetWorldCapabilityCatalogueResponseDataKinds {

@@ -92,8 +92,8 @@ export interface CreateBuyerDropJoinResponseMe {
 * @enum {string}
 */
 export enum CreateBuyerDropJoinResponseMeOutcomeEnum {
-    Won = 'won',
     Expired = 'expired',
+    Won = 'won',
     Waitlist = 'waitlist',
     Claimed = 'claimed'
 }

@@ -54,7 +54,7 @@ export interface CreateTeamInviteResponse {
      * @type {string}
      * @memberof CreateTeamInviteResponse
      */
-    acceptUrl: string;
+    acceptUrl?: string | null;
 }
 
 /**
@@ -81,7 +81,7 @@ export function CreateTeamInviteResponseFromJSONTyped(json: any, ignoreDiscrimin
         'role': json['role'],
         'scopes': json['scopes'],
         'expiresAt': json['expiresAt'],
-        'acceptUrl': json['acceptUrl'],
+        'acceptUrl': !exists(json, 'acceptUrl') ? undefined : json['acceptUrl'],
     };
 }
 

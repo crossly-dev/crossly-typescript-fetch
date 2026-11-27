@@ -56,8 +56,8 @@ export interface CreateBuyerGiftCardRedeemResponseData {
 * @enum {string}
 */
 export enum CreateBuyerGiftCardRedeemResponseDataRailEnum {
-    Bucks = 'bucks',
-    Cbx = 'cbx'
+    Cbx = 'cbx',
+    Bucks = 'bucks'
 }
 
 export function CreateBuyerGiftCardRedeemResponseDataFromJSON(json: any): CreateBuyerGiftCardRedeemResponseData {

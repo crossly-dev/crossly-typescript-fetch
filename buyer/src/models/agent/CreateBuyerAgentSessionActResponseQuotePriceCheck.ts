@@ -62,9 +62,9 @@ export interface CreateBuyerAgentSessionActResponseQuotePriceCheck {
 * @enum {string}
 */
 export enum CreateBuyerAgentSessionActResponseQuotePriceCheckVerdictEnum {
-    High = 'high',
-    Fair = 'fair',
     Good = 'good',
+    Fair = 'fair',
+    High = 'high',
     Great = 'great'
 }
 

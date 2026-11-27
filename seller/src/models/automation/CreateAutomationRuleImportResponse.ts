@@ -14,17 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateAutomationRuleImportResponseCreated,
-    CreateAutomationRuleImportResponseCreatedFromJSON,
-    CreateAutomationRuleImportResponseCreatedFromJSONTyped,
-    CreateAutomationRuleImportResponseCreatedToJSON,
-} from './CreateAutomationRuleImportResponseCreated';
-import {
     CreateAutomationRuleImportResponseErrors,
     CreateAutomationRuleImportResponseErrorsFromJSON,
     CreateAutomationRuleImportResponseErrorsFromJSONTyped,
     CreateAutomationRuleImportResponseErrorsToJSON,
 } from './CreateAutomationRuleImportResponseErrors';
+import {
+    IdName,
+    IdNameFromJSON,
+    IdNameFromJSONTyped,
+    IdNameToJSON,
+} from '../common/IdName';
 
 /**
  * 
@@ -34,10 +34,10 @@ import {
 export interface CreateAutomationRuleImportResponse {
     /**
      * 
-     * @type {Array<CreateAutomationRuleImportResponseCreated>}
+     * @type {Array<IdName>}
      * @memberof CreateAutomationRuleImportResponse
      */
-    created: Array<CreateAutomationRuleImportResponseCreated>;
+    created: Array<IdName>;
     /**
      * 
      * @type {Array<CreateAutomationRuleImportResponseErrors>}
@@ -56,7 +56,7 @@ export function CreateAutomationRuleImportResponseFromJSONTyped(json: any, ignor
     }
     return {
         
-        'created': ((json['created'] as Array<any>).map(CreateAutomationRuleImportResponseCreatedFromJSON)),
+        'created': ((json['created'] as Array<any>).map(IdNameFromJSON)),
         'errors': ((json['errors'] as Array<any>).map(CreateAutomationRuleImportResponseErrorsFromJSON)),
     };
 }
@@ -70,7 +70,7 @@ export function CreateAutomationRuleImportResponseToJSON(value?: CreateAutomatio
     }
     return {
         
-        'created': ((value.created as Array<any>).map(CreateAutomationRuleImportResponseCreatedToJSON)),
+        'created': ((value.created as Array<any>).map(IdNameToJSON)),
         'errors': ((value.errors as Array<any>).map(CreateAutomationRuleImportResponseErrorsToJSON)),
     };
 }

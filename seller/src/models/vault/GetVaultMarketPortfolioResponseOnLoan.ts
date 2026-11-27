@@ -81,9 +81,9 @@ export interface GetVaultMarketPortfolioResponseOnLoan {
 */
 export enum GetVaultMarketPortfolioResponseOnLoanMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketPortfolioResponseOnLoanFromJSON(json: any): GetVaultMarketPortfolioResponseOnLoan {

@@ -178,6 +178,18 @@ export interface ListStallMineItem {
     listingIds: Array<string>;
     /**
      * 
+     * @type {string}
+     * @memberof ListStallMineItem
+     */
+    boothKind: ListStallMineItemBoothKindEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListStallMineItem
+     */
+    capacity: number;
+    /**
+     * 
      * @type {ColourPattern}
      * @memberof ListStallMineItem
      */
@@ -213,8 +225,8 @@ export interface ListStallMineItem {
 * @enum {string}
 */
 export enum ListStallMineItemUnitEnum {
-    Event = 'event',
-    Day = 'day'
+    Day = 'day',
+    Event = 'event'
 }/**
 * @export
 * @enum {string}
@@ -230,8 +242,16 @@ export enum ListStallMineItemStatusEnum {
 */
 export enum ListStallMineItemRailEnum {
     Card = 'card',
-    Bucks = 'bucks',
-    Cbx = 'cbx'
+    Cbx = 'cbx',
+    Bucks = 'bucks'
+}/**
+* @export
+* @enum {string}
+*/
+export enum ListStallMineItemBoothKindEnum {
+    Booth = 'booth',
+    Cart = 'cart',
+    Pavilion = 'pavilion'
 }
 
 export function ListStallMineItemFromJSON(json: any): ListStallMineItem {
@@ -263,6 +283,8 @@ export function ListStallMineItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'refundedCents': json['refundedCents'],
         'cancellable': json['cancellable'],
         'listingIds': json['listingIds'],
+        'boothKind': json['boothKind'],
+        'capacity': json['capacity'],
         'awning': !exists(json, 'awning') ? undefined : ColourPatternFromJSON(json['awning']),
         'booth': !exists(json, 'booth') ? undefined : CreateStallBookResponseBookingBoothFromJSON(json['booth']),
         'sign': !exists(json, 'sign') ? undefined : json['sign'],
@@ -299,6 +321,8 @@ export function ListStallMineItemToJSON(value?: ListStallMineItem | null): any {
         'refundedCents': value.refundedCents,
         'cancellable': value.cancellable,
         'listingIds': value.listingIds,
+        'boothKind': value.boothKind,
+        'capacity': value.capacity,
         'awning': ColourPatternToJSON(value.awning),
         'booth': CreateStallBookResponseBookingBoothToJSON(value.booth),
         'sign': value.sign,

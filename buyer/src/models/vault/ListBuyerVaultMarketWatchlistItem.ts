@@ -100,9 +100,9 @@ export interface ListBuyerVaultMarketWatchlistItem {
 */
 export enum ListBuyerVaultMarketWatchlistItemMarkQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function ListBuyerVaultMarketWatchlistItemFromJSON(json: any): ListBuyerVaultMarketWatchlistItem {

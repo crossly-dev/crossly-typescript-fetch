@@ -52,8 +52,8 @@ export interface GetVariationGroupPublishPlanResponsePlans {
 * @enum {string}
 */
 export enum GetVariationGroupPublishPlanResponsePlansModeEnum {
-    Grouped = 'grouped',
-    Separate = 'separate'
+    Separate = 'separate',
+    Grouped = 'grouped'
 }
 
 export function GetVariationGroupPublishPlanResponsePlansFromJSON(json: any): GetVariationGroupPublishPlanResponsePlans {

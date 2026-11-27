@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetVaultMarketKeyStatResponseGemRate,
+    GetVaultMarketKeyStatResponseGemRateFromJSON,
+    GetVaultMarketKeyStatResponseGemRateFromJSONTyped,
+    GetVaultMarketKeyStatResponseGemRateToJSON,
+} from './GetVaultMarketKeyStatResponseGemRate';
+
 /**
  * 
  * @export
@@ -25,6 +32,12 @@ export interface GetVaultMarketKeyStatResponse {
      * @memberof GetVaultMarketKeyStatResponse
      */
     bookKey: string;
+    /**
+     * 
+     * @type {GetVaultMarketKeyStatResponseGemRate}
+     * @memberof GetVaultMarketKeyStatResponse
+     */
+    gemRate: GetVaultMarketKeyStatResponseGemRate;
 }
 
 export function GetVaultMarketKeyStatResponseFromJSON(json: any): GetVaultMarketKeyStatResponse {
@@ -38,6 +51,7 @@ export function GetVaultMarketKeyStatResponseFromJSONTyped(json: any, ignoreDisc
     return {
         
         'bookKey': json['bookKey'],
+        'gemRate': GetVaultMarketKeyStatResponseGemRateFromJSON(json['gemRate']),
     };
 }
 
@@ -51,6 +65,7 @@ export function GetVaultMarketKeyStatResponseToJSON(value?: GetVaultMarketKeySta
     return {
         
         'bookKey': value.bookKey,
+        'gemRate': GetVaultMarketKeyStatResponseGemRateToJSON(value.gemRate),
     };
 }
 

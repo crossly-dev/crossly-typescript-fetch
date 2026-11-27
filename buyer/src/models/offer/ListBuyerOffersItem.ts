@@ -37,30 +37,6 @@ export interface ListBuyerOffersItem {
      * @type {string}
      * @memberof ListBuyerOffersItem
      */
-    createdAt: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerOffersItem
-     */
-    status: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerOffersItem
-     */
-    expiresAt: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListBuyerOffersItem
-     */
-    isBundle: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerOffersItem
-     */
     platformListingId: string;
     /**
      * 
@@ -76,10 +52,22 @@ export interface ListBuyerOffersItem {
     amountCents: number;
     /**
      * 
-     * @type {boolean}
+     * @type {string}
      * @memberof ListBuyerOffersItem
      */
-    expired: boolean;
+    status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerOffersItem
+     */
+    expiresAt: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerOffersItem
+     */
+    createdAt: string;
     /**
      * 
      * @type {Array<ListBuyerOffersItemItems>}
@@ -87,11 +75,11 @@ export interface ListBuyerOffersItem {
      */
     items: Array<ListBuyerOffersItemItems>;
     /**
-     * A seller counter waiting on YOU: accept, decline or counter back.
+     * 
      * @type {boolean}
      * @memberof ListBuyerOffersItem
      */
-    awaitingBuyer: boolean;
+    isBundle: boolean;
     /**
      * Accepted, unpaid, unexpired and every item still live — pay for it now.
      * @type {boolean}
@@ -100,10 +88,28 @@ export interface ListBuyerOffersItem {
     redeemable: boolean;
     /**
      * 
-     * @type {string}
+     * @type {boolean}
      * @memberof ListBuyerOffersItem
      */
-    decidedAt?: string | null;
+    expired: boolean;
+    /**
+     * A seller counter waiting on YOU: accept, decline or counter back.
+     * @type {boolean}
+     * @memberof ListBuyerOffersItem
+     */
+    awaitingBuyer: boolean;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListBuyerOffersItem
+     */
+    platformListingIds?: Array<string> | null;
+    /**
+     * Asking-price total when the offer was made, in cents.
+     * @type {number}
+     * @memberof ListBuyerOffersItem
+     */
+    listedTotalCents?: number | null;
     /**
      * 
      * @type {string}
@@ -117,29 +123,23 @@ export interface ListBuyerOffersItem {
      */
     parentOfferId?: string | null;
     /**
-     * 
-     * @type {Array<string>}
+     * null = you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.
+     * @type {string}
      * @memberof ListBuyerOffersItem
      */
-    platformListingIds?: Array<string> | null;
+    origin?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerOffersItem
+     */
+    decidedAt?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListBuyerOffersItem
      */
     consumedAt?: string | null;
-    /**
-     * Asking-price total when the offer was made, in cents.
-     * @type {number}
-     * @memberof ListBuyerOffersItem
-     */
-    listedTotalCents?: number | null;
-    /**
-     * null = you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.
-     * @type {string}
-     * @memberof ListBuyerOffersItem
-     */
-    origin?: string | null;
 }
 
 export function ListBuyerOffersItemFromJSON(json: any): ListBuyerOffersItem {
@@ -153,24 +153,24 @@ export function ListBuyerOffersItemFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'status': json['status'],
-        'expiresAt': json['expiresAt'],
-        'isBundle': json['isBundle'],
         'platformListingId': json['platformListingId'],
         'sellerUserId': json['sellerUserId'],
         'amountCents': json['amountCents'],
-        'expired': json['expired'],
+        'status': json['status'],
+        'expiresAt': json['expiresAt'],
+        'createdAt': json['createdAt'],
         'items': ((json['items'] as Array<any>).map(ListBuyerOffersItemItemsFromJSON)),
-        'awaitingBuyer': json['awaitingBuyer'],
+        'isBundle': json['isBundle'],
         'redeemable': json['redeemable'],
-        'decidedAt': !exists(json, 'decidedAt') ? undefined : json['decidedAt'],
+        'expired': json['expired'],
+        'awaitingBuyer': json['awaitingBuyer'],
+        'platformListingIds': !exists(json, 'platformListingIds') ? undefined : json['platformListingIds'],
+        'listedTotalCents': !exists(json, 'listedTotalCents') ? undefined : json['listedTotalCents'],
         'message': !exists(json, 'message') ? undefined : json['message'],
         'parentOfferId': !exists(json, 'parentOfferId') ? undefined : json['parentOfferId'],
-        'platformListingIds': !exists(json, 'platformListingIds') ? undefined : json['platformListingIds'],
-        'consumedAt': !exists(json, 'consumedAt') ? undefined : json['consumedAt'],
-        'listedTotalCents': !exists(json, 'listedTotalCents') ? undefined : json['listedTotalCents'],
         'origin': !exists(json, 'origin') ? undefined : json['origin'],
+        'decidedAt': !exists(json, 'decidedAt') ? undefined : json['decidedAt'],
+        'consumedAt': !exists(json, 'consumedAt') ? undefined : json['consumedAt'],
     };
 }
 
@@ -184,24 +184,24 @@ export function ListBuyerOffersItemToJSON(value?: ListBuyerOffersItem | null): a
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'status': value.status,
-        'expiresAt': value.expiresAt,
-        'isBundle': value.isBundle,
         'platformListingId': value.platformListingId,
         'sellerUserId': value.sellerUserId,
         'amountCents': value.amountCents,
-        'expired': value.expired,
+        'status': value.status,
+        'expiresAt': value.expiresAt,
+        'createdAt': value.createdAt,
         'items': ((value.items as Array<any>).map(ListBuyerOffersItemItemsToJSON)),
-        'awaitingBuyer': value.awaitingBuyer,
+        'isBundle': value.isBundle,
         'redeemable': value.redeemable,
-        'decidedAt': value.decidedAt,
+        'expired': value.expired,
+        'awaitingBuyer': value.awaitingBuyer,
+        'platformListingIds': value.platformListingIds,
+        'listedTotalCents': value.listedTotalCents,
         'message': value.message,
         'parentOfferId': value.parentOfferId,
-        'platformListingIds': value.platformListingIds,
-        'consumedAt': value.consumedAt,
-        'listedTotalCents': value.listedTotalCents,
         'origin': value.origin,
+        'decidedAt': value.decidedAt,
+        'consumedAt': value.consumedAt,
     };
 }
 

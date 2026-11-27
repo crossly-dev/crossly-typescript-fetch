@@ -27,12 +27,6 @@ export interface ListBuyerFeedbackItem {
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof ListBuyerFeedbackItem
-     */
-    createdAt: string;
-    /**
-     * 
      * @type {number}
      * @memberof ListBuyerFeedbackItem
      */
@@ -42,7 +36,49 @@ export interface ListBuyerFeedbackItem {
      * @type {string}
      * @memberof ListBuyerFeedbackItem
      */
+    createdAt: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerFeedbackItem
+     */
     body?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerFeedbackItem
+     */
+    revisedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerFeedbackItem
+     */
+    sellerReply?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerFeedbackItem
+     */
+    sellerRepliedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerFeedbackItem
+     */
+    sellerName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerFeedbackItem
+     */
+    itemTitle?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerFeedbackItem
+     */
+    ratingAsDescribed?: number | null;
     /**
      * 
      * @type {number}
@@ -61,42 +97,6 @@ export interface ListBuyerFeedbackItem {
      * @memberof ListBuyerFeedbackItem
      */
     ratingShipCost?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerFeedbackItem
-     */
-    ratingAsDescribed?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerFeedbackItem
-     */
-    sellerReply?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerFeedbackItem
-     */
-    sellerRepliedAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerFeedbackItem
-     */
-    revisedAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerFeedbackItem
-     */
-    itemTitle?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerFeedbackItem
-     */
-    sellerName?: string | null;
 }
 
 export function ListBuyerFeedbackItemFromJSON(json: any): ListBuyerFeedbackItem {
@@ -110,18 +110,18 @@ export function ListBuyerFeedbackItemFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
         'rating': json['rating'],
+        'createdAt': json['createdAt'],
         'body': !exists(json, 'body') ? undefined : json['body'],
+        'revisedAt': !exists(json, 'revisedAt') ? undefined : json['revisedAt'],
+        'sellerReply': !exists(json, 'sellerReply') ? undefined : json['sellerReply'],
+        'sellerRepliedAt': !exists(json, 'sellerRepliedAt') ? undefined : json['sellerRepliedAt'],
+        'sellerName': !exists(json, 'sellerName') ? undefined : json['sellerName'],
+        'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
+        'ratingAsDescribed': !exists(json, 'ratingAsDescribed') ? undefined : json['ratingAsDescribed'],
         'ratingCommunication': !exists(json, 'ratingCommunication') ? undefined : json['ratingCommunication'],
         'ratingShipSpeed': !exists(json, 'ratingShipSpeed') ? undefined : json['ratingShipSpeed'],
         'ratingShipCost': !exists(json, 'ratingShipCost') ? undefined : json['ratingShipCost'],
-        'ratingAsDescribed': !exists(json, 'ratingAsDescribed') ? undefined : json['ratingAsDescribed'],
-        'sellerReply': !exists(json, 'sellerReply') ? undefined : json['sellerReply'],
-        'sellerRepliedAt': !exists(json, 'sellerRepliedAt') ? undefined : json['sellerRepliedAt'],
-        'revisedAt': !exists(json, 'revisedAt') ? undefined : json['revisedAt'],
-        'itemTitle': !exists(json, 'itemTitle') ? undefined : json['itemTitle'],
-        'sellerName': !exists(json, 'sellerName') ? undefined : json['sellerName'],
     };
 }
 
@@ -135,18 +135,18 @@ export function ListBuyerFeedbackItemToJSON(value?: ListBuyerFeedbackItem | null
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
         'rating': value.rating,
+        'createdAt': value.createdAt,
         'body': value.body,
+        'revisedAt': value.revisedAt,
+        'sellerReply': value.sellerReply,
+        'sellerRepliedAt': value.sellerRepliedAt,
+        'sellerName': value.sellerName,
+        'itemTitle': value.itemTitle,
+        'ratingAsDescribed': value.ratingAsDescribed,
         'ratingCommunication': value.ratingCommunication,
         'ratingShipSpeed': value.ratingShipSpeed,
         'ratingShipCost': value.ratingShipCost,
-        'ratingAsDescribed': value.ratingAsDescribed,
-        'sellerReply': value.sellerReply,
-        'sellerRepliedAt': value.sellerRepliedAt,
-        'revisedAt': value.revisedAt,
-        'itemTitle': value.itemTitle,
-        'sellerName': value.sellerName,
     };
 }
 

@@ -32,7 +32,7 @@ export interface CreateEmbedKeyRequest {
      */
     allowedOrigins?: Array<string>;
     /**
-     * 
+     * Omit for this server's own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.
      * @type {string}
      * @memberof CreateEmbedKeyRequest
      */

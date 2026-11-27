@@ -62,10 +62,10 @@ export interface GetOrderEvidenceResponseDataArrival {
 * @enum {string}
 */
 export enum GetOrderEvidenceResponseDataArrivalStateEnum {
-    Awaiting = 'awaiting',
-    Submitted = 'submitted',
     Declined = 'declined',
+    Submitted = 'submitted',
     NotRequested = 'not_requested',
+    Awaiting = 'awaiting',
     WindowClosed = 'window_closed'
 }
 

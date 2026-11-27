@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetVaultMarketPartnerMeResponseIdentity,
+    GetVaultMarketPartnerMeResponseIdentityFromJSON,
+    GetVaultMarketPartnerMeResponseIdentityFromJSONTyped,
+    GetVaultMarketPartnerMeResponseIdentityToJSON,
+} from './GetVaultMarketPartnerMeResponseIdentity';
+import {
     GetVaultMarketPartnerMeResponsePartnership,
     GetVaultMarketPartnerMeResponsePartnershipFromJSON,
     GetVaultMarketPartnerMeResponsePartnershipFromJSONTyped,
@@ -32,6 +38,12 @@ export interface GetVaultMarketPartnerMeResponse {
      * @memberof GetVaultMarketPartnerMeResponse
      */
     partnership?: GetVaultMarketPartnerMeResponsePartnership | null;
+    /**
+     * 
+     * @type {GetVaultMarketPartnerMeResponseIdentity}
+     * @memberof GetVaultMarketPartnerMeResponse
+     */
+    identity: GetVaultMarketPartnerMeResponseIdentity;
 }
 
 export function GetVaultMarketPartnerMeResponseFromJSON(json: any): GetVaultMarketPartnerMeResponse {
@@ -45,6 +57,7 @@ export function GetVaultMarketPartnerMeResponseFromJSONTyped(json: any, ignoreDi
     return {
         
         'partnership': !exists(json, 'partnership') ? undefined : GetVaultMarketPartnerMeResponsePartnershipFromJSON(json['partnership']),
+        'identity': GetVaultMarketPartnerMeResponseIdentityFromJSON(json['identity']),
     };
 }
 
@@ -58,6 +71,7 @@ export function GetVaultMarketPartnerMeResponseToJSON(value?: GetVaultMarketPart
     return {
         
         'partnership': GetVaultMarketPartnerMeResponsePartnershipToJSON(value.partnership),
+        'identity': GetVaultMarketPartnerMeResponseIdentityToJSON(value.identity),
     };
 }
 

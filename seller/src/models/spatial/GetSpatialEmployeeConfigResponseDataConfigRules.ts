@@ -45,11 +45,11 @@ export interface GetSpatialEmployeeConfigResponseDataConfigRules {
 */
 export enum GetSpatialEmployeeConfigResponseDataConfigRulesWhenEnum {
     Entered = 'entered',
+    Asked = 'asked',
     Lingered = 'lingered',
     Inspected = 'inspected',
     AddedToCart = 'added_to_cart',
-    LeavingWithCart = 'leaving_with_cart',
-    Asked = 'asked'
+    LeavingWithCart = 'leaving_with_cart'
 }
 
 export function GetSpatialEmployeeConfigResponseDataConfigRulesFromJSON(json: any): GetSpatialEmployeeConfigResponseDataConfigRules {

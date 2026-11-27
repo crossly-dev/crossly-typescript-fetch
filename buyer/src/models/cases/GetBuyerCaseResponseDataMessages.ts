@@ -26,11 +26,17 @@ export interface GetBuyerCaseResponseDataMessages {
      */
     id: string;
     /**
+     * buyer | seller | ops | system.
+     * @type {string}
+     * @memberof GetBuyerCaseResponseDataMessages
+     */
+    authorRole: string;
+    /**
      * 
      * @type {string}
      * @memberof GetBuyerCaseResponseDataMessages
      */
-    createdAt: string;
+    body: string;
     /**
      * message | offer | decision | state_change.
      * @type {string}
@@ -42,13 +48,7 @@ export interface GetBuyerCaseResponseDataMessages {
      * @type {string}
      * @memberof GetBuyerCaseResponseDataMessages
      */
-    body: string;
-    /**
-     * buyer | seller | ops | system.
-     * @type {string}
-     * @memberof GetBuyerCaseResponseDataMessages
-     */
-    authorRole: string;
+    createdAt: string;
     /**
      * 
      * @type {Array<string>}
@@ -68,10 +68,10 @@ export function GetBuyerCaseResponseDataMessagesFromJSONTyped(json: any, ignoreD
     return {
         
         'id': json['id'],
-        'createdAt': json['createdAt'],
-        'kind': json['kind'],
-        'body': json['body'],
         'authorRole': json['authorRole'],
+        'body': json['body'],
+        'kind': json['kind'],
+        'createdAt': json['createdAt'],
         'attachmentUrls': !exists(json, 'attachmentUrls') ? undefined : json['attachmentUrls'],
     };
 }
@@ -86,10 +86,10 @@ export function GetBuyerCaseResponseDataMessagesToJSON(value?: GetBuyerCaseRespo
     return {
         
         'id': value.id,
-        'createdAt': value.createdAt,
-        'kind': value.kind,
-        'body': value.body,
         'authorRole': value.authorRole,
+        'body': value.body,
+        'kind': value.kind,
+        'createdAt': value.createdAt,
         'attachmentUrls': value.attachmentUrls,
     };
 }

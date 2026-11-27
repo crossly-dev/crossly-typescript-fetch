@@ -74,10 +74,10 @@ export interface GetWeb3CollectionInsightResponseTransfers {
 * @enum {string}
 */
 export enum GetWeb3CollectionInsightResponseTransfersKindEnum {
-    Transfer = 'transfer',
-    Listing = 'listing',
     Sale = 'sale',
+    Listing = 'listing',
     Mint = 'mint',
+    Transfer = 'transfer',
     Burn = 'burn'
 }
 

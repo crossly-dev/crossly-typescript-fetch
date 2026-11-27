@@ -58,16 +58,28 @@ export interface CreateTradeBlockSetRecipeResponseRecipe {
     updatedAt: Date;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof CreateTradeBlockSetRecipeResponseRecipe
      */
-    note?: string | null;
+    version: number;
     /**
      * 
      * @type {Date}
      * @memberof CreateTradeBlockSetRecipeResponseRecipe
      */
     reviewedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTradeBlockSetRecipeResponseRecipe
+     */
+    note?: string | null;
+    /**
+     * 
+     * @type {Array<CreateTradeBlockSetRecipeResponseRecipeMembers>}
+     * @memberof CreateTradeBlockSetRecipeResponseRecipe
+     */
+    members: Array<CreateTradeBlockSetRecipeResponseRecipeMembers>;
     /**
      * 
      * @type {string}
@@ -88,22 +100,10 @@ export interface CreateTradeBlockSetRecipeResponseRecipe {
     outputCosmeticId: string;
     /**
      * 
-     * @type {number}
-     * @memberof CreateTradeBlockSetRecipeResponseRecipe
-     */
-    version: number;
-    /**
-     * 
      * @type {Date}
      * @memberof CreateTradeBlockSetRecipeResponseRecipe
      */
     frozenAt?: Date | null;
-    /**
-     * 
-     * @type {Array<CreateTradeBlockSetRecipeResponseRecipeMembers>}
-     * @memberof CreateTradeBlockSetRecipeResponseRecipe
-     */
-    members: Array<CreateTradeBlockSetRecipeResponseRecipeMembers>;
 }
 
 export function CreateTradeBlockSetRecipeResponseRecipeFromJSON(json: any): CreateTradeBlockSetRecipeResponseRecipe {
@@ -121,14 +121,14 @@ export function CreateTradeBlockSetRecipeResponseRecipeFromJSONTyped(json: any, 
         'active': json['active'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
-        'note': !exists(json, 'note') ? undefined : json['note'],
+        'version': json['version'],
         'reviewedAt': !exists(json, 'reviewedAt') ? undefined : (json['reviewedAt'] === null ? null : new Date(json['reviewedAt'])),
+        'note': !exists(json, 'note') ? undefined : json['note'],
+        'members': ((json['members'] as Array<any>).map(CreateTradeBlockSetRecipeResponseRecipeMembersFromJSON)),
         'merchantId': json['merchantId'],
         'creatorSubjectId': json['creatorSubjectId'],
         'outputCosmeticId': json['outputCosmeticId'],
-        'version': json['version'],
         'frozenAt': !exists(json, 'frozenAt') ? undefined : (json['frozenAt'] === null ? null : new Date(json['frozenAt'])),
-        'members': ((json['members'] as Array<any>).map(CreateTradeBlockSetRecipeResponseRecipeMembersFromJSON)),
     };
 }
 
@@ -146,14 +146,14 @@ export function CreateTradeBlockSetRecipeResponseRecipeToJSON(value?: CreateTrad
         'active': value.active,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
-        'note': value.note,
+        'version': value.version,
         'reviewedAt': value.reviewedAt === undefined ? undefined : (value.reviewedAt === null ? null : value.reviewedAt.toISOString()),
+        'note': value.note,
+        'members': ((value.members as Array<any>).map(CreateTradeBlockSetRecipeResponseRecipeMembersToJSON)),
         'merchantId': value.merchantId,
         'creatorSubjectId': value.creatorSubjectId,
         'outputCosmeticId': value.outputCosmeticId,
-        'version': value.version,
         'frozenAt': value.frozenAt === undefined ? undefined : (value.frozenAt === null ? null : value.frozenAt.toISOString()),
-        'members': ((value.members as Array<any>).map(CreateTradeBlockSetRecipeResponseRecipeMembersToJSON)),
     };
 }
 

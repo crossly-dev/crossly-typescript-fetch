@@ -27,16 +27,16 @@ export interface GetBuyerCollectionOfferResponseDataPending {
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof GetBuyerCollectionOfferResponseDataPending
-     */
-    status: string;
-    /**
-     * 
      * @type {number}
      * @memberof GetBuyerCollectionOfferResponseDataPending
      */
     cents: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerCollectionOfferResponseDataPending
+     */
+    status: string;
 }
 
 export function GetBuyerCollectionOfferResponseDataPendingFromJSON(json: any): GetBuyerCollectionOfferResponseDataPending {
@@ -50,8 +50,8 @@ export function GetBuyerCollectionOfferResponseDataPendingFromJSONTyped(json: an
     return {
         
         'id': json['id'],
-        'status': json['status'],
         'cents': json['cents'],
+        'status': json['status'],
     };
 }
 
@@ -65,8 +65,8 @@ export function GetBuyerCollectionOfferResponseDataPendingToJSON(value?: GetBuye
     return {
         
         'id': value.id,
-        'status': value.status,
         'cents': value.cents,
+        'status': value.status,
     };
 }
 

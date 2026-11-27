@@ -15,25 +15,149 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateWorkflowApprovalDecideRequest,
+    CreateWorkflowApprovalDecideRequestFromJSON,
+    CreateWorkflowApprovalDecideRequestToJSON,
+    CreateWorkflowApprovalDecideResponse,
+    CreateWorkflowApprovalDecideResponseFromJSON,
+    CreateWorkflowApprovalDecideResponseToJSON,
     CreateWorkflowChainRunNowResponse,
     CreateWorkflowChainRunNowResponseFromJSON,
     CreateWorkflowChainRunNowResponseToJSON,
     CreateWorkflowChainToggleResponse,
     CreateWorkflowChainToggleResponseFromJSON,
     CreateWorkflowChainToggleResponseToJSON,
+    CreateWorkflowDuplicateRequest,
+    CreateWorkflowDuplicateRequestFromJSON,
+    CreateWorkflowDuplicateRequestToJSON,
+    CreateWorkflowDuplicateResponse,
+    CreateWorkflowDuplicateResponseFromJSON,
+    CreateWorkflowDuplicateResponseToJSON,
+    CreateWorkflowExpressionPreviewRequest,
+    CreateWorkflowExpressionPreviewRequestFromJSON,
+    CreateWorkflowExpressionPreviewRequestToJSON,
+    CreateWorkflowExpressionPreviewResponse,
+    CreateWorkflowExpressionPreviewResponseFromJSON,
+    CreateWorkflowExpressionPreviewResponseToJSON,
+    CreateWorkflowImportResponse,
+    CreateWorkflowImportResponseFromJSON,
+    CreateWorkflowImportResponseToJSON,
+    CreateWorkflowRequest,
+    CreateWorkflowRequestFromJSON,
+    CreateWorkflowRequestToJSON,
+    CreateWorkflowResponse,
+    CreateWorkflowResponseFromJSON,
+    CreateWorkflowResponseToJSON,
+    CreateWorkflowRunCancelResponse,
+    CreateWorkflowRunCancelResponseFromJSON,
+    CreateWorkflowRunCancelResponseToJSON,
+    CreateWorkflowRunOnRequest,
+    CreateWorkflowRunOnRequestFromJSON,
+    CreateWorkflowRunOnRequestToJSON,
+    CreateWorkflowRunOnResponse,
+    CreateWorkflowRunOnResponseFromJSON,
+    CreateWorkflowRunOnResponseToJSON,
+    CreateWorkflowRunRequest,
+    CreateWorkflowRunRequestFromJSON,
+    CreateWorkflowRunRequestToJSON,
+    CreateWorkflowRunResponse,
+    CreateWorkflowRunResponseFromJSON,
+    CreateWorkflowRunResponseToJSON,
+    CreateWorkflowRunRetryResponse,
+    CreateWorkflowRunRetryResponseFromJSON,
+    CreateWorkflowRunRetryResponseToJSON,
+    CreateWorkflowSaleEndResponse,
+    CreateWorkflowSaleEndResponseFromJSON,
+    CreateWorkflowSaleEndResponseToJSON,
+    CreateWorkflowTemplateUseRequest,
+    CreateWorkflowTemplateUseRequestFromJSON,
+    CreateWorkflowTemplateUseRequestToJSON,
+    CreateWorkflowTestRequest,
+    CreateWorkflowTestRequestFromJSON,
+    CreateWorkflowTestRequestToJSON,
+    CreateWorkflowTestResponse,
+    CreateWorkflowTestResponseFromJSON,
+    CreateWorkflowTestResponseToJSON,
+    CreateWorkflowValidateRequest,
+    CreateWorkflowValidateRequestFromJSON,
+    CreateWorkflowValidateRequestToJSON,
+    CreateWorkflowValidateResponse,
+    CreateWorkflowValidateResponseFromJSON,
+    CreateWorkflowValidateResponseToJSON,
+    CreateWorkflowWebhookRotateRequest,
+    CreateWorkflowWebhookRotateRequestFromJSON,
+    CreateWorkflowWebhookRotateRequestToJSON,
+    CreateWorkflowWebhookRotateResponse,
+    CreateWorkflowWebhookRotateResponseFromJSON,
+    CreateWorkflowWebhookRotateResponseToJSON,
+    DeleteWorkflowResponse,
+    DeleteWorkflowResponseFromJSON,
+    DeleteWorkflowResponseToJSON,
+    GetWorkflowCatalogResponse,
+    GetWorkflowCatalogResponseFromJSON,
+    GetWorkflowCatalogResponseToJSON,
     GetWorkflowChainResponse,
     GetWorkflowChainResponseFromJSON,
     GetWorkflowChainResponseToJSON,
+    GetWorkflowExportResponse,
+    GetWorkflowExportResponseFromJSON,
+    GetWorkflowExportResponseToJSON,
+    GetWorkflowResponse,
+    GetWorkflowResponseFromJSON,
+    GetWorkflowResponseToJSON,
+    GetWorkflowRunNodeResponse,
+    GetWorkflowRunNodeResponseFromJSON,
+    GetWorkflowRunNodeResponseToJSON,
+    GetWorkflowRunResponse,
+    GetWorkflowRunResponseFromJSON,
+    GetWorkflowRunResponseToJSON,
     IdResponse,
     IdResponseFromJSON,
     IdResponseToJSON,
+    ListWorkflowApprovalsResponse,
+    ListWorkflowApprovalsResponseFromJSON,
+    ListWorkflowApprovalsResponseToJSON,
     ListWorkflowChainsResponse,
     ListWorkflowChainsResponseFromJSON,
     ListWorkflowChainsResponseToJSON,
+    ListWorkflowRunsResponse,
+    ListWorkflowRunsResponseFromJSON,
+    ListWorkflowRunsResponseToJSON,
+    ListWorkflowSaleActiveResponse,
+    ListWorkflowSaleActiveResponseFromJSON,
+    ListWorkflowSaleActiveResponseToJSON,
+    ListWorkflowTemplatesResponse,
+    ListWorkflowTemplatesResponseFromJSON,
+    ListWorkflowTemplatesResponseToJSON,
+    ListWorkflowVersionsResponse,
+    ListWorkflowVersionsResponseFromJSON,
+    ListWorkflowVersionsResponseToJSON,
+    ListWorkflowsResponse,
+    ListWorkflowsResponseFromJSON,
+    ListWorkflowsResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateWorkflowRequest,
+    UpdateWorkflowRequestFromJSON,
+    UpdateWorkflowRequestToJSON,
+    WorkflowResponse,
+    WorkflowResponseFromJSON,
+    WorkflowResponseToJSON,
 } from '../models';
+
+export interface CreateWorkflowOperationRequest {
+    createWorkflowRequest: CreateWorkflowRequest;
+}
+
+export interface CreateWorkflowActivateRequest {
+    id: string;
+}
+
+export interface CreateWorkflowApprovalDecideOperationRequest {
+    id: string;
+    createWorkflowApprovalDecideRequest: CreateWorkflowApprovalDecideRequest;
+}
 
 export interface CreateWorkflowChainRunNowRequest {
     id: string;
@@ -43,12 +167,146 @@ export interface CreateWorkflowChainToggleRequest {
     id: string;
 }
 
+export interface CreateWorkflowDeactivateRequest {
+    id: string;
+}
+
+export interface CreateWorkflowDuplicateOperationRequest {
+    id: string;
+    createWorkflowDuplicateRequest: CreateWorkflowDuplicateRequest;
+}
+
+export interface CreateWorkflowExpressionPreviewOperationRequest {
+    createWorkflowExpressionPreviewRequest: CreateWorkflowExpressionPreviewRequest;
+}
+
+export interface CreateWorkflowImportRequest {
+    requestBody: { [key: string]: any; };
+}
+
+export interface CreateWorkflowRunOperationRequest {
+    id: string;
+    createWorkflowRunRequest: CreateWorkflowRunRequest;
+}
+
+export interface CreateWorkflowRunCancelRequest {
+    runId: string;
+}
+
+export interface CreateWorkflowRunOnOperationRequest {
+    createWorkflowRunOnRequest: CreateWorkflowRunOnRequest;
+}
+
+export interface CreateWorkflowRunRetryRequest {
+    runId: string;
+}
+
+export interface CreateWorkflowSaleEndRequest {
+    saleEventId: string;
+}
+
+export interface CreateWorkflowTemplateUseOperationRequest {
+    id: string;
+    createWorkflowTemplateUseRequest: CreateWorkflowTemplateUseRequest;
+}
+
+export interface CreateWorkflowTestOperationRequest {
+    id: string;
+    createWorkflowTestRequest: CreateWorkflowTestRequest;
+}
+
+export interface CreateWorkflowValidateOperationRequest {
+    createWorkflowValidateRequest: CreateWorkflowValidateRequest;
+}
+
+export interface CreateWorkflowVersionRestoreRequest {
+    id: string;
+    v: number;
+}
+
+export interface CreateWorkflowWebhookRotateOperationRequest {
+    id: string;
+    nodeId: string;
+    createWorkflowWebhookRotateRequest: CreateWorkflowWebhookRotateRequest;
+}
+
+export interface DeleteWorkflowRequest {
+    id: string;
+}
+
 export interface DeleteWorkflowChainRequest {
+    id: string;
+}
+
+export interface GetWorkflowRequest {
     id: string;
 }
 
 export interface GetWorkflowChainRequest {
     id: string;
+}
+
+export interface GetWorkflowExportRequest {
+    id: string;
+    pinnedData?: GetWorkflowExportPinnedDataEnum;
+}
+
+export interface GetWorkflowRunRequest {
+    runId: string;
+}
+
+export interface GetWorkflowRunNodeRequest {
+    runId: string;
+    nodeId: string;
+}
+
+export interface ListWorkflowApprovalsRequest {
+    status?: string;
+    workflowId?: string;
+    page?: number;
+    limit?: number;
+}
+
+export interface ListWorkflowRunsRequest {
+    id: string;
+    status?: string;
+    mode?: ListWorkflowRunsModeEnum;
+    since?: Date;
+    until?: Date;
+    page?: number;
+    limit?: number;
+}
+
+export interface ListWorkflowRuns2Request {
+    workflowId?: string;
+    status?: string;
+    mode?: ListWorkflowRuns2ModeEnum;
+    since?: Date;
+    until?: Date;
+    page?: number;
+    limit?: number;
+}
+
+export interface ListWorkflowTemplatesRequest {
+    category?: string;
+    q?: string;
+}
+
+export interface ListWorkflowVersionsRequest {
+    id: string;
+}
+
+export interface ListWorkflowsRequest {
+    active?: ListWorkflowsActiveEnum;
+    tag?: string;
+    trigger?: string;
+    q?: string;
+    legacyRef?: string;
+}
+
+export interface UpdateWorkflowOperationRequest {
+    id: string;
+    updateWorkflowRequest: UpdateWorkflowRequest;
 }
 
 export interface UpdateWorkflowChainRequest {
@@ -61,6 +319,131 @@ export interface UpdateWorkflowChainRequest {
 export class WorkflowsApi extends runtime.BaseAPI {
 
     /**
+     * Create a workflow: from blank ({ name, graph? }), from a template ({ from: \"template\", templateId, setup?, activate? }) or from an export document ({ from: \"import\", document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues.
+     */
+    async createWorkflowRaw(requestParameters: CreateWorkflowOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowResponse>> {
+        if (requestParameters.createWorkflowRequest === null || requestParameters.createWorkflowRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowRequest','Required parameter requestParameters.createWorkflowRequest was null or undefined when calling createWorkflow.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowRequestToJSON(requestParameters.createWorkflowRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create a workflow: from blank ({ name, graph? }), from a template ({ from: \"template\", templateId, setup?, activate? }) or from an export document ({ from: \"import\", document }). New workflows start paused; activate one with POST /v1/workflows/{id}/activate. Returns the workflow and its validation issues.
+     */
+    async createWorkflow(requestParameters: CreateWorkflowOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowResponse> {
+        const response = await this.createWorkflowRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues).
+     */
+    async createWorkflowActivateRaw(requestParameters: CreateWorkflowActivateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkflowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowActivate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/activate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkflowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Activate a workflow: its triggers start firing. A graph with blocking issues is refused (422, details.issues).
+     */
+    async createWorkflowActivate(requestParameters: CreateWorkflowActivateRequest, initOverrides?: RequestInit): Promise<WorkflowResponse> {
+        const response = await this.createWorkflowActivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout).
+     */
+    async createWorkflowApprovalDecideRaw(requestParameters: CreateWorkflowApprovalDecideOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowApprovalDecideResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowApprovalDecide.');
+        }
+
+        if (requestParameters.createWorkflowApprovalDecideRequest === null || requestParameters.createWorkflowApprovalDecideRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowApprovalDecideRequest','Required parameter requestParameters.createWorkflowApprovalDecideRequest was null or undefined when calling createWorkflowApprovalDecide.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflow-approvals/{id}/decide`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowApprovalDecideRequestToJSON(requestParameters.createWorkflowApprovalDecideRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowApprovalDecideResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Approve or reject a pending flow.approval request: the waiting run resumes down the approved or rejected port. 409 when it was already decided (another device, Telegram, or the timeout).
+     */
+    async createWorkflowApprovalDecide(requestParameters: CreateWorkflowApprovalDecideOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowApprovalDecideResponse> {
+        const response = await this.createWorkflowApprovalDecideRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Create a multi-step workflow chain.
      */
     async createWorkflowChainRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
@@ -87,6 +470,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Create a multi-step workflow chain.
      */
     async createWorkflowChain(initOverrides?: RequestInit): Promise<IdResponse> {
@@ -95,6 +479,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Enqueue an ad-hoc run of a workflow chain.
      */
     async createWorkflowChainRunNowRaw(requestParameters: CreateWorkflowChainRunNowRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowChainRunNowResponse>> {
@@ -125,6 +510,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Enqueue an ad-hoc run of a workflow chain.
      */
     async createWorkflowChainRunNow(requestParameters: CreateWorkflowChainRunNowRequest, initOverrides?: RequestInit): Promise<CreateWorkflowChainRunNowResponse> {
@@ -133,6 +519,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Flip a workflow chain between active and inactive.
      */
     async createWorkflowChainToggleRaw(requestParameters: CreateWorkflowChainToggleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowChainToggleResponse>> {
@@ -163,6 +550,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Flip a workflow chain between active and inactive.
      */
     async createWorkflowChainToggle(requestParameters: CreateWorkflowChainToggleRequest, initOverrides?: RequestInit): Promise<CreateWorkflowChainToggleResponse> {
@@ -171,6 +559,632 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Pause a workflow: its triggers stop firing. Runs already started finish.
+     */
+    async createWorkflowDeactivateRaw(requestParameters: CreateWorkflowDeactivateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkflowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowDeactivate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/deactivate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkflowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pause a workflow: its triggers stop firing. Runs already started finish.
+     */
+    async createWorkflowDeactivate(requestParameters: CreateWorkflowDeactivateRequest, initOverrides?: RequestInit): Promise<WorkflowResponse> {
+        const response = await this.createWorkflowDeactivateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Copy a workflow (graph, description, tags) into a new paused workflow.
+     */
+    async createWorkflowDuplicateRaw(requestParameters: CreateWorkflowDuplicateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowDuplicateResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowDuplicate.');
+        }
+
+        if (requestParameters.createWorkflowDuplicateRequest === null || requestParameters.createWorkflowDuplicateRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowDuplicateRequest','Required parameter requestParameters.createWorkflowDuplicateRequest was null or undefined when calling createWorkflowDuplicate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/duplicate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowDuplicateRequestToJSON(requestParameters.createWorkflowDuplicateRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowDuplicateResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Copy a workflow (graph, description, tags) into a new paused workflow.
+     */
+    async createWorkflowDuplicate(requestParameters: CreateWorkflowDuplicateOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowDuplicateResponse> {
+        const response = await this.createWorkflowDuplicateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Resolve one param value (\"{{ $json.priceCents * 0.9 }}\") with the engine\'s evaluator against an item, the trigger item, earlier nodes\' items or a stored run. A bad expression is an answer (ok=false with the message), not an HTTP error. Changes nothing.
+     */
+    async createWorkflowExpressionPreviewRaw(requestParameters: CreateWorkflowExpressionPreviewOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowExpressionPreviewResponse>> {
+        if (requestParameters.createWorkflowExpressionPreviewRequest === null || requestParameters.createWorkflowExpressionPreviewRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowExpressionPreviewRequest','Required parameter requestParameters.createWorkflowExpressionPreviewRequest was null or undefined when calling createWorkflowExpressionPreview.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/expressions/preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowExpressionPreviewRequestToJSON(requestParameters.createWorkflowExpressionPreviewRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowExpressionPreviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Resolve one param value (\"{{ $json.priceCents * 0.9 }}\") with the engine\'s evaluator against an item, the trigger item, earlier nodes\' items or a stored run. A bad expression is an answer (ok=false with the message), not an HTTP error. Changes nothing.
+     */
+    async createWorkflowExpressionPreview(requestParameters: CreateWorkflowExpressionPreviewOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowExpressionPreviewResponse> {
+        const response = await this.createWorkflowExpressionPreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
+     */
+    async createWorkflowImportRaw(requestParameters: CreateWorkflowImportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowImportResponse>> {
+        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
+            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createWorkflowImport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/import`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.requestBody,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowImportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
+     */
+    async createWorkflowImport(requestParameters: CreateWorkflowImportRequest, initOverrides?: RequestInit): Promise<CreateWorkflowImportResponse> {
+        const response = await this.createWorkflowImportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
+     */
+    async createWorkflowRunRaw(requestParameters: CreateWorkflowRunOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowRunResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowRun.');
+        }
+
+        if (requestParameters.createWorkflowRunRequest === null || requestParameters.createWorkflowRunRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowRunRequest','Required parameter requestParameters.createWorkflowRunRequest was null or undefined when calling createWorkflowRun.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/run`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowRunRequestToJSON(requestParameters.createWorkflowRunRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowRunResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
+     */
+    async createWorkflowRun(requestParameters: CreateWorkflowRunOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowRunResponse> {
+        const response = await this.createWorkflowRunRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Cancel a queued, running or waiting run. 409 when it already finished.
+     */
+    async createWorkflowRunCancelRaw(requestParameters: CreateWorkflowRunCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowRunCancelResponse>> {
+        if (requestParameters.runId === null || requestParameters.runId === undefined) {
+            throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling createWorkflowRunCancel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflow-runs/{runId}/cancel`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters.runId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowRunCancelResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Cancel a queued, running or waiting run. 409 when it already finished.
+     */
+    async createWorkflowRunCancel(requestParameters: CreateWorkflowRunCancelRequest, initOverrides?: RequestInit): Promise<CreateWorkflowRunCancelResponse> {
+        const response = await this.createWorkflowRunCancelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * \"Run workflow on…\": the same as POST /v1/workflows/{id}/run with the workflow named in the body.
+     */
+    async createWorkflowRunOnRaw(requestParameters: CreateWorkflowRunOnOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowRunOnResponse>> {
+        if (requestParameters.createWorkflowRunOnRequest === null || requestParameters.createWorkflowRunOnRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowRunOnRequest','Required parameter requestParameters.createWorkflowRunOnRequest was null or undefined when calling createWorkflowRunOn.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/run-on`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowRunOnRequestToJSON(requestParameters.createWorkflowRunOnRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowRunOnResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * \"Run workflow on…\": the same as POST /v1/workflows/{id}/run with the workflow named in the body.
+     */
+    async createWorkflowRunOn(requestParameters: CreateWorkflowRunOnOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowRunOnResponse> {
+        const response = await this.createWorkflowRunOnRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run\'s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed.
+     */
+    async createWorkflowRunRetryRaw(requestParameters: CreateWorkflowRunRetryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowRunRetryResponse>> {
+        if (requestParameters.runId === null || requestParameters.runId === undefined) {
+            throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling createWorkflowRunRetry.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflow-runs/{runId}/retry`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters.runId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowRunRetryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Retry a failed run from the node that failed: a new run (retryOfRunId) seeded from the failed run\'s checkpoint, so nodes that succeeded are not repeated. 409 unless the run failed.
+     */
+    async createWorkflowRunRetry(requestParameters: CreateWorkflowRunRetryRequest, initOverrides?: RequestInit): Promise<CreateWorkflowRunRetryResponse> {
+        const response = await this.createWorkflowRunRetryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted = how many listings were restored). 404 for a sale that is not yours.
+     */
+    async createWorkflowSaleEndRaw(requestParameters: CreateWorkflowSaleEndRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowSaleEndResponse>> {
+        if (requestParameters.saleEventId === null || requestParameters.saleEventId === undefined) {
+            throw new runtime.RequiredError('saleEventId','Required parameter requestParameters.saleEventId was null or undefined when calling createWorkflowSaleEnd.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/sales/{saleEventId}/end`.replace(`{${"saleEventId"}}`, encodeURIComponent(String(requestParameters.saleEventId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowSaleEndResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * End a sale now. A sale that has not started is cancelled; a live one closes and every discounted price is put back now (reverted = how many listings were restored). 404 for a sale that is not yours.
+     */
+    async createWorkflowSaleEnd(requestParameters: CreateWorkflowSaleEndRequest, initOverrides?: RequestInit): Promise<CreateWorkflowSaleEndResponse> {
+        const response = await this.createWorkflowSaleEndRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Create a workflow from a template, filling its setup fields; activate=true activates it when it validates.
+     */
+    async createWorkflowTemplateUseRaw(requestParameters: CreateWorkflowTemplateUseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowTemplateUse.');
+        }
+
+        if (requestParameters.createWorkflowTemplateUseRequest === null || requestParameters.createWorkflowTemplateUseRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowTemplateUseRequest','Required parameter requestParameters.createWorkflowTemplateUseRequest was null or undefined when calling createWorkflowTemplateUse.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/templates/{id}/use`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowTemplateUseRequestToJSON(requestParameters.createWorkflowTemplateUseRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create a workflow from a template, filling its setup fields; activate=true activates it when it validates.
+     */
+    async createWorkflowTemplateUse(requestParameters: CreateWorkflowTemplateUseOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowResponse> {
+        const response = await this.createWorkflowTemplateUseRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Test a workflow (the saved graph, or a draft graph you pass). mode=test runs it for real, using pinned data where a node has it; mode=dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample.
+     */
+    async createWorkflowTestRaw(requestParameters: CreateWorkflowTestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowTestResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowTest.');
+        }
+
+        if (requestParameters.createWorkflowTestRequest === null || requestParameters.createWorkflowTestRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowTestRequest','Required parameter requestParameters.createWorkflowTestRequest was null or undefined when calling createWorkflowTest.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowTestRequestToJSON(requestParameters.createWorkflowTestRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowTestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Test a workflow (the saved graph, or a draft graph you pass). mode=test runs it for real, using pinned data where a node has it; mode=dry is a safe test: write, destructive and money nodes report what they would do and change nothing. Trigger items: the ones you pass, else pinned, else the last real ones, else the trigger sample.
+     */
+    async createWorkflowTest(requestParameters: CreateWorkflowTestOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowTestResponse> {
+        const response = await this.createWorkflowTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking=true means activation would be refused.
+     */
+    async createWorkflowValidateRaw(requestParameters: CreateWorkflowValidateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowValidateResponse>> {
+        if (requestParameters.createWorkflowValidateRequest === null || requestParameters.createWorkflowValidateRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowValidateRequest','Required parameter requestParameters.createWorkflowValidateRequest was null or undefined when calling createWorkflowValidate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/validate`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowValidateRequestToJSON(requestParameters.createWorkflowValidateRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowValidateResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Validate a graph without saving it: unknown node types, missing required params, bad ports, cycles, expression errors. blocking=true means activation would be refused.
+     */
+    async createWorkflowValidate(requestParameters: CreateWorkflowValidateOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowValidateResponse> {
+        const response = await this.createWorkflowValidateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Restore an earlier version\'s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
+     */
+    async createWorkflowVersionRestoreRaw(requestParameters: CreateWorkflowVersionRestoreRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkflowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowVersionRestore.');
+        }
+
+        if (requestParameters.v === null || requestParameters.v === undefined) {
+            throw new runtime.RequiredError('v','Required parameter requestParameters.v was null or undefined when calling createWorkflowVersionRestore.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/versions/{v}/restore`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"v"}}`, encodeURIComponent(String(requestParameters.v))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkflowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Restore an earlier version\'s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
+     */
+    async createWorkflowVersionRestore(requestParameters: CreateWorkflowVersionRestoreRequest, initOverrides?: RequestInit): Promise<WorkflowResponse> {
+        const response = await this.createWorkflowVersionRestoreRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret=true, are returned ONCE: store them now.
+     */
+    async createWorkflowWebhookRotateRaw(requestParameters: CreateWorkflowWebhookRotateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowWebhookRotateResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowWebhookRotate.');
+        }
+
+        if (requestParameters.nodeId === null || requestParameters.nodeId === undefined) {
+            throw new runtime.RequiredError('nodeId','Required parameter requestParameters.nodeId was null or undefined when calling createWorkflowWebhookRotate.');
+        }
+
+        if (requestParameters.createWorkflowWebhookRotateRequest === null || requestParameters.createWorkflowWebhookRotateRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowWebhookRotateRequest','Required parameter requestParameters.createWorkflowWebhookRotateRequest was null or undefined when calling createWorkflowWebhookRotate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/webhooks/{nodeId}/rotate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters.nodeId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateWorkflowWebhookRotateRequestToJSON(requestParameters.createWorkflowWebhookRotateRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowWebhookRotateResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret=true, are returned ONCE: store them now.
+     */
+    async createWorkflowWebhookRotate(requestParameters: CreateWorkflowWebhookRotateOperationRequest, initOverrides?: RequestInit): Promise<CreateWorkflowWebhookRotateResponse> {
+        const response = await this.createWorkflowWebhookRotateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable.
+     */
+    async deleteWorkflowRaw(requestParameters: DeleteWorkflowRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteWorkflowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteWorkflow.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteWorkflowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Delete (archive) a workflow: its triggers stop, open runs are cancelled, run history stays readable.
+     */
+    async deleteWorkflow(requestParameters: DeleteWorkflowRequest, initOverrides?: RequestInit): Promise<DeleteWorkflowResponse> {
+        const response = await this.deleteWorkflowRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Delete a workflow chain (cascades steps + runs).
      */
     async deleteWorkflowChainRaw(requestParameters: DeleteWorkflowChainRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
@@ -201,6 +1215,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Delete a workflow chain (cascades steps + runs).
      */
     async deleteWorkflowChain(requestParameters: DeleteWorkflowChainRequest, initOverrides?: RequestInit): Promise<OkResponse> {
@@ -209,6 +1224,79 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Get one workflow with its full graph and current version.
+     */
+    async getWorkflowRaw(requestParameters: GetWorkflowRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorkflowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getWorkflow.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWorkflowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get one workflow with its full graph and current version.
+     */
+    async getWorkflow(requestParameters: GetWorkflowRequest, initOverrides?: RequestInit): Promise<GetWorkflowResponse> {
+        const response = await this.getWorkflowRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys.
+     */
+    async getWorkflowCatalogRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorkflowCatalogResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/catalog`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWorkflowCatalogResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Everything needed to build a workflow: every node type (params, ports, output fields, risk, platforms capability), which platforms each capability covers and which of those you have connected, the expression helpers and bindings ({{ $json.listingId }}…) and the condition operators. Read this before composing a graph rather than guessing node types or param keys.
+     */
+    async getWorkflowCatalog(initOverrides?: RequestInit): Promise<GetWorkflowCatalogResponse> {
+        const response = await this.getWorkflowCatalogRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Get one workflow chain with its steps.
      */
     async getWorkflowChainRaw(requestParameters: GetWorkflowChainRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorkflowChainResponse>> {
@@ -239,6 +1327,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Get one workflow chain with its steps.
      */
     async getWorkflowChain(requestParameters: GetWorkflowChainRequest, initOverrides?: RequestInit): Promise<GetWorkflowChainResponse> {
@@ -247,6 +1336,179 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData=true.
+     */
+    async getWorkflowExportRaw(requestParameters: GetWorkflowExportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorkflowExportResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getWorkflowExport.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.pinnedData !== undefined) {
+            queryParameters['pinnedData'] = requestParameters.pinnedData;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/export`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWorkflowExportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Export a workflow as a portable document (format crossly.workflow) that POST /v1/workflows/import accepts. Credentials and account handles are stripped; pinned test data only with pinnedData=true.
+     */
+    async getWorkflowExport(requestParameters: GetWorkflowExportRequest, initOverrides?: RequestInit): Promise<GetWorkflowExportResponse> {
+        const response = await this.getWorkflowExportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}.
+     */
+    async getWorkflowRunRaw(requestParameters: GetWorkflowRunRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorkflowRunResponse>> {
+        if (requestParameters.runId === null || requestParameters.runId === undefined) {
+            throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling getWorkflowRun.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflow-runs/{runId}`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters.runId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWorkflowRunResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One run: its summary, the graph version it ran, and every node execution (status, item counts per port, timing, errors). Item data per node: GET …/nodes/{nodeId}.
+     */
+    async getWorkflowRun(requestParameters: GetWorkflowRunRequest, initOverrides?: RequestInit): Promise<GetWorkflowRunResponse> {
+        const response = await this.getWorkflowRunRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated=true when cut). Data older than the retention window, or not kept by settings.saveSuccessData=false, is pruned: that execution has input/output null and pruned=true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list).
+     */
+    async getWorkflowRunNodeRaw(requestParameters: GetWorkflowRunNodeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorkflowRunNodeResponse>> {
+        if (requestParameters.runId === null || requestParameters.runId === undefined) {
+            throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling getWorkflowRunNode.');
+        }
+
+        if (requestParameters.nodeId === null || requestParameters.nodeId === undefined) {
+            throw new runtime.RequiredError('nodeId','Required parameter requestParameters.nodeId was null or undefined when calling getWorkflowRunNode.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflow-runs/{runId}/nodes/{nodeId}`.replace(`{${"runId"}}`, encodeURIComponent(String(requestParameters.runId))).replace(`{${"nodeId"}}`, encodeURIComponent(String(requestParameters.nodeId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWorkflowRunNodeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every execution of one node in a run with its input and output items (each port keeps the first 50 items, 16 KB per item; truncated=true when cut). Data older than the retention window, or not kept by settings.saveSuccessData=false, is pruned: that execution has input/output null and pruned=true, and when every execution is pruned the response is { data: null, meta: { pruned: true } } (never an empty list).
+     */
+    async getWorkflowRunNode(requestParameters: GetWorkflowRunNodeRequest, initOverrides?: RequestInit): Promise<GetWorkflowRunNodeResponse> {
+        const response = await this.getWorkflowRunNodeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide.
+     */
+    async listWorkflowApprovalsRaw(requestParameters: ListWorkflowApprovalsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorkflowApprovalsResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.workflowId !== undefined) {
+            queryParameters['workflowId'] = requestParameters.workflowId;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflow-approvals`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWorkflowApprovalsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Approval requests from flow.approval nodes, newest first (pending only unless status says otherwise). Decide one with POST /v1/workflow-approvals/{id}/decide.
+     */
+    async listWorkflowApprovals(requestParameters: ListWorkflowApprovalsRequest = {}, initOverrides?: RequestInit): Promise<ListWorkflowApprovalsResponse> {
+        const response = await this.listWorkflowApprovalsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * List workflow chains with their step graph.
      */
     async listWorkflowChainsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorkflowChainsResponse>> {
@@ -273,6 +1535,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * List workflow chains with their step graph.
      */
     async listWorkflowChains(initOverrides?: RequestInit): Promise<ListWorkflowChainsResponse> {
@@ -281,6 +1544,344 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Run history of one workflow, newest first, with per-node status and item counts.
+     */
+    async listWorkflowRunsRaw(requestParameters: ListWorkflowRunsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorkflowRunsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listWorkflowRuns.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.mode !== undefined) {
+            queryParameters['mode'] = requestParameters.mode;
+        }
+
+        if (requestParameters.since !== undefined) {
+            queryParameters['since'] = (requestParameters.since as any).toISOString();
+        }
+
+        if (requestParameters.until !== undefined) {
+            queryParameters['until'] = (requestParameters.until as any).toISOString();
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/runs`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWorkflowRunsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Run history of one workflow, newest first, with per-node status and item counts.
+     */
+    async listWorkflowRuns(requestParameters: ListWorkflowRunsRequest, initOverrides?: RequestInit): Promise<ListWorkflowRunsResponse> {
+        const response = await this.listWorkflowRunsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Runs of every workflow, newest first. Filter by workflow, status, mode and time.
+     */
+    async listWorkflowRuns2Raw(requestParameters: ListWorkflowRuns2Request, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorkflowRunsResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.workflowId !== undefined) {
+            queryParameters['workflowId'] = requestParameters.workflowId;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.mode !== undefined) {
+            queryParameters['mode'] = requestParameters.mode;
+        }
+
+        if (requestParameters.since !== undefined) {
+            queryParameters['since'] = (requestParameters.since as any).toISOString();
+        }
+
+        if (requestParameters.until !== undefined) {
+            queryParameters['until'] = (requestParameters.until as any).toISOString();
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflow-runs`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWorkflowRunsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Runs of every workflow, newest first. Filter by workflow, status, mode and time.
+     */
+    async listWorkflowRuns2(requestParameters: ListWorkflowRuns2Request = {}, initOverrides?: RequestInit): Promise<ListWorkflowRunsResponse> {
+        const response = await this.listWorkflowRuns2Raw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to.
+     */
+    async listWorkflowSaleActiveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorkflowSaleActiveResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/sales/active`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWorkflowSaleActiveResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every live or upcoming sale (a sales event started by a sale.start node) with the workflow that runs it: percent off, window, and how many listings it applies to.
+     */
+    async listWorkflowSaleActive(initOverrides?: RequestInit): Promise<ListWorkflowSaleActiveResponse> {
+        const response = await this.listWorkflowSaleActiveRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \"use\" call asks for.
+     */
+    async listWorkflowTemplatesRaw(requestParameters: ListWorkflowTemplatesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorkflowTemplatesResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/templates`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWorkflowTemplatesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ready-made workflows (weekend sale, stale-listing markdowns, offer responder, ship-by alerts…), each a complete graph plus the setup fields its \"use\" call asks for.
+     */
+    async listWorkflowTemplates(requestParameters: ListWorkflowTemplatesRequest = {}, initOverrides?: RequestInit): Promise<ListWorkflowTemplatesResponse> {
+        const response = await this.listWorkflowTemplatesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore).
+     */
+    async listWorkflowVersionsRaw(requestParameters: ListWorkflowVersionsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorkflowVersionsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listWorkflowVersions.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}/versions`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWorkflowVersionsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The saved versions of a workflow, newest first (restore one with POST …/versions/{v}/restore).
+     */
+    async listWorkflowVersions(requestParameters: ListWorkflowVersionsRequest, initOverrides?: RequestInit): Promise<ListWorkflowVersionsResponse> {
+        const response = await this.listWorkflowVersionsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it).
+     */
+    async listWorkflowsRaw(requestParameters: ListWorkflowsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorkflowsResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.active !== undefined) {
+            queryParameters['active'] = requestParameters.active;
+        }
+
+        if (requestParameters.tag !== undefined) {
+            queryParameters['tag'] = requestParameters.tag;
+        }
+
+        if (requestParameters.trigger !== undefined) {
+            queryParameters['trigger'] = requestParameters.trigger;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.legacyRef !== undefined) {
+            queryParameters['legacyRef'] = requestParameters.legacyRef;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWorkflowsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List workflows, newest change first. A workflow is a graph of nodes: one or more triggers, then actions, lookups and flow nodes (if, switch, wait, approval…). Each row carries its trigger and node types and a 7-day run sparkline, not the graph (GET /v1/workflows/{id} has it).
+     */
+    async listWorkflows(requestParameters: ListWorkflowsRequest = {}, initOverrides?: RequestInit): Promise<ListWorkflowsResponse> {
+        const response = await this.listWorkflowsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues).
+     */
+    async updateWorkflowRaw(requestParameters: UpdateWorkflowOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkflowResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWorkflow.');
+        }
+
+        if (requestParameters.updateWorkflowRequest === null || requestParameters.updateWorkflowRequest === undefined) {
+            throw new runtime.RequiredError('updateWorkflowRequest','Required parameter requestParameters.updateWorkflowRequest was null or undefined when calling updateWorkflow.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/workflows/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateWorkflowRequestToJSON(requestParameters.updateWorkflowRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkflowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save a workflow. Pass the version you edited: a save over a newer version is 409 version_conflict (re-read and merge). Saving an active workflow validates it like activation does (422 with issues).
+     */
+    async updateWorkflow(requestParameters: UpdateWorkflowOperationRequest, initOverrides?: RequestInit): Promise<WorkflowResponse> {
+        const response = await this.updateWorkflowRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Replace a workflow chain wholesale.
      */
     async updateWorkflowChainRaw(requestParameters: UpdateWorkflowChainRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
@@ -311,6 +1912,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Replace a workflow chain wholesale.
      */
     async updateWorkflowChain(requestParameters: UpdateWorkflowChainRequest, initOverrides?: RequestInit): Promise<OkResponse> {
@@ -318,4 +1920,39 @@ export class WorkflowsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorkflowExportPinnedDataEnum {
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorkflowRunsModeEnum {
+    Live = 'live',
+    Test = 'test',
+    Dry = 'dry'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorkflowRuns2ModeEnum {
+    Live = 'live',
+    Test = 'test',
+    Dry = 'dry'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorkflowsActiveEnum {
+    True = 'true',
+    False = 'false'
 }

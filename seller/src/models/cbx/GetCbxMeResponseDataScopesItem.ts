@@ -18,9 +18,9 @@
  * @enum {string}
  */
 export enum GetCbxMeResponseDataScopesItem {
+    Read = 'read',
     Spend = 'spend',
     Campaign = 'campaign',
-    Read = 'read',
     Accrue = 'accrue',
     Treasury = 'treasury'
 }

@@ -51,28 +51,16 @@ export interface CreateOrderPickupResponseData {
     carrier: string;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof CreateOrderPickupResponseData
-     */
-    orderIds: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateOrderPickupResponseData
-     */
-    shippoPickupId: string;
-    /**
-     * 
      * @type {string}
      * @memberof CreateOrderPickupResponseData
      */
     confirmation?: string | null;
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof CreateOrderPickupResponseData
      */
-    pickupDate: string;
+    orderIds: Array<string>;
     /**
      * 
      * @type {string}
@@ -87,6 +75,24 @@ export interface CreateOrderPickupResponseData {
     maxTime: string;
     /**
      * 
+     * @type {string}
+     * @memberof CreateOrderPickupResponseData
+     */
+    instructions?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderPickupResponseData
+     */
+    shippoPickupId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOrderPickupResponseData
+     */
+    pickupDate: string;
+    /**
+     * 
      * @type {Date}
      * @memberof CreateOrderPickupResponseData
      */
@@ -97,12 +103,6 @@ export interface CreateOrderPickupResponseData {
      * @memberof CreateOrderPickupResponseData
      */
     confirmedEnd?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateOrderPickupResponseData
-     */
-    instructions?: string | null;
     /**
      * 
      * @type {Array<string>}
@@ -126,15 +126,15 @@ export function CreateOrderPickupResponseDataFromJSONTyped(json: any, ignoreDisc
         'userId': json['userId'],
         'status': json['status'],
         'carrier': json['carrier'],
-        'orderIds': json['orderIds'],
-        'shippoPickupId': json['shippoPickupId'],
         'confirmation': !exists(json, 'confirmation') ? undefined : json['confirmation'],
-        'pickupDate': json['pickupDate'],
+        'orderIds': json['orderIds'],
         'minTime': json['minTime'],
         'maxTime': json['maxTime'],
+        'instructions': !exists(json, 'instructions') ? undefined : json['instructions'],
+        'shippoPickupId': json['shippoPickupId'],
+        'pickupDate': json['pickupDate'],
         'confirmedStart': !exists(json, 'confirmedStart') ? undefined : (json['confirmedStart'] === null ? null : new Date(json['confirmedStart'])),
         'confirmedEnd': !exists(json, 'confirmedEnd') ? undefined : (json['confirmedEnd'] === null ? null : new Date(json['confirmedEnd'])),
-        'instructions': !exists(json, 'instructions') ? undefined : json['instructions'],
         'warnings': json['warnings'],
     };
 }
@@ -153,15 +153,15 @@ export function CreateOrderPickupResponseDataToJSON(value?: CreateOrderPickupRes
         'userId': value.userId,
         'status': value.status,
         'carrier': value.carrier,
-        'orderIds': value.orderIds,
-        'shippoPickupId': value.shippoPickupId,
         'confirmation': value.confirmation,
-        'pickupDate': value.pickupDate,
+        'orderIds': value.orderIds,
         'minTime': value.minTime,
         'maxTime': value.maxTime,
+        'instructions': value.instructions,
+        'shippoPickupId': value.shippoPickupId,
+        'pickupDate': value.pickupDate,
         'confirmedStart': value.confirmedStart === undefined ? undefined : (value.confirmedStart === null ? null : value.confirmedStart.toISOString()),
         'confirmedEnd': value.confirmedEnd === undefined ? undefined : (value.confirmedEnd === null ? null : value.confirmedEnd.toISOString()),
-        'instructions': value.instructions,
         'warnings': value.warnings,
     };
 }

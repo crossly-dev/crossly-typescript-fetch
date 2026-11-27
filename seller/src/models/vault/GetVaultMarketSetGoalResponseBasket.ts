@@ -141,10 +141,10 @@ export interface GetVaultMarketSetGoalResponseBasket {
 * @enum {string}
 */
 export enum GetVaultMarketSetGoalResponseBasketStatusEnum {
+    Completed = 'completed',
     Cancelled = 'cancelled',
     Ended = 'ended',
-    Working = 'working',
-    Completed = 'completed'
+    Working = 'working'
 }/**
 * @export
 * @enum {string}

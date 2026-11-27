@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    CreateOrderCancelResponseRefund,
+    CreateOrderCancelResponseRefundFromJSON,
+    CreateOrderCancelResponseRefundFromJSONTyped,
+    CreateOrderCancelResponseRefundToJSON,
+} from './CreateOrderCancelResponseRefund';
+
 /**
  * 
  * @export
@@ -20,11 +27,17 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface CreateOrderCancelResponse {
     /**
-     * 
+     * The marketplace outcome, or already_cancelled when the order was cancelled before this call.
      * @type {string}
      * @memberof CreateOrderCancelResponse
      */
-    orderId: string;
+    platformCancel: CreateOrderCancelResponsePlatformCancelEnum;
+    /**
+     * 
+     * @type {CreateOrderCancelResponseRefund}
+     * @memberof CreateOrderCancelResponse
+     */
+    refund?: CreateOrderCancelResponseRefund | null;
     /**
      * 
      * @type {string}
@@ -33,16 +46,59 @@ export interface CreateOrderCancelResponse {
     platform: string;
     /**
      * 
+     * @type {string}
+     * @memberof CreateOrderCancelResponse
+     */
+    orderId: string;
+    /**
+     * The platform's error, VERBATIM. Deliberately not summarised — the
+     * marketplace names what it objected to, and summarising throws that away.
+     * eBay reason codes are now fetched per order via checkCancelEligibility
+     * rather than guessed, but a rejection can still happen (order state changed
+     * between the probe and the cancel), and this is how it gets diagnosed.
+     * @type {string}
+     * @memberof CreateOrderCancelResponse
+     */
+    error?: string | null;
+    /**
+     * Cookie track only.
+     * @type {string}
+     * @memberof CreateOrderCancelResponse
+     */
+    jobId?: string | null;
+    /**
+     * True unless the cancel was relayed to the managing app (then false until it completes).
      * @type {boolean}
      * @memberof CreateOrderCancelResponse
      */
     cancelledInCrossly: boolean;
     /**
-     * 
+     * platformCancel 'relayed': the app command tracking it.
      * @type {string}
      * @memberof CreateOrderCancelResponse
      */
-    platformCancel: string;
+    commandId?: string | null;
+    /**
+     * Platform payload (e.g. eBay's cancellationId) when it answered.
+     * @type {{ [key: string]: any; }}
+     * @memberof CreateOrderCancelResponse
+     */
+    platformResult?: { [key: string]: any; } | null;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum CreateOrderCancelResponsePlatformCancelEnum {
+    Sent = 'sent',
+    Failed = 'failed',
+    Queued = 'queued',
+    Relayed = 'relayed',
+    Unsupported = 'unsupported',
+    NoPlatformOrderId = 'no_platform_order_id',
+    RecordedOnly = 'recorded_only',
+    AlreadyCancelled = 'already_cancelled'
 }
 
 export function CreateOrderCancelResponseFromJSON(json: any): CreateOrderCancelResponse {
@@ -55,10 +111,15 @@ export function CreateOrderCancelResponseFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'orderId': json['orderId'],
-        'platform': json['platform'],
-        'cancelledInCrossly': json['cancelledInCrossly'],
         'platformCancel': json['platformCancel'],
+        'refund': !exists(json, 'refund') ? undefined : CreateOrderCancelResponseRefundFromJSON(json['refund']),
+        'platform': json['platform'],
+        'orderId': json['orderId'],
+        'error': !exists(json, 'error') ? undefined : json['error'],
+        'jobId': !exists(json, 'jobId') ? undefined : json['jobId'],
+        'cancelledInCrossly': json['cancelledInCrossly'],
+        'commandId': !exists(json, 'commandId') ? undefined : json['commandId'],
+        'platformResult': !exists(json, 'platformResult') ? undefined : json['platformResult'],
     };
 }
 
@@ -71,10 +132,15 @@ export function CreateOrderCancelResponseToJSON(value?: CreateOrderCancelRespons
     }
     return {
         
-        'orderId': value.orderId,
-        'platform': value.platform,
-        'cancelledInCrossly': value.cancelledInCrossly,
         'platformCancel': value.platformCancel,
+        'refund': CreateOrderCancelResponseRefundToJSON(value.refund),
+        'platform': value.platform,
+        'orderId': value.orderId,
+        'error': value.error,
+        'jobId': value.jobId,
+        'cancelledInCrossly': value.cancelledInCrossly,
+        'commandId': value.commandId,
+        'platformResult': value.platformResult,
     };
 }
 

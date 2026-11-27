@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    SlugName,
-    SlugNameFromJSON,
-    SlugNameFromJSONTyped,
-    SlugNameToJSON,
-} from '../common/SlugName';
+    NameSlug,
+    NameSlugFromJSON,
+    NameSlugFromJSONTyped,
+    NameSlugToJSON,
+} from '../common/NameSlug';
 
 /**
  * 
@@ -64,10 +64,10 @@ export interface GetVaultMarketCorrelationResponse {
     reason?: string | null;
     /**
      * 
-     * @type {Array<SlugName>}
+     * @type {Array<NameSlug>}
      * @memberof GetVaultMarketCorrelationResponse
      */
-    indexes: Array<SlugName>;
+    indexes: Array<NameSlug>;
     /**
      * 
      * @type {Array<Array<number>>}
@@ -104,7 +104,7 @@ export function GetVaultMarketCorrelationResponseFromJSONTyped(json: any, ignore
         'minPairWeeks': json['minPairWeeks'],
         'insufficient': json['insufficient'],
         'reason': !exists(json, 'reason') ? undefined : json['reason'],
-        'indexes': ((json['indexes'] as Array<any>).map(SlugNameFromJSON)),
+        'indexes': ((json['indexes'] as Array<any>).map(NameSlugFromJSON)),
         'rho': json['rho'],
         'n': json['n'],
         'asOf': json['asOf'],
@@ -126,7 +126,7 @@ export function GetVaultMarketCorrelationResponseToJSON(value?: GetVaultMarketCo
         'minPairWeeks': value.minPairWeeks,
         'insufficient': value.insufficient,
         'reason': value.reason,
-        'indexes': ((value.indexes as Array<any>).map(SlugNameToJSON)),
+        'indexes': ((value.indexes as Array<any>).map(NameSlugToJSON)),
         'rho': value.rho,
         'n': value.n,
         'asOf': value.asOf,

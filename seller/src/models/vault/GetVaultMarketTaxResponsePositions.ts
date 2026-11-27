@@ -92,8 +92,8 @@ export interface GetVaultMarketTaxResponsePositions {
 * @enum {string}
 */
 export enum GetVaultMarketTaxResponsePositionsTermEnum {
-    Long = 'long',
-    Short = 'short'
+    Short = 'short',
+    Long = 'long'
 }
 
 export function GetVaultMarketTaxResponsePositionsFromJSON(json: any): GetVaultMarketTaxResponsePositions {

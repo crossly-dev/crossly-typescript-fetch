@@ -15,12 +15,18 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateWebhookDeliveryRedeliverResponse,
+    CreateWebhookDeliveryRedeliverResponseFromJSON,
+    CreateWebhookDeliveryRedeliverResponseToJSON,
     CreateWebhookResponse,
     CreateWebhookResponseFromJSON,
     CreateWebhookResponseToJSON,
     CreateWebhookTestResponse,
     CreateWebhookTestResponseFromJSON,
     CreateWebhookTestResponseToJSON,
+    ListWebhookDeliveriesResponse,
+    ListWebhookDeliveriesResponseFromJSON,
+    ListWebhookDeliveriesResponseToJSON,
     ListWebhooksResponse,
     ListWebhooksResponseFromJSON,
     ListWebhooksResponseToJSON,
@@ -29,12 +35,23 @@ import {
     OkResponseToJSON,
 } from '../models';
 
+export interface CreateWebhookDeliveryRedeliverRequest {
+    id: string;
+    deliveryId: string;
+}
+
 export interface CreateWebhookTestRequest {
     id: string;
 }
 
 export interface DeleteWebhookRequest {
     id: string;
+}
+
+export interface ListWebhookDeliveriesRequest {
+    id: string;
+    status?: ListWebhookDeliveriesStatusEnum;
+    limit?: number;
 }
 
 /**
@@ -77,7 +94,49 @@ export class WebhooksApi extends runtime.BaseAPI {
     }
 
     /**
-     * Fire a synthetic test.ping delivery to one webhook.
+     * Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+     */
+    async createWebhookDeliveryRedeliverRaw(requestParameters: CreateWebhookDeliveryRedeliverRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWebhookDeliveryRedeliverResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWebhookDeliveryRedeliver.');
+        }
+
+        if (requestParameters.deliveryId === null || requestParameters.deliveryId === undefined) {
+            throw new runtime.RequiredError('deliveryId','Required parameter requestParameters.deliveryId was null or undefined when calling createWebhookDeliveryRedeliver.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/webhooks/{id}/deliveries/{deliveryId}/redeliver`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"deliveryId"}}`, encodeURIComponent(String(requestParameters.deliveryId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWebhookDeliveryRedeliverResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
+     */
+    async createWebhookDeliveryRedeliver(requestParameters: CreateWebhookDeliveryRedeliverRequest, initOverrides?: RequestInit): Promise<CreateWebhookDeliveryRedeliverResponse> {
+        const response = await this.createWebhookDeliveryRedeliverRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
      */
     async createWebhookTestRaw(requestParameters: CreateWebhookTestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWebhookTestResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -107,7 +166,7 @@ export class WebhooksApi extends runtime.BaseAPI {
     }
 
     /**
-     * Fire a synthetic test.ping delivery to one webhook.
+     * Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
      */
     async createWebhookTest(requestParameters: CreateWebhookTestRequest, initOverrides?: RequestInit): Promise<CreateWebhookTestResponse> {
         const response = await this.createWebhookTestRaw(requestParameters, initOverrides);
@@ -189,6 +248,52 @@ export class WebhooksApi extends runtime.BaseAPI {
     }
 
     /**
+     * List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+     */
+    async listWebhookDeliveriesRaw(requestParameters: ListWebhookDeliveriesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWebhookDeliveriesResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listWebhookDeliveries.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/webhooks/{id}/deliveries`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWebhookDeliveriesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
+     */
+    async listWebhookDeliveries(requestParameters: ListWebhookDeliveriesRequest, initOverrides?: RequestInit): Promise<ListWebhookDeliveriesResponse> {
+        const response = await this.listWebhookDeliveriesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * List your registered webhook endpoints.
      */
     async listWebhooksRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWebhooksResponse>> {
@@ -222,4 +327,14 @@ export class WebhooksApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWebhookDeliveriesStatusEnum {
+    Pending = 'pending',
+    Succeeded = 'succeeded',
+    Failed = 'failed'
 }

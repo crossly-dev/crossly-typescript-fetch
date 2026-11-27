@@ -37,43 +37,7 @@ export interface ListBuyerLiveShipmentsItem {
      * @type {string}
      * @memberof ListBuyerLiveShipmentsItem
      */
-    status: string;
-    /**
-     * 
-     * @type {Array<ListBuyerLiveShipmentsItemOrders>}
-     * @memberof ListBuyerLiveShipmentsItem
-     */
-    orders: Array<ListBuyerLiveShipmentsItemOrders>;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerLiveShipmentsItem
-     */
-    carrier?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerLiveShipmentsItem
-     */
-    trackingNumber?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerLiveShipmentsItem
-     */
-    labelUrl?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListBuyerLiveShipmentsItem
-     */
     streamId: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ListBuyerLiveShipmentsItem
-     */
-    refundedPostageCents: number;
     /**
      * 
      * @type {string}
@@ -85,7 +49,43 @@ export interface ListBuyerLiveShipmentsItem {
      * @type {string}
      * @memberof ListBuyerLiveShipmentsItem
      */
+    status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerLiveShipmentsItem
+     */
     buyerName?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerLiveShipmentsItem
+     */
+    trackingNumber?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerLiveShipmentsItem
+     */
+    carrier?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListBuyerLiveShipmentsItem
+     */
+    labelUrl?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListBuyerLiveShipmentsItem
+     */
+    refundedPostageCents: number;
+    /**
+     * 
+     * @type {Array<ListBuyerLiveShipmentsItemOrders>}
+     * @memberof ListBuyerLiveShipmentsItem
+     */
+    orders: Array<ListBuyerLiveShipmentsItemOrders>;
 }
 
 export function ListBuyerLiveShipmentsItemFromJSON(json: any): ListBuyerLiveShipmentsItem {
@@ -99,15 +99,15 @@ export function ListBuyerLiveShipmentsItemFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'id': json['id'],
-        'status': json['status'],
-        'orders': ((json['orders'] as Array<any>).map(ListBuyerLiveShipmentsItemOrdersFromJSON)),
-        'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
-        'trackingNumber': !exists(json, 'trackingNumber') ? undefined : json['trackingNumber'],
-        'labelUrl': !exists(json, 'labelUrl') ? undefined : json['labelUrl'],
         'streamId': json['streamId'],
-        'refundedPostageCents': json['refundedPostageCents'],
         'streamTitle': json['streamTitle'],
+        'status': json['status'],
         'buyerName': !exists(json, 'buyerName') ? undefined : json['buyerName'],
+        'trackingNumber': !exists(json, 'trackingNumber') ? undefined : json['trackingNumber'],
+        'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
+        'labelUrl': !exists(json, 'labelUrl') ? undefined : json['labelUrl'],
+        'refundedPostageCents': json['refundedPostageCents'],
+        'orders': ((json['orders'] as Array<any>).map(ListBuyerLiveShipmentsItemOrdersFromJSON)),
     };
 }
 
@@ -121,15 +121,15 @@ export function ListBuyerLiveShipmentsItemToJSON(value?: ListBuyerLiveShipmentsI
     return {
         
         'id': value.id,
-        'status': value.status,
-        'orders': ((value.orders as Array<any>).map(ListBuyerLiveShipmentsItemOrdersToJSON)),
-        'carrier': value.carrier,
-        'trackingNumber': value.trackingNumber,
-        'labelUrl': value.labelUrl,
         'streamId': value.streamId,
-        'refundedPostageCents': value.refundedPostageCents,
         'streamTitle': value.streamTitle,
+        'status': value.status,
         'buyerName': value.buyerName,
+        'trackingNumber': value.trackingNumber,
+        'carrier': value.carrier,
+        'labelUrl': value.labelUrl,
+        'refundedPostageCents': value.refundedPostageCents,
+        'orders': ((value.orders as Array<any>).map(ListBuyerLiveShipmentsItemOrdersToJSON)),
     };
 }
 

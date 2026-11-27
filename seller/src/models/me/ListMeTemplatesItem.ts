@@ -60,6 +60,24 @@ export interface ListMeTemplatesItem {
      * @type {string}
      * @memberof ListMeTemplatesItem
      */
+    description?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListMeTemplatesItem
+     */
+    notes?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListMeTemplatesItem
+     */
+    isDefault: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListMeTemplatesItem
+     */
     condition?: string | null;
     /**
      * 
@@ -123,12 +141,6 @@ export interface ListMeTemplatesItem {
     tags?: Array<string> | null;
     /**
      * 
-     * @type {string}
-     * @memberof ListMeTemplatesItem
-     */
-    notes?: string | null;
-    /**
-     * 
      * @type {number}
      * @memberof ListMeTemplatesItem
      */
@@ -138,37 +150,19 @@ export interface ListMeTemplatesItem {
      * @type {string}
      * @memberof ListMeTemplatesItem
      */
-    description?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListMeTemplatesItem
-     */
-    isDefault: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListMeTemplatesItem
-     */
     title?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListMeTemplatesItem
-     */
-    scope: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListMeTemplatesItem
-     */
-    shareToken?: string | null;
     /**
      * 
      * @type {number}
      * @memberof ListMeTemplatesItem
      */
     sortOrder: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListMeTemplatesItem
+     */
+    scope: string;
     /**
      * 
      * @type {Array<string>}
@@ -187,6 +181,12 @@ export interface ListMeTemplatesItem {
      * @memberof ListMeTemplatesItem
      */
     defaultForCategory?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListMeTemplatesItem
+     */
+    shareToken?: string | null;
 }
 
 export function ListMeTemplatesItemFromJSON(json: any): ListMeTemplatesItem {
@@ -205,6 +205,9 @@ export function ListMeTemplatesItemFromJSONTyped(json: any, ignoreDiscriminator:
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': json['userId'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
+        'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'isDefault': json['isDefault'],
         'condition': !exists(json, 'condition') ? undefined : json['condition'],
         'size': !exists(json, 'size') ? undefined : json['size'],
         'material': !exists(json, 'material') ? undefined : json['material'],
@@ -216,17 +219,14 @@ export function ListMeTemplatesItemFromJSONTyped(json: any, ignoreDiscriminator:
         'sizeSystem': !exists(json, 'sizeSystem') ? undefined : json['sizeSystem'],
         'color': !exists(json, 'color') ? undefined : json['color'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
-        'notes': !exists(json, 'notes') ? undefined : json['notes'],
         'weightOz': !exists(json, 'weightOz') ? undefined : json['weightOz'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'isDefault': json['isDefault'],
         'title': !exists(json, 'title') ? undefined : json['title'],
-        'scope': json['scope'],
-        'shareToken': !exists(json, 'shareToken') ? undefined : json['shareToken'],
         'sortOrder': json['sortOrder'],
+        'scope': json['scope'],
         'descriptionVariants': !exists(json, 'descriptionVariants') ? undefined : json['descriptionVariants'],
         'titleVariants': !exists(json, 'titleVariants') ? undefined : json['titleVariants'],
         'defaultForCategory': !exists(json, 'defaultForCategory') ? undefined : json['defaultForCategory'],
+        'shareToken': !exists(json, 'shareToken') ? undefined : json['shareToken'],
     };
 }
 
@@ -245,6 +245,9 @@ export function ListMeTemplatesItemToJSON(value?: ListMeTemplatesItem | null): a
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
+        'description': value.description,
+        'notes': value.notes,
+        'isDefault': value.isDefault,
         'condition': value.condition,
         'size': value.size,
         'material': value.material,
@@ -256,17 +259,14 @@ export function ListMeTemplatesItemToJSON(value?: ListMeTemplatesItem | null): a
         'sizeSystem': value.sizeSystem,
         'color': value.color,
         'tags': value.tags,
-        'notes': value.notes,
         'weightOz': value.weightOz,
-        'description': value.description,
-        'isDefault': value.isDefault,
         'title': value.title,
-        'scope': value.scope,
-        'shareToken': value.shareToken,
         'sortOrder': value.sortOrder,
+        'scope': value.scope,
         'descriptionVariants': value.descriptionVariants,
         'titleVariants': value.titleVariants,
         'defaultForCategory': value.defaultForCategory,
+        'shareToken': value.shareToken,
     };
 }
 

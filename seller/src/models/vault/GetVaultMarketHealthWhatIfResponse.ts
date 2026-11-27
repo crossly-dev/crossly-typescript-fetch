@@ -153,9 +153,9 @@ export interface GetVaultMarketHealthWhatIfResponse {
 */
 export enum GetVaultMarketHealthWhatIfResponseQualityEnum {
     None = 'none',
+    C = 'C',
     A = 'A',
-    B = 'B',
-    C = 'C'
+    B = 'B'
 }
 
 export function GetVaultMarketHealthWhatIfResponseFromJSON(json: any): GetVaultMarketHealthWhatIfResponse {

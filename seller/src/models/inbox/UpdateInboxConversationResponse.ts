@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListInboxItem,
-    ListInboxItemFromJSON,
-    ListInboxItemFromJSONTyped,
-    ListInboxItemToJSON,
-} from './ListInboxItem';
+    UpdateInboxConversationResponseConversation,
+    UpdateInboxConversationResponseConversationFromJSON,
+    UpdateInboxConversationResponseConversationFromJSONTyped,
+    UpdateInboxConversationResponseConversationToJSON,
+} from './UpdateInboxConversationResponseConversation';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface UpdateInboxConversationResponse {
     /**
      * 
-     * @type {ListInboxItem}
+     * @type {UpdateInboxConversationResponseConversation}
      * @memberof UpdateInboxConversationResponse
      */
-    conversation: ListInboxItem;
+    conversation: UpdateInboxConversationResponseConversation;
 }
 
 export function UpdateInboxConversationResponseFromJSON(json: any): UpdateInboxConversationResponse {
@@ -44,7 +44,7 @@ export function UpdateInboxConversationResponseFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'conversation': ListInboxItemFromJSON(json['conversation']),
+        'conversation': UpdateInboxConversationResponseConversationFromJSON(json['conversation']),
     };
 }
 
@@ -57,7 +57,7 @@ export function UpdateInboxConversationResponseToJSON(value?: UpdateInboxConvers
     }
     return {
         
-        'conversation': ListInboxItemToJSON(value.conversation),
+        'conversation': UpdateInboxConversationResponseConversationToJSON(value.conversation),
     };
 }
 

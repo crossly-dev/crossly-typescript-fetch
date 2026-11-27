@@ -44,6 +44,12 @@ import {
     ListVaultMarketShareCardsItemMarkToJSON,
 } from './ListVaultMarketShareCardsItemMark';
 import {
+    ListVaultMarketShareCardsItemOwner,
+    ListVaultMarketShareCardsItemOwnerFromJSON,
+    ListVaultMarketShareCardsItemOwnerFromJSONTyped,
+    ListVaultMarketShareCardsItemOwnerToJSON,
+} from './ListVaultMarketShareCardsItemOwner';
+import {
     ListVaultMarketShareCardsItemPortfolio,
     ListVaultMarketShareCardsItemPortfolioFromJSON,
     ListVaultMarketShareCardsItemPortfolioFromJSONTyped,
@@ -86,6 +92,12 @@ export interface ListVaultMarketShareCardsItem {
      * @memberof ListVaultMarketShareCardsItem
      */
     showAmounts: boolean;
+    /**
+     * 
+     * @type {ListVaultMarketShareCardsItemOwner}
+     * @memberof ListVaultMarketShareCardsItem
+     */
+    owner: ListVaultMarketShareCardsItemOwner;
     /**
      * 
      * @type {string}
@@ -161,8 +173,8 @@ export interface ListVaultMarketShareCardsItem {
 export enum ListVaultMarketShareCardsItemKindEnum {
     Position = 'position',
     Unit = 'unit',
-    Index = 'index',
-    Portfolio = 'portfolio'
+    Portfolio = 'portfolio',
+    Index = 'index'
 }
 
 export function ListVaultMarketShareCardsItemFromJSON(json: any): ListVaultMarketShareCardsItem {
@@ -180,6 +192,7 @@ export function ListVaultMarketShareCardsItemFromJSONTyped(json: any, ignoreDisc
         'verified': json['verified'],
         'createdAt': json['createdAt'],
         'showAmounts': json['showAmounts'],
+        'owner': ListVaultMarketShareCardsItemOwnerFromJSON(json['owner']),
         'title': json['title'],
         'subtitle': !exists(json, 'subtitle') ? undefined : json['subtitle'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
@@ -208,6 +221,7 @@ export function ListVaultMarketShareCardsItemToJSON(value?: ListVaultMarketShare
         'verified': value.verified,
         'createdAt': value.createdAt,
         'showAmounts': value.showAmounts,
+        'owner': ListVaultMarketShareCardsItemOwnerToJSON(value.owner),
         'title': value.title,
         'subtitle': value.subtitle,
         'imageUrl': value.imageUrl,
