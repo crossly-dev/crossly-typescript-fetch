@@ -154,8 +154,8 @@ export interface ListDetectedEventRulesItem {
 */
 export enum ListDetectedEventRulesItemSourceEnum {
     Default = 'default',
-    Seller = 'seller',
-    Legacy = 'legacy'
+    Legacy = 'legacy',
+    Seller = 'seller'
 }
 
 export function ListDetectedEventRulesItemFromJSON(json: any): ListDetectedEventRulesItem {

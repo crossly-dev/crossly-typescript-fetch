@@ -69,6 +69,13 @@ export interface GetConnectionHealthResponseAccounts {
      */
     platformUsername?: string | null;
     /**
+     * The row's own status (null = never connected). The CN1 alert sweep reads it: only an `active` account
+     * alerts here, a needs_reauth one is connection_incidents'.
+     * @type {string}
+     * @memberof GetConnectionHealthResponseAccounts
+     */
+    accountStatus?: GetConnectionHealthResponseAccountsAccountStatusEnum;
+    /**
      * Plain-English "what is true" + "what to do". Never empty.
      * @type {string}
      * @memberof GetConnectionHealthResponseAccounts
@@ -135,6 +142,14 @@ export interface GetConnectionHealthResponseAccounts {
 * @export
 * @enum {string}
 */
+export enum GetConnectionHealthResponseAccountsAccountStatusEnum {
+    Active = 'active',
+    Archived = 'archived',
+    NeedsReauth = 'needs_reauth'
+}/**
+* @export
+* @enum {string}
+*/
 export enum GetConnectionHealthResponseAccountsStateEnum {
     Unknown = 'unknown',
     Unmonitored = 'unmonitored',
@@ -151,18 +166,18 @@ export enum GetConnectionHealthResponseAccountsStateEnum {
 * @enum {string}
 */
 export enum GetConnectionHealthResponseAccountsSeverityEnum {
-    Info = 'info',
     Unknown = 'unknown',
+    Info = 'info',
+    Ok = 'ok',
     Error = 'error',
-    Warn = 'warn',
-    Ok = 'ok'
+    Warn = 'warn'
 }/**
 * @export
 * @enum {string}
 */
 export enum GetConnectionHealthResponseAccountsAudienceEnum {
-    Seller = 'seller',
     Crossly = 'crossly',
+    Seller = 'seller',
     Nobody = 'nobody'
 }
 
@@ -181,6 +196,7 @@ export function GetConnectionHealthResponseAccountsFromJSONTyped(json: any, igno
         'accountSlot': !exists(json, 'accountSlot') ? undefined : json['accountSlot'],
         'label': !exists(json, 'label') ? undefined : json['label'],
         'platformUsername': !exists(json, 'platformUsername') ? undefined : json['platformUsername'],
+        'accountStatus': !exists(json, 'accountStatus') ? undefined : json['accountStatus'],
         'summary': json['summary'],
         'action': json['action'],
         'liveness': GetConnectionHealthResponseAccountsLivenessFromJSON(json['liveness']),
@@ -208,6 +224,7 @@ export function GetConnectionHealthResponseAccountsToJSON(value?: GetConnectionH
         'accountSlot': value.accountSlot,
         'label': value.label,
         'platformUsername': value.platformUsername,
+        'accountStatus': value.accountStatus,
         'summary': value.summary,
         'action': value.action,
         'liveness': GetConnectionHealthResponseAccountsLivenessToJSON(value.liveness),

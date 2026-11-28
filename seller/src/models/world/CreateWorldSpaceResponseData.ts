@@ -60,6 +60,12 @@ export interface CreateWorldSpaceResponseData {
      * @type {string}
      * @memberof CreateWorldSpaceResponseData
      */
+    about?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldSpaceResponseData
+     */
     venue: string;
     /**
      * 
@@ -67,12 +73,6 @@ export interface CreateWorldSpaceResponseData {
      * @memberof CreateWorldSpaceResponseData
      */
     hostUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateWorldSpaceResponseData
-     */
-    about?: string | null;
     /**
      * 
      * @type {string}
@@ -115,9 +115,9 @@ export function CreateWorldSpaceResponseDataFromJSONTyped(json: any, ignoreDiscr
         'updatedAt': (new Date(json['updatedAt'])),
         'status': json['status'],
         'slug': json['slug'],
+        'about': !exists(json, 'about') ? undefined : json['about'],
         'venue': json['venue'],
         'hostUserId': json['hostUserId'],
-        'about': !exists(json, 'about') ? undefined : json['about'],
         'gateChain': !exists(json, 'gateChain') ? undefined : json['gateChain'],
         'gateContract': !exists(json, 'gateContract') ? undefined : json['gateContract'],
         'gateName': !exists(json, 'gateName') ? undefined : json['gateName'],
@@ -140,9 +140,9 @@ export function CreateWorldSpaceResponseDataToJSON(value?: CreateWorldSpaceRespo
         'updatedAt': (value.updatedAt.toISOString()),
         'status': value.status,
         'slug': value.slug,
+        'about': value.about,
         'venue': value.venue,
         'hostUserId': value.hostUserId,
-        'about': value.about,
         'gateChain': value.gateChain,
         'gateContract': value.gateContract,
         'gateName': value.gateName,

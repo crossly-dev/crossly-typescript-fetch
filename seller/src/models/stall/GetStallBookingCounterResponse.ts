@@ -63,8 +63,8 @@ export interface GetStallBookingCounterResponse {
 * @enum {string}
 */
 export enum GetStallBookingCounterResponseBoothKindEnum {
-    Booth = 'booth',
     Cart = 'cart',
+    Booth = 'booth',
     Pavilion = 'pavilion'
 }
 

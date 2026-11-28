@@ -249,8 +249,8 @@ export enum ListStallMineItemRailEnum {
 * @enum {string}
 */
 export enum ListStallMineItemBoothKindEnum {
-    Booth = 'booth',
     Cart = 'cart',
+    Booth = 'booth',
     Pavilion = 'pavilion'
 }
 

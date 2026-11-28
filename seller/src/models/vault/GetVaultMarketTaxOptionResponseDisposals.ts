@@ -63,16 +63,16 @@ export interface GetVaultMarketTaxOptionResponseDisposals {
     how: GetVaultMarketTaxOptionResponseDisposalsHowEnum;
     /**
      * 
-     * @type {number}
-     * @memberof GetVaultMarketTaxOptionResponseDisposals
-     */
-    gainCents: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetVaultMarketTaxOptionResponseDisposals
      */
     term: GetVaultMarketTaxOptionResponseDisposalsTermEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetVaultMarketTaxOptionResponseDisposals
+     */
+    gainCents: number;
     /**
      * 
      * @type {boolean}
@@ -133,8 +133,8 @@ export function GetVaultMarketTaxOptionResponseDisposalsFromJSONTyped(json: any,
         'contractId': json['contractId'],
         'proceedsCents': json['proceedsCents'],
         'how': json['how'],
-        'gainCents': json['gainCents'],
         'term': json['term'],
+        'gainCents': json['gainCents'],
         'section1256': json['section1256'],
         'openedAt': json['openedAt'],
         'closedAt': json['closedAt'],
@@ -157,8 +157,8 @@ export function GetVaultMarketTaxOptionResponseDisposalsToJSON(value?: GetVaultM
         'contractId': value.contractId,
         'proceedsCents': value.proceedsCents,
         'how': value.how,
-        'gainCents': value.gainCents,
         'term': value.term,
+        'gainCents': value.gainCents,
         'section1256': value.section1256,
         'openedAt': value.openedAt,
         'closedAt': value.closedAt,

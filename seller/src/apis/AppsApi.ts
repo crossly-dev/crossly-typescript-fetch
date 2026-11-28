@@ -95,7 +95,7 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Your OAuth app\'s revenue-share earnings: summary + ledger. Owner only.
+     * Your store\'s OAuth app\'s revenue-share earnings: summary (with the store they pay out to) + ledger. The app\'s store owner, or a teammate with apps:read on it.
      */
     async getAppEarningRaw(requestParameters: GetAppEarningRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAppEarningResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -125,7 +125,7 @@ export class AppsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Your OAuth app\'s revenue-share earnings: summary + ledger. Owner only.
+     * Your store\'s OAuth app\'s revenue-share earnings: summary (with the store they pay out to) + ledger. The app\'s store owner, or a teammate with apps:read on it.
      */
     async getAppEarning(requestParameters: GetAppEarningRequest, initOverrides?: RequestInit): Promise<GetAppEarningResponse> {
         const response = await this.getAppEarningRaw(requestParameters, initOverrides);

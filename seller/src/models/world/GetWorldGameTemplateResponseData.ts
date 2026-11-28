@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetWorldGameTemplateResponseDataFiles,
-    GetWorldGameTemplateResponseDataFilesFromJSON,
-    GetWorldGameTemplateResponseDataFilesFromJSONTyped,
-    GetWorldGameTemplateResponseDataFilesToJSON,
-} from './GetWorldGameTemplateResponseDataFiles';
+    PathBase64,
+    PathBase64FromJSON,
+    PathBase64FromJSONTyped,
+    PathBase64ToJSON,
+} from '../common/PathBase64';
 
 /**
  * 
@@ -34,10 +34,10 @@ export interface GetWorldGameTemplateResponseData {
     kind: string;
     /**
      * 
-     * @type {Array<GetWorldGameTemplateResponseDataFiles>}
+     * @type {Array<PathBase64>}
      * @memberof GetWorldGameTemplateResponseData
      */
-    files: Array<GetWorldGameTemplateResponseDataFiles>;
+    files: Array<PathBase64>;
 }
 
 export function GetWorldGameTemplateResponseDataFromJSON(json: any): GetWorldGameTemplateResponseData {
@@ -51,7 +51,7 @@ export function GetWorldGameTemplateResponseDataFromJSONTyped(json: any, ignoreD
     return {
         
         'kind': json['kind'],
-        'files': ((json['files'] as Array<any>).map(GetWorldGameTemplateResponseDataFilesFromJSON)),
+        'files': ((json['files'] as Array<any>).map(PathBase64FromJSON)),
     };
 }
 
@@ -65,7 +65,7 @@ export function GetWorldGameTemplateResponseDataToJSON(value?: GetWorldGameTempl
     return {
         
         'kind': value.kind,
-        'files': ((value.files as Array<any>).map(GetWorldGameTemplateResponseDataFilesToJSON)),
+        'files': ((value.files as Array<any>).map(PathBase64ToJSON)),
     };
 }
 

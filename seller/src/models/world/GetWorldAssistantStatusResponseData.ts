@@ -39,7 +39,7 @@ export interface GetWorldAssistantStatusResponseData {
      */
     configured: boolean;
     /**
-     * The creator has a usable own AI key (Settings → AI).
+     * The creator has a usable own AI key (Settings › Account & notifications › Your AI key).
      * @type {boolean}
      * @memberof GetWorldAssistantStatusResponseData
      */

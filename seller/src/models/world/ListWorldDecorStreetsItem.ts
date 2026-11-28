@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    IdName2,
+    IdName2FromJSON,
+    IdName2FromJSONTyped,
+    IdName2ToJSON,
+} from '../common/IdName2';
+import {
     ListWorldDecorStreetsItemDecor,
     ListWorldDecorStreetsItemDecorFromJSON,
     ListWorldDecorStreetsItemDecorFromJSONTyped,
@@ -56,6 +62,18 @@ export interface ListWorldDecorStreetsItem {
      * @memberof ListWorldDecorStreetsItem
      */
     decor: ListWorldDecorStreetsItemDecor;
+    /**
+     * The store the street belongs to (s5-65; null: a platform street, or not stamped yet = the default store).
+     * @type {string}
+     * @memberof ListWorldDecorStreetsItem
+     */
+    storeId?: string | null;
+    /**
+     * 
+     * @type {IdName2}
+     * @memberof ListWorldDecorStreetsItem
+     */
+    store?: IdName2 | null;
 }
 
 export function ListWorldDecorStreetsItemFromJSON(json: any): ListWorldDecorStreetsItem {
@@ -73,6 +91,8 @@ export function ListWorldDecorStreetsItemFromJSONTyped(json: any, ignoreDiscrimi
         'platform': json['platform'],
         'canEdit': json['canEdit'],
         'decor': ListWorldDecorStreetsItemDecorFromJSON(json['decor']),
+        'storeId': !exists(json, 'storeId') ? undefined : json['storeId'],
+        'store': !exists(json, 'store') ? undefined : IdName2FromJSON(json['store']),
     };
 }
 
@@ -90,6 +110,8 @@ export function ListWorldDecorStreetsItemToJSON(value?: ListWorldDecorStreetsIte
         'platform': value.platform,
         'canEdit': value.canEdit,
         'decor': ListWorldDecorStreetsItemDecorToJSON(value.decor),
+        'storeId': value.storeId,
+        'store': IdName2ToJSON(value.store),
     };
 }
 

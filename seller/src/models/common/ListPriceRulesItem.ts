@@ -30,6 +30,12 @@ export interface ListPriceRulesItem {
      * @type {string}
      * @memberof ListPriceRulesItem
      */
+    name?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListPriceRulesItem
+     */
     createdAt: string;
     /**
      * 
@@ -127,6 +133,7 @@ export function ListPriceRulesItemFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'id': json['id'],
+        'name': !exists(json, 'name') ? undefined : json['name'],
         'createdAt': json['createdAt'],
         'updatedAt': json['updatedAt'],
         'platform': json['platform'],
@@ -153,6 +160,7 @@ export function ListPriceRulesItemToJSON(value?: ListPriceRulesItem | null): any
     return {
         
         'id': value.id,
+        'name': value.name,
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,
         'platform': value.platform,

@@ -51,6 +51,12 @@ export interface CreateTradeBlockEvolutionRecipeResponseRecipe {
     updatedAt: Date;
     /**
      * 
+     * @type {string}
+     * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
+     */
+    note?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
      */
@@ -61,12 +67,6 @@ export interface CreateTradeBlockEvolutionRecipeResponseRecipe {
      * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
      */
     reviewedAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateTradeBlockEvolutionRecipeResponseRecipe
-     */
-    note?: string | null;
     /**
      * 
      * @type {string}
@@ -144,9 +144,9 @@ export function CreateTradeBlockEvolutionRecipeResponseRecipeFromJSONTyped(json:
         'active': json['active'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
+        'note': !exists(json, 'note') ? undefined : json['note'],
         'version': json['version'],
         'reviewedAt': !exists(json, 'reviewedAt') ? undefined : (json['reviewedAt'] === null ? null : new Date(json['reviewedAt'])),
-        'note': !exists(json, 'note') ? undefined : json['note'],
         'merchantId': json['merchantId'],
         'creatorSubjectId': json['creatorSubjectId'],
         'outputCosmeticId': json['outputCosmeticId'],
@@ -174,9 +174,9 @@ export function CreateTradeBlockEvolutionRecipeResponseRecipeToJSON(value?: Crea
         'active': value.active,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
+        'note': value.note,
         'version': value.version,
         'reviewedAt': value.reviewedAt === undefined ? undefined : (value.reviewedAt === null ? null : value.reviewedAt.toISOString()),
-        'note': value.note,
         'merchantId': value.merchantId,
         'creatorSubjectId': value.creatorSubjectId,
         'outputCosmeticId': value.outputCosmeticId,

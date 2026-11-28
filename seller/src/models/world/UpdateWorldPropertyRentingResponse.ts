@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    UpdateWorldPropertyRentingResponseData,
-    UpdateWorldPropertyRentingResponseDataFromJSON,
-    UpdateWorldPropertyRentingResponseDataFromJSONTyped,
-    UpdateWorldPropertyRentingResponseDataToJSON,
-} from './UpdateWorldPropertyRentingResponseData';
+    UpdateWorldPropertyRentingRequest,
+    UpdateWorldPropertyRentingRequestFromJSON,
+    UpdateWorldPropertyRentingRequestFromJSONTyped,
+    UpdateWorldPropertyRentingRequestToJSON,
+} from './UpdateWorldPropertyRentingRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface UpdateWorldPropertyRentingResponse {
     /**
      * 
-     * @type {UpdateWorldPropertyRentingResponseData}
+     * @type {UpdateWorldPropertyRentingRequest}
      * @memberof UpdateWorldPropertyRentingResponse
      */
-    data: UpdateWorldPropertyRentingResponseData;
+    data: UpdateWorldPropertyRentingRequest;
 }
 
 export function UpdateWorldPropertyRentingResponseFromJSON(json: any): UpdateWorldPropertyRentingResponse {
@@ -44,7 +44,7 @@ export function UpdateWorldPropertyRentingResponseFromJSONTyped(json: any, ignor
     }
     return {
         
-        'data': UpdateWorldPropertyRentingResponseDataFromJSON(json['data']),
+        'data': UpdateWorldPropertyRentingRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function UpdateWorldPropertyRentingResponseToJSON(value?: UpdateWorldProp
     }
     return {
         
-        'data': UpdateWorldPropertyRentingResponseDataToJSON(value.data),
+        'data': UpdateWorldPropertyRentingRequestToJSON(value.data),
     };
 }
 

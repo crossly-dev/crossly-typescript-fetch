@@ -136,8 +136,8 @@ export enum CreateVaultMarketOptionQuoteResponseOneOfContractCycleEnum {
 * @enum {string}
 */
 export enum CreateVaultMarketOptionQuoteResponseOneOfContractStatusEnum {
-    Open = 'open',
     Expired = 'expired',
+    Open = 'open',
     Delisted = 'delisted',
     Settled = 'settled',
     Frozen = 'frozen'

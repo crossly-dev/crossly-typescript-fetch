@@ -40,10 +40,10 @@ export interface GetStorefrontProfileResponseDataProfileBlocks {
 export enum GetStorefrontProfileResponseDataProfileBlocksKindEnum {
     Events = 'events',
     Shelves = 'shelves',
+    About = 'about',
     Reviews = 'reviews',
     Club = 'club',
     Policies = 'policies',
-    About = 'about',
     Lookbooks = 'lookbooks',
     Highlights = 'highlights',
     Catalogs = 'catalogs'

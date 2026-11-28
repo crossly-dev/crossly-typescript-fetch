@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateBuyerMonitorRequest,
+    CreateBuyerMonitorRequestFromJSON,
+    CreateBuyerMonitorRequestToJSON,
     ListBuyerMonitorMatchesResponse,
     ListBuyerMonitorMatchesResponseFromJSON,
     ListBuyerMonitorMatchesResponseToJSON,
@@ -24,7 +27,14 @@ import {
     ListBuyerMonitorsResponse,
     ListBuyerMonitorsResponseFromJSON,
     ListBuyerMonitorsResponseToJSON,
+    UpdateBuyerMonitorRequest,
+    UpdateBuyerMonitorRequestFromJSON,
+    UpdateBuyerMonitorRequestToJSON,
 } from '../models';
+
+export interface CreateBuyerMonitorOperationRequest {
+    createBuyerMonitorRequest: CreateBuyerMonitorRequest;
+}
 
 export interface DeleteBuyerMonitorRequest {
     id: string;
@@ -34,8 +44,9 @@ export interface ListBuyerMonitorMatchesRequest {
     id: string;
 }
 
-export interface UpdateBuyerMonitorRequest {
+export interface UpdateBuyerMonitorOperationRequest {
     id: string;
+    updateBuyerMonitorRequest?: UpdateBuyerMonitorRequest;
 }
 
 /**
@@ -47,10 +58,16 @@ export class BuyerMonitorsApi extends runtime.BaseAPI {
      * Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
      * Watch a search, and be told when it matches.
      */
-    async createBuyerMonitorRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerMonitorsItem>> {
+    async createBuyerMonitorRaw(requestParameters: CreateBuyerMonitorOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerMonitorsItem>> {
+        if (requestParameters.createBuyerMonitorRequest === null || requestParameters.createBuyerMonitorRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerMonitorRequest','Required parameter requestParameters.createBuyerMonitorRequest was null or undefined when calling createBuyerMonitor.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -65,6 +82,7 @@ export class BuyerMonitorsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerMonitorRequestToJSON(requestParameters.createBuyerMonitorRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerMonitorsItemFromJSON(jsonValue));
@@ -74,8 +92,8 @@ export class BuyerMonitorsApi extends runtime.BaseAPI {
      * Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
      * Watch a search, and be told when it matches.
      */
-    async createBuyerMonitor(initOverrides?: RequestInit): Promise<ListBuyerMonitorsItem> {
-        const response = await this.createBuyerMonitorRaw(initOverrides);
+    async createBuyerMonitor(requestParameters: CreateBuyerMonitorOperationRequest, initOverrides?: RequestInit): Promise<ListBuyerMonitorsItem> {
+        const response = await this.createBuyerMonitorRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -193,7 +211,7 @@ export class BuyerMonitorsApi extends runtime.BaseAPI {
     /**
      * Pause, resume or rename a monitor.
      */
-    async updateBuyerMonitorRaw(requestParameters: UpdateBuyerMonitorRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerMonitorsItem>> {
+    async updateBuyerMonitorRaw(requestParameters: UpdateBuyerMonitorOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerMonitorsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBuyerMonitor.');
         }
@@ -201,6 +219,8 @@ export class BuyerMonitorsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -215,6 +235,7 @@ export class BuyerMonitorsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerMonitorRequestToJSON(requestParameters.updateBuyerMonitorRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerMonitorsItemFromJSON(jsonValue));
@@ -223,7 +244,7 @@ export class BuyerMonitorsApi extends runtime.BaseAPI {
     /**
      * Pause, resume or rename a monitor.
      */
-    async updateBuyerMonitor(requestParameters: UpdateBuyerMonitorRequest, initOverrides?: RequestInit): Promise<ListBuyerMonitorsItem> {
+    async updateBuyerMonitor(requestParameters: UpdateBuyerMonitorOperationRequest, initOverrides?: RequestInit): Promise<ListBuyerMonitorsItem> {
         const response = await this.updateBuyerMonitorRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -111,9 +111,9 @@ export interface ListWorldExperienceActivityItem {
 * @enum {string}
 */
 export enum ListWorldExperienceActivityItemViaEnum {
+    Api = 'api',
     System = 'system',
     Package = 'package',
-    Api = 'api',
     Studio = 'studio',
     Assistant = 'assistant',
     Mcp = 'mcp',

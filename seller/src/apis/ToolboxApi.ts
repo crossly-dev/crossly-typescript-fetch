@@ -15,9 +15,18 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateToolboxAssetRequest,
+    CreateToolboxAssetRequestFromJSON,
+    CreateToolboxAssetRequestToJSON,
+    CreateToolboxAssetUseRequest,
+    CreateToolboxAssetUseRequestFromJSON,
+    CreateToolboxAssetUseRequestToJSON,
     CreateToolboxAssetUseResponse,
     CreateToolboxAssetUseResponseFromJSON,
     CreateToolboxAssetUseResponseToJSON,
+    CreateToolboxAssetVersionRequest,
+    CreateToolboxAssetVersionRequestFromJSON,
+    CreateToolboxAssetVersionRequestToJSON,
     CreateWorldMeReceiptRefundResponse,
     CreateWorldMeReceiptRefundResponseFromJSON,
     CreateWorldMeReceiptRefundResponseToJSON,
@@ -45,13 +54,26 @@ import {
     ListToolboxSalesResponse,
     ListToolboxSalesResponseFromJSON,
     ListToolboxSalesResponseToJSON,
+    ReasonRequest2,
+    ReasonRequest2FromJSON,
+    ReasonRequest2ToJSON,
     ToolboxAssetResponse,
     ToolboxAssetResponseFromJSON,
     ToolboxAssetResponseToJSON,
+    UpdateToolboxAssetRatingMineRequest,
+    UpdateToolboxAssetRatingMineRequestFromJSON,
+    UpdateToolboxAssetRatingMineRequestToJSON,
     UpdateToolboxAssetRatingMineResponse,
     UpdateToolboxAssetRatingMineResponseFromJSON,
     UpdateToolboxAssetRatingMineResponseToJSON,
+    UpdateToolboxAssetRequest,
+    UpdateToolboxAssetRequestFromJSON,
+    UpdateToolboxAssetRequestToJSON,
 } from '../models';
+
+export interface CreateToolboxAssetOperationRequest {
+    createToolboxAssetRequest?: CreateToolboxAssetRequest;
+}
 
 export interface CreateToolboxAssetPurchaseRequest {
     assetId: string;
@@ -61,16 +83,19 @@ export interface CreateToolboxAssetRetireRequest {
     assetId: string;
 }
 
-export interface CreateToolboxAssetUseRequest {
+export interface CreateToolboxAssetUseOperationRequest {
     assetId: string;
+    createToolboxAssetUseRequest?: CreateToolboxAssetUseRequest;
 }
 
-export interface CreateToolboxAssetVersionRequest {
+export interface CreateToolboxAssetVersionOperationRequest {
     assetId: string;
+    createToolboxAssetVersionRequest?: CreateToolboxAssetVersionRequest;
 }
 
 export interface CreateToolboxPurchaseRefundRequest {
     purchaseId: string;
+    reasonRequest2?: ReasonRequest2;
 }
 
 export interface DeleteToolboxAssetRatingMineRequest {
@@ -89,12 +114,29 @@ export interface GetToolboxPurchaseRequest {
     purchaseId: string;
 }
 
-export interface UpdateToolboxAssetRequest {
-    assetId: string;
+export interface ListToolboxAssetsRequest {
+    q?: string;
+    kind?: ListToolboxAssetsKindEnum;
+    price?: ListToolboxAssetsPriceEnum;
+    sort?: ListToolboxAssetsSortEnum;
+    minRating?: number;
+    cursor?: string;
+    limit?: number;
 }
 
-export interface UpdateToolboxAssetRatingMineRequest {
+export interface ListToolboxSalesRequest {
+    cursor?: string;
+    limit?: number;
+}
+
+export interface UpdateToolboxAssetOperationRequest {
     assetId: string;
+    updateToolboxAssetRequest?: UpdateToolboxAssetRequest;
+}
+
+export interface UpdateToolboxAssetRatingMineOperationRequest {
+    assetId: string;
+    updateToolboxAssetRatingMineRequest?: UpdateToolboxAssetRatingMineRequest;
 }
 
 /**
@@ -105,10 +147,12 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity.
      */
-    async createToolboxAssetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ToolboxAssetResponse>> {
+    async createToolboxAssetRaw(requestParameters: CreateToolboxAssetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ToolboxAssetResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -123,6 +167,7 @@ export class ToolboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateToolboxAssetRequestToJSON(requestParameters.createToolboxAssetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ToolboxAssetResponseFromJSON(jsonValue));
@@ -131,8 +176,8 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity.
      */
-    async createToolboxAsset(initOverrides?: RequestInit): Promise<ToolboxAssetResponse> {
-        const response = await this.createToolboxAssetRaw(initOverrides);
+    async createToolboxAsset(requestParameters: CreateToolboxAssetOperationRequest = {}, initOverrides?: RequestInit): Promise<ToolboxAssetResponse> {
+        const response = await this.createToolboxAssetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -215,7 +260,7 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Get the asset\'s nodes stamped with its id for a place you can edit; insert:true also inserts them into the place\'s live session. Paid assets need the experience owner\'s licence.
      */
-    async createToolboxAssetUseRaw(requestParameters: CreateToolboxAssetUseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateToolboxAssetUseResponse>> {
+    async createToolboxAssetUseRaw(requestParameters: CreateToolboxAssetUseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateToolboxAssetUseResponse>> {
         if (requestParameters.assetId === null || requestParameters.assetId === undefined) {
             throw new runtime.RequiredError('assetId','Required parameter requestParameters.assetId was null or undefined when calling createToolboxAssetUse.');
         }
@@ -223,6 +268,8 @@ export class ToolboxApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -237,6 +284,7 @@ export class ToolboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateToolboxAssetUseRequestToJSON(requestParameters.createToolboxAssetUseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateToolboxAssetUseResponseFromJSON(jsonValue));
@@ -245,7 +293,7 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Get the asset\'s nodes stamped with its id for a place you can edit; insert:true also inserts them into the place\'s live session. Paid assets need the experience owner\'s licence.
      */
-    async createToolboxAssetUse(requestParameters: CreateToolboxAssetUseRequest, initOverrides?: RequestInit): Promise<CreateToolboxAssetUseResponse> {
+    async createToolboxAssetUse(requestParameters: CreateToolboxAssetUseOperationRequest, initOverrides?: RequestInit): Promise<CreateToolboxAssetUseResponse> {
         const response = await this.createToolboxAssetUseRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -253,7 +301,7 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * A new version (reviewed); the live one keeps serving until it is approved.
      */
-    async createToolboxAssetVersionRaw(requestParameters: CreateToolboxAssetVersionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ToolboxAssetResponse>> {
+    async createToolboxAssetVersionRaw(requestParameters: CreateToolboxAssetVersionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ToolboxAssetResponse>> {
         if (requestParameters.assetId === null || requestParameters.assetId === undefined) {
             throw new runtime.RequiredError('assetId','Required parameter requestParameters.assetId was null or undefined when calling createToolboxAssetVersion.');
         }
@@ -261,6 +309,8 @@ export class ToolboxApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -275,6 +325,7 @@ export class ToolboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateToolboxAssetVersionRequestToJSON(requestParameters.createToolboxAssetVersionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ToolboxAssetResponseFromJSON(jsonValue));
@@ -283,7 +334,7 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * A new version (reviewed); the live one keeps serving until it is approved.
      */
-    async createToolboxAssetVersion(requestParameters: CreateToolboxAssetVersionRequest, initOverrides?: RequestInit): Promise<ToolboxAssetResponse> {
+    async createToolboxAssetVersion(requestParameters: CreateToolboxAssetVersionOperationRequest, initOverrides?: RequestInit): Promise<ToolboxAssetResponse> {
         const response = await this.createToolboxAssetVersionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -300,6 +351,8 @@ export class ToolboxApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -313,6 +366,7 @@ export class ToolboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequest2ToJSON(requestParameters.reasonRequest2),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldMeReceiptRefundResponseFromJSON(jsonValue));
@@ -481,8 +535,36 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; `owned` says whether you may insert it now.
      */
-    async listToolboxAssetsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListToolboxAssetsResponse>> {
+    async listToolboxAssetsRaw(requestParameters: ListToolboxAssetsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListToolboxAssetsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.kind !== undefined) {
+            queryParameters['kind'] = requestParameters.kind;
+        }
+
+        if (requestParameters.price !== undefined) {
+            queryParameters['price'] = requestParameters.price;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.minRating !== undefined) {
+            queryParameters['minRating'] = requestParameters.minRating;
+        }
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -507,8 +589,8 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; `owned` says whether you may insert it now.
      */
-    async listToolboxAssets(initOverrides?: RequestInit): Promise<ListToolboxAssetsResponse> {
-        const response = await this.listToolboxAssetsRaw(initOverrides);
+    async listToolboxAssets(requestParameters: ListToolboxAssetsRequest = {}, initOverrides?: RequestInit): Promise<ListToolboxAssetsResponse> {
+        const response = await this.listToolboxAssetsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -583,8 +665,16 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought.
      */
-    async listToolboxSalesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListToolboxSalesResponse>> {
+    async listToolboxSalesRaw(requestParameters: ListToolboxSalesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListToolboxSalesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -609,15 +699,15 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought.
      */
-    async listToolboxSales(initOverrides?: RequestInit): Promise<ListToolboxSalesResponse> {
-        const response = await this.listToolboxSalesRaw(initOverrides);
+    async listToolboxSales(requestParameters: ListToolboxSalesRequest = {}, initOverrides?: RequestInit): Promise<ListToolboxSalesResponse> {
+        const response = await this.listToolboxSalesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Edit name, description, tags, thumbnail or price.
      */
-    async updateToolboxAssetRaw(requestParameters: UpdateToolboxAssetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ToolboxAssetResponse>> {
+    async updateToolboxAssetRaw(requestParameters: UpdateToolboxAssetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ToolboxAssetResponse>> {
         if (requestParameters.assetId === null || requestParameters.assetId === undefined) {
             throw new runtime.RequiredError('assetId','Required parameter requestParameters.assetId was null or undefined when calling updateToolboxAsset.');
         }
@@ -625,6 +715,8 @@ export class ToolboxApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -639,6 +731,7 @@ export class ToolboxApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateToolboxAssetRequestToJSON(requestParameters.updateToolboxAssetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ToolboxAssetResponseFromJSON(jsonValue));
@@ -647,7 +740,7 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Edit name, description, tags, thumbnail or price.
      */
-    async updateToolboxAsset(requestParameters: UpdateToolboxAssetRequest, initOverrides?: RequestInit): Promise<ToolboxAssetResponse> {
+    async updateToolboxAsset(requestParameters: UpdateToolboxAssetOperationRequest, initOverrides?: RequestInit): Promise<ToolboxAssetResponse> {
         const response = await this.updateToolboxAssetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -655,7 +748,7 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Rate an asset you bought or installed: 1–5 stars and an optional review (1000 characters). Not your own.
      */
-    async updateToolboxAssetRatingMineRaw(requestParameters: UpdateToolboxAssetRatingMineRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateToolboxAssetRatingMineResponse>> {
+    async updateToolboxAssetRatingMineRaw(requestParameters: UpdateToolboxAssetRatingMineOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateToolboxAssetRatingMineResponse>> {
         if (requestParameters.assetId === null || requestParameters.assetId === undefined) {
             throw new runtime.RequiredError('assetId','Required parameter requestParameters.assetId was null or undefined when calling updateToolboxAssetRatingMine.');
         }
@@ -663,6 +756,8 @@ export class ToolboxApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -677,6 +772,7 @@ export class ToolboxApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateToolboxAssetRatingMineRequestToJSON(requestParameters.updateToolboxAssetRatingMineRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateToolboxAssetRatingMineResponseFromJSON(jsonValue));
@@ -685,9 +781,42 @@ export class ToolboxApi extends runtime.BaseAPI {
     /**
      * Rate an asset you bought or installed: 1–5 stars and an optional review (1000 characters). Not your own.
      */
-    async updateToolboxAssetRatingMine(requestParameters: UpdateToolboxAssetRatingMineRequest, initOverrides?: RequestInit): Promise<UpdateToolboxAssetRatingMineResponse> {
+    async updateToolboxAssetRatingMine(requestParameters: UpdateToolboxAssetRatingMineOperationRequest, initOverrides?: RequestInit): Promise<UpdateToolboxAssetRatingMineResponse> {
         const response = await this.updateToolboxAssetRatingMineRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListToolboxAssetsKindEnum {
+    Package = 'package',
+    Image = 'image',
+    Model = 'model',
+    Script = 'script',
+    Sound = 'sound',
+    Animation = 'animation',
+    Plugin = 'plugin'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListToolboxAssetsPriceEnum {
+    Free = 'free',
+    All = 'all',
+    Paid = 'paid'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListToolboxAssetsSortEnum {
+    Price = 'price',
+    New = 'new',
+    TopRated = 'top_rated',
+    Popular = 'popular'
 }

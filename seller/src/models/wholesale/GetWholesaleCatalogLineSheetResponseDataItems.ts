@@ -141,8 +141,8 @@ export interface GetWholesaleCatalogLineSheetResponseDataItems {
 * @enum {string}
 */
 export enum GetWholesaleCatalogLineSheetResponseDataItemsSourceEnum {
-    Vault = 'vault',
-    Listing = 'listing'
+    Listing = 'listing',
+    Vault = 'vault'
 }
 
 export function GetWholesaleCatalogLineSheetResponseDataItemsFromJSON(json: any): GetWholesaleCatalogLineSheetResponseDataItems {

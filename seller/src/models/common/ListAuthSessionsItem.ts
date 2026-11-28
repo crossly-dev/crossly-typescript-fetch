@@ -21,18 +21,6 @@ import { exists, mapValues } from '../../runtime';
 export interface ListAuthSessionsItem {
     /**
      * 
-     * @type {boolean}
-     * @memberof ListAuthSessionsItem
-     */
-    isCurrent: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListAuthSessionsItem
-     */
-    id: string;
-    /**
-     * 
      * @type {string}
      * @memberof ListAuthSessionsItem
      */
@@ -42,13 +30,55 @@ export interface ListAuthSessionsItem {
      * @type {string}
      * @memberof ListAuthSessionsItem
      */
-    ipAddress?: string | null;
+    ipCountry?: string | null;
+    /**
+     * = lastActiveAt (the v1 name since before Atlas).
+     * @type {string}
+     * @memberof ListAuthSessionsItem
+     */
+    lastUsedAt?: string | null;
+    /**
+     * 'atlas', or 'legacy' for an old Crossly session the bridge could still revive (v1 only, until 2027-01-15).
+     * @type {string}
+     * @memberof ListAuthSessionsItem
+     */
+    source: ListAuthSessionsItemSourceEnum;
     /**
      * 
      * @type {string}
      * @memberof ListAuthSessionsItem
      */
-    ipCountry?: string | null;
+    status: ListAuthSessionsItemStatusEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAuthSessionsItem
+     */
+    deviceType: ListAuthSessionsItemDeviceTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAuthSessionsItem
+     */
+    id: string;
+    /**
+     * "Chrome on macOS".
+     * @type {string}
+     * @memberof ListAuthSessionsItem
+     */
+    device: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListAuthSessionsItem
+     */
+    ipAddress?: string | null;
+    /**
+     * "New Brunswick, US".
+     * @type {string}
+     * @memberof ListAuthSessionsItem
+     */
+    location?: string | null;
     /**
      * 
      * @type {string}
@@ -60,13 +90,57 @@ export interface ListAuthSessionsItem {
      * @type {string}
      * @memberof ListAuthSessionsItem
      */
-    lastUsedAt?: string | null;
+    lastActiveAt?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListAuthSessionsItem
      */
     expiresAt?: string | null;
+    /**
+     * The session making the call (cookie or bearer: Atlas marks exactly one).
+     * @type {boolean}
+     * @memberof ListAuthSessionsItem
+     */
+    isCurrent: boolean;
+    /**
+     * How it signed in: "Google", "Password", "Passkey"…; null for a session from before Atlas recorded it.
+     * @type {string}
+     * @memberof ListAuthSessionsItem
+     */
+    signedInWith?: string | null;
+    /**
+     * A second step was proven at sign-in (or by a later step-up).
+     * @type {boolean}
+     * @memberof ListAuthSessionsItem
+     */
+    twoStep: boolean;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum ListAuthSessionsItemSourceEnum {
+    Atlas = 'atlas',
+    Legacy = 'legacy'
+}/**
+* @export
+* @enum {string}
+*/
+export enum ListAuthSessionsItemStatusEnum {
+    Active = 'active',
+    Expired = 'expired'
+}/**
+* @export
+* @enum {string}
+*/
+export enum ListAuthSessionsItemDeviceTypeEnum {
+    Desktop = 'desktop',
+    Mobile = 'mobile',
+    Tablet = 'tablet',
+    App = 'app',
+    Unknown = 'unknown'
 }
 
 export function ListAuthSessionsItemFromJSON(json: any): ListAuthSessionsItem {
@@ -79,14 +153,22 @@ export function ListAuthSessionsItemFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'isCurrent': json['isCurrent'],
-        'id': json['id'],
         'userAgent': !exists(json, 'userAgent') ? undefined : json['userAgent'],
-        'ipAddress': !exists(json, 'ipAddress') ? undefined : json['ipAddress'],
         'ipCountry': !exists(json, 'ipCountry') ? undefined : json['ipCountry'],
-        'createdAt': !exists(json, 'createdAt') ? undefined : json['createdAt'],
         'lastUsedAt': !exists(json, 'lastUsedAt') ? undefined : json['lastUsedAt'],
+        'source': json['source'],
+        'status': json['status'],
+        'deviceType': json['deviceType'],
+        'id': json['id'],
+        'device': json['device'],
+        'ipAddress': !exists(json, 'ipAddress') ? undefined : json['ipAddress'],
+        'location': !exists(json, 'location') ? undefined : json['location'],
+        'createdAt': !exists(json, 'createdAt') ? undefined : json['createdAt'],
+        'lastActiveAt': !exists(json, 'lastActiveAt') ? undefined : json['lastActiveAt'],
         'expiresAt': !exists(json, 'expiresAt') ? undefined : json['expiresAt'],
+        'isCurrent': json['isCurrent'],
+        'signedInWith': !exists(json, 'signedInWith') ? undefined : json['signedInWith'],
+        'twoStep': json['twoStep'],
     };
 }
 
@@ -99,14 +181,22 @@ export function ListAuthSessionsItemToJSON(value?: ListAuthSessionsItem | null):
     }
     return {
         
-        'isCurrent': value.isCurrent,
-        'id': value.id,
         'userAgent': value.userAgent,
-        'ipAddress': value.ipAddress,
         'ipCountry': value.ipCountry,
-        'createdAt': value.createdAt,
         'lastUsedAt': value.lastUsedAt,
+        'source': value.source,
+        'status': value.status,
+        'deviceType': value.deviceType,
+        'id': value.id,
+        'device': value.device,
+        'ipAddress': value.ipAddress,
+        'location': value.location,
+        'createdAt': value.createdAt,
+        'lastActiveAt': value.lastActiveAt,
         'expiresAt': value.expiresAt,
+        'isCurrent': value.isCurrent,
+        'signedInWith': value.signedInWith,
+        'twoStep': value.twoStep,
     };
 }
 

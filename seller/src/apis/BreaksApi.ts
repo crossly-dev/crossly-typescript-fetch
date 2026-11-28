@@ -18,9 +18,15 @@ import {
     CreateBreakDrawResponse,
     CreateBreakDrawResponseFromJSON,
     CreateBreakDrawResponseToJSON,
+    CreateBreakRequest,
+    CreateBreakRequestFromJSON,
+    CreateBreakRequestToJSON,
     CreateBreakResponse,
     CreateBreakResponseFromJSON,
     CreateBreakResponseToJSON,
+    CreateBreakSpotHitRequest,
+    CreateBreakSpotHitRequestFromJSON,
+    CreateBreakSpotHitRequestToJSON,
     GetBreakResponse,
     GetBreakResponseFromJSON,
     GetBreakResponseToJSON,
@@ -31,6 +37,10 @@ import {
     UpdateGroupBuyResponseFromJSON,
     UpdateGroupBuyResponseToJSON,
 } from '../models';
+
+export interface CreateBreakOperationRequest {
+    createBreakRequest: CreateBreakRequest;
+}
 
 export interface CreateBreakCancelRequest {
     id: string;
@@ -44,9 +54,10 @@ export interface CreateBreakOpenedRequest {
     id: string;
 }
 
-export interface CreateBreakSpotHitRequest {
+export interface CreateBreakSpotHitOperationRequest {
     id: string;
     spotId: string;
+    createBreakSpotHitRequest: CreateBreakSpotHitRequest;
 }
 
 export interface GetBreakRequest {
@@ -61,10 +72,16 @@ export class BreaksApi extends runtime.BaseAPI {
     /**
      * Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw.
      */
-    async createBreakRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakResponse>> {
+    async createBreakRaw(requestParameters: CreateBreakOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakResponse>> {
+        if (requestParameters.createBreakRequest === null || requestParameters.createBreakRequest === undefined) {
+            throw new runtime.RequiredError('createBreakRequest','Required parameter requestParameters.createBreakRequest was null or undefined when calling createBreak.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -79,6 +96,7 @@ export class BreaksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBreakRequestToJSON(requestParameters.createBreakRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBreakResponseFromJSON(jsonValue));
@@ -87,8 +105,8 @@ export class BreaksApi extends runtime.BaseAPI {
     /**
      * Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw.
      */
-    async createBreak(initOverrides?: RequestInit): Promise<CreateBreakResponse> {
-        const response = await this.createBreakRaw(initOverrides);
+    async createBreak(requestParameters: CreateBreakOperationRequest, initOverrides?: RequestInit): Promise<CreateBreakResponse> {
+        const response = await this.createBreakRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -209,7 +227,7 @@ export class BreaksApi extends runtime.BaseAPI {
     /**
      * Record what a spot pulled.
      */
-    async createBreakSpotHitRaw(requestParameters: CreateBreakSpotHitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+    async createBreakSpotHitRaw(requestParameters: CreateBreakSpotHitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBreakSpotHit.');
         }
@@ -218,9 +236,15 @@ export class BreaksApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('spotId','Required parameter requestParameters.spotId was null or undefined when calling createBreakSpotHit.');
         }
 
+        if (requestParameters.createBreakSpotHitRequest === null || requestParameters.createBreakSpotHitRequest === undefined) {
+            throw new runtime.RequiredError('createBreakSpotHitRequest','Required parameter requestParameters.createBreakSpotHitRequest was null or undefined when calling createBreakSpotHit.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -235,6 +259,7 @@ export class BreaksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBreakSpotHitRequestToJSON(requestParameters.createBreakSpotHitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
@@ -243,7 +268,7 @@ export class BreaksApi extends runtime.BaseAPI {
     /**
      * Record what a spot pulled.
      */
-    async createBreakSpotHit(requestParameters: CreateBreakSpotHitRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+    async createBreakSpotHit(requestParameters: CreateBreakSpotHitOperationRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.createBreakSpotHitRaw(requestParameters, initOverrides);
         return await response.value();
     }

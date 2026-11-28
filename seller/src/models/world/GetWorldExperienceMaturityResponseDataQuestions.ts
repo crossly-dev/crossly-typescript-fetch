@@ -50,12 +50,12 @@ export interface GetWorldExperienceMaturityResponseDataQuestions {
 * @enum {string}
 */
 export enum GetWorldExperienceMaturityResponseDataQuestionsKeyEnum {
+    Language = 'language',
     Purchases = 'purchases',
     Violence = 'violence',
     Blood = 'blood',
     Fear = 'fear',
     CrudeHumour = 'crudeHumour',
-    Language = 'language',
     Romance = 'romance',
     Nudity = 'nudity',
     Substances = 'substances',

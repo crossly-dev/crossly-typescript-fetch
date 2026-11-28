@@ -18,15 +18,30 @@ import {
     CreateLookbookCampaignPreviewResponse,
     CreateLookbookCampaignPreviewResponseFromJSON,
     CreateLookbookCampaignPreviewResponseToJSON,
+    CreateLookbookCampaignRequest,
+    CreateLookbookCampaignRequestFromJSON,
+    CreateLookbookCampaignRequestToJSON,
+    CreateLookbookRequest,
+    CreateLookbookRequestFromJSON,
+    CreateLookbookRequestToJSON,
     CreateLookbookResponse,
     CreateLookbookResponseFromJSON,
     CreateLookbookResponseToJSON,
+    CreateLookbookShareLinkRequest,
+    CreateLookbookShareLinkRequestFromJSON,
+    CreateLookbookShareLinkRequestToJSON,
     CreateLookbookShareLinkResponse,
     CreateLookbookShareLinkResponseFromJSON,
     CreateLookbookShareLinkResponseToJSON,
+    CreatePrintMailJobConfirmRequest,
+    CreatePrintMailJobConfirmRequestFromJSON,
+    CreatePrintMailJobConfirmRequestToJSON,
     CreatePrintMailJobConfirmResponse,
     CreatePrintMailJobConfirmResponseFromJSON,
     CreatePrintMailJobConfirmResponseToJSON,
+    CreatePrintMailJobRequest,
+    CreatePrintMailJobRequestFromJSON,
+    CreatePrintMailJobRequestToJSON,
     CreatePrintMailJobResponse,
     CreatePrintMailJobResponseFromJSON,
     CreatePrintMailJobResponseToJSON,
@@ -51,21 +66,48 @@ import {
     LookbookCampaignResponse,
     LookbookCampaignResponseFromJSON,
     LookbookCampaignResponseToJSON,
+    UpdateEmailProviderUsRequest,
+    UpdateEmailProviderUsRequestFromJSON,
+    UpdateEmailProviderUsRequestToJSON,
+    UpdateEmailProviderUsResponse,
+    UpdateEmailProviderUsResponseFromJSON,
+    UpdateEmailProviderUsResponseToJSON,
+    UpdateLookbookDesignRequest,
+    UpdateLookbookDesignRequestFromJSON,
+    UpdateLookbookDesignRequestToJSON,
     UpdateLookbookDesignResponse,
     UpdateLookbookDesignResponseFromJSON,
     UpdateLookbookDesignResponseToJSON,
 } from '../models';
 
+export interface CreateLookbookOperationRequest {
+    createLookbookRequest?: CreateLookbookRequest;
+}
+
+export interface CreateLookbookCampaignOperationRequest {
+    createLookbookCampaignRequest?: CreateLookbookCampaignRequest;
+}
+
 export interface CreateLookbookCampaignCancelRequest {
     id: string;
 }
 
-export interface CreateLookbookShareLinkRequest {
-    id: string;
+export interface CreateLookbookCampaignPreviewRequest {
+    createLookbookCampaignRequest?: CreateLookbookCampaignRequest;
 }
 
-export interface CreatePrintMailJobConfirmRequest {
+export interface CreateLookbookShareLinkOperationRequest {
     id: string;
+    createLookbookShareLinkRequest?: CreateLookbookShareLinkRequest;
+}
+
+export interface CreatePrintMailJobOperationRequest {
+    createPrintMailJobRequest?: CreatePrintMailJobRequest;
+}
+
+export interface CreatePrintMailJobConfirmOperationRequest {
+    id: string;
+    createPrintMailJobConfirmRequest?: CreatePrintMailJobConfirmRequest;
 }
 
 export interface GetLookbookCampaignRequest {
@@ -78,10 +120,23 @@ export interface GetLookbookDesignRequest {
 
 export interface ListLookbookCampaignRecipientsRequest {
     id: string;
+    status?: ListLookbookCampaignRecipientsStatusEnum;
+    page?: number;
+    limit?: number;
 }
 
-export interface UpdateLookbookDesignRequest {
+export interface ListLookbookCampaignsRequest {
+    collectionId?: string;
+}
+
+export interface UpdateEmailProviderUsOperationRequest {
     id: string;
+    updateEmailProviderUsRequest?: UpdateEmailProviderUsRequest;
+}
+
+export interface UpdateLookbookDesignOperationRequest {
+    id: string;
+    updateLookbookDesignRequest?: UpdateLookbookDesignRequest;
 }
 
 /**
@@ -92,10 +147,12 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit.
      */
-    async createLookbookRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLookbookResponse>> {
+    async createLookbookRaw(requestParameters: CreateLookbookOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLookbookResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -110,6 +167,7 @@ export class LookbooksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLookbookRequestToJSON(requestParameters.createLookbookRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateLookbookResponseFromJSON(jsonValue));
@@ -118,18 +176,20 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit.
      */
-    async createLookbook(initOverrides?: RequestInit): Promise<CreateLookbookResponse> {
-        const response = await this.createLookbookRaw(initOverrides);
+    async createLookbook(requestParameters: CreateLookbookOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateLookbookResponse> {
+        const response = await this.createLookbookRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it.
      */
-    async createLookbookCampaignRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<LookbookCampaignResponse>> {
+    async createLookbookCampaignRaw(requestParameters: CreateLookbookCampaignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LookbookCampaignResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -144,6 +204,7 @@ export class LookbooksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLookbookCampaignRequestToJSON(requestParameters.createLookbookCampaignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => LookbookCampaignResponseFromJSON(jsonValue));
@@ -152,8 +213,8 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it.
      */
-    async createLookbookCampaign(initOverrides?: RequestInit): Promise<LookbookCampaignResponse> {
-        const response = await this.createLookbookCampaignRaw(initOverrides);
+    async createLookbookCampaign(requestParameters: CreateLookbookCampaignOperationRequest = {}, initOverrides?: RequestInit): Promise<LookbookCampaignResponse> {
+        const response = await this.createLookbookCampaignRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -198,10 +259,12 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text.
      */
-    async createLookbookCampaignPreviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLookbookCampaignPreviewResponse>> {
+    async createLookbookCampaignPreviewRaw(requestParameters: CreateLookbookCampaignPreviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLookbookCampaignPreviewResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -216,6 +279,7 @@ export class LookbooksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLookbookCampaignRequestToJSON(requestParameters.createLookbookCampaignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateLookbookCampaignPreviewResponseFromJSON(jsonValue));
@@ -224,15 +288,15 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text.
      */
-    async createLookbookCampaignPreview(initOverrides?: RequestInit): Promise<CreateLookbookCampaignPreviewResponse> {
-        const response = await this.createLookbookCampaignPreviewRaw(initOverrides);
+    async createLookbookCampaignPreview(requestParameters: CreateLookbookCampaignPreviewRequest = {}, initOverrides?: RequestInit): Promise<CreateLookbookCampaignPreviewResponse> {
+        const response = await this.createLookbookCampaignPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Make a share link for someone without a Crossly login: role view, comment or edit; expires after ttlHours (1 to 2160, default 168). The url is shown once.
      */
-    async createLookbookShareLinkRaw(requestParameters: CreateLookbookShareLinkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLookbookShareLinkResponse>> {
+    async createLookbookShareLinkRaw(requestParameters: CreateLookbookShareLinkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLookbookShareLinkResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLookbookShareLink.');
         }
@@ -240,6 +304,8 @@ export class LookbooksApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -254,6 +320,7 @@ export class LookbooksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLookbookShareLinkRequestToJSON(requestParameters.createLookbookShareLinkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateLookbookShareLinkResponseFromJSON(jsonValue));
@@ -262,7 +329,7 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Make a share link for someone without a Crossly login: role view, comment or edit; expires after ttlHours (1 to 2160, default 168). The url is shown once.
      */
-    async createLookbookShareLink(requestParameters: CreateLookbookShareLinkRequest, initOverrides?: RequestInit): Promise<CreateLookbookShareLinkResponse> {
+    async createLookbookShareLink(requestParameters: CreateLookbookShareLinkOperationRequest, initOverrides?: RequestInit): Promise<CreateLookbookShareLinkResponse> {
         const response = await this.createLookbookShareLinkRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -270,10 +337,12 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed.
      */
-    async createPrintMailJobRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePrintMailJobResponse>> {
+    async createPrintMailJobRaw(requestParameters: CreatePrintMailJobOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePrintMailJobResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -288,6 +357,7 @@ export class LookbooksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreatePrintMailJobRequestToJSON(requestParameters.createPrintMailJobRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatePrintMailJobResponseFromJSON(jsonValue));
@@ -296,15 +366,15 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed.
      */
-    async createPrintMailJob(initOverrides?: RequestInit): Promise<CreatePrintMailJobResponse> {
-        const response = await this.createPrintMailJobRaw(initOverrides);
+    async createPrintMailJob(requestParameters: CreatePrintMailJobOperationRequest = {}, initOverrides?: RequestInit): Promise<CreatePrintMailJobResponse> {
+        const response = await this.createPrintMailJobRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Confirm a drafted print job: acknowledgeCharges must be true and pieces must equal the job\'s piece count. Your Lob or PostGrid account is billed.
      */
-    async createPrintMailJobConfirmRaw(requestParameters: CreatePrintMailJobConfirmRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePrintMailJobConfirmResponse>> {
+    async createPrintMailJobConfirmRaw(requestParameters: CreatePrintMailJobConfirmOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePrintMailJobConfirmResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createPrintMailJobConfirm.');
         }
@@ -312,6 +382,8 @@ export class LookbooksApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -326,6 +398,7 @@ export class LookbooksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreatePrintMailJobConfirmRequestToJSON(requestParameters.createPrintMailJobConfirmRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatePrintMailJobConfirmResponseFromJSON(jsonValue));
@@ -334,7 +407,7 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Confirm a drafted print job: acknowledgeCharges must be true and pieces must equal the job\'s piece count. Your Lob or PostGrid account is billed.
      */
-    async createPrintMailJobConfirm(requestParameters: CreatePrintMailJobConfirmRequest, initOverrides?: RequestInit): Promise<CreatePrintMailJobConfirmResponse> {
+    async createPrintMailJobConfirm(requestParameters: CreatePrintMailJobConfirmOperationRequest, initOverrides?: RequestInit): Promise<CreatePrintMailJobConfirmResponse> {
         const response = await this.createPrintMailJobConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -459,6 +532,18 @@ export class LookbooksApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -490,8 +575,12 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
      */
-    async listLookbookCampaignsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLookbookCampaignsResponse>> {
+    async listLookbookCampaignsRaw(requestParameters: ListLookbookCampaignsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLookbookCampaignsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.collectionId !== undefined) {
+            queryParameters['collectionId'] = requestParameters.collectionId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -516,8 +605,8 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
      */
-    async listLookbookCampaigns(initOverrides?: RequestInit): Promise<ListLookbookCampaignsResponse> {
-        const response = await this.listLookbookCampaignsRaw(initOverrides);
+    async listLookbookCampaigns(requestParameters: ListLookbookCampaignsRequest = {}, initOverrides?: RequestInit): Promise<ListLookbookCampaignsResponse> {
+        const response = await this.listLookbookCampaignsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -590,9 +679,50 @@ export class LookbooksApi extends runtime.BaseAPI {
     }
 
     /**
+     * Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices = wholesale invoices and quotes, receipts = other buyer notices, sent from this address instead of from Crossly.
+     */
+    async updateEmailProviderUsRaw(requestParameters: UpdateEmailProviderUsOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateEmailProviderUsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateEmailProviderUs.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-providers/{id}/uses`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateEmailProviderUsRequestToJSON(requestParameters.updateEmailProviderUsRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateEmailProviderUsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices = wholesale invoices and quotes, receipts = other buyer notices, sent from this address instead of from Crossly.
+     */
+    async updateEmailProviderUs(requestParameters: UpdateEmailProviderUsOperationRequest, initOverrides?: RequestInit): Promise<UpdateEmailProviderUsResponse> {
+        const response = await this.updateEmailProviderUsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
      */
-    async updateLookbookDesignRaw(requestParameters: UpdateLookbookDesignRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateLookbookDesignResponse>> {
+    async updateLookbookDesignRaw(requestParameters: UpdateLookbookDesignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateLookbookDesignResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLookbookDesign.');
         }
@@ -600,6 +730,8 @@ export class LookbooksApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -614,6 +746,7 @@ export class LookbooksApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateLookbookDesignRequestToJSON(requestParameters.updateLookbookDesignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateLookbookDesignResponseFromJSON(jsonValue));
@@ -622,9 +755,20 @@ export class LookbooksApi extends runtime.BaseAPI {
     /**
      * Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
      */
-    async updateLookbookDesign(requestParameters: UpdateLookbookDesignRequest, initOverrides?: RequestInit): Promise<UpdateLookbookDesignResponse> {
+    async updateLookbookDesign(requestParameters: UpdateLookbookDesignOperationRequest, initOverrides?: RequestInit): Promise<UpdateLookbookDesignResponse> {
         const response = await this.updateLookbookDesignRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListLookbookCampaignRecipientsStatusEnum {
+    Skipped = 'skipped',
+    Sent = 'sent',
+    Failed = 'failed',
+    Queued = 'queued'
 }

@@ -89,8 +89,8 @@ export enum GetEventPolicyResponseDataMatrixEffectiveRequestedEnum {
 */
 export enum GetEventPolicyResponseDataMatrixEffectiveScopeEnum {
     Default = 'default',
-    Platform = 'platform',
     App = 'app',
+    Platform = 'platform',
     Global = 'global'
 }
 

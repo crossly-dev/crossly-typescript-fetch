@@ -25,6 +25,12 @@ export interface CreatePlatformAccountHistoryImportRequest {
      * @memberof CreatePlatformAccountHistoryImportRequest
      */
     days: number | null;
+    /**
+     * The platform account to save it on (GET /api/v1/connections). Omitted = every pending account.
+     * @type {string}
+     * @memberof CreatePlatformAccountHistoryImportRequest
+     */
+    accountId?: string;
 }
 
 export function CreatePlatformAccountHistoryImportRequestFromJSON(json: any): CreatePlatformAccountHistoryImportRequest {
@@ -38,6 +44,7 @@ export function CreatePlatformAccountHistoryImportRequestFromJSONTyped(json: any
     return {
         
         'days': json['days'],
+        'accountId': !exists(json, 'accountId') ? undefined : json['accountId'],
     };
 }
 
@@ -51,6 +58,7 @@ export function CreatePlatformAccountHistoryImportRequestToJSON(value?: CreatePl
     return {
         
         'days': value.days,
+        'accountId': value.accountId,
     };
 }
 

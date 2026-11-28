@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateCbxBoostPauseResponseData,
-    CreateCbxBoostPauseResponseDataFromJSON,
-    CreateCbxBoostPauseResponseDataFromJSONTyped,
-    CreateCbxBoostPauseResponseDataToJSON,
-} from './CreateCbxBoostPauseResponseData';
+    CreateDiscountCodePauseAllRequest,
+    CreateDiscountCodePauseAllRequestFromJSON,
+    CreateDiscountCodePauseAllRequestFromJSONTyped,
+    CreateDiscountCodePauseAllRequestToJSON,
+} from '../discount/CreateDiscountCodePauseAllRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface CreateCbxBoostPauseResponse {
     /**
      * 
-     * @type {CreateCbxBoostPauseResponseData}
+     * @type {CreateDiscountCodePauseAllRequest}
      * @memberof CreateCbxBoostPauseResponse
      */
-    data: CreateCbxBoostPauseResponseData;
+    data: CreateDiscountCodePauseAllRequest;
 }
 
 export function CreateCbxBoostPauseResponseFromJSON(json: any): CreateCbxBoostPauseResponse {
@@ -44,7 +44,7 @@ export function CreateCbxBoostPauseResponseFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'data': CreateCbxBoostPauseResponseDataFromJSON(json['data']),
+        'data': CreateDiscountCodePauseAllRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function CreateCbxBoostPauseResponseToJSON(value?: CreateCbxBoostPauseRes
     }
     return {
         
-        'data': CreateCbxBoostPauseResponseDataToJSON(value.data),
+        'data': CreateDiscountCodePauseAllRequestToJSON(value.data),
     };
 }
 

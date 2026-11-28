@@ -18,9 +18,11 @@
  * @enum {string}
  */
 export enum ListProductFeedsItemFormatsItem {
+    Json = 'json',
+    Csv = 'csv',
     Xml = 'xml',
     Tsv = 'tsv',
-    Csv = 'csv'
+    Atom = 'atom'
 }
 
 export function ListProductFeedsItemFormatsItemFromJSON(json: any): ListProductFeedsItemFormatsItem {

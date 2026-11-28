@@ -13,6 +13,19 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    GetConnectionEmailResponseDataStats,
+    GetConnectionEmailResponseDataStatsFromJSON,
+    GetConnectionEmailResponseDataStatsFromJSONTyped,
+    GetConnectionEmailResponseDataStatsToJSON,
+} from './GetConnectionEmailResponseDataStats';
+import {
+    ListConnectionEmailItem,
+    ListConnectionEmailItemFromJSON,
+    ListConnectionEmailItemFromJSONTyped,
+    ListConnectionEmailItemToJSON,
+} from './ListConnectionEmailItem';
+
 /**
  * 
  * @export
@@ -21,46 +34,16 @@ import { exists, mapValues } from '../../runtime';
 export interface GetConnectionEmailResponseData {
     /**
      * 
-     * @type {string}
+     * @type {ListConnectionEmailItem}
      * @memberof GetConnectionEmailResponseData
      */
-    id: string;
+    mailbox: ListConnectionEmailItem;
     /**
      * 
-     * @type {string}
+     * @type {GetConnectionEmailResponseDataStats}
      * @memberof GetConnectionEmailResponseData
      */
-    type: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetConnectionEmailResponseData
-     */
-    isConnected: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetConnectionEmailResponseData
-     */
-    email: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetConnectionEmailResponseData
-     */
-    host?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetConnectionEmailResponseData
-     */
-    port?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof GetConnectionEmailResponseData
-     */
-    lastSyncedAt?: Date | null;
+    stats: GetConnectionEmailResponseDataStats;
 }
 
 export function GetConnectionEmailResponseDataFromJSON(json: any): GetConnectionEmailResponseData {
@@ -73,13 +56,8 @@ export function GetConnectionEmailResponseDataFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'id': json['id'],
-        'type': json['type'],
-        'isConnected': json['isConnected'],
-        'email': json['email'],
-        'host': !exists(json, 'host') ? undefined : json['host'],
-        'port': !exists(json, 'port') ? undefined : json['port'],
-        'lastSyncedAt': !exists(json, 'lastSyncedAt') ? undefined : (json['lastSyncedAt'] === null ? null : new Date(json['lastSyncedAt'])),
+        'mailbox': ListConnectionEmailItemFromJSON(json['mailbox']),
+        'stats': GetConnectionEmailResponseDataStatsFromJSON(json['stats']),
     };
 }
 
@@ -92,13 +70,8 @@ export function GetConnectionEmailResponseDataToJSON(value?: GetConnectionEmailR
     }
     return {
         
-        'id': value.id,
-        'type': value.type,
-        'isConnected': value.isConnected,
-        'email': value.email,
-        'host': value.host,
-        'port': value.port,
-        'lastSyncedAt': value.lastSyncedAt === undefined ? undefined : (value.lastSyncedAt === null ? null : value.lastSyncedAt.toISOString()),
+        'mailbox': ListConnectionEmailItemToJSON(value.mailbox),
+        'stats': GetConnectionEmailResponseDataStatsToJSON(value.stats),
     };
 }
 

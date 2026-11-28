@@ -15,13 +15,17 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateSpatialAuctionRoomBidRequest,
+    CreateSpatialAuctionRoomBidRequestFromJSON,
+    CreateSpatialAuctionRoomBidRequestToJSON,
     CreateSpatialAuctionRoomBidResponse,
     CreateSpatialAuctionRoomBidResponseFromJSON,
     CreateSpatialAuctionRoomBidResponseToJSON,
 } from '../models';
 
-export interface CreateSpatialAuctionRoomBidRequest {
+export interface CreateSpatialAuctionRoomBidOperationRequest {
     sceneId: string;
+    createSpatialAuctionRoomBidRequest: CreateSpatialAuctionRoomBidRequest;
 }
 
 /**
@@ -33,14 +37,20 @@ export class BuyerApi extends runtime.BaseAPI {
      * Bids on whatever the auctioneer has up RIGHT NOW. Pass `lotId` to say which lot you believe that is: it is checked against the rostrum rather than used in its place, and a mismatch answers 409 with the lot that is actually up, so a stale catalogue cannot buy you something you never looked at. `amountCents` is CENTS and must be at least the room state\'s `minimumNextBidCents` — do not compute that yourself, because the opening bid on a lot is floored at the START price rather than start + step. Below it you get 400 `bid_too_low` carrying `details.minimumNextBidCents`, which is the figure the transaction itself used; raise to that and retry. THIS AUCTION HOUSE SELLS DIGITAL GOODS ONLY. A physical lot is refused 403 `forbidden` with `details.reason: \"physical_lot\"`, checked against the listing on every single bid rather than once when the room was set up. Bids by one person on one lot are throttled to a few per second — 429 `bidding_too_fast` carries `retryInSeconds`. A hammered or skipped lot answers 409 `lot_closed`. A room you may not enter answers 404, the same as one that does not exist. Success is the bid RECORDED, not the lot won: the reply names the topic the price moves on, and somebody may outbid you on the next frame.
      * Bid on the lot currently up in a room.
      */
-    async createSpatialAuctionRoomBidRaw(requestParameters: CreateSpatialAuctionRoomBidRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialAuctionRoomBidResponse>> {
+    async createSpatialAuctionRoomBidRaw(requestParameters: CreateSpatialAuctionRoomBidOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialAuctionRoomBidResponse>> {
         if (requestParameters.sceneId === null || requestParameters.sceneId === undefined) {
             throw new runtime.RequiredError('sceneId','Required parameter requestParameters.sceneId was null or undefined when calling createSpatialAuctionRoomBid.');
+        }
+
+        if (requestParameters.createSpatialAuctionRoomBidRequest === null || requestParameters.createSpatialAuctionRoomBidRequest === undefined) {
+            throw new runtime.RequiredError('createSpatialAuctionRoomBidRequest','Required parameter requestParameters.createSpatialAuctionRoomBidRequest was null or undefined when calling createSpatialAuctionRoomBid.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -55,6 +65,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSpatialAuctionRoomBidRequestToJSON(requestParameters.createSpatialAuctionRoomBidRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialAuctionRoomBidResponseFromJSON(jsonValue));
@@ -64,7 +75,7 @@ export class BuyerApi extends runtime.BaseAPI {
      * Bids on whatever the auctioneer has up RIGHT NOW. Pass `lotId` to say which lot you believe that is: it is checked against the rostrum rather than used in its place, and a mismatch answers 409 with the lot that is actually up, so a stale catalogue cannot buy you something you never looked at. `amountCents` is CENTS and must be at least the room state\'s `minimumNextBidCents` — do not compute that yourself, because the opening bid on a lot is floored at the START price rather than start + step. Below it you get 400 `bid_too_low` carrying `details.minimumNextBidCents`, which is the figure the transaction itself used; raise to that and retry. THIS AUCTION HOUSE SELLS DIGITAL GOODS ONLY. A physical lot is refused 403 `forbidden` with `details.reason: \"physical_lot\"`, checked against the listing on every single bid rather than once when the room was set up. Bids by one person on one lot are throttled to a few per second — 429 `bidding_too_fast` carries `retryInSeconds`. A hammered or skipped lot answers 409 `lot_closed`. A room you may not enter answers 404, the same as one that does not exist. Success is the bid RECORDED, not the lot won: the reply names the topic the price moves on, and somebody may outbid you on the next frame.
      * Bid on the lot currently up in a room.
      */
-    async createSpatialAuctionRoomBid(requestParameters: CreateSpatialAuctionRoomBidRequest, initOverrides?: RequestInit): Promise<CreateSpatialAuctionRoomBidResponse> {
+    async createSpatialAuctionRoomBid(requestParameters: CreateSpatialAuctionRoomBidOperationRequest, initOverrides?: RequestInit): Promise<CreateSpatialAuctionRoomBidResponse> {
         const response = await this.createSpatialAuctionRoomBidRaw(requestParameters, initOverrides);
         return await response.value();
     }

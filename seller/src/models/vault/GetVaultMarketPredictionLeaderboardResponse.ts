@@ -69,9 +69,9 @@ export interface GetVaultMarketPredictionLeaderboardResponse {
 * @enum {string}
 */
 export enum GetVaultMarketPredictionLeaderboardResponsePeriodEnum {
+    All = 'all',
     Week = 'week',
-    Month = 'month',
-    All = 'all'
+    Month = 'month'
 }/**
 * @export
 * @enum {string}

@@ -98,6 +98,12 @@ export interface GetBuyerSellerLoyaltyResponseDataMember {
      * @memberof GetBuyerSellerLoyaltyResponseDataMember
      */
     history: Array<GetBuyerSellerLoyaltyResponseDataMemberHistory>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetBuyerSellerLoyaltyResponseDataMember
+     */
+    id?: string | null;
 }
 
 export function GetBuyerSellerLoyaltyResponseDataMemberFromJSON(json: any): GetBuyerSellerLoyaltyResponseDataMember {
@@ -118,6 +124,7 @@ export function GetBuyerSellerLoyaltyResponseDataMemberFromJSONTyped(json: any, 
         'joinedAt': json['joinedAt'],
         'perks': ((json['perks'] as Array<any>).map(GetBuyerSellerLoyaltyResponseDataMemberPerksFromJSON)),
         'history': ((json['history'] as Array<any>).map(GetBuyerSellerLoyaltyResponseDataMemberHistoryFromJSON)),
+        'id': !exists(json, 'id') ? undefined : json['id'],
     };
 }
 
@@ -138,6 +145,7 @@ export function GetBuyerSellerLoyaltyResponseDataMemberToJSON(value?: GetBuyerSe
         'joinedAt': value.joinedAt,
         'perks': ((value.perks as Array<any>).map(GetBuyerSellerLoyaltyResponseDataMemberPerksToJSON)),
         'history': ((value.history as Array<any>).map(GetBuyerSellerLoyaltyResponseDataMemberHistoryToJSON)),
+        'id': value.id,
     };
 }
 

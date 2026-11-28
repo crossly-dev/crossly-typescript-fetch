@@ -24,6 +24,12 @@ export interface GetStorefrontResponseDataSocialLinks {
      * @type {string}
      * @memberof GetStorefrontResponseDataSocialLinks
      */
+    facebook?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetStorefrontResponseDataSocialLinks
+     */
     website?: string | null;
     /**
      * 
@@ -36,19 +42,13 @@ export interface GetStorefrontResponseDataSocialLinks {
      * @type {string}
      * @memberof GetStorefrontResponseDataSocialLinks
      */
-    facebook?: string | null;
+    instagram?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetStorefrontResponseDataSocialLinks
      */
     tiktok?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetStorefrontResponseDataSocialLinks
-     */
-    instagram?: string | null;
     /**
      * 
      * @type {string}
@@ -73,11 +73,11 @@ export function GetStorefrontResponseDataSocialLinksFromJSONTyped(json: any, ign
     }
     return {
         
+        'facebook': !exists(json, 'facebook') ? undefined : json['facebook'],
         'website': !exists(json, 'website') ? undefined : json['website'],
         'x': !exists(json, 'x') ? undefined : json['x'],
-        'facebook': !exists(json, 'facebook') ? undefined : json['facebook'],
-        'tiktok': !exists(json, 'tiktok') ? undefined : json['tiktok'],
         'instagram': !exists(json, 'instagram') ? undefined : json['instagram'],
+        'tiktok': !exists(json, 'tiktok') ? undefined : json['tiktok'],
         'youtube': !exists(json, 'youtube') ? undefined : json['youtube'],
         'pinterest': !exists(json, 'pinterest') ? undefined : json['pinterest'],
     };
@@ -92,11 +92,11 @@ export function GetStorefrontResponseDataSocialLinksToJSON(value?: GetStorefront
     }
     return {
         
+        'facebook': value.facebook,
         'website': value.website,
         'x': value.x,
-        'facebook': value.facebook,
-        'tiktok': value.tiktok,
         'instagram': value.instagram,
+        'tiktok': value.tiktok,
         'youtube': value.youtube,
         'pinterest': value.pinterest,
     };

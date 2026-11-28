@@ -62,6 +62,12 @@ import {
     GetRentalSettingResponseDataDefaultsLengthDiscountsToJSON,
 } from './GetRentalSettingResponseDataDefaultsLengthDiscounts';
 import {
+    GetRentalSettingResponseDataDefaultsPhotosBack,
+    GetRentalSettingResponseDataDefaultsPhotosBackFromJSON,
+    GetRentalSettingResponseDataDefaultsPhotosBackFromJSONTyped,
+    GetRentalSettingResponseDataDefaultsPhotosBackToJSON,
+} from './GetRentalSettingResponseDataDefaultsPhotosBack';
+import {
     GetRentalSettingResponseDataDefaultsPhotosOut,
     GetRentalSettingResponseDataDefaultsPhotosOutFromJSON,
     GetRentalSettingResponseDataDefaultsPhotosOutFromJSONTyped,
@@ -315,6 +321,12 @@ export interface GetRentalSettingResponseDataDefaults {
      */
     photosReturn?: boolean | null;
     /**
+     * 
+     * @type {GetRentalSettingResponseDataDefaultsPhotosBack}
+     * @memberof GetRentalSettingResponseDataDefaults
+     */
+    photosBack?: GetRentalSettingResponseDataDefaultsPhotosBack | null;
+    /**
      * A checklist the seller ticks at inspection (e.g. "lens cap", "strap").
      * @type {Array<string>}
      * @memberof GetRentalSettingResponseDataDefaults
@@ -379,8 +391,8 @@ export enum GetRentalSettingResponseDataDefaultsShippingPaidByEnum {
 * @enum {string}
 */
 export enum GetRentalSettingResponseDataDefaultsApprovalEnum {
-    Approval = 'approval',
-    Instant = 'instant'
+    Instant = 'instant',
+    Approval = 'approval'
 }
 
 export function GetRentalSettingResponseDataDefaultsFromJSON(json: any): GetRentalSettingResponseDataDefaults {
@@ -430,6 +442,7 @@ export function GetRentalSettingResponseDataDefaultsFromJSONTyped(json: any, ign
         'photosOut': !exists(json, 'photosOut') ? undefined : GetRentalSettingResponseDataDefaultsPhotosOutFromJSON(json['photosOut']),
         'photosArrival': !exists(json, 'photosArrival') ? undefined : json['photosArrival'],
         'photosReturn': !exists(json, 'photosReturn') ? undefined : json['photosReturn'],
+        'photosBack': !exists(json, 'photosBack') ? undefined : GetRentalSettingResponseDataDefaultsPhotosBackFromJSON(json['photosBack']),
         'checklist': !exists(json, 'checklist') ? undefined : json['checklist'],
         'extensions': !exists(json, 'extensions') ? undefined : GetRentalSettingResponseDataDefaultsExtensionsFromJSON(json['extensions']),
         'buyout': !exists(json, 'buyout') ? undefined : GetRentalSettingResponseDataDefaultsBuyoutFromJSON(json['buyout']),
@@ -485,6 +498,7 @@ export function GetRentalSettingResponseDataDefaultsToJSON(value?: GetRentalSett
         'photosOut': GetRentalSettingResponseDataDefaultsPhotosOutToJSON(value.photosOut),
         'photosArrival': value.photosArrival,
         'photosReturn': value.photosReturn,
+        'photosBack': GetRentalSettingResponseDataDefaultsPhotosBackToJSON(value.photosBack),
         'checklist': value.checklist,
         'extensions': GetRentalSettingResponseDataDefaultsExtensionsToJSON(value.extensions),
         'buyout': GetRentalSettingResponseDataDefaultsBuyoutToJSON(value.buyout),

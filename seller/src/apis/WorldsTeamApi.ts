@@ -24,15 +24,24 @@ import {
     CreateWorldExperienceActivityRevertResponse,
     CreateWorldExperienceActivityRevertResponseFromJSON,
     CreateWorldExperienceActivityRevertResponseToJSON,
+    CreateWorldExperienceCollaboratorRequest,
+    CreateWorldExperienceCollaboratorRequestFromJSON,
+    CreateWorldExperienceCollaboratorRequestToJSON,
     CreateWorldExperienceCollaboratorResponse,
     CreateWorldExperienceCollaboratorResponseFromJSON,
     CreateWorldExperienceCollaboratorResponseToJSON,
+    CreateWorldExperiencePlaceCollabOpRequest,
+    CreateWorldExperiencePlaceCollabOpRequestFromJSON,
+    CreateWorldExperiencePlaceCollabOpRequestToJSON,
     CreateWorldExperiencePlaceCollabOpResponse,
     CreateWorldExperiencePlaceCollabOpResponseFromJSON,
     CreateWorldExperiencePlaceCollabOpResponseToJSON,
     CreateWorldExperiencePlaceCollabSaveResponse,
     CreateWorldExperiencePlaceCollabSaveResponseFromJSON,
     CreateWorldExperiencePlaceCollabSaveResponseToJSON,
+    CreateWorldExperiencePlaceCollabScriptCommitRequest,
+    CreateWorldExperiencePlaceCollabScriptCommitRequestFromJSON,
+    CreateWorldExperiencePlaceCollabScriptCommitRequestToJSON,
     CreateWorldExperiencePlaceCollabScriptCommitResponse,
     CreateWorldExperiencePlaceCollabScriptCommitResponseFromJSON,
     CreateWorldExperiencePlaceCollabScriptCommitResponseToJSON,
@@ -63,9 +72,18 @@ import {
     ListWorldExperiencePlaceCollabScriptsResponse,
     ListWorldExperiencePlaceCollabScriptsResponseFromJSON,
     ListWorldExperiencePlaceCollabScriptsResponseToJSON,
+    UpdateWorldExperienceCollaboratorRequest,
+    UpdateWorldExperienceCollaboratorRequestFromJSON,
+    UpdateWorldExperienceCollaboratorRequestToJSON,
     UpdateWorldExperiencePlaceCollabScriptResponse,
     UpdateWorldExperiencePlaceCollabScriptResponseFromJSON,
     UpdateWorldExperiencePlaceCollabScriptResponseToJSON,
+    UpdateWorldExperienceSplitRequest,
+    UpdateWorldExperienceSplitRequestFromJSON,
+    UpdateWorldExperienceSplitRequestToJSON,
+    UpdateWorldInteractiveDesignDraftRequest,
+    UpdateWorldInteractiveDesignDraftRequestFromJSON,
+    UpdateWorldInteractiveDesignDraftRequestToJSON,
 } from '../models';
 
 export interface CreateWorldCollaborationAcceptRequest {
@@ -81,13 +99,15 @@ export interface CreateWorldExperienceActivityRevertRequest {
     activityId: string;
 }
 
-export interface CreateWorldExperienceCollaboratorRequest {
+export interface CreateWorldExperienceCollaboratorOperationRequest {
     experienceId: string;
+    createWorldExperienceCollaboratorRequest?: CreateWorldExperienceCollaboratorRequest;
 }
 
-export interface CreateWorldExperiencePlaceCollabOpRequest {
+export interface CreateWorldExperiencePlaceCollabOpOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceCollabOpRequest?: CreateWorldExperiencePlaceCollabOpRequest;
 }
 
 export interface CreateWorldExperiencePlaceCollabSaveRequest {
@@ -95,10 +115,11 @@ export interface CreateWorldExperiencePlaceCollabSaveRequest {
     placeId: string;
 }
 
-export interface CreateWorldExperiencePlaceCollabScriptCommitRequest {
+export interface CreateWorldExperiencePlaceCollabScriptCommitOperationRequest {
     experienceId: string;
     placeId: string;
     nodeId: string;
+    createWorldExperiencePlaceCollabScriptCommitRequest?: CreateWorldExperiencePlaceCollabScriptCommitRequest;
 }
 
 export interface DeleteWorldExperienceCollaboratorRequest {
@@ -120,6 +141,7 @@ export interface GetWorldExperiencePlaceCollabRequest {
 export interface GetWorldExperiencePlaceCollabOpRequest {
     experienceId: string;
     placeId: string;
+    since: number;
 }
 
 export interface GetWorldExperienceSplitRequest {
@@ -132,6 +154,9 @@ export interface GetWorldExperienceTeamRequest {
 
 export interface ListWorldExperienceActivityRequest {
     experienceId: string;
+    cursor?: string;
+    limit?: number;
+    placeId?: string;
 }
 
 export interface ListWorldExperiencePlaceCollabScriptsRequest {
@@ -139,19 +164,22 @@ export interface ListWorldExperiencePlaceCollabScriptsRequest {
     placeId: string;
 }
 
-export interface UpdateWorldExperienceCollaboratorRequest {
+export interface UpdateWorldExperienceCollaboratorOperationRequest {
     experienceId: string;
     userId: string;
+    updateWorldExperienceCollaboratorRequest?: UpdateWorldExperienceCollaboratorRequest;
 }
 
 export interface UpdateWorldExperiencePlaceCollabScriptRequest {
     experienceId: string;
     placeId: string;
     nodeId: string;
+    updateWorldInteractiveDesignDraftRequest?: UpdateWorldInteractiveDesignDraftRequest;
 }
 
-export interface UpdateWorldExperienceSplitRequest {
+export interface UpdateWorldExperienceSplitOperationRequest {
     experienceId: string;
+    updateWorldExperienceSplitRequest?: UpdateWorldExperienceSplitRequest;
 }
 
 /**
@@ -280,7 +308,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Invite a Crossly handle with a role. Owner or admin; only the owner makes admins. Counts against the owner\'s plan cap.
      */
-    async createWorldExperienceCollaboratorRaw(requestParameters: CreateWorldExperienceCollaboratorRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceCollaboratorResponse>> {
+    async createWorldExperienceCollaboratorRaw(requestParameters: CreateWorldExperienceCollaboratorOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceCollaboratorResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceCollaborator.');
         }
@@ -288,6 +316,8 @@ export class WorldsTeamApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -302,6 +332,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceCollaboratorRequestToJSON(requestParameters.createWorldExperienceCollaboratorRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceCollaboratorResponseFromJSON(jsonValue));
@@ -310,7 +341,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Invite a Crossly handle with a role. Owner or admin; only the owner makes admins. Counts against the owner\'s plan cap.
      */
-    async createWorldExperienceCollaborator(requestParameters: CreateWorldExperienceCollaboratorRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceCollaboratorResponse> {
+    async createWorldExperienceCollaborator(requestParameters: CreateWorldExperienceCollaboratorOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceCollaboratorResponse> {
         const response = await this.createWorldExperienceCollaboratorRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -318,7 +349,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Apply a batch of ops (insert, delete, move, prop, attr, name, tags, world) in server order. Each op is checked against your role; a retried batch id is answered, not re-applied.
      */
-    async createWorldExperiencePlaceCollabOpRaw(requestParameters: CreateWorldExperiencePlaceCollabOpRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceCollabOpResponse>> {
+    async createWorldExperiencePlaceCollabOpRaw(requestParameters: CreateWorldExperiencePlaceCollabOpOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceCollabOpResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceCollabOp.');
         }
@@ -330,6 +361,8 @@ export class WorldsTeamApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -344,6 +377,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceCollabOpRequestToJSON(requestParameters.createWorldExperiencePlaceCollabOpRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceCollabOpResponseFromJSON(jsonValue));
@@ -352,7 +386,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Apply a batch of ops (insert, delete, move, prop, attr, name, tags, world) in server order. Each op is checked against your role; a retried batch id is answered, not re-applied.
      */
-    async createWorldExperiencePlaceCollabOp(requestParameters: CreateWorldExperiencePlaceCollabOpRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceCollabOpResponse> {
+    async createWorldExperiencePlaceCollabOp(requestParameters: CreateWorldExperiencePlaceCollabOpOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceCollabOpResponse> {
         const response = await this.createWorldExperiencePlaceCollabOpRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -402,7 +436,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Commit your draft with a three-way merge. 409 merge_conflict carries the merged text with conflict blocks and the current source.
      */
-    async createWorldExperiencePlaceCollabScriptCommitRaw(requestParameters: CreateWorldExperiencePlaceCollabScriptCommitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceCollabScriptCommitResponse>> {
+    async createWorldExperiencePlaceCollabScriptCommitRaw(requestParameters: CreateWorldExperiencePlaceCollabScriptCommitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceCollabScriptCommitResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceCollabScriptCommit.');
         }
@@ -419,6 +453,8 @@ export class WorldsTeamApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -432,6 +468,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceCollabScriptCommitRequestToJSON(requestParameters.createWorldExperiencePlaceCollabScriptCommitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceCollabScriptCommitResponseFromJSON(jsonValue));
@@ -440,7 +477,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Commit your draft with a three-way merge. 409 merge_conflict carries the merged text with conflict blocks and the current source.
      */
-    async createWorldExperiencePlaceCollabScriptCommit(requestParameters: CreateWorldExperiencePlaceCollabScriptCommitRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceCollabScriptCommitResponse> {
+    async createWorldExperiencePlaceCollabScriptCommit(requestParameters: CreateWorldExperiencePlaceCollabScriptCommitOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceCollabScriptCommitResponse> {
         const response = await this.createWorldExperiencePlaceCollabScriptCommitRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -587,7 +624,15 @@ export class WorldsTeamApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('placeId','Required parameter requestParameters.placeId was null or undefined when calling getWorldExperiencePlaceCollabOp.');
         }
 
+        if (requestParameters.since === null || requestParameters.since === undefined) {
+            throw new runtime.RequiredError('since','Required parameter requestParameters.since was null or undefined when calling getWorldExperiencePlaceCollabOp.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.since !== undefined) {
+            queryParameters['since'] = requestParameters.since;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -737,6 +782,18 @@ export class WorldsTeamApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.placeId !== undefined) {
+            queryParameters['placeId'] = requestParameters.placeId;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -810,7 +867,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Change a collaborator\'s role.
      */
-    async updateWorldExperienceCollaboratorRaw(requestParameters: UpdateWorldExperienceCollaboratorRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceCollaboratorResponse>> {
+    async updateWorldExperienceCollaboratorRaw(requestParameters: UpdateWorldExperienceCollaboratorOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceCollaboratorResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceCollaborator.');
         }
@@ -822,6 +879,8 @@ export class WorldsTeamApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -836,6 +895,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceCollaboratorRequestToJSON(requestParameters.updateWorldExperienceCollaboratorRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceCollaboratorResponseFromJSON(jsonValue));
@@ -844,7 +904,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Change a collaborator\'s role.
      */
-    async updateWorldExperienceCollaborator(requestParameters: UpdateWorldExperienceCollaboratorRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceCollaboratorResponse> {
+    async updateWorldExperienceCollaborator(requestParameters: UpdateWorldExperienceCollaboratorOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceCollaboratorResponse> {
         const response = await this.updateWorldExperienceCollaboratorRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -869,6 +929,8 @@ export class WorldsTeamApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -882,6 +944,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldInteractiveDesignDraftRequestToJSON(requestParameters.updateWorldInteractiveDesignDraftRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperiencePlaceCollabScriptResponseFromJSON(jsonValue));
@@ -898,7 +961,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Owner only: split the creator share (70% of net) in basis points summing to 10000. Takes effect the 1st of next month; every party is notified. The 70% total never changes.
      */
-    async updateWorldExperienceSplitRaw(requestParameters: UpdateWorldExperienceSplitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceSplitResponse>> {
+    async updateWorldExperienceSplitRaw(requestParameters: UpdateWorldExperienceSplitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceSplitResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceSplit.');
         }
@@ -906,6 +969,8 @@ export class WorldsTeamApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -920,6 +985,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceSplitRequestToJSON(requestParameters.updateWorldExperienceSplitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldExperienceSplitResponseFromJSON(jsonValue));
@@ -928,7 +994,7 @@ export class WorldsTeamApi extends runtime.BaseAPI {
     /**
      * Owner only: split the creator share (70% of net) in basis points summing to 10000. Takes effect the 1st of next month; every party is notified. The 70% total never changes.
      */
-    async updateWorldExperienceSplit(requestParameters: UpdateWorldExperienceSplitRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceSplitResponse> {
+    async updateWorldExperienceSplit(requestParameters: UpdateWorldExperienceSplitOperationRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceSplitResponse> {
         const response = await this.updateWorldExperienceSplitRaw(requestParameters, initOverrides);
         return await response.value();
     }

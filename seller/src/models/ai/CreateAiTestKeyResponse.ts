@@ -25,6 +25,12 @@ export interface CreateAiTestKeyResponse {
      * @memberof CreateAiTestKeyResponse
      */
     valid: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateAiTestKeyResponse
+     */
+    message: string;
 }
 
 export function CreateAiTestKeyResponseFromJSON(json: any): CreateAiTestKeyResponse {
@@ -38,6 +44,7 @@ export function CreateAiTestKeyResponseFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'valid': json['valid'],
+        'message': json['message'],
     };
 }
 
@@ -51,6 +58,7 @@ export function CreateAiTestKeyResponseToJSON(value?: CreateAiTestKeyResponse | 
     return {
         
         'valid': value.valid,
+        'message': value.message,
     };
 }
 

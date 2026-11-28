@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateRestockPromptRepublishRequest,
+    CreateRestockPromptRepublishRequestFromJSON,
+    CreateRestockPromptRepublishRequestToJSON,
     CreateRestockPromptRepublishResponse,
     CreateRestockPromptRepublishResponseFromJSON,
     CreateRestockPromptRepublishResponseToJSON,
@@ -33,8 +36,9 @@ export interface CreateRestockPromptDismissRequest {
     id: string;
 }
 
-export interface CreateRestockPromptRepublishRequest {
+export interface CreateRestockPromptRepublishOperationRequest {
     id: string;
+    createRestockPromptRepublishRequest: CreateRestockPromptRepublishRequest;
 }
 
 export interface UpdateRestockPromptSettingRequest {
@@ -87,14 +91,20 @@ export class RestockPromptsApi extends runtime.BaseAPI {
     /**
      * Republish a restock prompt to platforms.
      */
-    async createRestockPromptRepublishRaw(requestParameters: CreateRestockPromptRepublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateRestockPromptRepublishResponse>> {
+    async createRestockPromptRepublishRaw(requestParameters: CreateRestockPromptRepublishOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateRestockPromptRepublishResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createRestockPromptRepublish.');
+        }
+
+        if (requestParameters.createRestockPromptRepublishRequest === null || requestParameters.createRestockPromptRepublishRequest === undefined) {
+            throw new runtime.RequiredError('createRestockPromptRepublishRequest','Required parameter requestParameters.createRestockPromptRepublishRequest was null or undefined when calling createRestockPromptRepublish.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -109,6 +119,7 @@ export class RestockPromptsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateRestockPromptRepublishRequestToJSON(requestParameters.createRestockPromptRepublishRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateRestockPromptRepublishResponseFromJSON(jsonValue));
@@ -117,14 +128,14 @@ export class RestockPromptsApi extends runtime.BaseAPI {
     /**
      * Republish a restock prompt to platforms.
      */
-    async createRestockPromptRepublish(requestParameters: CreateRestockPromptRepublishRequest, initOverrides?: RequestInit): Promise<CreateRestockPromptRepublishResponse> {
+    async createRestockPromptRepublish(requestParameters: CreateRestockPromptRepublishOperationRequest, initOverrides?: RequestInit): Promise<CreateRestockPromptRepublishResponse> {
         const response = await this.createRestockPromptRepublishRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
-     * Whether restocked items are republished automatically.
+     * autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
+     * Deprecated: whether every platform account of the store republishes restocked items automatically.
      */
     async getRestockPromptSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRestockPromptSettingResponse>> {
         const queryParameters: any = {};
@@ -150,8 +161,8 @@ export class RestockPromptsApi extends runtime.BaseAPI {
     }
 
     /**
-     * autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
-     * Whether restocked items are republished automatically.
+     * autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
+     * Deprecated: whether every platform account of the store republishes restocked items automatically.
      */
     async getRestockPromptSetting(initOverrides?: RequestInit): Promise<GetRestockPromptSettingResponse> {
         const response = await this.getRestockPromptSettingRaw(initOverrides);
@@ -193,7 +204,7 @@ export class RestockPromptsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Turn automatic republish of restocked items on or off.
+     * Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
      */
     async updateRestockPromptSettingRaw(requestParameters: UpdateRestockPromptSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRestockPromptSettingResponse>> {
         if (requestParameters.getRestockPromptSettingResponse === null || requestParameters.getRestockPromptSettingResponse === undefined) {
@@ -226,7 +237,7 @@ export class RestockPromptsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Turn automatic republish of restocked items on or off.
+     * Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
      */
     async updateRestockPromptSetting(requestParameters: UpdateRestockPromptSettingRequest, initOverrides?: RequestInit): Promise<GetRestockPromptSettingResponse> {
         const response = await this.updateRestockPromptSettingRaw(requestParameters, initOverrides);

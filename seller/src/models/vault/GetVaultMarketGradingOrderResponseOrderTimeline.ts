@@ -50,8 +50,8 @@ export interface GetVaultMarketGradingOrderResponseOrderTimeline {
 * @enum {string}
 */
 export enum GetVaultMarketGradingOrderResponseOrderTimelineKeyEnum {
-    Grading = 'grading',
     Draft = 'draft',
+    Grading = 'grading',
     Cancelled = 'cancelled',
     Paid = 'paid',
     Received = 'received',

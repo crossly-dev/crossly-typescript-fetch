@@ -58,9 +58,9 @@ export interface UpdateStorefrontSettingResponseDataStorePoliciesShipping {
 export enum UpdateStorefrontSettingResponseDataStorePoliciesShippingLevelEnum {
     Default = 'default',
     Override = 'override',
-    Store = 'store',
-    Listing = 'listing',
     Legacy = 'legacy',
+    Listing = 'listing',
+    Store = 'store',
     SellerDefault = 'seller_default'
 }
 

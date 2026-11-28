@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateWorldSpaceRoleResponseData,
-    CreateWorldSpaceRoleResponseDataFromJSON,
-    CreateWorldSpaceRoleResponseDataFromJSONTyped,
-    CreateWorldSpaceRoleResponseDataToJSON,
-} from './CreateWorldSpaceRoleResponseData';
+    CreateWorldSpaceRoleRequest,
+    CreateWorldSpaceRoleRequestFromJSON,
+    CreateWorldSpaceRoleRequestFromJSONTyped,
+    CreateWorldSpaceRoleRequestToJSON,
+} from './CreateWorldSpaceRoleRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface CreateWorldSpaceRoleResponse {
     /**
      * 
-     * @type {CreateWorldSpaceRoleResponseData}
+     * @type {CreateWorldSpaceRoleRequest}
      * @memberof CreateWorldSpaceRoleResponse
      */
-    data: CreateWorldSpaceRoleResponseData;
+    data: CreateWorldSpaceRoleRequest;
 }
 
 export function CreateWorldSpaceRoleResponseFromJSON(json: any): CreateWorldSpaceRoleResponse {
@@ -44,7 +44,7 @@ export function CreateWorldSpaceRoleResponseFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'data': CreateWorldSpaceRoleResponseDataFromJSON(json['data']),
+        'data': CreateWorldSpaceRoleRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function CreateWorldSpaceRoleResponseToJSON(value?: CreateWorldSpaceRoleR
     }
     return {
         
-        'data': CreateWorldSpaceRoleResponseDataToJSON(value.data),
+        'data': CreateWorldSpaceRoleRequestToJSON(value.data),
     };
 }
 

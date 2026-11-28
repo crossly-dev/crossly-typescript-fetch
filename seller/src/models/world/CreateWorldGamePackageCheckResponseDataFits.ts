@@ -24,13 +24,13 @@ export interface CreateWorldGamePackageCheckResponseDataFits {
      * @type {boolean}
      * @memberof CreateWorldGamePackageCheckResponseDataFits
      */
-    phone: boolean;
+    desktop: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof CreateWorldGamePackageCheckResponseDataFits
      */
-    desktop: boolean;
+    phone: boolean;
 }
 
 export function CreateWorldGamePackageCheckResponseDataFitsFromJSON(json: any): CreateWorldGamePackageCheckResponseDataFits {
@@ -43,8 +43,8 @@ export function CreateWorldGamePackageCheckResponseDataFitsFromJSONTyped(json: a
     }
     return {
         
-        'phone': json['phone'],
         'desktop': json['desktop'],
+        'phone': json['phone'],
     };
 }
 
@@ -57,8 +57,8 @@ export function CreateWorldGamePackageCheckResponseDataFitsToJSON(value?: Create
     }
     return {
         
-        'phone': value.phone,
         'desktop': value.desktop,
+        'phone': value.phone,
     };
 }
 

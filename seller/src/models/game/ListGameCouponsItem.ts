@@ -68,8 +68,8 @@ export interface ListGameCouponsItem {
 * @enum {string}
 */
 export enum ListGameCouponsItemStatusEnum {
-    Live = 'live',
     Expired = 'expired',
+    Live = 'live',
     Redeemed = 'redeemed'
 }
 

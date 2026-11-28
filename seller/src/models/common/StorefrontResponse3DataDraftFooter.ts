@@ -87,8 +87,8 @@ export interface StorefrontResponse3DataDraftFooter {
 */
 export enum StorefrontResponse3DataDraftFooterLayoutEnum {
     Columns = 'columns',
-    Minimal = 'minimal',
-    Centered = 'centered'
+    Centered = 'centered',
+    Minimal = 'minimal'
 }
 
 export function StorefrontResponse3DataDraftFooterFromJSON(json: any): StorefrontResponse3DataDraftFooter {

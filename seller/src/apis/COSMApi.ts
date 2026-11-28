@@ -15,12 +15,21 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCosmAttestationAnchorRequest,
+    CreateCosmAttestationAnchorRequestFromJSON,
+    CreateCosmAttestationAnchorRequestToJSON,
     CreateCosmAttestationAnchorResponse,
     CreateCosmAttestationAnchorResponseFromJSON,
     CreateCosmAttestationAnchorResponseToJSON,
+    CreateCosmAuctionRequest,
+    CreateCosmAuctionRequestFromJSON,
+    CreateCosmAuctionRequestToJSON,
     CreateCosmAuctionResponse,
     CreateCosmAuctionResponseFromJSON,
     CreateCosmAuctionResponseToJSON,
+    CreateCosmCosmeticBuyCbxRequest,
+    CreateCosmCosmeticBuyCbxRequestFromJSON,
+    CreateCosmCosmeticBuyCbxRequestToJSON,
     CreateCosmCosmeticBuyCbxResponse,
     CreateCosmCosmeticBuyCbxResponseFromJSON,
     CreateCosmCosmeticBuyCbxResponseToJSON,
@@ -33,15 +42,27 @@ import {
     CreateCosmFusionResponse,
     CreateCosmFusionResponseFromJSON,
     CreateCosmFusionResponseToJSON,
+    CreateCosmHandleRequest,
+    CreateCosmHandleRequestFromJSON,
+    CreateCosmHandleRequestToJSON,
     CreateCosmHandleResponse,
     CreateCosmHandleResponseFromJSON,
     CreateCosmHandleResponseToJSON,
+    CreateCosmWithdrawalRequest,
+    CreateCosmWithdrawalRequestFromJSON,
+    CreateCosmWithdrawalRequestToJSON,
     CreateCosmWithdrawalResponse,
     CreateCosmWithdrawalResponseFromJSON,
     CreateCosmWithdrawalResponseToJSON,
+    DeleteCosmHandleRequest,
+    DeleteCosmHandleRequestFromJSON,
+    DeleteCosmHandleRequestToJSON,
     DeleteCosmHandleResponse,
     DeleteCosmHandleResponseFromJSON,
     DeleteCosmHandleResponseToJSON,
+    DeleteCosmPegRequest,
+    DeleteCosmPegRequestFromJSON,
+    DeleteCosmPegRequestToJSON,
     DeleteCosmPegResponse,
     DeleteCosmPegResponseFromJSON,
     DeleteCosmPegResponseToJSON,
@@ -96,52 +117,132 @@ import {
     ListCosmWithdrawalsResponse,
     ListCosmWithdrawalsResponseFromJSON,
     ListCosmWithdrawalsResponseToJSON,
+    SubjectIdRequest,
+    SubjectIdRequestFromJSON,
+    SubjectIdRequestToJSON,
+    UpdateCosmCosmeticUnlockRequest,
+    UpdateCosmCosmeticUnlockRequestFromJSON,
+    UpdateCosmCosmeticUnlockRequestToJSON,
     UpdateCosmCosmeticUnlockResponse,
     UpdateCosmCosmeticUnlockResponseFromJSON,
     UpdateCosmCosmeticUnlockResponseToJSON,
+    UpdateCosmPegRequest,
+    UpdateCosmPegRequestFromJSON,
+    UpdateCosmPegRequestToJSON,
     UpdateCosmPegResponse,
     UpdateCosmPegResponseFromJSON,
     UpdateCosmPegResponseToJSON,
 } from '../models';
 
-export interface CreateCosmAttestationAnchorRequest {
+export interface CreateCosmAttestationAnchorOperationRequest {
     id: string;
+    createCosmAttestationAnchorRequest: CreateCosmAttestationAnchorRequest;
+}
+
+export interface CreateCosmAuctionOperationRequest {
+    createCosmAuctionRequest: CreateCosmAuctionRequest;
 }
 
 export interface CreateCosmAuctionBuyRequest {
     id: string;
+    subjectIdRequest: SubjectIdRequest;
 }
 
 export interface CreateCosmCosmeticBuyRequest {
     id: string;
+    subjectIdRequest: SubjectIdRequest;
 }
 
-export interface CreateCosmCosmeticBuyCbxRequest {
+export interface CreateCosmCosmeticBuyCbxOperationRequest {
     id: string;
+    createCosmCosmeticBuyCbxRequest: CreateCosmCosmeticBuyCbxRequest;
 }
 
 export interface CreateCosmCosmeticClaimRequest {
     id: string;
+    subjectIdRequest: SubjectIdRequest;
 }
 
 export interface CreateCosmFusionRequest {
     recipeId: string;
+    subjectIdRequest: SubjectIdRequest;
 }
 
-export interface DeleteCosmPegRequest {
+export interface CreateCosmHandleOperationRequest {
+    createCosmHandleRequest: CreateCosmHandleRequest;
+}
+
+export interface CreateCosmWithdrawalOperationRequest {
+    createCosmWithdrawalRequest: CreateCosmWithdrawalRequest;
+}
+
+export interface DeleteCosmHandleOperationRequest {
+    deleteCosmHandleRequest?: DeleteCosmHandleRequest;
+}
+
+export interface DeleteCosmPegOperationRequest {
     listingId: string;
+    deleteCosmPegRequest?: DeleteCosmPegRequest;
 }
 
 export interface GetCosmAttestationProofRequest {
     id: string;
+    subjectId: string;
+}
+
+export interface GetCosmBalanceRequest {
+    subjectId: string;
+}
+
+export interface GetCosmEmployeeFeeQuoteRequest {
+    totalCents: number;
 }
 
 export interface GetCosmHandleRequest {
     handle: string;
 }
 
-export interface UpdateCosmCosmeticUnlockRequest {
+export interface GetCosmStakeTenureRequest {
+    subjectId: string;
+}
+
+export interface ListCosmAttestationsRequest {
+    kind?: ListCosmAttestationsKindEnum;
+    limit?: number;
+}
+
+export interface ListCosmAuctionRequest {
+    cosmeticId?: string;
+}
+
+export interface ListCosmCosmeticsRequest {
+    tier?: ListCosmCosmeticsTierEnum;
+    slot?: string;
+}
+
+export interface ListCosmInventoryRequest {
+    subjectId: string;
+}
+
+export interface ListCosmPegsRequest {
+    sellerUserId: string;
+}
+
+export interface ListCosmUnlocksRequest {
+    subjectId: string;
+}
+
+export interface ListCosmWithdrawalsRequest {
+    subjectId: string;
+}
+
+export interface UpdateCosmCosmeticUnlockOperationRequest {
     id: string;
+    updateCosmCosmeticUnlockRequest: UpdateCosmCosmeticUnlockRequest;
+}
+
+export interface UpdateCosmPegOperationRequest {
+    updateCosmPegRequest: UpdateCosmPegRequest;
 }
 
 /**
@@ -153,14 +254,20 @@ export class COSMApi extends runtime.BaseAPI {
      * An ops tool, not a trust boundary. Automated anchoring needs an RPC and a dedicated key; until those are wired, `attestationMemo()` emits exactly the bytes to publish, and this records the resulting signature so the verifiable story is available before the automation is. IT VERIFIES NOTHING beyond the signature’s shape — there is no RPC here to confirm the transaction exists or that its memo matches. A wrong signature recorded here produces a commitment that LOOKS anchored and is not, which is worse than unanchored. Refuses to overwrite an existing anchor.
      * Record a signature for a commitment anchored BY HAND.
      */
-    async createCosmAttestationAnchorRaw(requestParameters: CreateCosmAttestationAnchorRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmAttestationAnchorResponse>> {
+    async createCosmAttestationAnchorRaw(requestParameters: CreateCosmAttestationAnchorOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmAttestationAnchorResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCosmAttestationAnchor.');
+        }
+
+        if (requestParameters.createCosmAttestationAnchorRequest === null || requestParameters.createCosmAttestationAnchorRequest === undefined) {
+            throw new runtime.RequiredError('createCosmAttestationAnchorRequest','Required parameter requestParameters.createCosmAttestationAnchorRequest was null or undefined when calling createCosmAttestationAnchor.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -175,6 +282,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCosmAttestationAnchorRequestToJSON(requestParameters.createCosmAttestationAnchorRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmAttestationAnchorResponseFromJSON(jsonValue));
@@ -184,7 +292,7 @@ export class COSMApi extends runtime.BaseAPI {
      * An ops tool, not a trust boundary. Automated anchoring needs an RPC and a dedicated key; until those are wired, `attestationMemo()` emits exactly the bytes to publish, and this records the resulting signature so the verifiable story is available before the automation is. IT VERIFIES NOTHING beyond the signature’s shape — there is no RPC here to confirm the transaction exists or that its memo matches. A wrong signature recorded here produces a commitment that LOOKS anchored and is not, which is worse than unanchored. Refuses to overwrite an existing anchor.
      * Record a signature for a commitment anchored BY HAND.
      */
-    async createCosmAttestationAnchor(requestParameters: CreateCosmAttestationAnchorRequest, initOverrides?: RequestInit): Promise<CreateCosmAttestationAnchorResponse> {
+    async createCosmAttestationAnchor(requestParameters: CreateCosmAttestationAnchorOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmAttestationAnchorResponse> {
         const response = await this.createCosmAttestationAnchorRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -193,10 +301,16 @@ export class COSMApi extends runtime.BaseAPI {
      * Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. `askBaseUnits` is a STRING of base units and must exceed 1.
      * List an owned cosmetic for COSM.
      */
-    async createCosmAuctionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmAuctionResponse>> {
+    async createCosmAuctionRaw(requestParameters: CreateCosmAuctionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmAuctionResponse>> {
+        if (requestParameters.createCosmAuctionRequest === null || requestParameters.createCosmAuctionRequest === undefined) {
+            throw new runtime.RequiredError('createCosmAuctionRequest','Required parameter requestParameters.createCosmAuctionRequest was null or undefined when calling createCosmAuction.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -211,6 +325,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCosmAuctionRequestToJSON(requestParameters.createCosmAuctionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmAuctionResponseFromJSON(jsonValue));
@@ -220,8 +335,8 @@ export class COSMApi extends runtime.BaseAPI {
      * Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. `askBaseUnits` is a STRING of base units and must exceed 1.
      * List an owned cosmetic for COSM.
      */
-    async createCosmAuction(initOverrides?: RequestInit): Promise<CreateCosmAuctionResponse> {
-        const response = await this.createCosmAuctionRaw(initOverrides);
+    async createCosmAuction(requestParameters: CreateCosmAuctionOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmAuctionResponse> {
+        const response = await this.createCosmAuctionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -234,9 +349,15 @@ export class COSMApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCosmAuctionBuy.');
         }
 
+        if (requestParameters.subjectIdRequest === null || requestParameters.subjectIdRequest === undefined) {
+            throw new runtime.RequiredError('subjectIdRequest','Required parameter requestParameters.subjectIdRequest was null or undefined when calling createCosmAuctionBuy.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -251,6 +372,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: SubjectIdRequestToJSON(requestParameters.subjectIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmFusionResponseFromJSON(jsonValue));
@@ -274,9 +396,15 @@ export class COSMApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCosmCosmeticBuy.');
         }
 
+        if (requestParameters.subjectIdRequest === null || requestParameters.subjectIdRequest === undefined) {
+            throw new runtime.RequiredError('subjectIdRequest','Required parameter requestParameters.subjectIdRequest was null or undefined when calling createCosmCosmeticBuy.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -291,6 +419,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: SubjectIdRequestToJSON(requestParameters.subjectIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmCosmeticBuyResponseFromJSON(jsonValue));
@@ -309,14 +438,20 @@ export class COSMApi extends runtime.BaseAPI {
      * The SKU\'s `priceCents` is paid from the subject\'s EARNED CBX at spot. `requestKey` (8-64 chars, one per purchase attempt) makes a retry the same purchase. If the grant fails after payment — sold out, already held — the CBX spend is reversed. Refuses an earned (COSM) or stake-exclusive SKU.
      * Buy a dollar-priced cosmetic, paying in CBX.
      */
-    async createCosmCosmeticBuyCbxRaw(requestParameters: CreateCosmCosmeticBuyCbxRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmCosmeticBuyCbxResponse>> {
+    async createCosmCosmeticBuyCbxRaw(requestParameters: CreateCosmCosmeticBuyCbxOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmCosmeticBuyCbxResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCosmCosmeticBuyCbx.');
+        }
+
+        if (requestParameters.createCosmCosmeticBuyCbxRequest === null || requestParameters.createCosmCosmeticBuyCbxRequest === undefined) {
+            throw new runtime.RequiredError('createCosmCosmeticBuyCbxRequest','Required parameter requestParameters.createCosmCosmeticBuyCbxRequest was null or undefined when calling createCosmCosmeticBuyCbx.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -331,6 +466,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCosmCosmeticBuyCbxRequestToJSON(requestParameters.createCosmCosmeticBuyCbxRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmCosmeticBuyCbxResponseFromJSON(jsonValue));
@@ -340,7 +476,7 @@ export class COSMApi extends runtime.BaseAPI {
      * The SKU\'s `priceCents` is paid from the subject\'s EARNED CBX at spot. `requestKey` (8-64 chars, one per purchase attempt) makes a retry the same purchase. If the grant fails after payment — sold out, already held — the CBX spend is reversed. Refuses an earned (COSM) or stake-exclusive SKU.
      * Buy a dollar-priced cosmetic, paying in CBX.
      */
-    async createCosmCosmeticBuyCbx(requestParameters: CreateCosmCosmeticBuyCbxRequest, initOverrides?: RequestInit): Promise<CreateCosmCosmeticBuyCbxResponse> {
+    async createCosmCosmeticBuyCbx(requestParameters: CreateCosmCosmeticBuyCbxOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmCosmeticBuyCbxResponse> {
         const response = await this.createCosmCosmeticBuyCbxRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -354,9 +490,15 @@ export class COSMApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCosmCosmeticClaim.');
         }
 
+        if (requestParameters.subjectIdRequest === null || requestParameters.subjectIdRequest === undefined) {
+            throw new runtime.RequiredError('subjectIdRequest','Required parameter requestParameters.subjectIdRequest was null or undefined when calling createCosmCosmeticClaim.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -371,6 +513,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: SubjectIdRequestToJSON(requestParameters.subjectIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmCosmeticClaimResponseFromJSON(jsonValue));
@@ -394,9 +537,15 @@ export class COSMApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('recipeId','Required parameter requestParameters.recipeId was null or undefined when calling createCosmFusion.');
         }
 
+        if (requestParameters.subjectIdRequest === null || requestParameters.subjectIdRequest === undefined) {
+            throw new runtime.RequiredError('subjectIdRequest','Required parameter requestParameters.subjectIdRequest was null or undefined when calling createCosmFusion.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -411,6 +560,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: SubjectIdRequestToJSON(requestParameters.subjectIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmFusionResponseFromJSON(jsonValue));
@@ -429,10 +579,16 @@ export class COSMApi extends runtime.BaseAPI {
      * One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
      * Claim a vanity handle, burning COSM.
      */
-    async createCosmHandleRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmHandleResponse>> {
+    async createCosmHandleRaw(requestParameters: CreateCosmHandleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmHandleResponse>> {
+        if (requestParameters.createCosmHandleRequest === null || requestParameters.createCosmHandleRequest === undefined) {
+            throw new runtime.RequiredError('createCosmHandleRequest','Required parameter requestParameters.createCosmHandleRequest was null or undefined when calling createCosmHandle.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -447,6 +603,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCosmHandleRequestToJSON(requestParameters.createCosmHandleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmHandleResponseFromJSON(jsonValue));
@@ -456,8 +613,8 @@ export class COSMApi extends runtime.BaseAPI {
      * One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
      * Claim a vanity handle, burning COSM.
      */
-    async createCosmHandle(initOverrides?: RequestInit): Promise<CreateCosmHandleResponse> {
-        const response = await this.createCosmHandleRaw(initOverrides);
+    async createCosmHandle(requestParameters: CreateCosmHandleOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmHandleResponse> {
+        const response = await this.createCosmHandleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -465,10 +622,16 @@ export class COSMApi extends runtime.BaseAPI {
      * Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on `externalId`. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
      * Request a withdrawal to your own proven wallet. REFUSES today.
      */
-    async createCosmWithdrawalRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmWithdrawalResponse>> {
+    async createCosmWithdrawalRaw(requestParameters: CreateCosmWithdrawalOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmWithdrawalResponse>> {
+        if (requestParameters.createCosmWithdrawalRequest === null || requestParameters.createCosmWithdrawalRequest === undefined) {
+            throw new runtime.RequiredError('createCosmWithdrawalRequest','Required parameter requestParameters.createCosmWithdrawalRequest was null or undefined when calling createCosmWithdrawal.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -483,6 +646,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCosmWithdrawalRequestToJSON(requestParameters.createCosmWithdrawalRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmWithdrawalResponseFromJSON(jsonValue));
@@ -492,8 +656,8 @@ export class COSMApi extends runtime.BaseAPI {
      * Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on `externalId`. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
      * Request a withdrawal to your own proven wallet. REFUSES today.
      */
-    async createCosmWithdrawal(initOverrides?: RequestInit): Promise<CreateCosmWithdrawalResponse> {
-        const response = await this.createCosmWithdrawalRaw(initOverrides);
+    async createCosmWithdrawal(requestParameters: CreateCosmWithdrawalOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmWithdrawalResponse> {
+        const response = await this.createCosmWithdrawalRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -501,10 +665,12 @@ export class COSMApi extends runtime.BaseAPI {
      * The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns `released: false` when the subject held none.
      * Release a handle. NOTHING IS REFUNDED.
      */
-    async deleteCosmHandleRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteCosmHandleResponse>> {
+    async deleteCosmHandleRaw(requestParameters: DeleteCosmHandleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteCosmHandleResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -519,6 +685,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: DeleteCosmHandleRequestToJSON(requestParameters.deleteCosmHandleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteCosmHandleResponseFromJSON(jsonValue));
@@ -528,8 +695,8 @@ export class COSMApi extends runtime.BaseAPI {
      * The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns `released: false` when the subject held none.
      * Release a handle. NOTHING IS REFUNDED.
      */
-    async deleteCosmHandle(initOverrides?: RequestInit): Promise<DeleteCosmHandleResponse> {
-        const response = await this.deleteCosmHandleRaw(initOverrides);
+    async deleteCosmHandle(requestParameters: DeleteCosmHandleOperationRequest = {}, initOverrides?: RequestInit): Promise<DeleteCosmHandleResponse> {
+        const response = await this.deleteCosmHandleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -537,7 +704,7 @@ export class COSMApi extends runtime.BaseAPI {
      * Disabling means “stop moving it”, not “revert to something the buyer never saw”. The terms are kept, so re-enabling later does not mean re-entering them.
      * Stop repricing. The current ask stays where it is.
      */
-    async deleteCosmPegRaw(requestParameters: DeleteCosmPegRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteCosmPegResponse>> {
+    async deleteCosmPegRaw(requestParameters: DeleteCosmPegOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteCosmPegResponse>> {
         if (requestParameters.listingId === null || requestParameters.listingId === undefined) {
             throw new runtime.RequiredError('listingId','Required parameter requestParameters.listingId was null or undefined when calling deleteCosmPeg.');
         }
@@ -545,6 +712,8 @@ export class COSMApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -559,6 +728,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: DeleteCosmPegRequestToJSON(requestParameters.deleteCosmPegRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteCosmPegResponseFromJSON(jsonValue));
@@ -568,7 +738,7 @@ export class COSMApi extends runtime.BaseAPI {
      * Disabling means “stop moving it”, not “revert to something the buyer never saw”. The terms are kept, so re-enabling later does not mean re-entering them.
      * Stop repricing. The current ask stays where it is.
      */
-    async deleteCosmPeg(requestParameters: DeleteCosmPegRequest, initOverrides?: RequestInit): Promise<DeleteCosmPegResponse> {
+    async deleteCosmPeg(requestParameters: DeleteCosmPegOperationRequest, initOverrides?: RequestInit): Promise<DeleteCosmPegResponse> {
         const response = await this.deleteCosmPegRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -582,7 +752,15 @@ export class COSMApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getCosmAttestationProof.');
         }
 
+        if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
+            throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling getCosmAttestationProof.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.subjectId !== undefined) {
+            queryParameters['subjectId'] = requestParameters.subjectId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -653,8 +831,16 @@ export class COSMApi extends runtime.BaseAPI {
      * Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. `taper` is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
      * A subject\'s COSM balance and the earn rate in force.
      */
-    async getCosmBalanceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCosmBalanceResponse>> {
+    async getCosmBalanceRaw(requestParameters: GetCosmBalanceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCosmBalanceResponse>> {
+        if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
+            throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling getCosmBalance.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.subjectId !== undefined) {
+            queryParameters['subjectId'] = requestParameters.subjectId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -680,8 +866,8 @@ export class COSMApi extends runtime.BaseAPI {
      * Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. `taper` is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
      * A subject\'s COSM balance and the earn rate in force.
      */
-    async getCosmBalance(initOverrides?: RequestInit): Promise<GetCosmBalanceResponse> {
-        const response = await this.getCosmBalanceRaw(initOverrides);
+    async getCosmBalance(requestParameters: GetCosmBalanceRequest, initOverrides?: RequestInit): Promise<GetCosmBalanceResponse> {
+        const response = await this.getCosmBalanceRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -689,8 +875,16 @@ export class COSMApi extends runtime.BaseAPI {
      * A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
      * What one shop-employee conversation will cost, in COSM.
      */
-    async getCosmEmployeeFeeQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCosmEmployeeFeeQuoteResponse>> {
+    async getCosmEmployeeFeeQuoteRaw(requestParameters: GetCosmEmployeeFeeQuoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCosmEmployeeFeeQuoteResponse>> {
+        if (requestParameters.totalCents === null || requestParameters.totalCents === undefined) {
+            throw new runtime.RequiredError('totalCents','Required parameter requestParameters.totalCents was null or undefined when calling getCosmEmployeeFeeQuote.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.totalCents !== undefined) {
+            queryParameters['totalCents'] = requestParameters.totalCents;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -716,8 +910,8 @@ export class COSMApi extends runtime.BaseAPI {
      * A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
      * What one shop-employee conversation will cost, in COSM.
      */
-    async getCosmEmployeeFeeQuote(initOverrides?: RequestInit): Promise<GetCosmEmployeeFeeQuoteResponse> {
-        const response = await this.getCosmEmployeeFeeQuoteRaw(initOverrides);
+    async getCosmEmployeeFeeQuote(requestParameters: GetCosmEmployeeFeeQuoteRequest, initOverrides?: RequestInit): Promise<GetCosmEmployeeFeeQuoteResponse> {
+        const response = await this.getCosmEmployeeFeeQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -765,8 +959,16 @@ export class COSMApi extends runtime.BaseAPI {
      * The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
      * How long a subject has held a stake continuously, in days.
      */
-    async getCosmStakeTenureRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCosmStakeTenureResponse>> {
+    async getCosmStakeTenureRaw(requestParameters: GetCosmStakeTenureRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCosmStakeTenureResponse>> {
+        if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
+            throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling getCosmStakeTenure.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.subjectId !== undefined) {
+            queryParameters['subjectId'] = requestParameters.subjectId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -792,8 +994,8 @@ export class COSMApi extends runtime.BaseAPI {
      * The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
      * How long a subject has held a stake continuously, in days.
      */
-    async getCosmStakeTenure(initOverrides?: RequestInit): Promise<GetCosmStakeTenureResponse> {
-        const response = await this.getCosmStakeTenureRaw(initOverrides);
+    async getCosmStakeTenure(requestParameters: GetCosmStakeTenureRequest, initOverrides?: RequestInit): Promise<GetCosmStakeTenureResponse> {
+        const response = await this.getCosmStakeTenureRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -837,8 +1039,16 @@ export class COSMApi extends runtime.BaseAPI {
      * Two claims become verifiable here. `cosm_emission` commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. `cbx_liability` commits every balance, which is the half of proof-of-reserve usually hand-waved. READ `anchoredAt` BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. `totalBaseUnits` lets you check the sum without rebuilding the tree.
      * Published Merkle commitments. What you can check instead of trusting us.
      */
-    async listCosmAttestationsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmAttestationsResponse>> {
+    async listCosmAttestationsRaw(requestParameters: ListCosmAttestationsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmAttestationsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.kind !== undefined) {
+            queryParameters['kind'] = requestParameters.kind;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -864,8 +1074,8 @@ export class COSMApi extends runtime.BaseAPI {
      * Two claims become verifiable here. `cosm_emission` commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. `cbx_liability` commits every balance, which is the half of proof-of-reserve usually hand-waved. READ `anchoredAt` BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. `totalBaseUnits` lets you check the sum without rebuilding the tree.
      * Published Merkle commitments. What you can check instead of trusting us.
      */
-    async listCosmAttestations(initOverrides?: RequestInit): Promise<ListCosmAttestationsResponse> {
-        const response = await this.listCosmAttestationsRaw(initOverrides);
+    async listCosmAttestations(requestParameters: ListCosmAttestationsRequest = {}, initOverrides?: RequestInit): Promise<ListCosmAttestationsResponse> {
+        const response = await this.listCosmAttestationsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -873,8 +1083,12 @@ export class COSMApi extends runtime.BaseAPI {
      * A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. `feeBaseUnits` was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
      * Open auction listings, priced in COSM.
      */
-    async listCosmAuctionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmAuctionResponse>> {
+    async listCosmAuctionRaw(requestParameters: ListCosmAuctionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmAuctionResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.cosmeticId !== undefined) {
+            queryParameters['cosmeticId'] = requestParameters.cosmeticId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -900,8 +1114,8 @@ export class COSMApi extends runtime.BaseAPI {
      * A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. `feeBaseUnits` was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
      * Open auction listings, priced in COSM.
      */
-    async listCosmAuction(initOverrides?: RequestInit): Promise<ListCosmAuctionResponse> {
-        const response = await this.listCosmAuctionRaw(initOverrides);
+    async listCosmAuction(requestParameters: ListCosmAuctionRequest = {}, initOverrides?: RequestInit): Promise<ListCosmAuctionResponse> {
+        const response = await this.listCosmAuctionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -909,8 +1123,16 @@ export class COSMApi extends runtime.BaseAPI {
      * Tiers are DISJOINT and no SKU carries two prices: `premium` is cash only, `earned` is COSM only, `stake_exclusive` cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. `priceCents` is set only on premium, `priceBaseUnits` only on earned.
      * The cosmetics catalogue.
      */
-    async listCosmCosmeticsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmCosmeticsResponse>> {
+    async listCosmCosmeticsRaw(requestParameters: ListCosmCosmeticsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmCosmeticsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.tier !== undefined) {
+            queryParameters['tier'] = requestParameters.tier;
+        }
+
+        if (requestParameters.slot !== undefined) {
+            queryParameters['slot'] = requestParameters.slot;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -936,8 +1158,8 @@ export class COSMApi extends runtime.BaseAPI {
      * Tiers are DISJOINT and no SKU carries two prices: `premium` is cash only, `earned` is COSM only, `stake_exclusive` cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. `priceCents` is set only on premium, `priceBaseUnits` only on earned.
      * The cosmetics catalogue.
      */
-    async listCosmCosmetics(initOverrides?: RequestInit): Promise<ListCosmCosmeticsResponse> {
-        const response = await this.listCosmCosmeticsRaw(initOverrides);
+    async listCosmCosmetics(requestParameters: ListCosmCosmeticsRequest = {}, initOverrides?: RequestInit): Promise<ListCosmCosmeticsResponse> {
+        const response = await this.listCosmCosmeticsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -981,8 +1203,16 @@ export class COSMApi extends runtime.BaseAPI {
      * `bound` is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. `editionNumber` identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
      * Cosmetics a subject holds.
      */
-    async listCosmInventoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmInventoryResponse>> {
+    async listCosmInventoryRaw(requestParameters: ListCosmInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmInventoryResponse>> {
+        if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
+            throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling listCosmInventory.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.subjectId !== undefined) {
+            queryParameters['subjectId'] = requestParameters.subjectId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1008,8 +1238,8 @@ export class COSMApi extends runtime.BaseAPI {
      * `bound` is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. `editionNumber` identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
      * Cosmetics a subject holds.
      */
-    async listCosmInventory(initOverrides?: RequestInit): Promise<ListCosmInventoryResponse> {
-        const response = await this.listCosmInventoryRaw(initOverrides);
+    async listCosmInventory(requestParameters: ListCosmInventoryRequest, initOverrides?: RequestInit): Promise<ListCosmInventoryResponse> {
+        const response = await this.listCosmInventoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1017,8 +1247,16 @@ export class COSMApi extends runtime.BaseAPI {
      * A peg holds a CBX ask at a dollar target. `lastReason` says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
      * CBX-pegged listings and why each last moved.
      */
-    async listCosmPegsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmPegsResponse>> {
+    async listCosmPegsRaw(requestParameters: ListCosmPegsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmPegsResponse>> {
+        if (requestParameters.sellerUserId === null || requestParameters.sellerUserId === undefined) {
+            throw new runtime.RequiredError('sellerUserId','Required parameter requestParameters.sellerUserId was null or undefined when calling listCosmPegs.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.sellerUserId !== undefined) {
+            queryParameters['sellerUserId'] = requestParameters.sellerUserId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1044,8 +1282,8 @@ export class COSMApi extends runtime.BaseAPI {
      * A peg holds a CBX ask at a dollar target. `lastReason` says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
      * CBX-pegged listings and why each last moved.
      */
-    async listCosmPegs(initOverrides?: RequestInit): Promise<ListCosmPegsResponse> {
-        const response = await this.listCosmPegsRaw(initOverrides);
+    async listCosmPegs(requestParameters: ListCosmPegsRequest, initOverrides?: RequestInit): Promise<ListCosmPegsResponse> {
+        const response = await this.listCosmPegsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1125,8 +1363,16 @@ export class COSMApi extends runtime.BaseAPI {
      * Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
      * Which spatial cosmetic values this subject may apply.
      */
-    async listCosmUnlocksRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmUnlocksResponse>> {
+    async listCosmUnlocksRaw(requestParameters: ListCosmUnlocksRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmUnlocksResponse>> {
+        if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
+            throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling listCosmUnlocks.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.subjectId !== undefined) {
+            queryParameters['subjectId'] = requestParameters.subjectId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1152,8 +1398,8 @@ export class COSMApi extends runtime.BaseAPI {
      * Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
      * Which spatial cosmetic values this subject may apply.
      */
-    async listCosmUnlocks(initOverrides?: RequestInit): Promise<ListCosmUnlocksResponse> {
-        const response = await this.listCosmUnlocksRaw(initOverrides);
+    async listCosmUnlocks(requestParameters: ListCosmUnlocksRequest, initOverrides?: RequestInit): Promise<ListCosmUnlocksResponse> {
+        const response = await this.listCosmUnlocksRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1161,8 +1407,16 @@ export class COSMApi extends runtime.BaseAPI {
      * COSM does not leave the platform yet. `open` is false and `outstanding` lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
      * Withdrawal history, and whether withdrawals are open at all.
      */
-    async listCosmWithdrawalsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmWithdrawalsResponse>> {
+    async listCosmWithdrawalsRaw(requestParameters: ListCosmWithdrawalsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCosmWithdrawalsResponse>> {
+        if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
+            throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling listCosmWithdrawals.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.subjectId !== undefined) {
+            queryParameters['subjectId'] = requestParameters.subjectId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1188,8 +1442,8 @@ export class COSMApi extends runtime.BaseAPI {
      * COSM does not leave the platform yet. `open` is false and `outstanding` lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
      * Withdrawal history, and whether withdrawals are open at all.
      */
-    async listCosmWithdrawals(initOverrides?: RequestInit): Promise<ListCosmWithdrawalsResponse> {
-        const response = await this.listCosmWithdrawalsRaw(initOverrides);
+    async listCosmWithdrawals(requestParameters: ListCosmWithdrawalsRequest, initOverrides?: RequestInit): Promise<ListCosmWithdrawalsResponse> {
+        const response = await this.listCosmWithdrawalsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1197,14 +1451,20 @@ export class COSMApi extends runtime.BaseAPI {
      * A cosmetic can gate a spatial control — a theme, a prop, a room feature — by naming a key/value pair the scene reads. Both or neither: a key with no value would claim EVERY value of that key and silently gate the whole control, so passing one without the other clears both. Pass two nulls to remove the gate entirely, which makes the control free for everyone. Treasury scope — this changes what every holder can reach, not one subject.
      * Set (or clear) what a cosmetic unlocks spatially.
      */
-    async updateCosmCosmeticUnlockRaw(requestParameters: UpdateCosmCosmeticUnlockRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateCosmCosmeticUnlockResponse>> {
+    async updateCosmCosmeticUnlockRaw(requestParameters: UpdateCosmCosmeticUnlockOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateCosmCosmeticUnlockResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateCosmCosmeticUnlock.');
+        }
+
+        if (requestParameters.updateCosmCosmeticUnlockRequest === null || requestParameters.updateCosmCosmeticUnlockRequest === undefined) {
+            throw new runtime.RequiredError('updateCosmCosmeticUnlockRequest','Required parameter requestParameters.updateCosmCosmeticUnlockRequest was null or undefined when calling updateCosmCosmeticUnlock.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1219,6 +1479,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateCosmCosmeticUnlockRequestToJSON(requestParameters.updateCosmCosmeticUnlockRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateCosmCosmeticUnlockResponseFromJSON(jsonValue));
@@ -1228,7 +1489,7 @@ export class COSMApi extends runtime.BaseAPI {
      * A cosmetic can gate a spatial control — a theme, a prop, a room feature — by naming a key/value pair the scene reads. Both or neither: a key with no value would claim EVERY value of that key and silently gate the whole control, so passing one without the other clears both. Pass two nulls to remove the gate entirely, which makes the control free for everyone. Treasury scope — this changes what every holder can reach, not one subject.
      * Set (or clear) what a cosmetic unlocks spatially.
      */
-    async updateCosmCosmeticUnlock(requestParameters: UpdateCosmCosmeticUnlockRequest, initOverrides?: RequestInit): Promise<UpdateCosmCosmeticUnlockResponse> {
+    async updateCosmCosmeticUnlock(requestParameters: UpdateCosmCosmeticUnlockOperationRequest, initOverrides?: RequestInit): Promise<UpdateCosmCosmeticUnlockResponse> {
         const response = await this.updateCosmCosmeticUnlockRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1237,10 +1498,16 @@ export class COSMApi extends runtime.BaseAPI {
      * Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: `maxChangeBps` stops one bad reading posting an absurd ask (it converges over cycles instead), `floorBaseUnits` and `ceilingBaseUnits` are YOUR limits so a sustained real move never posts a price you did not consider, and `minChangeBps` stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
      * Set or update a CBX price peg. OFF unless you turn it on.
      */
-    async updateCosmPegRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateCosmPegResponse>> {
+    async updateCosmPegRaw(requestParameters: UpdateCosmPegOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateCosmPegResponse>> {
+        if (requestParameters.updateCosmPegRequest === null || requestParameters.updateCosmPegRequest === undefined) {
+            throw new runtime.RequiredError('updateCosmPegRequest','Required parameter requestParameters.updateCosmPegRequest was null or undefined when calling updateCosmPeg.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1255,6 +1522,7 @@ export class COSMApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateCosmPegRequestToJSON(requestParameters.updateCosmPegRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateCosmPegResponseFromJSON(jsonValue));
@@ -1264,9 +1532,27 @@ export class COSMApi extends runtime.BaseAPI {
      * Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: `maxChangeBps` stops one bad reading posting an absurd ask (it converges over cycles instead), `floorBaseUnits` and `ceilingBaseUnits` are YOUR limits so a sustained real move never posts a price you did not consider, and `minChangeBps` stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
      * Set or update a CBX price peg. OFF unless you turn it on.
      */
-    async updateCosmPeg(initOverrides?: RequestInit): Promise<UpdateCosmPegResponse> {
-        const response = await this.updateCosmPegRaw(initOverrides);
+    async updateCosmPeg(requestParameters: UpdateCosmPegOperationRequest, initOverrides?: RequestInit): Promise<UpdateCosmPegResponse> {
+        const response = await this.updateCosmPegRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListCosmAttestationsKindEnum {
+    CosmEmission = 'cosm_emission',
+    CbxLiability = 'cbx_liability'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListCosmCosmeticsTierEnum {
+    Premium = 'premium',
+    Earned = 'earned',
+    StakeExclusive = 'stake_exclusive'
 }

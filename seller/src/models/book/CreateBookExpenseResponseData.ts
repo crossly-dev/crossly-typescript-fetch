@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    CreateBookExpenseResponseDataPossibleDuplicateOf,
+    CreateBookExpenseResponseDataPossibleDuplicateOfFromJSON,
+    CreateBookExpenseResponseDataPossibleDuplicateOfFromJSONTyped,
+    CreateBookExpenseResponseDataPossibleDuplicateOfToJSON,
+} from './CreateBookExpenseResponseDataPossibleDuplicateOf';
+
 /**
  * 
  * @export
@@ -92,6 +99,30 @@ export interface CreateBookExpenseResponseData {
      */
     source: string;
     /**
+     * The charge it came from (a billing charge, an interest movement, a grading order); null for manual rows.
+     * @type {string}
+     * @memberof CreateBookExpenseResponseData
+     */
+    sourceRef?: string | null;
+    /**
+     * Where it came from in words ("Crossly ads", "Entered by you").
+     * @type {string}
+     * @memberof CreateBookExpenseResponseData
+     */
+    sourceLabel: string;
+    /**
+     * Posted by Crossly for its own charge (audit4 D4): read-only, shown with a Crossly badge.
+     * @type {boolean}
+     * @memberof CreateBookExpenseResponseData
+     */
+    crossly: boolean;
+    /**
+     * 
+     * @type {CreateBookExpenseResponseDataPossibleDuplicateOf}
+     * @memberof CreateBookExpenseResponseData
+     */
+    possibleDuplicateOf?: CreateBookExpenseResponseDataPossibleDuplicateOf | null;
+    /**
      * 
      * @type {string}
      * @memberof CreateBookExpenseResponseData
@@ -148,6 +179,10 @@ export function CreateBookExpenseResponseDataFromJSONTyped(json: any, ignoreDisc
         'recurring': !exists(json, 'recurring') ? undefined : json['recurring'],
         'recurringUntil': !exists(json, 'recurringUntil') ? undefined : json['recurringUntil'],
         'source': json['source'],
+        'sourceRef': !exists(json, 'sourceRef') ? undefined : json['sourceRef'],
+        'sourceLabel': json['sourceLabel'],
+        'crossly': json['crossly'],
+        'possibleDuplicateOf': !exists(json, 'possibleDuplicateOf') ? undefined : CreateBookExpenseResponseDataPossibleDuplicateOfFromJSON(json['possibleDuplicateOf']),
         'createdAt': !exists(json, 'createdAt') ? undefined : json['createdAt'],
         'updatedAt': !exists(json, 'updatedAt') ? undefined : json['updatedAt'],
         'occurrences': !exists(json, 'occurrences') ? undefined : json['occurrences'],
@@ -176,6 +211,10 @@ export function CreateBookExpenseResponseDataToJSON(value?: CreateBookExpenseRes
         'recurring': value.recurring,
         'recurringUntil': value.recurringUntil,
         'source': value.source,
+        'sourceRef': value.sourceRef,
+        'sourceLabel': value.sourceLabel,
+        'crossly': value.crossly,
+        'possibleDuplicateOf': CreateBookExpenseResponseDataPossibleDuplicateOfToJSON(value.possibleDuplicateOf),
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,
         'occurrences': value.occurrences,

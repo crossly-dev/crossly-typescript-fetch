@@ -18,12 +18,15 @@ import {
     CreateMeTemplateImportResponse,
     CreateMeTemplateImportResponseFromJSON,
     CreateMeTemplateImportResponseToJSON,
+    CreateMeTemplateRenderRequest,
+    CreateMeTemplateRenderRequestFromJSON,
+    CreateMeTemplateRenderRequestToJSON,
     CreateMeTemplateRenderResponse,
     CreateMeTemplateRenderResponseFromJSON,
     CreateMeTemplateRenderResponseToJSON,
-    CreateMeTemplateShareResponse,
-    CreateMeTemplateShareResponseFromJSON,
-    CreateMeTemplateShareResponseToJSON,
+    CreateMeTemplateRequest,
+    CreateMeTemplateRequestFromJSON,
+    CreateMeTemplateRequestToJSON,
     GetMeTemplateSuggestResponse,
     GetMeTemplateSuggestResponseFromJSON,
     GetMeTemplateSuggestResponseToJSON,
@@ -42,10 +45,18 @@ import {
     SuccessResponse,
     SuccessResponseFromJSON,
     SuccessResponseToJSON,
+    TokenObject,
+    TokenObjectFromJSON,
+    TokenObjectToJSON,
 } from '../models';
 
-export interface CreateMeTemplateRenderRequest {
+export interface CreateMeTemplateOperationRequest {
+    createMeTemplateRequest: CreateMeTemplateRequest;
+}
+
+export interface CreateMeTemplateRenderOperationRequest {
     id: string;
+    createMeTemplateRenderRequest?: CreateMeTemplateRenderRequest;
 }
 
 export interface CreateMeTemplateShareRequest {
@@ -68,8 +79,14 @@ export interface GetPublicTemplateRequest {
     token: string;
 }
 
+export interface ListMeTemplatesRequest {
+    scope?: ListMeTemplatesScopeEnum;
+    category?: string;
+}
+
 export interface UpdateMeTemplateRequest {
     id: string;
+    createMeTemplateRequest: CreateMeTemplateRequest;
 }
 
 /**
@@ -80,10 +97,16 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * Create a template.
      */
-    async createMeTemplateRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListMeTemplatesItem>> {
+    async createMeTemplateRaw(requestParameters: CreateMeTemplateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListMeTemplatesItem>> {
+        if (requestParameters.createMeTemplateRequest === null || requestParameters.createMeTemplateRequest === undefined) {
+            throw new runtime.RequiredError('createMeTemplateRequest','Required parameter requestParameters.createMeTemplateRequest was null or undefined when calling createMeTemplate.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -98,6 +121,7 @@ export class TemplatesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMeTemplateRequestToJSON(requestParameters.createMeTemplateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListMeTemplatesItemFromJSON(jsonValue));
@@ -106,8 +130,8 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * Create a template.
      */
-    async createMeTemplate(initOverrides?: RequestInit): Promise<ListMeTemplatesItem> {
-        const response = await this.createMeTemplateRaw(initOverrides);
+    async createMeTemplate(requestParameters: CreateMeTemplateOperationRequest, initOverrides?: RequestInit): Promise<ListMeTemplatesItem> {
+        const response = await this.createMeTemplateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -150,7 +174,7 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * Render a template\'s title + description against a context.
      */
-    async createMeTemplateRenderRaw(requestParameters: CreateMeTemplateRenderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMeTemplateRenderResponse>> {
+    async createMeTemplateRenderRaw(requestParameters: CreateMeTemplateRenderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMeTemplateRenderResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createMeTemplateRender.');
         }
@@ -158,6 +182,8 @@ export class TemplatesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -172,6 +198,7 @@ export class TemplatesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMeTemplateRenderRequestToJSON(requestParameters.createMeTemplateRenderRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateMeTemplateRenderResponseFromJSON(jsonValue));
@@ -180,7 +207,7 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * Render a template\'s title + description against a context.
      */
-    async createMeTemplateRender(requestParameters: CreateMeTemplateRenderRequest, initOverrides?: RequestInit): Promise<CreateMeTemplateRenderResponse> {
+    async createMeTemplateRender(requestParameters: CreateMeTemplateRenderOperationRequest, initOverrides?: RequestInit): Promise<CreateMeTemplateRenderResponse> {
         const response = await this.createMeTemplateRenderRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -188,7 +215,7 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * Mint or return an existing share token for a template.
      */
-    async createMeTemplateShareRaw(requestParameters: CreateMeTemplateShareRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMeTemplateShareResponse>> {
+    async createMeTemplateShareRaw(requestParameters: CreateMeTemplateShareRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TokenObject>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createMeTemplateShare.');
         }
@@ -212,13 +239,13 @@ export class TemplatesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateMeTemplateShareResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TokenObjectFromJSON(jsonValue));
     }
 
     /**
      * Mint or return an existing share token for a template.
      */
-    async createMeTemplateShare(requestParameters: CreateMeTemplateShareRequest, initOverrides?: RequestInit): Promise<CreateMeTemplateShareResponse> {
+    async createMeTemplateShare(requestParameters: CreateMeTemplateShareRequest, initOverrides?: RequestInit): Promise<TokenObject> {
         const response = await this.createMeTemplateShareRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -408,8 +435,16 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * List the seller\'s templates.
      */
-    async listMeTemplatesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListMeTemplatesResponse>> {
+    async listMeTemplatesRaw(requestParameters: ListMeTemplatesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListMeTemplatesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.scope !== undefined) {
+            queryParameters['scope'] = requestParameters.scope;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -434,8 +469,8 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * List the seller\'s templates.
      */
-    async listMeTemplates(initOverrides?: RequestInit): Promise<ListMeTemplatesResponse> {
-        const response = await this.listMeTemplatesRaw(initOverrides);
+    async listMeTemplates(requestParameters: ListMeTemplatesRequest = {}, initOverrides?: RequestInit): Promise<ListMeTemplatesResponse> {
+        const response = await this.listMeTemplatesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -447,9 +482,15 @@ export class TemplatesApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateMeTemplate.');
         }
 
+        if (requestParameters.createMeTemplateRequest === null || requestParameters.createMeTemplateRequest === undefined) {
+            throw new runtime.RequiredError('createMeTemplateRequest','Required parameter requestParameters.createMeTemplateRequest was null or undefined when calling updateMeTemplate.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -464,6 +505,7 @@ export class TemplatesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMeTemplateRequestToJSON(requestParameters.createMeTemplateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListMeTemplatesItemFromJSON(jsonValue));
@@ -477,4 +519,13 @@ export class TemplatesApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListMeTemplatesScopeEnum {
+    Description = 'description',
+    Listing = 'listing'
 }

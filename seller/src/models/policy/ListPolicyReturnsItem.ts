@@ -66,6 +66,12 @@ export interface ListPolicyReturnsItem {
      * @type {string}
      * @memberof ListPolicyReturnsItem
      */
+    note?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListPolicyReturnsItem
+     */
     buyerUserId: string;
     /**
      * 
@@ -103,12 +109,6 @@ export interface ListPolicyReturnsItem {
      * @memberof ListPolicyReturnsItem
      */
     purchaseId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListPolicyReturnsItem
-     */
-    note?: string | null;
     /**
      * 
      * @type {number}
@@ -158,6 +158,7 @@ export function ListPolicyReturnsItemFromJSONTyped(json: any, ignoreDiscriminato
         'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
         'shippedAt': !exists(json, 'shippedAt') ? undefined : (json['shippedAt'] === null ? null : new Date(json['shippedAt'])),
         'refundedAt': !exists(json, 'refundedAt') ? undefined : (json['refundedAt'] === null ? null : new Date(json['refundedAt'])),
+        'note': !exists(json, 'note') ? undefined : json['note'],
         'buyerUserId': json['buyerUserId'],
         'reason': json['reason'],
         'receivedAt': !exists(json, 'receivedAt') ? undefined : (json['receivedAt'] === null ? null : new Date(json['receivedAt'])),
@@ -165,7 +166,6 @@ export function ListPolicyReturnsItemFromJSONTyped(json: any, ignoreDiscriminato
         'sellerUserId': json['sellerUserId'],
         'refundStripeId': !exists(json, 'refundStripeId') ? undefined : json['refundStripeId'],
         'purchaseId': json['purchaseId'],
-        'note': !exists(json, 'note') ? undefined : json['note'],
         'feeCents': json['feeCents'],
         'trackingCode': !exists(json, 'trackingCode') ? undefined : json['trackingCode'],
         'fit': !exists(json, 'fit') ? undefined : json['fit'],
@@ -190,6 +190,7 @@ export function ListPolicyReturnsItemToJSON(value?: ListPolicyReturnsItem | null
         'carrier': value.carrier,
         'shippedAt': value.shippedAt === undefined ? undefined : (value.shippedAt === null ? null : value.shippedAt.toISOString()),
         'refundedAt': value.refundedAt === undefined ? undefined : (value.refundedAt === null ? null : value.refundedAt.toISOString()),
+        'note': value.note,
         'buyerUserId': value.buyerUserId,
         'reason': value.reason,
         'receivedAt': value.receivedAt === undefined ? undefined : (value.receivedAt === null ? null : value.receivedAt.toISOString()),
@@ -197,7 +198,6 @@ export function ListPolicyReturnsItemToJSON(value?: ListPolicyReturnsItem | null
         'sellerUserId': value.sellerUserId,
         'refundStripeId': value.refundStripeId,
         'purchaseId': value.purchaseId,
-        'note': value.note,
         'feeCents': value.feeCents,
         'trackingCode': value.trackingCode,
         'fit': value.fit,

@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    CreateGroupBuyRequestTiers,
+    CreateGroupBuyRequestTiersFromJSON,
+    CreateGroupBuyRequestTiersFromJSONTyped,
+    CreateGroupBuyRequestTiersToJSON,
+} from './CreateGroupBuyRequestTiers';
+import {
     GetGroupBuyResponseDataNext,
     GetGroupBuyResponseDataNextFromJSON,
     GetGroupBuyResponseDataNextFromJSONTyped,
@@ -32,17 +38,11 @@ import {
     GetGroupBuyResponseDataProgressToJSON,
 } from './GetGroupBuyResponseDataProgress';
 import {
-    GetGroupBuyResponseDataTiers,
-    GetGroupBuyResponseDataTiersFromJSON,
-    GetGroupBuyResponseDataTiersFromJSONTyped,
-    GetGroupBuyResponseDataTiersToJSON,
-} from './GetGroupBuyResponseDataTiers';
-import {
-    ListGroupBuysItemTiers,
-    ListGroupBuysItemTiersFromJSON,
-    ListGroupBuysItemTiersFromJSONTyped,
-    ListGroupBuysItemTiersToJSON,
-} from './ListGroupBuysItemTiers';
+    MinQtyPriceCents,
+    MinQtyPriceCentsFromJSON,
+    MinQtyPriceCentsFromJSONTyped,
+    MinQtyPriceCentsToJSON,
+} from '../common/MinQtyPriceCents';
 
 /**
  * 
@@ -52,16 +52,16 @@ import {
 export interface ListGroupBuysItem {
     /**
      * 
-     * @type {Array<GetGroupBuyResponseDataTiers>}
+     * @type {Array<MinQtyPriceCents>}
      * @memberof ListGroupBuysItem
      */
-    qtyTiers: Array<GetGroupBuyResponseDataTiers>;
+    qtyTiers: Array<MinQtyPriceCents>;
     /**
      * 
-     * @type {Array<ListGroupBuysItemTiers>}
+     * @type {Array<CreateGroupBuyRequestTiers>}
      * @memberof ListGroupBuysItem
      */
-    tiers: Array<ListGroupBuysItemTiers>;
+    tiers: Array<CreateGroupBuyRequestTiers>;
     /**
      * 
      * @type {number}
@@ -290,8 +290,8 @@ export function ListGroupBuysItemFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'qtyTiers': ((json['qtyTiers'] as Array<any>).map(GetGroupBuyResponseDataTiersFromJSON)),
-        'tiers': ((json['tiers'] as Array<any>).map(ListGroupBuysItemTiersFromJSON)),
+        'qtyTiers': ((json['qtyTiers'] as Array<any>).map(MinQtyPriceCentsFromJSON)),
+        'tiers': ((json['tiers'] as Array<any>).map(CreateGroupBuyRequestTiersFromJSON)),
         'minBuyers': json['minBuyers'],
         'maxBuyers': json['maxBuyers'],
         'joined': json['joined'],
@@ -340,8 +340,8 @@ export function ListGroupBuysItemToJSON(value?: ListGroupBuysItem | null): any {
     }
     return {
         
-        'qtyTiers': ((value.qtyTiers as Array<any>).map(GetGroupBuyResponseDataTiersToJSON)),
-        'tiers': ((value.tiers as Array<any>).map(ListGroupBuysItemTiersToJSON)),
+        'qtyTiers': ((value.qtyTiers as Array<any>).map(MinQtyPriceCentsToJSON)),
+        'tiers': ((value.tiers as Array<any>).map(CreateGroupBuyRequestTiersToJSON)),
         'minBuyers': value.minBuyers,
         'maxBuyers': value.maxBuyers,
         'joined': value.joined,

@@ -66,12 +66,6 @@ export interface ListListingDiscrepanciesItem {
      * @type {string}
      * @memberof ListListingDiscrepanciesItem
      */
-    lastError?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListListingDiscrepanciesItem
-     */
     source: string;
     /**
      * 
@@ -79,6 +73,12 @@ export interface ListListingDiscrepanciesItem {
      * @memberof ListListingDiscrepanciesItem
      */
     listingId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingDiscrepanciesItem
+     */
+    lastError?: string | null;
     /**
      * 
      * @type {string}
@@ -140,9 +140,9 @@ export function ListListingDiscrepanciesItemFromJSONTyped(json: any, ignoreDiscr
         'platform': json['platform'],
         'accountSlot': json['accountSlot'],
         'marketplaceId': json['marketplaceId'],
-        'lastError': !exists(json, 'lastError') ? undefined : json['lastError'],
         'source': json['source'],
         'listingId': json['listingId'],
+        'lastError': !exists(json, 'lastError') ? undefined : json['lastError'],
         'field': json['field'],
         'ourValue': !exists(json, 'ourValue') ? undefined : json['ourValue'],
         'remoteValue': !exists(json, 'remoteValue') ? undefined : json['remoteValue'],
@@ -169,9 +169,9 @@ export function ListListingDiscrepanciesItemToJSON(value?: ListListingDiscrepanc
         'platform': value.platform,
         'accountSlot': value.accountSlot,
         'marketplaceId': value.marketplaceId,
-        'lastError': value.lastError,
         'source': value.source,
         'listingId': value.listingId,
+        'lastError': value.lastError,
         'field': value.field,
         'ourValue': value.ourValue,
         'remoteValue': value.remoteValue,

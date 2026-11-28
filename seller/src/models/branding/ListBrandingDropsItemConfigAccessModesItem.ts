@@ -19,11 +19,11 @@
  */
 export enum ListBrandingDropsItemConfigAccessModesItem {
     Public = 'public',
-    LoyaltyTier = 'loyalty_tier',
     Followers = 'followers',
+    LoyaltyTier = 'loyalty_tier',
+    WholesaleBuyers = 'wholesale_buyers',
     TokenHolders = 'token_holders',
     Invite = 'invite',
-    WholesaleBuyers = 'wholesale_buyers',
     VerifiedBuyers = 'verified_buyers'
 }
 

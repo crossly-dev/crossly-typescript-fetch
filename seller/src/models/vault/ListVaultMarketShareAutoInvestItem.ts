@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListVaultMarketShareAutoInvestItemTargets,
-    ListVaultMarketShareAutoInvestItemTargetsFromJSON,
-    ListVaultMarketShareAutoInvestItemTargetsFromJSONTyped,
-    ListVaultMarketShareAutoInvestItemTargetsToJSON,
-} from './ListVaultMarketShareAutoInvestItemTargets';
+    SeriesIdWeightBps,
+    SeriesIdWeightBpsFromJSON,
+    SeriesIdWeightBpsFromJSONTyped,
+    SeriesIdWeightBpsToJSON,
+} from '../common/SeriesIdWeightBps';
 
 /**
  * 
@@ -58,10 +58,10 @@ export interface ListVaultMarketShareAutoInvestItem {
     basketId?: string | null;
     /**
      * 
-     * @type {Array<ListVaultMarketShareAutoInvestItemTargets>}
+     * @type {Array<SeriesIdWeightBps>}
      * @memberof ListVaultMarketShareAutoInvestItem
      */
-    targets: Array<ListVaultMarketShareAutoInvestItemTargets>;
+    targets: Array<SeriesIdWeightBps>;
     /**
      * 
      * @type {number}
@@ -163,7 +163,7 @@ export function ListVaultMarketShareAutoInvestItemFromJSONTyped(json: any, ignor
         'practice': json['practice'],
         'targetKind': json['targetKind'],
         'basketId': !exists(json, 'basketId') ? undefined : json['basketId'],
-        'targets': ((json['targets'] as Array<any>).map(ListVaultMarketShareAutoInvestItemTargetsFromJSON)),
+        'targets': ((json['targets'] as Array<any>).map(SeriesIdWeightBpsFromJSON)),
         'amountCents': json['amountCents'],
         'every': json['every'],
         'carryCents': json['carryCents'],
@@ -191,7 +191,7 @@ export function ListVaultMarketShareAutoInvestItemToJSON(value?: ListVaultMarket
         'practice': value.practice,
         'targetKind': value.targetKind,
         'basketId': value.basketId,
-        'targets': ((value.targets as Array<any>).map(ListVaultMarketShareAutoInvestItemTargetsToJSON)),
+        'targets': ((value.targets as Array<any>).map(SeriesIdWeightBpsToJSON)),
         'amountCents': value.amountCents,
         'every': value.every,
         'carryCents': value.carryCents,

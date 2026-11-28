@@ -15,12 +15,24 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateBulkBatchIdentifyRequest,
+    CreateBulkBatchIdentifyRequestFromJSON,
+    CreateBulkBatchIdentifyRequestToJSON,
     CreateBulkBatchIdentifyResponse,
     CreateBulkBatchIdentifyResponseFromJSON,
     CreateBulkBatchIdentifyResponseToJSON,
+    CreateBulkBatchItemBulkRequest,
+    CreateBulkBatchItemBulkRequestFromJSON,
+    CreateBulkBatchItemBulkRequestToJSON,
+    CreateBulkBatchItemRequest,
+    CreateBulkBatchItemRequestFromJSON,
+    CreateBulkBatchItemRequestToJSON,
     CreateBulkBatchItemResponse,
     CreateBulkBatchItemResponseFromJSON,
     CreateBulkBatchItemResponseToJSON,
+    CreateBulkBatchPublishRequest,
+    CreateBulkBatchPublishRequestFromJSON,
+    CreateBulkBatchPublishRequestToJSON,
     CreateBulkBatchPublishResponse,
     CreateBulkBatchPublishResponseFromJSON,
     CreateBulkBatchPublishResponseToJSON,
@@ -36,25 +48,35 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateBulkBatchItemRequest,
+    UpdateBulkBatchItemRequestFromJSON,
+    UpdateBulkBatchItemRequestToJSON,
+    UpdateBulkBatchRequest,
+    UpdateBulkBatchRequestFromJSON,
+    UpdateBulkBatchRequestToJSON,
     UpdatedResponse,
     UpdatedResponseFromJSON,
     UpdatedResponseToJSON,
 } from '../models';
 
-export interface CreateBulkBatchIdentifyRequest {
+export interface CreateBulkBatchIdentifyOperationRequest {
     id: string;
+    createBulkBatchIdentifyRequest?: CreateBulkBatchIdentifyRequest;
 }
 
-export interface CreateBulkBatchItemRequest {
+export interface CreateBulkBatchItemOperationRequest {
     id: string;
+    createBulkBatchItemRequest: CreateBulkBatchItemRequest;
 }
 
-export interface CreateBulkBatchItemBulkRequest {
+export interface CreateBulkBatchItemBulkOperationRequest {
     id: string;
+    createBulkBatchItemBulkRequest: CreateBulkBatchItemBulkRequest;
 }
 
-export interface CreateBulkBatchPublishRequest {
+export interface CreateBulkBatchPublishOperationRequest {
     id: string;
+    createBulkBatchPublishRequest?: CreateBulkBatchPublishRequest;
 }
 
 export interface DeleteBulkBatchRequest {
@@ -73,12 +95,14 @@ export interface ListBulkBatchesRequest {
     limit?: number;
 }
 
-export interface UpdateBulkBatchRequest {
+export interface UpdateBulkBatchOperationRequest {
     id: string;
+    updateBulkBatchRequest: UpdateBulkBatchRequest;
 }
 
-export interface UpdateBulkBatchItemRequest {
+export interface UpdateBulkBatchItemOperationRequest {
     id: string;
+    updateBulkBatchItemRequest: UpdateBulkBatchItemRequest;
 }
 
 /**
@@ -123,7 +147,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Identify items: match to Crossly Market, Magic List, or auto (by preset). Runs in the background.
      */
-    async createBulkBatchIdentifyRaw(requestParameters: CreateBulkBatchIdentifyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBulkBatchIdentifyResponse>> {
+    async createBulkBatchIdentifyRaw(requestParameters: CreateBulkBatchIdentifyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBulkBatchIdentifyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBulkBatchIdentify.');
         }
@@ -131,6 +155,8 @@ export class BulkBatchesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -145,6 +171,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBulkBatchIdentifyRequestToJSON(requestParameters.createBulkBatchIdentifyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBulkBatchIdentifyResponseFromJSON(jsonValue));
@@ -153,7 +180,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Identify items: match to Crossly Market, Magic List, or auto (by preset). Runs in the background.
      */
-    async createBulkBatchIdentify(requestParameters: CreateBulkBatchIdentifyRequest, initOverrides?: RequestInit): Promise<CreateBulkBatchIdentifyResponse> {
+    async createBulkBatchIdentify(requestParameters: CreateBulkBatchIdentifyOperationRequest, initOverrides?: RequestInit): Promise<CreateBulkBatchIdentifyResponse> {
         const response = await this.createBulkBatchIdentifyRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -161,14 +188,20 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Append one item (every photo of it, primary first).
      */
-    async createBulkBatchItemRaw(requestParameters: CreateBulkBatchItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBulkBatchItemResponse>> {
+    async createBulkBatchItemRaw(requestParameters: CreateBulkBatchItemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBulkBatchItemResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBulkBatchItem.');
+        }
+
+        if (requestParameters.createBulkBatchItemRequest === null || requestParameters.createBulkBatchItemRequest === undefined) {
+            throw new runtime.RequiredError('createBulkBatchItemRequest','Required parameter requestParameters.createBulkBatchItemRequest was null or undefined when calling createBulkBatchItem.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -183,6 +216,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBulkBatchItemRequestToJSON(requestParameters.createBulkBatchItemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBulkBatchItemResponseFromJSON(jsonValue));
@@ -191,7 +225,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Append one item (every photo of it, primary first).
      */
-    async createBulkBatchItem(requestParameters: CreateBulkBatchItemRequest, initOverrides?: RequestInit): Promise<CreateBulkBatchItemResponse> {
+    async createBulkBatchItem(requestParameters: CreateBulkBatchItemOperationRequest, initOverrides?: RequestInit): Promise<CreateBulkBatchItemResponse> {
         const response = await this.createBulkBatchItemRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -199,14 +233,20 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Set price/quantity/condition/status on many items.
      */
-    async createBulkBatchItemBulkRaw(requestParameters: CreateBulkBatchItemBulkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatedResponse>> {
+    async createBulkBatchItemBulkRaw(requestParameters: CreateBulkBatchItemBulkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatedResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBulkBatchItemBulk.');
+        }
+
+        if (requestParameters.createBulkBatchItemBulkRequest === null || requestParameters.createBulkBatchItemBulkRequest === undefined) {
+            throw new runtime.RequiredError('createBulkBatchItemBulkRequest','Required parameter requestParameters.createBulkBatchItemBulkRequest was null or undefined when calling createBulkBatchItemBulk.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -221,6 +261,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBulkBatchItemBulkRequestToJSON(requestParameters.createBulkBatchItemBulkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdatedResponseFromJSON(jsonValue));
@@ -229,7 +270,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Set price/quantity/condition/status on many items.
      */
-    async createBulkBatchItemBulk(requestParameters: CreateBulkBatchItemBulkRequest, initOverrides?: RequestInit): Promise<UpdatedResponse> {
+    async createBulkBatchItemBulk(requestParameters: CreateBulkBatchItemBulkOperationRequest, initOverrides?: RequestInit): Promise<UpdatedResponse> {
         const response = await this.createBulkBatchItemBulkRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -237,7 +278,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Publish reviewed items: drafts only (default) or live on destinations; adds quantity to an existing matching listing.
      */
-    async createBulkBatchPublishRaw(requestParameters: CreateBulkBatchPublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBulkBatchPublishResponse>> {
+    async createBulkBatchPublishRaw(requestParameters: CreateBulkBatchPublishOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBulkBatchPublishResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBulkBatchPublish.');
         }
@@ -245,6 +286,8 @@ export class BulkBatchesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -259,6 +302,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBulkBatchPublishRequestToJSON(requestParameters.createBulkBatchPublishRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBulkBatchPublishResponseFromJSON(jsonValue));
@@ -267,7 +311,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Publish reviewed items: drafts only (default) or live on destinations; adds quantity to an existing matching listing.
      */
-    async createBulkBatchPublish(requestParameters: CreateBulkBatchPublishRequest, initOverrides?: RequestInit): Promise<CreateBulkBatchPublishResponse> {
+    async createBulkBatchPublish(requestParameters: CreateBulkBatchPublishOperationRequest, initOverrides?: RequestInit): Promise<CreateBulkBatchPublishResponse> {
         const response = await this.createBulkBatchPublishRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -427,14 +471,20 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Change batch settings, or set stage \"identify\" when capture is done.
      */
-    async updateBulkBatchRaw(requestParameters: UpdateBulkBatchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBulkBatchesItem>> {
+    async updateBulkBatchRaw(requestParameters: UpdateBulkBatchOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBulkBatchesItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBulkBatch.');
+        }
+
+        if (requestParameters.updateBulkBatchRequest === null || requestParameters.updateBulkBatchRequest === undefined) {
+            throw new runtime.RequiredError('updateBulkBatchRequest','Required parameter requestParameters.updateBulkBatchRequest was null or undefined when calling updateBulkBatch.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -449,6 +499,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBulkBatchRequestToJSON(requestParameters.updateBulkBatchRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListBulkBatchesItemFromJSON(jsonValue));
@@ -457,7 +508,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Change batch settings, or set stage \"identify\" when capture is done.
      */
-    async updateBulkBatch(requestParameters: UpdateBulkBatchRequest, initOverrides?: RequestInit): Promise<ListBulkBatchesItem> {
+    async updateBulkBatch(requestParameters: UpdateBulkBatchOperationRequest, initOverrides?: RequestInit): Promise<ListBulkBatchesItem> {
         const response = await this.updateBulkBatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -465,14 +516,20 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Correct one item (match, title, price, photos…).
      */
-    async updateBulkBatchItemRaw(requestParameters: UpdateBulkBatchItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBulkBatchItemResponse>> {
+    async updateBulkBatchItemRaw(requestParameters: UpdateBulkBatchItemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBulkBatchItemResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBulkBatchItem.');
+        }
+
+        if (requestParameters.updateBulkBatchItemRequest === null || requestParameters.updateBulkBatchItemRequest === undefined) {
+            throw new runtime.RequiredError('updateBulkBatchItemRequest','Required parameter requestParameters.updateBulkBatchItemRequest was null or undefined when calling updateBulkBatchItem.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -487,6 +544,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBulkBatchItemRequestToJSON(requestParameters.updateBulkBatchItemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBulkBatchItemResponseFromJSON(jsonValue));
@@ -495,7 +553,7 @@ export class BulkBatchesApi extends runtime.BaseAPI {
     /**
      * Correct one item (match, title, price, photos…).
      */
-    async updateBulkBatchItem(requestParameters: UpdateBulkBatchItemRequest, initOverrides?: RequestInit): Promise<CreateBulkBatchItemResponse> {
+    async updateBulkBatchItem(requestParameters: UpdateBulkBatchItemOperationRequest, initOverrides?: RequestInit): Promise<CreateBulkBatchItemResponse> {
         const response = await this.updateBulkBatchItemRaw(requestParameters, initOverrides);
         return await response.value();
     }

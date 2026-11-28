@@ -15,12 +15,21 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateFundingDrawQuoteRequest,
+    CreateFundingDrawQuoteRequestFromJSON,
+    CreateFundingDrawQuoteRequestToJSON,
     CreateWorldExperienceRewardCloseResponse,
     CreateWorldExperienceRewardCloseResponseFromJSON,
     CreateWorldExperienceRewardCloseResponseToJSON,
+    CreateWorldExperienceRewardDefinitionRequest,
+    CreateWorldExperienceRewardDefinitionRequestFromJSON,
+    CreateWorldExperienceRewardDefinitionRequestToJSON,
     CreateWorldExperienceRewardDefinitionResponse,
     CreateWorldExperienceRewardDefinitionResponseFromJSON,
     CreateWorldExperienceRewardDefinitionResponseToJSON,
+    CreateWorldExperienceRewardDepositRequest,
+    CreateWorldExperienceRewardDepositRequestFromJSON,
+    CreateWorldExperienceRewardDepositRequestToJSON,
     CreateWorldExperienceRewardDepositResponse,
     CreateWorldExperienceRewardDepositResponseFromJSON,
     CreateWorldExperienceRewardDepositResponseToJSON,
@@ -45,6 +54,12 @@ import {
     ListWorldExperienceRewardTopupsResponse,
     ListWorldExperienceRewardTopupsResponseFromJSON,
     ListWorldExperienceRewardTopupsResponseToJSON,
+    UpdateWorldExperienceRewardDefinitionRequest,
+    UpdateWorldExperienceRewardDefinitionRequestFromJSON,
+    UpdateWorldExperienceRewardDefinitionRequestToJSON,
+    UpdateWorldExperienceRewardPoolRequest,
+    UpdateWorldExperienceRewardPoolRequestFromJSON,
+    UpdateWorldExperienceRewardPoolRequestToJSON,
     UpdateWorldExperienceRewardPoolResponse,
     UpdateWorldExperienceRewardPoolResponseFromJSON,
     UpdateWorldExperienceRewardPoolResponseToJSON,
@@ -54,16 +69,19 @@ export interface CreateWorldExperienceRewardCloseRequest {
     experienceId: string;
 }
 
-export interface CreateWorldExperienceRewardDefinitionRequest {
+export interface CreateWorldExperienceRewardDefinitionOperationRequest {
     experienceId: string;
+    createWorldExperienceRewardDefinitionRequest?: CreateWorldExperienceRewardDefinitionRequest;
 }
 
-export interface CreateWorldExperienceRewardDepositRequest {
+export interface CreateWorldExperienceRewardDepositOperationRequest {
     experienceId: string;
+    createWorldExperienceRewardDepositRequest?: CreateWorldExperienceRewardDepositRequest;
 }
 
 export interface CreateWorldExperienceRewardTopupRequest {
     experienceId: string;
+    createFundingDrawQuoteRequest?: CreateFundingDrawQuoteRequest;
 }
 
 export interface CreateWorldRewardTopupCancelRequest {
@@ -80,23 +98,30 @@ export interface GetWorldRewardTopupRequest {
 
 export interface ListWorldExperienceRewardGrantsRequest {
     experienceId: string;
+    cursor?: string;
+    limit?: number;
+    sub?: string;
 }
 
 export interface ListWorldExperienceRewardLedgerRequest {
     experienceId: string;
+    cursor?: string;
+    limit?: number;
 }
 
 export interface ListWorldExperienceRewardTopupsRequest {
     experienceId: string;
 }
 
-export interface UpdateWorldExperienceRewardDefinitionRequest {
+export interface UpdateWorldExperienceRewardDefinitionOperationRequest {
     experienceId: string;
     rewardId: string;
+    updateWorldExperienceRewardDefinitionRequest?: UpdateWorldExperienceRewardDefinitionRequest;
 }
 
-export interface UpdateWorldExperienceRewardPoolRequest {
+export interface UpdateWorldExperienceRewardPoolOperationRequest {
     experienceId: string;
+    updateWorldExperienceRewardPoolRequest?: UpdateWorldExperienceRewardPoolRequest;
 }
 
 /**
@@ -145,7 +170,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
     /**
      * Add a reward scripts can grant: pin, emote, decor, item (your own COSM design), cosm or cbx (with an amount).
      */
-    async createWorldExperienceRewardDefinitionRaw(requestParameters: CreateWorldExperienceRewardDefinitionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceRewardDefinitionResponse>> {
+    async createWorldExperienceRewardDefinitionRaw(requestParameters: CreateWorldExperienceRewardDefinitionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceRewardDefinitionResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceRewardDefinition.');
         }
@@ -153,6 +178,8 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -167,6 +194,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceRewardDefinitionRequestToJSON(requestParameters.createWorldExperienceRewardDefinitionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceRewardDefinitionResponseFromJSON(jsonValue));
@@ -175,7 +203,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
     /**
      * Add a reward scripts can grant: pin, emote, decor, item (your own COSM design), cosm or cbx (with an amount).
      */
-    async createWorldExperienceRewardDefinition(requestParameters: CreateWorldExperienceRewardDefinitionRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceRewardDefinitionResponse> {
+    async createWorldExperienceRewardDefinition(requestParameters: CreateWorldExperienceRewardDefinitionOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceRewardDefinitionResponse> {
         const response = await this.createWorldExperienceRewardDefinitionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -183,7 +211,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
     /**
      * Move available Crossly Carnival earnings into the pool ($1-$10,000). Owner only; idempotent on idempotencyKey.
      */
-    async createWorldExperienceRewardDepositRaw(requestParameters: CreateWorldExperienceRewardDepositRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceRewardDepositResponse>> {
+    async createWorldExperienceRewardDepositRaw(requestParameters: CreateWorldExperienceRewardDepositOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceRewardDepositResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceRewardDeposit.');
         }
@@ -191,6 +219,8 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -205,6 +235,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceRewardDepositRequestToJSON(requestParameters.createWorldExperienceRewardDepositRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceRewardDepositResponseFromJSON(jsonValue));
@@ -213,7 +244,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
     /**
      * Move available Crossly Carnival earnings into the pool ($1-$10,000). Owner only; idempotent on idempotencyKey.
      */
-    async createWorldExperienceRewardDeposit(requestParameters: CreateWorldExperienceRewardDepositRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceRewardDepositResponse> {
+    async createWorldExperienceRewardDeposit(requestParameters: CreateWorldExperienceRewardDepositOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceRewardDepositResponse> {
         const response = await this.createWorldExperienceRewardDepositRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -230,6 +261,8 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -243,6 +276,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingDrawQuoteRequestToJSON(requestParameters.createFundingDrawQuoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceRewardTopupResponseFromJSON(jsonValue));
@@ -380,6 +414,18 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.sub !== undefined) {
+            queryParameters['sub'] = requestParameters.sub;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -417,6 +463,14 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -487,7 +541,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
     /**
      * Edit a reward: name, description, image, amount, per-player daily cap, on/off. Key and kind never change.
      */
-    async updateWorldExperienceRewardDefinitionRaw(requestParameters: UpdateWorldExperienceRewardDefinitionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceRewardDefinitionResponse>> {
+    async updateWorldExperienceRewardDefinitionRaw(requestParameters: UpdateWorldExperienceRewardDefinitionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceRewardDefinitionResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceRewardDefinition.');
         }
@@ -499,6 +553,8 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -513,6 +569,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceRewardDefinitionRequestToJSON(requestParameters.updateWorldExperienceRewardDefinitionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceRewardDefinitionResponseFromJSON(jsonValue));
@@ -521,7 +578,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
     /**
      * Edit a reward: name, description, image, amount, per-player daily cap, on/off. Key and kind never change.
      */
-    async updateWorldExperienceRewardDefinition(requestParameters: UpdateWorldExperienceRewardDefinitionRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceRewardDefinitionResponse> {
+    async updateWorldExperienceRewardDefinition(requestParameters: UpdateWorldExperienceRewardDefinitionOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceRewardDefinitionResponse> {
         const response = await this.updateWorldExperienceRewardDefinitionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -529,7 +586,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
     /**
      * Set the pool\'s daily caps: total value per day, value and grant count per player per day.
      */
-    async updateWorldExperienceRewardPoolRaw(requestParameters: UpdateWorldExperienceRewardPoolRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperienceRewardPoolResponse>> {
+    async updateWorldExperienceRewardPoolRaw(requestParameters: UpdateWorldExperienceRewardPoolOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperienceRewardPoolResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceRewardPool.');
         }
@@ -537,6 +594,8 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -551,6 +610,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceRewardPoolRequestToJSON(requestParameters.updateWorldExperienceRewardPoolRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperienceRewardPoolResponseFromJSON(jsonValue));
@@ -559,7 +619,7 @@ export class WorldsRewardsApi extends runtime.BaseAPI {
     /**
      * Set the pool\'s daily caps: total value per day, value and grant count per player per day.
      */
-    async updateWorldExperienceRewardPool(requestParameters: UpdateWorldExperienceRewardPoolRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperienceRewardPoolResponse> {
+    async updateWorldExperienceRewardPool(requestParameters: UpdateWorldExperienceRewardPoolOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperienceRewardPoolResponse> {
         const response = await this.updateWorldExperienceRewardPoolRaw(requestParameters, initOverrides);
         return await response.value();
     }

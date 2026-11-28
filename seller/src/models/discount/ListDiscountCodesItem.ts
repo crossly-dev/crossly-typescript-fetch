@@ -159,9 +159,9 @@ export enum ListDiscountCodesItemKindEnum {
 */
 export enum ListDiscountCodesItemStatusEnum {
     Active = 'active',
+    Expired = 'expired',
     Paused = 'paused',
     Archived = 'archived',
-    Expired = 'expired',
     Scheduled = 'scheduled',
     Exhausted = 'exhausted'
 }/**

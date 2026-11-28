@@ -45,22 +45,16 @@ export interface CreateBuyerCompanyApprovalResponseData {
     status: string;
     /**
      * 
+     * @type {string}
+     * @memberof CreateBuyerCompanyApprovalResponseData
+     */
+    note?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof CreateBuyerCompanyApprovalResponseData
      */
     amountCents: number;
-    /**
-     * 
-     * @type {Date}
-     * @memberof CreateBuyerCompanyApprovalResponseData
-     */
-    decidedAt?: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof CreateBuyerCompanyApprovalResponseData
-     */
-    usedAt?: Date | null;
     /**
      * 
      * @type {string}
@@ -75,16 +69,22 @@ export interface CreateBuyerCompanyApprovalResponseData {
     poReference?: string | null;
     /**
      * 
-     * @type {string}
+     * @type {Date}
      * @memberof CreateBuyerCompanyApprovalResponseData
      */
-    note?: string | null;
+    decidedAt?: Date | null;
     /**
      * 
      * @type {string}
      * @memberof CreateBuyerCompanyApprovalResponseData
      */
     decisionNote?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CreateBuyerCompanyApprovalResponseData
+     */
+    usedAt?: Date | null;
     /**
      * 
      * @type {string}
@@ -119,13 +119,13 @@ export function CreateBuyerCompanyApprovalResponseDataFromJSONTyped(json: any, i
         'createdAt': (new Date(json['createdAt'])),
         'expiresAt': !exists(json, 'expiresAt') ? undefined : (json['expiresAt'] === null ? null : new Date(json['expiresAt'])),
         'status': json['status'],
+        'note': !exists(json, 'note') ? undefined : json['note'],
         'amountCents': json['amountCents'],
-        'decidedAt': !exists(json, 'decidedAt') ? undefined : (json['decidedAt'] === null ? null : new Date(json['decidedAt'])),
-        'usedAt': !exists(json, 'usedAt') ? undefined : (json['usedAt'] === null ? null : new Date(json['usedAt'])),
         'sellerUserId': json['sellerUserId'],
         'poReference': !exists(json, 'poReference') ? undefined : json['poReference'],
-        'note': !exists(json, 'note') ? undefined : json['note'],
+        'decidedAt': !exists(json, 'decidedAt') ? undefined : (json['decidedAt'] === null ? null : new Date(json['decidedAt'])),
         'decisionNote': !exists(json, 'decisionNote') ? undefined : json['decisionNote'],
+        'usedAt': !exists(json, 'usedAt') ? undefined : (json['usedAt'] === null ? null : new Date(json['usedAt'])),
         'requesterUserId': json['requesterUserId'],
         'companyId': json['companyId'],
         'decidedByUserId': !exists(json, 'decidedByUserId') ? undefined : json['decidedByUserId'],
@@ -145,13 +145,13 @@ export function CreateBuyerCompanyApprovalResponseDataToJSON(value?: CreateBuyer
         'createdAt': (value.createdAt.toISOString()),
         'expiresAt': value.expiresAt === undefined ? undefined : (value.expiresAt === null ? null : value.expiresAt.toISOString()),
         'status': value.status,
+        'note': value.note,
         'amountCents': value.amountCents,
-        'decidedAt': value.decidedAt === undefined ? undefined : (value.decidedAt === null ? null : value.decidedAt.toISOString()),
-        'usedAt': value.usedAt === undefined ? undefined : (value.usedAt === null ? null : value.usedAt.toISOString()),
         'sellerUserId': value.sellerUserId,
         'poReference': value.poReference,
-        'note': value.note,
+        'decidedAt': value.decidedAt === undefined ? undefined : (value.decidedAt === null ? null : value.decidedAt.toISOString()),
         'decisionNote': value.decisionNote,
+        'usedAt': value.usedAt === undefined ? undefined : (value.usedAt === null ? null : value.usedAt.toISOString()),
         'requesterUserId': value.requesterUserId,
         'companyId': value.companyId,
         'decidedByUserId': value.decidedByUserId,

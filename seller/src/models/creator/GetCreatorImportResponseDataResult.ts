@@ -34,6 +34,12 @@ import {
 export interface GetCreatorImportResponseDataResult {
     /**
      * 
+     * @type {boolean}
+     * @memberof GetCreatorImportResponseDataResult
+     */
+    ok: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof GetCreatorImportResponseDataResult
      */
@@ -44,12 +50,6 @@ export interface GetCreatorImportResponseDataResult {
      * @memberof GetCreatorImportResponseDataResult
      */
     issues: Array<GetCreatorImportResponseDataResultIssues>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GetCreatorImportResponseDataResult
-     */
-    ok: boolean;
     /**
      * 
      * @type {Array<GetCreatorImportResponseDataResultPreview>}
@@ -67,7 +67,8 @@ export enum GetCreatorImportResponseDataResultFormatEnum {
     Wearable = 'wearable',
     Model = 'model',
     Decor = 'decor',
-    Interactive = 'interactive'
+    Interactive = 'interactive',
+    CardGame = 'card_game'
 }
 
 export function GetCreatorImportResponseDataResultFromJSON(json: any): GetCreatorImportResponseDataResult {
@@ -80,9 +81,9 @@ export function GetCreatorImportResponseDataResultFromJSONTyped(json: any, ignor
     }
     return {
         
+        'ok': json['ok'],
         'format': !exists(json, 'format') ? undefined : json['format'],
         'issues': ((json['issues'] as Array<any>).map(GetCreatorImportResponseDataResultIssuesFromJSON)),
-        'ok': json['ok'],
         'preview': ((json['preview'] as Array<any>).map(GetCreatorImportResponseDataResultPreviewFromJSON)),
     };
 }
@@ -96,9 +97,9 @@ export function GetCreatorImportResponseDataResultToJSON(value?: GetCreatorImpor
     }
     return {
         
+        'ok': value.ok,
         'format': value.format,
         'issues': ((value.issues as Array<any>).map(GetCreatorImportResponseDataResultIssuesToJSON)),
-        'ok': value.ok,
         'preview': ((value.preview as Array<any>).map(GetCreatorImportResponseDataResultPreviewToJSON)),
     };
 }

@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    CreateTeamInviteResponseData,
+    CreateTeamInviteResponseDataFromJSON,
+    CreateTeamInviteResponseDataFromJSONTyped,
+    CreateTeamInviteResponseDataToJSON,
+} from './CreateTeamInviteResponseData';
+
 /**
  * 
  * @export
@@ -21,49 +28,10 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateTeamInviteResponse {
     /**
      * 
-     * @type {string}
+     * @type {CreateTeamInviteResponseData}
      * @memberof CreateTeamInviteResponse
      */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateTeamInviteResponse
-     */
-    inviteeEmail: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateTeamInviteResponse
-     */
-    role: CreateTeamInviteResponseRoleEnum;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof CreateTeamInviteResponse
-     */
-    scopes: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateTeamInviteResponse
-     */
-    expiresAt: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateTeamInviteResponse
-     */
-    acceptUrl?: string | null;
-}
-
-/**
-* @export
-* @enum {string}
-*/
-export enum CreateTeamInviteResponseRoleEnum {
-    Va = 'va',
-    Admin = 'admin'
+    data: CreateTeamInviteResponseData;
 }
 
 export function CreateTeamInviteResponseFromJSON(json: any): CreateTeamInviteResponse {
@@ -76,12 +44,7 @@ export function CreateTeamInviteResponseFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'id': json['id'],
-        'inviteeEmail': json['inviteeEmail'],
-        'role': json['role'],
-        'scopes': json['scopes'],
-        'expiresAt': json['expiresAt'],
-        'acceptUrl': !exists(json, 'acceptUrl') ? undefined : json['acceptUrl'],
+        'data': CreateTeamInviteResponseDataFromJSON(json['data']),
     };
 }
 
@@ -94,12 +57,7 @@ export function CreateTeamInviteResponseToJSON(value?: CreateTeamInviteResponse 
     }
     return {
         
-        'id': value.id,
-        'inviteeEmail': value.inviteeEmail,
-        'role': value.role,
-        'scopes': value.scopes,
-        'expiresAt': value.expiresAt,
-        'acceptUrl': value.acceptUrl,
+        'data': CreateTeamInviteResponseDataToJSON(value.data),
     };
 }
 

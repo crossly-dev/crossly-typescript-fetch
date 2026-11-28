@@ -21,10 +21,10 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateActionLogSearchTranslateResponse {
     /**
      * The search for the list filter `q`; null when none parsed.
-     * @type {any}
+     * @type {string}
      * @memberof CreateActionLogSearchTranslateResponse
      */
-    q: any | null;
+    q: string | null;
     /**
      * What the search does, in one or two sentences.
      * @type {string}
@@ -39,10 +39,10 @@ export interface CreateActionLogSearchTranslateResponse {
     assumptions: Array<string>;
     /**
      * Why there is no `q`, when there is none.
-     * @type {any}
+     * @type {string}
      * @memberof CreateActionLogSearchTranslateResponse
      */
-    error: any | null;
+    error: string | null;
 }
 
 export function CreateActionLogSearchTranslateResponseFromJSON(json: any): CreateActionLogSearchTranslateResponse {

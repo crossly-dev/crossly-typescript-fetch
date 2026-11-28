@@ -48,6 +48,12 @@ export interface GetOrderShipmentResponseData {
      * @type {string}
      * @memberof GetOrderShipmentResponseData
      */
+    weightOz?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderShipmentResponseData
+     */
     carrier?: string | null;
     /**
      * 
@@ -69,10 +75,22 @@ export interface GetOrderShipmentResponseData {
     orderId: string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof GetOrderShipmentResponseData
      */
-    labelCostCents?: number | null;
+    lengthIn?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderShipmentResponseData
+     */
+    widthIn?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderShipmentResponseData
+     */
+    heightIn?: string | null;
     /**
      * 
      * @type {string}
@@ -85,6 +103,12 @@ export interface GetOrderShipmentResponseData {
      * @memberof GetOrderShipmentResponseData
      */
     labelQrUrl?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetOrderShipmentResponseData
+     */
+    labelCostCents?: number | null;
     /**
      * 
      * @type {string}
@@ -103,6 +127,24 @@ export interface GetOrderShipmentResponseData {
      * @memberof GetOrderShipmentResponseData
      */
     voidedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderShipmentResponseData
+     */
+    presetId?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof GetOrderShipmentResponseData
+     */
+    labelPrintedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderShipmentResponseData
+     */
+    labelPrintJobId?: string | null;
 }
 
 export function GetOrderShipmentResponseDataFromJSON(json: any): GetOrderShipmentResponseData {
@@ -119,16 +161,23 @@ export function GetOrderShipmentResponseDataFromJSONTyped(json: any, ignoreDiscr
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
         'source': json['source'],
+        'weightOz': !exists(json, 'weightOz') ? undefined : json['weightOz'],
         'carrier': !exists(json, 'carrier') ? undefined : json['carrier'],
         'service': !exists(json, 'service') ? undefined : json['service'],
         'trackingNumber': !exists(json, 'trackingNumber') ? undefined : json['trackingNumber'],
         'orderId': json['orderId'],
-        'labelCostCents': !exists(json, 'labelCostCents') ? undefined : json['labelCostCents'],
+        'lengthIn': !exists(json, 'lengthIn') ? undefined : json['lengthIn'],
+        'widthIn': !exists(json, 'widthIn') ? undefined : json['widthIn'],
+        'heightIn': !exists(json, 'heightIn') ? undefined : json['heightIn'],
         'labelUrl': !exists(json, 'labelUrl') ? undefined : json['labelUrl'],
         'labelQrUrl': !exists(json, 'labelQrUrl') ? undefined : json['labelQrUrl'],
+        'labelCostCents': !exists(json, 'labelCostCents') ? undefined : json['labelCostCents'],
         'shippoShipmentId': !exists(json, 'shippoShipmentId') ? undefined : json['shippoShipmentId'],
         'trackingRegisteredAt': !exists(json, 'trackingRegisteredAt') ? undefined : (json['trackingRegisteredAt'] === null ? null : new Date(json['trackingRegisteredAt'])),
         'voidedAt': !exists(json, 'voidedAt') ? undefined : (json['voidedAt'] === null ? null : new Date(json['voidedAt'])),
+        'presetId': !exists(json, 'presetId') ? undefined : json['presetId'],
+        'labelPrintedAt': !exists(json, 'labelPrintedAt') ? undefined : (json['labelPrintedAt'] === null ? null : new Date(json['labelPrintedAt'])),
+        'labelPrintJobId': !exists(json, 'labelPrintJobId') ? undefined : json['labelPrintJobId'],
     };
 }
 
@@ -145,16 +194,23 @@ export function GetOrderShipmentResponseDataToJSON(value?: GetOrderShipmentRespo
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
         'source': value.source,
+        'weightOz': value.weightOz,
         'carrier': value.carrier,
         'service': value.service,
         'trackingNumber': value.trackingNumber,
         'orderId': value.orderId,
-        'labelCostCents': value.labelCostCents,
+        'lengthIn': value.lengthIn,
+        'widthIn': value.widthIn,
+        'heightIn': value.heightIn,
         'labelUrl': value.labelUrl,
         'labelQrUrl': value.labelQrUrl,
+        'labelCostCents': value.labelCostCents,
         'shippoShipmentId': value.shippoShipmentId,
         'trackingRegisteredAt': value.trackingRegisteredAt === undefined ? undefined : (value.trackingRegisteredAt === null ? null : value.trackingRegisteredAt.toISOString()),
         'voidedAt': value.voidedAt === undefined ? undefined : (value.voidedAt === null ? null : value.voidedAt.toISOString()),
+        'presetId': value.presetId,
+        'labelPrintedAt': value.labelPrintedAt === undefined ? undefined : (value.labelPrintedAt === null ? null : value.labelPrintedAt.toISOString()),
+        'labelPrintJobId': value.labelPrintJobId,
     };
 }
 

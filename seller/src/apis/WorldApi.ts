@@ -15,33 +15,57 @@
 
 import * as runtime from '../runtime';
 import {
+    BodyRequest,
+    BodyRequestFromJSON,
+    BodyRequestToJSON,
     CreateBreakResponse,
     CreateBreakResponseFromJSON,
     CreateBreakResponseToJSON,
     CreateCosmDesignerChainAutoUnlockResponse,
     CreateCosmDesignerChainAutoUnlockResponseFromJSON,
     CreateCosmDesignerChainAutoUnlockResponseToJSON,
+    CreateGamePackBreakPickRequest,
+    CreateGamePackBreakPickRequestFromJSON,
+    CreateGamePackBreakPickRequestToJSON,
     CreateGamePackBreakPickResponse,
     CreateGamePackBreakPickResponseFromJSON,
     CreateGamePackBreakPickResponseToJSON,
     CreateGamePackBreakResponse,
     CreateGamePackBreakResponseFromJSON,
     CreateGamePackBreakResponseToJSON,
+    CreateOrderPackScanRequest,
+    CreateOrderPackScanRequestFromJSON,
+    CreateOrderPackScanRequestToJSON,
+    CreateShowroomPlacementRequest,
+    CreateShowroomPlacementRequestFromJSON,
+    CreateShowroomPlacementRequestToJSON,
     CreateShowroomPlacementResponse,
     CreateShowroomPlacementResponseFromJSON,
     CreateShowroomPlacementResponseToJSON,
+    CreateShowroomRequest,
+    CreateShowroomRequestFromJSON,
+    CreateShowroomRequestToJSON,
     CreateShowroomResponse,
     CreateShowroomResponseFromJSON,
     CreateShowroomResponseToJSON,
     CreateSpatialInviteAcceptResponse,
     CreateSpatialInviteAcceptResponseFromJSON,
     CreateSpatialInviteAcceptResponseToJSON,
+    CreateSpatialSceneGrantRequest,
+    CreateSpatialSceneGrantRequestFromJSON,
+    CreateSpatialSceneGrantRequestToJSON,
     CreateSpatialSceneGrantResponse,
     CreateSpatialSceneGrantResponseFromJSON,
     CreateSpatialSceneGrantResponseToJSON,
+    CreateSpatialSceneInviteRequest,
+    CreateSpatialSceneInviteRequestFromJSON,
+    CreateSpatialSceneInviteRequestToJSON,
     CreateSpatialSceneInviteResponse,
     CreateSpatialSceneInviteResponseFromJSON,
     CreateSpatialSceneInviteResponseToJSON,
+    CreateSpatialSceneNodeRequest,
+    CreateSpatialSceneNodeRequestFromJSON,
+    CreateSpatialSceneNodeRequestToJSON,
     CreateSpatialSceneNodeResponse,
     CreateSpatialSceneNodeResponseFromJSON,
     CreateSpatialSceneNodeResponseToJSON,
@@ -54,15 +78,33 @@ import {
     CreateSpatialSceneRequest,
     CreateSpatialSceneRequestFromJSON,
     CreateSpatialSceneRequestToJSON,
+    CreateSpatialSceneShopPlaceRequest,
+    CreateSpatialSceneShopPlaceRequestFromJSON,
+    CreateSpatialSceneShopPlaceRequestToJSON,
     CreateSpatialSceneShopPlaceResponse,
     CreateSpatialSceneShopPlaceResponseFromJSON,
     CreateSpatialSceneShopPlaceResponseToJSON,
     CreateSpatialSceneVisibilityRequest,
     CreateSpatialSceneVisibilityRequestFromJSON,
     CreateSpatialSceneVisibilityRequestToJSON,
+    CreateSpatialSceneWarehouseStockRequest,
+    CreateSpatialSceneWarehouseStockRequestFromJSON,
+    CreateSpatialSceneWarehouseStockRequestToJSON,
     CreateSpatialStreetApplyResponse,
     CreateSpatialStreetApplyResponseFromJSON,
     CreateSpatialStreetApplyResponseToJSON,
+    CreateSpatialStreetInviteRequest,
+    CreateSpatialStreetInviteRequestFromJSON,
+    CreateSpatialStreetInviteRequestToJSON,
+    CreateTcgCreatorGameRequest,
+    CreateTcgCreatorGameRequestFromJSON,
+    CreateTcgCreatorGameRequestToJSON,
+    CreateVideoRequestDeclineRequest,
+    CreateVideoRequestDeclineRequestFromJSON,
+    CreateVideoRequestDeclineRequestToJSON,
+    CreateWorldAttendantTestChatRequest,
+    CreateWorldAttendantTestChatRequestFromJSON,
+    CreateWorldAttendantTestChatRequestToJSON,
     CreateWorldAttendantTestChatResponse,
     CreateWorldAttendantTestChatResponseFromJSON,
     CreateWorldAttendantTestChatResponseToJSON,
@@ -78,6 +120,9 @@ import {
     CreateWorldAvatarUnequipResponse,
     CreateWorldAvatarUnequipResponseFromJSON,
     CreateWorldAvatarUnequipResponseToJSON,
+    CreateWorldAvatarWearableRequest,
+    CreateWorldAvatarWearableRequestFromJSON,
+    CreateWorldAvatarWearableRequestToJSON,
     CreateWorldAvatarWearableResponse,
     CreateWorldAvatarWearableResponseFromJSON,
     CreateWorldAvatarWearableResponseToJSON,
@@ -90,30 +135,63 @@ import {
     CreateWorldContestResponse,
     CreateWorldContestResponseFromJSON,
     CreateWorldContestResponseToJSON,
+    CreateWorldConventionAcceptRequest,
+    CreateWorldConventionAcceptRequestFromJSON,
+    CreateWorldConventionAcceptRequestToJSON,
     CreateWorldConventionAcceptResponse,
     CreateWorldConventionAcceptResponseFromJSON,
     CreateWorldConventionAcceptResponseToJSON,
     CreateWorldConventionApplyResponse,
     CreateWorldConventionApplyResponseFromJSON,
     CreateWorldConventionApplyResponseToJSON,
+    CreateWorldConventionBoothApplyRequest,
+    CreateWorldConventionBoothApplyRequestFromJSON,
+    CreateWorldConventionBoothApplyRequestToJSON,
     CreateWorldConventionBoothApplyResponse,
     CreateWorldConventionBoothApplyResponseFromJSON,
     CreateWorldConventionBoothApplyResponseToJSON,
+    CreateWorldConventionBoothFeeRequest,
+    CreateWorldConventionBoothFeeRequestFromJSON,
+    CreateWorldConventionBoothFeeRequestToJSON,
     CreateWorldConventionBoothFeeResponse,
     CreateWorldConventionBoothFeeResponseFromJSON,
     CreateWorldConventionBoothFeeResponseToJSON,
+    CreateWorldConventionCheckInRequest,
+    CreateWorldConventionCheckInRequestFromJSON,
+    CreateWorldConventionCheckInRequestToJSON,
     CreateWorldConventionCheckInResponse,
     CreateWorldConventionCheckInResponseFromJSON,
     CreateWorldConventionCheckInResponseToJSON,
+    CreateWorldConventionFullRequest,
+    CreateWorldConventionFullRequestFromJSON,
+    CreateWorldConventionFullRequestToJSON,
+    CreateWorldConventionMessageRequest,
+    CreateWorldConventionMessageRequestFromJSON,
+    CreateWorldConventionMessageRequestToJSON,
     CreateWorldConventionMessageResponse,
     CreateWorldConventionMessageResponseFromJSON,
     CreateWorldConventionMessageResponseToJSON,
+    CreateWorldConventionPaidRequest,
+    CreateWorldConventionPaidRequestFromJSON,
+    CreateWorldConventionPaidRequestToJSON,
+    CreateWorldConventionRequest,
+    CreateWorldConventionRequestFromJSON,
+    CreateWorldConventionRequestToJSON,
     CreateWorldConventionResponse,
     CreateWorldConventionResponseFromJSON,
     CreateWorldConventionResponseToJSON,
+    CreateWorldConventionSellerAssignRequest,
+    CreateWorldConventionSellerAssignRequestFromJSON,
+    CreateWorldConventionSellerAssignRequestToJSON,
     CreateWorldConventionSellerAssignResponse,
     CreateWorldConventionSellerAssignResponseFromJSON,
     CreateWorldConventionSellerAssignResponseToJSON,
+    CreateWorldConventionSellerDecideRequest,
+    CreateWorldConventionSellerDecideRequestFromJSON,
+    CreateWorldConventionSellerDecideRequestToJSON,
+    CreateWorldConventionWithdrawRequest,
+    CreateWorldConventionWithdrawRequestFromJSON,
+    CreateWorldConventionWithdrawRequestToJSON,
     CreateWorldCrewChatRequest,
     CreateWorldCrewChatRequestFromJSON,
     CreateWorldCrewChatRequestToJSON,
@@ -132,12 +210,18 @@ import {
     CreateWorldCrewResponse,
     CreateWorldCrewResponseFromJSON,
     CreateWorldCrewResponseToJSON,
+    CreateWorldDecorDesignRequest,
+    CreateWorldDecorDesignRequestFromJSON,
+    CreateWorldDecorDesignRequestToJSON,
     CreateWorldDecorDesignResponse,
     CreateWorldDecorDesignResponseFromJSON,
     CreateWorldDecorDesignResponseToJSON,
     CreateWorldDecorDesignSubmitResponse,
     CreateWorldDecorDesignSubmitResponseFromJSON,
     CreateWorldDecorDesignSubmitResponseToJSON,
+    CreateWorldDecorRetractRequest,
+    CreateWorldDecorRetractRequestFromJSON,
+    CreateWorldDecorRetractRequestToJSON,
     CreateWorldDecorRetractResponse,
     CreateWorldDecorRetractResponseFromJSON,
     CreateWorldDecorRetractResponseToJSON,
@@ -156,9 +240,15 @@ import {
     CreateWorldGamePackageCheckResponse,
     CreateWorldGamePackageCheckResponseFromJSON,
     CreateWorldGamePackageCheckResponseToJSON,
+    CreateWorldGamePackagePublishRequest,
+    CreateWorldGamePackagePublishRequestFromJSON,
+    CreateWorldGamePackagePublishRequestToJSON,
     CreateWorldGamePackagePublishResponse,
     CreateWorldGamePackagePublishResponseFromJSON,
     CreateWorldGamePackagePublishResponseToJSON,
+    CreateWorldGamePackageRequest,
+    CreateWorldGamePackageRequestFromJSON,
+    CreateWorldGamePackageRequestToJSON,
     CreateWorldGamePackageResponse,
     CreateWorldGamePackageResponseFromJSON,
     CreateWorldGamePackageResponseToJSON,
@@ -171,27 +261,48 @@ import {
     CreateWorldGamePackageVersionSubmitResponse,
     CreateWorldGamePackageVersionSubmitResponseFromJSON,
     CreateWorldGamePackageVersionSubmitResponseToJSON,
+    CreateWorldGameRatingRequest,
+    CreateWorldGameRatingRequestFromJSON,
+    CreateWorldGameRatingRequestToJSON,
     CreateWorldGameRatingResponse,
     CreateWorldGameRatingResponseFromJSON,
     CreateWorldGameRatingResponseToJSON,
+    CreateWorldGameReportRequest,
+    CreateWorldGameReportRequestFromJSON,
+    CreateWorldGameReportRequestToJSON,
     CreateWorldGameReportResponse,
     CreateWorldGameReportResponseFromJSON,
     CreateWorldGameReportResponseToJSON,
     CreateWorldGameStoreCheckoutResponse,
     CreateWorldGameStoreCheckoutResponseFromJSON,
     CreateWorldGameStoreCheckoutResponseToJSON,
+    CreateWorldGrailMatchRequest,
+    CreateWorldGrailMatchRequestFromJSON,
+    CreateWorldGrailMatchRequestToJSON,
     CreateWorldGrailMatchResponse,
     CreateWorldGrailMatchResponseFromJSON,
     CreateWorldGrailMatchResponseToJSON,
+    CreateWorldHallLoanRequest,
+    CreateWorldHallLoanRequestFromJSON,
+    CreateWorldHallLoanRequestToJSON,
     CreateWorldHallLoanResponse,
     CreateWorldHallLoanResponseFromJSON,
     CreateWorldHallLoanResponseToJSON,
+    CreateWorldHomeAskRequest,
+    CreateWorldHomeAskRequestFromJSON,
+    CreateWorldHomeAskRequestToJSON,
     CreateWorldHomeAskResponse,
     CreateWorldHomeAskResponseFromJSON,
     CreateWorldHomeAskResponseToJSON,
+    CreateWorldHomeGuestbookReportRequest,
+    CreateWorldHomeGuestbookReportRequestFromJSON,
+    CreateWorldHomeGuestbookReportRequestToJSON,
     CreateWorldHomeGuestbookResponse,
     CreateWorldHomeGuestbookResponseFromJSON,
     CreateWorldHomeGuestbookResponseToJSON,
+    CreateWorldInteractiveAssetRequest,
+    CreateWorldInteractiveAssetRequestFromJSON,
+    CreateWorldInteractiveAssetRequestToJSON,
     CreateWorldInteractiveAssetResponse,
     CreateWorldInteractiveAssetResponseFromJSON,
     CreateWorldInteractiveAssetResponseToJSON,
@@ -201,12 +312,21 @@ import {
     CreateWorldInteractiveDesignPreviewResponse,
     CreateWorldInteractiveDesignPreviewResponseFromJSON,
     CreateWorldInteractiveDesignPreviewResponseToJSON,
+    CreateWorldInteractiveDesignRequest,
+    CreateWorldInteractiveDesignRequestFromJSON,
+    CreateWorldInteractiveDesignRequestToJSON,
     CreateWorldInteractiveDesignSubmitResponse,
     CreateWorldInteractiveDesignSubmitResponseFromJSON,
     CreateWorldInteractiveDesignSubmitResponseToJSON,
+    CreateWorldInteractiveResetRequest,
+    CreateWorldInteractiveResetRequestFromJSON,
+    CreateWorldInteractiveResetRequestToJSON,
     CreateWorldInteractiveResetResponse,
     CreateWorldInteractiveResetResponseFromJSON,
     CreateWorldInteractiveResetResponseToJSON,
+    CreateWorldJobAppraisalAnswerRequest,
+    CreateWorldJobAppraisalAnswerRequestFromJSON,
+    CreateWorldJobAppraisalAnswerRequestToJSON,
     CreateWorldJobAppraisalAnswerResponse,
     CreateWorldJobAppraisalAnswerResponseFromJSON,
     CreateWorldJobAppraisalAnswerResponseToJSON,
@@ -216,9 +336,15 @@ import {
     CreateWorldJobShiftReleaseResponse,
     CreateWorldJobShiftReleaseResponseFromJSON,
     CreateWorldJobShiftReleaseResponseToJSON,
+    CreateWorldMarketBuyRequest,
+    CreateWorldMarketBuyRequestFromJSON,
+    CreateWorldMarketBuyRequestToJSON,
     CreateWorldMarketBuyResponse,
     CreateWorldMarketBuyResponseFromJSON,
     CreateWorldMarketBuyResponseToJSON,
+    CreateWorldMarketListingRequest,
+    CreateWorldMarketListingRequestFromJSON,
+    CreateWorldMarketListingRequestToJSON,
     CreateWorldMarketListingResponse,
     CreateWorldMarketListingResponseFromJSON,
     CreateWorldMarketListingResponseToJSON,
@@ -234,6 +360,9 @@ import {
     CreateWorldOutfitResponse,
     CreateWorldOutfitResponseFromJSON,
     CreateWorldOutfitResponseToJSON,
+    CreateWorldPartyChatRequest,
+    CreateWorldPartyChatRequestFromJSON,
+    CreateWorldPartyChatRequestToJSON,
     CreateWorldPartyInviteAcceptResponse,
     CreateWorldPartyInviteAcceptResponseFromJSON,
     CreateWorldPartyInviteAcceptResponseToJSON,
@@ -249,21 +378,39 @@ import {
     CreateWorldPartyLeaveResponse,
     CreateWorldPartyLeaveResponseFromJSON,
     CreateWorldPartyLeaveResponseToJSON,
+    CreateWorldPartyWishlistRequest,
+    CreateWorldPartyWishlistRequestFromJSON,
+    CreateWorldPartyWishlistRequestToJSON,
     CreateWorldPartyWishlistResponse,
     CreateWorldPartyWishlistResponseFromJSON,
     CreateWorldPartyWishlistResponseToJSON,
     CreateWorldPlaceItemWantResponse,
     CreateWorldPlaceItemWantResponseFromJSON,
     CreateWorldPlaceItemWantResponseToJSON,
+    CreateWorldPropertyPlotPhotoUploadUrlRequest,
+    CreateWorldPropertyPlotPhotoUploadUrlRequestFromJSON,
+    CreateWorldPropertyPlotPhotoUploadUrlRequestToJSON,
     CreateWorldPropertyPlotPhotoUploadUrlResponse,
     CreateWorldPropertyPlotPhotoUploadUrlResponseFromJSON,
     CreateWorldPropertyPlotPhotoUploadUrlResponseToJSON,
+    CreateWorldPropertyPlotShowroomRequest,
+    CreateWorldPropertyPlotShowroomRequestFromJSON,
+    CreateWorldPropertyPlotShowroomRequestToJSON,
     CreateWorldPropertyPlotShowroomResponse,
     CreateWorldPropertyPlotShowroomResponseFromJSON,
     CreateWorldPropertyPlotShowroomResponseToJSON,
+    CreateWorldPropertyTrespassedRequest,
+    CreateWorldPropertyTrespassedRequestFromJSON,
+    CreateWorldPropertyTrespassedRequestToJSON,
+    CreateWorldSpaceEventRequest,
+    CreateWorldSpaceEventRequestFromJSON,
+    CreateWorldSpaceEventRequestToJSON,
     CreateWorldSpaceEventResponse,
     CreateWorldSpaceEventResponseFromJSON,
     CreateWorldSpaceEventResponseToJSON,
+    CreateWorldSpaceEventRsvpRequest,
+    CreateWorldSpaceEventRsvpRequestFromJSON,
+    CreateWorldSpaceEventRsvpRequestToJSON,
     CreateWorldSpaceEventRsvpResponse,
     CreateWorldSpaceEventRsvpResponseFromJSON,
     CreateWorldSpaceEventRsvpResponseToJSON,
@@ -273,27 +420,54 @@ import {
     CreateWorldSpaceJoinResponse,
     CreateWorldSpaceJoinResponseFromJSON,
     CreateWorldSpaceJoinResponseToJSON,
+    CreateWorldSpaceRequest,
+    CreateWorldSpaceRequestFromJSON,
+    CreateWorldSpaceRequestToJSON,
+    CreateWorldSpaceRequestByUserIdRequest,
+    CreateWorldSpaceRequestByUserIdRequestFromJSON,
+    CreateWorldSpaceRequestByUserIdRequestToJSON,
     CreateWorldSpaceRequestByUserIdResponse,
     CreateWorldSpaceRequestByUserIdResponseFromJSON,
     CreateWorldSpaceRequestByUserIdResponseToJSON,
     CreateWorldSpaceResponse,
     CreateWorldSpaceResponseFromJSON,
     CreateWorldSpaceResponseToJSON,
+    CreateWorldSpaceRoleRequest,
+    CreateWorldSpaceRoleRequestFromJSON,
+    CreateWorldSpaceRoleRequestToJSON,
     CreateWorldSpaceRoleResponse,
     CreateWorldSpaceRoleResponseFromJSON,
     CreateWorldSpaceRoleResponseToJSON,
+    CreateWorldStaffApplicationDecideRequest,
+    CreateWorldStaffApplicationDecideRequestFromJSON,
+    CreateWorldStaffApplicationDecideRequestToJSON,
     CreateWorldStaffApplicationDecideResponse,
     CreateWorldStaffApplicationDecideResponseFromJSON,
     CreateWorldStaffApplicationDecideResponseToJSON,
+    CreateWorldStaffAssignmentRateWorkerRequest,
+    CreateWorldStaffAssignmentRateWorkerRequestFromJSON,
+    CreateWorldStaffAssignmentRateWorkerRequestToJSON,
     CreateWorldStaffAssignmentRateWorkerResponse,
     CreateWorldStaffAssignmentRateWorkerResponseFromJSON,
     CreateWorldStaffAssignmentRateWorkerResponseToJSON,
+    CreateWorldStaffPostingRequest,
+    CreateWorldStaffPostingRequestFromJSON,
+    CreateWorldStaffPostingRequestToJSON,
+    CreateWorldStaffPostingStatusRequest,
+    CreateWorldStaffPostingStatusRequestFromJSON,
+    CreateWorldStaffPostingStatusRequestToJSON,
+    CreateWorldStreetOwnedUpkeepPayRequest,
+    CreateWorldStreetOwnedUpkeepPayRequestFromJSON,
+    CreateWorldStreetOwnedUpkeepPayRequestToJSON,
     CreateWorldStreetOwnedUpkeepPayResponse,
     CreateWorldStreetOwnedUpkeepPayResponseFromJSON,
     CreateWorldStreetOwnedUpkeepPayResponseToJSON,
     CreateWorldVenueBookingCancelResponse,
     CreateWorldVenueBookingCancelResponseFromJSON,
     CreateWorldVenueBookingCancelResponseToJSON,
+    CreateWorldWorkAssignmentRateEmployerRequest,
+    CreateWorldWorkAssignmentRateEmployerRequestFromJSON,
+    CreateWorldWorkAssignmentRateEmployerRequestToJSON,
     CreateWorldWorkPostingApplyResponse,
     CreateWorldWorkPostingApplyResponseFromJSON,
     CreateWorldWorkPostingApplyResponseToJSON,
@@ -306,12 +480,21 @@ import {
     DeleteSpatialSceneGrantResponse,
     DeleteSpatialSceneGrantResponseFromJSON,
     DeleteSpatialSceneGrantResponseToJSON,
+    DeleteSpatialSceneNodeRequest,
+    DeleteSpatialSceneNodeRequestFromJSON,
+    DeleteSpatialSceneNodeRequestToJSON,
     DeleteSpatialSceneNodeResponse,
     DeleteSpatialSceneNodeResponseFromJSON,
     DeleteSpatialSceneNodeResponseToJSON,
+    DeleteSpatialSceneWarehouseStockRequest,
+    DeleteSpatialSceneWarehouseStockRequestFromJSON,
+    DeleteSpatialSceneWarehouseStockRequestToJSON,
     DeleteWorldBlockResponse,
     DeleteWorldBlockResponseFromJSON,
     DeleteWorldBlockResponseToJSON,
+    DeleteWorldExperienceRequest,
+    DeleteWorldExperienceRequestFromJSON,
+    DeleteWorldExperienceRequestToJSON,
     DeleteWorldGamePackageResponse,
     DeleteWorldGamePackageResponseFromJSON,
     DeleteWorldGamePackageResponseToJSON,
@@ -339,6 +522,9 @@ import {
     DeleteWorldSpaceResponse,
     DeleteWorldSpaceResponseFromJSON,
     DeleteWorldSpaceResponseToJSON,
+    EnabledRequest,
+    EnabledRequestFromJSON,
+    EnabledRequestToJSON,
     GetGameLeaderboardResponse,
     GetGameLeaderboardResponseFromJSON,
     GetGameLeaderboardResponseToJSON,
@@ -558,6 +744,9 @@ import {
     GetWorldStaffReputationResponse,
     GetWorldStaffReputationResponseFromJSON,
     GetWorldStaffReputationResponseToJSON,
+    GetWorldStandResponse,
+    GetWorldStandResponseFromJSON,
+    GetWorldStandResponseToJSON,
     GetWorldStreetFundResponse,
     GetWorldStreetFundResponseFromJSON,
     GetWorldStreetFundResponseToJSON,
@@ -804,45 +993,90 @@ import {
     SpatialSceneResponse,
     SpatialSceneResponseFromJSON,
     SpatialSceneResponseToJSON,
+    SpatialStreetAdmissionResponse,
+    SpatialStreetAdmissionResponseFromJSON,
+    SpatialStreetAdmissionResponseToJSON,
     SpatialStreetResponse,
     SpatialStreetResponseFromJSON,
     SpatialStreetResponseToJSON,
+    UpdateBrandDropListingRequest,
+    UpdateBrandDropListingRequestFromJSON,
+    UpdateBrandDropListingRequestToJSON,
     UpdateGroupBuyResponse,
     UpdateGroupBuyResponseFromJSON,
     UpdateGroupBuyResponseToJSON,
+    UpdateShowroom2Request,
+    UpdateShowroom2RequestFromJSON,
+    UpdateShowroom2RequestToJSON,
     UpdateShowroom2Response,
     UpdateShowroom2ResponseFromJSON,
     UpdateShowroom2ResponseToJSON,
+    UpdateShowroomRequest,
+    UpdateShowroomRequestFromJSON,
+    UpdateShowroomRequestToJSON,
     UpdateShowroomResponse,
     UpdateShowroomResponseFromJSON,
     UpdateShowroomResponseToJSON,
     UpdateSpatialSceneCosmeticResponse,
     UpdateSpatialSceneCosmeticResponseFromJSON,
     UpdateSpatialSceneCosmeticResponseToJSON,
+    UpdateSpatialSceneNodeRequest,
+    UpdateSpatialSceneNodeRequestFromJSON,
+    UpdateSpatialSceneNodeRequestToJSON,
     UpdateSpatialSceneNodeResponse,
     UpdateSpatialSceneNodeResponseFromJSON,
     UpdateSpatialSceneNodeResponseToJSON,
+    UpdateSpatialSceneSettingRequest,
+    UpdateSpatialSceneSettingRequestFromJSON,
+    UpdateSpatialSceneSettingRequestToJSON,
+    UpdateSpatialSceneShopLayoutRequest,
+    UpdateSpatialSceneShopLayoutRequestFromJSON,
+    UpdateSpatialSceneShopLayoutRequestToJSON,
     UpdateSpatialSceneShopLayoutResponse,
     UpdateSpatialSceneShopLayoutResponseFromJSON,
     UpdateSpatialSceneShopLayoutResponseToJSON,
     UpdateSpatialSceneWindowResponse,
     UpdateSpatialSceneWindowResponseFromJSON,
     UpdateSpatialSceneWindowResponseToJSON,
+    UpdateSpatialStreetOwnedRequest,
+    UpdateSpatialStreetOwnedRequestFromJSON,
+    UpdateSpatialStreetOwnedRequestToJSON,
+    UpdateWorldAttendantRequest,
+    UpdateWorldAttendantRequestFromJSON,
+    UpdateWorldAttendantRequestToJSON,
     UpdateWorldAttendantResponse,
     UpdateWorldAttendantResponseFromJSON,
     UpdateWorldAttendantResponseToJSON,
+    UpdateWorldAvatarIdentityRequest,
+    UpdateWorldAvatarIdentityRequestFromJSON,
+    UpdateWorldAvatarIdentityRequestToJSON,
     UpdateWorldAvatarIdentityResponse,
     UpdateWorldAvatarIdentityResponseFromJSON,
     UpdateWorldAvatarIdentityResponseToJSON,
+    UpdateWorldAvatarLookRequest,
+    UpdateWorldAvatarLookRequestFromJSON,
+    UpdateWorldAvatarLookRequestToJSON,
     UpdateWorldAvatarLookResponse,
     UpdateWorldAvatarLookResponseFromJSON,
     UpdateWorldAvatarLookResponseToJSON,
+    UpdateWorldCapabilityWearRequest,
+    UpdateWorldCapabilityWearRequestFromJSON,
+    UpdateWorldCapabilityWearRequestToJSON,
+    UpdateWorldControlRequest,
+    UpdateWorldControlRequestFromJSON,
+    UpdateWorldControlRequestToJSON,
+    UpdateWorldConventionHallRequest,
+    UpdateWorldConventionHallRequestFromJSON,
+    UpdateWorldConventionHallRequestToJSON,
     UpdateWorldConventionHallResponse,
     UpdateWorldConventionHallResponseFromJSON,
     UpdateWorldConventionHallResponseToJSON,
     UpdateWorldConventionMyBoothResponse,
     UpdateWorldConventionMyBoothResponseFromJSON,
     UpdateWorldConventionMyBoothResponseToJSON,
+    UpdateWorldConventionStatusRequest,
+    UpdateWorldConventionStatusRequestFromJSON,
+    UpdateWorldConventionStatusRequestToJSON,
     UpdateWorldConventionStatusResponse,
     UpdateWorldConventionStatusResponseFromJSON,
     UpdateWorldConventionStatusResponseToJSON,
@@ -852,6 +1086,9 @@ import {
     UpdateWorldEmoteWheelResponse,
     UpdateWorldEmoteWheelResponseFromJSON,
     UpdateWorldEmoteWheelResponseToJSON,
+    UpdateWorldFitValueShareRequest,
+    UpdateWorldFitValueShareRequestFromJSON,
+    UpdateWorldFitValueShareRequestToJSON,
     UpdateWorldFitValueShareResponse,
     UpdateWorldFitValueShareResponseFromJSON,
     UpdateWorldFitValueShareResponseToJSON,
@@ -861,6 +1098,15 @@ import {
     UpdateWorldHomeBuilderResponse,
     UpdateWorldHomeBuilderResponseFromJSON,
     UpdateWorldHomeBuilderResponseToJSON,
+    UpdateWorldHomeLayoutRequest,
+    UpdateWorldHomeLayoutRequestFromJSON,
+    UpdateWorldHomeLayoutRequestToJSON,
+    UpdateWorldHomeRequest,
+    UpdateWorldHomeRequestFromJSON,
+    UpdateWorldHomeRequestToJSON,
+    UpdateWorldInteractiveDesignDraftRequest,
+    UpdateWorldInteractiveDesignDraftRequestFromJSON,
+    UpdateWorldInteractiveDesignDraftRequestToJSON,
     UpdateWorldInteractiveDesignDraftResponse,
     UpdateWorldInteractiveDesignDraftResponseFromJSON,
     UpdateWorldInteractiveDesignDraftResponseToJSON,
@@ -879,9 +1125,15 @@ import {
     UpdateWorldPetActiveResponse,
     UpdateWorldPetActiveResponseFromJSON,
     UpdateWorldPetActiveResponseToJSON,
+    UpdateWorldPropertyPlotPhotoRequest,
+    UpdateWorldPropertyPlotPhotoRequestFromJSON,
+    UpdateWorldPropertyPlotPhotoRequestToJSON,
     UpdateWorldPropertyPlotPhotoResponse,
     UpdateWorldPropertyPlotPhotoResponseFromJSON,
     UpdateWorldPropertyPlotPhotoResponseToJSON,
+    UpdateWorldPropertyRentingRequest,
+    UpdateWorldPropertyRentingRequestFromJSON,
+    UpdateWorldPropertyRentingRequestToJSON,
     UpdateWorldPropertyRentingResponse,
     UpdateWorldPropertyRentingResponseFromJSON,
     UpdateWorldPropertyRentingResponseToJSON,
@@ -894,15 +1146,24 @@ import {
     UpdateWorldRoomHolderGateResponse,
     UpdateWorldRoomHolderGateResponseFromJSON,
     UpdateWorldRoomHolderGateResponseToJSON,
+    UpdateWorldSpaceRequest,
+    UpdateWorldSpaceRequestFromJSON,
+    UpdateWorldSpaceRequestToJSON,
     UpdateWorldSpaceResponse,
     UpdateWorldSpaceResponseFromJSON,
     UpdateWorldSpaceResponseToJSON,
     UpdateWorldStallBookingBoothResponse,
     UpdateWorldStallBookingBoothResponseFromJSON,
     UpdateWorldStallBookingBoothResponseToJSON,
+    UpdateWorldStreetOwnedThemeRequest,
+    UpdateWorldStreetOwnedThemeRequestFromJSON,
+    UpdateWorldStreetOwnedThemeRequestToJSON,
     UpdateWorldStreetOwnedThemeResponse,
     UpdateWorldStreetOwnedThemeResponseFromJSON,
     UpdateWorldStreetOwnedThemeResponseToJSON,
+    UserIdRequest,
+    UserIdRequestFromJSON,
+    UserIdRequestToJSON,
     WorldHomeResponse,
     WorldHomeResponseFromJSON,
     WorldHomeResponseToJSON,
@@ -914,17 +1175,24 @@ import {
     WorldStaffPostingResponseToJSON,
 } from '../models';
 
-export interface CreateGamePackBreakPickRequest {
+export interface CreateGamePackBreakPickOperationRequest {
     id: string;
+    createGamePackBreakPickRequest?: CreateGamePackBreakPickRequest;
 }
 
-export interface CreateShowroomRequest {
+export interface CreateShowroomOperationRequest {
+    createShowroomRequest: CreateShowroomRequest;
     storefrontId?: string;
 }
 
-export interface CreateShowroomPlacementRequest {
+export interface CreateShowroomPlacementOperationRequest {
     id: string;
+    createShowroomPlacementRequest: CreateShowroomPlacementRequest;
     storefrontId?: string;
+}
+
+export interface CreateSpatialInviteAcceptRequest {
+    createOrderPackScanRequest: CreateOrderPackScanRequest;
 }
 
 export interface CreateSpatialPropertyLeaseWithdrawRequest {
@@ -935,16 +1203,19 @@ export interface CreateSpatialSceneOperationRequest {
     createSpatialSceneRequest: CreateSpatialSceneRequest;
 }
 
-export interface CreateSpatialSceneGrantRequest {
+export interface CreateSpatialSceneGrantOperationRequest {
     id: string;
+    createSpatialSceneGrantRequest: CreateSpatialSceneGrantRequest;
 }
 
-export interface CreateSpatialSceneInviteRequest {
+export interface CreateSpatialSceneInviteOperationRequest {
     id: string;
+    createSpatialSceneInviteRequest?: CreateSpatialSceneInviteRequest;
 }
 
-export interface CreateSpatialSceneNodeRequest {
+export interface CreateSpatialSceneNodeOperationRequest {
     id: string;
+    createSpatialSceneNodeRequest: CreateSpatialSceneNodeRequest;
 }
 
 export interface CreateSpatialScenePlaceRequest {
@@ -956,8 +1227,9 @@ export interface CreateSpatialSceneRenameOperationRequest {
     createSpatialSceneRenameRequest: CreateSpatialSceneRenameRequest;
 }
 
-export interface CreateSpatialSceneShopPlaceRequest {
+export interface CreateSpatialSceneShopPlaceOperationRequest {
     id: string;
+    createSpatialSceneShopPlaceRequest: CreateSpatialSceneShopPlaceRequest;
 }
 
 export interface CreateSpatialSceneUnpinRequest {
@@ -969,7 +1241,20 @@ export interface CreateSpatialSceneVisibilityOperationRequest {
     createSpatialSceneVisibilityRequest: CreateSpatialSceneVisibilityRequest;
 }
 
-export interface CreateSpatialSceneWarehouseStockRequest {
+export interface CreateSpatialSceneWarehouseStockOperationRequest {
+    id: string;
+    createSpatialSceneWarehouseStockRequest: CreateSpatialSceneWarehouseStockRequest;
+}
+
+export interface CreateSpatialStreetAdmissionAcceptRequest {
+    id: string;
+}
+
+export interface CreateSpatialStreetAdmissionDeclineRequest {
+    id: string;
+}
+
+export interface CreateSpatialStreetAdmissionWithdrawRequest {
     id: string;
 }
 
@@ -977,8 +1262,13 @@ export interface CreateSpatialStreetApplyRequest {
     slug: string;
 }
 
-export interface CreateSpatialStreetInviteRequest {
+export interface CreateSpatialStreetInviteOperationRequest {
     slug: string;
+    createSpatialStreetInviteRequest: CreateSpatialStreetInviteRequest;
+}
+
+export interface CreateWorldAttendantTestChatOperationRequest {
+    createWorldAttendantTestChatRequest: CreateWorldAttendantTestChatRequest;
 }
 
 export interface CreateWorldAvatarEquipOperationRequest {
@@ -989,6 +1279,10 @@ export interface CreateWorldAvatarUnequipOperationRequest {
     createWorldAvatarUnequipRequest: CreateWorldAvatarUnequipRequest;
 }
 
+export interface CreateWorldAvatarWearableOperationRequest {
+    createWorldAvatarWearableRequest?: CreateWorldAvatarWearableRequest;
+}
+
 export interface CreateWorldContestEntrySettlePaymentRequest {
     id: string;
 }
@@ -997,48 +1291,66 @@ export interface CreateWorldContestJoinRequest {
     id: string;
 }
 
-export interface CreateWorldConventionAcceptRequest {
+export interface CreateWorldConventionOperationRequest {
+    createWorldConventionRequest?: CreateWorldConventionRequest;
+}
+
+export interface CreateWorldConventionAcceptOperationRequest {
     id: string;
+    createWorldConventionAcceptRequest?: CreateWorldConventionAcceptRequest;
 }
 
 export interface CreateWorldConventionApplyRequest {
     id: string;
 }
 
-export interface CreateWorldConventionBoothApplyRequest {
+export interface CreateWorldConventionBoothApplyOperationRequest {
     id: string;
+    createWorldConventionBoothApplyRequest?: CreateWorldConventionBoothApplyRequest;
 }
 
-export interface CreateWorldConventionBoothFeeRequest {
+export interface CreateWorldConventionBoothFeeOperationRequest {
     id: string;
+    createWorldConventionBoothFeeRequest?: CreateWorldConventionBoothFeeRequest;
 }
 
-export interface CreateWorldConventionCheckInRequest {
+export interface CreateWorldConventionCheckInOperationRequest {
     id: string;
+    createWorldConventionCheckInRequest?: CreateWorldConventionCheckInRequest;
+}
+
+export interface CreateWorldConventionFullOperationRequest {
+    createWorldConventionFullRequest?: CreateWorldConventionFullRequest;
 }
 
 export interface CreateWorldConventionInviteRequest {
     id: string;
+    createWorldConventionPaidRequest?: CreateWorldConventionPaidRequest;
 }
 
-export interface CreateWorldConventionMessageRequest {
+export interface CreateWorldConventionMessageOperationRequest {
     id: string;
+    createWorldConventionMessageRequest?: CreateWorldConventionMessageRequest;
 }
 
-export interface CreateWorldConventionPaidRequest {
+export interface CreateWorldConventionPaidOperationRequest {
     id: string;
+    createWorldConventionPaidRequest?: CreateWorldConventionPaidRequest;
 }
 
-export interface CreateWorldConventionSellerAssignRequest {
+export interface CreateWorldConventionSellerAssignOperationRequest {
     id: string;
+    createWorldConventionSellerAssignRequest?: CreateWorldConventionSellerAssignRequest;
 }
 
-export interface CreateWorldConventionSellerDecideRequest {
+export interface CreateWorldConventionSellerDecideOperationRequest {
     id: string;
+    createWorldConventionSellerDecideRequest?: CreateWorldConventionSellerDecideRequest;
 }
 
-export interface CreateWorldConventionWithdrawRequest {
+export interface CreateWorldConventionWithdrawOperationRequest {
     id: string;
+    createWorldConventionWithdrawRequest?: CreateWorldConventionWithdrawRequest;
 }
 
 export interface CreateWorldCrewOperationRequest {
@@ -1053,8 +1365,16 @@ export interface CreateWorldCrewJoinOperationRequest {
     createWorldCrewJoinRequest: CreateWorldCrewJoinRequest;
 }
 
+export interface CreateWorldDecorDesignOperationRequest {
+    createWorldDecorDesignRequest?: CreateWorldDecorDesignRequest;
+}
+
 export interface CreateWorldDecorDesignSubmitRequest {
     id: string;
+}
+
+export interface CreateWorldDecorRetractOperationRequest {
+    createWorldDecorRetractRequest?: CreateWorldDecorRetractRequest;
 }
 
 export interface CreateWorldDmRequest {
@@ -1071,8 +1391,17 @@ export interface CreateWorldFriendInviteOperationRequest {
     createWorldFriendInviteRequest: CreateWorldFriendInviteRequest;
 }
 
-export interface CreateWorldGamePackagePublishRequest {
+export interface CreateWorldGamePackageOperationRequest {
+    createWorldGamePackageRequest?: CreateWorldGamePackageRequest;
+}
+
+export interface CreateWorldGamePackageCheckRequest {
+    createTcgCreatorGameRequest?: CreateTcgCreatorGameRequest;
+}
+
+export interface CreateWorldGamePackagePublishOperationRequest {
     id: string;
+    createWorldGamePackagePublishRequest?: CreateWorldGamePackagePublishRequest;
 }
 
 export interface CreateWorldGamePackageRestoreRequest {
@@ -1088,12 +1417,14 @@ export interface CreateWorldGamePackageVersionSubmitRequest {
     semver: string;
 }
 
-export interface CreateWorldGameRatingRequest {
+export interface CreateWorldGameRatingOperationRequest {
     id: string;
+    createWorldGameRatingRequest?: CreateWorldGameRatingRequest;
 }
 
-export interface CreateWorldGameReportRequest {
+export interface CreateWorldGameReportOperationRequest {
     id: string;
+    createWorldGameReportRequest?: CreateWorldGameReportRequest;
 }
 
 export interface CreateWorldGameStoreCheckoutRequest {
@@ -1101,17 +1432,36 @@ export interface CreateWorldGameStoreCheckoutRequest {
     item: string;
 }
 
-export interface CreateWorldHomeAskRequest {
+export interface CreateWorldGrailMatchOperationRequest {
+    createWorldGrailMatchRequest?: CreateWorldGrailMatchRequest;
+}
+
+export interface CreateWorldHallLoanOperationRequest {
+    createWorldHallLoanRequest?: CreateWorldHallLoanRequest;
+}
+
+export interface CreateWorldHomeAskOperationRequest {
     slug: string;
+    createWorldHomeAskRequest?: CreateWorldHomeAskRequest;
 }
 
 export interface CreateWorldHomeGuestbookRequest {
     slug: string;
+    bodyRequest?: BodyRequest;
 }
 
-export interface CreateWorldHomeGuestbookReportRequest {
+export interface CreateWorldHomeGuestbookReportOperationRequest {
     slug: string;
     id: string;
+    createWorldHomeGuestbookReportRequest?: CreateWorldHomeGuestbookReportRequest;
+}
+
+export interface CreateWorldInteractiveAssetOperationRequest {
+    createWorldInteractiveAssetRequest?: CreateWorldInteractiveAssetRequest;
+}
+
+export interface CreateWorldInteractiveDesignOperationRequest {
+    createWorldInteractiveDesignRequest?: CreateWorldInteractiveDesignRequest;
 }
 
 export interface CreateWorldInteractiveDesignCheckRequest {
@@ -1126,8 +1476,13 @@ export interface CreateWorldInteractiveDesignSubmitRequest {
     id: string;
 }
 
-export interface CreateWorldJobAppraisalAnswerRequest {
+export interface CreateWorldInteractiveResetOperationRequest {
+    createWorldInteractiveResetRequest?: CreateWorldInteractiveResetRequest;
+}
+
+export interface CreateWorldJobAppraisalAnswerOperationRequest {
     id: string;
+    createWorldJobAppraisalAnswerRequest: CreateWorldJobAppraisalAnswerRequest;
 }
 
 export interface CreateWorldJobShiftClaimRequest {
@@ -1138,13 +1493,19 @@ export interface CreateWorldJobShiftReleaseRequest {
     id: string;
 }
 
-export interface CreateWorldMarketBuyRequest {
+export interface CreateWorldMarketBuyOperationRequest {
     kind: string;
     id: string;
+    createWorldMarketBuyRequest?: CreateWorldMarketBuyRequest;
+}
+
+export interface CreateWorldMarketListingOperationRequest {
+    createWorldMarketListingRequest: CreateWorldMarketListingRequest;
 }
 
 export interface CreateWorldMarketPlotRentRequest {
     id: string;
+    createWorldMarketBuyRequest?: CreateWorldMarketBuyRequest;
 }
 
 export interface CreateWorldOutfitOperationRequest {
@@ -1155,12 +1516,14 @@ export interface CreateWorldOutfitApplyRequest {
     id: string;
 }
 
-export interface CreateWorldPartyChatRequest {
+export interface CreateWorldPartyChatOperationRequest {
     id: string;
+    createWorldPartyChatRequest?: CreateWorldPartyChatRequest;
 }
 
 export interface CreateWorldPartyInviteRequest {
     id: string;
+    userIdRequest?: UserIdRequest;
 }
 
 export interface CreateWorldPartyInviteAcceptRequest {
@@ -1173,18 +1536,21 @@ export interface CreateWorldPartyInviteDeclineRequest {
 
 export interface CreateWorldPartyKickRequest {
     id: string;
+    userIdRequest?: UserIdRequest;
 }
 
 export interface CreateWorldPartyLeaderRequest {
     id: string;
+    userIdRequest?: UserIdRequest;
 }
 
 export interface CreateWorldPartyLeaveRequest {
     id: string;
 }
 
-export interface CreateWorldPartyWishlistRequest {
+export interface CreateWorldPartyWishlistOperationRequest {
     id: string;
+    createWorldPartyWishlistRequest?: CreateWorldPartyWishlistRequest;
 }
 
 export interface CreateWorldPartyWishlistVoteRequest {
@@ -1197,25 +1563,38 @@ export interface CreateWorldPlaceItemWantRequest {
     itemId: string;
 }
 
-export interface CreateWorldPropertyPlotPhotoUploadUrlRequest {
+export interface CreateWorldPropertyPlotPhotoUploadUrlOperationRequest {
     plotId: string;
+    createWorldPropertyPlotPhotoUploadUrlRequest: CreateWorldPropertyPlotPhotoUploadUrlRequest;
 }
 
-export interface CreateWorldPropertyPlotShowroomRequest {
+export interface CreateWorldPropertyPlotShowroomOperationRequest {
     plotId: string;
+    createWorldPropertyPlotShowroomRequest: CreateWorldPropertyPlotShowroomRequest;
 }
 
-export interface CreateWorldSpaceEventRequest {
+export interface CreateWorldPropertyTrespassedOperationRequest {
+    createWorldPropertyTrespassedRequest: CreateWorldPropertyTrespassedRequest;
+}
+
+export interface CreateWorldSpaceOperationRequest {
+    createWorldSpaceRequest: CreateWorldSpaceRequest;
+}
+
+export interface CreateWorldSpaceEventOperationRequest {
     slug: string;
+    createWorldSpaceEventRequest: CreateWorldSpaceEventRequest;
 }
 
-export interface CreateWorldSpaceEventRsvpRequest {
+export interface CreateWorldSpaceEventRsvpOperationRequest {
     slug: string;
     id: string;
+    createWorldSpaceEventRsvpRequest: CreateWorldSpaceEventRsvpRequest;
 }
 
 export interface CreateWorldSpaceInviteRequest {
     slug: string;
+    userIdRequest: UserIdRequest;
 }
 
 export interface CreateWorldSpaceJoinRequest {
@@ -1226,41 +1605,53 @@ export interface CreateWorldSpaceLeaveRequest {
     slug: string;
 }
 
-export interface CreateWorldSpaceRequestByUserIdRequest {
+export interface CreateWorldSpaceRequestByUserIdOperationRequest {
     slug: string;
     userId: string;
+    createWorldSpaceRequestByUserIdRequest: CreateWorldSpaceRequestByUserIdRequest;
 }
 
-export interface CreateWorldSpaceRoleRequest {
+export interface CreateWorldSpaceRoleOperationRequest {
     slug: string;
+    createWorldSpaceRoleRequest: CreateWorldSpaceRoleRequest;
 }
 
-export interface CreateWorldStaffApplicationDecideRequest {
+export interface CreateWorldStaffApplicationDecideOperationRequest {
     id: string;
+    createWorldStaffApplicationDecideRequest: CreateWorldStaffApplicationDecideRequest;
 }
 
-export interface CreateWorldStaffAssignmentRateWorkerRequest {
+export interface CreateWorldStaffAssignmentRateWorkerOperationRequest {
     id: string;
+    createWorldStaffAssignmentRateWorkerRequest: CreateWorldStaffAssignmentRateWorkerRequest;
 }
 
-export interface CreateWorldStaffPostingStatusRequest {
-    id: string;
+export interface CreateWorldStaffPostingOperationRequest {
+    createWorldStaffPostingRequest: CreateWorldStaffPostingRequest;
 }
 
-export interface CreateWorldStreetOwnedUpkeepPayRequest {
+export interface CreateWorldStaffPostingStatusOperationRequest {
     id: string;
+    createWorldStaffPostingStatusRequest: CreateWorldStaffPostingStatusRequest;
+}
+
+export interface CreateWorldStreetOwnedUpkeepPayOperationRequest {
+    id: string;
+    createWorldStreetOwnedUpkeepPayRequest: CreateWorldStreetOwnedUpkeepPayRequest;
 }
 
 export interface CreateWorldVenueBookingCancelRequest {
     id: string;
 }
 
-export interface CreateWorldWorkAssignmentRateEmployerRequest {
+export interface CreateWorldWorkAssignmentRateEmployerOperationRequest {
     id: string;
+    createWorldWorkAssignmentRateEmployerRequest: CreateWorldWorkAssignmentRateEmployerRequest;
 }
 
 export interface CreateWorldWorkPostingApplyRequest {
     id: string;
+    createVideoRequestDeclineRequest?: CreateVideoRequestDeclineRequest;
 }
 
 export interface DeleteShowroomRequest {
@@ -1279,12 +1670,14 @@ export interface DeleteSpatialSceneGrantRequest {
     grantId: string;
 }
 
-export interface DeleteSpatialSceneNodeRequest {
+export interface DeleteSpatialSceneNodeOperationRequest {
     id: string;
+    deleteSpatialSceneNodeRequest: DeleteSpatialSceneNodeRequest;
 }
 
-export interface DeleteSpatialSceneWarehouseStockRequest {
+export interface DeleteSpatialSceneWarehouseStockOperationRequest {
     id: string;
+    deleteSpatialSceneWarehouseStockRequest: DeleteSpatialSceneWarehouseStockRequest;
 }
 
 export interface DeleteSpatialStreetRequestRequest {
@@ -1306,6 +1699,7 @@ export interface DeleteWorldFollowRequest {
 
 export interface DeleteWorldGamePackageRequest {
     id: string;
+    deleteWorldExperienceRequest?: DeleteWorldExperienceRequest;
 }
 
 export interface DeleteWorldHallLoanRequest {
@@ -1351,6 +1745,7 @@ export interface DeleteWorldPropertyPlotShowroomRequest {
 
 export interface DeleteWorldPropertyTrespassedRequest {
     userId: string;
+    place: string;
 }
 
 export interface DeleteWorldSpaceRequest {
@@ -1444,6 +1839,7 @@ export interface GetWorldGamePackageRequest {
 
 export interface GetWorldGamePackageStatRequest {
     id: string;
+    days?: number;
 }
 
 export interface GetWorldGamePackageVersionRequest {
@@ -1452,6 +1848,8 @@ export interface GetWorldGamePackageVersionRequest {
 
 export interface GetWorldGameTemplateRequest {
     kind: string;
+    id?: string;
+    name?: string;
 }
 
 export interface GetWorldInteractiveDesignRequest {
@@ -1523,6 +1921,16 @@ export interface GetWorldStaffPostingRequest {
     id: string;
 }
 
+export interface GetWorldStandRequest {
+    kind: string;
+    id: string;
+    storefrontId?: string;
+}
+
+export interface GetWorldStandShopRequest {
+    storefrontId?: string;
+}
+
 export interface GetWorldStreetFundRequest {
     slug: string;
 }
@@ -1541,11 +1949,18 @@ export interface GetWorldTrialLeaderboardRequest {
 
 export interface GetWorldVenueQuoteRequest {
     id: string;
+    startsOn: string;
+    endsOn: string;
 }
 
 export interface ListShowroomItemSearchRequest {
     id: string;
     storefrontId?: string;
+    q?: string;
+    brand?: string;
+    category?: string;
+    condition?: string;
+    listed?: ListShowroomItemSearchListedEnum;
 }
 
 export interface ListShowroomsRequest {
@@ -1558,6 +1973,8 @@ export interface ListSpatialSceneGrantsRequest {
 
 export interface ListSpatialSceneWarehouseUnplacedRequest {
     id: string;
+    q?: string;
+    limit?: number;
 }
 
 export interface ListSpatialStreetLeasesRequest {
@@ -1579,6 +1996,7 @@ export interface ListWorldConventionExhibitorsRequest {
 
 export interface ListWorldConventionMessagesRequest {
     id: string;
+    _with?: string;
 }
 
 export interface ListWorldCosmCosmeticsRequest {
@@ -1590,12 +2008,44 @@ export interface ListWorldDecorCatalogueRequest {
     surface?: ListWorldDecorCatalogueSurfaceEnum;
 }
 
+export interface ListWorldDecorMarketRequest {
+    pair?: string;
+}
+
 export interface ListWorldGamePackageReceiptsRequest {
     id: string;
 }
 
 export interface ListWorldInteractiveDesignsRequest {
     archived?: ListWorldInteractiveDesignsArchivedEnum;
+}
+
+export interface ListWorldJobBoardRequest {
+    role?: ListWorldJobBoardRoleEnum;
+    rail?: ListWorldJobBoardRailEnum;
+    basis?: ListWorldJobBoardBasisEnum;
+    place?: ListWorldJobBoardPlaceEnum;
+    minPayCents?: number;
+    minEmployerRep?: number;
+    after?: string;
+    before?: string;
+    q?: string;
+    sort?: ListWorldJobBoardSortEnum;
+    limit?: number;
+}
+
+export interface ListWorldMarketRequest {
+    kind?: ListWorldMarketKindEnum;
+    mode?: ListWorldMarketModeEnum;
+    street?: string;
+    theme?: string;
+    minPrice?: number;
+    maxPrice?: number;
+    size?: ListWorldMarketSizeEnum;
+    traffic?: ListWorldMarketTrafficEnum;
+    sort?: ListWorldMarketSortEnum;
+    offset?: number;
+    limit?: number;
 }
 
 export interface ListWorldMarketStreetSignsRequest {
@@ -1630,25 +2080,51 @@ export interface ListWorldPlaceTradesRequest {
     slug: string;
 }
 
+export interface ListWorldPromotedRequest {
+    kind?: ListWorldPromotedKindEnum;
+    limit?: number;
+}
+
+export interface ListWorldProvenanceRequest {
+    listingIds?: string;
+}
+
 export interface ListWorldSpaceRequestsRequest {
     slug: string;
 }
 
-export interface UpdateShowroomRequest {
+export interface ListWorldSpacesRequest {
+    venue?: ListWorldSpacesVenueEnum;
+}
+
+export interface ListWorldStaffApplicantsRequest {
+    postingId?: string;
+}
+
+export interface ListWorldVenuesRequest {
+    from?: string;
+    to?: string;
+}
+
+export interface UpdateShowroomOperationRequest {
+    updateShowroomRequest: UpdateShowroomRequest;
     storefrontId?: string;
 }
 
-export interface UpdateShowroom2Request {
+export interface UpdateShowroom2OperationRequest {
+    updateShowroom2Request: UpdateShowroom2Request;
     storefrontId?: string;
 }
 
 export interface UpdateShowroom3Request {
     id: string;
+    updateShowroom2Request: UpdateShowroom2Request;
     storefrontId?: string;
 }
 
 export interface UpdateShowroomByIdRequest {
     id: string;
+    updateShowroomRequest: UpdateShowroomRequest;
     storefrontId?: string;
 }
 
@@ -1656,29 +2132,50 @@ export interface UpdateSpatialSceneCosmeticRequest {
     id: string;
 }
 
-export interface UpdateSpatialSceneNodeRequest {
+export interface UpdateSpatialSceneNodeOperationRequest {
     id: string;
     nodeId: string;
+    updateSpatialSceneNodeRequest: UpdateSpatialSceneNodeRequest;
 }
 
-export interface UpdateSpatialSceneSettingRequest {
+export interface UpdateSpatialSceneSettingOperationRequest {
     id: string;
+    updateSpatialSceneSettingRequest?: UpdateSpatialSceneSettingRequest;
 }
 
-export interface UpdateSpatialSceneShopLayoutRequest {
+export interface UpdateSpatialSceneShopLayoutOperationRequest {
     id: string;
+    updateSpatialSceneShopLayoutRequest: UpdateSpatialSceneShopLayoutRequest;
 }
 
 export interface UpdateSpatialSceneWindowRequest {
     id: string;
+    updateBrandDropListingRequest: UpdateBrandDropListingRequest;
 }
 
 export interface UpdateSpatialStreetDecorRequest {
     slug: string;
 }
 
-export interface UpdateSpatialStreetOwnedRequest {
+export interface UpdateSpatialStreetOwnedOperationRequest {
     id: string;
+    updateSpatialStreetOwnedRequest: UpdateSpatialStreetOwnedRequest;
+}
+
+export interface UpdateWorldAttendantOperationRequest {
+    updateWorldAttendantRequest: UpdateWorldAttendantRequest;
+}
+
+export interface UpdateWorldAvatarIdentityOperationRequest {
+    updateWorldAvatarIdentityRequest?: UpdateWorldAvatarIdentityRequest;
+}
+
+export interface UpdateWorldAvatarLookOperationRequest {
+    updateWorldAvatarLookRequest?: UpdateWorldAvatarLookRequest;
+}
+
+export interface UpdateWorldCapabilityWearOperationRequest {
+    updateWorldCapabilityWearRequest?: UpdateWorldCapabilityWearRequest;
 }
 
 export interface UpdateWorldCollectionCapabilityRequest {
@@ -1686,40 +2183,63 @@ export interface UpdateWorldCollectionCapabilityRequest {
     contract: string;
 }
 
-export interface UpdateWorldConventionHallRequest {
+export interface UpdateWorldControlOperationRequest {
+    updateWorldControlRequest?: UpdateWorldControlRequest;
+}
+
+export interface UpdateWorldConventionHallOperationRequest {
     id: string;
+    updateWorldConventionHallRequest?: UpdateWorldConventionHallRequest;
 }
 
 export interface UpdateWorldConventionMyBoothRequest {
     id: string;
+    updateBrandDropListingRequest?: UpdateBrandDropListingRequest;
 }
 
-export interface UpdateWorldConventionStatusRequest {
+export interface UpdateWorldConventionStatusOperationRequest {
     id: string;
+    updateWorldConventionStatusRequest?: UpdateWorldConventionStatusRequest;
 }
 
 export interface UpdateWorldCosmDesignChainAutoUnlockRequest {
     id: string;
+    enabledRequest?: EnabledRequest;
 }
 
 export interface UpdateWorldEmoteWheelOperationRequest {
     updateWorldEmoteWheelRequest: UpdateWorldEmoteWheelRequest;
 }
 
+export interface UpdateWorldFitValueShareOperationRequest {
+    updateWorldFitValueShareRequest?: UpdateWorldFitValueShareRequest;
+}
+
+export interface UpdateWorldHomeOperationRequest {
+    updateWorldHomeRequest?: UpdateWorldHomeRequest;
+}
+
 export interface UpdateWorldHomeBuilderOperationRequest {
     updateWorldHomeBuilderRequest: UpdateWorldHomeBuilderRequest;
 }
 
-export interface UpdateWorldHomeLayoutBySlugRequest {
-    slug: string;
+export interface UpdateWorldHomeLayoutOperationRequest {
+    updateWorldHomeLayoutRequest?: UpdateWorldHomeLayoutRequest;
 }
 
-export interface UpdateWorldInteractiveDesignDraftRequest {
+export interface UpdateWorldHomeLayoutBySlugRequest {
+    slug: string;
+    updateWorldHomeLayoutRequest?: UpdateWorldHomeLayoutRequest;
+}
+
+export interface UpdateWorldInteractiveDesignDraftOperationRequest {
     id: string;
+    updateWorldInteractiveDesignDraftRequest?: UpdateWorldInteractiveDesignDraftRequest;
 }
 
 export interface UpdateWorldListingHoldersOnlyRequest {
     id: string;
+    enabledRequest?: EnabledRequest;
 }
 
 export interface UpdateWorldOutfitOperationRequest {
@@ -1731,12 +2251,14 @@ export interface UpdateWorldPetActiveOperationRequest {
     updateWorldPetActiveRequest: UpdateWorldPetActiveRequest;
 }
 
-export interface UpdateWorldPropertyPlotPhotoRequest {
+export interface UpdateWorldPropertyPlotPhotoOperationRequest {
     plotId: string;
+    updateWorldPropertyPlotPhotoRequest: UpdateWorldPropertyPlotPhotoRequest;
 }
 
-export interface UpdateWorldPropertyRentingRequest {
+export interface UpdateWorldPropertyRentingOperationRequest {
     leaseId: string;
+    updateWorldPropertyRentingRequest: UpdateWorldPropertyRentingRequest;
 }
 
 export interface UpdateWorldQuestPinOperationRequest {
@@ -1747,8 +2269,9 @@ export interface UpdateWorldRoomHolderGateRequest {
     id: string;
 }
 
-export interface UpdateWorldSpaceRequest {
+export interface UpdateWorldSpaceOperationRequest {
     slug: string;
+    updateWorldSpaceRequest: UpdateWorldSpaceRequest;
 }
 
 export interface UpdateWorldSpaceHolderGateRequest {
@@ -1757,14 +2280,16 @@ export interface UpdateWorldSpaceHolderGateRequest {
 
 export interface UpdateWorldStaffPostingRequest {
     id: string;
+    createWorldStaffPostingRequest: CreateWorldStaffPostingRequest;
 }
 
 export interface UpdateWorldStallBookingBoothRequest {
     id: string;
 }
 
-export interface UpdateWorldStreetOwnedThemeRequest {
+export interface UpdateWorldStreetOwnedThemeOperationRequest {
     id: string;
+    updateWorldStreetOwnedThemeRequest: UpdateWorldStreetOwnedThemeRequest;
 }
 
 /**
@@ -1809,7 +2334,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Pick the pull you think is worth the most: every lowest open ask is revealed, and a win earns a fee-back coupon.
      */
-    async createGamePackBreakPickRaw(requestParameters: CreateGamePackBreakPickRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGamePackBreakPickResponse>> {
+    async createGamePackBreakPickRaw(requestParameters: CreateGamePackBreakPickOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGamePackBreakPickResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createGamePackBreakPick.');
         }
@@ -1817,6 +2342,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1831,6 +2358,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateGamePackBreakPickRequestToJSON(requestParameters.createGamePackBreakPickRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateGamePackBreakPickResponseFromJSON(jsonValue));
@@ -1839,7 +2367,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Pick the pull you think is worth the most: every lowest open ask is revealed, and a win earns a fee-back coupon.
      */
-    async createGamePackBreakPick(requestParameters: CreateGamePackBreakPickRequest, initOverrides?: RequestInit): Promise<CreateGamePackBreakPickResponse> {
+    async createGamePackBreakPick(requestParameters: CreateGamePackBreakPickOperationRequest, initOverrides?: RequestInit): Promise<CreateGamePackBreakPickResponse> {
         const response = await this.createGamePackBreakPickRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1847,7 +2375,11 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Add a showroom. The first is included; an extra one has a monthly fee and is added in the dashboard (402 world_payment_failed here).
      */
-    async createShowroomRaw(requestParameters: CreateShowroomRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateShowroomResponse>> {
+    async createShowroomRaw(requestParameters: CreateShowroomOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateShowroomResponse>> {
+        if (requestParameters.createShowroomRequest === null || requestParameters.createShowroomRequest === undefined) {
+            throw new runtime.RequiredError('createShowroomRequest','Required parameter requestParameters.createShowroomRequest was null or undefined when calling createShowroom.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.storefrontId !== undefined) {
@@ -1855,6 +2387,8 @@ export class WorldApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1869,6 +2403,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateShowroomRequestToJSON(requestParameters.createShowroomRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateShowroomResponseFromJSON(jsonValue));
@@ -1877,7 +2412,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Add a showroom. The first is included; an extra one has a monthly fee and is added in the dashboard (402 world_payment_failed here).
      */
-    async createShowroom(requestParameters: CreateShowroomRequest = {}, initOverrides?: RequestInit): Promise<CreateShowroomResponse> {
+    async createShowroom(requestParameters: CreateShowroomOperationRequest, initOverrides?: RequestInit): Promise<CreateShowroomResponse> {
         const response = await this.createShowroomRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1885,9 +2420,13 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Stand a showroom on a plot your store owns or rents (403 when it does not; 409 when another showroom stands there).
      */
-    async createShowroomPlacementRaw(requestParameters: CreateShowroomPlacementRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateShowroomPlacementResponse>> {
+    async createShowroomPlacementRaw(requestParameters: CreateShowroomPlacementOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateShowroomPlacementResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createShowroomPlacement.');
+        }
+
+        if (requestParameters.createShowroomPlacementRequest === null || requestParameters.createShowroomPlacementRequest === undefined) {
+            throw new runtime.RequiredError('createShowroomPlacementRequest','Required parameter requestParameters.createShowroomPlacementRequest was null or undefined when calling createShowroomPlacement.');
         }
 
         const queryParameters: any = {};
@@ -1897,6 +2436,8 @@ export class WorldApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1911,6 +2452,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateShowroomPlacementRequestToJSON(requestParameters.createShowroomPlacementRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateShowroomPlacementResponseFromJSON(jsonValue));
@@ -1919,7 +2461,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Stand a showroom on a plot your store owns or rents (403 when it does not; 409 when another showroom stands there).
      */
-    async createShowroomPlacement(requestParameters: CreateShowroomPlacementRequest, initOverrides?: RequestInit): Promise<CreateShowroomPlacementResponse> {
+    async createShowroomPlacement(requestParameters: CreateShowroomPlacementOperationRequest, initOverrides?: RequestInit): Promise<CreateShowroomPlacementResponse> {
         const response = await this.createShowroomPlacementRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1927,10 +2469,16 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Redeem an invite code (dashes optional); returns the room it opens.
      */
-    async createSpatialInviteAcceptRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialInviteAcceptResponse>> {
+    async createSpatialInviteAcceptRaw(requestParameters: CreateSpatialInviteAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialInviteAcceptResponse>> {
+        if (requestParameters.createOrderPackScanRequest === null || requestParameters.createOrderPackScanRequest === undefined) {
+            throw new runtime.RequiredError('createOrderPackScanRequest','Required parameter requestParameters.createOrderPackScanRequest was null or undefined when calling createSpatialInviteAccept.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1945,6 +2493,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderPackScanRequestToJSON(requestParameters.createOrderPackScanRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialInviteAcceptResponseFromJSON(jsonValue));
@@ -1953,8 +2502,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Redeem an invite code (dashes optional); returns the room it opens.
      */
-    async createSpatialInviteAccept(initOverrides?: RequestInit): Promise<CreateSpatialInviteAcceptResponse> {
-        const response = await this.createSpatialInviteAcceptRaw(initOverrides);
+    async createSpatialInviteAccept(requestParameters: CreateSpatialInviteAcceptRequest, initOverrides?: RequestInit): Promise<CreateSpatialInviteAcceptResponse> {
+        const response = await this.createSpatialInviteAcceptRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2040,14 +2589,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Let a specific user into one of your rooms (visitor or staff), no code needed.
      */
-    async createSpatialSceneGrantRaw(requestParameters: CreateSpatialSceneGrantRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialSceneGrantResponse>> {
+    async createSpatialSceneGrantRaw(requestParameters: CreateSpatialSceneGrantOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialSceneGrantResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialSceneGrant.');
+        }
+
+        if (requestParameters.createSpatialSceneGrantRequest === null || requestParameters.createSpatialSceneGrantRequest === undefined) {
+            throw new runtime.RequiredError('createSpatialSceneGrantRequest','Required parameter requestParameters.createSpatialSceneGrantRequest was null or undefined when calling createSpatialSceneGrant.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2062,6 +2617,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSpatialSceneGrantRequestToJSON(requestParameters.createSpatialSceneGrantRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialSceneGrantResponseFromJSON(jsonValue));
@@ -2070,7 +2626,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Let a specific user into one of your rooms (visitor or staff), no code needed.
      */
-    async createSpatialSceneGrant(requestParameters: CreateSpatialSceneGrantRequest, initOverrides?: RequestInit): Promise<CreateSpatialSceneGrantResponse> {
+    async createSpatialSceneGrant(requestParameters: CreateSpatialSceneGrantOperationRequest, initOverrides?: RequestInit): Promise<CreateSpatialSceneGrantResponse> {
         const response = await this.createSpatialSceneGrantRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2078,7 +2634,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Mint an invite code to one of your rooms (visitor or staff, optional expiry in hours). The code is in this response only: just its hash is stored.
      */
-    async createSpatialSceneInviteRaw(requestParameters: CreateSpatialSceneInviteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialSceneInviteResponse>> {
+    async createSpatialSceneInviteRaw(requestParameters: CreateSpatialSceneInviteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialSceneInviteResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialSceneInvite.');
         }
@@ -2086,6 +2642,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2100,6 +2658,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSpatialSceneInviteRequestToJSON(requestParameters.createSpatialSceneInviteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialSceneInviteResponseFromJSON(jsonValue));
@@ -2108,7 +2667,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Mint an invite code to one of your rooms (visitor or staff, optional expiry in hours). The code is in this response only: just its hash is stored.
      */
-    async createSpatialSceneInvite(requestParameters: CreateSpatialSceneInviteRequest, initOverrides?: RequestInit): Promise<CreateSpatialSceneInviteResponse> {
+    async createSpatialSceneInvite(requestParameters: CreateSpatialSceneInviteOperationRequest, initOverrides?: RequestInit): Promise<CreateSpatialSceneInviteResponse> {
         const response = await this.createSpatialSceneInviteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2116,14 +2675,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Add a unit (rack, shelf, bin) to one of your warehouse rooms.
      */
-    async createSpatialSceneNodeRaw(requestParameters: CreateSpatialSceneNodeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialSceneNodeResponse>> {
+    async createSpatialSceneNodeRaw(requestParameters: CreateSpatialSceneNodeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialSceneNodeResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialSceneNode.');
+        }
+
+        if (requestParameters.createSpatialSceneNodeRequest === null || requestParameters.createSpatialSceneNodeRequest === undefined) {
+            throw new runtime.RequiredError('createSpatialSceneNodeRequest','Required parameter requestParameters.createSpatialSceneNodeRequest was null or undefined when calling createSpatialSceneNode.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2138,6 +2703,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSpatialSceneNodeRequestToJSON(requestParameters.createSpatialSceneNodeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialSceneNodeResponseFromJSON(jsonValue));
@@ -2146,7 +2712,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Add a unit (rack, shelf, bin) to one of your warehouse rooms.
      */
-    async createSpatialSceneNode(requestParameters: CreateSpatialSceneNodeRequest, initOverrides?: RequestInit): Promise<CreateSpatialSceneNodeResponse> {
+    async createSpatialSceneNode(requestParameters: CreateSpatialSceneNodeOperationRequest, initOverrides?: RequestInit): Promise<CreateSpatialSceneNodeResponse> {
         const response = await this.createSpatialSceneNodeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2237,14 +2803,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Place an inventory item in a section and display of your shop room.
      */
-    async createSpatialSceneShopPlaceRaw(requestParameters: CreateSpatialSceneShopPlaceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialSceneShopPlaceResponse>> {
+    async createSpatialSceneShopPlaceRaw(requestParameters: CreateSpatialSceneShopPlaceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialSceneShopPlaceResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialSceneShopPlace.');
+        }
+
+        if (requestParameters.createSpatialSceneShopPlaceRequest === null || requestParameters.createSpatialSceneShopPlaceRequest === undefined) {
+            throw new runtime.RequiredError('createSpatialSceneShopPlaceRequest','Required parameter requestParameters.createSpatialSceneShopPlaceRequest was null or undefined when calling createSpatialSceneShopPlace.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2259,6 +2831,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSpatialSceneShopPlaceRequestToJSON(requestParameters.createSpatialSceneShopPlaceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialSceneShopPlaceResponseFromJSON(jsonValue));
@@ -2267,7 +2840,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Place an inventory item in a section and display of your shop room.
      */
-    async createSpatialSceneShopPlace(requestParameters: CreateSpatialSceneShopPlaceRequest, initOverrides?: RequestInit): Promise<CreateSpatialSceneShopPlaceResponse> {
+    async createSpatialSceneShopPlace(requestParameters: CreateSpatialSceneShopPlaceOperationRequest, initOverrides?: RequestInit): Promise<CreateSpatialSceneShopPlaceResponse> {
         const response = await this.createSpatialSceneShopPlaceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2358,9 +2931,54 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Put an inventory item (or unit) on a rack in one of your warehouse rooms.
      */
-    async createSpatialSceneWarehouseStockRaw(requestParameters: CreateSpatialSceneWarehouseStockRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialScenePlaceResponse>> {
+    async createSpatialSceneWarehouseStockRaw(requestParameters: CreateSpatialSceneWarehouseStockOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialScenePlaceResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialSceneWarehouseStock.');
+        }
+
+        if (requestParameters.createSpatialSceneWarehouseStockRequest === null || requestParameters.createSpatialSceneWarehouseStockRequest === undefined) {
+            throw new runtime.RequiredError('createSpatialSceneWarehouseStockRequest','Required parameter requestParameters.createSpatialSceneWarehouseStockRequest was null or undefined when calling createSpatialSceneWarehouseStock.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/spatial/scenes/{id}/warehouse/stock`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateSpatialSceneWarehouseStockRequestToJSON(requestParameters.createSpatialSceneWarehouseStockRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialScenePlaceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Put an inventory item (or unit) on a rack in one of your warehouse rooms.
+     */
+    async createSpatialSceneWarehouseStock(requestParameters: CreateSpatialSceneWarehouseStockOperationRequest, initOverrides?: RequestInit): Promise<CreateSpatialScenePlaceResponse> {
+        const response = await this.createSpatialSceneWarehouseStockRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Accept a street admission: an application to a street your store owns, or an invitation to your store shop. Seats the shop.
+     */
+    async createSpatialStreetAdmissionAcceptRaw(requestParameters: CreateSpatialStreetAdmissionAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SpatialStreetAdmissionResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialStreetAdmissionAccept.');
         }
 
         const queryParameters: any = {};
@@ -2376,20 +2994,96 @@ export class WorldApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/v1/spatial/scenes/{id}/warehouse/stock`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/v1/spatial/streets/admissions/{id}/accept`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialScenePlaceResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => SpatialStreetAdmissionResponseFromJSON(jsonValue));
     }
 
     /**
-     * Put an inventory item (or unit) on a rack in one of your warehouse rooms.
+     * Accept a street admission: an application to a street your store owns, or an invitation to your store shop. Seats the shop.
      */
-    async createSpatialSceneWarehouseStock(requestParameters: CreateSpatialSceneWarehouseStockRequest, initOverrides?: RequestInit): Promise<CreateSpatialScenePlaceResponse> {
-        const response = await this.createSpatialSceneWarehouseStockRaw(requestParameters, initOverrides);
+    async createSpatialStreetAdmissionAccept(requestParameters: CreateSpatialStreetAdmissionAcceptRequest, initOverrides?: RequestInit): Promise<SpatialStreetAdmissionResponse> {
+        const response = await this.createSpatialStreetAdmissionAcceptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Decline a street admission: an application to a street your store owns, or an invitation to your store shop.
+     */
+    async createSpatialStreetAdmissionDeclineRaw(requestParameters: CreateSpatialStreetAdmissionDeclineRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SpatialStreetAdmissionResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialStreetAdmissionDecline.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/spatial/streets/admissions/{id}/decline`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SpatialStreetAdmissionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Decline a street admission: an application to a street your store owns, or an invitation to your store shop.
+     */
+    async createSpatialStreetAdmissionDecline(requestParameters: CreateSpatialStreetAdmissionDeclineRequest, initOverrides?: RequestInit): Promise<SpatialStreetAdmissionResponse> {
+        const response = await this.createSpatialStreetAdmissionDeclineRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take back a street admission your store sent: its shop application, or an invitation from its street.
+     */
+    async createSpatialStreetAdmissionWithdrawRaw(requestParameters: CreateSpatialStreetAdmissionWithdrawRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SpatialStreetAdmissionResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createSpatialStreetAdmissionWithdraw.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/spatial/streets/admissions/{id}/withdraw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SpatialStreetAdmissionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Take back a street admission your store sent: its shop application, or an invitation from its street.
+     */
+    async createSpatialStreetAdmissionWithdraw(requestParameters: CreateSpatialStreetAdmissionWithdrawRequest, initOverrides?: RequestInit): Promise<SpatialStreetAdmissionResponse> {
+        const response = await this.createSpatialStreetAdmissionWithdrawRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2434,14 +3128,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Invite a shop (by its slug) to open on a street you own.
      */
-    async createSpatialStreetInviteRaw(requestParameters: CreateSpatialStreetInviteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialStreetApplyResponse>> {
+    async createSpatialStreetInviteRaw(requestParameters: CreateSpatialStreetInviteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSpatialStreetApplyResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createSpatialStreetInvite.');
+        }
+
+        if (requestParameters.createSpatialStreetInviteRequest === null || requestParameters.createSpatialStreetInviteRequest === undefined) {
+            throw new runtime.RequiredError('createSpatialStreetInviteRequest','Required parameter requestParameters.createSpatialStreetInviteRequest was null or undefined when calling createSpatialStreetInvite.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2456,6 +3156,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSpatialStreetInviteRequestToJSON(requestParameters.createSpatialStreetInviteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSpatialStreetApplyResponseFromJSON(jsonValue));
@@ -2464,7 +3165,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Invite a shop (by its slug) to open on a street you own.
      */
-    async createSpatialStreetInvite(requestParameters: CreateSpatialStreetInviteRequest, initOverrides?: RequestInit): Promise<CreateSpatialStreetApplyResponse> {
+    async createSpatialStreetInvite(requestParameters: CreateSpatialStreetInviteOperationRequest, initOverrides?: RequestInit): Promise<CreateSpatialStreetApplyResponse> {
         const response = await this.createSpatialStreetInviteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2472,10 +3173,16 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * One test answer from your AI attendant, on your own AI key (409 ai_key_required without one).
      */
-    async createWorldAttendantTestChatRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldAttendantTestChatResponse>> {
+    async createWorldAttendantTestChatRaw(requestParameters: CreateWorldAttendantTestChatOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldAttendantTestChatResponse>> {
+        if (requestParameters.createWorldAttendantTestChatRequest === null || requestParameters.createWorldAttendantTestChatRequest === undefined) {
+            throw new runtime.RequiredError('createWorldAttendantTestChatRequest','Required parameter requestParameters.createWorldAttendantTestChatRequest was null or undefined when calling createWorldAttendantTestChat.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2490,6 +3197,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldAttendantTestChatRequestToJSON(requestParameters.createWorldAttendantTestChatRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldAttendantTestChatResponseFromJSON(jsonValue));
@@ -2498,8 +3206,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * One test answer from your AI attendant, on your own AI key (409 ai_key_required without one).
      */
-    async createWorldAttendantTestChat(initOverrides?: RequestInit): Promise<CreateWorldAttendantTestChatResponse> {
-        const response = await this.createWorldAttendantTestChatRaw(initOverrides);
+    async createWorldAttendantTestChat(requestParameters: CreateWorldAttendantTestChatOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldAttendantTestChatResponse> {
+        const response = await this.createWorldAttendantTestChatRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2588,10 +3296,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Author a wearable for a body slot (a mesh profile and params, an asking price in COSM base units as a string). A submission: inactive until an operator approves it.
      */
-    async createWorldAvatarWearableRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldAvatarWearableResponse>> {
+    async createWorldAvatarWearableRaw(requestParameters: CreateWorldAvatarWearableOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldAvatarWearableResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2606,6 +3316,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldAvatarWearableRequestToJSON(requestParameters.createWorldAvatarWearableRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldAvatarWearableResponseFromJSON(jsonValue));
@@ -2614,8 +3325,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Author a wearable for a body slot (a mesh profile and params, an asking price in COSM base units as a string). A submission: inactive until an operator approves it.
      */
-    async createWorldAvatarWearable(initOverrides?: RequestInit): Promise<CreateWorldAvatarWearableResponse> {
-        const response = await this.createWorldAvatarWearableRaw(initOverrides);
+    async createWorldAvatarWearable(requestParameters: CreateWorldAvatarWearableOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldAvatarWearableResponse> {
+        const response = await this.createWorldAvatarWearableRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2732,10 +3443,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Host a convention in one of your rooms: title, dates, tables and how sellers get one (invite, free, a fee in cents, or a revenue share in basis points).
      */
-    async createWorldConventionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionResponse>> {
+    async createWorldConventionRaw(requestParameters: CreateWorldConventionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2750,6 +3463,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionRequestToJSON(requestParameters.createWorldConventionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldConventionResponseFromJSON(jsonValue));
@@ -2758,15 +3472,15 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Host a convention in one of your rooms: title, dates, tables and how sellers get one (invite, free, a fee in cents, or a revenue share in basis points).
      */
-    async createWorldConvention(initOverrides?: RequestInit): Promise<CreateWorldConventionResponse> {
-        const response = await this.createWorldConventionRaw(initOverrides);
+    async createWorldConvention(requestParameters: CreateWorldConventionOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldConventionResponse> {
+        const response = await this.createWorldConventionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Accept: your own invitation (no body), or, as host, an application (username).
      */
-    async createWorldConventionAcceptRaw(requestParameters: CreateWorldConventionAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionAcceptResponse>> {
+    async createWorldConventionAcceptRaw(requestParameters: CreateWorldConventionAcceptOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionAcceptResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionAccept.');
         }
@@ -2774,6 +3488,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2788,6 +3504,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionAcceptRequestToJSON(requestParameters.createWorldConventionAcceptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldConventionAcceptResponseFromJSON(jsonValue));
@@ -2796,7 +3513,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Accept: your own invitation (no body), or, as host, an application (username).
      */
-    async createWorldConventionAccept(requestParameters: CreateWorldConventionAcceptRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionAcceptResponse> {
+    async createWorldConventionAccept(requestParameters: CreateWorldConventionAcceptOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionAcceptResponse> {
         const response = await this.createWorldConventionAcceptRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2842,7 +3559,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Apply for a booth tier (or book it at once in open mode): { tierId, note?, categories? }.
      */
-    async createWorldConventionBoothApplyRaw(requestParameters: CreateWorldConventionBoothApplyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionBoothApplyResponse>> {
+    async createWorldConventionBoothApplyRaw(requestParameters: CreateWorldConventionBoothApplyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionBoothApplyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionBoothApply.');
         }
@@ -2850,6 +3567,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2864,6 +3583,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionBoothApplyRequestToJSON(requestParameters.createWorldConventionBoothApplyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldConventionBoothApplyResponseFromJSON(jsonValue));
@@ -2872,7 +3592,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Apply for a booth tier (or book it at once in open mode): { tierId, note?, categories? }.
      */
-    async createWorldConventionBoothApply(requestParameters: CreateWorldConventionBoothApplyRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionBoothApplyResponse> {
+    async createWorldConventionBoothApply(requestParameters: CreateWorldConventionBoothApplyOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionBoothApplyResponse> {
         const response = await this.createWorldConventionBoothApplyRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2880,7 +3600,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Pay your booth fee to the organiser on a Worlds rail: { rail: \"cash\" | \"cbx\" }. Once per booth. Full-access token and Idempotency-Key required.
      */
-    async createWorldConventionBoothFeeRaw(requestParameters: CreateWorldConventionBoothFeeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionBoothFeeResponse>> {
+    async createWorldConventionBoothFeeRaw(requestParameters: CreateWorldConventionBoothFeeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionBoothFeeResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionBoothFee.');
         }
@@ -2888,6 +3608,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2902,6 +3624,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionBoothFeeRequestToJSON(requestParameters.createWorldConventionBoothFeeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldConventionBoothFeeResponseFromJSON(jsonValue));
@@ -2910,7 +3633,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Pay your booth fee to the organiser on a Worlds rail: { rail: \"cash\" | \"cbx\" }. Once per booth. Full-access token and Idempotency-Key required.
      */
-    async createWorldConventionBoothFee(requestParameters: CreateWorldConventionBoothFeeRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionBoothFeeResponse> {
+    async createWorldConventionBoothFee(requestParameters: CreateWorldConventionBoothFeeOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionBoothFeeResponse> {
         const response = await this.createWorldConventionBoothFeeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2918,7 +3641,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Check in: the organiser names { exhibitorId }; an exhibitor checks themselves in with {}.
      */
-    async createWorldConventionCheckInRaw(requestParameters: CreateWorldConventionCheckInRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionCheckInResponse>> {
+    async createWorldConventionCheckInRaw(requestParameters: CreateWorldConventionCheckInOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionCheckInResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionCheckIn.');
         }
@@ -2926,6 +3649,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2940,6 +3665,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionCheckInRequestToJSON(requestParameters.createWorldConventionCheckInRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldConventionCheckInResponseFromJSON(jsonValue));
@@ -2948,7 +3674,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Check in: the organiser names { exhibitorId }; an exhibitor checks themselves in with {}.
      */
-    async createWorldConventionCheckIn(requestParameters: CreateWorldConventionCheckInRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionCheckInResponse> {
+    async createWorldConventionCheckIn(requestParameters: CreateWorldConventionCheckInOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionCheckInResponse> {
         const response = await this.createWorldConventionCheckInRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2956,10 +3682,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Create a convention in full: venue + days (rented and paid now on the rail), hours, theme, booth tiers and prices, application or open booking, seller limits, promotion. Full-access token and Idempotency-Key required.
      */
-    async createWorldConventionFullRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldConventionManageResponse>> {
+    async createWorldConventionFullRaw(requestParameters: CreateWorldConventionFullOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldConventionManageResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2974,6 +3702,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionFullRequestToJSON(requestParameters.createWorldConventionFullRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldConventionManageResponseFromJSON(jsonValue));
@@ -2982,8 +3711,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Create a convention in full: venue + days (rented and paid now on the rail), hours, theme, booth tiers and prices, application or open booking, seller limits, promotion. Full-access token and Idempotency-Key required.
      */
-    async createWorldConventionFull(initOverrides?: RequestInit): Promise<GetWorldConventionManageResponse> {
-        const response = await this.createWorldConventionFullRaw(initOverrides);
+    async createWorldConventionFull(requestParameters: CreateWorldConventionFullOperationRequest = {}, initOverrides?: RequestInit): Promise<GetWorldConventionManageResponse> {
+        const response = await this.createWorldConventionFullRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2999,6 +3728,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -3012,6 +3743,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionPaidRequestToJSON(requestParameters.createWorldConventionPaidRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldSpaceInviteResponseFromJSON(jsonValue));
@@ -3028,7 +3760,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Send a convention message: { body, toUserId? }. The organiser writes to one seller or every seller; an exhibitor writes to the organiser.
      */
-    async createWorldConventionMessageRaw(requestParameters: CreateWorldConventionMessageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionMessageResponse>> {
+    async createWorldConventionMessageRaw(requestParameters: CreateWorldConventionMessageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionMessageResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionMessage.');
         }
@@ -3036,6 +3768,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3050,6 +3784,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionMessageRequestToJSON(requestParameters.createWorldConventionMessageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldConventionMessageResponseFromJSON(jsonValue));
@@ -3058,7 +3793,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Send a convention message: { body, toUserId? }. The organiser writes to one seller or every seller; an exhibitor writes to the organiser.
      */
-    async createWorldConventionMessage(requestParameters: CreateWorldConventionMessageRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionMessageResponse> {
+    async createWorldConventionMessage(requestParameters: CreateWorldConventionMessageOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionMessageResponse> {
         const response = await this.createWorldConventionMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3066,7 +3801,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host, record that a seller (username) paid their table fee off-platform. Moves no money.
      */
-    async createWorldConventionPaidRaw(requestParameters: CreateWorldConventionPaidRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+    async createWorldConventionPaidRaw(requestParameters: CreateWorldConventionPaidOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionPaid.');
         }
@@ -3074,6 +3809,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3088,6 +3825,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionPaidRequestToJSON(requestParameters.createWorldConventionPaidRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
@@ -3096,7 +3834,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host, record that a seller (username) paid their table fee off-platform. Moves no money.
      */
-    async createWorldConventionPaid(requestParameters: CreateWorldConventionPaidRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+    async createWorldConventionPaid(requestParameters: CreateWorldConventionPaidOperationRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.createWorldConventionPaidRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3104,7 +3842,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Move an accepted seller to another booth of their tier (swaps with whoever is there): { exhibitorId, boothKey }.
      */
-    async createWorldConventionSellerAssignRaw(requestParameters: CreateWorldConventionSellerAssignRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionSellerAssignResponse>> {
+    async createWorldConventionSellerAssignRaw(requestParameters: CreateWorldConventionSellerAssignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionSellerAssignResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionSellerAssign.');
         }
@@ -3112,6 +3850,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3126,6 +3866,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionSellerAssignRequestToJSON(requestParameters.createWorldConventionSellerAssignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldConventionSellerAssignResponseFromJSON(jsonValue));
@@ -3134,7 +3875,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Move an accepted seller to another booth of their tier (swaps with whoever is there): { exhibitorId, boothKey }.
      */
-    async createWorldConventionSellerAssign(requestParameters: CreateWorldConventionSellerAssignRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionSellerAssignResponse> {
+    async createWorldConventionSellerAssign(requestParameters: CreateWorldConventionSellerAssignOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionSellerAssignResponse> {
         const response = await this.createWorldConventionSellerAssignRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3142,7 +3883,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Approve (terms frozen, a booth assigned) or decline an application: { exhibitorId, decision }.
      */
-    async createWorldConventionSellerDecideRaw(requestParameters: CreateWorldConventionSellerDecideRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionBoothApplyResponse>> {
+    async createWorldConventionSellerDecideRaw(requestParameters: CreateWorldConventionSellerDecideOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldConventionBoothApplyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionSellerDecide.');
         }
@@ -3150,6 +3891,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3164,6 +3907,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionSellerDecideRequestToJSON(requestParameters.createWorldConventionSellerDecideRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldConventionBoothApplyResponseFromJSON(jsonValue));
@@ -3172,7 +3916,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Approve (terms frozen, a booth assigned) or decline an application: { exhibitorId, decision }.
      */
-    async createWorldConventionSellerDecide(requestParameters: CreateWorldConventionSellerDecideRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionBoothApplyResponse> {
+    async createWorldConventionSellerDecide(requestParameters: CreateWorldConventionSellerDecideOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldConventionBoothApplyResponse> {
         const response = await this.createWorldConventionSellerDecideRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3180,7 +3924,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Withdraw your table or decline your invitation; as host, decline someone (username).
      */
-    async createWorldConventionWithdrawRaw(requestParameters: CreateWorldConventionWithdrawRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+    async createWorldConventionWithdrawRaw(requestParameters: CreateWorldConventionWithdrawOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldConventionWithdraw.');
         }
@@ -3188,6 +3932,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3202,6 +3948,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldConventionWithdrawRequestToJSON(requestParameters.createWorldConventionWithdrawRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
@@ -3210,7 +3957,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Withdraw your table or decline your invitation; as host, decline someone (username).
      */
-    async createWorldConventionWithdraw(requestParameters: CreateWorldConventionWithdrawRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+    async createWorldConventionWithdraw(requestParameters: CreateWorldConventionWithdrawOperationRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.createWorldConventionWithdrawRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3375,10 +4122,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Author a decor design (what it unlocks, a mesh profile and params, an asking price in COSM base units as a string). Inactive until an operator approves it.
      */
-    async createWorldDecorDesignRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldDecorDesignResponse>> {
+    async createWorldDecorDesignRaw(requestParameters: CreateWorldDecorDesignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldDecorDesignResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3393,6 +4142,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldDecorDesignRequestToJSON(requestParameters.createWorldDecorDesignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldDecorDesignResponseFromJSON(jsonValue));
@@ -3401,8 +4151,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Author a decor design (what it unlocks, a mesh profile and params, an asking price in COSM base units as a string). Inactive until an operator approves it.
      */
-    async createWorldDecorDesign(initOverrides?: RequestInit): Promise<CreateWorldDecorDesignResponse> {
-        const response = await this.createWorldDecorDesignRaw(initOverrides);
+    async createWorldDecorDesign(requestParameters: CreateWorldDecorDesignOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldDecorDesignResponse> {
+        const response = await this.createWorldDecorDesignRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3447,10 +4197,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Take a placed decor piece back into your inventory; answers the inventory after.
      */
-    async createWorldDecorRetractRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldDecorRetractResponse>> {
+    async createWorldDecorRetractRaw(requestParameters: CreateWorldDecorRetractOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldDecorRetractResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3465,6 +4217,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldDecorRetractRequestToJSON(requestParameters.createWorldDecorRetractRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldDecorRetractResponseFromJSON(jsonValue));
@@ -3473,8 +4226,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Take a placed decor piece back into your inventory; answers the inventory after.
      */
-    async createWorldDecorRetract(initOverrides?: RequestInit): Promise<CreateWorldDecorRetractResponse> {
-        const response = await this.createWorldDecorRetractRaw(initOverrides);
+    async createWorldDecorRetract(requestParameters: CreateWorldDecorRetractOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldDecorRetractResponse> {
+        const response = await this.createWorldDecorRetractRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3609,10 +4362,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Submit a game package version for review: files as { path, base64 } (game.json, thumb.png, logic/, scene/, audio/, images/). Checked like the CLI, assets quarantined, the entry document dry-run, then reviewed by a person.
      */
-    async createWorldGamePackageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGamePackageResponse>> {
+    async createWorldGamePackageRaw(requestParameters: CreateWorldGamePackageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGamePackageResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3627,6 +4382,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldGamePackageRequestToJSON(requestParameters.createWorldGamePackageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldGamePackageResponseFromJSON(jsonValue));
@@ -3635,18 +4391,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Submit a game package version for review: files as { path, base64 } (game.json, thumb.png, logic/, scene/, audio/, images/). Checked like the CLI, assets quarantined, the entry document dry-run, then reviewed by a person.
      */
-    async createWorldGamePackage(initOverrides?: RequestInit): Promise<CreateWorldGamePackageResponse> {
-        const response = await this.createWorldGamePackageRaw(initOverrides);
+    async createWorldGamePackage(requestParameters: CreateWorldGamePackageOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldGamePackageResponse> {
+        const response = await this.createWorldGamePackageRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Validate a game package exactly as a submission is checked (the shared intake report, your version still free) without storing, uploading or queuing anything: world-kit validate for an agent. Same files body as submit.
      */
-    async createWorldGamePackageCheckRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGamePackageCheckResponse>> {
+    async createWorldGamePackageCheckRaw(requestParameters: CreateWorldGamePackageCheckRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGamePackageCheckResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3661,6 +4419,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgCreatorGameRequestToJSON(requestParameters.createTcgCreatorGameRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldGamePackageCheckResponseFromJSON(jsonValue));
@@ -3669,15 +4428,15 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Validate a game package exactly as a submission is checked (the shared intake report, your version still free) without storing, uploading or queuing anything: world-kit validate for an agent. Same files body as submit.
      */
-    async createWorldGamePackageCheck(initOverrides?: RequestInit): Promise<CreateWorldGamePackageCheckResponse> {
-        const response = await this.createWorldGamePackageCheckRaw(initOverrides);
+    async createWorldGamePackageCheck(requestParameters: CreateWorldGamePackageCheckRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldGamePackageCheckResponse> {
+        const response = await this.createWorldGamePackageCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Make an approved version the one every placed copy runs (rollback or roll-forward; running copies restart on it) and list the game again if it was unpublished. Body { version }. Starter seller plan or higher.
      */
-    async createWorldGamePackagePublishRaw(requestParameters: CreateWorldGamePackagePublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGamePackagePublishResponse>> {
+    async createWorldGamePackagePublishRaw(requestParameters: CreateWorldGamePackagePublishOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGamePackagePublishResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldGamePackagePublish.');
         }
@@ -3685,6 +4444,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3699,6 +4460,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldGamePackagePublishRequestToJSON(requestParameters.createWorldGamePackagePublishRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldGamePackagePublishResponseFromJSON(jsonValue));
@@ -3707,7 +4469,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Make an approved version the one every placed copy runs (rollback or roll-forward; running copies restart on it) and list the game again if it was unpublished. Body { version }. Starter seller plan or higher.
      */
-    async createWorldGamePackagePublish(requestParameters: CreateWorldGamePackagePublishRequest, initOverrides?: RequestInit): Promise<CreateWorldGamePackagePublishResponse> {
+    async createWorldGamePackagePublish(requestParameters: CreateWorldGamePackagePublishOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldGamePackagePublishResponse> {
         const response = await this.createWorldGamePackagePublishRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3833,7 +4595,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Rate a game you played, 1 to 5 stars (rating again replaces it). Only players the runner recorded in that game can rate it.
      */
-    async createWorldGameRatingRaw(requestParameters: CreateWorldGameRatingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGameRatingResponse>> {
+    async createWorldGameRatingRaw(requestParameters: CreateWorldGameRatingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGameRatingResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldGameRating.');
         }
@@ -3841,6 +4603,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3855,6 +4619,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldGameRatingRequestToJSON(requestParameters.createWorldGameRatingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldGameRatingResponseFromJSON(jsonValue));
@@ -3863,7 +4628,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Rate a game you played, 1 to 5 stars (rating again replaces it). Only players the runner recorded in that game can rate it.
      */
-    async createWorldGameRating(requestParameters: CreateWorldGameRatingRequest, initOverrides?: RequestInit): Promise<CreateWorldGameRatingResponse> {
+    async createWorldGameRating(requestParameters: CreateWorldGameRatingOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldGameRatingResponse> {
         const response = await this.createWorldGameRatingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3871,7 +4636,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Report a game: reason broken | unfair | offensive | scam | other, optional detail. Staff review it; the creator is told the reason, never who.
      */
-    async createWorldGameReportRaw(requestParameters: CreateWorldGameReportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGameReportResponse>> {
+    async createWorldGameReportRaw(requestParameters: CreateWorldGameReportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGameReportResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldGameReport.');
         }
@@ -3879,6 +4644,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3893,6 +4660,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldGameReportRequestToJSON(requestParameters.createWorldGameReportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldGameReportResponseFromJSON(jsonValue));
@@ -3901,7 +4669,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Report a game: reason broken | unfair | offensive | scam | other, optional detail. Staff review it; the creator is told the reason, never who.
      */
-    async createWorldGameReport(requestParameters: CreateWorldGameReportRequest, initOverrides?: RequestInit): Promise<CreateWorldGameReportResponse> {
+    async createWorldGameReport(requestParameters: CreateWorldGameReportOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldGameReportResponse> {
         const response = await this.createWorldGameReportRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3951,10 +4719,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Grail glints: send the ids on show somewhere (listingIds -- listings.id, inventoryIds, skuIds -- catalogue market SKUs; up to 400 each) and get back data.listingIds / data.inventoryIds / data.skuIds: the ones that are things you already want -- an open bid, a watched or wishlisted listing (or one selling the same SKU), a market watch, or a card your deck is missing. Read-only.
      */
-    async createWorldGrailMatchRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGrailMatchResponse>> {
+    async createWorldGrailMatchRaw(requestParameters: CreateWorldGrailMatchOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGrailMatchResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3969,6 +4739,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldGrailMatchRequestToJSON(requestParameters.createWorldGrailMatchRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldGrailMatchResponseFromJSON(jsonValue));
@@ -3977,18 +4748,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Grail glints: send the ids on show somewhere (listingIds -- listings.id, inventoryIds, skuIds -- catalogue market SKUs; up to 400 each) and get back data.listingIds / data.inventoryIds / data.skuIds: the ones that are things you already want -- an open bid, a watched or wishlisted listing (or one selling the same SKU), a market watch, or a card your deck is missing. Read-only.
      */
-    async createWorldGrailMatch(initOverrides?: RequestInit): Promise<CreateWorldGrailMatchResponse> {
-        const response = await this.createWorldGrailMatchRaw(initOverrides);
+    async createWorldGrailMatch(requestParameters: CreateWorldGrailMatchOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldGrailMatchResponse> {
+        const response = await this.createWorldGrailMatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Lend a piece from your vault to this week\'s Hall of Grails exhibition: { vaultItemId, credit: \'name\' | \'anonymous\' }. It shows under your plaque until the exhibition ends; it stays in your vault (still listable and withdrawable), and stops showing if it leaves.
      */
-    async createWorldHallLoanRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldHallLoanResponse>> {
+    async createWorldHallLoanRaw(requestParameters: CreateWorldHallLoanOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldHallLoanResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4003,6 +4776,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldHallLoanRequestToJSON(requestParameters.createWorldHallLoanRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldHallLoanResponseFromJSON(jsonValue));
@@ -4011,15 +4785,15 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Lend a piece from your vault to this week\'s Hall of Grails exhibition: { vaultItemId, credit: \'name\' | \'anonymous\' }. It shows under your plaque until the exhibition ends; it stays in your vault (still listable and withdrawable), and stops showing if it leaves.
      */
-    async createWorldHallLoan(initOverrides?: RequestInit): Promise<CreateWorldHallLoanResponse> {
-        const response = await this.createWorldHallLoanRaw(initOverrides);
+    async createWorldHallLoan(requestParameters: CreateWorldHallLoanOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldHallLoanResponse> {
+        const response = await this.createWorldHallLoanRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Ask a home owner whether they would sell a piece you saw there (an item or a decor piece).
      */
-    async createWorldHomeAskRaw(requestParameters: CreateWorldHomeAskRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldHomeAskResponse>> {
+    async createWorldHomeAskRaw(requestParameters: CreateWorldHomeAskOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldHomeAskResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createWorldHomeAsk.');
         }
@@ -4027,6 +4801,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4041,6 +4817,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldHomeAskRequestToJSON(requestParameters.createWorldHomeAskRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldHomeAskResponseFromJSON(jsonValue));
@@ -4049,7 +4826,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Ask a home owner whether they would sell a piece you saw there (an item or a decor piece).
      */
-    async createWorldHomeAsk(requestParameters: CreateWorldHomeAskRequest, initOverrides?: RequestInit): Promise<CreateWorldHomeAskResponse> {
+    async createWorldHomeAsk(requestParameters: CreateWorldHomeAskOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldHomeAskResponse> {
         const response = await this.createWorldHomeAskRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4066,6 +4843,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -4079,6 +4858,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: BodyRequestToJSON(requestParameters.bodyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldHomeGuestbookResponseFromJSON(jsonValue));
@@ -4095,7 +4875,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Report a guestbook entry to moderation.
      */
-    async createWorldHomeGuestbookReportRaw(requestParameters: CreateWorldHomeGuestbookReportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGameReportResponse>> {
+    async createWorldHomeGuestbookReportRaw(requestParameters: CreateWorldHomeGuestbookReportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldGameReportResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createWorldHomeGuestbookReport.');
         }
@@ -4107,6 +4887,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4121,6 +4903,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldHomeGuestbookReportRequestToJSON(requestParameters.createWorldHomeGuestbookReportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldGameReportResponseFromJSON(jsonValue));
@@ -4129,7 +4912,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Report a guestbook entry to moderation.
      */
-    async createWorldHomeGuestbookReport(requestParameters: CreateWorldHomeGuestbookReportRequest, initOverrides?: RequestInit): Promise<CreateWorldGameReportResponse> {
+    async createWorldHomeGuestbookReport(requestParameters: CreateWorldHomeGuestbookReportOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldGameReportResponse> {
         const response = await this.createWorldHomeGuestbookReportRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4171,10 +4954,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Upload one asset: kind glb (4 MB), wav (4 MB) or png (1 MB), the file as base64; purpose product (your designs, the default) or game (Carnival Studio files such as badge icons). Answers its sha256 and the path to reference from MML.
      */
-    async createWorldInteractiveAssetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldInteractiveAssetResponse>> {
+    async createWorldInteractiveAssetRaw(requestParameters: CreateWorldInteractiveAssetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldInteractiveAssetResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4189,6 +4974,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldInteractiveAssetRequestToJSON(requestParameters.createWorldInteractiveAssetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldInteractiveAssetResponseFromJSON(jsonValue));
@@ -4197,18 +4983,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Upload one asset: kind glb (4 MB), wav (4 MB) or png (1 MB), the file as base64; purpose product (your designs, the default) or game (Carnival Studio files such as badge icons). Answers its sha256 and the path to reference from MML.
      */
-    async createWorldInteractiveAsset(initOverrides?: RequestInit): Promise<CreateWorldInteractiveAssetResponse> {
-        const response = await this.createWorldInteractiveAssetRaw(initOverrides);
+    async createWorldInteractiveAsset(requestParameters: CreateWorldInteractiveAssetOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldInteractiveAssetResponse> {
+        const response = await this.createWorldInteractiveAssetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Create an interactive design: name, footprint (s, m, l or f), optional tint and description, an asking price in COSM base units (a string, six decimals) and optional max supply. Inactive until ops approve a submitted version.
      */
-    async createWorldInteractiveDesignRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldInteractiveDesignResponse>> {
+    async createWorldInteractiveDesignRaw(requestParameters: CreateWorldInteractiveDesignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldInteractiveDesignResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4223,6 +5011,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldInteractiveDesignRequestToJSON(requestParameters.createWorldInteractiveDesignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldInteractiveDesignResponseFromJSON(jsonValue));
@@ -4231,8 +5020,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Create an interactive design: name, footprint (s, m, l or f), optional tint and description, an asking price in COSM base units (a string, six decimals) and optional max supply. Inactive until ops approve a submitted version.
      */
-    async createWorldInteractiveDesign(initOverrides?: RequestInit): Promise<GetWorldInteractiveDesignResponse> {
-        const response = await this.createWorldInteractiveDesignRaw(initOverrides);
+    async createWorldInteractiveDesign(requestParameters: CreateWorldInteractiveDesignOperationRequest = {}, initOverrides?: RequestInit): Promise<GetWorldInteractiveDesignResponse> {
+        const response = await this.createWorldInteractiveDesignRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4353,10 +5142,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Wipe the stored state of an interactive piece standing in a place you own (a home or your boutique).
      */
-    async createWorldInteractiveResetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldInteractiveResetResponse>> {
+    async createWorldInteractiveResetRaw(requestParameters: CreateWorldInteractiveResetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldInteractiveResetResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4371,6 +5162,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldInteractiveResetRequestToJSON(requestParameters.createWorldInteractiveResetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldInteractiveResetResponseFromJSON(jsonValue));
@@ -4379,22 +5171,28 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Wipe the stored state of an interactive piece standing in a place you own (a home or your boutique).
      */
-    async createWorldInteractiveReset(initOverrides?: RequestInit): Promise<CreateWorldInteractiveResetResponse> {
-        const response = await this.createWorldInteractiveResetRaw(initOverrides);
+    async createWorldInteractiveReset(requestParameters: CreateWorldInteractiveResetOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldInteractiveResetResponse> {
+        const response = await this.createWorldInteractiveResetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Answer a price check: your estimate of the item value in CENTS and an optional note. Moves no money; the asker may accept it.
      */
-    async createWorldJobAppraisalAnswerRaw(requestParameters: CreateWorldJobAppraisalAnswerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldJobAppraisalAnswerResponse>> {
+    async createWorldJobAppraisalAnswerRaw(requestParameters: CreateWorldJobAppraisalAnswerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldJobAppraisalAnswerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldJobAppraisalAnswer.');
+        }
+
+        if (requestParameters.createWorldJobAppraisalAnswerRequest === null || requestParameters.createWorldJobAppraisalAnswerRequest === undefined) {
+            throw new runtime.RequiredError('createWorldJobAppraisalAnswerRequest','Required parameter requestParameters.createWorldJobAppraisalAnswerRequest was null or undefined when calling createWorldJobAppraisalAnswer.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4409,6 +5207,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldJobAppraisalAnswerRequestToJSON(requestParameters.createWorldJobAppraisalAnswerRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldJobAppraisalAnswerResponseFromJSON(jsonValue));
@@ -4417,7 +5216,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Answer a price check: your estimate of the item value in CENTS and an optional note. Moves no money; the asker may accept it.
      */
-    async createWorldJobAppraisalAnswer(requestParameters: CreateWorldJobAppraisalAnswerRequest, initOverrides?: RequestInit): Promise<CreateWorldJobAppraisalAnswerResponse> {
+    async createWorldJobAppraisalAnswer(requestParameters: CreateWorldJobAppraisalAnswerOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldJobAppraisalAnswerResponse> {
         const response = await this.createWorldJobAppraisalAnswerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4501,7 +5300,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Buy a plot or a street.
      */
-    async createWorldMarketBuyRaw(requestParameters: CreateWorldMarketBuyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldMarketBuyResponse>> {
+    async createWorldMarketBuyRaw(requestParameters: CreateWorldMarketBuyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldMarketBuyResponse>> {
         if (requestParameters.kind === null || requestParameters.kind === undefined) {
             throw new runtime.RequiredError('kind','Required parameter requestParameters.kind was null or undefined when calling createWorldMarketBuy.');
         }
@@ -4513,6 +5312,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4527,6 +5328,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldMarketBuyRequestToJSON(requestParameters.createWorldMarketBuyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldMarketBuyResponseFromJSON(jsonValue));
@@ -4535,7 +5337,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Buy a plot or a street.
      */
-    async createWorldMarketBuy(requestParameters: CreateWorldMarketBuyRequest, initOverrides?: RequestInit): Promise<CreateWorldMarketBuyResponse> {
+    async createWorldMarketBuy(requestParameters: CreateWorldMarketBuyOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldMarketBuyResponse> {
         const response = await this.createWorldMarketBuyRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4543,10 +5345,16 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * List a plot for sale or rent, or a street for sale.
      */
-    async createWorldMarketListingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldMarketListingResponse>> {
+    async createWorldMarketListingRaw(requestParameters: CreateWorldMarketListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldMarketListingResponse>> {
+        if (requestParameters.createWorldMarketListingRequest === null || requestParameters.createWorldMarketListingRequest === undefined) {
+            throw new runtime.RequiredError('createWorldMarketListingRequest','Required parameter requestParameters.createWorldMarketListingRequest was null or undefined when calling createWorldMarketListing.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4561,6 +5369,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldMarketListingRequestToJSON(requestParameters.createWorldMarketListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldMarketListingResponseFromJSON(jsonValue));
@@ -4569,8 +5378,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * List a plot for sale or rent, or a street for sale.
      */
-    async createWorldMarketListing(initOverrides?: RequestInit): Promise<CreateWorldMarketListingResponse> {
-        const response = await this.createWorldMarketListingRaw(initOverrides);
+    async createWorldMarketListing(requestParameters: CreateWorldMarketListingOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldMarketListingResponse> {
+        const response = await this.createWorldMarketListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4586,6 +5395,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -4599,6 +5410,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldMarketBuyRequestToJSON(requestParameters.createWorldMarketBuyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldMarketPlotRentResponseFromJSON(jsonValue));
@@ -4728,7 +5540,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Say something in your party chat (up to 2000 characters).
      */
-    async createWorldPartyChatRaw(requestParameters: CreateWorldPartyChatRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldResponse>> {
+    async createWorldPartyChatRaw(requestParameters: CreateWorldPartyChatOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldPartyChat.');
         }
@@ -4736,6 +5548,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4750,6 +5564,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldPartyChatRequestToJSON(requestParameters.createWorldPartyChatRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldResponseFromJSON(jsonValue));
@@ -4758,7 +5573,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Say something in your party chat (up to 2000 characters).
      */
-    async createWorldPartyChat(requestParameters: CreateWorldPartyChatRequest, initOverrides?: RequestInit): Promise<WorldResponse> {
+    async createWorldPartyChat(requestParameters: CreateWorldPartyChatOperationRequest, initOverrides?: RequestInit): Promise<WorldResponse> {
         const response = await this.createWorldPartyChatRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4775,6 +5590,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -4788,6 +5605,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: UserIdRequestToJSON(requestParameters.userIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldPartyInviteResponseFromJSON(jsonValue));
@@ -4889,6 +5707,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -4902,6 +5722,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: UserIdRequestToJSON(requestParameters.userIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldPartyKickResponseFromJSON(jsonValue));
@@ -4927,6 +5748,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -4940,6 +5763,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: UserIdRequestToJSON(requestParameters.userIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldPartyLeaderResponseFromJSON(jsonValue));
@@ -4994,7 +5818,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Add a listing (listingId, or its shop slug) to the party wishlist; answers the wishlist.
      */
-    async createWorldPartyWishlistRaw(requestParameters: CreateWorldPartyWishlistRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPartyWishlistResponse>> {
+    async createWorldPartyWishlistRaw(requestParameters: CreateWorldPartyWishlistOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPartyWishlistResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldPartyWishlist.');
         }
@@ -5002,6 +5826,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5016,6 +5842,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldPartyWishlistRequestToJSON(requestParameters.createWorldPartyWishlistRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldPartyWishlistResponseFromJSON(jsonValue));
@@ -5024,7 +5851,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Add a listing (listingId, or its shop slug) to the party wishlist; answers the wishlist.
      */
-    async createWorldPartyWishlist(requestParameters: CreateWorldPartyWishlistRequest, initOverrides?: RequestInit): Promise<CreateWorldPartyWishlistResponse> {
+    async createWorldPartyWishlist(requestParameters: CreateWorldPartyWishlistOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldPartyWishlistResponse> {
         const response = await this.createWorldPartyWishlistRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5116,14 +5943,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * A presigned upload for a plot\'s photo (WebP/PNG/JPEG, up to 4 MB): PUT the image to uploadUrl with the same Content-Type and exact Content-Length, then store publicUrl with PUT .../photo.
      */
-    async createWorldPropertyPlotPhotoUploadUrlRaw(requestParameters: CreateWorldPropertyPlotPhotoUploadUrlRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPropertyPlotPhotoUploadUrlResponse>> {
+    async createWorldPropertyPlotPhotoUploadUrlRaw(requestParameters: CreateWorldPropertyPlotPhotoUploadUrlOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPropertyPlotPhotoUploadUrlResponse>> {
         if (requestParameters.plotId === null || requestParameters.plotId === undefined) {
             throw new runtime.RequiredError('plotId','Required parameter requestParameters.plotId was null or undefined when calling createWorldPropertyPlotPhotoUploadUrl.');
+        }
+
+        if (requestParameters.createWorldPropertyPlotPhotoUploadUrlRequest === null || requestParameters.createWorldPropertyPlotPhotoUploadUrlRequest === undefined) {
+            throw new runtime.RequiredError('createWorldPropertyPlotPhotoUploadUrlRequest','Required parameter requestParameters.createWorldPropertyPlotPhotoUploadUrlRequest was null or undefined when calling createWorldPropertyPlotPhotoUploadUrl.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5138,6 +5971,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldPropertyPlotPhotoUploadUrlRequestToJSON(requestParameters.createWorldPropertyPlotPhotoUploadUrlRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldPropertyPlotPhotoUploadUrlResponseFromJSON(jsonValue));
@@ -5146,7 +5980,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * A presigned upload for a plot\'s photo (WebP/PNG/JPEG, up to 4 MB): PUT the image to uploadUrl with the same Content-Type and exact Content-Length, then store publicUrl with PUT .../photo.
      */
-    async createWorldPropertyPlotPhotoUploadUrl(requestParameters: CreateWorldPropertyPlotPhotoUploadUrlRequest, initOverrides?: RequestInit): Promise<CreateWorldPropertyPlotPhotoUploadUrlResponse> {
+    async createWorldPropertyPlotPhotoUploadUrl(requestParameters: CreateWorldPropertyPlotPhotoUploadUrlOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldPropertyPlotPhotoUploadUrlResponse> {
         const response = await this.createWorldPropertyPlotPhotoUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5154,14 +5988,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Stand one of your showrooms on a plot you own or rent.
      */
-    async createWorldPropertyPlotShowroomRaw(requestParameters: CreateWorldPropertyPlotShowroomRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPropertyPlotShowroomResponse>> {
+    async createWorldPropertyPlotShowroomRaw(requestParameters: CreateWorldPropertyPlotShowroomOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPropertyPlotShowroomResponse>> {
         if (requestParameters.plotId === null || requestParameters.plotId === undefined) {
             throw new runtime.RequiredError('plotId','Required parameter requestParameters.plotId was null or undefined when calling createWorldPropertyPlotShowroom.');
+        }
+
+        if (requestParameters.createWorldPropertyPlotShowroomRequest === null || requestParameters.createWorldPropertyPlotShowroomRequest === undefined) {
+            throw new runtime.RequiredError('createWorldPropertyPlotShowroomRequest','Required parameter requestParameters.createWorldPropertyPlotShowroomRequest was null or undefined when calling createWorldPropertyPlotShowroom.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5176,6 +6016,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldPropertyPlotShowroomRequestToJSON(requestParameters.createWorldPropertyPlotShowroomRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldPropertyPlotShowroomResponseFromJSON(jsonValue));
@@ -5184,7 +6025,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Stand one of your showrooms on a plot you own or rent.
      */
-    async createWorldPropertyPlotShowroom(requestParameters: CreateWorldPropertyPlotShowroomRequest, initOverrides?: RequestInit): Promise<CreateWorldPropertyPlotShowroomResponse> {
+    async createWorldPropertyPlotShowroom(requestParameters: CreateWorldPropertyPlotShowroomOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldPropertyPlotShowroomResponse> {
         const response = await this.createWorldPropertyPlotShowroomRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5192,10 +6033,16 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Ban someone owner-wide or from one showroom.
      */
-    async createWorldPropertyTrespassedRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldPropertyTrespassedResponse>> {
+    async createWorldPropertyTrespassedRaw(requestParameters: CreateWorldPropertyTrespassedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldPropertyTrespassedResponse>> {
+        if (requestParameters.createWorldPropertyTrespassedRequest === null || requestParameters.createWorldPropertyTrespassedRequest === undefined) {
+            throw new runtime.RequiredError('createWorldPropertyTrespassedRequest','Required parameter requestParameters.createWorldPropertyTrespassedRequest was null or undefined when calling createWorldPropertyTrespassed.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5210,6 +6057,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldPropertyTrespassedRequestToJSON(requestParameters.createWorldPropertyTrespassedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListWorldPropertyTrespassedResponseFromJSON(jsonValue));
@@ -5218,18 +6066,24 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Ban someone owner-wide or from one showroom.
      */
-    async createWorldPropertyTrespassed(initOverrides?: RequestInit): Promise<ListWorldPropertyTrespassedResponse> {
-        const response = await this.createWorldPropertyTrespassedRaw(initOverrides);
+    async createWorldPropertyTrespassed(requestParameters: CreateWorldPropertyTrespassedOperationRequest, initOverrides?: RequestInit): Promise<ListWorldPropertyTrespassedResponse> {
+        const response = await this.createWorldPropertyTrespassedRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Open a Space (sellers only, at most two): slug, name, venue, optional membership and about.
      */
-    async createWorldSpaceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceResponse>> {
+    async createWorldSpaceRaw(requestParameters: CreateWorldSpaceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceResponse>> {
+        if (requestParameters.createWorldSpaceRequest === null || requestParameters.createWorldSpaceRequest === undefined) {
+            throw new runtime.RequiredError('createWorldSpaceRequest','Required parameter requestParameters.createWorldSpaceRequest was null or undefined when calling createWorldSpace.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5244,6 +6098,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldSpaceRequestToJSON(requestParameters.createWorldSpaceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldSpaceResponseFromJSON(jsonValue));
@@ -5252,22 +6107,28 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Open a Space (sellers only, at most two): slug, name, venue, optional membership and about.
      */
-    async createWorldSpace(initOverrides?: RequestInit): Promise<CreateWorldSpaceResponse> {
-        const response = await this.createWorldSpaceRaw(initOverrides);
+    async createWorldSpace(requestParameters: CreateWorldSpaceOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceResponse> {
+        const response = await this.createWorldSpaceRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * As host or co-host, put an event on: title, kind, optional about, ISO start and end with offset.
      */
-    async createWorldSpaceEventRaw(requestParameters: CreateWorldSpaceEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceEventResponse>> {
+    async createWorldSpaceEventRaw(requestParameters: CreateWorldSpaceEventOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceEventResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createWorldSpaceEvent.');
+        }
+
+        if (requestParameters.createWorldSpaceEventRequest === null || requestParameters.createWorldSpaceEventRequest === undefined) {
+            throw new runtime.RequiredError('createWorldSpaceEventRequest','Required parameter requestParameters.createWorldSpaceEventRequest was null or undefined when calling createWorldSpaceEvent.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5282,6 +6143,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldSpaceEventRequestToJSON(requestParameters.createWorldSpaceEventRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldSpaceEventResponseFromJSON(jsonValue));
@@ -5290,7 +6152,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host or co-host, put an event on: title, kind, optional about, ISO start and end with offset.
      */
-    async createWorldSpaceEvent(requestParameters: CreateWorldSpaceEventRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceEventResponse> {
+    async createWorldSpaceEvent(requestParameters: CreateWorldSpaceEventOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceEventResponse> {
         const response = await this.createWorldSpaceEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5298,7 +6160,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Say whether you are going to an event.
      */
-    async createWorldSpaceEventRsvpRaw(requestParameters: CreateWorldSpaceEventRsvpRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceEventRsvpResponse>> {
+    async createWorldSpaceEventRsvpRaw(requestParameters: CreateWorldSpaceEventRsvpOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceEventRsvpResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createWorldSpaceEventRsvp.');
         }
@@ -5307,9 +6169,15 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldSpaceEventRsvp.');
         }
 
+        if (requestParameters.createWorldSpaceEventRsvpRequest === null || requestParameters.createWorldSpaceEventRsvpRequest === undefined) {
+            throw new runtime.RequiredError('createWorldSpaceEventRsvpRequest','Required parameter requestParameters.createWorldSpaceEventRsvpRequest was null or undefined when calling createWorldSpaceEventRsvp.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5324,6 +6192,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldSpaceEventRsvpRequestToJSON(requestParameters.createWorldSpaceEventRsvpRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldSpaceEventRsvpResponseFromJSON(jsonValue));
@@ -5332,7 +6201,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Say whether you are going to an event.
      */
-    async createWorldSpaceEventRsvp(requestParameters: CreateWorldSpaceEventRsvpRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceEventRsvpResponse> {
+    async createWorldSpaceEventRsvp(requestParameters: CreateWorldSpaceEventRsvpOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceEventRsvpResponse> {
         const response = await this.createWorldSpaceEventRsvpRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5345,9 +6214,15 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createWorldSpaceInvite.');
         }
 
+        if (requestParameters.userIdRequest === null || requestParameters.userIdRequest === undefined) {
+            throw new runtime.RequiredError('userIdRequest','Required parameter requestParameters.userIdRequest was null or undefined when calling createWorldSpaceInvite.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5362,6 +6237,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: UserIdRequestToJSON(requestParameters.userIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldSpaceInviteResponseFromJSON(jsonValue));
@@ -5454,7 +6330,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host or co-host, accept or turn down a request to join.
      */
-    async createWorldSpaceRequestByUserIdRaw(requestParameters: CreateWorldSpaceRequestByUserIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceRequestByUserIdResponse>> {
+    async createWorldSpaceRequestByUserIdRaw(requestParameters: CreateWorldSpaceRequestByUserIdOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceRequestByUserIdResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createWorldSpaceRequestByUserId.');
         }
@@ -5463,9 +6339,15 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling createWorldSpaceRequestByUserId.');
         }
 
+        if (requestParameters.createWorldSpaceRequestByUserIdRequest === null || requestParameters.createWorldSpaceRequestByUserIdRequest === undefined) {
+            throw new runtime.RequiredError('createWorldSpaceRequestByUserIdRequest','Required parameter requestParameters.createWorldSpaceRequestByUserIdRequest was null or undefined when calling createWorldSpaceRequestByUserId.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5480,6 +6362,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldSpaceRequestByUserIdRequestToJSON(requestParameters.createWorldSpaceRequestByUserIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldSpaceRequestByUserIdResponseFromJSON(jsonValue));
@@ -5488,7 +6371,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host or co-host, accept or turn down a request to join.
      */
-    async createWorldSpaceRequestByUserId(requestParameters: CreateWorldSpaceRequestByUserIdRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceRequestByUserIdResponse> {
+    async createWorldSpaceRequestByUserId(requestParameters: CreateWorldSpaceRequestByUserIdOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceRequestByUserIdResponse> {
         const response = await this.createWorldSpaceRequestByUserIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5496,14 +6379,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host, make a member a co-host or back to a member.
      */
-    async createWorldSpaceRoleRaw(requestParameters: CreateWorldSpaceRoleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceRoleResponse>> {
+    async createWorldSpaceRoleRaw(requestParameters: CreateWorldSpaceRoleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldSpaceRoleResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createWorldSpaceRole.');
+        }
+
+        if (requestParameters.createWorldSpaceRoleRequest === null || requestParameters.createWorldSpaceRoleRequest === undefined) {
+            throw new runtime.RequiredError('createWorldSpaceRoleRequest','Required parameter requestParameters.createWorldSpaceRoleRequest was null or undefined when calling createWorldSpaceRole.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5518,6 +6407,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldSpaceRoleRequestToJSON(requestParameters.createWorldSpaceRoleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldSpaceRoleResponseFromJSON(jsonValue));
@@ -5526,7 +6416,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host, make a member a co-host or back to a member.
      */
-    async createWorldSpaceRole(requestParameters: CreateWorldSpaceRoleRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceRoleResponse> {
+    async createWorldSpaceRole(requestParameters: CreateWorldSpaceRoleOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldSpaceRoleResponse> {
         const response = await this.createWorldSpaceRoleRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5534,14 +6424,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Accept or decline an application.
      */
-    async createWorldStaffApplicationDecideRaw(requestParameters: CreateWorldStaffApplicationDecideRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldStaffApplicationDecideResponse>> {
+    async createWorldStaffApplicationDecideRaw(requestParameters: CreateWorldStaffApplicationDecideOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldStaffApplicationDecideResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldStaffApplicationDecide.');
+        }
+
+        if (requestParameters.createWorldStaffApplicationDecideRequest === null || requestParameters.createWorldStaffApplicationDecideRequest === undefined) {
+            throw new runtime.RequiredError('createWorldStaffApplicationDecideRequest','Required parameter requestParameters.createWorldStaffApplicationDecideRequest was null or undefined when calling createWorldStaffApplicationDecide.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5556,6 +6452,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldStaffApplicationDecideRequestToJSON(requestParameters.createWorldStaffApplicationDecideRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldStaffApplicationDecideResponseFromJSON(jsonValue));
@@ -5564,7 +6461,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Accept or decline an application.
      */
-    async createWorldStaffApplicationDecide(requestParameters: CreateWorldStaffApplicationDecideRequest, initOverrides?: RequestInit): Promise<CreateWorldStaffApplicationDecideResponse> {
+    async createWorldStaffApplicationDecide(requestParameters: CreateWorldStaffApplicationDecideOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldStaffApplicationDecideResponse> {
         const response = await this.createWorldStaffApplicationDecideRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5572,14 +6469,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Rate the worker of one of your seats.
      */
-    async createWorldStaffAssignmentRateWorkerRaw(requestParameters: CreateWorldStaffAssignmentRateWorkerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldStaffAssignmentRateWorkerResponse>> {
+    async createWorldStaffAssignmentRateWorkerRaw(requestParameters: CreateWorldStaffAssignmentRateWorkerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldStaffAssignmentRateWorkerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldStaffAssignmentRateWorker.');
+        }
+
+        if (requestParameters.createWorldStaffAssignmentRateWorkerRequest === null || requestParameters.createWorldStaffAssignmentRateWorkerRequest === undefined) {
+            throw new runtime.RequiredError('createWorldStaffAssignmentRateWorkerRequest','Required parameter requestParameters.createWorldStaffAssignmentRateWorkerRequest was null or undefined when calling createWorldStaffAssignmentRateWorker.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5594,6 +6497,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldStaffAssignmentRateWorkerRequestToJSON(requestParameters.createWorldStaffAssignmentRateWorkerRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldStaffAssignmentRateWorkerResponseFromJSON(jsonValue));
@@ -5602,7 +6506,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Rate the worker of one of your seats.
      */
-    async createWorldStaffAssignmentRateWorker(requestParameters: CreateWorldStaffAssignmentRateWorkerRequest, initOverrides?: RequestInit): Promise<CreateWorldStaffAssignmentRateWorkerResponse> {
+    async createWorldStaffAssignmentRateWorker(requestParameters: CreateWorldStaffAssignmentRateWorkerOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldStaffAssignmentRateWorkerResponse> {
         const response = await this.createWorldStaffAssignmentRateWorkerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5610,10 +6514,16 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Post a job: a showroom, stall or convention, pay, recurrence and rules.
      */
-    async createWorldStaffPostingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldStaffPostingResponse>> {
+    async createWorldStaffPostingRaw(requestParameters: CreateWorldStaffPostingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldStaffPostingResponse>> {
+        if (requestParameters.createWorldStaffPostingRequest === null || requestParameters.createWorldStaffPostingRequest === undefined) {
+            throw new runtime.RequiredError('createWorldStaffPostingRequest','Required parameter requestParameters.createWorldStaffPostingRequest was null or undefined when calling createWorldStaffPosting.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5628,6 +6538,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldStaffPostingRequestToJSON(requestParameters.createWorldStaffPostingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldStaffPostingResponseFromJSON(jsonValue));
@@ -5636,22 +6547,28 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Post a job: a showroom, stall or convention, pay, recurrence and rules.
      */
-    async createWorldStaffPosting(initOverrides?: RequestInit): Promise<WorldStaffPostingResponse> {
-        const response = await this.createWorldStaffPostingRaw(initOverrides);
+    async createWorldStaffPosting(requestParameters: CreateWorldStaffPostingOperationRequest, initOverrides?: RequestInit): Promise<WorldStaffPostingResponse> {
+        const response = await this.createWorldStaffPostingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Open, pause or close a posting.
      */
-    async createWorldStaffPostingStatusRaw(requestParameters: CreateWorldStaffPostingStatusRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldStaffPostingResponse>> {
+    async createWorldStaffPostingStatusRaw(requestParameters: CreateWorldStaffPostingStatusOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldStaffPostingResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldStaffPostingStatus.');
+        }
+
+        if (requestParameters.createWorldStaffPostingStatusRequest === null || requestParameters.createWorldStaffPostingStatusRequest === undefined) {
+            throw new runtime.RequiredError('createWorldStaffPostingStatusRequest','Required parameter requestParameters.createWorldStaffPostingStatusRequest was null or undefined when calling createWorldStaffPostingStatus.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5666,6 +6583,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldStaffPostingStatusRequestToJSON(requestParameters.createWorldStaffPostingStatusRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldStaffPostingResponseFromJSON(jsonValue));
@@ -5674,22 +6592,28 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Open, pause or close a posting.
      */
-    async createWorldStaffPostingStatus(requestParameters: CreateWorldStaffPostingStatusRequest, initOverrides?: RequestInit): Promise<WorldStaffPostingResponse> {
+    async createWorldStaffPostingStatus(requestParameters: CreateWorldStaffPostingStatusOperationRequest, initOverrides?: RequestInit): Promise<WorldStaffPostingResponse> {
         const response = await this.createWorldStaffPostingStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Pay your street\'s upkeep forward.
+     * Pay your store\'s street upkeep forward.
      */
-    async createWorldStreetOwnedUpkeepPayRaw(requestParameters: CreateWorldStreetOwnedUpkeepPayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldStreetOwnedUpkeepPayResponse>> {
+    async createWorldStreetOwnedUpkeepPayRaw(requestParameters: CreateWorldStreetOwnedUpkeepPayOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldStreetOwnedUpkeepPayResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldStreetOwnedUpkeepPay.');
+        }
+
+        if (requestParameters.createWorldStreetOwnedUpkeepPayRequest === null || requestParameters.createWorldStreetOwnedUpkeepPayRequest === undefined) {
+            throw new runtime.RequiredError('createWorldStreetOwnedUpkeepPayRequest','Required parameter requestParameters.createWorldStreetOwnedUpkeepPayRequest was null or undefined when calling createWorldStreetOwnedUpkeepPay.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5704,15 +6628,16 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldStreetOwnedUpkeepPayRequestToJSON(requestParameters.createWorldStreetOwnedUpkeepPayRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldStreetOwnedUpkeepPayResponseFromJSON(jsonValue));
     }
 
     /**
-     * Pay your street\'s upkeep forward.
+     * Pay your store\'s street upkeep forward.
      */
-    async createWorldStreetOwnedUpkeepPay(requestParameters: CreateWorldStreetOwnedUpkeepPayRequest, initOverrides?: RequestInit): Promise<CreateWorldStreetOwnedUpkeepPayResponse> {
+    async createWorldStreetOwnedUpkeepPay(requestParameters: CreateWorldStreetOwnedUpkeepPayOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldStreetOwnedUpkeepPayResponse> {
         const response = await this.createWorldStreetOwnedUpkeepPayRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5758,14 +6683,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Rate the employer of a public-job shift you worked: paid on time, job as described, conduct.
      */
-    async createWorldWorkAssignmentRateEmployerRaw(requestParameters: CreateWorldWorkAssignmentRateEmployerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldStaffAssignmentRateWorkerResponse>> {
+    async createWorldWorkAssignmentRateEmployerRaw(requestParameters: CreateWorldWorkAssignmentRateEmployerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldStaffAssignmentRateWorkerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorldWorkAssignmentRateEmployer.');
+        }
+
+        if (requestParameters.createWorldWorkAssignmentRateEmployerRequest === null || requestParameters.createWorldWorkAssignmentRateEmployerRequest === undefined) {
+            throw new runtime.RequiredError('createWorldWorkAssignmentRateEmployerRequest','Required parameter requestParameters.createWorldWorkAssignmentRateEmployerRequest was null or undefined when calling createWorldWorkAssignmentRateEmployer.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5780,6 +6711,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldWorkAssignmentRateEmployerRequestToJSON(requestParameters.createWorldWorkAssignmentRateEmployerRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldStaffAssignmentRateWorkerResponseFromJSON(jsonValue));
@@ -5788,7 +6720,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Rate the employer of a public-job shift you worked: paid on time, job as described, conduct.
      */
-    async createWorldWorkAssignmentRateEmployer(requestParameters: CreateWorldWorkAssignmentRateEmployerRequest, initOverrides?: RequestInit): Promise<CreateWorldStaffAssignmentRateWorkerResponse> {
+    async createWorldWorkAssignmentRateEmployer(requestParameters: CreateWorldWorkAssignmentRateEmployerOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldStaffAssignmentRateWorkerResponse> {
         const response = await this.createWorldWorkAssignmentRateEmployerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5805,6 +6737,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -5818,6 +6752,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVideoRequestDeclineRequestToJSON(requestParameters.createVideoRequestDeclineRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldWorkPostingApplyResponseFromJSON(jsonValue));
@@ -5964,14 +6899,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Remove units (by id, up to 500) from one of your warehouse rooms.
      */
-    async deleteSpatialSceneNodeRaw(requestParameters: DeleteSpatialSceneNodeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteSpatialSceneNodeResponse>> {
+    async deleteSpatialSceneNodeRaw(requestParameters: DeleteSpatialSceneNodeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteSpatialSceneNodeResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteSpatialSceneNode.');
+        }
+
+        if (requestParameters.deleteSpatialSceneNodeRequest === null || requestParameters.deleteSpatialSceneNodeRequest === undefined) {
+            throw new runtime.RequiredError('deleteSpatialSceneNodeRequest','Required parameter requestParameters.deleteSpatialSceneNodeRequest was null or undefined when calling deleteSpatialSceneNode.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5986,6 +6927,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: DeleteSpatialSceneNodeRequestToJSON(requestParameters.deleteSpatialSceneNodeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteSpatialSceneNodeResponseFromJSON(jsonValue));
@@ -5994,7 +6936,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Remove units (by id, up to 500) from one of your warehouse rooms.
      */
-    async deleteSpatialSceneNode(requestParameters: DeleteSpatialSceneNodeRequest, initOverrides?: RequestInit): Promise<DeleteSpatialSceneNodeResponse> {
+    async deleteSpatialSceneNode(requestParameters: DeleteSpatialSceneNodeOperationRequest, initOverrides?: RequestInit): Promise<DeleteSpatialSceneNodeResponse> {
         const response = await this.deleteSpatialSceneNodeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6002,14 +6944,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Take an inventory item (or unit) off its rack.
      */
-    async deleteSpatialSceneWarehouseStockRaw(requestParameters: DeleteSpatialSceneWarehouseStockRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteSpatialSceneGrantResponse>> {
+    async deleteSpatialSceneWarehouseStockRaw(requestParameters: DeleteSpatialSceneWarehouseStockOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteSpatialSceneGrantResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteSpatialSceneWarehouseStock.');
+        }
+
+        if (requestParameters.deleteSpatialSceneWarehouseStockRequest === null || requestParameters.deleteSpatialSceneWarehouseStockRequest === undefined) {
+            throw new runtime.RequiredError('deleteSpatialSceneWarehouseStockRequest','Required parameter requestParameters.deleteSpatialSceneWarehouseStockRequest was null or undefined when calling deleteSpatialSceneWarehouseStock.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -6024,6 +6972,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: DeleteSpatialSceneWarehouseStockRequestToJSON(requestParameters.deleteSpatialSceneWarehouseStockRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteSpatialSceneGrantResponseFromJSON(jsonValue));
@@ -6032,7 +6981,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Take an inventory item (or unit) off its rack.
      */
-    async deleteSpatialSceneWarehouseStock(requestParameters: DeleteSpatialSceneWarehouseStockRequest, initOverrides?: RequestInit): Promise<DeleteSpatialSceneGrantResponse> {
+    async deleteSpatialSceneWarehouseStock(requestParameters: DeleteSpatialSceneWarehouseStockOperationRequest, initOverrides?: RequestInit): Promise<DeleteSpatialSceneGrantResponse> {
         const response = await this.deleteSpatialSceneWarehouseStockRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6204,6 +7153,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -6217,6 +7168,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: DeleteWorldExperienceRequestToJSON(requestParameters.deleteWorldExperienceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteWorldGamePackageResponseFromJSON(jsonValue));
@@ -6600,7 +7552,15 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling deleteWorldPropertyTrespassed.');
         }
 
+        if (requestParameters.place === null || requestParameters.place === undefined) {
+            throw new runtime.RequiredError('place','Required parameter requestParameters.place was null or undefined when calling deleteWorldPropertyTrespassed.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.place !== undefined) {
+            queryParameters['place'] = requestParameters.place;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -8376,6 +9336,10 @@ export class WorldApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -8451,6 +9415,14 @@ export class WorldApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.id !== undefined) {
+            queryParameters['id'] = requestParameters.id;
+        }
+
+        if (requestParameters.name !== undefined) {
+            queryParameters['name'] = requestParameters.name;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -9619,6 +10591,90 @@ export class WorldApi extends runtime.BaseAPI {
     }
 
     /**
+     * The stands of one of your places: kind plot (the showroom standing on it; none = no stands) or showroom. Same fields as /api/v1/world/stands/shop.
+     */
+    async getWorldStandRaw(requestParameters: GetWorldStandRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldStandResponse>> {
+        if (requestParameters.kind === null || requestParameters.kind === undefined) {
+            throw new runtime.RequiredError('kind','Required parameter requestParameters.kind was null or undefined when calling getWorldStand.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getWorldStand.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.storefrontId !== undefined) {
+            queryParameters['storefrontId'] = requestParameters.storefrontId;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/world/stands/{kind}/{id}`.replace(`{${"kind"}}`, encodeURIComponent(String(requestParameters.kind))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldStandResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The stands of one of your places: kind plot (the showroom standing on it; none = no stands) or showroom. Same fields as /api/v1/world/stands/shop.
+     */
+    async getWorldStand(requestParameters: GetWorldStandRequest, initOverrides?: RequestInit): Promise<GetWorldStandResponse> {
+        const response = await this.getWorldStandRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The stands of your shop (its primary showroom\'s visible fixtures, in order): index (what a drop\'s world.boothSpotIndex stores), name, display, units and capacity, whether another of your drops already stands there (takenBy) and priceCents (null: your own place costs nothing extra).
+     */
+    async getWorldStandShopRaw(requestParameters: GetWorldStandShopRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldStandResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.storefrontId !== undefined) {
+            queryParameters['storefrontId'] = requestParameters.storefrontId;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/world/stands/shop`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldStandResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The stands of your shop (its primary showroom\'s visible fixtures, in order): index (what a drop\'s world.boothSpotIndex stores), name, display, units and capacity, whether another of your drops already stands there (takenBy) and priceCents (null: your own place costs nothing extra).
+     */
+    async getWorldStandShop(requestParameters: GetWorldStandShopRequest = {}, initOverrides?: RequestInit): Promise<GetWorldStandResponse> {
+        const response = await this.getWorldStandShopRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * A street\'s fund: the CBX property payments on its plots over the last four weeks, and the street events it unlocked.
      */
     async getWorldStreetFundRaw(requestParameters: GetWorldStreetFundRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldStreetFundResponse>> {
@@ -9657,7 +10713,7 @@ export class WorldApi extends runtime.BaseAPI {
     }
 
     /**
-     * A street you own: tenants, applications, upkeep, look, fund.
+     * A street your store owns: tenants, applications, upkeep, look, fund, and the owning `store`.
      */
     async getWorldStreetOwnedRaw(requestParameters: GetWorldStreetOwnedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldStreetOwnedResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -9687,7 +10743,7 @@ export class WorldApi extends runtime.BaseAPI {
     }
 
     /**
-     * A street you own: tenants, applications, upkeep, look, fund.
+     * A street your store owns: tenants, applications, upkeep, look, fund, and the owning `store`.
      */
     async getWorldStreetOwned(requestParameters: GetWorldStreetOwnedRequest, initOverrides?: RequestInit): Promise<GetWorldStreetOwnedResponse> {
         const response = await this.getWorldStreetOwnedRaw(requestParameters, initOverrides);
@@ -9812,7 +10868,23 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getWorldVenueQuote.');
         }
 
+        if (requestParameters.startsOn === null || requestParameters.startsOn === undefined) {
+            throw new runtime.RequiredError('startsOn','Required parameter requestParameters.startsOn was null or undefined when calling getWorldVenueQuote.');
+        }
+
+        if (requestParameters.endsOn === null || requestParameters.endsOn === undefined) {
+            throw new runtime.RequiredError('endsOn','Required parameter requestParameters.endsOn was null or undefined when calling getWorldVenueQuote.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.startsOn !== undefined) {
+            queryParameters['startsOn'] = requestParameters.startsOn;
+        }
+
+        if (requestParameters.endsOn !== undefined) {
+            queryParameters['endsOn'] = requestParameters.endsOn;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -10026,6 +11098,26 @@ export class WorldApi extends runtime.BaseAPI {
             queryParameters['storefrontId'] = requestParameters.storefrontId;
         }
 
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.condition !== undefined) {
+            queryParameters['condition'] = requestParameters.condition;
+        }
+
+        if (requestParameters.listed !== undefined) {
+            queryParameters['listed'] = requestParameters.listed;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -10173,6 +11265,14 @@ export class WorldApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -10606,6 +11706,10 @@ export class WorldApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters._with !== undefined) {
+            queryParameters['with'] = requestParameters._with;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -10921,8 +12025,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Decor copies other people are reselling (asks in COSM); optional pair filter. Read only: listing and buying stay on crossly.net.
      */
-    async listWorldDecorMarketRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldDecorMarketResponse>> {
+    async listWorldDecorMarketRaw(requestParameters: ListWorldDecorMarketRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldDecorMarketResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.pair !== undefined) {
+            queryParameters['pair'] = requestParameters.pair;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -10947,8 +12055,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Decor copies other people are reselling (asks in COSM); optional pair filter. Read only: listing and buying stay on crossly.net.
      */
-    async listWorldDecorMarket(initOverrides?: RequestInit): Promise<ListWorldDecorMarketResponse> {
-        const response = await this.listWorldDecorMarketRaw(initOverrides);
+    async listWorldDecorMarket(requestParameters: ListWorldDecorMarketRequest = {}, initOverrides?: RequestInit): Promise<ListWorldDecorMarketResponse> {
+        const response = await this.listWorldDecorMarketRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -11473,8 +12581,52 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * The public Job Board, filterable.
      */
-    async listWorldJobBoardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldJobBoardResponse>> {
+    async listWorldJobBoardRaw(requestParameters: ListWorldJobBoardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldJobBoardResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.role !== undefined) {
+            queryParameters['role'] = requestParameters.role;
+        }
+
+        if (requestParameters.rail !== undefined) {
+            queryParameters['rail'] = requestParameters.rail;
+        }
+
+        if (requestParameters.basis !== undefined) {
+            queryParameters['basis'] = requestParameters.basis;
+        }
+
+        if (requestParameters.place !== undefined) {
+            queryParameters['place'] = requestParameters.place;
+        }
+
+        if (requestParameters.minPayCents !== undefined) {
+            queryParameters['minPayCents'] = requestParameters.minPayCents;
+        }
+
+        if (requestParameters.minEmployerRep !== undefined) {
+            queryParameters['minEmployerRep'] = requestParameters.minEmployerRep;
+        }
+
+        if (requestParameters.after !== undefined) {
+            queryParameters['after'] = requestParameters.after;
+        }
+
+        if (requestParameters.before !== undefined) {
+            queryParameters['before'] = requestParameters.before;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -11499,8 +12651,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * The public Job Board, filterable.
      */
-    async listWorldJobBoard(initOverrides?: RequestInit): Promise<ListWorldJobBoardResponse> {
-        const response = await this.listWorldJobBoardRaw(initOverrides);
+    async listWorldJobBoard(requestParameters: ListWorldJobBoardRequest = {}, initOverrides?: RequestInit): Promise<ListWorldJobBoardResponse> {
+        const response = await this.listWorldJobBoardRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -11541,8 +12693,52 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Plots and streets for sale or rent in the Worlds Market.
      */
-    async listWorldMarketRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldMarketResponse>> {
+    async listWorldMarketRaw(requestParameters: ListWorldMarketRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldMarketResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.kind !== undefined) {
+            queryParameters['kind'] = requestParameters.kind;
+        }
+
+        if (requestParameters.mode !== undefined) {
+            queryParameters['mode'] = requestParameters.mode;
+        }
+
+        if (requestParameters.street !== undefined) {
+            queryParameters['street'] = requestParameters.street;
+        }
+
+        if (requestParameters.theme !== undefined) {
+            queryParameters['theme'] = requestParameters.theme;
+        }
+
+        if (requestParameters.minPrice !== undefined) {
+            queryParameters['minPrice'] = requestParameters.minPrice;
+        }
+
+        if (requestParameters.maxPrice !== undefined) {
+            queryParameters['maxPrice'] = requestParameters.maxPrice;
+        }
+
+        if (requestParameters.size !== undefined) {
+            queryParameters['size'] = requestParameters.size;
+        }
+
+        if (requestParameters.traffic !== undefined) {
+            queryParameters['traffic'] = requestParameters.traffic;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.offset !== undefined) {
+            queryParameters['offset'] = requestParameters.offset;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -11567,8 +12763,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Plots and streets for sale or rent in the Worlds Market.
      */
-    async listWorldMarket(initOverrides?: RequestInit): Promise<ListWorldMarketResponse> {
-        const response = await this.listWorldMarketRaw(initOverrides);
+    async listWorldMarket(requestParameters: ListWorldMarketRequest = {}, initOverrides?: RequestInit): Promise<ListWorldMarketResponse> {
+        const response = await this.listWorldMarketRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -11913,8 +13109,16 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Promoted places in Crossly World: boosted showrooms and conventions (Sponsored, labelled \"Promoted\"), with the token to send when one is opened.
      */
-    async listWorldPromotedRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldPromotedResponse>> {
+    async listWorldPromotedRaw(requestParameters: ListWorldPromotedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldPromotedResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.kind !== undefined) {
+            queryParameters['kind'] = requestParameters.kind;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -11939,8 +13143,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Promoted places in Crossly World: boosted showrooms and conventions (Sponsored, labelled \"Promoted\"), with the token to send when one is opened.
      */
-    async listWorldPromoted(initOverrides?: RequestInit): Promise<ListWorldPromotedResponse> {
-        const response = await this.listWorldPromotedRaw(initOverrides);
+    async listWorldPromoted(requestParameters: ListWorldPromotedRequest = {}, initOverrides?: RequestInit): Promise<ListWorldPromotedResponse> {
+        const response = await this.listWorldPromotedRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -12083,8 +13287,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Provenance trails: where in Crossly World your purchases were found, newest first (optionally ?listingIds=a,b -- platform listing ids). data: [{ platformListingId, slug (the listing public slug), kind (room | window | stall | space | drop | auction | worn | agent), place (its name, or null when gone), at, line -- e.g. \"Found at The Sneaker Vault, Oct 2026\" }]. Yours only.
      */
-    async listWorldProvenanceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldProvenanceResponse>> {
+    async listWorldProvenanceRaw(requestParameters: ListWorldProvenanceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldProvenanceResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.listingIds !== undefined) {
+            queryParameters['listingIds'] = requestParameters.listingIds;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -12109,8 +13317,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Provenance trails: where in Crossly World your purchases were found, newest first (optionally ?listingIds=a,b -- platform listing ids). data: [{ platformListingId, slug (the listing public slug), kind (room | window | stall | space | drop | auction | worn | agent), place (its name, or null when gone), at, line -- e.g. \"Found at The Sneaker Vault, Oct 2026\" }]. Yours only.
      */
-    async listWorldProvenance(initOverrides?: RequestInit): Promise<ListWorldProvenanceResponse> {
-        const response = await this.listWorldProvenanceRaw(initOverrides);
+    async listWorldProvenance(requestParameters: ListWorldProvenanceRequest = {}, initOverrides?: RequestInit): Promise<ListWorldProvenanceResponse> {
+        const response = await this.listWorldProvenanceRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -12257,8 +13465,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * The Spaces directory: seller-hosted clubs with a venue, members and events (optional venue filter).
      */
-    async listWorldSpacesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldSpacesResponse>> {
+    async listWorldSpacesRaw(requestParameters: ListWorldSpacesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldSpacesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.venue !== undefined) {
+            queryParameters['venue'] = requestParameters.venue;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -12283,16 +13495,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * The Spaces directory: seller-hosted clubs with a venue, members and events (optional venue filter).
      */
-    async listWorldSpaces(initOverrides?: RequestInit): Promise<ListWorldSpacesResponse> {
-        const response = await this.listWorldSpacesRaw(initOverrides);
+    async listWorldSpaces(requestParameters: ListWorldSpacesRequest = {}, initOverrides?: RequestInit): Promise<ListWorldSpacesResponse> {
+        const response = await this.listWorldSpacesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Who applied to your postings, with their worker reputation.
      */
-    async listWorldStaffApplicantsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldStaffApplicantsResponse>> {
+    async listWorldStaffApplicantsRaw(requestParameters: ListWorldStaffApplicantsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldStaffApplicantsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.postingId !== undefined) {
+            queryParameters['postingId'] = requestParameters.postingId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -12317,8 +13533,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Who applied to your postings, with their worker reputation.
      */
-    async listWorldStaffApplicants(initOverrides?: RequestInit): Promise<ListWorldStaffApplicantsResponse> {
-        const response = await this.listWorldStaffApplicantsRaw(initOverrides);
+    async listWorldStaffApplicants(requestParameters: ListWorldStaffApplicantsRequest = {}, initOverrides?: RequestInit): Promise<ListWorldStaffApplicantsResponse> {
+        const response = await this.listWorldStaffApplicantsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -12597,8 +13813,16 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * The Convention Center halls for rent: size, floor, booths, price per day, and the days already taken (from, to).
      */
-    async listWorldVenuesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldVenuesResponse>> {
+    async listWorldVenuesRaw(requestParameters: ListWorldVenuesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldVenuesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -12623,15 +13847,19 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * The Convention Center halls for rent: size, floor, booths, price per day, and the days already taken (from, to).
      */
-    async listWorldVenues(initOverrides?: RequestInit): Promise<ListWorldVenuesResponse> {
-        const response = await this.listWorldVenuesRaw(initOverrides);
+    async listWorldVenues(requestParameters: ListWorldVenuesRequest = {}, initOverrides?: RequestInit): Promise<ListWorldVenuesResponse> {
+        const response = await this.listWorldVenuesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Replace the whole showroom layout (room, fixtures, placements, settings). Validated as a whole: every item must be this store\'s, every pin must fit its fixture, no two pins share a slot. Send If-Match (or expectedVersion) to refuse with 409 version_conflict if it changed meanwhile.
      */
-    async updateShowroomRaw(requestParameters: UpdateShowroomRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateShowroomResponse>> {
+    async updateShowroomRaw(requestParameters: UpdateShowroomOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateShowroomResponse>> {
+        if (requestParameters.updateShowroomRequest === null || requestParameters.updateShowroomRequest === undefined) {
+            throw new runtime.RequiredError('updateShowroomRequest','Required parameter requestParameters.updateShowroomRequest was null or undefined when calling updateShowroom.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.storefrontId !== undefined) {
@@ -12639,6 +13867,8 @@ export class WorldApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12653,6 +13883,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateShowroomRequestToJSON(requestParameters.updateShowroomRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateShowroomResponseFromJSON(jsonValue));
@@ -12661,7 +13892,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Replace the whole showroom layout (room, fixtures, placements, settings). Validated as a whole: every item must be this store\'s, every pin must fit its fixture, no two pins share a slot. Send If-Match (or expectedVersion) to refuse with 409 version_conflict if it changed meanwhile.
      */
-    async updateShowroom(requestParameters: UpdateShowroomRequest = {}, initOverrides?: RequestInit): Promise<UpdateShowroomResponse> {
+    async updateShowroom(requestParameters: UpdateShowroomOperationRequest, initOverrides?: RequestInit): Promise<UpdateShowroomResponse> {
         const response = await this.updateShowroomRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -12669,7 +13900,11 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Apply showroom ops in order, all or nothing: place, move, remove, fill (from a category / tag / brand / collection / search, in price, age, value or title order), sort, clear, add_fixture, update_fixture, remove_fixture, set_room, set_settings. Idempotent; refusals name the op (details.opIndex) with codes slot_occupied, item_not_in_store, fixture_capacity, unknown_fixture, unknown_display, version_conflict.
      */
-    async updateShowroom2Raw(requestParameters: UpdateShowroom2Request, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateShowroom2Response>> {
+    async updateShowroom2Raw(requestParameters: UpdateShowroom2OperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateShowroom2Response>> {
+        if (requestParameters.updateShowroom2Request === null || requestParameters.updateShowroom2Request === undefined) {
+            throw new runtime.RequiredError('updateShowroom2Request','Required parameter requestParameters.updateShowroom2Request was null or undefined when calling updateShowroom2.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.storefrontId !== undefined) {
@@ -12677,6 +13912,8 @@ export class WorldApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12691,6 +13928,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateShowroom2RequestToJSON(requestParameters.updateShowroom2Request),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateShowroom2ResponseFromJSON(jsonValue));
@@ -12699,7 +13937,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Apply showroom ops in order, all or nothing: place, move, remove, fill (from a category / tag / brand / collection / search, in price, age, value or title order), sort, clear, add_fixture, update_fixture, remove_fixture, set_room, set_settings. Idempotent; refusals name the op (details.opIndex) with codes slot_occupied, item_not_in_store, fixture_capacity, unknown_fixture, unknown_display, version_conflict.
      */
-    async updateShowroom2(requestParameters: UpdateShowroom2Request = {}, initOverrides?: RequestInit): Promise<UpdateShowroom2Response> {
+    async updateShowroom2(requestParameters: UpdateShowroom2OperationRequest, initOverrides?: RequestInit): Promise<UpdateShowroom2Response> {
         const response = await this.updateShowroom2Raw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -12712,6 +13950,10 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateShowroom3.');
         }
 
+        if (requestParameters.updateShowroom2Request === null || requestParameters.updateShowroom2Request === undefined) {
+            throw new runtime.RequiredError('updateShowroom2Request','Required parameter requestParameters.updateShowroom2Request was null or undefined when calling updateShowroom3.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.storefrontId !== undefined) {
@@ -12719,6 +13961,8 @@ export class WorldApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12733,6 +13977,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateShowroom2RequestToJSON(requestParameters.updateShowroom2Request),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateShowroom2ResponseFromJSON(jsonValue));
@@ -12754,6 +13999,10 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateShowroomById.');
         }
 
+        if (requestParameters.updateShowroomRequest === null || requestParameters.updateShowroomRequest === undefined) {
+            throw new runtime.RequiredError('updateShowroomRequest','Required parameter requestParameters.updateShowroomRequest was null or undefined when calling updateShowroomById.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.storefrontId !== undefined) {
@@ -12761,6 +14010,8 @@ export class WorldApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12775,6 +14026,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateShowroomRequestToJSON(requestParameters.updateShowroomRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateShowroomResponseFromJSON(jsonValue));
@@ -12829,7 +14081,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Move a rack in one of your warehouse rooms (position in metres).
      */
-    async updateSpatialSceneNodeRaw(requestParameters: UpdateSpatialSceneNodeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSpatialSceneNodeResponse>> {
+    async updateSpatialSceneNodeRaw(requestParameters: UpdateSpatialSceneNodeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSpatialSceneNodeResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSpatialSceneNode.');
         }
@@ -12838,9 +14090,15 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('nodeId','Required parameter requestParameters.nodeId was null or undefined when calling updateSpatialSceneNode.');
         }
 
+        if (requestParameters.updateSpatialSceneNodeRequest === null || requestParameters.updateSpatialSceneNodeRequest === undefined) {
+            throw new runtime.RequiredError('updateSpatialSceneNodeRequest','Required parameter requestParameters.updateSpatialSceneNodeRequest was null or undefined when calling updateSpatialSceneNode.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12855,6 +14113,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSpatialSceneNodeRequestToJSON(requestParameters.updateSpatialSceneNodeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateSpatialSceneNodeResponseFromJSON(jsonValue));
@@ -12863,7 +14122,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Move a rack in one of your warehouse rooms (position in metres).
      */
-    async updateSpatialSceneNode(requestParameters: UpdateSpatialSceneNodeRequest, initOverrides?: RequestInit): Promise<UpdateSpatialSceneNodeResponse> {
+    async updateSpatialSceneNode(requestParameters: UpdateSpatialSceneNodeOperationRequest, initOverrides?: RequestInit): Promise<UpdateSpatialSceneNodeResponse> {
         const response = await this.updateSpatialSceneNodeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -12871,7 +14130,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * How one of your rooms is laid out and lit: grouping and sort keys, theme, overlay and the arrival camera. Cosmetics and the shop layout have their own writers.
      */
-    async updateSpatialSceneSettingRaw(requestParameters: UpdateSpatialSceneSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SpatialSceneResponse>> {
+    async updateSpatialSceneSettingRaw(requestParameters: UpdateSpatialSceneSettingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SpatialSceneResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSpatialSceneSetting.');
         }
@@ -12879,6 +14138,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12893,6 +14154,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSpatialSceneSettingRequestToJSON(requestParameters.updateSpatialSceneSettingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SpatialSceneResponseFromJSON(jsonValue));
@@ -12901,7 +14163,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * How one of your rooms is laid out and lit: grouping and sort keys, theme, overlay and the arrival camera. Cosmetics and the shop layout have their own writers.
      */
-    async updateSpatialSceneSetting(requestParameters: UpdateSpatialSceneSettingRequest, initOverrides?: RequestInit): Promise<SpatialSceneResponse> {
+    async updateSpatialSceneSetting(requestParameters: UpdateSpatialSceneSettingOperationRequest, initOverrides?: RequestInit): Promise<SpatialSceneResponse> {
         const response = await this.updateSpatialSceneSettingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -12909,14 +14171,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Save your shop room\'s sections and displays (validated server-side; the response is the stored layout).
      */
-    async updateSpatialSceneShopLayoutRaw(requestParameters: UpdateSpatialSceneShopLayoutRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSpatialSceneShopLayoutResponse>> {
+    async updateSpatialSceneShopLayoutRaw(requestParameters: UpdateSpatialSceneShopLayoutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSpatialSceneShopLayoutResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSpatialSceneShopLayout.');
+        }
+
+        if (requestParameters.updateSpatialSceneShopLayoutRequest === null || requestParameters.updateSpatialSceneShopLayoutRequest === undefined) {
+            throw new runtime.RequiredError('updateSpatialSceneShopLayoutRequest','Required parameter requestParameters.updateSpatialSceneShopLayoutRequest was null or undefined when calling updateSpatialSceneShopLayout.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12931,6 +14199,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSpatialSceneShopLayoutRequestToJSON(requestParameters.updateSpatialSceneShopLayoutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateSpatialSceneShopLayoutResponseFromJSON(jsonValue));
@@ -12939,7 +14208,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Save your shop room\'s sections and displays (validated server-side; the response is the stored layout).
      */
-    async updateSpatialSceneShopLayout(requestParameters: UpdateSpatialSceneShopLayoutRequest, initOverrides?: RequestInit): Promise<UpdateSpatialSceneShopLayoutResponse> {
+    async updateSpatialSceneShopLayout(requestParameters: UpdateSpatialSceneShopLayoutOperationRequest, initOverrides?: RequestInit): Promise<UpdateSpatialSceneShopLayoutResponse> {
         const response = await this.updateSpatialSceneShopLayoutRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -12952,9 +14221,15 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSpatialSceneWindow.');
         }
 
+        if (requestParameters.updateBrandDropListingRequest === null || requestParameters.updateBrandDropListingRequest === undefined) {
+            throw new runtime.RequiredError('updateBrandDropListingRequest','Required parameter requestParameters.updateBrandDropListingRequest was null or undefined when calling updateSpatialSceneWindow.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12969,6 +14244,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBrandDropListingRequestToJSON(requestParameters.updateBrandDropListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateSpatialSceneWindowResponseFromJSON(jsonValue));
@@ -13023,14 +14299,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Who may open a shop on a street you own (open, apply or invite).
      */
-    async updateSpatialStreetOwnedRaw(requestParameters: UpdateSpatialStreetOwnedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SpatialStreetResponse>> {
+    async updateSpatialStreetOwnedRaw(requestParameters: UpdateSpatialStreetOwnedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SpatialStreetResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSpatialStreetOwned.');
+        }
+
+        if (requestParameters.updateSpatialStreetOwnedRequest === null || requestParameters.updateSpatialStreetOwnedRequest === undefined) {
+            throw new runtime.RequiredError('updateSpatialStreetOwnedRequest','Required parameter requestParameters.updateSpatialStreetOwnedRequest was null or undefined when calling updateSpatialStreetOwned.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13045,6 +14327,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSpatialStreetOwnedRequestToJSON(requestParameters.updateSpatialStreetOwnedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SpatialStreetResponseFromJSON(jsonValue));
@@ -13053,7 +14336,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Who may open a shop on a street you own (open, apply or invite).
      */
-    async updateSpatialStreetOwned(requestParameters: UpdateSpatialStreetOwnedRequest, initOverrides?: RequestInit): Promise<SpatialStreetResponse> {
+    async updateSpatialStreetOwned(requestParameters: UpdateSpatialStreetOwnedOperationRequest, initOverrides?: RequestInit): Promise<SpatialStreetResponse> {
         const response = await this.updateSpatialStreetOwnedRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -13061,10 +14344,16 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Create or replace your AI attendant (BYOK: switching it on needs your AI key).
      */
-    async updateWorldAttendantRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldAttendantResponse>> {
+    async updateWorldAttendantRaw(requestParameters: UpdateWorldAttendantOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldAttendantResponse>> {
+        if (requestParameters.updateWorldAttendantRequest === null || requestParameters.updateWorldAttendantRequest === undefined) {
+            throw new runtime.RequiredError('updateWorldAttendantRequest','Required parameter requestParameters.updateWorldAttendantRequest was null or undefined when calling updateWorldAttendant.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13079,6 +14368,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldAttendantRequestToJSON(requestParameters.updateWorldAttendantRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldAttendantResponseFromJSON(jsonValue));
@@ -13087,18 +14377,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Create or replace your AI attendant (BYOK: switching it on needs your AI key).
      */
-    async updateWorldAttendant(initOverrides?: RequestInit): Promise<UpdateWorldAttendantResponse> {
-        const response = await this.updateWorldAttendantRaw(initOverrides);
+    async updateWorldAttendant(requestParameters: UpdateWorldAttendantOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldAttendantResponse> {
+        const response = await this.updateWorldAttendantRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Choose named or anonymous. Rooms you are already in keep the old answer until you rejoin.
      */
-    async updateWorldAvatarIdentityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldAvatarIdentityResponse>> {
+    async updateWorldAvatarIdentityRaw(requestParameters: UpdateWorldAvatarIdentityOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldAvatarIdentityResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13113,6 +14405,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldAvatarIdentityRequestToJSON(requestParameters.updateWorldAvatarIdentityRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldAvatarIdentityResponseFromJSON(jsonValue));
@@ -13121,18 +14414,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Choose named or anonymous. Rooms you are already in keep the old answer until you rejoin.
      */
-    async updateWorldAvatarIdentity(initOverrides?: RequestInit): Promise<UpdateWorldAvatarIdentityResponse> {
-        const response = await this.updateWorldAvatarIdentityRaw(initOverrides);
+    async updateWorldAvatarIdentity(requestParameters: UpdateWorldAvatarIdentityOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateWorldAvatarIdentityResponse> {
+        const response = await this.updateWorldAvatarIdentityRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Save your world look to the account, so every device starts from it. look: null stays anonymous. appearance.outfit = { top, outer, bottom, shoes, hat } picks the basic outfit (GET /v1/world/avatar/basics).
      */
-    async updateWorldAvatarLookRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldAvatarLookResponse>> {
+    async updateWorldAvatarLookRaw(requestParameters: UpdateWorldAvatarLookOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldAvatarLookResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13147,6 +14442,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldAvatarLookRequestToJSON(requestParameters.updateWorldAvatarLookRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldAvatarLookResponseFromJSON(jsonValue));
@@ -13155,8 +14451,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Save your world look to the account, so every device starts from it. look: null stays anonymous. appearance.outfit = { top, outer, bottom, shoes, hat } picks the basic outfit (GET /v1/world/avatar/basics).
      */
-    async updateWorldAvatarLook(initOverrides?: RequestInit): Promise<UpdateWorldAvatarLookResponse> {
-        const response = await this.updateWorldAvatarLookRaw(initOverrides);
+    async updateWorldAvatarLook(requestParameters: UpdateWorldAvatarLookOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateWorldAvatarLookResponse> {
+        const response = await this.updateWorldAvatarLookRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -13197,10 +14493,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Wear a held token on an avatar slot (refId from GET /v1/world/capabilities), or pass refId null to take it off. Its collection must declare a wear capability for that slot.
      */
-    async updateWorldCapabilityWearRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldCapabilityWearResponse>> {
+    async updateWorldCapabilityWearRaw(requestParameters: UpdateWorldCapabilityWearOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldCapabilityWearResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13215,6 +14513,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldCapabilityWearRequestToJSON(requestParameters.updateWorldCapabilityWearRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldCapabilityWearResponseFromJSON(jsonValue));
@@ -13223,8 +14522,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Wear a held token on an avatar slot (refId from GET /v1/world/capabilities), or pass refId null to take it off. Its collection must declare a wear capability for that slot.
      */
-    async updateWorldCapabilityWear(initOverrides?: RequestInit): Promise<GetWorldCapabilityWearResponse> {
-        const response = await this.updateWorldCapabilityWearRaw(initOverrides);
+    async updateWorldCapabilityWear(requestParameters: UpdateWorldCapabilityWearOperationRequest = {}, initOverrides?: RequestInit): Promise<GetWorldCapabilityWearResponse> {
+        const response = await this.updateWorldCapabilityWearRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -13273,10 +14572,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Save your world controls settings to the account (any subset of prefs; out-of-range values take the default) and/or mark the controls tutorial seen.
      */
-    async updateWorldControlRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldControlResponse>> {
+    async updateWorldControlRaw(requestParameters: UpdateWorldControlOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldControlResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13291,6 +14592,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldControlRequestToJSON(requestParameters.updateWorldControlRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldControlResponseFromJSON(jsonValue));
@@ -13299,15 +14601,15 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Save your world controls settings to the account (any subset of prefs; out-of-range values take the default) and/or mark the controls tutorial seen.
      */
-    async updateWorldControl(initOverrides?: RequestInit): Promise<GetWorldControlResponse> {
-        const response = await this.updateWorldControlRaw(initOverrides);
+    async updateWorldControl(requestParameters: UpdateWorldControlOperationRequest = {}, initOverrides?: RequestInit): Promise<GetWorldControlResponse> {
+        const response = await this.updateWorldControlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Save the hall design: { doc, expectedVersion }. Refused on overlaps, narrow aisles, too many booths or a booth with a seller removed.
      */
-    async updateWorldConventionHallRaw(requestParameters: UpdateWorldConventionHallRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldConventionHallResponse>> {
+    async updateWorldConventionHallRaw(requestParameters: UpdateWorldConventionHallOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldConventionHallResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWorldConventionHall.');
         }
@@ -13315,6 +14617,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13329,6 +14633,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldConventionHallRequestToJSON(requestParameters.updateWorldConventionHallRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldConventionHallResponseFromJSON(jsonValue));
@@ -13337,7 +14642,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Save the hall design: { doc, expectedVersion }. Refused on overlaps, narrow aisles, too many booths or a booth with a seller removed.
      */
-    async updateWorldConventionHall(requestParameters: UpdateWorldConventionHallRequest, initOverrides?: RequestInit): Promise<UpdateWorldConventionHallResponse> {
+    async updateWorldConventionHall(requestParameters: UpdateWorldConventionHallOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldConventionHallResponse> {
         const response = await this.updateWorldConventionHallRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -13354,6 +14659,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -13367,6 +14674,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBrandDropListingRequestToJSON(requestParameters.updateBrandDropListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldConventionMyBoothResponseFromJSON(jsonValue));
@@ -13383,7 +14691,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Open, start, end or cancel a convention you host.
      */
-    async updateWorldConventionStatusRaw(requestParameters: UpdateWorldConventionStatusRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldConventionStatusResponse>> {
+    async updateWorldConventionStatusRaw(requestParameters: UpdateWorldConventionStatusOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldConventionStatusResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWorldConventionStatus.');
         }
@@ -13391,6 +14699,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13405,6 +14715,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldConventionStatusRequestToJSON(requestParameters.updateWorldConventionStatusRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldConventionStatusResponseFromJSON(jsonValue));
@@ -13413,7 +14724,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Open, start, end or cancel a convention you host.
      */
-    async updateWorldConventionStatus(requestParameters: UpdateWorldConventionStatusRequest, initOverrides?: RequestInit): Promise<UpdateWorldConventionStatusResponse> {
+    async updateWorldConventionStatus(requestParameters: UpdateWorldConventionStatusOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldConventionStatusResponse> {
         const response = await this.updateWorldConventionStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -13430,6 +14741,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -13443,6 +14756,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: EnabledRequestToJSON(requestParameters.enabledRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmDesignerChainAutoUnlockResponseFromJSON(jsonValue));
@@ -13500,10 +14814,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Whether people in a room can see what your outfit is worth.
      */
-    async updateWorldFitValueShareRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldFitValueShareResponse>> {
+    async updateWorldFitValueShareRaw(requestParameters: UpdateWorldFitValueShareOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldFitValueShareResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13518,6 +14834,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldFitValueShareRequestToJSON(requestParameters.updateWorldFitValueShareRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldFitValueShareResponseFromJSON(jsonValue));
@@ -13526,18 +14843,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Whether people in a room can see what your outfit is worth.
      */
-    async updateWorldFitValueShare(initOverrides?: RequestInit): Promise<UpdateWorldFitValueShareResponse> {
-        const response = await this.updateWorldFitValueShareRaw(initOverrides);
+    async updateWorldFitValueShare(requestParameters: UpdateWorldFitValueShareOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateWorldFitValueShareResponse> {
+        const response = await this.updateWorldFitValueShareRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Your home: privacy (open, friends, private), theme, and wall, floor and mood decor you hold.
      */
-    async updateWorldHomeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldHomeResponse>> {
+    async updateWorldHomeRaw(requestParameters: UpdateWorldHomeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldHomeResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13552,6 +14871,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldHomeRequestToJSON(requestParameters.updateWorldHomeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldHomeResponseFromJSON(jsonValue));
@@ -13560,8 +14880,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Your home: privacy (open, friends, private), theme, and wall, floor and mood decor you hold.
      */
-    async updateWorldHome(initOverrides?: RequestInit): Promise<WorldHomeResponse> {
-        const response = await this.updateWorldHomeRaw(initOverrides);
+    async updateWorldHome(requestParameters: UpdateWorldHomeOperationRequest = {}, initOverrides?: RequestInit): Promise<WorldHomeResponse> {
+        const response = await this.updateWorldHomeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -13609,10 +14929,12 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Arrange your home: the full layout (up to 200 pieces you own), validated server-side.
      */
-    async updateWorldHomeLayoutRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldHomeResponse>> {
+    async updateWorldHomeLayoutRaw(requestParameters: UpdateWorldHomeLayoutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldHomeResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13627,6 +14949,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldHomeLayoutRequestToJSON(requestParameters.updateWorldHomeLayoutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldHomeResponseFromJSON(jsonValue));
@@ -13635,8 +14958,8 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Arrange your home: the full layout (up to 200 pieces you own), validated server-side.
      */
-    async updateWorldHomeLayout(initOverrides?: RequestInit): Promise<WorldHomeResponse> {
-        const response = await this.updateWorldHomeLayoutRaw(initOverrides);
+    async updateWorldHomeLayout(requestParameters: UpdateWorldHomeLayoutOperationRequest = {}, initOverrides?: RequestInit): Promise<WorldHomeResponse> {
+        const response = await this.updateWorldHomeLayoutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -13652,6 +14975,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -13665,6 +14990,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldHomeLayoutRequestToJSON(requestParameters.updateWorldHomeLayoutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldHomeResponseFromJSON(jsonValue));
@@ -13681,7 +15007,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Save the draft MML source (up to 64 KB); the response carries its static check.
      */
-    async updateWorldInteractiveDesignDraftRaw(requestParameters: UpdateWorldInteractiveDesignDraftRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldInteractiveDesignDraftResponse>> {
+    async updateWorldInteractiveDesignDraftRaw(requestParameters: UpdateWorldInteractiveDesignDraftOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldInteractiveDesignDraftResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWorldInteractiveDesignDraft.');
         }
@@ -13689,6 +15015,8 @@ export class WorldApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13703,6 +15031,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldInteractiveDesignDraftRequestToJSON(requestParameters.updateWorldInteractiveDesignDraftRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldInteractiveDesignDraftResponseFromJSON(jsonValue));
@@ -13711,7 +15040,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Save the draft MML source (up to 64 KB); the response carries its static check.
      */
-    async updateWorldInteractiveDesignDraft(requestParameters: UpdateWorldInteractiveDesignDraftRequest, initOverrides?: RequestInit): Promise<UpdateWorldInteractiveDesignDraftResponse> {
+    async updateWorldInteractiveDesignDraft(requestParameters: UpdateWorldInteractiveDesignDraftOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldInteractiveDesignDraftResponse> {
         const response = await this.updateWorldInteractiveDesignDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -13728,6 +15057,8 @@ export class WorldApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -13741,6 +15072,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: EnabledRequestToJSON(requestParameters.enabledRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldListingHoldersOnlyResponseFromJSON(jsonValue));
@@ -13843,14 +15175,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Store a plot\'s photo: an image of its frontage you uploaded through POST .../photo/upload-url, a render (buildKey must be the plot\'s current one) or an in-world capture.
      */
-    async updateWorldPropertyPlotPhotoRaw(requestParameters: UpdateWorldPropertyPlotPhotoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldPropertyPlotPhotoResponse>> {
+    async updateWorldPropertyPlotPhotoRaw(requestParameters: UpdateWorldPropertyPlotPhotoOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldPropertyPlotPhotoResponse>> {
         if (requestParameters.plotId === null || requestParameters.plotId === undefined) {
             throw new runtime.RequiredError('plotId','Required parameter requestParameters.plotId was null or undefined when calling updateWorldPropertyPlotPhoto.');
+        }
+
+        if (requestParameters.updateWorldPropertyPlotPhotoRequest === null || requestParameters.updateWorldPropertyPlotPhotoRequest === undefined) {
+            throw new runtime.RequiredError('updateWorldPropertyPlotPhotoRequest','Required parameter requestParameters.updateWorldPropertyPlotPhotoRequest was null or undefined when calling updateWorldPropertyPlotPhoto.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13865,6 +15203,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldPropertyPlotPhotoRequestToJSON(requestParameters.updateWorldPropertyPlotPhotoRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldPropertyPlotPhotoResponseFromJSON(jsonValue));
@@ -13873,7 +15212,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Store a plot\'s photo: an image of its frontage you uploaded through POST .../photo/upload-url, a render (buildKey must be the plot\'s current one) or an in-world capture.
      */
-    async updateWorldPropertyPlotPhoto(requestParameters: UpdateWorldPropertyPlotPhotoRequest, initOverrides?: RequestInit): Promise<UpdateWorldPropertyPlotPhotoResponse> {
+    async updateWorldPropertyPlotPhoto(requestParameters: UpdateWorldPropertyPlotPhotoOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldPropertyPlotPhotoResponse> {
         const response = await this.updateWorldPropertyPlotPhotoRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -13881,14 +15220,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Turn weekly autopay on or off (card leases).
      */
-    async updateWorldPropertyRentingRaw(requestParameters: UpdateWorldPropertyRentingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldPropertyRentingResponse>> {
+    async updateWorldPropertyRentingRaw(requestParameters: UpdateWorldPropertyRentingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldPropertyRentingResponse>> {
         if (requestParameters.leaseId === null || requestParameters.leaseId === undefined) {
             throw new runtime.RequiredError('leaseId','Required parameter requestParameters.leaseId was null or undefined when calling updateWorldPropertyRenting.');
+        }
+
+        if (requestParameters.updateWorldPropertyRentingRequest === null || requestParameters.updateWorldPropertyRentingRequest === undefined) {
+            throw new runtime.RequiredError('updateWorldPropertyRentingRequest','Required parameter requestParameters.updateWorldPropertyRentingRequest was null or undefined when calling updateWorldPropertyRenting.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13903,6 +15248,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldPropertyRentingRequestToJSON(requestParameters.updateWorldPropertyRentingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldPropertyRentingResponseFromJSON(jsonValue));
@@ -13911,7 +15257,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * Turn weekly autopay on or off (card leases).
      */
-    async updateWorldPropertyRenting(requestParameters: UpdateWorldPropertyRentingRequest, initOverrides?: RequestInit): Promise<UpdateWorldPropertyRentingResponse> {
+    async updateWorldPropertyRenting(requestParameters: UpdateWorldPropertyRentingOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldPropertyRentingResponse> {
         const response = await this.updateWorldPropertyRentingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -13998,14 +15344,20 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host, change a Space name, about or membership.
      */
-    async updateWorldSpaceRaw(requestParameters: UpdateWorldSpaceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldSpaceResponse>> {
+    async updateWorldSpaceRaw(requestParameters: UpdateWorldSpaceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldSpaceResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling updateWorldSpace.');
+        }
+
+        if (requestParameters.updateWorldSpaceRequest === null || requestParameters.updateWorldSpaceRequest === undefined) {
+            throw new runtime.RequiredError('updateWorldSpaceRequest','Required parameter requestParameters.updateWorldSpaceRequest was null or undefined when calling updateWorldSpace.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -14020,6 +15372,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldSpaceRequestToJSON(requestParameters.updateWorldSpaceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldSpaceResponseFromJSON(jsonValue));
@@ -14028,7 +15381,7 @@ export class WorldApi extends runtime.BaseAPI {
     /**
      * As host, change a Space name, about or membership.
      */
-    async updateWorldSpace(requestParameters: UpdateWorldSpaceRequest, initOverrides?: RequestInit): Promise<UpdateWorldSpaceResponse> {
+    async updateWorldSpace(requestParameters: UpdateWorldSpaceOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldSpaceResponse> {
         const response = await this.updateWorldSpaceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -14079,9 +15432,15 @@ export class WorldApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWorldStaffPosting.');
         }
 
+        if (requestParameters.createWorldStaffPostingRequest === null || requestParameters.createWorldStaffPostingRequest === undefined) {
+            throw new runtime.RequiredError('createWorldStaffPostingRequest','Required parameter requestParameters.createWorldStaffPostingRequest was null or undefined when calling updateWorldStaffPosting.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -14096,6 +15455,7 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldStaffPostingRequestToJSON(requestParameters.createWorldStaffPostingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldStaffPostingResponseFromJSON(jsonValue));
@@ -14148,16 +15508,22 @@ export class WorldApi extends runtime.BaseAPI {
     }
 
     /**
-     * Set your street\'s theme.
+     * Set your store\'s street theme.
      */
-    async updateWorldStreetOwnedThemeRaw(requestParameters: UpdateWorldStreetOwnedThemeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldStreetOwnedThemeResponse>> {
+    async updateWorldStreetOwnedThemeRaw(requestParameters: UpdateWorldStreetOwnedThemeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldStreetOwnedThemeResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWorldStreetOwnedTheme.');
+        }
+
+        if (requestParameters.updateWorldStreetOwnedThemeRequest === null || requestParameters.updateWorldStreetOwnedThemeRequest === undefined) {
+            throw new runtime.RequiredError('updateWorldStreetOwnedThemeRequest','Required parameter requestParameters.updateWorldStreetOwnedThemeRequest was null or undefined when calling updateWorldStreetOwnedTheme.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -14172,21 +15538,31 @@ export class WorldApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldStreetOwnedThemeRequestToJSON(requestParameters.updateWorldStreetOwnedThemeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldStreetOwnedThemeResponseFromJSON(jsonValue));
     }
 
     /**
-     * Set your street\'s theme.
+     * Set your store\'s street theme.
      */
-    async updateWorldStreetOwnedTheme(requestParameters: UpdateWorldStreetOwnedThemeRequest, initOverrides?: RequestInit): Promise<UpdateWorldStreetOwnedThemeResponse> {
+    async updateWorldStreetOwnedTheme(requestParameters: UpdateWorldStreetOwnedThemeOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldStreetOwnedThemeResponse> {
         const response = await this.updateWorldStreetOwnedThemeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
 }
 
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListShowroomItemSearchListedEnum {
+    Any = 'any',
+    Unlisted = 'unlisted',
+    Listed = 'listed'
+}
 /**
     * @export
     * @enum {string}
@@ -14215,4 +15591,118 @@ export enum ListWorldInteractiveDesignsArchivedEnum {
     Exclude = 'exclude',
     Include = 'include',
     Only = 'only'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldJobBoardRoleEnum {
+    Host = 'host',
+    Stock = 'stock',
+    Floor = 'floor',
+    Appraiser = 'appraiser',
+    Greeter = 'greeter',
+    Cashier = 'cashier',
+    Stylist = 'stylist',
+    Security = 'security'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldJobBoardRailEnum {
+    Cash = 'cash',
+    Cbx = 'cbx',
+    Bucks = 'bucks'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldJobBoardBasisEnum {
+    Shift = 'shift',
+    Hour = 'hour',
+    Commission = 'commission'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldJobBoardPlaceEnum {
+    Showroom = 'showroom',
+    Convention = 'convention',
+    Stall = 'stall'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldJobBoardSortEnum {
+    Pay = 'pay',
+    Soonest = 'soonest',
+    Employer = 'employer'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldMarketKindEnum {
+    Plot = 'plot',
+    Street = 'street'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldMarketModeEnum {
+    Sale = 'sale',
+    Rent = 'rent'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldMarketSizeEnum {
+    Small = 'small',
+    Large = 'large',
+    Medium = 'medium'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldMarketTrafficEnum {
+    Quiet = 'quiet',
+    Steady = 'steady',
+    Busy = 'busy'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldMarketSortEnum {
+    Newest = 'newest',
+    PriceAsc = 'price_asc',
+    PriceDesc = 'price_desc',
+    TrafficDesc = 'traffic_desc'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldPromotedKindEnum {
+    Showroom = 'showroom',
+    Convention = 'convention'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldSpacesVenueEnum {
+    Stage = 'stage',
+    Gallery = 'gallery',
+    CardClub = 'card_club',
+    SneakerMeet = 'sneaker_meet',
+    VintageMarket = 'vintage_market',
+    Clubhouse = 'clubhouse'
 }

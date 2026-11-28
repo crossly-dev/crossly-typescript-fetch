@@ -95,6 +95,10 @@ export interface DeleteAnalyticExperimentRequest {
     id: string;
 }
 
+export interface GetAnalyticBookkeepingRequest {
+    year?: number;
+}
+
 export interface GetAnalyticByPlatformRequest {
     days?: number;
     tz?: string;
@@ -104,6 +108,14 @@ export interface GetAnalyticCompareRequest {
     ids: string;
     align?: GetAnalyticCompareAlignEnum;
     platform?: string;
+    tz?: string;
+}
+
+export interface GetAnalyticDashboardRequest {
+    range?: GetAnalyticDashboardRangeEnum;
+    startDate?: string;
+    endDate?: string;
+    labels?: string;
     tz?: string;
 }
 
@@ -130,6 +142,13 @@ export interface GetAnalyticInventoryRequest {
     brand?: string;
     tz?: string;
     maturity?: GetAnalyticInventoryMaturityEnum;
+}
+
+export interface GetAnalyticItemRequest {
+    page?: number;
+    limit?: number;
+    sortBy?: GetAnalyticItemSortByEnum;
+    sortOrder?: GetAnalyticItemSortOrderEnum;
 }
 
 export interface GetAnalyticItemByListingIdRequest {
@@ -422,8 +441,12 @@ export class AnalyticsApi extends runtime.BaseAPI {
     /**
      * Monthly P&L + per-platform breakdown for a calendar year.
      */
-    async getAnalyticBookkeepingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticBookkeepingResponse>> {
+    async getAnalyticBookkeepingRaw(requestParameters: GetAnalyticBookkeepingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticBookkeepingResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.year !== undefined) {
+            queryParameters['year'] = requestParameters.year;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -448,8 +471,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     /**
      * Monthly P&L + per-platform breakdown for a calendar year.
      */
-    async getAnalyticBookkeeping(initOverrides?: RequestInit): Promise<GetAnalyticBookkeepingResponse> {
-        const response = await this.getAnalyticBookkeepingRaw(initOverrides);
+    async getAnalyticBookkeeping(requestParameters: GetAnalyticBookkeepingRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticBookkeepingResponse> {
+        const response = await this.getAnalyticBookkeepingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -552,8 +575,28 @@ export class AnalyticsApi extends runtime.BaseAPI {
     /**
      * Composite dashboard: KPIs + breakdowns + recent activity.
      */
-    async getAnalyticDashboardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticDashboardResponse>> {
+    async getAnalyticDashboardRaw(requestParameters: GetAnalyticDashboardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticDashboardResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.range !== undefined) {
+            queryParameters['range'] = requestParameters.range;
+        }
+
+        if (requestParameters.startDate !== undefined) {
+            queryParameters['startDate'] = requestParameters.startDate;
+        }
+
+        if (requestParameters.endDate !== undefined) {
+            queryParameters['endDate'] = requestParameters.endDate;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
+        if (requestParameters.tz !== undefined) {
+            queryParameters['tz'] = requestParameters.tz;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -578,8 +621,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     /**
      * Composite dashboard: KPIs + breakdowns + recent activity.
      */
-    async getAnalyticDashboard(initOverrides?: RequestInit): Promise<GetAnalyticDashboardResponse> {
-        const response = await this.getAnalyticDashboardRaw(initOverrides);
+    async getAnalyticDashboard(requestParameters: GetAnalyticDashboardRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticDashboardResponse> {
+        const response = await this.getAnalyticDashboardRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -752,8 +795,24 @@ export class AnalyticsApi extends runtime.BaseAPI {
     /**
      * Per-item P&L for sold inventory.
      */
-    async getAnalyticItemRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticItemResponse>> {
+    async getAnalyticItemRaw(requestParameters: GetAnalyticItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticItemResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.sortBy !== undefined) {
+            queryParameters['sortBy'] = requestParameters.sortBy;
+        }
+
+        if (requestParameters.sortOrder !== undefined) {
+            queryParameters['sortOrder'] = requestParameters.sortOrder;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -778,8 +837,8 @@ export class AnalyticsApi extends runtime.BaseAPI {
     /**
      * Per-item P&L for sold inventory.
      */
-    async getAnalyticItem(initOverrides?: RequestInit): Promise<GetAnalyticItemResponse> {
-        const response = await this.getAnalyticItemRaw(initOverrides);
+    async getAnalyticItem(requestParameters: GetAnalyticItemRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticItemResponse> {
+        const response = await this.getAnalyticItemRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1631,6 +1690,17 @@ export enum GetAnalyticCompareAlignEnum {
     * @export
     * @enum {string}
     */
+export enum GetAnalyticDashboardRangeEnum {
+    Custom = 'custom',
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    _1y = '1y'
+}
+/**
+    * @export
+    * @enum {string}
+    */
 export enum GetAnalyticExperimentStatusEnum {
     All = 'all',
     Running = 'running',
@@ -1668,6 +1738,28 @@ export enum GetAnalyticInventoryMaturityEnum {
     NUMBER_30 = 30,
     NUMBER_60 = 60,
     NUMBER_90 = 90
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticItemSortByEnum {
+    Platform = 'platform',
+    NetProfit = 'netProfit',
+    CostOfGoods = 'costOfGoods',
+    SalePrice = 'salePrice',
+    DetectedAt = 'detectedAt',
+    ItemTitle = 'itemTitle',
+    DaysToSell = 'daysToSell',
+    Margin = 'margin'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAnalyticItemSortOrderEnum {
+    Asc = 'asc',
+    Desc = 'desc'
 }
 /**
     * @export

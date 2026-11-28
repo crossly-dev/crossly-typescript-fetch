@@ -21,9 +21,18 @@ import {
     CreateSandboxResetResponse,
     CreateSandboxResetResponseFromJSON,
     CreateSandboxResetResponseToJSON,
+    CreateSandboxSimulateInventoryRequest,
+    CreateSandboxSimulateInventoryRequestFromJSON,
+    CreateSandboxSimulateInventoryRequestToJSON,
+    CreateSandboxSimulateListingSoldOutRequest,
+    CreateSandboxSimulateListingSoldOutRequestFromJSON,
+    CreateSandboxSimulateListingSoldOutRequestToJSON,
     CreateSandboxSimulateListingSoldOutResponse,
     CreateSandboxSimulateListingSoldOutResponseFromJSON,
     CreateSandboxSimulateListingSoldOutResponseToJSON,
+    CreateSandboxSimulateOrderAddressRequest,
+    CreateSandboxSimulateOrderAddressRequestFromJSON,
+    CreateSandboxSimulateOrderAddressRequestToJSON,
     CreateSandboxSimulateOrderAddressResponse,
     CreateSandboxSimulateOrderAddressResponseFromJSON,
     CreateSandboxSimulateOrderAddressResponseToJSON,
@@ -33,9 +42,15 @@ import {
     CreateSandboxSimulateOrderDeliveredResponse,
     CreateSandboxSimulateOrderDeliveredResponseFromJSON,
     CreateSandboxSimulateOrderDeliveredResponseToJSON,
+    CreateSandboxSimulateOrderRequest,
+    CreateSandboxSimulateOrderRequestFromJSON,
+    CreateSandboxSimulateOrderRequestToJSON,
     CreateSandboxSimulateOrderResponse,
     CreateSandboxSimulateOrderResponseFromJSON,
     CreateSandboxSimulateOrderResponseToJSON,
+    CreateSandboxSimulateRefundRequest,
+    CreateSandboxSimulateRefundRequestFromJSON,
+    CreateSandboxSimulateRefundRequestToJSON,
     CreateSandboxSimulateRefundResponse,
     CreateSandboxSimulateRefundResponseFromJSON,
     CreateSandboxSimulateRefundResponseToJSON,
@@ -45,7 +60,42 @@ import {
     ListSandboxEventsResponse,
     ListSandboxEventsResponseFromJSON,
     ListSandboxEventsResponseToJSON,
+    OrderIdReasonRequest,
+    OrderIdReasonRequestFromJSON,
+    OrderIdReasonRequestToJSON,
 } from '../models';
+
+export interface CreateSandboxSimulateInventoryOperationRequest {
+    createSandboxSimulateInventoryRequest: CreateSandboxSimulateInventoryRequest;
+}
+
+export interface CreateSandboxSimulateListingSoldOutOperationRequest {
+    createSandboxSimulateListingSoldOutRequest: CreateSandboxSimulateListingSoldOutRequest;
+}
+
+export interface CreateSandboxSimulateOrderOperationRequest {
+    createSandboxSimulateOrderRequest: CreateSandboxSimulateOrderRequest;
+}
+
+export interface CreateSandboxSimulateOrderAddressOperationRequest {
+    createSandboxSimulateOrderAddressRequest: CreateSandboxSimulateOrderAddressRequest;
+}
+
+export interface CreateSandboxSimulateOrderCancelledRequest {
+    orderIdReasonRequest: OrderIdReasonRequest;
+}
+
+export interface CreateSandboxSimulateOrderDeliveredRequest {
+    orderIdReasonRequest: OrderIdReasonRequest;
+}
+
+export interface CreateSandboxSimulateRefundOperationRequest {
+    createSandboxSimulateRefundRequest: CreateSandboxSimulateRefundRequest;
+}
+
+export interface ListSandboxEventsRequest {
+    limit?: number;
+}
 
 /**
  * 
@@ -89,10 +139,16 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * Change stock (set, increase or decrease); the new quantity is pushed to every channel.
      */
-    async createSandboxSimulateInventoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxConversationBulkResponse>> {
+    async createSandboxSimulateInventoryRaw(requestParameters: CreateSandboxSimulateInventoryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxConversationBulkResponse>> {
+        if (requestParameters.createSandboxSimulateInventoryRequest === null || requestParameters.createSandboxSimulateInventoryRequest === undefined) {
+            throw new runtime.RequiredError('createSandboxSimulateInventoryRequest','Required parameter requestParameters.createSandboxSimulateInventoryRequest was null or undefined when calling createSandboxSimulateInventory.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -107,6 +163,7 @@ export class SandboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSandboxSimulateInventoryRequestToJSON(requestParameters.createSandboxSimulateInventoryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxConversationBulkResponseFromJSON(jsonValue));
@@ -115,18 +172,24 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * Change stock (set, increase or decrease); the new quantity is pushed to every channel.
      */
-    async createSandboxSimulateInventory(initOverrides?: RequestInit): Promise<CreateInboxConversationBulkResponse> {
-        const response = await this.createSandboxSimulateInventoryRaw(initOverrides);
+    async createSandboxSimulateInventory(requestParameters: CreateSandboxSimulateInventoryOperationRequest, initOverrides?: RequestInit): Promise<CreateInboxConversationBulkResponse> {
+        const response = await this.createSandboxSimulateInventoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * A listing sells out on a marketplace with no order (stock moves, other channels delist).
      */
-    async createSandboxSimulateListingSoldOutRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateListingSoldOutResponse>> {
+    async createSandboxSimulateListingSoldOutRaw(requestParameters: CreateSandboxSimulateListingSoldOutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateListingSoldOutResponse>> {
+        if (requestParameters.createSandboxSimulateListingSoldOutRequest === null || requestParameters.createSandboxSimulateListingSoldOutRequest === undefined) {
+            throw new runtime.RequiredError('createSandboxSimulateListingSoldOutRequest','Required parameter requestParameters.createSandboxSimulateListingSoldOutRequest was null or undefined when calling createSandboxSimulateListingSoldOut.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -141,6 +204,7 @@ export class SandboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSandboxSimulateListingSoldOutRequestToJSON(requestParameters.createSandboxSimulateListingSoldOutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSandboxSimulateListingSoldOutResponseFromJSON(jsonValue));
@@ -149,18 +213,24 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * A listing sells out on a marketplace with no order (stock moves, other channels delist).
      */
-    async createSandboxSimulateListingSoldOut(initOverrides?: RequestInit): Promise<CreateSandboxSimulateListingSoldOutResponse> {
-        const response = await this.createSandboxSimulateListingSoldOutRaw(initOverrides);
+    async createSandboxSimulateListingSoldOut(requestParameters: CreateSandboxSimulateListingSoldOutOperationRequest, initOverrides?: RequestInit): Promise<CreateSandboxSimulateListingSoldOutResponse> {
+        const response = await this.createSandboxSimulateListingSoldOutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates).
      */
-    async createSandboxSimulateOrderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateOrderResponse>> {
+    async createSandboxSimulateOrderRaw(requestParameters: CreateSandboxSimulateOrderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateOrderResponse>> {
+        if (requestParameters.createSandboxSimulateOrderRequest === null || requestParameters.createSandboxSimulateOrderRequest === undefined) {
+            throw new runtime.RequiredError('createSandboxSimulateOrderRequest','Required parameter requestParameters.createSandboxSimulateOrderRequest was null or undefined when calling createSandboxSimulateOrder.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -175,6 +245,7 @@ export class SandboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSandboxSimulateOrderRequestToJSON(requestParameters.createSandboxSimulateOrderRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSandboxSimulateOrderResponseFromJSON(jsonValue));
@@ -183,18 +254,24 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates).
      */
-    async createSandboxSimulateOrder(initOverrides?: RequestInit): Promise<CreateSandboxSimulateOrderResponse> {
-        const response = await this.createSandboxSimulateOrderRaw(initOverrides);
+    async createSandboxSimulateOrder(requestParameters: CreateSandboxSimulateOrderOperationRequest, initOverrides?: RequestInit): Promise<CreateSandboxSimulateOrderResponse> {
+        const response = await this.createSandboxSimulateOrderRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * The buyer address of an order simulated with address \"delayed\" arrives now (order.address_available).
      */
-    async createSandboxSimulateOrderAddressRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateOrderAddressResponse>> {
+    async createSandboxSimulateOrderAddressRaw(requestParameters: CreateSandboxSimulateOrderAddressOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateOrderAddressResponse>> {
+        if (requestParameters.createSandboxSimulateOrderAddressRequest === null || requestParameters.createSandboxSimulateOrderAddressRequest === undefined) {
+            throw new runtime.RequiredError('createSandboxSimulateOrderAddressRequest','Required parameter requestParameters.createSandboxSimulateOrderAddressRequest was null or undefined when calling createSandboxSimulateOrderAddress.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -209,6 +286,7 @@ export class SandboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSandboxSimulateOrderAddressRequestToJSON(requestParameters.createSandboxSimulateOrderAddressRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSandboxSimulateOrderAddressResponseFromJSON(jsonValue));
@@ -217,18 +295,24 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * The buyer address of an order simulated with address \"delayed\" arrives now (order.address_available).
      */
-    async createSandboxSimulateOrderAddress(initOverrides?: RequestInit): Promise<CreateSandboxSimulateOrderAddressResponse> {
-        const response = await this.createSandboxSimulateOrderAddressRaw(initOverrides);
+    async createSandboxSimulateOrderAddress(requestParameters: CreateSandboxSimulateOrderAddressOperationRequest, initOverrides?: RequestInit): Promise<CreateSandboxSimulateOrderAddressResponse> {
+        const response = await this.createSandboxSimulateOrderAddressRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * The buyer or the marketplace cancels an order (order.cancelled).
      */
-    async createSandboxSimulateOrderCancelledRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateOrderCancelledResponse>> {
+    async createSandboxSimulateOrderCancelledRaw(requestParameters: CreateSandboxSimulateOrderCancelledRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateOrderCancelledResponse>> {
+        if (requestParameters.orderIdReasonRequest === null || requestParameters.orderIdReasonRequest === undefined) {
+            throw new runtime.RequiredError('orderIdReasonRequest','Required parameter requestParameters.orderIdReasonRequest was null or undefined when calling createSandboxSimulateOrderCancelled.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -243,6 +327,7 @@ export class SandboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: OrderIdReasonRequestToJSON(requestParameters.orderIdReasonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSandboxSimulateOrderCancelledResponseFromJSON(jsonValue));
@@ -251,18 +336,24 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * The buyer or the marketplace cancels an order (order.cancelled).
      */
-    async createSandboxSimulateOrderCancelled(initOverrides?: RequestInit): Promise<CreateSandboxSimulateOrderCancelledResponse> {
-        const response = await this.createSandboxSimulateOrderCancelledRaw(initOverrides);
+    async createSandboxSimulateOrderCancelled(requestParameters: CreateSandboxSimulateOrderCancelledRequest, initOverrides?: RequestInit): Promise<CreateSandboxSimulateOrderCancelledResponse> {
+        const response = await this.createSandboxSimulateOrderCancelledRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * The carrier delivers a shipped order (order.delivered).
      */
-    async createSandboxSimulateOrderDeliveredRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse>> {
+    async createSandboxSimulateOrderDeliveredRaw(requestParameters: CreateSandboxSimulateOrderDeliveredRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse>> {
+        if (requestParameters.orderIdReasonRequest === null || requestParameters.orderIdReasonRequest === undefined) {
+            throw new runtime.RequiredError('orderIdReasonRequest','Required parameter requestParameters.orderIdReasonRequest was null or undefined when calling createSandboxSimulateOrderDelivered.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -277,6 +368,7 @@ export class SandboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: OrderIdReasonRequestToJSON(requestParameters.orderIdReasonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSandboxSimulateOrderDeliveredResponseFromJSON(jsonValue));
@@ -285,18 +377,24 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * The carrier delivers a shipped order (order.delivered).
      */
-    async createSandboxSimulateOrderDelivered(initOverrides?: RequestInit): Promise<CreateSandboxSimulateOrderDeliveredResponse> {
-        const response = await this.createSandboxSimulateOrderDeliveredRaw(initOverrides);
+    async createSandboxSimulateOrderDelivered(requestParameters: CreateSandboxSimulateOrderDeliveredRequest, initOverrides?: RequestInit): Promise<CreateSandboxSimulateOrderDeliveredResponse> {
+        const response = await this.createSandboxSimulateOrderDeliveredRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Refund an order in full or in part (refund.issued).
      */
-    async createSandboxSimulateRefundRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateRefundResponse>> {
+    async createSandboxSimulateRefundRaw(requestParameters: CreateSandboxSimulateRefundOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSandboxSimulateRefundResponse>> {
+        if (requestParameters.createSandboxSimulateRefundRequest === null || requestParameters.createSandboxSimulateRefundRequest === undefined) {
+            throw new runtime.RequiredError('createSandboxSimulateRefundRequest','Required parameter requestParameters.createSandboxSimulateRefundRequest was null or undefined when calling createSandboxSimulateRefund.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -311,6 +409,7 @@ export class SandboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSandboxSimulateRefundRequestToJSON(requestParameters.createSandboxSimulateRefundRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSandboxSimulateRefundResponseFromJSON(jsonValue));
@@ -319,8 +418,8 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * Refund an order in full or in part (refund.issued).
      */
-    async createSandboxSimulateRefund(initOverrides?: RequestInit): Promise<CreateSandboxSimulateRefundResponse> {
-        const response = await this.createSandboxSimulateRefundRaw(initOverrides);
+    async createSandboxSimulateRefund(requestParameters: CreateSandboxSimulateRefundOperationRequest, initOverrides?: RequestInit): Promise<CreateSandboxSimulateRefundResponse> {
+        const response = await this.createSandboxSimulateRefundRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -361,8 +460,12 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * The simulated marketplaces\' call log: verb, channel, outcome, latency.
      */
-    async listSandboxEventsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSandboxEventsResponse>> {
+    async listSandboxEventsRaw(requestParameters: ListSandboxEventsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSandboxEventsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -387,8 +490,8 @@ export class SandboxApi extends runtime.BaseAPI {
     /**
      * The simulated marketplaces\' call log: verb, channel, outcome, latency.
      */
-    async listSandboxEvents(initOverrides?: RequestInit): Promise<ListSandboxEventsResponse> {
-        const response = await this.listSandboxEventsRaw(initOverrides);
+    async listSandboxEvents(requestParameters: ListSandboxEventsRequest = {}, initOverrides?: RequestInit): Promise<ListSandboxEventsResponse> {
+        const response = await this.listSandboxEventsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

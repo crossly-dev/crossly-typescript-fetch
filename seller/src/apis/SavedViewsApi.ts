@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateSavedViewRequest,
+    CreateSavedViewRequestFromJSON,
+    CreateSavedViewRequestToJSON,
     ListSavedViewsItem,
     ListSavedViewsItemFromJSON,
     ListSavedViewsItemToJSON,
@@ -24,7 +27,14 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateSavedViewRequest,
+    UpdateSavedViewRequestFromJSON,
+    UpdateSavedViewRequestToJSON,
 } from '../models';
+
+export interface CreateSavedViewOperationRequest {
+    createSavedViewRequest: CreateSavedViewRequest;
+}
 
 export interface DeleteSavedViewRequest {
     id: string;
@@ -34,8 +44,9 @@ export interface ListSavedViewsRequest {
     resource?: string;
 }
 
-export interface UpdateSavedViewRequest {
+export interface UpdateSavedViewOperationRequest {
     id: string;
+    updateSavedViewRequest: UpdateSavedViewRequest;
 }
 
 /**
@@ -46,10 +57,16 @@ export class SavedViewsApi extends runtime.BaseAPI {
     /**
      * Create a saved view preset.
      */
-    async createSavedViewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSavedViewsItem>> {
+    async createSavedViewRaw(requestParameters: CreateSavedViewOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSavedViewsItem>> {
+        if (requestParameters.createSavedViewRequest === null || requestParameters.createSavedViewRequest === undefined) {
+            throw new runtime.RequiredError('createSavedViewRequest','Required parameter requestParameters.createSavedViewRequest was null or undefined when calling createSavedView.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -64,6 +81,7 @@ export class SavedViewsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSavedViewRequestToJSON(requestParameters.createSavedViewRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListSavedViewsItemFromJSON(jsonValue));
@@ -72,8 +90,8 @@ export class SavedViewsApi extends runtime.BaseAPI {
     /**
      * Create a saved view preset.
      */
-    async createSavedView(initOverrides?: RequestInit): Promise<ListSavedViewsItem> {
-        const response = await this.createSavedViewRaw(initOverrides);
+    async createSavedView(requestParameters: CreateSavedViewOperationRequest, initOverrides?: RequestInit): Promise<ListSavedViewsItem> {
+        const response = await this.createSavedViewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -156,14 +174,20 @@ export class SavedViewsApi extends runtime.BaseAPI {
     /**
      * Update a saved view preset.
      */
-    async updateSavedViewRaw(requestParameters: UpdateSavedViewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSavedViewsItem>> {
+    async updateSavedViewRaw(requestParameters: UpdateSavedViewOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSavedViewsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSavedView.');
+        }
+
+        if (requestParameters.updateSavedViewRequest === null || requestParameters.updateSavedViewRequest === undefined) {
+            throw new runtime.RequiredError('updateSavedViewRequest','Required parameter requestParameters.updateSavedViewRequest was null or undefined when calling updateSavedView.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -178,6 +202,7 @@ export class SavedViewsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSavedViewRequestToJSON(requestParameters.updateSavedViewRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListSavedViewsItemFromJSON(jsonValue));
@@ -186,7 +211,7 @@ export class SavedViewsApi extends runtime.BaseAPI {
     /**
      * Update a saved view preset.
      */
-    async updateSavedView(requestParameters: UpdateSavedViewRequest, initOverrides?: RequestInit): Promise<ListSavedViewsItem> {
+    async updateSavedView(requestParameters: UpdateSavedViewOperationRequest, initOverrides?: RequestInit): Promise<ListSavedViewsItem> {
         const response = await this.updateSavedViewRaw(requestParameters, initOverrides);
         return await response.value();
     }

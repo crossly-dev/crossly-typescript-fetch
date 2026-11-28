@@ -15,48 +15,123 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateInventoryCsvImportRequest,
+    CreateInventoryCsvImportRequestFromJSON,
+    CreateInventoryCsvImportRequestToJSON,
+    CreateWorldExperienceAccessRequest,
+    CreateWorldExperienceAccessRequestFromJSON,
+    CreateWorldExperienceAccessRequestToJSON,
     CreateWorldExperienceAlertAckResponse,
     CreateWorldExperienceAlertAckResponseFromJSON,
     CreateWorldExperienceAlertAckResponseToJSON,
+    CreateWorldExperienceAnalyticQueryRequest,
+    CreateWorldExperienceAnalyticQueryRequestFromJSON,
+    CreateWorldExperienceAnalyticQueryRequestToJSON,
     CreateWorldExperienceAnalyticQueryResponse,
     CreateWorldExperienceAnalyticQueryResponseFromJSON,
     CreateWorldExperienceAnalyticQueryResponseToJSON,
+    CreateWorldExperienceBanRequest,
+    CreateWorldExperienceBanRequestFromJSON,
+    CreateWorldExperienceBanRequestToJSON,
+    CreateWorldExperienceConfigRollbackRequest,
+    CreateWorldExperienceConfigRollbackRequestFromJSON,
+    CreateWorldExperienceConfigRollbackRequestToJSON,
+    CreateWorldExperienceEventRequest,
+    CreateWorldExperienceEventRequestFromJSON,
+    CreateWorldExperienceEventRequestToJSON,
+    CreateWorldExperienceExperimentRequest,
+    CreateWorldExperienceExperimentRequestFromJSON,
+    CreateWorldExperienceExperimentRequestToJSON,
+    CreateWorldExperienceExperimentShipRequest,
+    CreateWorldExperienceExperimentShipRequestFromJSON,
+    CreateWorldExperienceExperimentShipRequestToJSON,
+    CreateWorldExperienceJoinRequest,
+    CreateWorldExperienceJoinRequestFromJSON,
+    CreateWorldExperienceJoinRequestToJSON,
     CreateWorldExperienceJoinResponse,
     CreateWorldExperienceJoinResponseFromJSON,
     CreateWorldExperienceJoinResponseToJSON,
+    CreateWorldExperienceLocalizationImportResponse,
+    CreateWorldExperienceLocalizationImportResponseFromJSON,
+    CreateWorldExperienceLocalizationImportResponseToJSON,
     CreateWorldExperienceModerationAppealResponse,
     CreateWorldExperienceModerationAppealResponseFromJSON,
     CreateWorldExperienceModerationAppealResponseToJSON,
+    CreateWorldExperiencePlaceCheckRequest,
+    CreateWorldExperiencePlaceCheckRequestFromJSON,
+    CreateWorldExperiencePlaceCheckRequestToJSON,
     CreateWorldExperiencePlaceCheckResponse,
     CreateWorldExperiencePlaceCheckResponseFromJSON,
     CreateWorldExperiencePlaceCheckResponseToJSON,
+    CreateWorldExperiencePlacePublishRequest,
+    CreateWorldExperiencePlacePublishRequestFromJSON,
+    CreateWorldExperiencePlacePublishRequestToJSON,
+    CreateWorldExperiencePlaceRequest,
+    CreateWorldExperiencePlaceRequestFromJSON,
+    CreateWorldExperiencePlaceRequestToJSON,
     CreateWorldExperiencePlaceTestResponse,
     CreateWorldExperiencePlaceTestResponseFromJSON,
     CreateWorldExperiencePlaceTestResponseToJSON,
+    CreateWorldExperiencePlaceVersionRequest,
+    CreateWorldExperiencePlaceVersionRequestFromJSON,
+    CreateWorldExperiencePlaceVersionRequestToJSON,
+    CreateWorldExperiencePlaytesterRequest,
+    CreateWorldExperiencePlaytesterRequestFromJSON,
+    CreateWorldExperiencePlaytesterRequestToJSON,
     CreateWorldExperiencePlaytesterResponse,
     CreateWorldExperiencePlaytesterResponseFromJSON,
     CreateWorldExperiencePlaytesterResponseToJSON,
+    CreateWorldExperiencePublishRolloutRequest,
+    CreateWorldExperiencePublishRolloutRequestFromJSON,
+    CreateWorldExperiencePublishRolloutRequestToJSON,
+    CreateWorldExperienceRequest,
+    CreateWorldExperienceRequestFromJSON,
+    CreateWorldExperienceRequestToJSON,
+    CreateWorldExperienceReservedServerRequest,
+    CreateWorldExperienceReservedServerRequestFromJSON,
+    CreateWorldExperienceReservedServerRequestToJSON,
     CreateWorldExperienceReservedServerResponse,
     CreateWorldExperienceReservedServerResponseFromJSON,
     CreateWorldExperienceReservedServerResponseToJSON,
     CreateWorldExperienceResponse,
     CreateWorldExperienceResponseFromJSON,
     CreateWorldExperienceResponseToJSON,
+    CreateWorldExperienceServerShutdownRequest,
+    CreateWorldExperienceServerShutdownRequestFromJSON,
+    CreateWorldExperienceServerShutdownRequestToJSON,
     CreateWorldExperienceServerShutdownResponse,
     CreateWorldExperienceServerShutdownResponseFromJSON,
     CreateWorldExperienceServerShutdownResponseToJSON,
+    CreateWorldExperienceTransferRequestRequest,
+    CreateWorldExperienceTransferRequestRequestFromJSON,
+    CreateWorldExperienceTransferRequestRequestToJSON,
+    CreateWorldMatureVerifyRequest,
+    CreateWorldMatureVerifyRequestFromJSON,
+    CreateWorldMatureVerifyRequestToJSON,
     CreateWorldMatureVerifyResponse,
     CreateWorldMatureVerifyResponseFromJSON,
     CreateWorldMatureVerifyResponseToJSON,
+    CreateWorldParentalAcceptRequest,
+    CreateWorldParentalAcceptRequestFromJSON,
+    CreateWorldParentalAcceptRequestToJSON,
+    CreateWorldParentalChildrenPinRequest,
+    CreateWorldParentalChildrenPinRequestFromJSON,
+    CreateWorldParentalChildrenPinRequestToJSON,
     CreateWorldParentalChildrenPinResponse,
     CreateWorldParentalChildrenPinResponseFromJSON,
     CreateWorldParentalChildrenPinResponseToJSON,
+    CreateWorldParentalChildrenUnlinkRequest,
+    CreateWorldParentalChildrenUnlinkRequestFromJSON,
+    CreateWorldParentalChildrenUnlinkRequestToJSON,
     CreateWorldParentalChildrenUnlinkResponse,
     CreateWorldParentalChildrenUnlinkResponseFromJSON,
     CreateWorldParentalChildrenUnlinkResponseToJSON,
     CreateWorldParentalInviteResponse,
     CreateWorldParentalInviteResponseFromJSON,
     CreateWorldParentalInviteResponseToJSON,
+    CreateWorldRatingComputeRequest,
+    CreateWorldRatingComputeRequestFromJSON,
+    CreateWorldRatingComputeRequestToJSON,
     CreateWorldRatingComputeResponse,
     CreateWorldRatingComputeResponseFromJSON,
     CreateWorldRatingComputeResponseToJSON,
@@ -72,6 +147,9 @@ import {
     DeleteWorldExperienceBanResponse,
     DeleteWorldExperienceBanResponseFromJSON,
     DeleteWorldExperienceBanResponseToJSON,
+    DeleteWorldExperienceRequest,
+    DeleteWorldExperienceRequestFromJSON,
+    DeleteWorldExperienceRequestToJSON,
     DeleteWorldExperienceResponse,
     DeleteWorldExperienceResponseFromJSON,
     DeleteWorldExperienceResponseToJSON,
@@ -222,15 +300,72 @@ import {
     ListWorldTransparencyResponse,
     ListWorldTransparencyResponseFromJSON,
     ListWorldTransparencyResponseToJSON,
+    ReasonRequest2,
+    ReasonRequest2FromJSON,
+    ReasonRequest2ToJSON,
+    UpdateBrandDropListingRequest,
+    UpdateBrandDropListingRequestFromJSON,
+    UpdateBrandDropListingRequestToJSON,
+    UpdateWorldExperienceAccessLimitRequest,
+    UpdateWorldExperienceAccessLimitRequestFromJSON,
+    UpdateWorldExperienceAccessLimitRequestToJSON,
+    UpdateWorldExperienceAlertSettingRequest,
+    UpdateWorldExperienceAlertSettingRequestFromJSON,
+    UpdateWorldExperienceAlertSettingRequestToJSON,
+    UpdateWorldExperienceChatSettingRequest,
+    UpdateWorldExperienceChatSettingRequestFromJSON,
+    UpdateWorldExperienceChatSettingRequestToJSON,
+    UpdateWorldExperienceConfigRequest,
+    UpdateWorldExperienceConfigRequestFromJSON,
+    UpdateWorldExperienceConfigRequestToJSON,
+    UpdateWorldExperienceConfigValueRequest,
+    UpdateWorldExperienceConfigValueRequestFromJSON,
+    UpdateWorldExperienceConfigValueRequestToJSON,
+    UpdateWorldExperienceEventRequest,
+    UpdateWorldExperienceEventRequestFromJSON,
+    UpdateWorldExperienceEventRequestToJSON,
+    UpdateWorldExperienceExperimentRequest,
+    UpdateWorldExperienceExperimentRequestFromJSON,
+    UpdateWorldExperienceExperimentRequestToJSON,
+    UpdateWorldExperienceLocalizationRequest,
+    UpdateWorldExperienceLocalizationRequestFromJSON,
+    UpdateWorldExperienceLocalizationRequestToJSON,
     UpdateWorldExperienceMaturityResponse,
     UpdateWorldExperienceMaturityResponseFromJSON,
     UpdateWorldExperienceMaturityResponseToJSON,
+    UpdateWorldExperiencePlaceDraftRequest,
+    UpdateWorldExperiencePlaceDraftRequestFromJSON,
+    UpdateWorldExperiencePlaceDraftRequestToJSON,
+    UpdateWorldExperiencePlaceVersionNoteRequest,
+    UpdateWorldExperiencePlaceVersionNoteRequestFromJSON,
+    UpdateWorldExperiencePlaceVersionNoteRequestToJSON,
     UpdateWorldExperiencePlaceVersionNoteResponse,
     UpdateWorldExperiencePlaceVersionNoteResponseFromJSON,
     UpdateWorldExperiencePlaceVersionNoteResponseToJSON,
+    UpdateWorldExperiencePublishRequest,
+    UpdateWorldExperiencePublishRequestFromJSON,
+    UpdateWorldExperiencePublishRequestToJSON,
+    UpdateWorldExperienceRequest,
+    UpdateWorldExperienceRequestFromJSON,
+    UpdateWorldExperienceRequestToJSON,
     UpdateWorldExperienceShowcaseResponse,
     UpdateWorldExperienceShowcaseResponseFromJSON,
     UpdateWorldExperienceShowcaseResponseToJSON,
+    UpdateWorldFavoriteRequest,
+    UpdateWorldFavoriteRequestFromJSON,
+    UpdateWorldFavoriteRequestToJSON,
+    UpdateWorldMatureRequest,
+    UpdateWorldMatureRequestFromJSON,
+    UpdateWorldMatureRequestToJSON,
+    UpdateWorldMePrefRequest,
+    UpdateWorldMePrefRequestFromJSON,
+    UpdateWorldMePrefRequestToJSON,
+    UpdateWorldParentalChildrenRequest,
+    UpdateWorldParentalChildrenRequestFromJSON,
+    UpdateWorldParentalChildrenRequestToJSON,
+    UpdateWorldVoteRequest,
+    UpdateWorldVoteRequestFromJSON,
+    UpdateWorldVoteRequestToJSON,
     WorldExperienceConfigResponse,
     WorldExperienceConfigResponseFromJSON,
     WorldExperienceConfigResponseToJSON,
@@ -240,6 +375,9 @@ import {
     WorldExperienceExperimentResponse,
     WorldExperienceExperimentResponseFromJSON,
     WorldExperienceExperimentResponseToJSON,
+    WorldExperienceLocalizationResponse,
+    WorldExperienceLocalizationResponseFromJSON,
+    WorldExperienceLocalizationResponseToJSON,
     WorldExperiencePlaceResponse,
     WorldExperiencePlaceResponseFromJSON,
     WorldExperiencePlaceResponseToJSON,
@@ -266,8 +404,13 @@ import {
     WorldResponse3ToJSON,
 } from '../models';
 
-export interface CreateWorldExperienceAccessRequest {
+export interface CreateWorldExperienceOperationRequest {
+    createWorldExperienceRequest?: CreateWorldExperienceRequest;
+}
+
+export interface CreateWorldExperienceAccessOperationRequest {
     experienceId: string;
+    createWorldExperienceAccessRequest?: CreateWorldExperienceAccessRequest;
 }
 
 export interface CreateWorldExperienceAlertAckRequest {
@@ -275,28 +418,32 @@ export interface CreateWorldExperienceAlertAckRequest {
     alertId: string;
 }
 
-export interface CreateWorldExperienceAnalyticQueryRequest {
+export interface CreateWorldExperienceAnalyticQueryOperationRequest {
     experienceId: string;
+    createWorldExperienceAnalyticQueryRequest?: CreateWorldExperienceAnalyticQueryRequest;
 }
 
 export interface CreateWorldExperienceArchiveRequest {
     experienceId: string;
 }
 
-export interface CreateWorldExperienceBanRequest {
+export interface CreateWorldExperienceBanOperationRequest {
     experienceId: string;
+    createWorldExperienceBanRequest?: CreateWorldExperienceBanRequest;
 }
 
 export interface CreateWorldExperienceCloseRequest {
     experienceId: string;
 }
 
-export interface CreateWorldExperienceConfigRollbackRequest {
+export interface CreateWorldExperienceConfigRollbackOperationRequest {
     experienceId: string;
+    createWorldExperienceConfigRollbackRequest?: CreateWorldExperienceConfigRollbackRequest;
 }
 
-export interface CreateWorldExperienceEventRequest {
+export interface CreateWorldExperienceEventOperationRequest {
     experienceId: string;
+    createWorldExperienceEventRequest?: CreateWorldExperienceEventRequest;
 }
 
 export interface CreateWorldExperienceEventCancelRequest {
@@ -304,13 +451,15 @@ export interface CreateWorldExperienceEventCancelRequest {
     eventId: string;
 }
 
-export interface CreateWorldExperienceExperimentRequest {
+export interface CreateWorldExperienceExperimentOperationRequest {
     experienceId: string;
+    createWorldExperienceExperimentRequest?: CreateWorldExperienceExperimentRequest;
 }
 
-export interface CreateWorldExperienceExperimentShipRequest {
+export interface CreateWorldExperienceExperimentShipOperationRequest {
     experienceId: string;
     experimentId: string;
+    createWorldExperienceExperimentShipRequest?: CreateWorldExperienceExperimentShipRequest;
 }
 
 export interface CreateWorldExperienceExperimentStartRequest {
@@ -321,10 +470,17 @@ export interface CreateWorldExperienceExperimentStartRequest {
 export interface CreateWorldExperienceExperimentStopRequest {
     experienceId: string;
     experimentId: string;
+    reasonRequest2?: ReasonRequest2;
 }
 
-export interface CreateWorldExperienceJoinRequest {
+export interface CreateWorldExperienceJoinOperationRequest {
     experienceId: string;
+    createWorldExperienceJoinRequest?: CreateWorldExperienceJoinRequest;
+}
+
+export interface CreateWorldExperienceLocalizationImportRequest {
+    experienceId: string;
+    createInventoryCsvImportRequest?: CreateInventoryCsvImportRequest;
 }
 
 export interface CreateWorldExperienceModerationAppealRequest {
@@ -335,18 +491,21 @@ export interface CreateWorldExperienceOpenRequest {
     experienceId: string;
 }
 
-export interface CreateWorldExperiencePlaceRequest {
+export interface CreateWorldExperiencePlaceOperationRequest {
     experienceId: string;
+    createWorldExperiencePlaceRequest?: CreateWorldExperiencePlaceRequest;
 }
 
-export interface CreateWorldExperiencePlaceCheckRequest {
+export interface CreateWorldExperiencePlaceCheckOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceCheckRequest?: CreateWorldExperiencePlaceCheckRequest;
 }
 
-export interface CreateWorldExperiencePlacePublishRequest {
+export interface CreateWorldExperiencePlacePublishOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlacePublishRequest?: CreateWorldExperiencePlacePublishRequest;
 }
 
 export interface CreateWorldExperiencePlaceStartRequest {
@@ -359,9 +518,10 @@ export interface CreateWorldExperiencePlaceTestRequest {
     placeId: string;
 }
 
-export interface CreateWorldExperiencePlaceVersionRequest {
+export interface CreateWorldExperiencePlaceVersionOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceVersionRequest?: CreateWorldExperiencePlaceVersionRequest;
 }
 
 export interface CreateWorldExperiencePlaceVersionPublishRequest {
@@ -376,8 +536,9 @@ export interface CreateWorldExperiencePlaceVersionRollbackRequest {
     versionId: string;
 }
 
-export interface CreateWorldExperiencePlaytesterRequest {
+export interface CreateWorldExperiencePlaytesterOperationRequest {
     experienceId: string;
+    createWorldExperiencePlaytesterRequest?: CreateWorldExperiencePlaytesterRequest;
 }
 
 export interface CreateWorldExperiencePublishCancelRequest {
@@ -388,11 +549,13 @@ export interface CreateWorldExperiencePublishCancelRequest {
 export interface CreateWorldExperiencePublishHaltRequest {
     experienceId: string;
     requestId: string;
+    reasonRequest2?: ReasonRequest2;
 }
 
-export interface CreateWorldExperiencePublishRolloutRequest {
+export interface CreateWorldExperiencePublishRolloutOperationRequest {
     experienceId: string;
     requestId: string;
+    createWorldExperiencePublishRolloutRequest?: CreateWorldExperiencePublishRolloutRequest;
 }
 
 export interface CreateWorldExperiencePublishSubmitRequest {
@@ -400,28 +563,45 @@ export interface CreateWorldExperiencePublishSubmitRequest {
     requestId: string;
 }
 
-export interface CreateWorldExperienceReservedServerRequest {
+export interface CreateWorldExperienceReservedServerOperationRequest {
     experienceId: string;
+    createWorldExperienceReservedServerRequest?: CreateWorldExperienceReservedServerRequest;
 }
 
 export interface CreateWorldExperienceRestoreRequest {
     experienceId: string;
 }
 
-export interface CreateWorldExperienceServerShutdownRequest {
+export interface CreateWorldExperienceServerShutdownOperationRequest {
     experienceId: string;
+    createWorldExperienceServerShutdownRequest?: CreateWorldExperienceServerShutdownRequest;
 }
 
-export interface CreateWorldExperienceTransferRequestRequest {
+export interface CreateWorldExperienceTransferRequestOperationRequest {
     experienceId: string;
+    createWorldExperienceTransferRequestRequest?: CreateWorldExperienceTransferRequestRequest;
 }
 
-export interface CreateWorldParentalChildrenPinRequest {
-    childId: string;
+export interface CreateWorldMatureVerifyOperationRequest {
+    createWorldMatureVerifyRequest?: CreateWorldMatureVerifyRequest;
 }
 
-export interface CreateWorldParentalChildrenUnlinkRequest {
+export interface CreateWorldParentalAcceptOperationRequest {
+    createWorldParentalAcceptRequest?: CreateWorldParentalAcceptRequest;
+}
+
+export interface CreateWorldParentalChildrenPinOperationRequest {
     childId: string;
+    createWorldParentalChildrenPinRequest?: CreateWorldParentalChildrenPinRequest;
+}
+
+export interface CreateWorldParentalChildrenUnlinkOperationRequest {
+    childId: string;
+    createWorldParentalChildrenUnlinkRequest?: CreateWorldParentalChildrenUnlinkRequest;
+}
+
+export interface CreateWorldRatingComputeOperationRequest {
+    createWorldRatingComputeRequest?: CreateWorldRatingComputeRequest;
 }
 
 export interface CreateWorldTransferRequestAcceptRequest {
@@ -436,13 +616,19 @@ export interface CreateWorldTransferRequestDeclineRequest {
     requestId: string;
 }
 
-export interface DeleteWorldExperienceRequest {
+export interface DeleteWorldExperienceOperationRequest {
     experienceId: string;
+    deleteWorldExperienceRequest?: DeleteWorldExperienceRequest;
 }
 
 export interface DeleteWorldExperienceBanRequest {
     experienceId: string;
     sub: string;
+}
+
+export interface DeleteWorldExperienceLocalizationRequest {
+    experienceId: string;
+    locale: string;
 }
 
 export interface DeleteWorldExperiencePlaytesterRequest {
@@ -452,6 +638,8 @@ export interface DeleteWorldExperiencePlaytesterRequest {
 
 export interface GetWorldChartRequest {
     chart: string;
+    genre?: GetWorldChartGenreEnum;
+    limit?: number;
 }
 
 export interface GetWorldDiscoverExperienceRequest {
@@ -473,6 +661,11 @@ export interface GetWorldExperienceAlertSettingRequest {
 export interface GetWorldExperienceAnalyticRequest {
     experienceId: string;
     report: string;
+    from?: string;
+    to?: string;
+    segment?: string;
+    funnel?: string;
+    currency?: string;
 }
 
 export interface GetWorldExperienceBanRequest {
@@ -491,6 +684,15 @@ export interface GetWorldExperienceConfigRequest {
 export interface GetWorldExperienceExperimentRequest {
     experienceId: string;
     experimentId: string;
+}
+
+export interface GetWorldExperienceLocalizationRequest {
+    experienceId: string;
+}
+
+export interface GetWorldExperienceLocalizationExportRequest {
+    experienceId: string;
+    locales?: string;
 }
 
 export interface GetWorldExperienceMaturityRequest {
@@ -553,6 +755,19 @@ export interface GetWorldLinkSellerRequest {
 
 export interface GetWorldParentalChildrenRequest {
     childId: string;
+    days?: number;
+}
+
+export interface GetWorldSearchRequest {
+    q?: string;
+    genre?: GetWorldSearchGenreEnum;
+    rating?: GetWorldSearchRatingEnum;
+    device?: GetWorldSearchDeviceEnum;
+    players?: number;
+    minThumbs?: number;
+    live?: GetWorldSearchLiveEnum;
+    friends?: GetWorldSearchFriendsEnum;
+    limit?: number;
 }
 
 export interface GetWorldTransferRequestRequest {
@@ -565,22 +780,31 @@ export interface GetWorldTransparencyRequest {
 
 export interface ListWorldExperienceAlertsRequest {
     experienceId: string;
+    limit?: number;
+    cursor?: string;
 }
 
 export interface ListWorldExperienceAuditRequest {
     experienceId: string;
+    limit?: number;
+    cursor?: string;
 }
 
 export interface ListWorldExperienceBansRequest {
     experienceId: string;
+    cursor?: string;
+    limit?: number;
 }
 
 export interface ListWorldExperienceConfigVersionsRequest {
     experienceId: string;
+    limit?: number;
+    cursor?: string;
 }
 
 export interface ListWorldExperienceEventsRequest {
     experienceId: string;
+    includeEnded?: ListWorldExperienceEventsIncludeEndedEnum;
 }
 
 export interface ListWorldExperienceExperimentsRequest {
@@ -589,6 +813,8 @@ export interface ListWorldExperienceExperimentsRequest {
 
 export interface ListWorldExperienceModerationReportsRequest {
     experienceId: string;
+    cursor?: string;
+    limit?: number;
 }
 
 export interface ListWorldExperiencePlacePublishesRequest {
@@ -613,71 +839,135 @@ export interface ListWorldExperienceServersRequest {
     experienceId: string;
 }
 
-export interface UpdateWorldExperienceRequest {
-    experienceId: string;
+export interface ListWorldExperiencesRequest {
+    cursor?: string;
+    limit?: number;
 }
 
-export interface UpdateWorldExperienceAccessLimitRequest {
-    experienceId: string;
+export interface ListWorldGameMineRequest {
+    q?: string;
+    status?: ListWorldGameMineStatusEnum;
+    engine?: ListWorldGameMineEngineEnum;
+    genre?: string;
+    template?: string;
+    owner?: ListWorldGameMineOwnerEnum;
+    flag?: ListWorldGameMineFlagEnum;
+    sort?: ListWorldGameMineSortEnum;
 }
 
-export interface UpdateWorldExperienceAlertSettingRequest {
-    experienceId: string;
+export interface ListWorldShopListingsRequest {
+    q?: string;
+    limit?: number;
+    experienceId?: string;
 }
 
-export interface UpdateWorldExperienceChatSettingRequest {
-    experienceId: string;
+export interface ListWorldTransferRequestsRequest {
+    direction?: ListWorldTransferRequestsDirectionEnum;
+    status?: ListWorldTransferRequestsStatusEnum;
+    experienceId?: string;
 }
 
-export interface UpdateWorldExperienceConfigRequest {
+export interface UpdateWorldExperienceOperationRequest {
     experienceId: string;
+    updateWorldExperienceRequest?: UpdateWorldExperienceRequest;
 }
 
-export interface UpdateWorldExperienceConfigValueRequest {
+export interface UpdateWorldExperienceAccessLimitOperationRequest {
     experienceId: string;
+    updateWorldExperienceAccessLimitRequest?: UpdateWorldExperienceAccessLimitRequest;
 }
 
-export interface UpdateWorldExperienceEventRequest {
+export interface UpdateWorldExperienceAlertSettingOperationRequest {
+    experienceId: string;
+    updateWorldExperienceAlertSettingRequest?: UpdateWorldExperienceAlertSettingRequest;
+}
+
+export interface UpdateWorldExperienceChatSettingOperationRequest {
+    experienceId: string;
+    updateWorldExperienceChatSettingRequest?: UpdateWorldExperienceChatSettingRequest;
+}
+
+export interface UpdateWorldExperienceConfigOperationRequest {
+    experienceId: string;
+    updateWorldExperienceConfigRequest?: UpdateWorldExperienceConfigRequest;
+}
+
+export interface UpdateWorldExperienceConfigValueOperationRequest {
+    experienceId: string;
+    updateWorldExperienceConfigValueRequest?: UpdateWorldExperienceConfigValueRequest;
+}
+
+export interface UpdateWorldExperienceEventOperationRequest {
     experienceId: string;
     eventId: string;
+    updateWorldExperienceEventRequest?: UpdateWorldExperienceEventRequest;
 }
 
-export interface UpdateWorldExperienceExperimentRequest {
+export interface UpdateWorldExperienceExperimentOperationRequest {
     experienceId: string;
     experimentId: string;
+    updateWorldExperienceExperimentRequest?: UpdateWorldExperienceExperimentRequest;
+}
+
+export interface UpdateWorldExperienceLocalizationOperationRequest {
+    experienceId: string;
+    updateWorldExperienceLocalizationRequest?: UpdateWorldExperienceLocalizationRequest;
 }
 
 export interface UpdateWorldExperienceMaturityRequest {
     experienceId: string;
+    createWorldRatingComputeRequest?: CreateWorldRatingComputeRequest;
 }
 
 export interface UpdateWorldExperiencePlaceRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceRequest?: CreateWorldExperiencePlaceRequest;
 }
 
-export interface UpdateWorldExperiencePlaceDraftRequest {
+export interface UpdateWorldExperiencePlaceDraftOperationRequest {
     experienceId: string;
     placeId: string;
+    updateWorldExperiencePlaceDraftRequest?: UpdateWorldExperiencePlaceDraftRequest;
 }
 
-export interface UpdateWorldExperiencePlaceVersionNoteRequest {
+export interface UpdateWorldExperiencePlaceVersionNoteOperationRequest {
     experienceId: string;
     placeId: string;
     versionId: string;
+    updateWorldExperiencePlaceVersionNoteRequest?: UpdateWorldExperiencePlaceVersionNoteRequest;
 }
 
-export interface UpdateWorldExperiencePublishRequest {
+export interface UpdateWorldExperiencePublishOperationRequest {
     experienceId: string;
     requestId: string;
+    updateWorldExperiencePublishRequest?: UpdateWorldExperiencePublishRequest;
 }
 
 export interface UpdateWorldExperienceShowcaseRequest {
     experienceId: string;
+    updateBrandDropListingRequest?: UpdateBrandDropListingRequest;
 }
 
-export interface UpdateWorldParentalChildrenRequest {
+export interface UpdateWorldFavoriteOperationRequest {
+    updateWorldFavoriteRequest?: UpdateWorldFavoriteRequest;
+}
+
+export interface UpdateWorldMatureOperationRequest {
+    updateWorldMatureRequest?: UpdateWorldMatureRequest;
+}
+
+export interface UpdateWorldMePrefOperationRequest {
+    updateWorldMePrefRequest?: UpdateWorldMePrefRequest;
+}
+
+export interface UpdateWorldParentalChildrenOperationRequest {
     childId: string;
+    updateWorldParentalChildrenRequest?: UpdateWorldParentalChildrenRequest;
+}
+
+export interface UpdateWorldVoteOperationRequest {
+    updateWorldVoteRequest?: UpdateWorldVoteRequest;
 }
 
 /**
@@ -688,10 +978,12 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Create an experience with a start place (no version yet). Counts against the plan\'s experience limit.
      */
-    async createWorldExperienceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceResponse>> {
+    async createWorldExperienceRaw(requestParameters: CreateWorldExperienceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -706,6 +998,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceRequestToJSON(requestParameters.createWorldExperienceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceResponseFromJSON(jsonValue));
@@ -714,15 +1007,15 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Create an experience with a start place (no version yet). Counts against the plan\'s experience limit.
      */
-    async createWorldExperience(initOverrides?: RequestInit): Promise<CreateWorldExperienceResponse> {
-        const response = await this.createWorldExperienceRaw(initOverrides);
+    async createWorldExperience(requestParameters: CreateWorldExperienceOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldExperienceResponse> {
+        const response = await this.createWorldExperienceRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Who can play: private, friends, unlisted or public (public/unlisted need a reviewed publish).
      */
-    async createWorldExperienceAccessRaw(requestParameters: CreateWorldExperienceAccessRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse>> {
+    async createWorldExperienceAccessRaw(requestParameters: CreateWorldExperienceAccessOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceAccess.');
         }
@@ -730,6 +1023,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -744,6 +1039,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceAccessRequestToJSON(requestParameters.createWorldExperienceAccessRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceResponseFromJSON(jsonValue));
@@ -752,7 +1048,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Who can play: private, friends, unlisted or public (public/unlisted need a reviewed publish).
      */
-    async createWorldExperienceAccess(requestParameters: CreateWorldExperienceAccessRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse> {
+    async createWorldExperienceAccess(requestParameters: CreateWorldExperienceAccessOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse> {
         const response = await this.createWorldExperienceAccessRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -802,7 +1098,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Query one custom event over ≤ 31 days: count, sum, avg or players, by day or hour, optionally grouped by a field. Groups under 50 players are suppressed.
      */
-    async createWorldExperienceAnalyticQueryRaw(requestParameters: CreateWorldExperienceAnalyticQueryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceAnalyticQueryResponse>> {
+    async createWorldExperienceAnalyticQueryRaw(requestParameters: CreateWorldExperienceAnalyticQueryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceAnalyticQueryResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceAnalyticQuery.');
         }
@@ -810,6 +1106,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -824,6 +1122,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceAnalyticQueryRequestToJSON(requestParameters.createWorldExperienceAnalyticQueryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceAnalyticQueryResponseFromJSON(jsonValue));
@@ -832,7 +1131,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Query one custom event over ≤ 31 days: count, sum, avg or players, by day or hour, optionally grouped by a field. Groups under 50 players are suppressed.
      */
-    async createWorldExperienceAnalyticQuery(requestParameters: CreateWorldExperienceAnalyticQueryRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceAnalyticQueryResponse> {
+    async createWorldExperienceAnalyticQuery(requestParameters: CreateWorldExperienceAnalyticQueryOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceAnalyticQueryResponse> {
         const response = await this.createWorldExperienceAnalyticQueryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -878,7 +1177,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Ban a player from your experience: { sub, duration (seconds, null = permanent), reason, displayReason?, applyToAlts? }. Enforced at join and on every running server.
      */
-    async createWorldExperienceBanRaw(requestParameters: CreateWorldExperienceBanRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceBanResponse>> {
+    async createWorldExperienceBanRaw(requestParameters: CreateWorldExperienceBanOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceBanResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceBan.');
         }
@@ -886,6 +1185,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -900,6 +1201,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceBanRequestToJSON(requestParameters.createWorldExperienceBanRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldExperienceBanResponseFromJSON(jsonValue));
@@ -908,7 +1210,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Ban a player from your experience: { sub, duration (seconds, null = permanent), reason, displayReason?, applyToAlts? }. Enforced at join and on every running server.
      */
-    async createWorldExperienceBan(requestParameters: CreateWorldExperienceBanRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceBanResponse> {
+    async createWorldExperienceBan(requestParameters: CreateWorldExperienceBanOperationRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceBanResponse> {
         const response = await this.createWorldExperienceBanRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -954,7 +1256,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Instant rollback: an earlier version becomes the newest one.
      */
-    async createWorldExperienceConfigRollbackRaw(requestParameters: CreateWorldExperienceConfigRollbackRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceConfigResponse>> {
+    async createWorldExperienceConfigRollbackRaw(requestParameters: CreateWorldExperienceConfigRollbackOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceConfigResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceConfigRollback.');
         }
@@ -962,6 +1264,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -976,6 +1280,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceConfigRollbackRequestToJSON(requestParameters.createWorldExperienceConfigRollbackRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceConfigResponseFromJSON(jsonValue));
@@ -984,7 +1289,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Instant rollback: an earlier version becomes the newest one.
      */
-    async createWorldExperienceConfigRollback(requestParameters: CreateWorldExperienceConfigRollbackRequest, initOverrides?: RequestInit): Promise<WorldExperienceConfigResponse> {
+    async createWorldExperienceConfigRollback(requestParameters: CreateWorldExperienceConfigRollbackOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceConfigResponse> {
         const response = await this.createWorldExperienceConfigRollbackRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -992,7 +1297,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Schedule a live event: start and end, config values while live, an optional Messaging topic the platform publishes to at start and end.
      */
-    async createWorldExperienceEventRaw(requestParameters: CreateWorldExperienceEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceEventResponse>> {
+    async createWorldExperienceEventRaw(requestParameters: CreateWorldExperienceEventOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceEventResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceEvent.');
         }
@@ -1000,6 +1305,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1014,6 +1321,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceEventRequestToJSON(requestParameters.createWorldExperienceEventRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceEventResponseFromJSON(jsonValue));
@@ -1022,7 +1330,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Schedule a live event: start and end, config values while live, an optional Messaging topic the platform publishes to at start and end.
      */
-    async createWorldExperienceEvent(requestParameters: CreateWorldExperienceEventRequest, initOverrides?: RequestInit): Promise<WorldExperienceEventResponse> {
+    async createWorldExperienceEvent(requestParameters: CreateWorldExperienceEventOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceEventResponse> {
         const response = await this.createWorldExperienceEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1072,7 +1380,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Create a draft experiment: 2–5 variants of config values with traffic weights (+ holdout = 100), targeting, a primary metric and guardrails, minimum 7 days.
      */
-    async createWorldExperienceExperimentRaw(requestParameters: CreateWorldExperienceExperimentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperimentResponse>> {
+    async createWorldExperienceExperimentRaw(requestParameters: CreateWorldExperienceExperimentOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperimentResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceExperiment.');
         }
@@ -1080,6 +1388,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1094,6 +1404,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceExperimentRequestToJSON(requestParameters.createWorldExperienceExperimentRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceExperimentResponseFromJSON(jsonValue));
@@ -1102,7 +1413,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Create a draft experiment: 2–5 variants of config values with traffic weights (+ holdout = 100), targeting, a primary metric and guardrails, minimum 7 days.
      */
-    async createWorldExperienceExperiment(requestParameters: CreateWorldExperienceExperimentRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperimentResponse> {
+    async createWorldExperienceExperiment(requestParameters: CreateWorldExperienceExperimentOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperimentResponse> {
         const response = await this.createWorldExperienceExperimentRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1110,7 +1421,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Ship a variant: its values become the base config for everyone and the experiment ends.
      */
-    async createWorldExperienceExperimentShipRaw(requestParameters: CreateWorldExperienceExperimentShipRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperimentResponse>> {
+    async createWorldExperienceExperimentShipRaw(requestParameters: CreateWorldExperienceExperimentShipOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperimentResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceExperimentShip.');
         }
@@ -1122,6 +1433,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1136,6 +1449,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceExperimentShipRequestToJSON(requestParameters.createWorldExperienceExperimentShipRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceExperimentResponseFromJSON(jsonValue));
@@ -1144,7 +1458,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Ship a variant: its values become the base config for everyone and the experiment ends.
      */
-    async createWorldExperienceExperimentShip(requestParameters: CreateWorldExperienceExperimentShipRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperimentResponse> {
+    async createWorldExperienceExperimentShip(requestParameters: CreateWorldExperienceExperimentShipOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperimentResponse> {
         const response = await this.createWorldExperienceExperimentShipRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1207,6 +1521,8 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -1220,6 +1536,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequest2ToJSON(requestParameters.reasonRequest2),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceExperimentResponseFromJSON(jsonValue));
@@ -1236,7 +1553,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Join as the token\'s owner: a server and a 60-second single-use ticket for wss …/v1/realtime/worlds/{serverId}. 202 while a new server boots.
      */
-    async createWorldExperienceJoinRaw(requestParameters: CreateWorldExperienceJoinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceJoinResponse>> {
+    async createWorldExperienceJoinRaw(requestParameters: CreateWorldExperienceJoinOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceJoinResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceJoin.');
         }
@@ -1244,6 +1561,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1258,6 +1577,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceJoinRequestToJSON(requestParameters.createWorldExperienceJoinRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceJoinResponseFromJSON(jsonValue));
@@ -1266,8 +1586,49 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Join as the token\'s owner: a server and a 60-second single-use ticket for wss …/v1/realtime/worlds/{serverId}. 202 while a new server boots.
      */
-    async createWorldExperienceJoin(requestParameters: CreateWorldExperienceJoinRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceJoinResponse> {
+    async createWorldExperienceJoin(requestParameters: CreateWorldExperienceJoinOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceJoinResponse> {
         const response = await this.createWorldExperienceJoinRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Import a sheet: { csv } with a \"key\" column then one column per language code; rows @name and @description carry the game listing. { dryRun: true } previews (issues with line and column) without saving; an error refuses the whole import.
+     */
+    async createWorldExperienceLocalizationImportRaw(requestParameters: CreateWorldExperienceLocalizationImportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceLocalizationImportResponse>> {
+        if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
+            throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceLocalizationImport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/worlds/experiences/{experienceId}/localization/import`.replace(`{${"experienceId"}}`, encodeURIComponent(String(requestParameters.experienceId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateInventoryCsvImportRequestToJSON(requestParameters.createInventoryCsvImportRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceLocalizationImportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Import a sheet: { csv } with a \"key\" column then one column per language code; rows @name and @description carry the game listing. { dryRun: true } previews (issues with line and column) without saving; an error refuses the whole import.
+     */
+    async createWorldExperienceLocalizationImport(requestParameters: CreateWorldExperienceLocalizationImportRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceLocalizationImportResponse> {
+        const response = await this.createWorldExperienceLocalizationImportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1350,7 +1711,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Add a place (at most 10 per experience in P1).
      */
-    async createWorldExperiencePlaceRaw(requestParameters: CreateWorldExperiencePlaceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperiencePlaceResponse>> {
+    async createWorldExperiencePlaceRaw(requestParameters: CreateWorldExperiencePlaceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperiencePlaceResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlace.');
         }
@@ -1358,6 +1719,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1372,6 +1735,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceRequestToJSON(requestParameters.createWorldExperiencePlaceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperiencePlaceResponseFromJSON(jsonValue));
@@ -1380,7 +1744,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Add a place (at most 10 per experience in P1).
      */
-    async createWorldExperiencePlace(requestParameters: CreateWorldExperiencePlaceRequest, initOverrides?: RequestInit): Promise<WorldExperiencePlaceResponse> {
+    async createWorldExperiencePlace(requestParameters: CreateWorldExperiencePlaceOperationRequest, initOverrides?: RequestInit): Promise<WorldExperiencePlaceResponse> {
         const response = await this.createWorldExperiencePlaceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1388,7 +1752,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Run the publish checks (script lint, budgets, shop-object listings) on a project. Writes nothing.
      */
-    async createWorldExperiencePlaceCheckRaw(requestParameters: CreateWorldExperiencePlaceCheckRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceCheckResponse>> {
+    async createWorldExperiencePlaceCheckRaw(requestParameters: CreateWorldExperiencePlaceCheckOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceCheckResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceCheck.');
         }
@@ -1400,6 +1764,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1414,6 +1780,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceCheckRequestToJSON(requestParameters.createWorldExperiencePlaceCheckRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceCheckResponseFromJSON(jsonValue));
@@ -1422,7 +1789,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Run the publish checks (script lint, budgets, shop-object listings) on a project. Writes nothing.
      */
-    async createWorldExperiencePlaceCheck(requestParameters: CreateWorldExperiencePlaceCheckRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceCheckResponse> {
+    async createWorldExperiencePlaceCheck(requestParameters: CreateWorldExperiencePlaceCheckOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceCheckResponse> {
         const response = await this.createWorldExperiencePlaceCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1430,7 +1797,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Step 1: run checks and freeze a version (the saved draft, or an uploaded versionId). Blocking problems answer 400 with the list.
      */
-    async createWorldExperiencePlacePublishRaw(requestParameters: CreateWorldExperiencePlacePublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse2>> {
+    async createWorldExperiencePlacePublishRaw(requestParameters: CreateWorldExperiencePlacePublishOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse2>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlacePublish.');
         }
@@ -1442,6 +1809,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1456,6 +1825,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlacePublishRequestToJSON(requestParameters.createWorldExperiencePlacePublishRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceResponse2FromJSON(jsonValue));
@@ -1464,7 +1834,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Step 1: run checks and freeze a version (the saved draft, or an uploaded versionId). Blocking problems answer 400 with the list.
      */
-    async createWorldExperiencePlacePublish(requestParameters: CreateWorldExperiencePlacePublishRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse2> {
+    async createWorldExperiencePlacePublish(requestParameters: CreateWorldExperiencePlacePublishOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse2> {
         const response = await this.createWorldExperiencePlacePublishRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1556,7 +1926,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Upload a version bundle (crossly-worlds-project/1). Not live until published.
      */
-    async createWorldExperiencePlaceVersionRaw(requestParameters: CreateWorldExperiencePlaceVersionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperiencePlaceVersionResponse>> {
+    async createWorldExperiencePlaceVersionRaw(requestParameters: CreateWorldExperiencePlaceVersionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperiencePlaceVersionResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceVersion.');
         }
@@ -1568,6 +1938,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1582,6 +1954,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceVersionRequestToJSON(requestParameters.createWorldExperiencePlaceVersionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperiencePlaceVersionResponseFromJSON(jsonValue));
@@ -1590,7 +1963,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Upload a version bundle (crossly-worlds-project/1). Not live until published.
      */
-    async createWorldExperiencePlaceVersion(requestParameters: CreateWorldExperiencePlaceVersionRequest, initOverrides?: RequestInit): Promise<WorldExperiencePlaceVersionResponse> {
+    async createWorldExperiencePlaceVersion(requestParameters: CreateWorldExperiencePlaceVersionOperationRequest, initOverrides?: RequestInit): Promise<WorldExperiencePlaceVersionResponse> {
         const response = await this.createWorldExperiencePlaceVersionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1690,7 +2063,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Add a playtester by Crossly handle (max 200 per game).
      */
-    async createWorldExperiencePlaytesterRaw(requestParameters: CreateWorldExperiencePlaytesterRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaytesterResponse>> {
+    async createWorldExperiencePlaytesterRaw(requestParameters: CreateWorldExperiencePlaytesterOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaytesterResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaytester.');
         }
@@ -1698,6 +2071,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1712,6 +2087,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaytesterRequestToJSON(requestParameters.createWorldExperiencePlaytesterRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaytesterResponseFromJSON(jsonValue));
@@ -1720,7 +2096,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Add a playtester by Crossly handle (max 200 per game).
      */
-    async createWorldExperiencePlaytester(requestParameters: CreateWorldExperiencePlaytesterRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaytesterResponse> {
+    async createWorldExperiencePlaytester(requestParameters: CreateWorldExperiencePlaytesterOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaytesterResponse> {
         const response = await this.createWorldExperiencePlaytesterRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1783,6 +2159,8 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -1796,6 +2174,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequest2ToJSON(requestParameters.reasonRequest2),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceResponse2FromJSON(jsonValue));
@@ -1812,7 +2191,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Step 7: serve the approved version to percent (1–100) of new joins; 100 makes it current. Crash-heavy rollouts halt automatically.
      */
-    async createWorldExperiencePublishRolloutRaw(requestParameters: CreateWorldExperiencePublishRolloutRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse2>> {
+    async createWorldExperiencePublishRolloutRaw(requestParameters: CreateWorldExperiencePublishRolloutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse2>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePublishRollout.');
         }
@@ -1824,6 +2203,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1838,6 +2219,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePublishRolloutRequestToJSON(requestParameters.createWorldExperiencePublishRolloutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceResponse2FromJSON(jsonValue));
@@ -1846,7 +2228,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Step 7: serve the approved version to percent (1–100) of new joins; 100 makes it current. Crash-heavy rollouts halt automatically.
      */
-    async createWorldExperiencePublishRollout(requestParameters: CreateWorldExperiencePublishRolloutRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse2> {
+    async createWorldExperiencePublishRollout(requestParameters: CreateWorldExperiencePublishRolloutOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse2> {
         const response = await this.createWorldExperiencePublishRolloutRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1896,7 +2278,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * An access code for a reserved server of a place (teleports, matches, tournaments). The code is shown once.
      */
-    async createWorldExperienceReservedServerRaw(requestParameters: CreateWorldExperienceReservedServerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceReservedServerResponse>> {
+    async createWorldExperienceReservedServerRaw(requestParameters: CreateWorldExperienceReservedServerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceReservedServerResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceReservedServer.');
         }
@@ -1904,6 +2286,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1918,6 +2302,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceReservedServerRequestToJSON(requestParameters.createWorldExperienceReservedServerRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceReservedServerResponseFromJSON(jsonValue));
@@ -1926,7 +2311,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * An access code for a reserved server of a place (teleports, matches, tournaments). The code is shown once.
      */
-    async createWorldExperienceReservedServer(requestParameters: CreateWorldExperienceReservedServerRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceReservedServerResponse> {
+    async createWorldExperienceReservedServer(requestParameters: CreateWorldExperienceReservedServerOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceReservedServerResponse> {
         const response = await this.createWorldExperienceReservedServerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1972,7 +2357,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Shut down servers: mode soft (default) teleports players to fresh servers of the current version first; hard stops now. scope all | outdated (only servers not on a served version).
      */
-    async createWorldExperienceServerShutdownRaw(requestParameters: CreateWorldExperienceServerShutdownRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceServerShutdownResponse>> {
+    async createWorldExperienceServerShutdownRaw(requestParameters: CreateWorldExperienceServerShutdownOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceServerShutdownResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceServerShutdown.');
         }
@@ -1980,6 +2365,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1994,6 +2381,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceServerShutdownRequestToJSON(requestParameters.createWorldExperienceServerShutdownRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceServerShutdownResponseFromJSON(jsonValue));
@@ -2002,7 +2390,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Shut down servers: mode soft (default) teleports players to fresh servers of the current version first; hard stops now. scope all | outdated (only servers not on a served version).
      */
-    async createWorldExperienceServerShutdown(requestParameters: CreateWorldExperienceServerShutdownRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceServerShutdownResponse> {
+    async createWorldExperienceServerShutdown(requestParameters: CreateWorldExperienceServerShutdownOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceServerShutdownResponse> {
         const response = await this.createWorldExperienceServerShutdownRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2010,7 +2398,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Ask another Crossly account (handle or email) to take over a 3D game you own. One waiting request per game; it expires after 14 days.
      */
-    async createWorldExperienceTransferRequestRaw(requestParameters: CreateWorldExperienceTransferRequestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldResponse2>> {
+    async createWorldExperienceTransferRequestRaw(requestParameters: CreateWorldExperienceTransferRequestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldResponse2>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceTransferRequest.');
         }
@@ -2018,6 +2406,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2032,6 +2422,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceTransferRequestRequestToJSON(requestParameters.createWorldExperienceTransferRequestRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldResponse2FromJSON(jsonValue));
@@ -2040,7 +2431,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Ask another Crossly account (handle or email) to take over a 3D game you own. One waiting request per game; it expires after 14 days.
      */
-    async createWorldExperienceTransferRequest(requestParameters: CreateWorldExperienceTransferRequestRequest, initOverrides?: RequestInit): Promise<WorldResponse2> {
+    async createWorldExperienceTransferRequest(requestParameters: CreateWorldExperienceTransferRequestOperationRequest, initOverrides?: RequestInit): Promise<WorldResponse2> {
         const response = await this.createWorldExperienceTransferRequestRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2048,10 +2439,12 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Start the ID check Mature needs (Stripe Identity: photo ID + selfie; the date of birth is read off the ID). Returns a hosted URL and client secret, or alreadyVerified.
      */
-    async createWorldMatureVerifyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldMatureVerifyResponse>> {
+    async createWorldMatureVerifyRaw(requestParameters: CreateWorldMatureVerifyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldMatureVerifyResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2066,6 +2459,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldMatureVerifyRequestToJSON(requestParameters.createWorldMatureVerifyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldMatureVerifyResponseFromJSON(jsonValue));
@@ -2074,18 +2468,20 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Start the ID check Mature needs (Stripe Identity: photo ID + selfie; the date of birth is read off the ID). Returns a hosted URL and client secret, or alreadyVerified.
      */
-    async createWorldMatureVerify(initOverrides?: RequestInit): Promise<CreateWorldMatureVerifyResponse> {
-        const response = await this.createWorldMatureVerifyRaw(initOverrides);
+    async createWorldMatureVerify(requestParameters: CreateWorldMatureVerifyOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldMatureVerifyResponse> {
+        const response = await this.createWorldMatureVerifyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Accept a child\'s invite as the parent: { code, pin }. The parent must be an ID-verified adult (18+ by the date of birth on the ID). The PIN protects every later change.
      */
-    async createWorldParentalAcceptRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldParentalResponse>> {
+    async createWorldParentalAcceptRaw(requestParameters: CreateWorldParentalAcceptOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldParentalResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2100,6 +2496,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldParentalAcceptRequestToJSON(requestParameters.createWorldParentalAcceptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldParentalResponseFromJSON(jsonValue));
@@ -2108,15 +2505,15 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Accept a child\'s invite as the parent: { code, pin }. The parent must be an ID-verified adult (18+ by the date of birth on the ID). The PIN protects every later change.
      */
-    async createWorldParentalAccept(initOverrides?: RequestInit): Promise<WorldParentalResponse> {
-        const response = await this.createWorldParentalAcceptRaw(initOverrides);
+    async createWorldParentalAccept(requestParameters: CreateWorldParentalAcceptOperationRequest = {}, initOverrides?: RequestInit): Promise<WorldParentalResponse> {
+        const response = await this.createWorldParentalAcceptRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Change the parent PIN: { pin, newPin } (4-8 digits). Five wrong PINs lock changes for 15 minutes.
      */
-    async createWorldParentalChildrenPinRaw(requestParameters: CreateWorldParentalChildrenPinRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldParentalChildrenPinResponse>> {
+    async createWorldParentalChildrenPinRaw(requestParameters: CreateWorldParentalChildrenPinOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldParentalChildrenPinResponse>> {
         if (requestParameters.childId === null || requestParameters.childId === undefined) {
             throw new runtime.RequiredError('childId','Required parameter requestParameters.childId was null or undefined when calling createWorldParentalChildrenPin.');
         }
@@ -2124,6 +2521,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2138,6 +2537,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldParentalChildrenPinRequestToJSON(requestParameters.createWorldParentalChildrenPinRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldParentalChildrenPinResponseFromJSON(jsonValue));
@@ -2146,7 +2546,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Change the parent PIN: { pin, newPin } (4-8 digits). Five wrong PINs lock changes for 15 minutes.
      */
-    async createWorldParentalChildrenPin(requestParameters: CreateWorldParentalChildrenPinRequest, initOverrides?: RequestInit): Promise<CreateWorldParentalChildrenPinResponse> {
+    async createWorldParentalChildrenPin(requestParameters: CreateWorldParentalChildrenPinOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldParentalChildrenPinResponse> {
         const response = await this.createWorldParentalChildrenPinRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2154,7 +2554,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Remove the parent link (and its limits) with your PIN: { pin }.
      */
-    async createWorldParentalChildrenUnlinkRaw(requestParameters: CreateWorldParentalChildrenUnlinkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldParentalChildrenUnlinkResponse>> {
+    async createWorldParentalChildrenUnlinkRaw(requestParameters: CreateWorldParentalChildrenUnlinkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldParentalChildrenUnlinkResponse>> {
         if (requestParameters.childId === null || requestParameters.childId === undefined) {
             throw new runtime.RequiredError('childId','Required parameter requestParameters.childId was null or undefined when calling createWorldParentalChildrenUnlink.');
         }
@@ -2162,6 +2562,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2176,6 +2578,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldParentalChildrenUnlinkRequestToJSON(requestParameters.createWorldParentalChildrenUnlinkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldParentalChildrenUnlinkResponseFromJSON(jsonValue));
@@ -2184,7 +2587,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Remove the parent link (and its limits) with your PIN: { pin }.
      */
-    async createWorldParentalChildrenUnlink(requestParameters: CreateWorldParentalChildrenUnlinkRequest, initOverrides?: RequestInit): Promise<CreateWorldParentalChildrenUnlinkResponse> {
+    async createWorldParentalChildrenUnlink(requestParameters: CreateWorldParentalChildrenUnlinkOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldParentalChildrenUnlinkResponse> {
         const response = await this.createWorldParentalChildrenUnlinkRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2226,10 +2629,12 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Rate a set of questionnaire answers exactly as publishing does: { answers } → rating (null when refused), reasons, content descriptors, interactive notices and refusals.
      */
-    async createWorldRatingComputeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldRatingComputeResponse>> {
+    async createWorldRatingComputeRaw(requestParameters: CreateWorldRatingComputeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldRatingComputeResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2244,6 +2649,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldRatingComputeRequestToJSON(requestParameters.createWorldRatingComputeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldRatingComputeResponseFromJSON(jsonValue));
@@ -2252,8 +2658,8 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Rate a set of questionnaire answers exactly as publishing does: { answers } → rating (null when refused), reasons, content descriptors, interactive notices and refusals.
      */
-    async createWorldRatingCompute(initOverrides?: RequestInit): Promise<CreateWorldRatingComputeResponse> {
-        const response = await this.createWorldRatingComputeRaw(initOverrides);
+    async createWorldRatingCompute(requestParameters: CreateWorldRatingComputeOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorldRatingComputeResponse> {
+        const response = await this.createWorldRatingComputeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2408,7 +2814,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Delete a game (a tombstone, restorable for 30 days). Body { confirmName } = the game\'s name.
      */
-    async deleteWorldExperienceRaw(requestParameters: DeleteWorldExperienceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteWorldExperienceResponse>> {
+    async deleteWorldExperienceRaw(requestParameters: DeleteWorldExperienceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteWorldExperienceResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling deleteWorldExperience.');
         }
@@ -2416,6 +2822,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2430,6 +2838,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: DeleteWorldExperienceRequestToJSON(requestParameters.deleteWorldExperienceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteWorldExperienceResponseFromJSON(jsonValue));
@@ -2438,7 +2847,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Delete a game (a tombstone, restorable for 30 days). Body { confirmName } = the game\'s name.
      */
-    async deleteWorldExperience(requestParameters: DeleteWorldExperienceRequest, initOverrides?: RequestInit): Promise<DeleteWorldExperienceResponse> {
+    async deleteWorldExperience(requestParameters: DeleteWorldExperienceOperationRequest, initOverrides?: RequestInit): Promise<DeleteWorldExperienceResponse> {
         const response = await this.deleteWorldExperienceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2482,6 +2891,48 @@ export class WorldsApi extends runtime.BaseAPI {
      */
     async deleteWorldExperienceBan(requestParameters: DeleteWorldExperienceBanRequest, initOverrides?: RequestInit): Promise<DeleteWorldExperienceBanResponse> {
         const response = await this.deleteWorldExperienceBanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Remove one language (its name, description and strings).
+     */
+    async deleteWorldExperienceLocalizationRaw(requestParameters: DeleteWorldExperienceLocalizationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceLocalizationResponse>> {
+        if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
+            throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling deleteWorldExperienceLocalization.');
+        }
+
+        if (requestParameters.locale === null || requestParameters.locale === undefined) {
+            throw new runtime.RequiredError('locale','Required parameter requestParameters.locale was null or undefined when calling deleteWorldExperienceLocalization.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/worlds/experiences/{experienceId}/localization/{locale}`.replace(`{${"experienceId"}}`, encodeURIComponent(String(requestParameters.experienceId))).replace(`{${"locale"}}`, encodeURIComponent(String(requestParameters.locale))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceLocalizationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove one language (its name, description and strings).
+     */
+    async deleteWorldExperienceLocalization(requestParameters: DeleteWorldExperienceLocalizationRequest, initOverrides?: RequestInit): Promise<WorldExperienceLocalizationResponse> {
+        const response = await this.deleteWorldExperienceLocalizationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2570,6 +3021,14 @@ export class WorldsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.genre !== undefined) {
+            queryParameters['genre'] = requestParameters.genre;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -2799,6 +3258,26 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.segment !== undefined) {
+            queryParameters['segment'] = requestParameters.segment;
+        }
+
+        if (requestParameters.funnel !== undefined) {
+            queryParameters['funnel'] = requestParameters.funnel;
+        }
+
+        if (requestParameters.currency !== undefined) {
+            queryParameters['currency'] = requestParameters.currency;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -2984,6 +3463,86 @@ export class WorldsApi extends runtime.BaseAPI {
      */
     async getWorldExperienceExperiment(requestParameters: GetWorldExperienceExperimentRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceExperimentResponse> {
         const response = await this.getWorldExperienceExperimentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A game\'s translations: per language its name, description and in-game strings (key -> text), the English source (the game\'s Details and string table) and what each language still misses.
+     */
+    async getWorldExperienceLocalizationRaw(requestParameters: GetWorldExperienceLocalizationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceLocalizationResponse>> {
+        if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
+            throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling getWorldExperienceLocalization.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/worlds/experiences/{experienceId}/localization`.replace(`{${"experienceId"}}`, encodeURIComponent(String(requestParameters.experienceId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceLocalizationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A game\'s translations: per language its name, description and in-game strings (key -> text), the English source (the game\'s Details and string table) and what each language still misses.
+     */
+    async getWorldExperienceLocalization(requestParameters: GetWorldExperienceLocalizationRequest, initOverrides?: RequestInit): Promise<WorldExperienceLocalizationResponse> {
+        const response = await this.getWorldExperienceLocalizationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The game\'s translations as one CSV sheet (key, en, then each language; ?locales=es,fr picks the columns).
+     */
+    async getWorldExperienceLocalizationExportRaw(requestParameters: GetWorldExperienceLocalizationExportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
+            throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling getWorldExperienceLocalizationExport.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.locales !== undefined) {
+            queryParameters['locales'] = requestParameters.locales;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/worlds/experiences/{experienceId}/localization/export`.replace(`{${"experienceId"}}`, encodeURIComponent(String(requestParameters.experienceId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.TextApiResponse(response) as any;
+    }
+
+    /**
+     * The game\'s translations as one CSV sheet (key, en, then each language; ?locales=es,fr picks the columns).
+     */
+    async getWorldExperienceLocalizationExport(requestParameters: GetWorldExperienceLocalizationExportRequest, initOverrides?: RequestInit): Promise<string> {
+        const response = await this.getWorldExperienceLocalizationExportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3639,6 +4198,10 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -3806,8 +4369,44 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Search experiences by title, creator, tags and genre (typo-tolerant, synonyms such as obby / obstacle). Filters: genre, rating (everyone keeps to Everyone), device, players (one server holds at least N), minThumbs (percent), live, friends. No results suggests a chart.
      */
-    async getWorldSearchRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldSearchResponse>> {
+    async getWorldSearchRaw(requestParameters: GetWorldSearchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldSearchResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.genre !== undefined) {
+            queryParameters['genre'] = requestParameters.genre;
+        }
+
+        if (requestParameters.rating !== undefined) {
+            queryParameters['rating'] = requestParameters.rating;
+        }
+
+        if (requestParameters.device !== undefined) {
+            queryParameters['device'] = requestParameters.device;
+        }
+
+        if (requestParameters.players !== undefined) {
+            queryParameters['players'] = requestParameters.players;
+        }
+
+        if (requestParameters.minThumbs !== undefined) {
+            queryParameters['minThumbs'] = requestParameters.minThumbs;
+        }
+
+        if (requestParameters.live !== undefined) {
+            queryParameters['live'] = requestParameters.live;
+        }
+
+        if (requestParameters.friends !== undefined) {
+            queryParameters['friends'] = requestParameters.friends;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -3832,8 +4431,8 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Search experiences by title, creator, tags and genre (typo-tolerant, synonyms such as obby / obstacle). Filters: genre, rating (everyone keeps to Everyone), device, players (one server holds at least N), minThumbs (percent), live, friends. No results suggests a chart.
      */
-    async getWorldSearch(initOverrides?: RequestInit): Promise<GetWorldSearchResponse> {
-        const response = await this.getWorldSearchRaw(initOverrides);
+    async getWorldSearch(requestParameters: GetWorldSearchRequest = {}, initOverrides?: RequestInit): Promise<GetWorldSearchResponse> {
+        const response = await this.getWorldSearchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3957,6 +4556,14 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -3994,6 +4601,14 @@ export class WorldsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -4033,6 +4648,14 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -4071,6 +4694,14 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -4108,6 +4739,10 @@ export class WorldsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.includeEnded !== undefined) {
+            queryParameters['includeEnded'] = requestParameters.includeEnded;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -4184,6 +4819,14 @@ export class WorldsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -4414,8 +5057,16 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Your experiences, newest first; cursor-paged (?cursor=&limit=).
      */
-    async listWorldExperiencesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldExperiencesResponse>> {
+    async listWorldExperiencesRaw(requestParameters: ListWorldExperiencesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldExperiencesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -4440,8 +5091,8 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Your experiences, newest first; cursor-paged (?cursor=&limit=).
      */
-    async listWorldExperiences(initOverrides?: RequestInit): Promise<ListWorldExperiencesResponse> {
-        const response = await this.listWorldExperiencesRaw(initOverrides);
+    async listWorldExperiences(requestParameters: ListWorldExperiencesRequest = {}, initOverrides?: RequestInit): Promise<ListWorldExperiencesResponse> {
+        const response = await this.listWorldExperiencesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4482,8 +5133,40 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Every game you own or collaborate on, 3D worlds and Classic, filtered (?q&status&engine&genre&template&owner&flag&sort; sort=revenue = highest earning first). Each row carries revenueCents: your creator-ledger earnings from it in USD cents (null for Classic).
      */
-    async listWorldGameMineRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldGameMineResponse>> {
+    async listWorldGameMineRaw(requestParameters: ListWorldGameMineRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldGameMineResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.engine !== undefined) {
+            queryParameters['engine'] = requestParameters.engine;
+        }
+
+        if (requestParameters.genre !== undefined) {
+            queryParameters['genre'] = requestParameters.genre;
+        }
+
+        if (requestParameters.template !== undefined) {
+            queryParameters['template'] = requestParameters.template;
+        }
+
+        if (requestParameters.owner !== undefined) {
+            queryParameters['owner'] = requestParameters.owner;
+        }
+
+        if (requestParameters.flag !== undefined) {
+            queryParameters['flag'] = requestParameters.flag;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -4508,8 +5191,8 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Every game you own or collaborate on, 3D worlds and Classic, filtered (?q&status&engine&genre&template&owner&flag&sort; sort=revenue = highest earning first). Each row carries revenueCents: your creator-ledger earnings from it in USD cents (null for Classic).
      */
-    async listWorldGameMine(initOverrides?: RequestInit): Promise<ListWorldGameMineResponse> {
-        const response = await this.listWorldGameMineRaw(initOverrides);
+    async listWorldGameMine(requestParameters: ListWorldGameMineRequest = {}, initOverrides?: RequestInit): Promise<ListWorldGameMineResponse> {
+        const response = await this.listWorldGameMineRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4618,8 +5301,20 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Your live Crossly listings a game can show and sell (shop objects bind to their id).
      */
-    async listWorldShopListingsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldShopListingsResponse>> {
+    async listWorldShopListingsRaw(requestParameters: ListWorldShopListingsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldShopListingsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.experienceId !== undefined) {
+            queryParameters['experienceId'] = requestParameters.experienceId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -4644,16 +5339,28 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Your live Crossly listings a game can show and sell (shop objects bind to their id).
      */
-    async listWorldShopListings(initOverrides?: RequestInit): Promise<ListWorldShopListingsResponse> {
-        const response = await this.listWorldShopListingsRaw(initOverrides);
+    async listWorldShopListings(requestParameters: ListWorldShopListingsRequest = {}, initOverrides?: RequestInit): Promise<ListWorldShopListingsResponse> {
+        const response = await this.listWorldShopListingsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Ownership transfer requests you were asked (incoming) or sent (outgoing), newest first (?direction&status&experienceId).
      */
-    async listWorldTransferRequestsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldTransferRequestsResponse>> {
+    async listWorldTransferRequestsRaw(requestParameters: ListWorldTransferRequestsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldTransferRequestsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.direction !== undefined) {
+            queryParameters['direction'] = requestParameters.direction;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.experienceId !== undefined) {
+            queryParameters['experienceId'] = requestParameters.experienceId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -4678,8 +5385,8 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Ownership transfer requests you were asked (incoming) or sent (outgoing), newest first (?direction&status&experienceId).
      */
-    async listWorldTransferRequests(initOverrides?: RequestInit): Promise<ListWorldTransferRequestsResponse> {
-        const response = await this.listWorldTransferRequestsRaw(initOverrides);
+    async listWorldTransferRequests(requestParameters: ListWorldTransferRequestsRequest = {}, initOverrides?: RequestInit): Promise<ListWorldTransferRequestsResponse> {
+        const response = await this.listWorldTransferRequestsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4720,7 +5427,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Edit name, description, genre, rating or icon.
      */
-    async updateWorldExperienceRaw(requestParameters: UpdateWorldExperienceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse>> {
+    async updateWorldExperienceRaw(requestParameters: UpdateWorldExperienceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperience.');
         }
@@ -4728,6 +5435,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4742,6 +5451,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceRequestToJSON(requestParameters.updateWorldExperienceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceResponseFromJSON(jsonValue));
@@ -4750,7 +5460,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Edit name, description, genre, rating or icon.
      */
-    async updateWorldExperience(requestParameters: UpdateWorldExperienceRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse> {
+    async updateWorldExperience(requestParameters: UpdateWorldExperienceOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse> {
         const response = await this.updateWorldExperienceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4758,7 +5468,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Limit who can play: { crewOnly } (only members of the owner\'s crew), { countryMode: all|allow|block, countries: [\'US\', ...] }. The owner and team are never limited.
      */
-    async updateWorldExperienceAccessLimitRaw(requestParameters: UpdateWorldExperienceAccessLimitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceAccessLimitResponse>> {
+    async updateWorldExperienceAccessLimitRaw(requestParameters: UpdateWorldExperienceAccessLimitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceAccessLimitResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceAccessLimit.');
         }
@@ -4766,6 +5476,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4780,6 +5492,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceAccessLimitRequestToJSON(requestParameters.updateWorldExperienceAccessLimitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldExperienceAccessLimitResponseFromJSON(jsonValue));
@@ -4788,7 +5501,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Limit who can play: { crewOnly } (only members of the owner\'s crew), { countryMode: all|allow|block, countries: [\'US\', ...] }. The owner and team are never limited.
      */
-    async updateWorldExperienceAccessLimit(requestParameters: UpdateWorldExperienceAccessLimitRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceAccessLimitResponse> {
+    async updateWorldExperienceAccessLimit(requestParameters: UpdateWorldExperienceAccessLimitOperationRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceAccessLimitResponse> {
         const response = await this.updateWorldExperienceAccessLimitRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4796,7 +5509,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Change alert rules and quiet hours.
      */
-    async updateWorldExperienceAlertSettingRaw(requestParameters: UpdateWorldExperienceAlertSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceAlertSettingResponse>> {
+    async updateWorldExperienceAlertSettingRaw(requestParameters: UpdateWorldExperienceAlertSettingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceAlertSettingResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceAlertSetting.');
         }
@@ -4804,6 +5517,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4818,6 +5533,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceAlertSettingRequestToJSON(requestParameters.updateWorldExperienceAlertSettingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldExperienceAlertSettingResponseFromJSON(jsonValue));
@@ -4826,7 +5542,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Change alert rules and quiet hours.
      */
-    async updateWorldExperienceAlertSetting(requestParameters: UpdateWorldExperienceAlertSettingRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceAlertSettingResponse> {
+    async updateWorldExperienceAlertSetting(requestParameters: UpdateWorldExperienceAlertSettingOperationRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceAlertSettingResponse> {
         const response = await this.updateWorldExperienceAlertSettingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4834,7 +5550,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Turn text chat off or use the strict filter for everyone (never looser than the platform).
      */
-    async updateWorldExperienceChatSettingRaw(requestParameters: UpdateWorldExperienceChatSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceChatSettingResponse>> {
+    async updateWorldExperienceChatSettingRaw(requestParameters: UpdateWorldExperienceChatSettingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceChatSettingResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceChatSetting.');
         }
@@ -4842,6 +5558,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4856,6 +5574,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceChatSettingRequestToJSON(requestParameters.updateWorldExperienceChatSettingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldExperienceChatSettingResponseFromJSON(jsonValue));
@@ -4864,7 +5583,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Turn text chat off or use the strict filter for everyone (never looser than the platform).
      */
-    async updateWorldExperienceChatSetting(requestParameters: UpdateWorldExperienceChatSettingRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceChatSettingResponse> {
+    async updateWorldExperienceChatSetting(requestParameters: UpdateWorldExperienceChatSettingOperationRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceChatSettingResponse> {
         const response = await this.updateWorldExperienceChatSettingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4872,7 +5591,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Save the whole config document. Running servers get it within seconds (ConfigService.Changed). baseVersion guards against overwriting a newer save (409).
      */
-    async updateWorldExperienceConfigRaw(requestParameters: UpdateWorldExperienceConfigRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceConfigResponse>> {
+    async updateWorldExperienceConfigRaw(requestParameters: UpdateWorldExperienceConfigOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceConfigResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceConfig.');
         }
@@ -4880,6 +5599,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4894,6 +5615,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceConfigRequestToJSON(requestParameters.updateWorldExperienceConfigRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceConfigResponseFromJSON(jsonValue));
@@ -4902,7 +5624,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Save the whole config document. Running servers get it within seconds (ConfigService.Changed). baseVersion guards against overwriting a newer save (409).
      */
-    async updateWorldExperienceConfig(requestParameters: UpdateWorldExperienceConfigRequest, initOverrides?: RequestInit): Promise<WorldExperienceConfigResponse> {
+    async updateWorldExperienceConfig(requestParameters: UpdateWorldExperienceConfigOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceConfigResponse> {
         const response = await this.updateWorldExperienceConfigRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4910,7 +5632,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Set and/or remove individual config keys.
      */
-    async updateWorldExperienceConfigValueRaw(requestParameters: UpdateWorldExperienceConfigValueRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceConfigResponse>> {
+    async updateWorldExperienceConfigValueRaw(requestParameters: UpdateWorldExperienceConfigValueOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceConfigResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceConfigValue.');
         }
@@ -4918,6 +5640,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4932,6 +5656,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceConfigValueRequestToJSON(requestParameters.updateWorldExperienceConfigValueRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceConfigResponseFromJSON(jsonValue));
@@ -4940,7 +5665,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Set and/or remove individual config keys.
      */
-    async updateWorldExperienceConfigValue(requestParameters: UpdateWorldExperienceConfigValueRequest, initOverrides?: RequestInit): Promise<WorldExperienceConfigResponse> {
+    async updateWorldExperienceConfigValue(requestParameters: UpdateWorldExperienceConfigValueOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceConfigResponse> {
         const response = await this.updateWorldExperienceConfigValueRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4948,7 +5673,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Reschedule or change a scheduled event; a live event may only move its end.
      */
-    async updateWorldExperienceEventRaw(requestParameters: UpdateWorldExperienceEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceEventResponse>> {
+    async updateWorldExperienceEventRaw(requestParameters: UpdateWorldExperienceEventOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceEventResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceEvent.');
         }
@@ -4960,6 +5685,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4974,6 +5701,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceEventRequestToJSON(requestParameters.updateWorldExperienceEventRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceEventResponseFromJSON(jsonValue));
@@ -4982,7 +5710,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Reschedule or change a scheduled event; a live event may only move its end.
      */
-    async updateWorldExperienceEvent(requestParameters: UpdateWorldExperienceEventRequest, initOverrides?: RequestInit): Promise<WorldExperienceEventResponse> {
+    async updateWorldExperienceEvent(requestParameters: UpdateWorldExperienceEventOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceEventResponse> {
         const response = await this.updateWorldExperienceEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4990,7 +5718,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Edit a draft (a running experiment may only rename or reword).
      */
-    async updateWorldExperienceExperimentRaw(requestParameters: UpdateWorldExperienceExperimentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperimentResponse>> {
+    async updateWorldExperienceExperimentRaw(requestParameters: UpdateWorldExperienceExperimentOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperimentResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceExperiment.');
         }
@@ -5002,6 +5730,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5016,6 +5746,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceExperimentRequestToJSON(requestParameters.updateWorldExperienceExperimentRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceExperimentResponseFromJSON(jsonValue));
@@ -5024,8 +5755,49 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Edit a draft (a running experiment may only rename or reword).
      */
-    async updateWorldExperienceExperiment(requestParameters: UpdateWorldExperienceExperimentRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperimentResponse> {
+    async updateWorldExperienceExperiment(requestParameters: UpdateWorldExperienceExperimentOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperimentResponse> {
         const response = await this.updateWorldExperienceExperimentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save languages: { locales: { es: { name, description, strings: { \"shop.title\": \"Tienda\" } } } }. Each language sent replaces that language; the rest stay. English holds the source string table (its name and description are the Details).
+     */
+    async updateWorldExperienceLocalizationRaw(requestParameters: UpdateWorldExperienceLocalizationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceLocalizationResponse>> {
+        if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
+            throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceLocalization.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/worlds/experiences/{experienceId}/localization`.replace(`{${"experienceId"}}`, encodeURIComponent(String(requestParameters.experienceId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateWorldExperienceLocalizationRequestToJSON(requestParameters.updateWorldExperienceLocalizationRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceLocalizationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save languages: { locales: { es: { name, description, strings: { \"shop.title\": \"Tienda\" } } } }. Each language sent replaces that language; the rest stay. English holds the source string table (its name and description are the Details).
+     */
+    async updateWorldExperienceLocalization(requestParameters: UpdateWorldExperienceLocalizationOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceLocalizationResponse> {
+        const response = await this.updateWorldExperienceLocalizationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -5041,6 +5813,8 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -5054,6 +5828,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldRatingComputeRequestToJSON(requestParameters.createWorldRatingComputeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperienceMaturityResponseFromJSON(jsonValue));
@@ -5083,6 +5858,8 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -5096,6 +5873,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceRequestToJSON(requestParameters.createWorldExperiencePlaceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperiencePlaceResponseFromJSON(jsonValue));
@@ -5112,7 +5890,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Save the draft. baseRevision is the revision you loaded (0 for none); a newer save elsewhere answers 409 draft_conflict.
      */
-    async updateWorldExperiencePlaceDraftRaw(requestParameters: UpdateWorldExperiencePlaceDraftRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperiencePlaceDraftResponse>> {
+    async updateWorldExperiencePlaceDraftRaw(requestParameters: UpdateWorldExperiencePlaceDraftOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperiencePlaceDraftResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperiencePlaceDraft.');
         }
@@ -5124,6 +5902,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5138,6 +5918,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperiencePlaceDraftRequestToJSON(requestParameters.updateWorldExperiencePlaceDraftRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldExperiencePlaceDraftResponseFromJSON(jsonValue));
@@ -5146,7 +5927,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Save the draft. baseRevision is the revision you loaded (0 for none); a newer save elsewhere answers 409 draft_conflict.
      */
-    async updateWorldExperiencePlaceDraft(requestParameters: UpdateWorldExperiencePlaceDraftRequest, initOverrides?: RequestInit): Promise<GetWorldExperiencePlaceDraftResponse> {
+    async updateWorldExperiencePlaceDraft(requestParameters: UpdateWorldExperiencePlaceDraftOperationRequest, initOverrides?: RequestInit): Promise<GetWorldExperiencePlaceDraftResponse> {
         const response = await this.updateWorldExperiencePlaceDraftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5154,7 +5935,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Edit a release version\'s changelog (the game page\'s What\'s new): { notes } up to 2000 characters.
      */
-    async updateWorldExperiencePlaceVersionNoteRaw(requestParameters: UpdateWorldExperiencePlaceVersionNoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperiencePlaceVersionNoteResponse>> {
+    async updateWorldExperiencePlaceVersionNoteRaw(requestParameters: UpdateWorldExperiencePlaceVersionNoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperiencePlaceVersionNoteResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperiencePlaceVersionNote.');
         }
@@ -5171,6 +5952,8 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -5184,6 +5967,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperiencePlaceVersionNoteRequestToJSON(requestParameters.updateWorldExperiencePlaceVersionNoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperiencePlaceVersionNoteResponseFromJSON(jsonValue));
@@ -5192,7 +5976,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Edit a release version\'s changelog (the game page\'s What\'s new): { notes } up to 2000 characters.
      */
-    async updateWorldExperiencePlaceVersionNote(requestParameters: UpdateWorldExperiencePlaceVersionNoteRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperiencePlaceVersionNoteResponse> {
+    async updateWorldExperiencePlaceVersionNote(requestParameters: UpdateWorldExperiencePlaceVersionNoteOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperiencePlaceVersionNoteResponse> {
         const response = await this.updateWorldExperiencePlaceVersionNoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5200,7 +5984,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Steps 2–5: details, rating questionnaire answers, access (private | friends | unlisted | public), money review acknowledgement.
      */
-    async updateWorldExperiencePublishRaw(requestParameters: UpdateWorldExperiencePublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse2>> {
+    async updateWorldExperiencePublishRaw(requestParameters: UpdateWorldExperiencePublishOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceResponse2>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperiencePublish.');
         }
@@ -5212,6 +5996,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5226,6 +6012,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperiencePublishRequestToJSON(requestParameters.updateWorldExperiencePublishRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceResponse2FromJSON(jsonValue));
@@ -5234,7 +6021,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Steps 2–5: details, rating questionnaire answers, access (private | friends | unlisted | public), money review acknowledgement.
      */
-    async updateWorldExperiencePublish(requestParameters: UpdateWorldExperiencePublishRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse2> {
+    async updateWorldExperiencePublish(requestParameters: UpdateWorldExperiencePublishOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceResponse2> {
         const response = await this.updateWorldExperiencePublishRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5251,6 +6038,8 @@ export class WorldsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -5264,6 +6053,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBrandDropListingRequestToJSON(requestParameters.updateBrandDropListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperienceShowcaseResponseFromJSON(jsonValue));
@@ -5280,10 +6070,12 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Favourite or un-favourite an experience (idempotent).
      */
-    async updateWorldFavoriteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldResponse3>> {
+    async updateWorldFavoriteRaw(requestParameters: UpdateWorldFavoriteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldResponse3>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5298,6 +6090,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldFavoriteRequestToJSON(requestParameters.updateWorldFavoriteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldResponse3FromJSON(jsonValue));
@@ -5306,18 +6099,20 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Favourite or un-favourite an experience (idempotent).
      */
-    async updateWorldFavorite(initOverrides?: RequestInit): Promise<WorldResponse3> {
-        const response = await this.updateWorldFavoriteRaw(initOverrides);
+    async updateWorldFavorite(requestParameters: UpdateWorldFavoriteOperationRequest = {}, initOverrides?: RequestInit): Promise<WorldResponse3> {
+        const response = await this.updateWorldFavoriteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Switch \"Show Mature experiences\" on or off: { showMature }. On is refused while a final step blocks (too young, region, parental controls, safety hold); it never skips the ID check.
      */
-    async updateWorldMatureRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldMatureResponse>> {
+    async updateWorldMatureRaw(requestParameters: UpdateWorldMatureOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldMatureResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5332,6 +6127,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldMatureRequestToJSON(requestParameters.updateWorldMatureRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldMatureResponseFromJSON(jsonValue));
@@ -5340,18 +6136,20 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Switch \"Show Mature experiences\" on or off: { showMature }. On is refused while a final step blocks (too young, region, parental controls, safety hold); it never skips the ID check.
      */
-    async updateWorldMature(initOverrides?: RequestInit): Promise<GetWorldMatureResponse> {
-        const response = await this.updateWorldMatureRaw(initOverrides);
+    async updateWorldMature(requestParameters: UpdateWorldMatureOperationRequest = {}, initOverrides?: RequestInit): Promise<GetWorldMatureResponse> {
+        const response = await this.updateWorldMatureRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Set your Crossly Carnival choices.
      */
-    async updateWorldMePrefRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldMePrefResponse>> {
+    async updateWorldMePrefRaw(requestParameters: UpdateWorldMePrefOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldMePrefResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5366,6 +6164,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldMePrefRequestToJSON(requestParameters.updateWorldMePrefRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldMePrefResponseFromJSON(jsonValue));
@@ -5374,15 +6173,15 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Set your Crossly Carnival choices.
      */
-    async updateWorldMePref(initOverrides?: RequestInit): Promise<GetWorldMePrefResponse> {
-        const response = await this.updateWorldMePrefRaw(initOverrides);
+    async updateWorldMePref(requestParameters: UpdateWorldMePrefOperationRequest = {}, initOverrides?: RequestInit): Promise<GetWorldMePrefResponse> {
+        const response = await this.updateWorldMePrefRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Change a linked account\'s limits with your PIN: { pin, settings: { maxRating: everyone|teen, chat: on|friends|off, monthlySpendLimitCents (0 = no purchases, null = no limit) } }. Enforced server-side at join, chat, the purchase prompt and checkout.
      */
-    async updateWorldParentalChildrenRaw(requestParameters: UpdateWorldParentalChildrenRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldParentalResponse>> {
+    async updateWorldParentalChildrenRaw(requestParameters: UpdateWorldParentalChildrenOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldParentalResponse>> {
         if (requestParameters.childId === null || requestParameters.childId === undefined) {
             throw new runtime.RequiredError('childId','Required parameter requestParameters.childId was null or undefined when calling updateWorldParentalChildren.');
         }
@@ -5390,6 +6189,8 @@ export class WorldsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5404,6 +6205,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldParentalChildrenRequestToJSON(requestParameters.updateWorldParentalChildrenRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldParentalResponseFromJSON(jsonValue));
@@ -5412,7 +6214,7 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Change a linked account\'s limits with your PIN: { pin, settings: { maxRating: everyone|teen, chat: on|friends|off, monthlySpendLimitCents (0 = no purchases, null = no limit) } }. Enforced server-side at join, chat, the purchase prompt and checkout.
      */
-    async updateWorldParentalChildren(requestParameters: UpdateWorldParentalChildrenRequest, initOverrides?: RequestInit): Promise<WorldParentalResponse> {
+    async updateWorldParentalChildren(requestParameters: UpdateWorldParentalChildrenOperationRequest, initOverrides?: RequestInit): Promise<WorldParentalResponse> {
         const response = await this.updateWorldParentalChildrenRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -5420,10 +6222,12 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Thumbs up, down, or null to withdraw: one vote per player per experience, counted only after 10 minutes of play (403 vote_needs_playtime before). A light ranking signal.
      */
-    async updateWorldVoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldResponse3>> {
+    async updateWorldVoteRaw(requestParameters: UpdateWorldVoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldResponse3>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -5438,6 +6242,7 @@ export class WorldsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldVoteRequestToJSON(requestParameters.updateWorldVoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldResponse3FromJSON(jsonValue));
@@ -5446,9 +6251,168 @@ export class WorldsApi extends runtime.BaseAPI {
     /**
      * Thumbs up, down, or null to withdraw: one vote per player per experience, counted only after 10 minutes of play (403 vote_needs_playtime before). A light ranking signal.
      */
-    async updateWorldVote(initOverrides?: RequestInit): Promise<WorldResponse3> {
-        const response = await this.updateWorldVoteRaw(initOverrides);
+    async updateWorldVote(requestParameters: UpdateWorldVoteOperationRequest = {}, initOverrides?: RequestInit): Promise<WorldResponse3> {
+        const response = await this.updateWorldVoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldChartGenreEnum {
+    Shopping = 'shopping',
+    Other = 'other',
+    Social = 'social',
+    Strategy = 'strategy',
+    Hangout = 'hangout',
+    Simulation = 'simulation',
+    Obby = 'obby',
+    Adventure = 'adventure',
+    Roleplay = 'roleplay',
+    Sports = 'sports',
+    Arcade = 'arcade',
+    CardGames = 'card_games'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldSearchGenreEnum {
+    Shopping = 'shopping',
+    Other = 'other',
+    Social = 'social',
+    Strategy = 'strategy',
+    Hangout = 'hangout',
+    Simulation = 'simulation',
+    Obby = 'obby',
+    Adventure = 'adventure',
+    Roleplay = 'roleplay',
+    Sports = 'sports',
+    Arcade = 'arcade',
+    CardGames = 'card_games'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldSearchRatingEnum {
+    Everyone = 'everyone',
+    Teen = 'teen',
+    Mature = 'mature'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldSearchDeviceEnum {
+    Desktop = 'desktop',
+    Tablet = 'tablet',
+    Phone = 'phone',
+    Vr = 'vr'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldSearchLiveEnum {
+    _0 = '0',
+    _1 = '1',
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldSearchFriendsEnum {
+    _0 = '0',
+    _1 = '1',
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldExperienceEventsIncludeEndedEnum {
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldGameMineStatusEnum {
+    Active = 'active',
+    All = 'all',
+    Draft = 'draft',
+    Archived = 'archived',
+    Unlisted = 'unlisted',
+    Public = 'public',
+    InReview = 'in_review',
+    ChangesRequested = 'changes_requested',
+    Private = 'private',
+    Friends = 'friends',
+    Deleted = 'deleted'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldGameMineEngineEnum {
+    All = 'all',
+    World = 'world',
+    Classic = 'classic'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldGameMineOwnerEnum {
+    All = 'all',
+    Shared = 'shared',
+    Mine = 'mine'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldGameMineFlagEnum {
+    All = 'all',
+    Reports = 'reports'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldGameMineSortEnum {
+    Name = 'name',
+    Created = 'created',
+    Updated = 'updated',
+    Players = 'players',
+    Revenue = 'revenue'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldTransferRequestsDirectionEnum {
+    All = 'all',
+    Incoming = 'incoming',
+    Outgoing = 'outgoing'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldTransferRequestsStatusEnum {
+    All = 'all',
+    Expired = 'expired',
+    Pending = 'pending',
+    Cancelled = 'cancelled',
+    Accepted = 'accepted',
+    Declined = 'declined'
 }

@@ -175,10 +175,10 @@ export interface CreateBuyerIdentifyResponse {
 * @enum {string}
 */
 export enum CreateBuyerIdentifyResponseTierEnum {
+    Vision = 'vision',
     None = 'none',
     Identifier = 'identifier',
-    Visual = 'visual',
-    Vision = 'vision'
+    Visual = 'visual'
 }/**
 * @export
 * @enum {string}

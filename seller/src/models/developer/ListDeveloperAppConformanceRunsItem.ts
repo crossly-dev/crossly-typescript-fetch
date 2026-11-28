@@ -135,8 +135,8 @@ export interface ListDeveloperAppConformanceRunsItem {
 * @enum {string}
 */
 export enum ListDeveloperAppConformanceRunsItemPhaseEnum {
-    Failed = 'failed',
     Expired = 'expired',
+    Failed = 'failed',
     Report = 'report',
     Waiting = 'waiting',
     Policy = 'policy',

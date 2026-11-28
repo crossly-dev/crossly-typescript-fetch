@@ -106,16 +106,16 @@ export interface UpdateStorefrontSettingResponseData {
     updatedAt: Date;
     /**
      * 
-     * @type {boolean}
-     * @memberof UpdateStorefrontSettingResponseData
-     */
-    published: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof UpdateStorefrontSettingResponseData
      */
     storefrontId: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateStorefrontSettingResponseData
+     */
+    published: boolean;
     /**
      * 
      * @type {Date}
@@ -146,30 +146,6 @@ export interface UpdateStorefrontSettingResponseData {
      * @memberof UpdateStorefrontSettingResponseData
      */
     bundleDiscountBps: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateStorefrontSettingResponseData
-     */
-    returnPresetId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateStorefrontSettingResponseData
-     */
-    shippingPresetId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateStorefrontSettingResponseData
-     */
-    paymentPresetId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateStorefrontSettingResponseData
-     */
-    customDomain?: string | null;
     /**
      * 
      * @type {Array<string>}
@@ -206,6 +182,12 @@ export interface UpdateStorefrontSettingResponseData {
      * @memberof UpdateStorefrontSettingResponseData
      */
     acceptsCustomOrders: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateStorefrontSettingResponseData
+     */
+    customDomain?: string | null;
     /**
      * 
      * @type {Date}
@@ -302,6 +284,24 @@ export interface UpdateStorefrontSettingResponseData {
      * @memberof UpdateStorefrontSettingResponseData
      */
     matchOwnPrices: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateStorefrontSettingResponseData
+     */
+    shippingPresetId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateStorefrontSettingResponseData
+     */
+    returnPresetId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateStorefrontSettingResponseData
+     */
+    paymentPresetId?: string | null;
     /**
      * 
      * @type {Date}
@@ -401,23 +401,20 @@ export function UpdateStorefrontSettingResponseDataFromJSONTyped(json: any, igno
         'arrivalConditionWindowHours': !exists(json, 'arrivalConditionWindowHours') ? undefined : json['arrivalConditionWindowHours'],
         'theme': !exists(json, 'theme') ? undefined : json['theme'],
         'updatedAt': (new Date(json['updatedAt'])),
-        'published': json['published'],
         'storefrontId': json['storefrontId'],
+        'published': json['published'],
         'publishedAt': !exists(json, 'publishedAt') ? undefined : (json['publishedAt'] === null ? null : new Date(json['publishedAt'])),
         'bio': !exists(json, 'bio') ? undefined : json['bio'],
         'tagline': !exists(json, 'tagline') ? undefined : json['tagline'],
         'bannerImageUrl': !exists(json, 'bannerImageUrl') ? undefined : json['bannerImageUrl'],
         'bundleDiscountBps': json['bundleDiscountBps'],
-        'returnPresetId': !exists(json, 'returnPresetId') ? undefined : json['returnPresetId'],
-        'shippingPresetId': !exists(json, 'shippingPresetId') ? undefined : json['shippingPresetId'],
-        'paymentPresetId': !exists(json, 'paymentPresetId') ? undefined : json['paymentPresetId'],
-        'customDomain': !exists(json, 'customDomain') ? undefined : json['customDomain'],
         'featuredListingIds': !exists(json, 'featuredListingIds') ? undefined : json['featuredListingIds'],
         'shipFromCity': !exists(json, 'shipFromCity') ? undefined : json['shipFromCity'],
         'shipFromState': !exists(json, 'shipFromState') ? undefined : json['shipFromState'],
         'shipFromZip': !exists(json, 'shipFromZip') ? undefined : json['shipFromZip'],
         'shipFromCountry': !exists(json, 'shipFromCountry') ? undefined : json['shipFromCountry'],
         'acceptsCustomOrders': json['acceptsCustomOrders'],
+        'customDomain': !exists(json, 'customDomain') ? undefined : json['customDomain'],
         'customDomainVerifiedAt': !exists(json, 'customDomainVerifiedAt') ? undefined : (json['customDomainVerifiedAt'] === null ? null : new Date(json['customDomainVerifiedAt'])),
         'logoImageUrl': !exists(json, 'logoImageUrl') ? undefined : json['logoImageUrl'],
         'seoTitle': !exists(json, 'seoTitle') ? undefined : json['seoTitle'],
@@ -434,6 +431,9 @@ export function UpdateStorefrontSettingResponseDataFromJSONTyped(json: any, igno
         'shipFromAddressId': !exists(json, 'shipFromAddressId') ? undefined : json['shipFromAddressId'],
         'returnAddressId': !exists(json, 'returnAddressId') ? undefined : json['returnAddressId'],
         'matchOwnPrices': json['matchOwnPrices'],
+        'shippingPresetId': !exists(json, 'shippingPresetId') ? undefined : json['shippingPresetId'],
+        'returnPresetId': !exists(json, 'returnPresetId') ? undefined : json['returnPresetId'],
+        'paymentPresetId': !exists(json, 'paymentPresetId') ? undefined : json['paymentPresetId'],
         'sitePublishedAt': !exists(json, 'sitePublishedAt') ? undefined : (json['sitePublishedAt'] === null ? null : new Date(json['sitePublishedAt'])),
         'siteDraftUpdatedAt': !exists(json, 'siteDraftUpdatedAt') ? undefined : (json['siteDraftUpdatedAt'] === null ? null : new Date(json['siteDraftUpdatedAt'])),
         'siteEnabled': json['siteEnabled'],
@@ -468,23 +468,20 @@ export function UpdateStorefrontSettingResponseDataToJSON(value?: UpdateStorefro
         'arrivalConditionWindowHours': value.arrivalConditionWindowHours,
         'theme': value.theme,
         'updatedAt': (value.updatedAt.toISOString()),
-        'published': value.published,
         'storefrontId': value.storefrontId,
+        'published': value.published,
         'publishedAt': value.publishedAt === undefined ? undefined : (value.publishedAt === null ? null : value.publishedAt.toISOString()),
         'bio': value.bio,
         'tagline': value.tagline,
         'bannerImageUrl': value.bannerImageUrl,
         'bundleDiscountBps': value.bundleDiscountBps,
-        'returnPresetId': value.returnPresetId,
-        'shippingPresetId': value.shippingPresetId,
-        'paymentPresetId': value.paymentPresetId,
-        'customDomain': value.customDomain,
         'featuredListingIds': value.featuredListingIds,
         'shipFromCity': value.shipFromCity,
         'shipFromState': value.shipFromState,
         'shipFromZip': value.shipFromZip,
         'shipFromCountry': value.shipFromCountry,
         'acceptsCustomOrders': value.acceptsCustomOrders,
+        'customDomain': value.customDomain,
         'customDomainVerifiedAt': value.customDomainVerifiedAt === undefined ? undefined : (value.customDomainVerifiedAt === null ? null : value.customDomainVerifiedAt.toISOString()),
         'logoImageUrl': value.logoImageUrl,
         'seoTitle': value.seoTitle,
@@ -501,6 +498,9 @@ export function UpdateStorefrontSettingResponseDataToJSON(value?: UpdateStorefro
         'shipFromAddressId': value.shipFromAddressId,
         'returnAddressId': value.returnAddressId,
         'matchOwnPrices': value.matchOwnPrices,
+        'shippingPresetId': value.shippingPresetId,
+        'returnPresetId': value.returnPresetId,
+        'paymentPresetId': value.paymentPresetId,
         'sitePublishedAt': value.sitePublishedAt === undefined ? undefined : (value.sitePublishedAt === null ? null : value.sitePublishedAt.toISOString()),
         'siteDraftUpdatedAt': value.siteDraftUpdatedAt === undefined ? undefined : (value.siteDraftUpdatedAt === null ? null : value.siteDraftUpdatedAt.toISOString()),
         'siteEnabled': value.siteEnabled,

@@ -15,22 +15,78 @@
 
 import * as runtime from '../runtime';
 import {
+    DeleteDeviceResponse,
+    DeleteDeviceResponseFromJSON,
+    DeleteDeviceResponseToJSON,
     GetConnectionHealthResponse,
     GetConnectionHealthResponseFromJSON,
     GetConnectionHealthResponseToJSON,
     ListDevicesResponse,
     ListDevicesResponseFromJSON,
     ListDevicesResponseToJSON,
+    UpdateDeviceRequest,
+    UpdateDeviceRequestFromJSON,
+    UpdateDeviceRequestToJSON,
+    UpdateDeviceResponse,
+    UpdateDeviceResponseFromJSON,
+    UpdateDeviceResponseToJSON,
 } from '../models';
+
+export interface DeleteDeviceRequest {
+    id: string;
+}
 
 export interface GetConnectionHealthRequest {
     includeUnconnected?: boolean;
+}
+
+export interface UpdateDeviceOperationRequest {
+    id: string;
+    updateDeviceRequest: UpdateDeviceRequest;
 }
 
 /**
  * 
  */
 export class ConnectionsApi extends runtime.BaseAPI {
+
+    /**
+     * Unpair a machine. Its access ends at once and any waiting print job is cancelled.
+     */
+    async deleteDeviceRaw(requestParameters: DeleteDeviceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteDeviceResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteDevice.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/devices/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteDeviceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Unpair a machine. Its access ends at once and any waiting print job is cancelled.
+     */
+    async deleteDevice(requestParameters: DeleteDeviceRequest, initOverrides?: RequestInit): Promise<DeleteDeviceResponse> {
+        const response = await this.deleteDeviceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * One entry per ACCOUNT, not per platform — a healthy slot 1 must not speak for a dead slot 2. States that were never measured are reported as \"unknown\" rather than as failures.
@@ -105,6 +161,51 @@ export class ConnectionsApi extends runtime.BaseAPI {
      */
     async listDevices(initOverrides?: RequestInit): Promise<ListDevicesResponse> {
         const response = await this.listDevicesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Rename a paired machine.
+     */
+    async updateDeviceRaw(requestParameters: UpdateDeviceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateDeviceResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateDevice.');
+        }
+
+        if (requestParameters.updateDeviceRequest === null || requestParameters.updateDeviceRequest === undefined) {
+            throw new runtime.RequiredError('updateDeviceRequest','Required parameter requestParameters.updateDeviceRequest was null or undefined when calling updateDevice.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/devices/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateDeviceRequestToJSON(requestParameters.updateDeviceRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateDeviceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Rename a paired machine.
+     */
+    async updateDevice(requestParameters: UpdateDeviceOperationRequest, initOverrides?: RequestInit): Promise<UpdateDeviceResponse> {
+        const response = await this.updateDeviceRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

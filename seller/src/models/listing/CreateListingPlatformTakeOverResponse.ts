@@ -100,8 +100,8 @@ export enum CreateListingPlatformTakeOverResponseModeEnum {
 * @enum {string}
 */
 export enum CreateListingPlatformTakeOverResponseEbayModelEnum {
-    Trading = 'trading',
     Unknown = 'unknown',
+    Trading = 'trading',
     InventoryOwn = 'inventory_own',
     InventoryForeign = 'inventory_foreign'
 }

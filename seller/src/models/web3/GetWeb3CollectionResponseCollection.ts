@@ -42,13 +42,13 @@ export interface GetWeb3CollectionResponseCollection {
      * @type {string}
      * @memberof GetWeb3CollectionResponseCollection
      */
-    category?: string | null;
+    slug?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetWeb3CollectionResponseCollection
      */
-    slug?: string | null;
+    category?: string | null;
     /**
      * 
      * @type {string}
@@ -67,6 +67,12 @@ export interface GetWeb3CollectionResponseCollection {
      * @memberof GetWeb3CollectionResponseCollection
      */
     hiddenAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetWeb3CollectionResponseCollection
+     */
+    discord?: string | null;
     /**
      * 
      * @type {Date}
@@ -127,12 +133,6 @@ export interface GetWeb3CollectionResponseCollection {
      * @memberof GetWeb3CollectionResponseCollection
      */
     twitter?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetWeb3CollectionResponseCollection
-     */
-    discord?: string | null;
     /**
      * 
      * @type {number}
@@ -214,11 +214,12 @@ export function GetWeb3CollectionResponseCollectionFromJSONTyped(json: any, igno
         'symbol': !exists(json, 'symbol') ? undefined : json['symbol'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'description': !exists(json, 'description') ? undefined : json['description'],
-        'category': !exists(json, 'category') ? undefined : json['category'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'category': !exists(json, 'category') ? undefined : json['category'],
         'imageUrl': !exists(json, 'imageUrl') ? undefined : json['imageUrl'],
         'verified': json['verified'],
         'hiddenAt': !exists(json, 'hiddenAt') ? undefined : (json['hiddenAt'] === null ? null : new Date(json['hiddenAt'])),
+        'discord': !exists(json, 'discord') ? undefined : json['discord'],
         'refreshedAt': (new Date(json['refreshedAt'])),
         'externalUrl': !exists(json, 'externalUrl') ? undefined : json['externalUrl'],
         'chain': json['chain'],
@@ -229,7 +230,6 @@ export function GetWeb3CollectionResponseCollectionFromJSONTyped(json: any, igno
         'firstSeenAt': (new Date(json['firstSeenAt'])),
         'bannerUrl': !exists(json, 'bannerUrl') ? undefined : json['bannerUrl'],
         'twitter': !exists(json, 'twitter') ? undefined : json['twitter'],
-        'discord': !exists(json, 'discord') ? undefined : json['discord'],
         'deployedBlock': !exists(json, 'deployedBlock') ? undefined : json['deployedBlock'],
         'collectors': json['collectors'],
         'indexedAt': !exists(json, 'indexedAt') ? undefined : (json['indexedAt'] === null ? null : new Date(json['indexedAt'])),
@@ -256,11 +256,12 @@ export function GetWeb3CollectionResponseCollectionToJSON(value?: GetWeb3Collect
         'symbol': value.symbol,
         'name': value.name,
         'description': value.description,
-        'category': value.category,
         'slug': value.slug,
+        'category': value.category,
         'imageUrl': value.imageUrl,
         'verified': value.verified,
         'hiddenAt': value.hiddenAt === undefined ? undefined : (value.hiddenAt === null ? null : value.hiddenAt.toISOString()),
+        'discord': value.discord,
         'refreshedAt': (value.refreshedAt.toISOString()),
         'externalUrl': value.externalUrl,
         'chain': value.chain,
@@ -271,7 +272,6 @@ export function GetWeb3CollectionResponseCollectionToJSON(value?: GetWeb3Collect
         'firstSeenAt': (value.firstSeenAt.toISOString()),
         'bannerUrl': value.bannerUrl,
         'twitter': value.twitter,
-        'discord': value.discord,
         'deployedBlock': value.deployedBlock,
         'collectors': value.collectors,
         'indexedAt': value.indexedAt === undefined ? undefined : (value.indexedAt === null ? null : value.indexedAt.toISOString()),

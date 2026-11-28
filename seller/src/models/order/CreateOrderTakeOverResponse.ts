@@ -106,8 +106,8 @@ export enum CreateOrderTakeOverResponseModeEnum {
 * @enum {string}
 */
 export enum CreateOrderTakeOverResponseEbayModelEnum {
-    Trading = 'trading',
     Unknown = 'unknown',
+    Trading = 'trading',
     InventoryOwn = 'inventory_own',
     InventoryForeign = 'inventory_foreign'
 }

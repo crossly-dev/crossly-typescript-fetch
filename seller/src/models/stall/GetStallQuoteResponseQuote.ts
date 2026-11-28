@@ -117,8 +117,8 @@ export interface GetStallQuoteResponseQuote {
 * @enum {string}
 */
 export enum GetStallQuoteResponseQuoteBoothKindEnum {
-    Booth = 'booth',
     Cart = 'cart',
+    Booth = 'booth',
     Pavilion = 'pavilion'
 }
 

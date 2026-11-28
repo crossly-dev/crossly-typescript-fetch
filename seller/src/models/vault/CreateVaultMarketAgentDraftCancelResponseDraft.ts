@@ -174,8 +174,8 @@ export enum CreateVaultMarketAgentDraftCancelResponseDraftFundingEnum {
 * @enum {string}
 */
 export enum CreateVaultMarketAgentDraftCancelResponseDraftStatusEnum {
-    Cancelled = 'cancelled',
     Expired = 'expired',
+    Cancelled = 'cancelled',
     Drafted = 'drafted',
     Rejected = 'rejected',
     Placing = 'placing',

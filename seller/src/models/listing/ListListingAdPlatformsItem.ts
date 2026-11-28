@@ -87,8 +87,8 @@ export interface ListListingAdPlatformsItem {
 * @enum {string}
 */
 export enum ListListingAdPlatformsItemTrackEnum {
-    Cookie = 'cookie',
     Api = 'api',
+    Cookie = 'cookie',
     Native = 'native'
 }
 

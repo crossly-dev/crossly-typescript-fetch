@@ -160,8 +160,8 @@ export enum ListEventPolicyDecisionsItemEventEnum {
 * @enum {string}
 */
 export enum ListEventPolicyDecisionsItemOwnershipEnum {
-    Imported = 'imported',
     Crossly = 'crossly',
+    Imported = 'imported',
     OtherTool = 'other_tool',
     AppManaged = 'app_managed',
     Untracked = 'untracked'
@@ -203,8 +203,8 @@ export enum ListEventPolicyDecisionsItemRequestedActionEnum {
 */
 export enum ListEventPolicyDecisionsItemScopeEnum {
     Default = 'default',
-    Platform = 'platform',
     App = 'app',
+    Platform = 'platform',
     Global = 'global'
 }/**
 * @export

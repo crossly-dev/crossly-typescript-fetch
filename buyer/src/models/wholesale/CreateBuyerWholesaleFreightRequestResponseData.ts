@@ -55,6 +55,12 @@ export interface CreateBuyerWholesaleFreightRequestResponseData {
      * @type {string}
      * @memberof CreateBuyerWholesaleFreightRequestResponseData
      */
+    note?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerWholesaleFreightRequestResponseData
+     */
     buyerUserId: string;
     /**
      * 
@@ -62,12 +68,6 @@ export interface CreateBuyerWholesaleFreightRequestResponseData {
      * @memberof CreateBuyerWholesaleFreightRequestResponseData
      */
     sellerUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateBuyerWholesaleFreightRequestResponseData
-     */
-    note?: string | null;
     /**
      * 
      * @type {Array<CreateBuyerWholesaleFreightRequestResponseDataLines>}
@@ -114,9 +114,9 @@ export function CreateBuyerWholesaleFreightRequestResponseDataFromJSONTyped(json
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'status': json['status'],
+        'note': !exists(json, 'note') ? undefined : json['note'],
         'buyerUserId': json['buyerUserId'],
         'sellerUserId': json['sellerUserId'],
-        'note': !exists(json, 'note') ? undefined : json['note'],
         'lines': ((json['lines'] as Array<any>).map(CreateBuyerWholesaleFreightRequestResponseDataLinesFromJSON)),
         'shipTo': !exists(json, 'shipTo') ? undefined : json['shipTo'],
         'sellerNote': !exists(json, 'sellerNote') ? undefined : json['sellerNote'],
@@ -138,9 +138,9 @@ export function CreateBuyerWholesaleFreightRequestResponseDataToJSON(value?: Cre
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'status': value.status,
+        'note': value.note,
         'buyerUserId': value.buyerUserId,
         'sellerUserId': value.sellerUserId,
-        'note': value.note,
         'lines': ((value.lines as Array<any>).map(CreateBuyerWholesaleFreightRequestResponseDataLinesToJSON)),
         'shipTo': value.shipTo,
         'sellerNote': value.sellerNote,

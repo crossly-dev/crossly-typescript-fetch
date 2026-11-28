@@ -15,117 +15,207 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCbxAccrualPurchaseRequest,
+    CreateCbxAccrualPurchaseRequestFromJSON,
+    CreateCbxAccrualPurchaseRequestToJSON,
     CreateCbxAccrualPurchaseResponse,
     CreateCbxAccrualPurchaseResponseFromJSON,
     CreateCbxAccrualPurchaseResponseToJSON,
+    CreateCbxAccrualRequest,
+    CreateCbxAccrualRequestFromJSON,
+    CreateCbxAccrualRequestToJSON,
     CreateCbxAccrualResponse,
     CreateCbxAccrualResponseFromJSON,
     CreateCbxAccrualResponseToJSON,
+    CreateCbxAdCreditPurchaseRequest,
+    CreateCbxAdCreditPurchaseRequestFromJSON,
+    CreateCbxAdCreditPurchaseRequestToJSON,
     CreateCbxAdCreditPurchaseResponse,
     CreateCbxAdCreditPurchaseResponseFromJSON,
     CreateCbxAdCreditPurchaseResponseToJSON,
     CreateCbxAdCreditQuoteResponse,
     CreateCbxAdCreditQuoteResponseFromJSON,
     CreateCbxAdCreditQuoteResponseToJSON,
+    CreateCbxAdCreditSpendRequest,
+    CreateCbxAdCreditSpendRequestFromJSON,
+    CreateCbxAdCreditSpendRequestToJSON,
     CreateCbxAdCreditSpendResponse,
     CreateCbxAdCreditSpendResponseFromJSON,
     CreateCbxAdCreditSpendResponseToJSON,
     CreateCbxBoostPauseResponse,
     CreateCbxBoostPauseResponseFromJSON,
     CreateCbxBoostPauseResponseToJSON,
+    CreateCbxBoostRequest,
+    CreateCbxBoostRequestFromJSON,
+    CreateCbxBoostRequestToJSON,
     CreateCbxBoostResponse,
     CreateCbxBoostResponseFromJSON,
     CreateCbxBoostResponseToJSON,
+    CreateCbxCampaignExecuteByCampaignIdRequest,
+    CreateCbxCampaignExecuteByCampaignIdRequestFromJSON,
+    CreateCbxCampaignExecuteByCampaignIdRequestToJSON,
     CreateCbxCampaignExecuteByCampaignIdResponse,
     CreateCbxCampaignExecuteByCampaignIdResponseFromJSON,
     CreateCbxCampaignExecuteByCampaignIdResponseToJSON,
     CreateCbxCampaignPreviewResponse,
     CreateCbxCampaignPreviewResponseFromJSON,
     CreateCbxCampaignPreviewResponseToJSON,
+    CreateCbxCampaignRequest,
+    CreateCbxCampaignRequestFromJSON,
+    CreateCbxCampaignRequestToJSON,
     CreateCbxCampaignResponse,
     CreateCbxCampaignResponseFromJSON,
     CreateCbxCampaignResponseToJSON,
+    CreateCbxClaimQuoteRequest,
+    CreateCbxClaimQuoteRequestFromJSON,
+    CreateCbxClaimQuoteRequestToJSON,
     CreateCbxClaimQuoteResponse,
     CreateCbxClaimQuoteResponseFromJSON,
     CreateCbxClaimQuoteResponseToJSON,
+    CreateCbxClaimRequest,
+    CreateCbxClaimRequestFromJSON,
+    CreateCbxClaimRequestToJSON,
     CreateCbxClaimResponse,
     CreateCbxClaimResponseFromJSON,
     CreateCbxClaimResponseToJSON,
     CreateCbxClaimSendResponse,
     CreateCbxClaimSendResponseFromJSON,
     CreateCbxClaimSendResponseToJSON,
+    CreateCbxCreditDrawRequest,
+    CreateCbxCreditDrawRequestFromJSON,
+    CreateCbxCreditDrawRequestToJSON,
     CreateCbxCreditDrawResponse,
     CreateCbxCreditDrawResponseFromJSON,
     CreateCbxCreditDrawResponseToJSON,
+    CreateCbxCreditFreezeRequest,
+    CreateCbxCreditFreezeRequestFromJSON,
+    CreateCbxCreditFreezeRequestToJSON,
     CreateCbxCreditFreezeResponse,
     CreateCbxCreditFreezeResponseFromJSON,
     CreateCbxCreditFreezeResponseToJSON,
     CreateCbxCreditRefreshResponse,
     CreateCbxCreditRefreshResponseFromJSON,
     CreateCbxCreditRefreshResponseToJSON,
+    CreateCbxCreditRepayRequest,
+    CreateCbxCreditRepayRequestFromJSON,
+    CreateCbxCreditRepayRequestToJSON,
     CreateCbxCreditRepayResponse,
     CreateCbxCreditRepayResponseFromJSON,
     CreateCbxCreditRepayResponseToJSON,
     CreateCbxDisbursementRuleCheckResponse,
     CreateCbxDisbursementRuleCheckResponseFromJSON,
     CreateCbxDisbursementRuleCheckResponseToJSON,
+    CreateCbxDisbursementRuleRequest,
+    CreateCbxDisbursementRuleRequestFromJSON,
+    CreateCbxDisbursementRuleRequestToJSON,
     CreateCbxDisbursementRuleResponse,
     CreateCbxDisbursementRuleResponseFromJSON,
     CreateCbxDisbursementRuleResponseToJSON,
+    CreateCbxEarnTierRequest,
+    CreateCbxEarnTierRequestFromJSON,
+    CreateCbxEarnTierRequestToJSON,
     CreateCbxEarnTierResponse,
     CreateCbxEarnTierResponseFromJSON,
     CreateCbxEarnTierResponseToJSON,
+    CreateCbxRateQuoteRequest,
+    CreateCbxRateQuoteRequestFromJSON,
+    CreateCbxRateQuoteRequestToJSON,
     CreateCbxRateQuoteResponse,
     CreateCbxRateQuoteResponseFromJSON,
     CreateCbxRateQuoteResponseToJSON,
+    CreateCbxRedemptionQuoteRequest,
+    CreateCbxRedemptionQuoteRequestFromJSON,
+    CreateCbxRedemptionQuoteRequestToJSON,
     CreateCbxRedemptionQuoteResponse,
     CreateCbxRedemptionQuoteResponseFromJSON,
     CreateCbxRedemptionQuoteResponseToJSON,
+    CreateCbxRedemptionRequest,
+    CreateCbxRedemptionRequestFromJSON,
+    CreateCbxRedemptionRequestToJSON,
     CreateCbxRedemptionResponse,
     CreateCbxRedemptionResponseFromJSON,
     CreateCbxRedemptionResponseToJSON,
+    CreateCbxReserveRequest,
+    CreateCbxReserveRequestFromJSON,
+    CreateCbxReserveRequestToJSON,
     CreateCbxReserveResponse,
     CreateCbxReserveResponseFromJSON,
     CreateCbxReserveResponseToJSON,
+    CreateCbxRevenueSweepRequest,
+    CreateCbxRevenueSweepRequestFromJSON,
+    CreateCbxRevenueSweepRequestToJSON,
     CreateCbxRevenueSweepResponse,
     CreateCbxRevenueSweepResponseFromJSON,
     CreateCbxRevenueSweepResponseToJSON,
+    CreateCbxSpendRequest,
+    CreateCbxSpendRequestFromJSON,
+    CreateCbxSpendRequestToJSON,
     CreateCbxSpendResponse,
     CreateCbxSpendResponseFromJSON,
     CreateCbxSpendResponseToJSON,
     CreateCbxSpendReverseResponse,
     CreateCbxSpendReverseResponseFromJSON,
     CreateCbxSpendReverseResponseToJSON,
+    CreateCbxStakeTierRequest,
+    CreateCbxStakeTierRequestFromJSON,
+    CreateCbxStakeTierRequestToJSON,
     CreateCbxStakeTierResponse,
     CreateCbxStakeTierResponseFromJSON,
     CreateCbxStakeTierResponseToJSON,
+    CreateCbxSubjectGrantRequest,
+    CreateCbxSubjectGrantRequestFromJSON,
+    CreateCbxSubjectGrantRequestToJSON,
     CreateCbxSubjectGrantResponse,
     CreateCbxSubjectGrantResponseFromJSON,
     CreateCbxSubjectGrantResponseToJSON,
+    CreateCbxSubjectRequest,
+    CreateCbxSubjectRequestFromJSON,
+    CreateCbxSubjectRequestToJSON,
     CreateCbxSubjectResponse,
     CreateCbxSubjectResponseFromJSON,
     CreateCbxSubjectResponseToJSON,
+    CreateCbxSubjectSpendPlanRequest,
+    CreateCbxSubjectSpendPlanRequestFromJSON,
+    CreateCbxSubjectSpendPlanRequestToJSON,
     CreateCbxSubjectSpendPlanResponse,
     CreateCbxSubjectSpendPlanResponseFromJSON,
     CreateCbxSubjectSpendPlanResponseToJSON,
+    CreateCbxSubjectStakeRequest,
+    CreateCbxSubjectStakeRequestFromJSON,
+    CreateCbxSubjectStakeRequestToJSON,
     CreateCbxSubjectStakeResponse,
     CreateCbxSubjectStakeResponseFromJSON,
     CreateCbxSubjectStakeResponseToJSON,
     CreateCbxSubjectStakeUnstakeResponse,
     CreateCbxSubjectStakeUnstakeResponseFromJSON,
     CreateCbxSubjectStakeUnstakeResponseToJSON,
+    CreateCbxWalletChallengeRequest,
+    CreateCbxWalletChallengeRequestFromJSON,
+    CreateCbxWalletChallengeRequestToJSON,
     CreateCbxWalletChallengeResponse,
     CreateCbxWalletChallengeResponseFromJSON,
     CreateCbxWalletChallengeResponseToJSON,
+    CreateCbxWalletPaymentConfirmRequest,
+    CreateCbxWalletPaymentConfirmRequestFromJSON,
+    CreateCbxWalletPaymentConfirmRequestToJSON,
     CreateCbxWalletPaymentConfirmResponse,
     CreateCbxWalletPaymentConfirmResponseFromJSON,
     CreateCbxWalletPaymentConfirmResponseToJSON,
+    CreateCbxWalletPaymentQuoteRequest,
+    CreateCbxWalletPaymentQuoteRequestFromJSON,
+    CreateCbxWalletPaymentQuoteRequestToJSON,
     CreateCbxWalletPaymentQuoteResponse,
     CreateCbxWalletPaymentQuoteResponseFromJSON,
     CreateCbxWalletPaymentQuoteResponseToJSON,
+    CreateCbxWalletPaymentResolveRequest,
+    CreateCbxWalletPaymentResolveRequestFromJSON,
+    CreateCbxWalletPaymentResolveRequestToJSON,
     CreateCbxWalletPaymentResolveResponse,
     CreateCbxWalletPaymentResolveResponseFromJSON,
     CreateCbxWalletPaymentResolveResponseToJSON,
+    CreateCbxWalletVerifyRequest,
+    CreateCbxWalletVerifyRequestFromJSON,
+    CreateCbxWalletVerifyRequestToJSON,
     CreateCbxWalletVerifyResponse,
     CreateCbxWalletVerifyResponseFromJSON,
     CreateCbxWalletVerifyResponseToJSON,
@@ -204,30 +294,87 @@ import {
     ListCbxWalletPaymentReviewResponse,
     ListCbxWalletPaymentReviewResponseFromJSON,
     ListCbxWalletPaymentReviewResponseToJSON,
+    ReasonRequest,
+    ReasonRequestFromJSON,
+    ReasonRequestToJSON,
 } from '../models';
+
+export interface CreateCbxAccrualOperationRequest {
+    createCbxAccrualRequest: CreateCbxAccrualRequest;
+}
+
+export interface CreateCbxAccrualPurchaseOperationRequest {
+    createCbxAccrualPurchaseRequest: CreateCbxAccrualPurchaseRequest;
+}
 
 export interface CreateCbxAccrualReverseRequest {
     accrualId: string;
+    reasonRequest: ReasonRequest;
+}
+
+export interface CreateCbxAdCreditPurchaseOperationRequest {
+    createCbxAdCreditPurchaseRequest: CreateCbxAdCreditPurchaseRequest;
+}
+
+export interface CreateCbxAdCreditQuoteRequest {
+    createCbxSubjectStakeRequest: CreateCbxSubjectStakeRequest;
+}
+
+export interface CreateCbxAdCreditSpendOperationRequest {
+    createCbxAdCreditSpendRequest: CreateCbxAdCreditSpendRequest;
+}
+
+export interface CreateCbxBoostOperationRequest {
+    createCbxBoostRequest: CreateCbxBoostRequest;
 }
 
 export interface CreateCbxBoostPauseRequest {
     boostId: string;
 }
 
+export interface CreateCbxCampaignOperationRequest {
+    createCbxCampaignRequest: CreateCbxCampaignRequest;
+}
+
 export interface CreateCbxCampaignApproveRequest {
     campaignId: string;
 }
 
-export interface CreateCbxCampaignExecuteByCampaignIdRequest {
+export interface CreateCbxCampaignExecuteByCampaignIdOperationRequest {
     campaignId: string;
+    createCbxCampaignExecuteByCampaignIdRequest: CreateCbxCampaignExecuteByCampaignIdRequest;
 }
 
 export interface CreateCbxCampaignPreviewRequest {
     campaignId: string;
 }
 
+export interface CreateCbxClaimOperationRequest {
+    createCbxClaimRequest: CreateCbxClaimRequest;
+}
+
+export interface CreateCbxClaimQuoteOperationRequest {
+    createCbxClaimQuoteRequest: CreateCbxClaimQuoteRequest;
+}
+
 export interface CreateCbxClaimSendRequest {
     claimId: string;
+}
+
+export interface CreateCbxCreditDrawOperationRequest {
+    createCbxCreditDrawRequest: CreateCbxCreditDrawRequest;
+}
+
+export interface CreateCbxCreditFreezeOperationRequest {
+    createCbxCreditFreezeRequest: CreateCbxCreditFreezeRequest;
+}
+
+export interface CreateCbxCreditRepayOperationRequest {
+    createCbxCreditRepayRequest: CreateCbxCreditRepayRequest;
+}
+
+export interface CreateCbxDisbursementRuleOperationRequest {
+    createCbxDisbursementRuleRequest: CreateCbxDisbursementRuleRequest;
 }
 
 export interface CreateCbxDisbursementRuleActiveRequest {
@@ -238,28 +385,85 @@ export interface CreateCbxDisbursementRuleCheckRequest {
     ruleId: string;
 }
 
+export interface CreateCbxEarnTierOperationRequest {
+    createCbxEarnTierRequest: CreateCbxEarnTierRequest;
+}
+
+export interface CreateCbxRateQuoteOperationRequest {
+    createCbxRateQuoteRequest: CreateCbxRateQuoteRequest;
+}
+
+export interface CreateCbxRedemptionOperationRequest {
+    createCbxRedemptionRequest: CreateCbxRedemptionRequest;
+}
+
+export interface CreateCbxRedemptionQuoteOperationRequest {
+    createCbxRedemptionQuoteRequest: CreateCbxRedemptionQuoteRequest;
+}
+
+export interface CreateCbxReserveOperationRequest {
+    createCbxReserveRequest: CreateCbxReserveRequest;
+}
+
+export interface CreateCbxRevenueSweepOperationRequest {
+    createCbxRevenueSweepRequest?: CreateCbxRevenueSweepRequest;
+}
+
+export interface CreateCbxSpendOperationRequest {
+    createCbxSpendRequest: CreateCbxSpendRequest;
+}
+
 export interface CreateCbxSpendReverseRequest {
     externalId: string;
+    reasonRequest: ReasonRequest;
 }
 
-export interface CreateCbxSubjectGrantRequest {
-    subjectId: string;
+export interface CreateCbxStakeTierOperationRequest {
+    createCbxStakeTierRequest: CreateCbxStakeTierRequest;
 }
 
-export interface CreateCbxSubjectSpendPlanRequest {
-    subjectId: string;
+export interface CreateCbxSubjectOperationRequest {
+    createCbxSubjectRequest: CreateCbxSubjectRequest;
 }
 
-export interface CreateCbxSubjectStakeRequest {
+export interface CreateCbxSubjectGrantOperationRequest {
     subjectId: string;
+    createCbxSubjectGrantRequest: CreateCbxSubjectGrantRequest;
+}
+
+export interface CreateCbxSubjectSpendPlanOperationRequest {
+    subjectId: string;
+    createCbxSubjectSpendPlanRequest: CreateCbxSubjectSpendPlanRequest;
+}
+
+export interface CreateCbxSubjectStakeOperationRequest {
+    subjectId: string;
+    createCbxSubjectStakeRequest: CreateCbxSubjectStakeRequest;
 }
 
 export interface CreateCbxSubjectStakeUnstakeRequest {
     subjectId: string;
 }
 
-export interface CreateCbxWalletPaymentResolveRequest {
+export interface CreateCbxWalletChallengeOperationRequest {
+    createCbxWalletChallengeRequest: CreateCbxWalletChallengeRequest;
+}
+
+export interface CreateCbxWalletPaymentConfirmOperationRequest {
+    createCbxWalletPaymentConfirmRequest: CreateCbxWalletPaymentConfirmRequest;
+}
+
+export interface CreateCbxWalletPaymentQuoteOperationRequest {
+    createCbxWalletPaymentQuoteRequest: CreateCbxWalletPaymentQuoteRequest;
+}
+
+export interface CreateCbxWalletPaymentResolveOperationRequest {
     paymentId: string;
+    createCbxWalletPaymentResolveRequest: CreateCbxWalletPaymentResolveRequest;
+}
+
+export interface CreateCbxWalletVerifyOperationRequest {
+    createCbxWalletVerifyRequest: CreateCbxWalletVerifyRequest;
 }
 
 export interface GetCbxClaimRequest {
@@ -308,10 +512,16 @@ export class CBXApi extends runtime.BaseAPI {
      * The accrual is PENDING until its maturation window closes, then converts to CBX at that moment\'s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
      * Record cashback a user earned, in cents.
      */
-    async createCbxAccrualRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAccrualResponse>> {
+    async createCbxAccrualRaw(requestParameters: CreateCbxAccrualOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAccrualResponse>> {
+        if (requestParameters.createCbxAccrualRequest === null || requestParameters.createCbxAccrualRequest === undefined) {
+            throw new runtime.RequiredError('createCbxAccrualRequest','Required parameter requestParameters.createCbxAccrualRequest was null or undefined when calling createCbxAccrual.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -326,6 +536,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxAccrualRequestToJSON(requestParameters.createCbxAccrualRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxAccrualResponseFromJSON(jsonValue));
@@ -335,8 +546,8 @@ export class CBXApi extends runtime.BaseAPI {
      * The accrual is PENDING until its maturation window closes, then converts to CBX at that moment\'s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
      * Record cashback a user earned, in cents.
      */
-    async createCbxAccrual(initOverrides?: RequestInit): Promise<CreateCbxAccrualResponse> {
-        const response = await this.createCbxAccrualRaw(initOverrides);
+    async createCbxAccrual(requestParameters: CreateCbxAccrualOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxAccrualResponse> {
+        const response = await this.createCbxAccrualRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -344,10 +555,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and `boostBudgetExhausted` is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
      * Accrue cashback for an order at the resolved rate.
      */
-    async createCbxAccrualPurchaseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAccrualPurchaseResponse>> {
+    async createCbxAccrualPurchaseRaw(requestParameters: CreateCbxAccrualPurchaseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAccrualPurchaseResponse>> {
+        if (requestParameters.createCbxAccrualPurchaseRequest === null || requestParameters.createCbxAccrualPurchaseRequest === undefined) {
+            throw new runtime.RequiredError('createCbxAccrualPurchaseRequest','Required parameter requestParameters.createCbxAccrualPurchaseRequest was null or undefined when calling createCbxAccrualPurchase.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -362,6 +579,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxAccrualPurchaseRequestToJSON(requestParameters.createCbxAccrualPurchaseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxAccrualPurchaseResponseFromJSON(jsonValue));
@@ -371,8 +589,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and `boostBudgetExhausted` is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
      * Accrue cashback for an order at the resolved rate.
      */
-    async createCbxAccrualPurchase(initOverrides?: RequestInit): Promise<CreateCbxAccrualPurchaseResponse> {
-        const response = await this.createCbxAccrualPurchaseRaw(initOverrides);
+    async createCbxAccrualPurchase(requestParameters: CreateCbxAccrualPurchaseOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxAccrualPurchaseResponse> {
+        const response = await this.createCbxAccrualPurchaseRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -385,9 +603,15 @@ export class CBXApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('accrualId','Required parameter requestParameters.accrualId was null or undefined when calling createCbxAccrualReverse.');
         }
 
+        if (requestParameters.reasonRequest === null || requestParameters.reasonRequest === undefined) {
+            throw new runtime.RequiredError('reasonRequest','Required parameter requestParameters.reasonRequest was null or undefined when calling createCbxAccrualReverse.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -402,6 +626,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequestToJSON(requestParameters.reasonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxSpendReverseResponseFromJSON(jsonValue));
@@ -420,10 +645,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
      * Claim ad credit against a CBX transfer you sent.
      */
-    async createCbxAdCreditPurchaseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAdCreditPurchaseResponse>> {
+    async createCbxAdCreditPurchaseRaw(requestParameters: CreateCbxAdCreditPurchaseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAdCreditPurchaseResponse>> {
+        if (requestParameters.createCbxAdCreditPurchaseRequest === null || requestParameters.createCbxAdCreditPurchaseRequest === undefined) {
+            throw new runtime.RequiredError('createCbxAdCreditPurchaseRequest','Required parameter requestParameters.createCbxAdCreditPurchaseRequest was null or undefined when calling createCbxAdCreditPurchase.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -438,6 +669,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxAdCreditPurchaseRequestToJSON(requestParameters.createCbxAdCreditPurchaseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxAdCreditPurchaseResponseFromJSON(jsonValue));
@@ -447,8 +679,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
      * Claim ad credit against a CBX transfer you sent.
      */
-    async createCbxAdCreditPurchase(initOverrides?: RequestInit): Promise<CreateCbxAdCreditPurchaseResponse> {
-        const response = await this.createCbxAdCreditPurchaseRaw(initOverrides);
+    async createCbxAdCreditPurchase(requestParameters: CreateCbxAdCreditPurchaseOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxAdCreditPurchaseResponse> {
+        const response = await this.createCbxAdCreditPurchaseRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -456,10 +688,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
      * What a given number of tokens buys in ad credit.
      */
-    async createCbxAdCreditQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAdCreditQuoteResponse>> {
+    async createCbxAdCreditQuoteRaw(requestParameters: CreateCbxAdCreditQuoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAdCreditQuoteResponse>> {
+        if (requestParameters.createCbxSubjectStakeRequest === null || requestParameters.createCbxSubjectStakeRequest === undefined) {
+            throw new runtime.RequiredError('createCbxSubjectStakeRequest','Required parameter requestParameters.createCbxSubjectStakeRequest was null or undefined when calling createCbxAdCreditQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -474,6 +712,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxSubjectStakeRequestToJSON(requestParameters.createCbxSubjectStakeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxAdCreditQuoteResponseFromJSON(jsonValue));
@@ -483,8 +722,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
      * What a given number of tokens buys in ad credit.
      */
-    async createCbxAdCreditQuote(initOverrides?: RequestInit): Promise<CreateCbxAdCreditQuoteResponse> {
-        const response = await this.createCbxAdCreditQuoteRaw(initOverrides);
+    async createCbxAdCreditQuote(requestParameters: CreateCbxAdCreditQuoteRequest, initOverrides?: RequestInit): Promise<CreateCbxAdCreditQuoteResponse> {
+        const response = await this.createCbxAdCreditQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -492,10 +731,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Spends what the balance covers and reports the rest as `shortfallCents` — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool\'s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
      * Consume credit for a billing period.
      */
-    async createCbxAdCreditSpendRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAdCreditSpendResponse>> {
+    async createCbxAdCreditSpendRaw(requestParameters: CreateCbxAdCreditSpendOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxAdCreditSpendResponse>> {
+        if (requestParameters.createCbxAdCreditSpendRequest === null || requestParameters.createCbxAdCreditSpendRequest === undefined) {
+            throw new runtime.RequiredError('createCbxAdCreditSpendRequest','Required parameter requestParameters.createCbxAdCreditSpendRequest was null or undefined when calling createCbxAdCreditSpend.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -510,6 +755,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxAdCreditSpendRequestToJSON(requestParameters.createCbxAdCreditSpendRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxAdCreditSpendResponseFromJSON(jsonValue));
@@ -519,8 +765,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Spends what the balance covers and reports the rest as `shortfallCents` — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool\'s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
      * Consume credit for a billing period.
      */
-    async createCbxAdCreditSpend(initOverrides?: RequestInit): Promise<CreateCbxAdCreditSpendResponse> {
-        const response = await this.createCbxAdCreditSpendRaw(initOverrides);
+    async createCbxAdCreditSpend(requestParameters: CreateCbxAdCreditSpendOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxAdCreditSpendResponse> {
+        const response = await this.createCbxAdCreditSpendRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -528,10 +774,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku > collection > category > all). Kinds: all, category, sku, collection.
      * Fund elevated cashback on matching items.
      */
-    async createCbxBoostRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxBoostResponse>> {
+    async createCbxBoostRaw(requestParameters: CreateCbxBoostOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxBoostResponse>> {
+        if (requestParameters.createCbxBoostRequest === null || requestParameters.createCbxBoostRequest === undefined) {
+            throw new runtime.RequiredError('createCbxBoostRequest','Required parameter requestParameters.createCbxBoostRequest was null or undefined when calling createCbxBoost.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -546,6 +798,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxBoostRequestToJSON(requestParameters.createCbxBoostRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxBoostResponseFromJSON(jsonValue));
@@ -555,8 +808,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku > collection > category > all). Kinds: all, category, sku, collection.
      * Fund elevated cashback on matching items.
      */
-    async createCbxBoost(initOverrides?: RequestInit): Promise<CreateCbxBoostResponse> {
-        const response = await this.createCbxBoostRaw(initOverrides);
+    async createCbxBoost(requestParameters: CreateCbxBoostOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxBoostResponse> {
+        const response = await this.createCbxBoostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -604,10 +857,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. `capPerSubject` is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
      * Create a campaign in draft.
      */
-    async createCbxCampaignRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCampaignResponse>> {
+    async createCbxCampaignRaw(requestParameters: CreateCbxCampaignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCampaignResponse>> {
+        if (requestParameters.createCbxCampaignRequest === null || requestParameters.createCbxCampaignRequest === undefined) {
+            throw new runtime.RequiredError('createCbxCampaignRequest','Required parameter requestParameters.createCbxCampaignRequest was null or undefined when calling createCbxCampaign.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -622,6 +881,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxCampaignRequestToJSON(requestParameters.createCbxCampaignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxCampaignResponseFromJSON(jsonValue));
@@ -631,8 +891,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. `capPerSubject` is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
      * Create a campaign in draft.
      */
-    async createCbxCampaign(initOverrides?: RequestInit): Promise<CreateCbxCampaignResponse> {
-        const response = await this.createCbxCampaignRaw(initOverrides);
+    async createCbxCampaign(requestParameters: CreateCbxCampaignOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxCampaignResponse> {
+        const response = await this.createCbxCampaignRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -678,14 +938,20 @@ export class CBXApi extends runtime.BaseAPI {
      * Recomputes the list and refuses if the hash no longer matches the approved one. Payouts credit balances directly rather than transferring on chain, so a distribution to ten thousand recipients costs one internal move and is reversible if it was computed wrong.
      * Pay an approved campaign.
      */
-    async createCbxCampaignExecuteByCampaignIdRaw(requestParameters: CreateCbxCampaignExecuteByCampaignIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse>> {
+    async createCbxCampaignExecuteByCampaignIdRaw(requestParameters: CreateCbxCampaignExecuteByCampaignIdOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse>> {
         if (requestParameters.campaignId === null || requestParameters.campaignId === undefined) {
             throw new runtime.RequiredError('campaignId','Required parameter requestParameters.campaignId was null or undefined when calling createCbxCampaignExecuteByCampaignId.');
+        }
+
+        if (requestParameters.createCbxCampaignExecuteByCampaignIdRequest === null || requestParameters.createCbxCampaignExecuteByCampaignIdRequest === undefined) {
+            throw new runtime.RequiredError('createCbxCampaignExecuteByCampaignIdRequest','Required parameter requestParameters.createCbxCampaignExecuteByCampaignIdRequest was null or undefined when calling createCbxCampaignExecuteByCampaignId.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -700,6 +966,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxCampaignExecuteByCampaignIdRequestToJSON(requestParameters.createCbxCampaignExecuteByCampaignIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxCampaignExecuteByCampaignIdResponseFromJSON(jsonValue));
@@ -709,7 +976,7 @@ export class CBXApi extends runtime.BaseAPI {
      * Recomputes the list and refuses if the hash no longer matches the approved one. Payouts credit balances directly rather than transferring on chain, so a distribution to ten thousand recipients costs one internal move and is reversible if it was computed wrong.
      * Pay an approved campaign.
      */
-    async createCbxCampaignExecuteByCampaignId(requestParameters: CreateCbxCampaignExecuteByCampaignIdRequest, initOverrides?: RequestInit): Promise<CreateCbxCampaignExecuteByCampaignIdResponse> {
+    async createCbxCampaignExecuteByCampaignId(requestParameters: CreateCbxCampaignExecuteByCampaignIdOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxCampaignExecuteByCampaignIdResponse> {
         const response = await this.createCbxCampaignExecuteByCampaignIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -758,10 +1025,16 @@ export class CBXApi extends runtime.BaseAPI {
      * The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
      * Reserve a claim. Debits the balance and queues the transfer.
      */
-    async createCbxClaimRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxClaimResponse>> {
+    async createCbxClaimRaw(requestParameters: CreateCbxClaimOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxClaimResponse>> {
+        if (requestParameters.createCbxClaimRequest === null || requestParameters.createCbxClaimRequest === undefined) {
+            throw new runtime.RequiredError('createCbxClaimRequest','Required parameter requestParameters.createCbxClaimRequest was null or undefined when calling createCbxClaim.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -776,6 +1049,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxClaimRequestToJSON(requestParameters.createCbxClaimRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxClaimResponseFromJSON(jsonValue));
@@ -785,8 +1059,8 @@ export class CBXApi extends runtime.BaseAPI {
      * The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
      * Reserve a claim. Debits the balance and queues the transfer.
      */
-    async createCbxClaim(initOverrides?: RequestInit): Promise<CreateCbxClaimResponse> {
-        const response = await this.createCbxClaimRaw(initOverrides);
+    async createCbxClaim(requestParameters: CreateCbxClaimOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxClaimResponse> {
+        const response = await this.createCbxClaimRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -794,10 +1068,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
      * What a claim would cost, without committing to it.
      */
-    async createCbxClaimQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxClaimQuoteResponse>> {
+    async createCbxClaimQuoteRaw(requestParameters: CreateCbxClaimQuoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxClaimQuoteResponse>> {
+        if (requestParameters.createCbxClaimQuoteRequest === null || requestParameters.createCbxClaimQuoteRequest === undefined) {
+            throw new runtime.RequiredError('createCbxClaimQuoteRequest','Required parameter requestParameters.createCbxClaimQuoteRequest was null or undefined when calling createCbxClaimQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -812,6 +1092,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxClaimQuoteRequestToJSON(requestParameters.createCbxClaimQuoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxClaimQuoteResponseFromJSON(jsonValue));
@@ -821,8 +1102,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
      * What a claim would cost, without committing to it.
      */
-    async createCbxClaimQuote(initOverrides?: RequestInit): Promise<CreateCbxClaimQuoteResponse> {
-        const response = await this.createCbxClaimQuoteRaw(initOverrides);
+    async createCbxClaimQuote(requestParameters: CreateCbxClaimQuoteOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxClaimQuoteResponse> {
+        const response = await this.createCbxClaimQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -870,10 +1151,16 @@ export class CBXApi extends runtime.BaseAPI {
      * The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
      * Draw against a line, receiving grant credit.
      */
-    async createCbxCreditDrawRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCreditDrawResponse>> {
+    async createCbxCreditDrawRaw(requestParameters: CreateCbxCreditDrawOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCreditDrawResponse>> {
+        if (requestParameters.createCbxCreditDrawRequest === null || requestParameters.createCbxCreditDrawRequest === undefined) {
+            throw new runtime.RequiredError('createCbxCreditDrawRequest','Required parameter requestParameters.createCbxCreditDrawRequest was null or undefined when calling createCbxCreditDraw.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -888,6 +1175,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxCreditDrawRequestToJSON(requestParameters.createCbxCreditDrawRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxCreditDrawResponseFromJSON(jsonValue));
@@ -897,8 +1185,8 @@ export class CBXApi extends runtime.BaseAPI {
      * The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
      * Draw against a line, receiving grant credit.
      */
-    async createCbxCreditDraw(initOverrides?: RequestInit): Promise<CreateCbxCreditDrawResponse> {
-        const response = await this.createCbxCreditDrawRaw(initOverrides);
+    async createCbxCreditDraw(requestParameters: CreateCbxCreditDrawOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxCreditDrawResponse> {
+        const response = await this.createCbxCreditDrawRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -906,10 +1194,16 @@ export class CBXApi extends runtime.BaseAPI {
      * The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday\'s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
      * Stop new draws. Leaves the drawn balance on its terms.
      */
-    async createCbxCreditFreezeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCreditFreezeResponse>> {
+    async createCbxCreditFreezeRaw(requestParameters: CreateCbxCreditFreezeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCreditFreezeResponse>> {
+        if (requestParameters.createCbxCreditFreezeRequest === null || requestParameters.createCbxCreditFreezeRequest === undefined) {
+            throw new runtime.RequiredError('createCbxCreditFreezeRequest','Required parameter requestParameters.createCbxCreditFreezeRequest was null or undefined when calling createCbxCreditFreeze.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -924,6 +1218,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxCreditFreezeRequestToJSON(requestParameters.createCbxCreditFreezeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxCreditFreezeResponseFromJSON(jsonValue));
@@ -933,8 +1228,8 @@ export class CBXApi extends runtime.BaseAPI {
      * The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday\'s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
      * Stop new draws. Leaves the drawn balance on its terms.
      */
-    async createCbxCreditFreeze(initOverrides?: RequestInit): Promise<CreateCbxCreditFreezeResponse> {
-        const response = await this.createCbxCreditFreezeRaw(initOverrides);
+    async createCbxCreditFreeze(requestParameters: CreateCbxCreditFreezeOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxCreditFreezeResponse> {
+        const response = await this.createCbxCreditFreezeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -978,10 +1273,16 @@ export class CBXApi extends runtime.BaseAPI {
      * `treasury` scope, which looks backwards next to a draw needing only `spend` and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
      * Apply a repayment to a line.
      */
-    async createCbxCreditRepayRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCreditRepayResponse>> {
+    async createCbxCreditRepayRaw(requestParameters: CreateCbxCreditRepayOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxCreditRepayResponse>> {
+        if (requestParameters.createCbxCreditRepayRequest === null || requestParameters.createCbxCreditRepayRequest === undefined) {
+            throw new runtime.RequiredError('createCbxCreditRepayRequest','Required parameter requestParameters.createCbxCreditRepayRequest was null or undefined when calling createCbxCreditRepay.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -996,6 +1297,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxCreditRepayRequestToJSON(requestParameters.createCbxCreditRepayRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxCreditRepayResponseFromJSON(jsonValue));
@@ -1005,8 +1307,8 @@ export class CBXApi extends runtime.BaseAPI {
      * `treasury` scope, which looks backwards next to a draw needing only `spend` and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
      * Apply a repayment to a line.
      */
-    async createCbxCreditRepay(initOverrides?: RequestInit): Promise<CreateCbxCreditRepayResponse> {
-        const response = await this.createCbxCreditRepayRaw(initOverrides);
+    async createCbxCreditRepay(requestParameters: CreateCbxCreditRepayOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxCreditRepayResponse> {
+        const response = await this.createCbxCreditRepayRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1014,10 +1316,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. `checkCadenceHours` bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. `distributeBps` is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
      * Fire a distribution when the events pool crosses a threshold.
      */
-    async createCbxDisbursementRuleRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxDisbursementRuleResponse>> {
+    async createCbxDisbursementRuleRaw(requestParameters: CreateCbxDisbursementRuleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxDisbursementRuleResponse>> {
+        if (requestParameters.createCbxDisbursementRuleRequest === null || requestParameters.createCbxDisbursementRuleRequest === undefined) {
+            throw new runtime.RequiredError('createCbxDisbursementRuleRequest','Required parameter requestParameters.createCbxDisbursementRuleRequest was null or undefined when calling createCbxDisbursementRule.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1032,6 +1340,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxDisbursementRuleRequestToJSON(requestParameters.createCbxDisbursementRuleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxDisbursementRuleResponseFromJSON(jsonValue));
@@ -1041,8 +1350,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. `checkCadenceHours` bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. `distributeBps` is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
      * Fire a distribution when the events pool crosses a threshold.
      */
-    async createCbxDisbursementRule(initOverrides?: RequestInit): Promise<CreateCbxDisbursementRuleResponse> {
-        const response = await this.createCbxDisbursementRuleRaw(initOverrides);
+    async createCbxDisbursementRule(requestParameters: CreateCbxDisbursementRuleOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxDisbursementRuleResponse> {
+        const response = await this.createCbxDisbursementRuleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1128,10 +1437,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Setting `isDefault` moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \"what rate did this user get\" depend on row order.
      * Define an earn term.
      */
-    async createCbxEarnTierRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxEarnTierResponse>> {
+    async createCbxEarnTierRaw(requestParameters: CreateCbxEarnTierOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxEarnTierResponse>> {
+        if (requestParameters.createCbxEarnTierRequest === null || requestParameters.createCbxEarnTierRequest === undefined) {
+            throw new runtime.RequiredError('createCbxEarnTierRequest','Required parameter requestParameters.createCbxEarnTierRequest was null or undefined when calling createCbxEarnTier.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1146,6 +1461,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxEarnTierRequestToJSON(requestParameters.createCbxEarnTierRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxEarnTierResponseFromJSON(jsonValue));
@@ -1155,8 +1471,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Setting `isDefault` moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \"what rate did this user get\" depend on row order.
      * Define an earn term.
      */
-    async createCbxEarnTier(initOverrides?: RequestInit): Promise<CreateCbxEarnTierResponse> {
-        const response = await this.createCbxEarnTierRaw(initOverrides);
+    async createCbxEarnTier(requestParameters: CreateCbxEarnTierOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxEarnTierResponse> {
+        const response = await this.createCbxEarnTierRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1164,10 +1480,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Resolve the rate without accruing anything, so a checkout can show the real number and its reason. `source` tells you whether it came from your base rate, a tier, or a boost; `stakeBoostBps` is the part the user\'s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
      * What would this order earn, and why.
      */
-    async createCbxRateQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxRateQuoteResponse>> {
+    async createCbxRateQuoteRaw(requestParameters: CreateCbxRateQuoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxRateQuoteResponse>> {
+        if (requestParameters.createCbxRateQuoteRequest === null || requestParameters.createCbxRateQuoteRequest === undefined) {
+            throw new runtime.RequiredError('createCbxRateQuoteRequest','Required parameter requestParameters.createCbxRateQuoteRequest was null or undefined when calling createCbxRateQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1182,6 +1504,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxRateQuoteRequestToJSON(requestParameters.createCbxRateQuoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxRateQuoteResponseFromJSON(jsonValue));
@@ -1191,8 +1514,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Resolve the rate without accruing anything, so a checkout can show the real number and its reason. `source` tells you whether it came from your base rate, a tier, or a boost; `stakeBoostBps` is the part the user\'s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
      * What would this order earn, and why.
      */
-    async createCbxRateQuote(initOverrides?: RequestInit): Promise<CreateCbxRateQuoteResponse> {
-        const response = await this.createCbxRateQuoteRaw(initOverrides);
+    async createCbxRateQuote(requestParameters: CreateCbxRateQuoteOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxRateQuoteResponse> {
+        const response = await this.createCbxRateQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1200,10 +1523,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
      * Pay for a service in CBX.
      */
-    async createCbxRedemptionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxRedemptionResponse>> {
+    async createCbxRedemptionRaw(requestParameters: CreateCbxRedemptionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxRedemptionResponse>> {
+        if (requestParameters.createCbxRedemptionRequest === null || requestParameters.createCbxRedemptionRequest === undefined) {
+            throw new runtime.RequiredError('createCbxRedemptionRequest','Required parameter requestParameters.createCbxRedemptionRequest was null or undefined when calling createCbxRedemption.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1218,6 +1547,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxRedemptionRequestToJSON(requestParameters.createCbxRedemptionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxRedemptionResponseFromJSON(jsonValue));
@@ -1227,8 +1557,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
      * Pay for a service in CBX.
      */
-    async createCbxRedemption(initOverrides?: RequestInit): Promise<CreateCbxRedemptionResponse> {
-        const response = await this.createCbxRedemptionRaw(initOverrides);
+    async createCbxRedemption(requestParameters: CreateCbxRedemptionOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxRedemptionResponse> {
+        const response = await this.createCbxRedemptionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1236,10 +1566,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
      * What a service costs in tokens right now.
      */
-    async createCbxRedemptionQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxRedemptionQuoteResponse>> {
+    async createCbxRedemptionQuoteRaw(requestParameters: CreateCbxRedemptionQuoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxRedemptionQuoteResponse>> {
+        if (requestParameters.createCbxRedemptionQuoteRequest === null || requestParameters.createCbxRedemptionQuoteRequest === undefined) {
+            throw new runtime.RequiredError('createCbxRedemptionQuoteRequest','Required parameter requestParameters.createCbxRedemptionQuoteRequest was null or undefined when calling createCbxRedemptionQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1254,6 +1590,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxRedemptionQuoteRequestToJSON(requestParameters.createCbxRedemptionQuoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxRedemptionQuoteResponseFromJSON(jsonValue));
@@ -1263,18 +1600,24 @@ export class CBXApi extends runtime.BaseAPI {
      * Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
      * What a service costs in tokens right now.
      */
-    async createCbxRedemptionQuote(initOverrides?: RequestInit): Promise<CreateCbxRedemptionQuoteResponse> {
-        const response = await this.createCbxRedemptionQuoteRaw(initOverrides);
+    async createCbxRedemptionQuote(requestParameters: CreateCbxRedemptionQuoteOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxRedemptionQuoteResponse> {
+        const response = await this.createCbxRedemptionQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account.
      */
-    async createCbxReserveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxReserveResponse>> {
+    async createCbxReserveRaw(requestParameters: CreateCbxReserveOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxReserveResponse>> {
+        if (requestParameters.createCbxReserveRequest === null || requestParameters.createCbxReserveRequest === undefined) {
+            throw new runtime.RequiredError('createCbxReserveRequest','Required parameter requestParameters.createCbxReserveRequest was null or undefined when calling createCbxReserve.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1289,6 +1632,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxReserveRequestToJSON(requestParameters.createCbxReserveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxReserveResponseFromJSON(jsonValue));
@@ -1297,8 +1641,8 @@ export class CBXApi extends runtime.BaseAPI {
     /**
      * Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account.
      */
-    async createCbxReserve(initOverrides?: RequestInit): Promise<CreateCbxReserveResponse> {
-        const response = await this.createCbxReserveRaw(initOverrides);
+    async createCbxReserve(requestParameters: CreateCbxReserveOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxReserveResponse> {
+        const response = await this.createCbxReserveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1306,10 +1650,12 @@ export class CBXApi extends runtime.BaseAPI {
      * Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
      * Move accrued revenue from the reserve to your revenue wallet.
      */
-    async createCbxRevenueSweepRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxRevenueSweepResponse>> {
+    async createCbxRevenueSweepRaw(requestParameters: CreateCbxRevenueSweepOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxRevenueSweepResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1324,6 +1670,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxRevenueSweepRequestToJSON(requestParameters.createCbxRevenueSweepRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxRevenueSweepResponseFromJSON(jsonValue));
@@ -1333,8 +1680,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
      * Move accrued revenue from the reserve to your revenue wallet.
      */
-    async createCbxRevenueSweep(initOverrides?: RequestInit): Promise<CreateCbxRevenueSweepResponse> {
-        const response = await this.createCbxRevenueSweepRaw(initOverrides);
+    async createCbxRevenueSweep(requestParameters: CreateCbxRevenueSweepOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateCbxRevenueSweepResponse> {
+        const response = await this.createCbxRevenueSweepRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1342,10 +1689,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
      * Redeem a user\'s CBX against an order.
      */
-    async createCbxSpendRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSpendResponse>> {
+    async createCbxSpendRaw(requestParameters: CreateCbxSpendOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSpendResponse>> {
+        if (requestParameters.createCbxSpendRequest === null || requestParameters.createCbxSpendRequest === undefined) {
+            throw new runtime.RequiredError('createCbxSpendRequest','Required parameter requestParameters.createCbxSpendRequest was null or undefined when calling createCbxSpend.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1360,6 +1713,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxSpendRequestToJSON(requestParameters.createCbxSpendRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxSpendResponseFromJSON(jsonValue));
@@ -1369,8 +1723,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
      * Redeem a user\'s CBX against an order.
      */
-    async createCbxSpend(initOverrides?: RequestInit): Promise<CreateCbxSpendResponse> {
-        const response = await this.createCbxSpendRaw(initOverrides);
+    async createCbxSpend(requestParameters: CreateCbxSpendOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxSpendResponse> {
+        const response = await this.createCbxSpendRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1383,9 +1737,15 @@ export class CBXApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('externalId','Required parameter requestParameters.externalId was null or undefined when calling createCbxSpendReverse.');
         }
 
+        if (requestParameters.reasonRequest === null || requestParameters.reasonRequest === undefined) {
+            throw new runtime.RequiredError('reasonRequest','Required parameter requestParameters.reasonRequest was null or undefined when calling createCbxSpendReverse.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1400,6 +1760,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequestToJSON(requestParameters.reasonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxSpendReverseResponseFromJSON(jsonValue));
@@ -1418,10 +1779,16 @@ export class CBXApi extends runtime.BaseAPI {
      * A user gets the highest tier their amount clears. `cooldownDays` is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
      * Define a staking tier.
      */
-    async createCbxStakeTierRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxStakeTierResponse>> {
+    async createCbxStakeTierRaw(requestParameters: CreateCbxStakeTierOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxStakeTierResponse>> {
+        if (requestParameters.createCbxStakeTierRequest === null || requestParameters.createCbxStakeTierRequest === undefined) {
+            throw new runtime.RequiredError('createCbxStakeTierRequest','Required parameter requestParameters.createCbxStakeTierRequest was null or undefined when calling createCbxStakeTier.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1436,6 +1803,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxStakeTierRequestToJSON(requestParameters.createCbxStakeTierRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxStakeTierResponseFromJSON(jsonValue));
@@ -1445,8 +1813,8 @@ export class CBXApi extends runtime.BaseAPI {
      * A user gets the highest tier their amount clears. `cooldownDays` is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
      * Define a staking tier.
      */
-    async createCbxStakeTier(initOverrides?: RequestInit): Promise<CreateCbxStakeTierResponse> {
-        const response = await this.createCbxStakeTierRaw(initOverrides);
+    async createCbxStakeTier(requestParameters: CreateCbxStakeTierOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxStakeTierResponse> {
+        const response = await this.createCbxStakeTierRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1454,10 +1822,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \"1\" without collision.
      * Map one of your user ids to a CBX subject.
      */
-    async createCbxSubjectRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSubjectResponse>> {
+    async createCbxSubjectRaw(requestParameters: CreateCbxSubjectOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSubjectResponse>> {
+        if (requestParameters.createCbxSubjectRequest === null || requestParameters.createCbxSubjectRequest === undefined) {
+            throw new runtime.RequiredError('createCbxSubjectRequest','Required parameter requestParameters.createCbxSubjectRequest was null or undefined when calling createCbxSubject.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1472,6 +1846,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxSubjectRequestToJSON(requestParameters.createCbxSubjectRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxSubjectResponseFromJSON(jsonValue));
@@ -1481,8 +1856,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \"1\" without collision.
      * Map one of your user ids to a CBX subject.
      */
-    async createCbxSubject(initOverrides?: RequestInit): Promise<CreateCbxSubjectResponse> {
-        const response = await this.createCbxSubjectRaw(initOverrides);
+    async createCbxSubject(requestParameters: CreateCbxSubjectOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxSubjectResponse> {
+        const response = await this.createCbxSubjectRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1490,14 +1865,20 @@ export class CBXApi extends runtime.BaseAPI {
      * Requires a funding `batchId` for every kind except `grant_makegood`. Grant credit is spendable at merchants who receive real value, so the tokens have to exist — the same rule earned balance obeys. A makegood is exempt because compensating somebody for our failure must not be blocked on treasury state. There is no path that converts a grant to earned balance or pays it to an address, and the database enforces that rather than a comment.
      * Issue grant credit — in-platform, non-withdrawable.
      */
-    async createCbxSubjectGrantRaw(requestParameters: CreateCbxSubjectGrantRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSubjectGrantResponse>> {
+    async createCbxSubjectGrantRaw(requestParameters: CreateCbxSubjectGrantOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSubjectGrantResponse>> {
         if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
             throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling createCbxSubjectGrant.');
+        }
+
+        if (requestParameters.createCbxSubjectGrantRequest === null || requestParameters.createCbxSubjectGrantRequest === undefined) {
+            throw new runtime.RequiredError('createCbxSubjectGrantRequest','Required parameter requestParameters.createCbxSubjectGrantRequest was null or undefined when calling createCbxSubjectGrant.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1512,6 +1893,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxSubjectGrantRequestToJSON(requestParameters.createCbxSubjectGrantRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxSubjectGrantResponseFromJSON(jsonValue));
@@ -1521,7 +1903,7 @@ export class CBXApi extends runtime.BaseAPI {
      * Requires a funding `batchId` for every kind except `grant_makegood`. Grant credit is spendable at merchants who receive real value, so the tokens have to exist — the same rule earned balance obeys. A makegood is exempt because compensating somebody for our failure must not be blocked on treasury state. There is no path that converts a grant to earned balance or pays it to an address, and the database enforces that rather than a comment.
      * Issue grant credit — in-platform, non-withdrawable.
      */
-    async createCbxSubjectGrant(requestParameters: CreateCbxSubjectGrantRequest, initOverrides?: RequestInit): Promise<CreateCbxSubjectGrantResponse> {
+    async createCbxSubjectGrant(requestParameters: CreateCbxSubjectGrantOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxSubjectGrantResponse> {
         const response = await this.createCbxSubjectGrantRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1530,14 +1912,20 @@ export class CBXApi extends runtime.BaseAPI {
      * The order is granted → earned → connected and you do not get to choose it. Granted first is a security property, not a preference: if earned spent first, a subject holding both would spend their withdrawable balance down while their non-withdrawable grant sat untouched — converting a grant into a withdrawable balance one purchase at a time. Returns a `shortfallBaseUnits` rather than failing, so a checkout can charge the remainder to a card. Send excludeConnected on a flow that cannot wait for an on-chain transfer.
      * Which balances would pay for a spend, and in what order.
      */
-    async createCbxSubjectSpendPlanRaw(requestParameters: CreateCbxSubjectSpendPlanRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSubjectSpendPlanResponse>> {
+    async createCbxSubjectSpendPlanRaw(requestParameters: CreateCbxSubjectSpendPlanOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSubjectSpendPlanResponse>> {
         if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
             throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling createCbxSubjectSpendPlan.');
+        }
+
+        if (requestParameters.createCbxSubjectSpendPlanRequest === null || requestParameters.createCbxSubjectSpendPlanRequest === undefined) {
+            throw new runtime.RequiredError('createCbxSubjectSpendPlanRequest','Required parameter requestParameters.createCbxSubjectSpendPlanRequest was null or undefined when calling createCbxSubjectSpendPlan.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1552,6 +1940,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxSubjectSpendPlanRequestToJSON(requestParameters.createCbxSubjectSpendPlanRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxSubjectSpendPlanResponseFromJSON(jsonValue));
@@ -1561,7 +1950,7 @@ export class CBXApi extends runtime.BaseAPI {
      * The order is granted → earned → connected and you do not get to choose it. Granted first is a security property, not a preference: if earned spent first, a subject holding both would spend their withdrawable balance down while their non-withdrawable grant sat untouched — converting a grant into a withdrawable balance one purchase at a time. Returns a `shortfallBaseUnits` rather than failing, so a checkout can charge the remainder to a card. Send excludeConnected on a flow that cannot wait for an on-chain transfer.
      * Which balances would pay for a spend, and in what order.
      */
-    async createCbxSubjectSpendPlan(requestParameters: CreateCbxSubjectSpendPlanRequest, initOverrides?: RequestInit): Promise<CreateCbxSubjectSpendPlanResponse> {
+    async createCbxSubjectSpendPlan(requestParameters: CreateCbxSubjectSpendPlanOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxSubjectSpendPlanResponse> {
         const response = await this.createCbxSubjectSpendPlanRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1570,14 +1959,20 @@ export class CBXApi extends runtime.BaseAPI {
      * Refuses an amount that clears no tier — locking tokens for no benefit is never what somebody meant to do. One stake per subject: to change the amount, unstake and wait out the cooldown first.
      * Lock a subject\'s tokens for a tier.
      */
-    async createCbxSubjectStakeRaw(requestParameters: CreateCbxSubjectStakeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSubjectStakeResponse>> {
+    async createCbxSubjectStakeRaw(requestParameters: CreateCbxSubjectStakeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxSubjectStakeResponse>> {
         if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
             throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling createCbxSubjectStake.');
+        }
+
+        if (requestParameters.createCbxSubjectStakeRequest === null || requestParameters.createCbxSubjectStakeRequest === undefined) {
+            throw new runtime.RequiredError('createCbxSubjectStakeRequest','Required parameter requestParameters.createCbxSubjectStakeRequest was null or undefined when calling createCbxSubjectStake.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1592,6 +1987,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxSubjectStakeRequestToJSON(requestParameters.createCbxSubjectStakeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxSubjectStakeResponseFromJSON(jsonValue));
@@ -1601,7 +1997,7 @@ export class CBXApi extends runtime.BaseAPI {
      * Refuses an amount that clears no tier — locking tokens for no benefit is never what somebody meant to do. One stake per subject: to change the amount, unstake and wait out the cooldown first.
      * Lock a subject\'s tokens for a tier.
      */
-    async createCbxSubjectStake(requestParameters: CreateCbxSubjectStakeRequest, initOverrides?: RequestInit): Promise<CreateCbxSubjectStakeResponse> {
+    async createCbxSubjectStake(requestParameters: CreateCbxSubjectStakeOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxSubjectStakeResponse> {
         const response = await this.createCbxSubjectStakeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1650,10 +2046,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Present the returned `message` verbatim to the user\'s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
      * Start wallet verification. Returns a message for the user to sign.
      */
-    async createCbxWalletChallengeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletChallengeResponse>> {
+    async createCbxWalletChallengeRaw(requestParameters: CreateCbxWalletChallengeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletChallengeResponse>> {
+        if (requestParameters.createCbxWalletChallengeRequest === null || requestParameters.createCbxWalletChallengeRequest === undefined) {
+            throw new runtime.RequiredError('createCbxWalletChallengeRequest','Required parameter requestParameters.createCbxWalletChallengeRequest was null or undefined when calling createCbxWalletChallenge.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1668,6 +2070,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxWalletChallengeRequestToJSON(requestParameters.createCbxWalletChallengeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxWalletChallengeResponseFromJSON(jsonValue));
@@ -1677,8 +2080,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Present the returned `message` verbatim to the user\'s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
      * Start wallet verification. Returns a message for the user to sign.
      */
-    async createCbxWalletChallenge(initOverrides?: RequestInit): Promise<CreateCbxWalletChallengeResponse> {
-        const response = await this.createCbxWalletChallengeRaw(initOverrides);
+    async createCbxWalletChallenge(requestParameters: CreateCbxWalletChallengeOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxWalletChallengeResponse> {
+        const response = await this.createCbxWalletChallengeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1686,10 +2089,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response `releaseDecision` is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. `release` means ship. `review` means hold — a person needs to look, and that includes the case where no screening provider is configured. `refuse` means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
      * Present the signature. Returns a ship / do-not-ship decision.
      */
-    async createCbxWalletPaymentConfirmRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletPaymentConfirmResponse>> {
+    async createCbxWalletPaymentConfirmRaw(requestParameters: CreateCbxWalletPaymentConfirmOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletPaymentConfirmResponse>> {
+        if (requestParameters.createCbxWalletPaymentConfirmRequest === null || requestParameters.createCbxWalletPaymentConfirmRequest === undefined) {
+            throw new runtime.RequiredError('createCbxWalletPaymentConfirmRequest','Required parameter requestParameters.createCbxWalletPaymentConfirmRequest was null or undefined when calling createCbxWalletPaymentConfirm.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1704,6 +2113,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxWalletPaymentConfirmRequestToJSON(requestParameters.createCbxWalletPaymentConfirmRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxWalletPaymentConfirmResponseFromJSON(jsonValue));
@@ -1713,8 +2123,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response `releaseDecision` is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. `release` means ship. `review` means hold — a person needs to look, and that includes the case where no screening provider is configured. `refuse` means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
      * Present the signature. Returns a ship / do-not-ship decision.
      */
-    async createCbxWalletPaymentConfirm(initOverrides?: RequestInit): Promise<CreateCbxWalletPaymentConfirmResponse> {
-        const response = await this.createCbxWalletPaymentConfirmRaw(initOverrides);
+    async createCbxWalletPaymentConfirm(requestParameters: CreateCbxWalletPaymentConfirmOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxWalletPaymentConfirmResponse> {
+        const response = await this.createCbxWalletPaymentConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1722,10 +2132,16 @@ export class CBXApi extends runtime.BaseAPI {
      * Returns an unsigned, base64 transaction. The buyer\'s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. `lastValidBlockHeight` is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. `payerCanCover` is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \"no\". The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
      * Build a transfer for the buyer to sign themselves.
      */
-    async createCbxWalletPaymentQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletPaymentQuoteResponse>> {
+    async createCbxWalletPaymentQuoteRaw(requestParameters: CreateCbxWalletPaymentQuoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletPaymentQuoteResponse>> {
+        if (requestParameters.createCbxWalletPaymentQuoteRequest === null || requestParameters.createCbxWalletPaymentQuoteRequest === undefined) {
+            throw new runtime.RequiredError('createCbxWalletPaymentQuoteRequest','Required parameter requestParameters.createCbxWalletPaymentQuoteRequest was null or undefined when calling createCbxWalletPaymentQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1740,6 +2156,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxWalletPaymentQuoteRequestToJSON(requestParameters.createCbxWalletPaymentQuoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxWalletPaymentQuoteResponseFromJSON(jsonValue));
@@ -1749,8 +2166,8 @@ export class CBXApi extends runtime.BaseAPI {
      * Returns an unsigned, base64 transaction. The buyer\'s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. `lastValidBlockHeight` is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. `payerCanCover` is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \"no\". The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
      * Build a transfer for the buyer to sign themselves.
      */
-    async createCbxWalletPaymentQuote(initOverrides?: RequestInit): Promise<CreateCbxWalletPaymentQuoteResponse> {
-        const response = await this.createCbxWalletPaymentQuoteRaw(initOverrides);
+    async createCbxWalletPaymentQuote(requestParameters: CreateCbxWalletPaymentQuoteOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxWalletPaymentQuoteResponse> {
+        const response = await this.createCbxWalletPaymentQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1758,14 +2175,20 @@ export class CBXApi extends runtime.BaseAPI {
      * Only moves a payment OUT of `review`, never between the other two. A refusal that could later be flipped to a release is an approval control with no teeth, and a release re-decided as a refusal after the goods shipped is a record that no longer describes what happened. The reviewer and their note are stored on the row, because this is the decision somebody will be asked to justify.
      * A human decides on a held payment.
      */
-    async createCbxWalletPaymentResolveRaw(requestParameters: CreateCbxWalletPaymentResolveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletPaymentResolveResponse>> {
+    async createCbxWalletPaymentResolveRaw(requestParameters: CreateCbxWalletPaymentResolveOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletPaymentResolveResponse>> {
         if (requestParameters.paymentId === null || requestParameters.paymentId === undefined) {
             throw new runtime.RequiredError('paymentId','Required parameter requestParameters.paymentId was null or undefined when calling createCbxWalletPaymentResolve.');
+        }
+
+        if (requestParameters.createCbxWalletPaymentResolveRequest === null || requestParameters.createCbxWalletPaymentResolveRequest === undefined) {
+            throw new runtime.RequiredError('createCbxWalletPaymentResolveRequest','Required parameter requestParameters.createCbxWalletPaymentResolveRequest was null or undefined when calling createCbxWalletPaymentResolve.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1780,6 +2203,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxWalletPaymentResolveRequestToJSON(requestParameters.createCbxWalletPaymentResolveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxWalletPaymentResolveResponseFromJSON(jsonValue));
@@ -1789,7 +2213,7 @@ export class CBXApi extends runtime.BaseAPI {
      * Only moves a payment OUT of `review`, never between the other two. A refusal that could later be flipped to a release is an approval control with no teeth, and a release re-decided as a refusal after the goods shipped is a record that no longer describes what happened. The reviewer and their note are stored on the row, because this is the decision somebody will be asked to justify.
      * A human decides on a held payment.
      */
-    async createCbxWalletPaymentResolve(requestParameters: CreateCbxWalletPaymentResolveRequest, initOverrides?: RequestInit): Promise<CreateCbxWalletPaymentResolveResponse> {
+    async createCbxWalletPaymentResolve(requestParameters: CreateCbxWalletPaymentResolveOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxWalletPaymentResolveResponse> {
         const response = await this.createCbxWalletPaymentResolveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1798,10 +2222,16 @@ export class CBXApi extends runtime.BaseAPI {
      * The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
      * Complete wallet verification with the user\'s signature.
      */
-    async createCbxWalletVerifyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletVerifyResponse>> {
+    async createCbxWalletVerifyRaw(requestParameters: CreateCbxWalletVerifyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCbxWalletVerifyResponse>> {
+        if (requestParameters.createCbxWalletVerifyRequest === null || requestParameters.createCbxWalletVerifyRequest === undefined) {
+            throw new runtime.RequiredError('createCbxWalletVerifyRequest','Required parameter requestParameters.createCbxWalletVerifyRequest was null or undefined when calling createCbxWalletVerify.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1816,6 +2246,7 @@ export class CBXApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCbxWalletVerifyRequestToJSON(requestParameters.createCbxWalletVerifyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCbxWalletVerifyResponseFromJSON(jsonValue));
@@ -1825,8 +2256,8 @@ export class CBXApi extends runtime.BaseAPI {
      * The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
      * Complete wallet verification with the user\'s signature.
      */
-    async createCbxWalletVerify(initOverrides?: RequestInit): Promise<CreateCbxWalletVerifyResponse> {
-        const response = await this.createCbxWalletVerifyRaw(initOverrides);
+    async createCbxWalletVerify(requestParameters: CreateCbxWalletVerifyOperationRequest, initOverrides?: RequestInit): Promise<CreateCbxWalletVerifyResponse> {
+        const response = await this.createCbxWalletVerifyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -117,6 +117,30 @@ export interface ListDetectedEventEventsItem {
      */
     title?: string | null;
     /**
+     * A legacy event_policy_decisions row shown in History (read-only, no actions).
+     * @type {boolean}
+     * @memberof ListDetectedEventEventsItem
+     */
+    legacy?: boolean | null;
+    /**
+     * Dismiss on an ask (status dismissed).
+     * @type {string}
+     * @memberof ListDetectedEventEventsItem
+     */
+    dismissedAt?: string | null;
+    /**
+     * orders.id the event is about (1460).
+     * @type {string}
+     * @memberof ListDetectedEventEventsItem
+     */
+    orderId?: string | null;
+    /**
+     * listings.id (the master listing, not the platform row) the event is about: the event page links to it.
+     * @type {string}
+     * @memberof ListDetectedEventEventsItem
+     */
+    listingId?: string | null;
+    /**
      * 
      * @type {string}
      * @memberof ListDetectedEventEventsItem
@@ -130,6 +154,7 @@ export interface ListDetectedEventEventsItem {
 */
 export enum ListDetectedEventEventsItemStatusEnum {
     Confirmed = 'confirmed',
+    Dismissed = 'dismissed',
     Failed = 'failed',
     Acted = 'acted',
     Held = 'held',
@@ -160,6 +185,10 @@ export function ListDetectedEventEventsItemFromJSONTyped(json: any, ignoreDiscri
         'canUndo': json['canUndo'],
         'candidateTitles': !exists(json, 'candidateTitles') ? undefined : json['candidateTitles'],
         'title': !exists(json, 'title') ? undefined : json['title'],
+        'legacy': !exists(json, 'legacy') ? undefined : json['legacy'],
+        'dismissedAt': !exists(json, 'dismissedAt') ? undefined : json['dismissedAt'],
+        'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
+        'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'createdAt': json['createdAt'],
     };
 }
@@ -185,6 +214,10 @@ export function ListDetectedEventEventsItemToJSON(value?: ListDetectedEventEvent
         'canUndo': value.canUndo,
         'candidateTitles': value.candidateTitles,
         'title': value.title,
+        'legacy': value.legacy,
+        'dismissedAt': value.dismissedAt,
+        'orderId': value.orderId,
+        'listingId': value.listingId,
         'createdAt': value.createdAt,
     };
 }

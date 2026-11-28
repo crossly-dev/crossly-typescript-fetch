@@ -25,6 +25,7 @@ export enum GetWorldGameMineResponseDataTabsItem {
     Rewards = 'rewards',
     Access = 'access',
     Places = 'places',
+    Localization = 'localization',
     Versions = 'versions',
     Assets = 'assets',
     Safety = 'safety',

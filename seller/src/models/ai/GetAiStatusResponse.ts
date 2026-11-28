@@ -14,23 +14,23 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetAiStatusResponseCapabilities,
-    GetAiStatusResponseCapabilitiesFromJSON,
-    GetAiStatusResponseCapabilitiesFromJSONTyped,
-    GetAiStatusResponseCapabilitiesToJSON,
-} from './GetAiStatusResponseCapabilities';
+    CreateAiKeyResponseKeyCustomConfig,
+    CreateAiKeyResponseKeyCustomConfigFromJSON,
+    CreateAiKeyResponseKeyCustomConfigFromJSONTyped,
+    CreateAiKeyResponseKeyCustomConfigToJSON,
+} from './CreateAiKeyResponseKeyCustomConfig';
 import {
-    GetAiStatusResponseCustomConfig,
-    GetAiStatusResponseCustomConfigFromJSON,
-    GetAiStatusResponseCustomConfigFromJSONTyped,
-    GetAiStatusResponseCustomConfigToJSON,
-} from './GetAiStatusResponseCustomConfig';
+    GetAiRoutingResponseImage,
+    GetAiRoutingResponseImageFromJSON,
+    GetAiRoutingResponseImageFromJSONTyped,
+    GetAiRoutingResponseImageToJSON,
+} from './GetAiRoutingResponseImage';
 import {
-    GetAiStatusResponseImage,
-    GetAiStatusResponseImageFromJSON,
-    GetAiStatusResponseImageFromJSONTyped,
-    GetAiStatusResponseImageToJSON,
-} from './GetAiStatusResponseImage';
+    GetAiStatusResponseOneOfCapabilities,
+    GetAiStatusResponseOneOfCapabilitiesFromJSON,
+    GetAiStatusResponseOneOfCapabilitiesFromJSONTyped,
+    GetAiStatusResponseOneOfCapabilitiesToJSON,
+} from './GetAiStatusResponseOneOfCapabilities';
 
 /**
  * 
@@ -55,31 +55,43 @@ export interface GetAiStatusResponse {
      * @type {string}
      * @memberof GetAiStatusResponse
      */
-    activeProvider: GetAiStatusResponseActiveProviderEnum;
+    activeProvider?: GetAiStatusResponseActiveProviderEnum;
+    /**
+     * 
+     * @type {GetAiStatusResponseOneOfCapabilities}
+     * @memberof GetAiStatusResponse
+     */
+    capabilities: GetAiStatusResponseOneOfCapabilities;
+    /**
+     * 
+     * @type {any}
+     * @memberof GetAiStatusResponse
+     */
+    actions: any | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetAiStatusResponse
+     */
+    limited?: boolean;
     /**
      * 
      * @type {{ [key: string]: any; }}
      * @memberof GetAiStatusResponse
      */
-    providers: { [key: string]: any; };
+    providers?: { [key: string]: any; };
     /**
      * 
-     * @type {GetAiStatusResponseCapabilities}
+     * @type {CreateAiKeyResponseKeyCustomConfig}
      * @memberof GetAiStatusResponse
      */
-    capabilities: GetAiStatusResponseCapabilities;
+    customConfig?: CreateAiKeyResponseKeyCustomConfig | null;
     /**
      * 
-     * @type {GetAiStatusResponseCustomConfig}
+     * @type {GetAiRoutingResponseImage}
      * @memberof GetAiStatusResponse
      */
-    customConfig?: GetAiStatusResponseCustomConfig | null;
-    /**
-     * 
-     * @type {GetAiStatusResponseImage}
-     * @memberof GetAiStatusResponse
-     */
-    image: GetAiStatusResponseImage;
+    image?: GetAiRoutingResponseImage;
 }
 
 /**
@@ -109,11 +121,13 @@ export function GetAiStatusResponseFromJSONTyped(json: any, ignoreDiscriminator:
         
         'hasKey': json['hasKey'],
         'aiEnabled': json['aiEnabled'],
-        'activeProvider': json['activeProvider'],
-        'providers': json['providers'],
-        'capabilities': GetAiStatusResponseCapabilitiesFromJSON(json['capabilities']),
-        'customConfig': !exists(json, 'customConfig') ? undefined : GetAiStatusResponseCustomConfigFromJSON(json['customConfig']),
-        'image': GetAiStatusResponseImageFromJSON(json['image']),
+        'activeProvider': !exists(json, 'activeProvider') ? undefined : json['activeProvider'],
+        'capabilities': GetAiStatusResponseOneOfCapabilitiesFromJSON(json['capabilities']),
+        'actions': json['actions'],
+        'limited': !exists(json, 'limited') ? undefined : json['limited'],
+        'providers': !exists(json, 'providers') ? undefined : json['providers'],
+        'customConfig': !exists(json, 'customConfig') ? undefined : CreateAiKeyResponseKeyCustomConfigFromJSON(json['customConfig']),
+        'image': !exists(json, 'image') ? undefined : GetAiRoutingResponseImageFromJSON(json['image']),
     };
 }
 
@@ -129,10 +143,12 @@ export function GetAiStatusResponseToJSON(value?: GetAiStatusResponse | null): a
         'hasKey': value.hasKey,
         'aiEnabled': value.aiEnabled,
         'activeProvider': value.activeProvider,
+        'capabilities': GetAiStatusResponseOneOfCapabilitiesToJSON(value.capabilities),
+        'actions': value.actions,
+        'limited': value.limited,
         'providers': value.providers,
-        'capabilities': GetAiStatusResponseCapabilitiesToJSON(value.capabilities),
-        'customConfig': GetAiStatusResponseCustomConfigToJSON(value.customConfig),
-        'image': GetAiStatusResponseImageToJSON(value.image),
+        'customConfig': CreateAiKeyResponseKeyCustomConfigToJSON(value.customConfig),
+        'image': GetAiRoutingResponseImageToJSON(value.image),
     };
 }
 

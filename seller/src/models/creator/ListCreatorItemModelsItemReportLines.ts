@@ -68,9 +68,9 @@ export interface ListCreatorItemModelsItemReportLines {
 * @enum {string}
 */
 export enum ListCreatorItemModelsItemReportLinesTierEnum {
+    Desktop = 'desktop',
     Phone = 'phone',
-    Any = 'any',
-    Desktop = 'desktop'
+    Any = 'any'
 }/**
 * @export
 * @enum {string}

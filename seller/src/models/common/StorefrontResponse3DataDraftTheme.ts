@@ -106,8 +106,8 @@ export interface StorefrontResponse3DataDraftTheme {
 */
 export enum StorefrontResponse3DataDraftThemeButtonStyleEnum {
     Solid = 'solid',
-    Pill = 'pill',
     Outline = 'outline',
+    Pill = 'pill',
     Soft = 'soft',
     Underline = 'underline'
 }/**

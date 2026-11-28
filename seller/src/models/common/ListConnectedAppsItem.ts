@@ -85,6 +85,55 @@ export interface ListConnectedAppsItem {
      * @memberof ListConnectedAppsItem
      */
     revShareBps?: number | null;
+    /**
+     * Who publishes it (spec DV2 "by publisher"): the store that owns the app (drizzle/1320), else its developer's
+     * display name for an app still waiting for a store.
+     * @type {string}
+     * @memberof ListConnectedAppsItem
+     */
+    publisherName?: string | null;
+    /**
+     * "About this app" (spec DV2): the directory profile when it is listed, else these facts in a dialog.
+     * @type {string}
+     * @memberof ListConnectedAppsItem
+     */
+    tagline?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListConnectedAppsItem
+     */
+    slug?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListConnectedAppsItem
+     */
+    listed: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListConnectedAppsItem
+     */
+    verified: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListConnectedAppsItem
+     */
+    supportUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListConnectedAppsItem
+     */
+    privacyUrl?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListConnectedAppsItem
+     */
+    termsUrl?: string | null;
 }
 
 export function ListConnectedAppsItemFromJSON(json: any): ListConnectedAppsItem {
@@ -108,6 +157,14 @@ export function ListConnectedAppsItemFromJSONTyped(json: any, ignoreDiscriminato
         'developerName': !exists(json, 'developerName') ? undefined : json['developerName'],
         'developerEmail': json['developerEmail'],
         'revShareBps': !exists(json, 'revShareBps') ? undefined : json['revShareBps'],
+        'publisherName': !exists(json, 'publisherName') ? undefined : json['publisherName'],
+        'tagline': !exists(json, 'tagline') ? undefined : json['tagline'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'listed': json['listed'],
+        'verified': json['verified'],
+        'supportUrl': !exists(json, 'supportUrl') ? undefined : json['supportUrl'],
+        'privacyUrl': !exists(json, 'privacyUrl') ? undefined : json['privacyUrl'],
+        'termsUrl': !exists(json, 'termsUrl') ? undefined : json['termsUrl'],
     };
 }
 
@@ -131,6 +188,14 @@ export function ListConnectedAppsItemToJSON(value?: ListConnectedAppsItem | null
         'developerName': value.developerName,
         'developerEmail': value.developerEmail,
         'revShareBps': value.revShareBps,
+        'publisherName': value.publisherName,
+        'tagline': value.tagline,
+        'slug': value.slug,
+        'listed': value.listed,
+        'verified': value.verified,
+        'supportUrl': value.supportUrl,
+        'privacyUrl': value.privacyUrl,
+        'termsUrl': value.termsUrl,
     };
 }
 

@@ -15,6 +15,18 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateGroupBuyMessageRequest,
+    CreateGroupBuyMessageRequestFromJSON,
+    CreateGroupBuyMessageRequestToJSON,
+    CreateWorldExperienceExperienceEventRequest,
+    CreateWorldExperienceExperienceEventRequestFromJSON,
+    CreateWorldExperienceExperienceEventRequestToJSON,
+    CreateWorldExperienceExperienceEventRsvpRequest,
+    CreateWorldExperienceExperienceEventRsvpRequestFromJSON,
+    CreateWorldExperienceExperienceEventRsvpRequestToJSON,
+    CreateWorldExperienceNotificationRequest,
+    CreateWorldExperienceNotificationRequestFromJSON,
+    CreateWorldExperienceNotificationRequestToJSON,
     CreateWorldExperienceNotificationResponse,
     CreateWorldExperienceNotificationResponseFromJSON,
     CreateWorldExperienceNotificationResponseToJSON,
@@ -39,6 +51,12 @@ import {
     ListWorldMeNotificationOptInsResponse,
     ListWorldMeNotificationOptInsResponseFromJSON,
     ListWorldMeNotificationOptInsResponseToJSON,
+    UpdateWorldExperienceExperienceEventRequest,
+    UpdateWorldExperienceExperienceEventRequestFromJSON,
+    UpdateWorldExperienceExperienceEventRequestToJSON,
+    UpdateWorldExperienceNotificationOptInRequest,
+    UpdateWorldExperienceNotificationOptInRequestFromJSON,
+    UpdateWorldExperienceNotificationOptInRequestToJSON,
     UpdateWorldExperienceNotificationTemplateResponse,
     UpdateWorldExperienceNotificationTemplateResponseFromJSON,
     UpdateWorldExperienceNotificationTemplateResponseToJSON,
@@ -47,8 +65,9 @@ import {
     WorldExperienceExperienceEventResponseToJSON,
 } from '../models';
 
-export interface CreateWorldExperienceExperienceEventRequest {
+export interface CreateWorldExperienceExperienceEventOperationRequest {
     experienceId: string;
+    createWorldExperienceExperienceEventRequest?: CreateWorldExperienceExperienceEventRequest;
 }
 
 export interface CreateWorldExperienceExperienceEventCancelRequest {
@@ -56,13 +75,15 @@ export interface CreateWorldExperienceExperienceEventCancelRequest {
     eventId: string;
 }
 
-export interface CreateWorldExperienceExperienceEventRsvpRequest {
+export interface CreateWorldExperienceExperienceEventRsvpOperationRequest {
     experienceId: string;
     eventId: string;
+    createWorldExperienceExperienceEventRsvpRequest?: CreateWorldExperienceExperienceEventRsvpRequest;
 }
 
-export interface CreateWorldExperienceNotificationRequest {
+export interface CreateWorldExperienceNotificationOperationRequest {
     experienceId: string;
+    createWorldExperienceNotificationRequest?: CreateWorldExperienceNotificationRequest;
 }
 
 export interface CreateWorldExperienceNotificationTemplateRetireRequest {
@@ -76,6 +97,11 @@ export interface GetWorldExperienceNotificationOptInRequest {
 
 export interface GetWorldExperienceNotificationReportRequest {
     experienceId: string;
+    days?: number;
+}
+
+export interface ListWorldExperienceEventUpcomingRequest {
+    limit?: number;
 }
 
 export interface ListWorldExperienceExperienceEventUpcomingRequest {
@@ -90,18 +116,21 @@ export interface ListWorldExperienceNotificationTemplatesRequest {
     experienceId: string;
 }
 
-export interface UpdateWorldExperienceExperienceEventRequest {
+export interface UpdateWorldExperienceExperienceEventOperationRequest {
     experienceId: string;
     eventId: string;
+    updateWorldExperienceExperienceEventRequest?: UpdateWorldExperienceExperienceEventRequest;
 }
 
-export interface UpdateWorldExperienceNotificationOptInRequest {
+export interface UpdateWorldExperienceNotificationOptInOperationRequest {
     experienceId: string;
+    updateWorldExperienceNotificationOptInRequest?: UpdateWorldExperienceNotificationOptInRequest;
 }
 
 export interface UpdateWorldExperienceNotificationTemplateRequest {
     experienceId: string;
     key: string;
+    createGroupBuyMessageRequest?: CreateGroupBuyMessageRequest;
 }
 
 /**
@@ -112,7 +141,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Schedule an Experience Event shown on the game\'s card: title, description, start/end (5 min–14 days, ≤ 180 days ahead), thumbnail, place. With liveEventId it follows that live-ops event\'s schedule.
      */
-    async createWorldExperienceExperienceEventRaw(requestParameters: CreateWorldExperienceExperienceEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperienceEventResponse>> {
+    async createWorldExperienceExperienceEventRaw(requestParameters: CreateWorldExperienceExperienceEventOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperienceEventResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceExperienceEvent.');
         }
@@ -120,6 +149,8 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -134,6 +165,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceExperienceEventRequestToJSON(requestParameters.createWorldExperienceExperienceEventRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceExperienceEventResponseFromJSON(jsonValue));
@@ -142,7 +174,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Schedule an Experience Event shown on the game\'s card: title, description, start/end (5 min–14 days, ≤ 180 days ahead), thumbnail, place. With liveEventId it follows that live-ops event\'s schedule.
      */
-    async createWorldExperienceExperienceEvent(requestParameters: CreateWorldExperienceExperienceEventRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperienceEventResponse> {
+    async createWorldExperienceExperienceEvent(requestParameters: CreateWorldExperienceExperienceEventOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperienceEventResponse> {
         const response = await this.createWorldExperienceExperienceEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -192,7 +224,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * RSVP (going: true) or take it back. remind: true also turns the experience\'s notifications on, so the 15-minute reminder can reach you.
      */
-    async createWorldExperienceExperienceEventRsvpRaw(requestParameters: CreateWorldExperienceExperienceEventRsvpRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperienceEventResponse>> {
+    async createWorldExperienceExperienceEventRsvpRaw(requestParameters: CreateWorldExperienceExperienceEventRsvpOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperienceEventResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceExperienceEventRsvp.');
         }
@@ -204,6 +236,8 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -218,6 +252,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceExperienceEventRsvpRequestToJSON(requestParameters.createWorldExperienceExperienceEventRsvpRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceExperienceEventResponseFromJSON(jsonValue));
@@ -226,7 +261,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * RSVP (going: true) or take it back. remind: true also turns the experience\'s notifications on, so the 15-minute reminder can reach you.
      */
-    async createWorldExperienceExperienceEventRsvp(requestParameters: CreateWorldExperienceExperienceEventRsvpRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperienceEventResponse> {
+    async createWorldExperienceExperienceEventRsvp(requestParameters: CreateWorldExperienceExperienceEventRsvpOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperienceEventResponse> {
         const response = await this.createWorldExperienceExperienceEventRsvpRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -234,7 +269,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Send an approved template to one player (sub) or up to 100 (subs). Only players who turned notifications on, 13+, not banned, at most 2 a day per player and outside their quiet hours receive it; every other send is logged as suppressed with its reason.
      */
-    async createWorldExperienceNotificationRaw(requestParameters: CreateWorldExperienceNotificationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceNotificationResponse>> {
+    async createWorldExperienceNotificationRaw(requestParameters: CreateWorldExperienceNotificationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceNotificationResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceNotification.');
         }
@@ -242,6 +277,8 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -256,6 +293,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceNotificationRequestToJSON(requestParameters.createWorldExperienceNotificationRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceNotificationResponseFromJSON(jsonValue));
@@ -264,7 +302,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Send an approved template to one player (sub) or up to 100 (subs). Only players who turned notifications on, 13+, not banned, at most 2 a day per player and outside their quiet hours receive it; every other send is logged as suppressed with its reason.
      */
-    async createWorldExperienceNotification(requestParameters: CreateWorldExperienceNotificationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceNotificationResponse> {
+    async createWorldExperienceNotification(requestParameters: CreateWorldExperienceNotificationOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceNotificationResponse> {
         const response = await this.createWorldExperienceNotificationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -359,6 +397,10 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -390,8 +432,12 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza\'s \"Coming up\" board.
      */
-    async listWorldExperienceEventUpcomingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldExperienceEventUpcomingResponse>> {
+    async listWorldExperienceEventUpcomingRaw(requestParameters: ListWorldExperienceEventUpcomingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldExperienceEventUpcomingResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -416,8 +462,8 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza\'s \"Coming up\" board.
      */
-    async listWorldExperienceEventUpcoming(initOverrides?: RequestInit): Promise<ListWorldExperienceEventUpcomingResponse> {
-        const response = await this.listWorldExperienceEventUpcomingRaw(initOverrides);
+    async listWorldExperienceEventUpcoming(requestParameters: ListWorldExperienceEventUpcomingRequest = {}, initOverrides?: RequestInit): Promise<ListWorldExperienceEventUpcomingResponse> {
+        const response = await this.listWorldExperienceEventUpcomingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -606,7 +652,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Change an event. A started event keeps its start; a new start time earns RSVPs a new reminder.
      */
-    async updateWorldExperienceExperienceEventRaw(requestParameters: UpdateWorldExperienceExperienceEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperienceEventResponse>> {
+    async updateWorldExperienceExperienceEventRaw(requestParameters: UpdateWorldExperienceExperienceEventOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceExperienceEventResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceExperienceEvent.');
         }
@@ -618,6 +664,8 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -632,6 +680,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceExperienceEventRequestToJSON(requestParameters.updateWorldExperienceExperienceEventRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceExperienceEventResponseFromJSON(jsonValue));
@@ -640,7 +689,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Change an event. A started event keeps its start; a new start time earns RSVPs a new reminder.
      */
-    async updateWorldExperienceExperienceEvent(requestParameters: UpdateWorldExperienceExperienceEventRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperienceEventResponse> {
+    async updateWorldExperienceExperienceEvent(requestParameters: UpdateWorldExperienceExperienceEventOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceExperienceEventResponse> {
         const response = await this.updateWorldExperienceExperienceEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -648,7 +697,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Turn this experience\'s notifications on or off for you. timeZone (IANA) keeps them out of your night.
      */
-    async updateWorldExperienceNotificationOptInRaw(requestParameters: UpdateWorldExperienceNotificationOptInRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceNotificationOptInResponse>> {
+    async updateWorldExperienceNotificationOptInRaw(requestParameters: UpdateWorldExperienceNotificationOptInOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldExperienceNotificationOptInResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceNotificationOptIn.');
         }
@@ -656,6 +705,8 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -670,6 +721,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceNotificationOptInRequestToJSON(requestParameters.updateWorldExperienceNotificationOptInRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldExperienceNotificationOptInResponseFromJSON(jsonValue));
@@ -678,7 +730,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
     /**
      * Turn this experience\'s notifications on or off for you. timeZone (IANA) keeps them out of your night.
      */
-    async updateWorldExperienceNotificationOptIn(requestParameters: UpdateWorldExperienceNotificationOptInRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceNotificationOptInResponse> {
+    async updateWorldExperienceNotificationOptIn(requestParameters: UpdateWorldExperienceNotificationOptInOperationRequest, initOverrides?: RequestInit): Promise<GetWorldExperienceNotificationOptInResponse> {
         const response = await this.updateWorldExperienceNotificationOptInRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -699,6 +751,8 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -712,6 +766,7 @@ export class WorldsEngagementApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateGroupBuyMessageRequestToJSON(requestParameters.createGroupBuyMessageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperienceNotificationTemplateResponseFromJSON(jsonValue));

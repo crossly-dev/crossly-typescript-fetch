@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    DeleteDaoProposalResponseData,
-    DeleteDaoProposalResponseDataFromJSON,
-    DeleteDaoProposalResponseDataFromJSONTyped,
-    DeleteDaoProposalResponseDataToJSON,
-} from './DeleteDaoProposalResponseData';
+    WithdrawnObject,
+    WithdrawnObjectFromJSON,
+    WithdrawnObjectFromJSONTyped,
+    WithdrawnObjectToJSON,
+} from '../common/WithdrawnObject';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface DeleteDaoProposalResponse {
     /**
      * 
-     * @type {DeleteDaoProposalResponseData}
+     * @type {WithdrawnObject}
      * @memberof DeleteDaoProposalResponse
      */
-    data: DeleteDaoProposalResponseData;
+    data: WithdrawnObject;
 }
 
 export function DeleteDaoProposalResponseFromJSON(json: any): DeleteDaoProposalResponse {
@@ -44,7 +44,7 @@ export function DeleteDaoProposalResponseFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'data': DeleteDaoProposalResponseDataFromJSON(json['data']),
+        'data': WithdrawnObjectFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function DeleteDaoProposalResponseToJSON(value?: DeleteDaoProposalRespons
     }
     return {
         
-        'data': DeleteDaoProposalResponseDataToJSON(value.data),
+        'data': WithdrawnObjectToJSON(value.data),
     };
 }
 

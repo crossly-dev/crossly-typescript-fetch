@@ -68,8 +68,8 @@ export interface ListWorldPropertyTrespassedItem {
 * @enum {string}
 */
 export enum ListWorldPropertyTrespassedItemScopeEnum {
-    Place = 'place',
-    Owner = 'owner'
+    Owner = 'owner',
+    Place = 'place'
 }
 
 export function ListWorldPropertyTrespassedItemFromJSON(json: any): ListWorldPropertyTrespassedItem {

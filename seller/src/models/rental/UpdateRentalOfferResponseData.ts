@@ -46,6 +46,12 @@ export interface UpdateRentalOfferResponseData {
     updatedAt: Date;
     /**
      * 
+     * @type {string}
+     * @memberof UpdateRentalOfferResponseData
+     */
+    storefrontId?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof UpdateRentalOfferResponseData
      */
@@ -56,12 +62,6 @@ export interface UpdateRentalOfferResponseData {
      * @memberof UpdateRentalOfferResponseData
      */
     platformListingId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateRentalOfferResponseData
-     */
-    storefrontId?: string | null;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -149,9 +149,9 @@ export function UpdateRentalOfferResponseDataFromJSONTyped(json: any, ignoreDisc
         'active': json['active'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'quantity': json['quantity'],
         'platformListingId': json['platformListingId'],
-        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'options': json['options'],
         'sellerUserId': json['sellerUserId'],
         'depositCents': json['depositCents'],
@@ -179,9 +179,9 @@ export function UpdateRentalOfferResponseDataToJSON(value?: UpdateRentalOfferRes
         'active': value.active,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
+        'storefrontId': value.storefrontId,
         'quantity': value.quantity,
         'platformListingId': value.platformListingId,
-        'storefrontId': value.storefrontId,
         'options': value.options,
         'sellerUserId': value.sellerUserId,
         'depositCents': value.depositCents,

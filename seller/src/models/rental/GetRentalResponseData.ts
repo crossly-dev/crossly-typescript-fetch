@@ -62,11 +62,11 @@ import {
     GetRentalResponseDataTimelineToJSON,
 } from './GetRentalResponseDataTimeline';
 import {
-    RentalResponseDataInspection,
-    RentalResponseDataInspectionFromJSON,
-    RentalResponseDataInspectionFromJSONTyped,
-    RentalResponseDataInspectionToJSON,
-} from '../common/RentalResponseDataInspection';
+    ItemOk,
+    ItemOkFromJSON,
+    ItemOkFromJSONTyped,
+    ItemOkToJSON,
+} from '../common/ItemOk';
 
 /**
  * 
@@ -148,10 +148,10 @@ export interface GetRentalResponseData {
     buyout: GetRentalResponseDataBuyout;
     /**
      * 
-     * @type {Array<RentalResponseDataInspection>}
+     * @type {Array<ItemOk>}
      * @memberof GetRentalResponseData
      */
-    inspection: Array<RentalResponseDataInspection>;
+    inspection: Array<ItemOk>;
     /**
      * 
      * @type {Array<string>}
@@ -164,6 +164,18 @@ export interface GetRentalResponseData {
      * @memberof GetRentalResponseData
      */
     returnPolicy?: string | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof GetRentalResponseData
+     */
+    policy?: { [key: string]: any; } | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetRentalResponseData
+     */
+    claimWindowDays: number;
     /**
      * 
      * @type {GetRentalResponseDataCancellation}
@@ -512,9 +524,11 @@ export function GetRentalResponseDataFromJSONTyped(json: any, ignoreDiscriminato
         'extensions': ((json['extensions'] as Array<any>).map(GetRentalResponseDataExtensionsFromJSON)),
         'extension': GetRentalResponseDataExtensionFromJSON(json['extension']),
         'buyout': GetRentalResponseDataBuyoutFromJSON(json['buyout']),
-        'inspection': ((json['inspection'] as Array<any>).map(RentalResponseDataInspectionFromJSON)),
+        'inspection': ((json['inspection'] as Array<any>).map(ItemOkFromJSON)),
         'checklist': json['checklist'],
         'returnPolicy': !exists(json, 'returnPolicy') ? undefined : json['returnPolicy'],
+        'policy': !exists(json, 'policy') ? undefined : json['policy'],
+        'claimWindowDays': json['claimWindowDays'],
         'cancellation': GetRentalResponseDataCancellationFromJSON(json['cancellation']),
         'claimWindowEndsAt': !exists(json, 'claimWindowEndsAt') ? undefined : json['claimWindowEndsAt'],
         'daysLeft': !exists(json, 'daysLeft') ? undefined : json['daysLeft'],
@@ -591,9 +605,11 @@ export function GetRentalResponseDataToJSON(value?: GetRentalResponseData | null
         'extensions': ((value.extensions as Array<any>).map(GetRentalResponseDataExtensionsToJSON)),
         'extension': GetRentalResponseDataExtensionToJSON(value.extension),
         'buyout': GetRentalResponseDataBuyoutToJSON(value.buyout),
-        'inspection': ((value.inspection as Array<any>).map(RentalResponseDataInspectionToJSON)),
+        'inspection': ((value.inspection as Array<any>).map(ItemOkToJSON)),
         'checklist': value.checklist,
         'returnPolicy': value.returnPolicy,
+        'policy': value.policy,
+        'claimWindowDays': value.claimWindowDays,
         'cancellation': GetRentalResponseDataCancellationToJSON(value.cancellation),
         'claimWindowEndsAt': value.claimWindowEndsAt,
         'daysLeft': value.daysLeft,

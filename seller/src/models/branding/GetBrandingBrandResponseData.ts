@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListAppsItemDocsLinks,
-    ListAppsItemDocsLinksFromJSON,
-    ListAppsItemDocsLinksFromJSONTyped,
-    ListAppsItemDocsLinksToJSON,
-} from '../app/ListAppsItemDocsLinks';
+    LabelUrl,
+    LabelUrlFromJSON,
+    LabelUrlFromJSONTyped,
+    LabelUrlToJSON,
+} from '../common/LabelUrl';
 
 /**
  * 
@@ -58,10 +58,10 @@ export interface GetBrandingBrandResponseData {
     story?: string | null;
     /**
      * 
-     * @type {Array<ListAppsItemDocsLinks>}
+     * @type {Array<LabelUrl>}
      * @memberof GetBrandingBrandResponseData
      */
-    links: Array<ListAppsItemDocsLinks>;
+    links: Array<LabelUrl>;
     /**
      * The verified badge: set by Crossly staff in the admin portal.
      * @type {string}
@@ -85,7 +85,7 @@ export function GetBrandingBrandResponseDataFromJSONTyped(json: any, ignoreDiscr
         'logoUrl': !exists(json, 'logoUrl') ? undefined : json['logoUrl'],
         'bannerUrl': !exists(json, 'bannerUrl') ? undefined : json['bannerUrl'],
         'story': !exists(json, 'story') ? undefined : json['story'],
-        'links': ((json['links'] as Array<any>).map(ListAppsItemDocsLinksFromJSON)),
+        'links': ((json['links'] as Array<any>).map(LabelUrlFromJSON)),
         'verifiedAt': !exists(json, 'verifiedAt') ? undefined : json['verifiedAt'],
     };
 }
@@ -104,7 +104,7 @@ export function GetBrandingBrandResponseDataToJSON(value?: GetBrandingBrandRespo
         'logoUrl': value.logoUrl,
         'bannerUrl': value.bannerUrl,
         'story': value.story,
-        'links': ((value.links as Array<any>).map(ListAppsItemDocsLinksToJSON)),
+        'links': ((value.links as Array<any>).map(LabelUrlToJSON)),
         'verifiedAt': value.verifiedAt,
     };
 }

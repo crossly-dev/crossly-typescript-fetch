@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateSourcingReceiptRequest,
+    CreateSourcingReceiptRequestFromJSON,
+    CreateSourcingReceiptRequestToJSON,
     CreateSourcingReceiptResponse,
     CreateSourcingReceiptResponseFromJSON,
     CreateSourcingReceiptResponseToJSON,
@@ -28,6 +31,10 @@ import {
     ListSourcingDemandResponseFromJSON,
     ListSourcingDemandResponseToJSON,
 } from '../models';
+
+export interface CreateSourcingReceiptOperationRequest {
+    createSourcingReceiptRequest: CreateSourcingReceiptRequest;
+}
 
 export interface ListSourcingDemandRequest {
     days?: number;
@@ -49,10 +56,16 @@ export class SourcingApi extends runtime.BaseAPI {
     /**
      * Append a parsed receipt to the sourcing ledger.
      */
-    async createSourcingReceiptRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSourcingReceiptResponse>> {
+    async createSourcingReceiptRaw(requestParameters: CreateSourcingReceiptOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSourcingReceiptResponse>> {
+        if (requestParameters.createSourcingReceiptRequest === null || requestParameters.createSourcingReceiptRequest === undefined) {
+            throw new runtime.RequiredError('createSourcingReceiptRequest','Required parameter requestParameters.createSourcingReceiptRequest was null or undefined when calling createSourcingReceipt.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -67,6 +80,7 @@ export class SourcingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSourcingReceiptRequestToJSON(requestParameters.createSourcingReceiptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSourcingReceiptResponseFromJSON(jsonValue));
@@ -75,8 +89,8 @@ export class SourcingApi extends runtime.BaseAPI {
     /**
      * Append a parsed receipt to the sourcing ledger.
      */
-    async createSourcingReceipt(initOverrides?: RequestInit): Promise<CreateSourcingReceiptResponse> {
-        const response = await this.createSourcingReceiptRaw(initOverrides);
+    async createSourcingReceipt(requestParameters: CreateSourcingReceiptOperationRequest, initOverrides?: RequestInit): Promise<CreateSourcingReceiptResponse> {
+        const response = await this.createSourcingReceiptRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -118,11 +118,11 @@ export enum ListWorldTransferRequestsItemDirectionEnum {
 * @enum {string}
 */
 export enum ListWorldTransferRequestsItemStatusEnum {
+    Expired = 'expired',
     Pending = 'pending',
     Cancelled = 'cancelled',
     Accepted = 'accepted',
-    Declined = 'declined',
-    Expired = 'expired'
+    Declined = 'declined'
 }
 
 export function ListWorldTransferRequestsItemFromJSON(json: any): ListWorldTransferRequestsItem {

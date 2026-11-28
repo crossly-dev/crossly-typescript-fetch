@@ -63,16 +63,16 @@ export interface ListBrandDropsItem {
     releasedAt?: Date | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof ListBrandDropsItem
-     */
-    published: boolean;
-    /**
-     * 
      * @type {string}
      * @memberof ListBrandDropsItem
      */
     storefrontId?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ListBrandDropsItem
+     */
+    published: boolean;
     /**
      * 
      * @type {Date}
@@ -302,8 +302,8 @@ export function ListBrandDropsItemFromJSONTyped(json: any, ignoreDiscriminator: 
         'description': !exists(json, 'description') ? undefined : json['description'],
         'status': json['status'],
         'releasedAt': !exists(json, 'releasedAt') ? undefined : (json['releasedAt'] === null ? null : new Date(json['releasedAt'])),
-        'published': json['published'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'published': json['published'],
         'endsAt': !exists(json, 'endsAt') ? undefined : (json['endsAt'] === null ? null : new Date(json['endsAt'])),
         'eventId': !exists(json, 'eventId') ? undefined : json['eventId'],
         'format': json['format'],
@@ -358,8 +358,8 @@ export function ListBrandDropsItemToJSON(value?: ListBrandDropsItem | null): any
         'description': value.description,
         'status': value.status,
         'releasedAt': value.releasedAt === undefined ? undefined : (value.releasedAt === null ? null : value.releasedAt.toISOString()),
-        'published': value.published,
         'storefrontId': value.storefrontId,
+        'published': value.published,
         'endsAt': value.endsAt === undefined ? undefined : (value.endsAt === null ? null : value.endsAt.toISOString()),
         'eventId': value.eventId,
         'format': value.format,

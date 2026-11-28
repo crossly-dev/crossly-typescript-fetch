@@ -39,10 +39,22 @@ export interface CreateBuyerRentalExtensionResponseData {
     cents: number;
     /**
      * 
+     * @type {number}
+     * @memberof CreateBuyerRentalExtensionResponseData
+     */
+    freeDays: number;
+    /**
+     * 
      * @type {any}
      * @memberof CreateBuyerRentalExtensionResponseData
      */
     clientSecret?: any | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerRentalExtensionResponseData
+     */
+    note?: string;
 }
 
 export function CreateBuyerRentalExtensionResponseDataFromJSON(json: any): CreateBuyerRentalExtensionResponseData {
@@ -58,7 +70,9 @@ export function CreateBuyerRentalExtensionResponseDataFromJSONTyped(json: any, i
         'extensionId': json['extensionId'],
         'status': json['status'],
         'cents': json['cents'],
+        'freeDays': json['freeDays'],
         'clientSecret': !exists(json, 'clientSecret') ? undefined : json['clientSecret'],
+        'note': !exists(json, 'note') ? undefined : json['note'],
     };
 }
 
@@ -74,7 +88,9 @@ export function CreateBuyerRentalExtensionResponseDataToJSON(value?: CreateBuyer
         'extensionId': value.extensionId,
         'status': value.status,
         'cents': value.cents,
+        'freeDays': value.freeDays,
         'clientSecret': value.clientSecret,
+        'note': value.note,
     };
 }
 

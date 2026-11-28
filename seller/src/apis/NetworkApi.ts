@@ -30,10 +30,17 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateNetworkPoolRequest,
+    UpdateNetworkPoolRequestFromJSON,
+    UpdateNetworkPoolRequestToJSON,
 } from '../models';
 
 export interface ListNetworkPoolLogRequest {
     limit?: number;
+}
+
+export interface UpdateNetworkPoolOperationRequest {
+    updateNetworkPoolRequest: UpdateNetworkPoolRequest;
 }
 
 /**
@@ -218,10 +225,16 @@ export class NetworkApi extends runtime.BaseAPI {
     /**
      * Update per-action toggles + platforms on pool membership.
      */
-    async updateNetworkPoolRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+    async updateNetworkPoolRaw(requestParameters: UpdateNetworkPoolOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.updateNetworkPoolRequest === null || requestParameters.updateNetworkPoolRequest === undefined) {
+            throw new runtime.RequiredError('updateNetworkPoolRequest','Required parameter requestParameters.updateNetworkPoolRequest was null or undefined when calling updateNetworkPool.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -236,6 +249,7 @@ export class NetworkApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateNetworkPoolRequestToJSON(requestParameters.updateNetworkPoolRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
@@ -244,8 +258,8 @@ export class NetworkApi extends runtime.BaseAPI {
     /**
      * Update per-action toggles + platforms on pool membership.
      */
-    async updateNetworkPool(initOverrides?: RequestInit): Promise<OkResponse> {
-        const response = await this.updateNetworkPoolRaw(initOverrides);
+    async updateNetworkPool(requestParameters: UpdateNetworkPoolOperationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.updateNetworkPoolRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

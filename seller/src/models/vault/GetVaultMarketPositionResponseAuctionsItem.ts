@@ -33,6 +33,12 @@ export interface GetVaultMarketPositionResponseAuctionsItem {
     status: string;
     /**
      * 
+     * @type {string}
+     * @memberof GetVaultMarketPositionResponseAuctionsItem
+     */
+    kind: GetVaultMarketPositionResponseAuctionsItemKindEnum;
+    /**
+     * 
      * @type {Date}
      * @memberof GetVaultMarketPositionResponseAuctionsItem
      */
@@ -49,12 +55,6 @@ export interface GetVaultMarketPositionResponseAuctionsItem {
      * @memberof GetVaultMarketPositionResponseAuctionsItem
      */
     startedAt: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetVaultMarketPositionResponseAuctionsItem
-     */
-    kind: GetVaultMarketPositionResponseAuctionsItemKindEnum;
     /**
      * 
      * @type {any}
@@ -132,10 +132,10 @@ export function GetVaultMarketPositionResponseAuctionsItemFromJSONTyped(json: an
         
         'id': json['id'],
         'status': json['status'],
+        'kind': json['kind'],
         'endsAt': (new Date(json['endsAt'])),
         'reason': json['reason'],
         'startedAt': (new Date(json['startedAt'])),
-        'kind': json['kind'],
         'priceCents': json['priceCents'],
         'tradeId': !exists(json, 'tradeId') ? undefined : json['tradeId'],
         'bidId': !exists(json, 'bidId') ? undefined : json['bidId'],
@@ -159,10 +159,10 @@ export function GetVaultMarketPositionResponseAuctionsItemToJSON(value?: GetVaul
         
         'id': value.id,
         'status': value.status,
+        'kind': value.kind,
         'endsAt': (value.endsAt.toISOString()),
         'reason': value.reason,
         'startedAt': (value.startedAt.toISOString()),
-        'kind': value.kind,
         'priceCents': value.priceCents,
         'tradeId': value.tradeId,
         'bidId': value.bidId,

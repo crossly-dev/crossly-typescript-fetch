@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    FromTo2,
-    FromTo2FromJSON,
-    FromTo2FromJSONTyped,
-    FromTo2ToJSON,
-} from '../common/FromTo2';
+    CreateListingTagRenameRequest,
+    CreateListingTagRenameRequestFromJSON,
+    CreateListingTagRenameRequestFromJSONTyped,
+    CreateListingTagRenameRequestToJSON,
+} from '../listing/CreateListingTagRenameRequest';
 import {
     GetAnalyticProgramResponseDataBreakdown,
     GetAnalyticProgramResponseDataBreakdownFromJSON,
@@ -70,10 +70,10 @@ export interface GetAnalyticProgramResponseData {
     label: string;
     /**
      * 
-     * @type {FromTo2}
+     * @type {CreateListingTagRenameRequest}
      * @memberof GetAnalyticProgramResponseData
      */
-    range: FromTo2;
+    range: CreateListingTagRenameRequest;
     /**
      * 
      * @type {Array<GetAnalyticProgramResponseDataKpis>}
@@ -145,7 +145,7 @@ export function GetAnalyticProgramResponseDataFromJSONTyped(json: any, ignoreDis
         
         'program': json['program'],
         'label': json['label'],
-        'range': FromTo2FromJSON(json['range']),
+        'range': CreateListingTagRenameRequestFromJSON(json['range']),
         'kpis': ((json['kpis'] as Array<any>).map(GetAnalyticProgramResponseDataKpisFromJSON)),
         'trend': GetAnalyticProgramResponseDataTrendFromJSON(json['trend']),
         'breakdown': GetAnalyticProgramResponseDataBreakdownFromJSON(json['breakdown']),
@@ -166,7 +166,7 @@ export function GetAnalyticProgramResponseDataToJSON(value?: GetAnalyticProgramR
         
         'program': value.program,
         'label': value.label,
-        'range': FromTo2ToJSON(value.range),
+        'range': CreateListingTagRenameRequestToJSON(value.range),
         'kpis': ((value.kpis as Array<any>).map(GetAnalyticProgramResponseDataKpisToJSON)),
         'trend': GetAnalyticProgramResponseDataTrendToJSON(value.trend),
         'breakdown': GetAnalyticProgramResponseDataBreakdownToJSON(value.breakdown),

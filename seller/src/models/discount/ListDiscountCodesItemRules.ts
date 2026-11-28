@@ -14,6 +14,18 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    CreateDiscountCodeRequestRulesFixedPriceSet,
+    CreateDiscountCodeRequestRulesFixedPriceSetFromJSON,
+    CreateDiscountCodeRequestRulesFixedPriceSetFromJSONTyped,
+    CreateDiscountCodeRequestRulesFixedPriceSetToJSON,
+} from './CreateDiscountCodeRequestRulesFixedPriceSet';
+import {
+    CreateDiscountCodeRequestRulesSpendTiers,
+    CreateDiscountCodeRequestRulesSpendTiersFromJSON,
+    CreateDiscountCodeRequestRulesSpendTiersFromJSONTyped,
+    CreateDiscountCodeRequestRulesSpendTiersToJSON,
+} from './CreateDiscountCodeRequestRulesSpendTiers';
+import {
     ListAutomaticDiscountsItemAppliesTo,
     ListAutomaticDiscountsItemAppliesToFromJSON,
     ListAutomaticDiscountsItemAppliesToFromJSONTyped,
@@ -50,12 +62,6 @@ import {
     ListDiscountCodesItemRulesDisplayToJSON,
 } from './ListDiscountCodesItemRulesDisplay';
 import {
-    ListDiscountCodesItemRulesFixedPriceSet,
-    ListDiscountCodesItemRulesFixedPriceSetFromJSON,
-    ListDiscountCodesItemRulesFixedPriceSetFromJSONTyped,
-    ListDiscountCodesItemRulesFixedPriceSetToJSON,
-} from './ListDiscountCodesItemRulesFixedPriceSet';
-import {
     ListDiscountCodesItemRulesLimits,
     ListDiscountCodesItemRulesLimitsFromJSON,
     ListDiscountCodesItemRulesLimitsFromJSONTyped,
@@ -73,12 +79,6 @@ import {
     ListDiscountCodesItemRulesScheduleFromJSONTyped,
     ListDiscountCodesItemRulesScheduleToJSON,
 } from './ListDiscountCodesItemRulesSchedule';
-import {
-    ListDiscountCodesItemRulesSpendTiers,
-    ListDiscountCodesItemRulesSpendTiersFromJSON,
-    ListDiscountCodesItemRulesSpendTiersFromJSONTyped,
-    ListDiscountCodesItemRulesSpendTiersToJSON,
-} from './ListDiscountCodesItemRulesSpendTiers';
 import {
     ListDiscountCodesItemRulesValue,
     ListDiscountCodesItemRulesValueFromJSON,
@@ -106,16 +106,16 @@ export interface ListDiscountCodesItemRules {
     bxgy?: ListDiscountCodesItemRulesBxgy | null;
     /**
      * 
-     * @type {Array<ListDiscountCodesItemRulesSpendTiers>}
+     * @type {Array<CreateDiscountCodeRequestRulesSpendTiers>}
      * @memberof ListDiscountCodesItemRules
      */
-    spendTiers: Array<ListDiscountCodesItemRulesSpendTiers>;
+    spendTiers: Array<CreateDiscountCodeRequestRulesSpendTiers>;
     /**
      * 
-     * @type {ListDiscountCodesItemRulesFixedPriceSet}
+     * @type {CreateDiscountCodeRequestRulesFixedPriceSet}
      * @memberof ListDiscountCodesItemRules
      */
-    fixedPriceSet?: ListDiscountCodesItemRulesFixedPriceSet | null;
+    fixedPriceSet?: CreateDiscountCodeRequestRulesFixedPriceSet | null;
     /**
      * 
      * @type {ListDiscountCodesItemRulesRequirements}
@@ -194,8 +194,8 @@ export function ListDiscountCodesItemRulesFromJSONTyped(json: any, ignoreDiscrim
         
         'value': ListDiscountCodesItemRulesValueFromJSON(json['value']),
         'bxgy': !exists(json, 'bxgy') ? undefined : ListDiscountCodesItemRulesBxgyFromJSON(json['bxgy']),
-        'spendTiers': ((json['spendTiers'] as Array<any>).map(ListDiscountCodesItemRulesSpendTiersFromJSON)),
-        'fixedPriceSet': !exists(json, 'fixedPriceSet') ? undefined : ListDiscountCodesItemRulesFixedPriceSetFromJSON(json['fixedPriceSet']),
+        'spendTiers': ((json['spendTiers'] as Array<any>).map(CreateDiscountCodeRequestRulesSpendTiersFromJSON)),
+        'fixedPriceSet': !exists(json, 'fixedPriceSet') ? undefined : CreateDiscountCodeRequestRulesFixedPriceSetFromJSON(json['fixedPriceSet']),
         'requirements': ListDiscountCodesItemRulesRequirementsFromJSON(json['requirements']),
         'appliesTo': ListAutomaticDiscountsItemAppliesToFromJSON(json['appliesTo']),
         'exclusions': ListAutomaticDiscountsItemExclusionsFromJSON(json['exclusions']),
@@ -219,8 +219,8 @@ export function ListDiscountCodesItemRulesToJSON(value?: ListDiscountCodesItemRu
         
         'value': ListDiscountCodesItemRulesValueToJSON(value.value),
         'bxgy': ListDiscountCodesItemRulesBxgyToJSON(value.bxgy),
-        'spendTiers': ((value.spendTiers as Array<any>).map(ListDiscountCodesItemRulesSpendTiersToJSON)),
-        'fixedPriceSet': ListDiscountCodesItemRulesFixedPriceSetToJSON(value.fixedPriceSet),
+        'spendTiers': ((value.spendTiers as Array<any>).map(CreateDiscountCodeRequestRulesSpendTiersToJSON)),
+        'fixedPriceSet': CreateDiscountCodeRequestRulesFixedPriceSetToJSON(value.fixedPriceSet),
         'requirements': ListDiscountCodesItemRulesRequirementsToJSON(value.requirements),
         'appliesTo': ListAutomaticDiscountsItemAppliesToToJSON(value.appliesTo),
         'exclusions': ListAutomaticDiscountsItemExclusionsToJSON(value.exclusions),

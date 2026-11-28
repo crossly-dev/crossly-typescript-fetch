@@ -13,6 +13,31 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    ListProductFeedsItemSettingsImages,
+    ListProductFeedsItemSettingsImagesFromJSON,
+    ListProductFeedsItemSettingsImagesFromJSONTyped,
+    ListProductFeedsItemSettingsImagesToJSON,
+} from './ListProductFeedsItemSettingsImages';
+import {
+    ListProductFeedsItemSettingsRefresh,
+    ListProductFeedsItemSettingsRefreshFromJSON,
+    ListProductFeedsItemSettingsRefreshFromJSONTyped,
+    ListProductFeedsItemSettingsRefreshToJSON,
+} from './ListProductFeedsItemSettingsRefresh';
+import {
+    ListProductFeedsItemSettingsShipping,
+    ListProductFeedsItemSettingsShippingFromJSON,
+    ListProductFeedsItemSettingsShippingFromJSONTyped,
+    ListProductFeedsItemSettingsShippingToJSON,
+} from './ListProductFeedsItemSettingsShipping';
+import {
+    ListProductFeedsItemSettingsUtm,
+    ListProductFeedsItemSettingsUtmFromJSON,
+    ListProductFeedsItemSettingsUtmFromJSONTyped,
+    ListProductFeedsItemSettingsUtmToJSON,
+} from './ListProductFeedsItemSettingsUtm';
+
 /**
  * 
  * @export
@@ -32,6 +57,72 @@ export interface ListProductFeedsItemSettings {
      * @memberof ListProductFeedsItemSettings
      */
     idPrefix?: string | null;
+    /**
+     * Per output column: where its value comes from (absent column = Crossly's own mapping).
+     * @type {{ [key: string]: any; }}
+     * @memberof ListProductFeedsItemSettings
+     */
+    fieldMap?: { [key: string]: any; } | null;
+    /**
+     * Google product category id sent when none can be derived from the listing's category.
+     * @type {string}
+     * @memberof ListProductFeedsItemSettings
+     */
+    defaultGoogleCategory?: string | null;
+    /**
+     * Generic CSV / JSON / RSS feeds: which columns, in order (absent = all).
+     * @type {Array<string>}
+     * @memberof ListProductFeedsItemSettings
+     */
+    columns?: Array<string> | null;
+    /**
+     * ISO 4217 currency the prices are sent in (converted at the daily rate). Absent = USD, no conversion.
+     * @type {string}
+     * @memberof ListProductFeedsItemSettings
+     */
+    currency?: string | null;
+    /**
+     * ISO 3166-1 alpha-2 country the feed targets (shipping rows default to it).
+     * @type {string}
+     * @memberof ListProductFeedsItemSettings
+     */
+    targetCountry?: string | null;
+    /**
+     * BCP 47 language of the content ("en", "en-GB"); generic RSS/Atom/JSON carry it.
+     * @type {string}
+     * @memberof ListProductFeedsItemSettings
+     */
+    language?: string | null;
+    /**
+     * Flat shipping rates to state per item.
+     * @type {Array<ListProductFeedsItemSettingsShipping>}
+     * @memberof ListProductFeedsItemSettings
+     */
+    shipping?: Array<ListProductFeedsItemSettingsShipping> | null;
+    /**
+     * 
+     * @type {ListProductFeedsItemSettingsImages}
+     * @memberof ListProductFeedsItemSettings
+     */
+    images?: ListProductFeedsItemSettingsImages | null;
+    /**
+     * 
+     * @type {ListProductFeedsItemSettingsUtm}
+     * @memberof ListProductFeedsItemSettings
+     */
+    utm?: ListProductFeedsItemSettingsUtm | null;
+    /**
+     * 
+     * @type {ListProductFeedsItemSettingsRefresh}
+     * @memberof ListProductFeedsItemSettings
+     */
+    refresh?: ListProductFeedsItemSettingsRefresh | null;
+    /**
+     * Rotation grace: how long the old URL keeps answering after a rotation, in hours (0 = dead at once).
+     * @type {number}
+     * @memberof ListProductFeedsItemSettings
+     */
+    rotationGraceHours?: number | null;
 }
 
 export function ListProductFeedsItemSettingsFromJSON(json: any): ListProductFeedsItemSettings {
@@ -46,6 +137,17 @@ export function ListProductFeedsItemSettingsFromJSONTyped(json: any, ignoreDiscr
         
         'fallbackBrand': !exists(json, 'fallbackBrand') ? undefined : json['fallbackBrand'],
         'idPrefix': !exists(json, 'idPrefix') ? undefined : json['idPrefix'],
+        'fieldMap': !exists(json, 'fieldMap') ? undefined : json['fieldMap'],
+        'defaultGoogleCategory': !exists(json, 'defaultGoogleCategory') ? undefined : json['defaultGoogleCategory'],
+        'columns': !exists(json, 'columns') ? undefined : json['columns'],
+        'currency': !exists(json, 'currency') ? undefined : json['currency'],
+        'targetCountry': !exists(json, 'targetCountry') ? undefined : json['targetCountry'],
+        'language': !exists(json, 'language') ? undefined : json['language'],
+        'shipping': !exists(json, 'shipping') ? undefined : (json['shipping'] === null ? null : (json['shipping'] as Array<any>).map(ListProductFeedsItemSettingsShippingFromJSON)),
+        'images': !exists(json, 'images') ? undefined : ListProductFeedsItemSettingsImagesFromJSON(json['images']),
+        'utm': !exists(json, 'utm') ? undefined : ListProductFeedsItemSettingsUtmFromJSON(json['utm']),
+        'refresh': !exists(json, 'refresh') ? undefined : ListProductFeedsItemSettingsRefreshFromJSON(json['refresh']),
+        'rotationGraceHours': !exists(json, 'rotationGraceHours') ? undefined : json['rotationGraceHours'],
     };
 }
 
@@ -60,6 +162,17 @@ export function ListProductFeedsItemSettingsToJSON(value?: ListProductFeedsItemS
         
         'fallbackBrand': value.fallbackBrand,
         'idPrefix': value.idPrefix,
+        'fieldMap': value.fieldMap,
+        'defaultGoogleCategory': value.defaultGoogleCategory,
+        'columns': value.columns,
+        'currency': value.currency,
+        'targetCountry': value.targetCountry,
+        'language': value.language,
+        'shipping': value.shipping === undefined ? undefined : (value.shipping === null ? null : (value.shipping as Array<any>).map(ListProductFeedsItemSettingsShippingToJSON)),
+        'images': ListProductFeedsItemSettingsImagesToJSON(value.images),
+        'utm': ListProductFeedsItemSettingsUtmToJSON(value.utm),
+        'refresh': ListProductFeedsItemSettingsRefreshToJSON(value.refresh),
+        'rotationGraceHours': value.rotationGraceHours,
     };
 }
 

@@ -18,8 +18,8 @@
  * @enum {string}
  */
 export enum ListBrandingDropsItemConfigWherePlacementsItem {
-    Live = 'live',
     Storefront = 'storefront',
+    Live = 'live',
     Wholesale = 'wholesale',
     World = 'world',
     Shop = 'shop',

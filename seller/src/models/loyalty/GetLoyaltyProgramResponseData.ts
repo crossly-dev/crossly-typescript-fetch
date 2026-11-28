@@ -14,11 +14,23 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetLoyaltyProgramResponseDataEarnRules,
+    GetLoyaltyProgramResponseDataEarnRulesFromJSON,
+    GetLoyaltyProgramResponseDataEarnRulesFromJSONTyped,
+    GetLoyaltyProgramResponseDataEarnRulesToJSON,
+} from './GetLoyaltyProgramResponseDataEarnRules';
+import {
     GetLoyaltyProgramResponseDataPaidMembership,
     GetLoyaltyProgramResponseDataPaidMembershipFromJSON,
     GetLoyaltyProgramResponseDataPaidMembershipFromJSONTyped,
     GetLoyaltyProgramResponseDataPaidMembershipToJSON,
 } from './GetLoyaltyProgramResponseDataPaidMembership';
+import {
+    GetLoyaltyProgramResponseDataRewards,
+    GetLoyaltyProgramResponseDataRewardsFromJSON,
+    GetLoyaltyProgramResponseDataRewardsFromJSONTyped,
+    GetLoyaltyProgramResponseDataRewardsToJSON,
+} from './GetLoyaltyProgramResponseDataRewards';
 import {
     GetLoyaltyProgramResponseDataTiers,
     GetLoyaltyProgramResponseDataTiersFromJSON,
@@ -100,6 +112,18 @@ export interface GetLoyaltyProgramResponseData {
     paidMembership: GetLoyaltyProgramResponseDataPaidMembership;
     /**
      * 
+     * @type {GetLoyaltyProgramResponseDataEarnRules}
+     * @memberof GetLoyaltyProgramResponseData
+     */
+    earnRules: GetLoyaltyProgramResponseDataEarnRules;
+    /**
+     * E3: the rewards shelf (edited on its own page, saved by ./rewards.ts).
+     * @type {Array<GetLoyaltyProgramResponseDataRewards>}
+     * @memberof GetLoyaltyProgramResponseData
+     */
+    rewards: Array<GetLoyaltyProgramResponseDataRewards>;
+    /**
+     * 
      * @type {string}
      * @memberof GetLoyaltyProgramResponseData
      */
@@ -149,6 +173,8 @@ export function GetLoyaltyProgramResponseDataFromJSONTyped(json: any, ignoreDisc
         'downgrade': json['downgrade'],
         'graceDays': json['graceDays'],
         'paidMembership': GetLoyaltyProgramResponseDataPaidMembershipFromJSON(json['paidMembership']),
+        'earnRules': GetLoyaltyProgramResponseDataEarnRulesFromJSON(json['earnRules']),
+        'rewards': ((json['rewards'] as Array<any>).map(GetLoyaltyProgramResponseDataRewardsFromJSON)),
         'evaluatedAt': !exists(json, 'evaluatedAt') ? undefined : json['evaluatedAt'],
         'memberCount': json['memberCount'],
         'tiers': ((json['tiers'] as Array<any>).map(GetLoyaltyProgramResponseDataTiersFromJSON)),
@@ -175,6 +201,8 @@ export function GetLoyaltyProgramResponseDataToJSON(value?: GetLoyaltyProgramRes
         'downgrade': value.downgrade,
         'graceDays': value.graceDays,
         'paidMembership': GetLoyaltyProgramResponseDataPaidMembershipToJSON(value.paidMembership),
+        'earnRules': GetLoyaltyProgramResponseDataEarnRulesToJSON(value.earnRules),
+        'rewards': ((value.rewards as Array<any>).map(GetLoyaltyProgramResponseDataRewardsToJSON)),
         'evaluatedAt': value.evaluatedAt,
         'memberCount': value.memberCount,
         'tiers': ((value.tiers as Array<any>).map(GetLoyaltyProgramResponseDataTiersToJSON)),

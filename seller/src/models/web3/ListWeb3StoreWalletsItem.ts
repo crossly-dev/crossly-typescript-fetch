@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    ListWeb3StoreWalletsItemMarketplacesItem,
+    ListWeb3StoreWalletsItemMarketplacesItemFromJSON,
+    ListWeb3StoreWalletsItemMarketplacesItemFromJSONTyped,
+    ListWeb3StoreWalletsItemMarketplacesItemToJSON,
+} from './ListWeb3StoreWalletsItemMarketplacesItem';
+
 /**
  * 
  * @export
@@ -74,6 +81,12 @@ export interface ListWeb3StoreWalletsItem {
      * @memberof ListWeb3StoreWalletsItem
      */
     autoImport: boolean;
+    /**
+     * 1197 (spec CN3): the NFT marketplaces this store lists from this wallet on (only its network's).
+     * @type {Array<ListWeb3StoreWalletsItemMarketplacesItem>}
+     * @memberof ListWeb3StoreWalletsItem
+     */
+    marketplaces: Array<ListWeb3StoreWalletsItemMarketplacesItem>;
 }
 
 /**
@@ -104,6 +117,7 @@ export function ListWeb3StoreWalletsItemFromJSONTyped(json: any, ignoreDiscrimin
         'linkedByUserId': !exists(json, 'linkedByUserId') ? undefined : json['linkedByUserId'],
         'isDefault': json['isDefault'],
         'autoImport': json['autoImport'],
+        'marketplaces': ((json['marketplaces'] as Array<any>).map(ListWeb3StoreWalletsItemMarketplacesItemFromJSON)),
     };
 }
 
@@ -125,6 +139,7 @@ export function ListWeb3StoreWalletsItemToJSON(value?: ListWeb3StoreWalletsItem 
         'linkedByUserId': value.linkedByUserId,
         'isDefault': value.isDefault,
         'autoImport': value.autoImport,
+        'marketplaces': ((value.marketplaces as Array<any>).map(ListWeb3StoreWalletsItemMarketplacesItemToJSON)),
     };
 }
 

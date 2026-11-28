@@ -139,6 +139,12 @@ export interface AnalyticExperimentResponseData {
      * @type {string}
      * @memberof AnalyticExperimentResponseData
      */
+    kind: AnalyticExperimentResponseDataKindEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof AnalyticExperimentResponseData
+     */
     field: AnalyticExperimentResponseDataFieldEnum;
     /**
      * 
@@ -146,12 +152,6 @@ export interface AnalyticExperimentResponseData {
      * @memberof AnalyticExperimentResponseData
      */
     startedAt?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AnalyticExperimentResponseData
-     */
-    kind: AnalyticExperimentResponseDataKindEnum;
     /**
      * 
      * @type {string}
@@ -198,6 +198,13 @@ export enum AnalyticExperimentResponseDataStatusEnum {
 * @export
 * @enum {string}
 */
+export enum AnalyticExperimentResponseDataKindEnum {
+    Split = 'split',
+    Sequential = 'sequential'
+}/**
+* @export
+* @enum {string}
+*/
 export enum AnalyticExperimentResponseDataFieldEnum {
     Description = 'description',
     Category = 'category',
@@ -207,13 +214,6 @@ export enum AnalyticExperimentResponseDataFieldEnum {
     Photos = 'photos',
     Marketplace = 'marketplace',
     Other = 'other'
-}/**
-* @export
-* @enum {string}
-*/
-export enum AnalyticExperimentResponseDataKindEnum {
-    Split = 'split',
-    Sequential = 'sequential'
 }/**
 * @export
 * @enum {string}
@@ -263,9 +263,9 @@ export function AnalyticExperimentResponseDataFromJSONTyped(json: any, ignoreDis
         'id': json['id'],
         'name': json['name'],
         'status': json['status'],
+        'kind': json['kind'],
         'field': json['field'],
         'startedAt': !exists(json, 'startedAt') ? undefined : json['startedAt'],
-        'kind': json['kind'],
         'verdict': json['verdict'],
         'primaryMetric': json['primaryMetric'],
         'daysRunning': json['daysRunning'],
@@ -297,9 +297,9 @@ export function AnalyticExperimentResponseDataToJSON(value?: AnalyticExperimentR
         'id': value.id,
         'name': value.name,
         'status': value.status,
+        'kind': value.kind,
         'field': value.field,
         'startedAt': value.startedAt,
-        'kind': value.kind,
         'verdict': value.verdict,
         'primaryMetric': value.primaryMetric,
         'daysRunning': value.daysRunning,

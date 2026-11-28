@@ -75,9 +75,9 @@ export interface ListToolboxSalesItem {
 * @enum {string}
 */
 export enum ListToolboxSalesItemStatusEnum {
+    Expired = 'expired',
     Cancelled = 'cancelled',
     Open = 'open',
-    Expired = 'expired',
     Refunded = 'refunded',
     Paid = 'paid',
     Revoked = 'revoked',

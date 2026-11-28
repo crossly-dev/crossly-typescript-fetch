@@ -116,10 +116,10 @@ export interface GetInboxConversationMessageResponseMessages {
 * @enum {string}
 */
 export enum GetInboxConversationMessageResponseMessagesOfferStatusEnum {
+    Expired = 'expired',
     Pending = 'pending',
     Accepted = 'accepted',
     Declined = 'declined',
-    Expired = 'expired',
     Voided = 'voided'
 }
 

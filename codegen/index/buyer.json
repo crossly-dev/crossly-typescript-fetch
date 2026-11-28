@@ -34,7 +34,7 @@
   },
   "GET /v1/buyer/catalog/search": {
    "id": "listBuyerCatalogSearch",
-   "sig": "0a6a396193a1"
+   "sig": "59b7cd1cecca"
   },
   "GET /v1/buyer/catalog/listings/{slug}": {
    "id": "getBuyerCatalogListing",
@@ -62,7 +62,7 @@
   },
   "GET /v1/buyer/anywhere": {
    "id": "getBuyerAnywhere",
-   "sig": "8993585bb15c"
+   "sig": "eb5c35ea95af"
   },
   "GET /v1/buyer/offers": {
    "id": "listBuyerOffers",
@@ -306,7 +306,7 @@
   },
   "GET /v1/buyer/catalog/browse": {
    "id": "listBuyerCatalogBrowse",
-   "sig": "c92451e117f6"
+   "sig": "bd930d896497"
   },
   "GET /v1/buyer/catalog/sellers": {
    "id": "listBuyerCatalogSellers",
@@ -322,7 +322,7 @@
   },
   "GET /v1/buyer/stores/{slug}/listings": {
    "id": "listBuyerStoreListings",
-   "sig": "545e004527a3"
+   "sig": "1734121a7fc7"
   },
   "GET /v1/buyer/drops/{id}/me": {
    "id": "getBuyerDropMe",
@@ -482,7 +482,7 @@
   },
   "POST /v1/buyer/cart/quote": {
    "id": "createBuyerCartQuote",
-   "sig": "d4655f30d9b5"
+   "sig": "0fb2c7103307"
   },
   "GET /v1/buyer/gift-cards": {
    "id": "listBuyerGiftCards",
@@ -514,7 +514,7 @@
   },
   "POST /v1/buyer/monitors": {
    "id": "createBuyerMonitor",
-   "sig": "2e38b1aec79f"
+   "sig": "158d8236fcdd"
   },
   "GET /v1/buyer/monitors/{id}/matches": {
    "id": "listBuyerMonitorMatches",
@@ -526,7 +526,7 @@
   },
   "PATCH /v1/buyer/monitors/{id}": {
    "id": "updateBuyerMonitor",
-   "sig": "044b5215f3b4"
+   "sig": "46ef538f7f04"
   },
   "GET /v1/buyer/agent/sessions": {
    "id": "listBuyerAgentSessions",
@@ -546,15 +546,15 @@
   },
   "POST /v1/buyer/agent/sessions/{id}/turns": {
    "id": "createBuyerAgentSessionTurn",
-   "sig": "cfc3382cf1dc"
+   "sig": "f71a4e0c93ba"
   },
   "POST /v1/buyer/agent/sessions/{id}/react": {
    "id": "createBuyerAgentSessionReact",
-   "sig": "d6f8b3b492c6"
+   "sig": "59895a165715"
   },
   "POST /v1/buyer/agent/sessions/{id}/act": {
    "id": "createBuyerAgentSessionAct",
-   "sig": "5e57bcf7122f"
+   "sig": "8a90b2404e0c"
   },
   "GET /v1/buyer/checkout/controls": {
    "id": "getBuyerCheckoutControl",
@@ -562,15 +562,15 @@
   },
   "PUT /v1/buyer/checkout/controls": {
    "id": "updateBuyerCheckoutControl",
-   "sig": "85953c536470"
+   "sig": "90517d0a6d5b"
   },
   "POST /v1/buyer/checkout": {
    "id": "createBuyerCheckout",
-   "sig": "5d92f45120be"
+   "sig": "e981eee02523"
   },
   "POST /v1/buyer/scan": {
    "id": "createBuyerScan",
-   "sig": "78888b8be6df"
+   "sig": "3bb63691272c"
   },
   "GET /v1/buyer/scan/sessions": {
    "id": "listBuyerScanSessions",
@@ -578,7 +578,7 @@
   },
   "POST /v1/buyer/scan/sessions": {
    "id": "createBuyerScanSession",
-   "sig": "8be375f68f91"
+   "sig": "131df112be97"
   },
   "POST /v1/buyer/scan/sessions/{id}/end": {
    "id": "createBuyerScanSessionEnd",
@@ -590,19 +590,19 @@
   },
   "POST /v1/buyer/identify": {
    "id": "createBuyerIdentify",
-   "sig": "3810dfea7d40"
+   "sig": "8a86f54deeb0"
   },
   "POST /v1/buyer/lockons": {
    "id": "createBuyerLockon",
-   "sig": "464d1c22ac2a"
+   "sig": "d13cdd8dbb67"
   },
   "POST /v1/buyer/lockons/{id}/observe": {
    "id": "createBuyerLockonObserve",
-   "sig": "6789df27d057"
+   "sig": "68bf5fe91009"
   },
   "POST /v1/buyer/lockons/{id}/confirm": {
    "id": "createBuyerLockonConfirm",
-   "sig": "e3c6dc8deca8"
+   "sig": "7d275a142d30"
   },
   "POST /v1/buyer/offers/{id}/respond": {
    "id": "createBuyerOfferRespond",
@@ -752,6 +752,10 @@
    "id": "createBuyerGroupBuyLeave",
    "sig": "eb5a023dc3ca"
   },
+  "GET /v1/buyer/group-buys/{id}/share-link": {
+   "id": "getBuyerGroupBuyShareLink",
+   "sig": "447b2ab05d77"
+  },
   "POST /v1/buyer/buybacks/{id}/request": {
    "id": "createBuyerBuybackRequest",
    "sig": "0e140868fc23"
@@ -762,7 +766,7 @@
   },
   "POST /v1/buyer/cart-optimizer": {
    "id": "createBuyerCartOptimizer",
-   "sig": "47f13f079dfa"
+   "sig": "cf47963dc1a3"
   },
   "GET /v1/buyer/collection/{id}/offer": {
    "id": "getBuyerCollectionOffer",
@@ -786,7 +790,7 @@
   },
   "PUT /v1/buyer/collection/sets/leaderboard": {
    "id": "updateBuyerCollectionSetLeaderboard",
-   "sig": "0cda5a12906e"
+   "sig": "2868b7e6f48e"
   },
   "GET /v1/buyer/listings/{slug}/cert": {
    "id": "getBuyerListingCert",
@@ -798,7 +802,7 @@
   },
   "POST /v1/buyer/vault/{id}/list": {
    "id": "createBuyerVaultList",
-   "sig": "5ec33379a3f1"
+   "sig": "5b0306f0ada1"
   },
   "POST /v1/buyer/vault/{id}/unlist": {
    "id": "createBuyerVaultUnlist",
@@ -806,11 +810,11 @@
   },
   "POST /v1/buyer/vault/{id}/withdraw": {
    "id": "createBuyerVaultWithdraw",
-   "sig": "a1e980e0a0b9"
+   "sig": "0240d120fb4b"
   },
   "GET /v1/buyer/market/purchase-options": {
    "id": "getBuyerMarketPurchaseOption",
-   "sig": "264385177371"
+   "sig": "da080a800706"
   },
   "GET /v1/buyer/packs": {
    "id": "listBuyerPacks",
@@ -822,7 +826,7 @@
   },
   "POST /v1/buyer/packs/fairness/rotate": {
    "id": "createBuyerPackFairnessRotate",
-   "sig": "20f1261d83a7"
+   "sig": "71c8391b957b"
   },
   "GET /v1/buyer/packs/{slug}": {
    "id": "getBuyerPack",
@@ -830,7 +834,7 @@
   },
   "POST /v1/buyer/packs/{slug}/open": {
    "id": "createBuyerPackOpen",
-   "sig": "7f7235a71d16"
+   "sig": "17d6b842aa7c"
   },
   "GET /v1/buyer/pack-openings": {
    "id": "listBuyerPackOpenings",
@@ -846,7 +850,7 @@
   },
   "POST /v1/buyer/listings/{slug}/try-on": {
    "id": "createBuyerListingTryOn",
-   "sig": "d2135669f4b7"
+   "sig": "d5dd672ab977"
   },
   "GET /v1/buyer/try-ons": {
    "id": "listBuyerTryOns",
@@ -878,11 +882,11 @@
   },
   "GET /v1/buyer/passports/{code}": {
    "id": "getBuyerPassport",
-   "sig": "79864cbf2712"
+   "sig": "18ef5e654577"
   },
   "POST /v1/buyer/passports/{code}/claim": {
    "id": "createBuyerPassportClaim",
-   "sig": "21a6b4a10947"
+   "sig": "01ed9109c697"
   },
   "GET /v1/buyer/live-streams/{id}/lineup": {
    "id": "listBuyerLiveStreamLineup",
@@ -938,7 +942,7 @@
   },
   "POST /v1/buyer/boards": {
    "id": "createBuyerBoard",
-   "sig": "bb45531ababc"
+   "sig": "ef1886cc03db"
   },
   "GET /v1/buyer/boards/shared/{token}": {
    "id": "getBuyerBoardShared",
@@ -954,15 +958,15 @@
   },
   "PATCH /v1/buyer/boards/{id}": {
    "id": "updateBuyerBoard",
-   "sig": "c01822c19e75"
+   "sig": "8c39eb4df670"
   },
   "PUT /v1/buyer/boards/{id}/layout": {
    "id": "updateBuyerBoardLayout",
-   "sig": "eebef881e08e"
+   "sig": "6a13919b8f29"
   },
   "POST /v1/buyer/boards/{id}/items": {
    "id": "createBuyerBoardItem",
-   "sig": "b586594c9cc7"
+   "sig": "a02319dcca2f"
   },
   "DELETE /v1/buyer/boards/{id}/items/{platformListingId}": {
    "id": "deleteBuyerBoardItem",
@@ -970,7 +974,7 @@
   },
   "GET /v1/buyer/hotspots": {
    "id": "listBuyerHotspots",
-   "sig": "c80518d9d70a"
+   "sig": "4cc8c4915651"
   },
   "GET /v1/buyer/clubs": {
    "id": "listBuyerClubs",
@@ -994,11 +998,11 @@
   },
   "PATCH /v1/buyer/home": {
    "id": "updateBuyerHome",
-   "sig": "027920fed40f"
+   "sig": "0b60367b33cf"
   },
   "PUT /v1/buyer/home/layout": {
    "id": "updateBuyerHomeLayout",
-   "sig": "f0899b211ca5"
+   "sig": "5c50ad6135ac"
   },
   "GET /v1/buyer/home/placeable": {
    "id": "getBuyerHomePlaceable",
@@ -1010,7 +1014,7 @@
   },
   "PUT /v1/buyer/home/builders": {
    "id": "updateBuyerHomeBuilder",
-   "sig": "4aa813e50a51"
+   "sig": "ea2fe7ab03c4"
   },
   "DELETE /v1/buyer/home/guestbook/{id}": {
    "id": "deleteBuyerHomeGuestbook",
@@ -1019,6 +1023,14 @@
   "GET /v1/buyer/homes/building": {
    "id": "listBuyerHomeBuilding",
    "sig": "aeff4fd8c213"
+  },
+  "GET /v1/buyer/home/pets": {
+   "id": "getBuyerHomePet",
+   "sig": "d812fb53b56d"
+  },
+  "PUT /v1/buyer/home/pets/active": {
+   "id": "updateBuyerHomePetActive",
+   "sig": "b549c9293f82"
   },
   "GET /v1/buyer/loyalty": {
    "id": "listBuyerLoyalty",
@@ -1036,6 +1048,18 @@
    "id": "deleteBuyerSellerLoyaltyJoin",
    "sig": "d2d1103e2a93"
   },
+  "GET /v1/buyer/loyalty/{clubId}/points": {
+   "id": "listBuyerLoyaltyPoints",
+   "sig": "9eb0f884091a"
+  },
+  "GET /v1/buyer/loyalty/{clubId}/rewards": {
+   "id": "getBuyerLoyaltyReward",
+   "sig": "c7ad9abea88f"
+  },
+  "POST /v1/buyer/loyalty/{clubId}/rewards/{rewardId}/redeem": {
+   "id": "createBuyerLoyaltyRewardRedeem",
+   "sig": "7e336fa7f9eb"
+  },
   "GET /v1/buyer/catalog/listings/{slug}/price": {
    "id": "getBuyerCatalogListingPrice",
    "sig": "d4012e1fdb0c"
@@ -1046,7 +1070,7 @@
   },
   "POST /v1/buyer/catalog/listings/{slug}/video-requests": {
    "id": "createBuyerCatalogListingVideoRequest",
-   "sig": "0f64adae3f37"
+   "sig": "e6c8c6c3d737"
   },
   "GET /v1/buyer/catalog/listings/{slug}/videos": {
    "id": "listBuyerCatalogListingVideos",
@@ -1062,11 +1086,11 @@
   },
   "POST /v1/buyer/registries": {
    "id": "createBuyerRegistry",
-   "sig": "ca3a957fce5e"
+   "sig": "e45d46f49a03"
   },
   "GET /v1/buyer/registries/search": {
    "id": "listBuyerRegistrySearch",
-   "sig": "b868058e0e84"
+   "sig": "8d82d8b92491"
   },
   "GET /v1/buyer/registries/{id}": {
    "id": "getBuyerRegistry",
@@ -1078,11 +1102,11 @@
   },
   "PATCH /v1/buyer/registries/{id}": {
    "id": "updateBuyerRegistry",
-   "sig": "55a2066c4037"
+   "sig": "e0011e896b27"
   },
   "PUT /v1/buyer/registries/{id}/items/{platformListingId}": {
    "id": "updateBuyerRegistryItem",
-   "sig": "51eb7aed2b4b"
+   "sig": "c51fcf88fdc8"
   },
   "GET /v1/buyer/registries/{id}/gifts": {
    "id": "listBuyerRegistryGifts",
@@ -1090,7 +1114,7 @@
   },
   "POST /v1/buyer/registries/{id}/gifts/{giftId}/thanked": {
    "id": "createBuyerRegistryGiftThanked",
-   "sig": "92dd9fc93086"
+   "sig": "e43ad016b17b"
   },
   "GET /v1/buyer/registry/{token}": {
    "id": "getBuyerRegistryByToken",
@@ -1106,7 +1130,7 @@
   },
   "POST /v1/buyer/layaways/{id}/pay": {
    "id": "createBuyerLayawayPay",
-   "sig": "2891cf5f6639"
+   "sig": "1507e065e42a"
   },
   "POST /v1/buyer/layaways/{id}/cancel": {
    "id": "createBuyerLayawayCancel",
@@ -1118,11 +1142,11 @@
   },
   "POST /v1/buyer/catalog/listings/{slug}/rental": {
    "id": "createBuyerCatalogListingRental",
-   "sig": "75c1dd11ece5"
+   "sig": "3e3c94f719a5"
   },
   "POST /v1/buyer/catalog/listings/{slug}/rental/quote": {
    "id": "createBuyerCatalogListingRentalQuote",
-   "sig": "914097348d52"
+   "sig": "56c420aff7cf"
   },
   "GET /v1/buyer/rentals": {
    "id": "listBuyerRentals",
@@ -1134,7 +1158,7 @@
   },
   "POST /v1/buyer/rentals/{id}/claim-response": {
    "id": "createBuyerRentalClaimResponse",
-   "sig": "b043e31c8b90"
+   "sig": "43232c7fbdf5"
   },
   "GET /v1/buyer/rentals/eligibility": {
    "id": "getBuyerRentalEligibility",
@@ -1146,7 +1170,7 @@
   },
   "POST /v1/buyer/rentals/{id}/arrival-photos": {
    "id": "createBuyerRentalArrivalPhoto",
-   "sig": "b999cded3879"
+   "sig": "bdde4208bf00"
   },
   "GET /v1/buyer/rentals/{id}": {
    "id": "getBuyerRental",
@@ -1158,11 +1182,11 @@
   },
   "POST /v1/buyer/rentals/{id}/return-shipped": {
    "id": "createBuyerRentalReturnShipped",
-   "sig": "f4a2d20e3181"
+   "sig": "45d9989d288c"
   },
   "POST /v1/buyer/rentals/{id}/extensions": {
    "id": "createBuyerRentalExtension",
-   "sig": "4591410b7991"
+   "sig": "76bc0a74b966"
   },
   "POST /v1/buyer/rentals/{id}/extensions/{extensionId}/pay": {
    "id": "createBuyerRentalExtensionPay",
@@ -1182,7 +1206,7 @@
   },
   "POST /v1/buyer/events/{slug}/rsvp": {
    "id": "createBuyerEventRsvp",
-   "sig": "104e4ceb36f7"
+   "sig": "d1c113398e27"
   },
   "DELETE /v1/buyer/events/{slug}/rsvp": {
    "id": "deleteBuyerEventRsvp",
@@ -1198,7 +1222,7 @@
   },
   "POST /v1/buyer/purchases/{id}/fit": {
    "id": "createBuyerPurchaseFit",
-   "sig": "290345b1fe43"
+   "sig": "4f488284dfff"
   },
   "GET /v1/buyer/size-memory/sizes": {
    "id": "listBuyerSizeMemorySizes",
@@ -1429,8 +1453,8 @@
   "BuyerCompanyResponse": "0bbc6565e0bf",
   "BuyerCompanyResponseData": "165e63c7c91f",
   "BuyerCompanyResponseDataAddresses": "440ef7fb4bc3",
-  "BuyerCompanyResponseDataMembers": "eb06a0a54e9e",
-  "BuyerCompanyResponseDataYou": "64bb936832e8",
+  "BuyerCompanyResponseDataMembers": "0b5b0264bd34",
+  "BuyerCompanyResponseDataYou": "20d6edd47f49",
   "BuyerHomeResponse": "066725556186",
   "BuyerHomeResponseData": "64c0cb827455",
   "BuyerHomeResponseDataDecor": "80809cfe7a9e",
@@ -1468,7 +1492,7 @@
   "BuyerWholesaleOrderSheetResponseDataLines": "0f8abba94a81",
   "BuyerWholesaleOrderSheetResponseDataLinesTerms": "535708f6faa6",
   "BuyerWholesaleQuoteResponse": "51c323200571",
-  "BuyerWholesaleQuoteResponseData": "2f3a48739bd6",
+  "BuyerWholesaleQuoteResponseData": "df7edbede299",
   "BuyerWholesaleQuoteResponseDataItems": "cd4b62e7ecb3",
   "CreateBuyerActivityRequest": "0a5b294f8792",
   "CreateBuyerActivityResponse": "8d63a9003655",
@@ -1476,6 +1500,7 @@
   "CreateBuyerActivityResponseDataMatch": "120bd650ea9a",
   "CreateBuyerActivityResponseDataMatchCatalog": "2409f899daf1",
   "CreateBuyerActivityResponseDataMatchOffer": "7857ed8a231d",
+  "CreateBuyerAgentSessionActRequest": "1e2a62c1d78b",
   "CreateBuyerAgentSessionActResponse": "bfc8cdc90089",
   "CreateBuyerAgentSessionActResponseLinks": "66ce58d1e84e",
   "CreateBuyerAgentSessionActResponseNavigate": "7677b3acc7c1",
@@ -1484,9 +1509,11 @@
   "CreateBuyerAgentSessionActResponseQuoteLayaway": "28a358e19340",
   "CreateBuyerAgentSessionActResponseQuotePriceCheck": "9703ff7343e1",
   "CreateBuyerAgentSessionActResponseQuoteProtectionPlans": "34d689535e4d",
+  "CreateBuyerAgentSessionReactRequest": "fe488963861b",
   "CreateBuyerAgentSessionResponse": "929491c75747",
   "CreateBuyerAgentSessionResponseBrief": "4c23bf81098e",
-  "CreateBuyerAgentSessionResponseBriefPending": "39737e956ecc",
+  "CreateBuyerAgentSessionResponseBriefPending": "e776e051e92c",
+  "CreateBuyerAgentSessionTurnRequest": "f07da7215728",
   "CreateBuyerAgentSessionTurnResponse": "740aa8faa89d",
   "CreateBuyerAgentSessionTurnResponseAction": "c87152b86f04",
   "CreateBuyerAgentSessionTurnResponseActionQuote": "d04920278375",
@@ -1500,6 +1527,8 @@
   "CreateBuyerAuctionRetractRequest": "3f6ffd400cf2",
   "CreateBuyerAuctionRetractResponse": "0b7ac337df1d",
   "CreateBuyerAuctionRetractResponseData": "28a2829e456b",
+  "CreateBuyerBoardItemRequest": "5f25d2c1fb83",
+  "CreateBuyerBoardRequest": "e562a613bf7e",
   "CreateBuyerBoardResponse": "6ead959c03c1",
   "CreateBuyerBoardResponseData": "47770ca046e3",
   "CreateBuyerBreakSpotHoldResponse": "d57aa65e0dd0",
@@ -1507,11 +1536,13 @@
   "CreateBuyerCartItemRequest": "308420d6ab6c",
   "CreateBuyerCartItemResponse": "ce481a374cc7",
   "CreateBuyerCartItemResponseData": "4788d9c973cc",
+  "CreateBuyerCartOptimizerRequest": "9d132c9355b2",
   "CreateBuyerCartOptimizerResponse": "6a30e9f6dc96",
   "CreateBuyerCartOptimizerResponseData": "f294e5f26903",
   "CreateBuyerCartOptimizerResponseDataLines": "78786752cc03",
   "CreateBuyerCartOptimizerResponseDataLinesLine": "59813d8aa799",
   "CreateBuyerCartOptimizerResponseDataLinesPick": "ab328f20ed68",
+  "CreateBuyerCartQuoteRequest": "b4aee6687e92",
   "CreateBuyerCartQuoteResponse": "a7b398c4c5a1",
   "CreateBuyerCartQuoteResponseData": "d03520fc616d",
   "CreateBuyerCartQuoteResponseMeta": "93ef657279bb",
@@ -1524,18 +1555,27 @@
   "CreateBuyerCatalogListingRentalQuoteResponseDataCancellation": "c40f02ae8389",
   "CreateBuyerCatalogListingRentalQuoteResponseDataCancellationTiers": "38212e9c8b5d",
   "CreateBuyerCatalogListingRentalQuoteResponseDataLines": "7ffcb2bbc597",
+  "CreateBuyerCatalogListingRentalRequest": "e1b1f1d194ed",
+  "CreateBuyerCatalogListingRentalRequestShipTo": "571a3406bbe5",
   "CreateBuyerCatalogListingRentalResponse": "e055ec5abe46",
   "CreateBuyerCatalogListingRentalResponseData": "d00dd6e6296c",
   "CreateBuyerCatalogListingRentalResponseDataQuote": "920499791ed4",
+  "CreateBuyerCatalogListingVideoRequestRequest": "6ad6849d1402",
   "CreateBuyerCatalogListingVideoRequestResponse": "fe7ef6ab2177",
-  "CreateBuyerCatalogListingVideoRequestResponseData": "044da81670f6",
+  "CreateBuyerCatalogListingVideoRequestResponseData": "961ee4639236",
+  "CreateBuyerCheckoutRequest": "65c68e50f71b",
+  "CreateBuyerCheckoutRequestGift": "fabbec97fbba",
+  "CreateBuyerCheckoutRequestPickupPoint": "45ba6bfccfe4",
+  "CreateBuyerCheckoutRequestPickupPointAddress": "fe78f29b4f37",
+  "CreateBuyerCheckoutRequestShipTo": "20b7c4e064fe",
   "CreateBuyerCheckoutResponse": "25f059a8ac96",
   "CreateBuyerCompanyApprovalResponse": "d0951f96e6d4",
-  "CreateBuyerCompanyApprovalResponseData": "fe3724888a98",
+  "CreateBuyerCompanyApprovalResponseData": "678ced5f76bc",
   "CreateBuyerConversationJoinResponse": "0fd0c44e2dae",
   "CreateBuyerConversationJoinResponseData": "a4b16dbce8d9",
   "CreateBuyerDropJoinResponse": "e1f257c15dcf",
   "CreateBuyerDropJoinResponseMe": "1e2c872cd27e",
+  "CreateBuyerEventRsvpRequest": "c7bcaacb6b62",
   "CreateBuyerEventRsvpResponse": "a50ac4322589",
   "CreateBuyerEventRsvpResponseData": "1dced71d6b8f",
   "CreateBuyerFeedbackItem": "dd4edf167b92",
@@ -1553,12 +1593,16 @@
   "CreateBuyerGiftCardResponseData": "8276fc847a90",
   "CreateBuyerGroupBuyJoinResponse": "322c9f2342ad",
   "CreateBuyerGroupBuyJoinResponseData": "4799c01ac595",
-  "CreateBuyerIdentifyResponse": "bc20adbe2905",
+  "CreateBuyerIdentifyRequest": "acccec7d565d",
+  "CreateBuyerIdentifyResponse": "2fbe5513aa92",
   "CreateBuyerIdentifyResponseVisualMatches": "d9154d72a963",
+  "CreateBuyerLayawayPayRequest": "244a431ba342",
   "CreateBuyerListingSplitResponse": "b2863e97e6b5",
   "CreateBuyerListingSplitResponseData": "27f823e1a93d",
   "CreateBuyerListingSplitResponseDataShares": "b79078aad1e5",
+  "CreateBuyerListingTryOnRequest": "d1b6b60d5bd6",
   "CreateBuyerListingTryOnResponse": "93627fee4664",
+  "CreateBuyerLockonConfirmRequest": "107881e62bb3",
   "CreateBuyerLockonConfirmResponse": "f27c0abd23df",
   "CreateBuyerLockonConfirmResponseAlternates": "1298eebabd9c",
   "CreateBuyerLockonConfirmResponseCandidates": "e7bcdd894499",
@@ -1569,11 +1613,18 @@
   "CreateBuyerLockonConfirmResponseHudConfirm": "ffd50b7df8a0",
   "CreateBuyerLockonConfirmResponseHudCoupon": "44c9f3e826b0",
   "CreateBuyerLockonConfirmResponseHudFacts": "30d6dc7b2c45",
-  "CreateBuyerLockonConfirmResponseIdentifier": "8477936f30ae",
+  "CreateBuyerLockonConfirmResponseIdentifier": "72164608a1eb",
   "CreateBuyerLockonConfirmResponseOffsite": "9c6873c9c049",
+  "CreateBuyerLockonObserveRequest": "16f6a9706b9f",
+  "CreateBuyerLockonObserveRequestAttributes": "b72310eb286b",
+  "CreateBuyerLockonRequest": "cdef97559fa0",
   "CreateBuyerLockonResponse": "30c5fe47701d",
+  "CreateBuyerLoyaltyRewardRedeemResponse": "4146b8c58e73",
+  "CreateBuyerLoyaltyRewardRedeemResponseData": "66c875693737",
   "CreateBuyerMarketBidResponse": "7e4e6bb57ea3",
   "CreateBuyerMarketBidResponseData": "ad20faabb974",
+  "CreateBuyerMonitorRequest": "e9f9dd17b815",
+  "CreateBuyerMonitorRequestQuery": "9249c9d55217",
   "CreateBuyerOfferRequest": "c5fb8638a4d2",
   "CreateBuyerOfferRespondRequest": "ade31ec6f580",
   "CreateBuyerOfferRespondResponse": "20e05c8082b1",
@@ -1590,25 +1641,36 @@
   "CreateBuyerOrderReceivedResponseData": "b478f58f1d27",
   "CreateBuyerOrderTipResponse": "f4a6e2409aa6",
   "CreateBuyerOrderTipResponseData": "6e03e93b8bd6",
+  "CreateBuyerPackFairnessRotateRequest": "221d723e5552",
+  "CreateBuyerPackOpenRequest": "418aa0597120",
   "CreateBuyerPackOpenResponse": "bf1666e9e618",
   "CreateBuyerPackOpenResponseData": "9127601de83a",
   "CreateBuyerPackOpeningSellBackResponse": "294f236ba9f6",
   "CreateBuyerPackOpeningSellBackResponseData": "68ed7d97c7f9",
+  "CreateBuyerPassportClaimRequest": "ef5325ef0c0a",
   "CreateBuyerProtectionPlanCancelResponse": "a893592e61df",
   "CreateBuyerProtectionPlanCancelResponseData": "0c99a0b84e4c",
+  "CreateBuyerPurchaseFitRequest": "93ce62fbaacf",
+  "CreateBuyerRegistryGiftThankedRequest": "bcc5a26a1797",
   "CreateBuyerRegistryGiftThankedResponse": "0371e566d34d",
   "CreateBuyerRegistryGiftThankedResponseData": "ab70754a3fe8",
+  "CreateBuyerRegistryRequest": "905235251207",
   "CreateBuyerRegistryResponse": "819219a674cc",
   "CreateBuyerRegistryResponseData": "62eeb2e1078a",
+  "CreateBuyerRentalArrivalPhotoRequest": "46886ce3aeb4",
   "CreateBuyerRentalBuyoutResponse": "80392f3ef844",
   "CreateBuyerRentalBuyoutResponseData": "9b5f5dcad2b9",
+  "CreateBuyerRentalClaimResponseRequest": "15df0ad85247",
   "CreateBuyerRentalExtensionPayResponse": "457d2f5ef40e",
   "CreateBuyerRentalExtensionPayResponseData": "2f1b79ab6abe",
+  "CreateBuyerRentalExtensionRequest": "3d3b1514e357",
   "CreateBuyerRentalExtensionResponse": "9d1f9f832f89",
   "CreateBuyerRentalIdentityStartResponse": "0323c7fb4477",
-  "CreateBuyerScanResponse": "049352b65d66",
-  "CreateBuyerScanResponseIdentifier": "6d0d77fc0c76",
+  "CreateBuyerRentalReturnShippedRequest": "20c99e59e79d",
+  "CreateBuyerScanRequest": "26c01e0416ae",
+  "CreateBuyerScanResponse": "0395f347fd77",
   "CreateBuyerScanSessionEndResponse": "29ed54228680",
+  "CreateBuyerScanSessionRequest": "8f86103eca70",
   "CreateBuyerScanSessionResponse": "b9ce5562189d",
   "CreateBuyerSellerClubJoinResponse": "398fd4875ca2",
   "CreateBuyerSellerClubJoinResponseData": "e383a9ecd9c4",
@@ -1623,14 +1685,16 @@
   "CreateBuyerTotalRequestRequest": "eb273c8ca059",
   "CreateBuyerTotalRequestResponse": "a00c7fe200e1",
   "CreateBuyerTotalRequestResponseData": "709b4485d0c2",
+  "CreateBuyerVaultListRequest": "790a38b21cfb",
   "CreateBuyerVaultListResponse": "6c592c212038",
   "CreateBuyerVaultListResponseData": "ebc7ed1c0da7",
+  "CreateBuyerVaultWithdrawRequest": "b229d08c8999",
   "CreateBuyerVaultWithdrawResponse": "0af8b28f87c8",
   "CreateBuyerVaultWithdrawResponseData": "7864e9f16c93",
   "CreateBuyerWholesaleCatalogApplyResponse": "ed24f38e885d",
   "CreateBuyerWholesaleCatalogApplyResponseData": "c675ea08d064",
   "CreateBuyerWholesaleFreightRequestResponse": "ad38f50bb2e7",
-  "CreateBuyerWholesaleFreightRequestResponseData": "e0c99b587afe",
+  "CreateBuyerWholesaleFreightRequestResponseData": "5bcd7db2c385",
   "CreateBuyerWholesaleFreightRequestResponseDataLines": "64289d19b154",
   "CreateBuyerWholesaleInvoicePayLinkResponse": "cb9d1ce4c1d5",
   "CreateBuyerWholesaleInvoicePayLinkResponseData": "daebf8bc372b",
@@ -1691,9 +1755,9 @@
   "GetBuyerCatalogListingPriceResponseDataPriceCheck": "bd39c93f53e5",
   "GetBuyerCatalogListingPriceResponseDataPriceMatch": "1202df7c990b",
   "GetBuyerCatalogListingRentalResponse": "d84d687aa417",
-  "GetBuyerCatalogListingRentalResponseData": "ad46bee52289",
+  "GetBuyerCatalogListingRentalResponseData": "8f79de3822b4",
   "GetBuyerCatalogListingRentalResponseDataBooked": "eaa84c8d17fa",
-  "GetBuyerCatalogListingRentalResponseDataOptions": "62b4674be684",
+  "GetBuyerCatalogListingRentalResponseDataOptions": "5a8af9fb27aa",
   "GetBuyerCatalogListingRentalResponseDataOptionsCancellation": "bb8339e455c1",
   "GetBuyerCatalogListingRentalResponseDataOptionsDamageWaiver": "840c046cc144",
   "GetBuyerCatalogListingRentalResponseDataOptionsDeposit": "01f8eb4710d5",
@@ -1701,9 +1765,12 @@
   "GetBuyerCatalogListingRentalResponseDataOptionsLastMinute": "e96a5f1dfb5f",
   "GetBuyerCatalogListingRentalResponseDataOptionsLateEscalation": "7259b25dac7a",
   "GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscounts": "c5ddcaf339bd",
+  "GetBuyerCatalogListingRentalResponseDataOptionsPhotosBack": "022a4846b75d",
   "GetBuyerCatalogListingRentalResponseDataOptionsPhotosOut": "03ee023e1cc1",
   "GetBuyerCatalogListingRentalResponseDataOptionsPickup": "7d9fa46a141a",
   "GetBuyerCatalogListingRentalResponseDataOptionsSeasonal": "0ca5538a5262",
+  "GetBuyerCatalogListingRentalResponseDataPolicy": "67f019062214",
+  "GetBuyerCatalogListingRentalResponseDataPolicyArrivalPhotos": "c83eb7eee7f4",
   "GetBuyerCatalogListingResponse": "675499270a86",
   "GetBuyerCatalogListingResponseTokenGate": "7ebc10c54d3f",
   "GetBuyerCatalogListingResponseVariants": "cc3d6d8f34e8",
@@ -1747,6 +1814,12 @@
   "GetBuyerGiftFinderOptionResponseData": "47fc9247c488",
   "GetBuyerGiftFinderOptionResponseDataBudgets": "caa277689cab",
   "GetBuyerGiftFinderOptionResponseDataRecipients": "8c0a6619b7b3",
+  "GetBuyerGroupBuyShareLinkResponse": "16808246608a",
+  "GetBuyerGroupBuyShareLinkResponseData": "ac297ef234be",
+  "GetBuyerGroupBuyShareLinkResponseDataNext": "40cbc40f68b0",
+  "GetBuyerHomePetResponse": "ce80c1b9ed97",
+  "GetBuyerHomePetResponseData": "7af4188ae25a",
+  "GetBuyerHomePetResponseDataPets": "1075f72cc2d7",
   "GetBuyerHomePlaceableResponse": "f4067aa3501d",
   "GetBuyerHomePlaceableResponseData": "36c921f56b03",
   "GetBuyerHomePlaceableResponseDataItems": "7109a4b95564",
@@ -1781,6 +1854,10 @@
   "GetBuyerListingTryOnResponseData": "3c10944b1e3a",
   "GetBuyerLiveStreamAuctionResponse": "f0c3326d6fbf",
   "GetBuyerLiveStreamAuctionResponseData": "50709340de70",
+  "GetBuyerLoyaltyRewardResponse": "ec633ff3f03d",
+  "GetBuyerLoyaltyRewardResponseData": "41b40e1e966d",
+  "GetBuyerLoyaltyRewardResponseDataItems": "a767eff32749",
+  "GetBuyerLoyaltyRewardResponseDataRedeemed": "8ecfa652a93e",
   "GetBuyerMarketPurchaseOptionResponse": "e669e3ae059d",
   "GetBuyerMarketPurchaseOptionResponseData": "dbd7cdeaece4",
   "GetBuyerMarketPurchaseOptionResponseDataGradingRuns": "44a92d347d34",
@@ -1827,11 +1904,11 @@
   "GetBuyerRentalEligibilityResponse": "813fa9154939",
   "GetBuyerRentalEligibilityResponseData": "19481e1918a9",
   "GetBuyerRentalResponse": "caeffb5c8f81",
-  "GetBuyerRentalResponseData": "79c2411e9f40",
+  "GetBuyerRentalResponseData": "bcb875a1154f",
   "GetBuyerRentalResponseDataBuyout": "87d126c38050",
   "GetBuyerRentalResponseDataEvents": "5dd734d25276",
   "GetBuyerRentalResponseDataExtension": "9a1172930d56",
-  "GetBuyerRentalResponseDataExtensions": "0befe3970e4a",
+  "GetBuyerRentalResponseDataExtensions": "be3fff5c0213",
   "GetBuyerRentalResponseDataPayments": "b6fd9bd6edfc",
   "GetBuyerRentalResponseDataShipping": "a5ce98319d69",
   "GetBuyerRentalResponseDataTimeline": "d74af66e3477",
@@ -1842,12 +1919,12 @@
   "GetBuyerSellerClubResponseData": "ec1a801c1ca2",
   "GetBuyerSellerLoyaltyResponse": "2fc2c26b8fbb",
   "GetBuyerSellerLoyaltyResponseData": "6843383c278e",
-  "GetBuyerSellerLoyaltyResponseDataMember": "330cece4209b",
+  "GetBuyerSellerLoyaltyResponseDataMember": "3dc9d3afd91c",
   "GetBuyerSellerLoyaltyResponseDataMemberHistory": "de2e28f722f6",
   "GetBuyerSellerLoyaltyResponseDataMemberNext": "6f2c884fe4a2",
   "GetBuyerSellerLoyaltyResponseDataMemberNextTier": "056aeccb935f",
   "GetBuyerSellerLoyaltyResponseDataMemberPerks": "86323912cd19",
-  "GetBuyerSellerLoyaltyResponseDataMemberStanding": "40f7da6a410d",
+  "GetBuyerSellerLoyaltyResponseDataMemberStanding": "b2516edde237",
   "GetBuyerSellerLoyaltyResponseDataMemberTier": "3826af46fd57",
   "GetBuyerSellerTrustResponse": "1bb7b5bd621e",
   "GetBuyerSellerTrustResponseData": "af5ba29b39c7",
@@ -1888,7 +1965,7 @@
   "GetBuyerVaultMarketOptionChainResponse": "7d071e66977c",
   "GetBuyerVaultMarketOptionChainResponseExpiries": "7603f6cc2348",
   "GetBuyerVaultMarketOptionChainResponseRows": "ba54fe929a12",
-  "GetBuyerVaultMarketOptionChainResponseRowsCall": "11f0b97f650f",
+  "GetBuyerVaultMarketOptionChainResponseRowsCall": "ab2c532ca0aa",
   "GetBuyerVaultMarketOptionChainResponseSeries": "98c16f092bb2",
   "GetBuyerVaultMarketOptionChainResponseUnderlying": "0e6560025c50",
   "GetBuyerVaultMarketOptionChainResponseVenue": "c606d960aea4",
@@ -1896,7 +1973,7 @@
   "GetBuyerVaultMarketOptionPositionResponse": "76b5867330e2",
   "GetBuyerVaultMarketOptionPositionResponseAccount": "12af5e142d40",
   "GetBuyerVaultMarketOptionPositionResponsePositions": "ff099bb9d58d",
-  "GetBuyerVaultMarketOptionPositionResponsePositionsContract": "90cbf59b25ba",
+  "GetBuyerVaultMarketOptionPositionResponsePositionsContract": "d86dd10ec097",
   "GetBuyerVaultMarketOptionPositionResponsePositionsGreeks": "84c51cc07cec",
   "GetBuyerVaultMarketOptionRiskResponse": "e4d05d7f9806",
   "GetBuyerVaultMarketOptionRiskResponseBetaWeighted": "3833081da0fa",
@@ -1912,7 +1989,7 @@
   "GetBuyerVaultMarketPredictionEventResponseConversions": "a4336366ce3f",
   "GetBuyerVaultMarketPredictionEventResponseMarkets": "7c23a757e72e",
   "GetBuyerVaultMarketPredictionEventResponseRisk": "52d9abf71866",
-  "GetBuyerVaultMarketPredictionLeaderboardResponse": "729efcf36170",
+  "GetBuyerVaultMarketPredictionLeaderboardResponse": "6dba2da46c48",
   "GetBuyerVaultMarketPredictionLeaderboardResponseRows": "42dcff1a6943",
   "GetBuyerVaultMarketPredictionMarketHistoryResponse": "d7318ea6742e",
   "GetBuyerVaultMarketPredictionMarketHistoryResponseCandles": "bd9001220507",
@@ -2060,6 +2137,8 @@
   "ListBuyerLiveStreamLineupItem": "a5216ae73d60",
   "ListBuyerLiveStreamLineupResponse": "7d608b311b0a",
   "ListBuyerLoyaltyItem": "4e3069d12444",
+  "ListBuyerLoyaltyPointsItem": "501650342255",
+  "ListBuyerLoyaltyPointsResponse": "e2d017815783",
   "ListBuyerLoyaltyResponse": "78ba84c493c3",
   "ListBuyerMonitorMatchesItem": "83cd0c791dae",
   "ListBuyerMonitorMatchesResponse": "5d96c49bdc83",
@@ -2165,14 +2244,29 @@
   "ListBuyerWishlistMembersResponse": "ecf98d63f036",
   "ListBuyerWishlistsItem": "035ad5b36396",
   "ListBuyerWishlistsResponse": "3851709f7b3c",
+  "NsValue": "86c1b50a8c4e",
   "Pagination": "e82caa492089",
+  "UpdateBuyerBoardLayoutRequest": "4f6957a5ca75",
+  "UpdateBuyerBoardLayoutRequestItems": "505b6f2dd6a4",
+  "UpdateBuyerBoardRequest": "7981f3d250b0",
+  "UpdateBuyerCheckoutControlRequest": "8c20cb5d4afd",
+  "UpdateBuyerCollectionSetLeaderboardRequest": "a7da6fc2438c",
   "UpdateBuyerCollectionSetLeaderboardResponse": "6b805c64fbc4",
   "UpdateBuyerCollectionSetLeaderboardResponseData": "194300cd560c",
   "UpdateBuyerCreationReviewRequest": "9f78d03f61af",
   "UpdateBuyerCreationReviewResponse": "a5ff4789cb9b",
   "UpdateBuyerFeedbackRequest": "d3c3b68f33fb",
+  "UpdateBuyerHomeBuilderRequest": "46ab87ea9cd6",
+  "UpdateBuyerHomeLayoutRequest": "2d5ab0757619",
+  "UpdateBuyerHomePetActiveRequest": "5bdf334f53bd",
+  "UpdateBuyerHomePetActiveResponse": "b2007d887b0f",
+  "UpdateBuyerHomePetActiveResponseData": "db3a2268ae99",
+  "UpdateBuyerHomeRequest": "f866e8b39ca3",
+  "UpdateBuyerHomeRequestDecor": "5db821834d86",
+  "UpdateBuyerMonitorRequest": "7055dcb18740",
   "UpdateBuyerPaymentMethodDefaultResponse": "f69ae91aa87d",
   "UpdateBuyerPaymentMethodDefaultResponseData": "be354751d927",
+  "UpdateBuyerRegistryItemRequest": "def19720a4df",
   "UpdateBuyerRegistryItemResponse": "b78e2f8a1182",
   "UpdateBuyerRegistryItemResponseData": "db82b1394bfe",
   "UpdateBuyerWholesaleCartPoResponse": "6e29f88778bc",
@@ -2181,7 +2275,7 @@
   "UpdateBuyerWishlistResponse": "473c2269afd1",
   "UpdateBuyerWishlistResponseData": "2577c172970f",
   "ValueCount": "7600dfc823ca",
-  "CreateBuyerRentalExtensionResponseData": "9be2012a3416",
+  "CreateBuyerRentalExtensionResponseData": "4c3e2bc68dd3",
   "CreateBuyerRentalIdentityStartResponseData": "3495b78b622c",
   "GetBuyerCatalogListingMySizeResponseData": "b43077dbbe67",
   "GetBuyerCatalogListingResponseDescriptionBlocksItem": "c52bac143277",

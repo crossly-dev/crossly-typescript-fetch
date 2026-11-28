@@ -45,18 +45,18 @@ export interface StorefrontResponse3DataDraftThemeFonts {
 */
 export enum StorefrontResponse3DataDraftThemeFontsHeadingEnum {
     Inter = 'inter',
-    Playfair = 'playfair',
-    Cormorant = 'cormorant',
-    SpaceGrotesk = 'space-grotesk',
-    ArchivoBlack = 'archivo-black',
     DmSans = 'dm-sans',
     Manrope = 'manrope',
     Poppins = 'poppins',
     Montserrat = 'montserrat',
     WorkSans = 'work-sans',
+    SpaceGrotesk = 'space-grotesk',
+    Playfair = 'playfair',
+    Cormorant = 'cormorant',
     Fraunces = 'fraunces',
     LibreBaskerville = 'libre-baskerville',
     BebasNeue = 'bebas-neue',
+    ArchivoBlack = 'archivo-black',
     JetbrainsMono = 'jetbrains-mono'
 }/**
 * @export
@@ -64,18 +64,18 @@ export enum StorefrontResponse3DataDraftThemeFontsHeadingEnum {
 */
 export enum StorefrontResponse3DataDraftThemeFontsBodyEnum {
     Inter = 'inter',
-    Playfair = 'playfair',
-    Cormorant = 'cormorant',
-    SpaceGrotesk = 'space-grotesk',
-    ArchivoBlack = 'archivo-black',
     DmSans = 'dm-sans',
     Manrope = 'manrope',
     Poppins = 'poppins',
     Montserrat = 'montserrat',
     WorkSans = 'work-sans',
+    SpaceGrotesk = 'space-grotesk',
+    Playfair = 'playfair',
+    Cormorant = 'cormorant',
     Fraunces = 'fraunces',
     LibreBaskerville = 'libre-baskerville',
     BebasNeue = 'bebas-neue',
+    ArchivoBlack = 'archivo-black',
     JetbrainsMono = 'jetbrains-mono'
 }
 

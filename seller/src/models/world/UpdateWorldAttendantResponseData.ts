@@ -32,17 +32,17 @@ import {
     GetWorldAttendantResponseDataAttendantPersonalityToJSON,
 } from './GetWorldAttendantResponseDataAttendantPersonality';
 import {
+    UpdateWorldAttendantRequestKnowledge,
+    UpdateWorldAttendantRequestKnowledgeFromJSON,
+    UpdateWorldAttendantRequestKnowledgeFromJSONTyped,
+    UpdateWorldAttendantRequestKnowledgeToJSON,
+} from './UpdateWorldAttendantRequestKnowledge';
+import {
     UpdateWorldAttendantResponseDataHours,
     UpdateWorldAttendantResponseDataHoursFromJSON,
     UpdateWorldAttendantResponseDataHoursFromJSONTyped,
     UpdateWorldAttendantResponseDataHoursToJSON,
 } from './UpdateWorldAttendantResponseDataHours';
-import {
-    UpdateWorldAttendantResponseDataKnowledge,
-    UpdateWorldAttendantResponseDataKnowledgeFromJSON,
-    UpdateWorldAttendantResponseDataKnowledgeFromJSONTyped,
-    UpdateWorldAttendantResponseDataKnowledgeToJSON,
-} from './UpdateWorldAttendantResponseDataKnowledge';
 import {
     UpdateWorldAttendantResponseDataLanguagesItem,
     UpdateWorldAttendantResponseDataLanguagesItemFromJSON,
@@ -112,10 +112,10 @@ export interface UpdateWorldAttendantResponseData {
     personality: GetWorldAttendantResponseDataAttendantPersonality;
     /**
      * 
-     * @type {UpdateWorldAttendantResponseDataKnowledge}
+     * @type {UpdateWorldAttendantRequestKnowledge}
      * @memberof UpdateWorldAttendantResponseData
      */
-    knowledge: UpdateWorldAttendantResponseDataKnowledge;
+    knowledge: UpdateWorldAttendantRequestKnowledge;
     /**
      * 
      * @type {Array<UpdateWorldAttendantResponseDataLanguagesItem>}
@@ -171,7 +171,7 @@ export function UpdateWorldAttendantResponseDataFromJSONTyped(json: any, ignoreD
         'enabled': json['enabled'],
         'appearance': GetWorldAttendantResponseDataAttendantAppearanceFromJSON(json['appearance']),
         'personality': GetWorldAttendantResponseDataAttendantPersonalityFromJSON(json['personality']),
-        'knowledge': UpdateWorldAttendantResponseDataKnowledgeFromJSON(json['knowledge']),
+        'knowledge': UpdateWorldAttendantRequestKnowledgeFromJSON(json['knowledge']),
         'languages': ((json['languages'] as Array<any>).map(UpdateWorldAttendantResponseDataLanguagesItemFromJSON)),
         'hours': !exists(json, 'hours') ? undefined : UpdateWorldAttendantResponseDataHoursFromJSON(json['hours']),
         'allowedActions': GetWorldAttendantResponseDataAttendantAllowedActionsFromJSON(json['allowedActions']),
@@ -197,7 +197,7 @@ export function UpdateWorldAttendantResponseDataToJSON(value?: UpdateWorldAttend
         'enabled': value.enabled,
         'appearance': GetWorldAttendantResponseDataAttendantAppearanceToJSON(value.appearance),
         'personality': GetWorldAttendantResponseDataAttendantPersonalityToJSON(value.personality),
-        'knowledge': UpdateWorldAttendantResponseDataKnowledgeToJSON(value.knowledge),
+        'knowledge': UpdateWorldAttendantRequestKnowledgeToJSON(value.knowledge),
         'languages': ((value.languages as Array<any>).map(UpdateWorldAttendantResponseDataLanguagesItemToJSON)),
         'hours': UpdateWorldAttendantResponseDataHoursToJSON(value.hours),
         'allowedActions': GetWorldAttendantResponseDataAttendantAllowedActionsToJSON(value.allowedActions),

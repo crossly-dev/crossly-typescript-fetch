@@ -141,9 +141,9 @@ export interface BuyerWholesaleQuoteResponseData {
 * @enum {string}
 */
 export enum BuyerWholesaleQuoteResponseDataStatusEnum {
+    Expired = 'expired',
     Accepted = 'accepted',
     Declined = 'declined',
-    Expired = 'expired',
     Requested = 'requested',
     Withdrawn = 'withdrawn',
     Answered = 'answered'

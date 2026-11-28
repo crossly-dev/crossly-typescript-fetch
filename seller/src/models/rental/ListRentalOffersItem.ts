@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetRentalPolicyResponseData,
+    GetRentalPolicyResponseDataFromJSON,
+    GetRentalPolicyResponseDataFromJSONTyped,
+    GetRentalPolicyResponseDataToJSON,
+} from './GetRentalPolicyResponseData';
+import {
     StartEnd,
     StartEndFromJSON,
     StartEndFromJSONTyped,
@@ -26,6 +32,12 @@ import {
  * @interface ListRentalOffersItem
  */
 export interface ListRentalOffersItem {
+    /**
+     * 
+     * @type {GetRentalPolicyResponseData}
+     * @memberof ListRentalOffersItem
+     */
+    policy?: GetRentalPolicyResponseData | null;
     /**
      * 
      * @type {string}
@@ -70,6 +82,12 @@ export interface ListRentalOffersItem {
     active: boolean;
     /**
      * 
+     * @type {string}
+     * @memberof ListRentalOffersItem
+     */
+    storefrontId?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof ListRentalOffersItem
      */
@@ -80,12 +98,6 @@ export interface ListRentalOffersItem {
      * @memberof ListRentalOffersItem
      */
     platformListingId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListRentalOffersItem
-     */
-    storefrontId?: string | null;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -170,6 +182,7 @@ export function ListRentalOffersItemFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
+        'policy': !exists(json, 'policy') ? undefined : GetRentalPolicyResponseDataFromJSON(json['policy']),
         'slug': json['slug'],
         'listingId': json['listingId'],
         'title': json['title'],
@@ -177,9 +190,9 @@ export function ListRentalOffersItemFromJSONTyped(json: any, ignoreDiscriminator
         'createdAt': json['createdAt'],
         'updatedAt': json['updatedAt'],
         'active': json['active'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'quantity': json['quantity'],
         'platformListingId': json['platformListingId'],
-        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'options': json['options'],
         'sellerUserId': json['sellerUserId'],
         'depositCents': json['depositCents'],
@@ -204,6 +217,7 @@ export function ListRentalOffersItemToJSON(value?: ListRentalOffersItem | null):
     }
     return {
         
+        'policy': GetRentalPolicyResponseDataToJSON(value.policy),
         'slug': value.slug,
         'listingId': value.listingId,
         'title': value.title,
@@ -211,9 +225,9 @@ export function ListRentalOffersItemToJSON(value?: ListRentalOffersItem | null):
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,
         'active': value.active,
+        'storefrontId': value.storefrontId,
         'quantity': value.quantity,
         'platformListingId': value.platformListingId,
-        'storefrontId': value.storefrontId,
         'options': value.options,
         'sellerUserId': value.sellerUserId,
         'depositCents': value.depositCents,

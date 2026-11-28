@@ -128,8 +128,8 @@ export interface ListVaultMarketGradingOrdersItem {
 * @enum {string}
 */
 export enum ListVaultMarketGradingOrdersItemStatusEnum {
-    Grading = 'grading',
     Draft = 'draft',
+    Grading = 'grading',
     Cancelled = 'cancelled',
     Paid = 'paid',
     Received = 'received',

@@ -15,6 +15,12 @@
 
 import * as runtime from '../runtime';
 import {
+    BodyRequest,
+    BodyRequestFromJSON,
+    BodyRequestToJSON,
+    CreateGradingSubmissionShippedRequest,
+    CreateGradingSubmissionShippedRequestFromJSON,
+    CreateGradingSubmissionShippedRequestToJSON,
     CreateVaultLendResponse,
     CreateVaultLendResponseFromJSON,
     CreateVaultLendResponseToJSON,
@@ -48,6 +54,9 @@ import {
     CreateVaultMarketBlockAllocateResponse,
     CreateVaultMarketBlockAllocateResponseFromJSON,
     CreateVaultMarketBlockAllocateResponseToJSON,
+    CreateVaultMarketBlockRequest,
+    CreateVaultMarketBlockRequestFromJSON,
+    CreateVaultMarketBlockRequestToJSON,
     CreateVaultMarketCollectionWorthWatchResponse,
     CreateVaultMarketCollectionWorthWatchResponseFromJSON,
     CreateVaultMarketCollectionWorthWatchResponseToJSON,
@@ -60,9 +69,15 @@ import {
     CreateVaultMarketCreditRepayResponse,
     CreateVaultMarketCreditRepayResponseFromJSON,
     CreateVaultMarketCreditRepayResponseToJSON,
+    CreateVaultMarketDcmLinkRequest,
+    CreateVaultMarketDcmLinkRequestFromJSON,
+    CreateVaultMarketDcmLinkRequestToJSON,
     CreateVaultMarketDcmLinkResponse,
     CreateVaultMarketDcmLinkResponseFromJSON,
     CreateVaultMarketDcmLinkResponseToJSON,
+    CreateVaultMarketDcmUnlinkRequest,
+    CreateVaultMarketDcmUnlinkRequestFromJSON,
+    CreateVaultMarketDcmUnlinkRequestToJSON,
     CreateVaultMarketDcmUnlinkResponse,
     CreateVaultMarketDcmUnlinkResponseFromJSON,
     CreateVaultMarketDcmUnlinkResponseToJSON,
@@ -78,21 +93,42 @@ import {
     CreateVaultMarketDonationResponse,
     CreateVaultMarketDonationResponseFromJSON,
     CreateVaultMarketDonationResponseToJSON,
+    CreateVaultMarketEntityHaltRequest,
+    CreateVaultMarketEntityHaltRequestFromJSON,
+    CreateVaultMarketEntityHaltRequestToJSON,
     CreateVaultMarketEntityHaltResponse,
     CreateVaultMarketEntityHaltResponseFromJSON,
     CreateVaultMarketEntityHaltResponseToJSON,
     CreateVaultMarketEntityKybResponse,
     CreateVaultMarketEntityKybResponseFromJSON,
     CreateVaultMarketEntityKybResponseToJSON,
+    CreateVaultMarketEntityMemberRequest,
+    CreateVaultMarketEntityMemberRequestFromJSON,
+    CreateVaultMarketEntityMemberRequestToJSON,
+    CreateVaultMarketEntityRequest,
+    CreateVaultMarketEntityRequestFromJSON,
+    CreateVaultMarketEntityRequestToJSON,
     CreateVaultMarketEntityResponse,
     CreateVaultMarketEntityResponseFromJSON,
     CreateVaultMarketEntityResponseToJSON,
+    CreateVaultMarketEntitySubaccountRequest,
+    CreateVaultMarketEntitySubaccountRequestFromJSON,
+    CreateVaultMarketEntitySubaccountRequestToJSON,
     CreateVaultMarketFollowCopyWatchAlertReadResponse,
     CreateVaultMarketFollowCopyWatchAlertReadResponseFromJSON,
     CreateVaultMarketFollowCopyWatchAlertReadResponseToJSON,
     CreateVaultMarketGiftResponse,
     CreateVaultMarketGiftResponseFromJSON,
     CreateVaultMarketGiftResponseToJSON,
+    CreateVaultMarketGradeToVaultBookRequest,
+    CreateVaultMarketGradeToVaultBookRequestFromJSON,
+    CreateVaultMarketGradeToVaultBookRequestToJSON,
+    CreateVaultMarketGradeToVaultListRequest,
+    CreateVaultMarketGradeToVaultListRequestFromJSON,
+    CreateVaultMarketGradeToVaultListRequestToJSON,
+    CreateVaultMarketGradeToVaultRequest,
+    CreateVaultMarketGradeToVaultRequestFromJSON,
+    CreateVaultMarketGradeToVaultRequestToJSON,
     CreateVaultMarketGradingResponse,
     CreateVaultMarketGradingResponseFromJSON,
     CreateVaultMarketGradingResponseToJSON,
@@ -168,6 +204,9 @@ import {
     CreateVaultMarketOpeningWaitlistResponse,
     CreateVaultMarketOpeningWaitlistResponseFromJSON,
     CreateVaultMarketOpeningWaitlistResponseToJSON,
+    CreateVaultMarketOptionComboRequest,
+    CreateVaultMarketOptionComboRequestFromJSON,
+    CreateVaultMarketOptionComboRequestToJSON,
     CreateVaultMarketOptionComboResponse,
     CreateVaultMarketOptionComboResponseFromJSON,
     CreateVaultMarketOptionComboResponseToJSON,
@@ -180,6 +219,9 @@ import {
     CreateVaultMarketOptionCoveredCallReleaseResponse,
     CreateVaultMarketOptionCoveredCallReleaseResponseFromJSON,
     CreateVaultMarketOptionCoveredCallReleaseResponseToJSON,
+    CreateVaultMarketOptionCoveredCallRequest,
+    CreateVaultMarketOptionCoveredCallRequestFromJSON,
+    CreateVaultMarketOptionCoveredCallRequestToJSON,
     CreateVaultMarketOptionCoveredCallResponse,
     CreateVaultMarketOptionCoveredCallResponseFromJSON,
     CreateVaultMarketOptionCoveredCallResponseToJSON,
@@ -192,6 +234,9 @@ import {
     CreateVaultMarketOptionOrderCancelResponse,
     CreateVaultMarketOptionOrderCancelResponseFromJSON,
     CreateVaultMarketOptionOrderCancelResponseToJSON,
+    CreateVaultMarketOptionOrderRequest,
+    CreateVaultMarketOptionOrderRequestFromJSON,
+    CreateVaultMarketOptionOrderRequestToJSON,
     CreateVaultMarketOptionOrderResponse,
     CreateVaultMarketOptionOrderResponseFromJSON,
     CreateVaultMarketOptionOrderResponseToJSON,
@@ -201,6 +246,9 @@ import {
     CreateVaultMarketOptionPracticeOrderResponse,
     CreateVaultMarketOptionPracticeOrderResponseFromJSON,
     CreateVaultMarketOptionPracticeOrderResponseToJSON,
+    CreateVaultMarketOptionQuoteRequest,
+    CreateVaultMarketOptionQuoteRequestFromJSON,
+    CreateVaultMarketOptionQuoteRequestToJSON,
     CreateVaultMarketOptionQuoteResponse,
     CreateVaultMarketOptionQuoteResponseFromJSON,
     CreateVaultMarketOptionQuoteResponseToJSON,
@@ -210,12 +258,30 @@ import {
     CreateVaultMarketOptionRfqRespondResponse,
     CreateVaultMarketOptionRfqRespondResponseFromJSON,
     CreateVaultMarketOptionRfqRespondResponseToJSON,
+    CreateVaultMarketOptionRollRequest,
+    CreateVaultMarketOptionRollRequestFromJSON,
+    CreateVaultMarketOptionRollRequestToJSON,
     CreateVaultMarketOptionRollResponse,
     CreateVaultMarketOptionRollResponseFromJSON,
     CreateVaultMarketOptionRollResponseToJSON,
     CreateVaultMarketOptionStrategyPreviewResponse,
     CreateVaultMarketOptionStrategyPreviewResponseFromJSON,
     CreateVaultMarketOptionStrategyPreviewResponseToJSON,
+    CreateVaultMarketP2pLoanRefiAuctionRequest,
+    CreateVaultMarketP2pLoanRefiAuctionRequestFromJSON,
+    CreateVaultMarketP2pLoanRefiAuctionRequestToJSON,
+    CreateVaultMarketP2pLoanRefinanceRequest,
+    CreateVaultMarketP2pLoanRefinanceRequestFromJSON,
+    CreateVaultMarketP2pLoanRefinanceRequestToJSON,
+    CreateVaultMarketP2pLoanRepayRequest,
+    CreateVaultMarketP2pLoanRepayRequestFromJSON,
+    CreateVaultMarketP2pLoanRepayRequestToJSON,
+    CreateVaultMarketP2pOfferRequest,
+    CreateVaultMarketP2pOfferRequestFromJSON,
+    CreateVaultMarketP2pOfferRequestToJSON,
+    CreateVaultMarketP2pOfferTakeRequest,
+    CreateVaultMarketP2pOfferTakeRequestFromJSON,
+    CreateVaultMarketP2pOfferTakeRequestToJSON,
     CreateVaultMarketPaperMissionMarkCheckResponse,
     CreateVaultMarketPaperMissionMarkCheckResponseFromJSON,
     CreateVaultMarketPaperMissionMarkCheckResponseToJSON,
@@ -243,6 +309,9 @@ import {
     CreateVaultMarketPortfolioMarginEnrollResponse,
     CreateVaultMarketPortfolioMarginEnrollResponseFromJSON,
     CreateVaultMarketPortfolioMarginEnrollResponseToJSON,
+    CreateVaultMarketPortfolioMarginLeaveRequest,
+    CreateVaultMarketPortfolioMarginLeaveRequestFromJSON,
+    CreateVaultMarketPortfolioMarginLeaveRequestToJSON,
     CreateVaultMarketPortfolioMarginLeaveResponse,
     CreateVaultMarketPortfolioMarginLeaveResponseFromJSON,
     CreateVaultMarketPortfolioMarginLeaveResponseToJSON,
@@ -324,9 +393,15 @@ import {
     CreateVaultMarketProOcoResponse,
     CreateVaultMarketProOcoResponseFromJSON,
     CreateVaultMarketProOcoResponseToJSON,
+    CreateVaultMarketProOrderCancelAllRequest,
+    CreateVaultMarketProOrderCancelAllRequestFromJSON,
+    CreateVaultMarketProOrderCancelAllRequestToJSON,
     CreateVaultMarketProOrderCancelAllResponse,
     CreateVaultMarketProOrderCancelAllResponseFromJSON,
     CreateVaultMarketProOrderCancelAllResponseToJSON,
+    CreateVaultMarketProOrderRequest,
+    CreateVaultMarketProOrderRequestFromJSON,
+    CreateVaultMarketProOrderRequestToJSON,
     CreateVaultMarketProOrderResponse,
     CreateVaultMarketProOrderResponseFromJSON,
     CreateVaultMarketProOrderResponseToJSON,
@@ -348,39 +423,96 @@ import {
     CreateVaultMarketRfqResponse,
     CreateVaultMarketRfqResponseFromJSON,
     CreateVaultMarketRfqResponseToJSON,
+    CreateVaultMarketShareAutoInvestRequest,
+    CreateVaultMarketShareAutoInvestRequestFromJSON,
+    CreateVaultMarketShareAutoInvestRequestToJSON,
     CreateVaultMarketShareAutoInvestRunResponse,
     CreateVaultMarketShareAutoInvestRunResponseFromJSON,
     CreateVaultMarketShareAutoInvestRunResponseToJSON,
+    CreateVaultMarketShareAutoInvestUpdateRequest,
+    CreateVaultMarketShareAutoInvestUpdateRequestFromJSON,
+    CreateVaultMarketShareAutoInvestUpdateRequestToJSON,
+    CreateVaultMarketShareBasketBuyRequest,
+    CreateVaultMarketShareBasketBuyRequestFromJSON,
+    CreateVaultMarketShareBasketBuyRequestToJSON,
     CreateVaultMarketShareBasketBuyResponse,
     CreateVaultMarketShareBasketBuyResponseFromJSON,
     CreateVaultMarketShareBasketBuyResponseToJSON,
     CreateVaultMarketShareBuyoutFundResponse,
     CreateVaultMarketShareBuyoutFundResponseFromJSON,
     CreateVaultMarketShareBuyoutFundResponseToJSON,
+    CreateVaultMarketShareBuyoutVoteRequest,
+    CreateVaultMarketShareBuyoutVoteRequestFromJSON,
+    CreateVaultMarketShareBuyoutVoteRequestToJSON,
+    CreateVaultMarketShareInvestorRequest,
+    CreateVaultMarketShareInvestorRequestFromJSON,
+    CreateVaultMarketShareInvestorRequestToJSON,
     CreateVaultMarketSharePaperSeryOrderResponse,
     CreateVaultMarketSharePaperSeryOrderResponseFromJSON,
     CreateVaultMarketSharePaperSeryOrderResponseToJSON,
+    CreateVaultMarketSharePaperSerySubscribeRequest,
+    CreateVaultMarketSharePaperSerySubscribeRequestFromJSON,
+    CreateVaultMarketSharePaperSerySubscribeRequestToJSON,
     CreateVaultMarketShareRoomHideResponse,
     CreateVaultMarketShareRoomHideResponseFromJSON,
     CreateVaultMarketShareRoomHideResponseToJSON,
+    CreateVaultMarketShareSeryBuyoutRequest,
+    CreateVaultMarketShareSeryBuyoutRequestFromJSON,
+    CreateVaultMarketShareSeryBuyoutRequestToJSON,
+    CreateVaultMarketShareSeryGiftRequest,
+    CreateVaultMarketShareSeryGiftRequestFromJSON,
+    CreateVaultMarketShareSeryGiftRequestToJSON,
+    CreateVaultMarketShareSeryOrderRequest,
+    CreateVaultMarketShareSeryOrderRequestFromJSON,
+    CreateVaultMarketShareSeryOrderRequestToJSON,
+    CreateVaultMarketShareSeryRecombineRequest,
+    CreateVaultMarketShareSeryRecombineRequestFromJSON,
+    CreateVaultMarketShareSeryRecombineRequestToJSON,
     CreateVaultMarketShareSeryRecombineResponse,
     CreateVaultMarketShareSeryRecombineResponseFromJSON,
     CreateVaultMarketShareSeryRecombineResponseToJSON,
+    CreateVaultMarketShareSeryRequest,
+    CreateVaultMarketShareSeryRequestFromJSON,
+    CreateVaultMarketShareSeryRequestToJSON,
     CreateVaultMarketShareSeryRoomResponse,
     CreateVaultMarketShareSeryRoomResponseFromJSON,
     CreateVaultMarketShareSeryRoomResponseToJSON,
+    CreateVaultMarketShareSerySubscribeRequest,
+    CreateVaultMarketShareSerySubscribeRequestFromJSON,
+    CreateVaultMarketShareSerySubscribeRequestToJSON,
+    CreateVaultMarketShareSeryUnwatchRequest,
+    CreateVaultMarketShareSeryUnwatchRequestFromJSON,
+    CreateVaultMarketShareSeryUnwatchRequestToJSON,
+    CreateVaultMarketShareSeryUpdateRequest,
+    CreateVaultMarketShareSeryUpdateRequestFromJSON,
+    CreateVaultMarketShareSeryUpdateRequestToJSON,
+    CreateVaultMarketShareSeryWatchRequest,
+    CreateVaultMarketShareSeryWatchRequestFromJSON,
+    CreateVaultMarketShareSeryWatchRequestToJSON,
     CreateVaultMarketShareSeryWatchResponse,
     CreateVaultMarketShareSeryWatchResponseFromJSON,
     CreateVaultMarketShareSeryWatchResponseToJSON,
+    CreateVaultMarketShareViewingBookRequest,
+    CreateVaultMarketShareViewingBookRequestFromJSON,
+    CreateVaultMarketShareViewingBookRequestToJSON,
     CreateVaultMarketShareViewingBookResponse,
     CreateVaultMarketShareViewingBookResponseFromJSON,
     CreateVaultMarketShareViewingBookResponseToJSON,
     CreateVaultMarketShareViewingBookingCancelResponse,
     CreateVaultMarketShareViewingBookingCancelResponseFromJSON,
     CreateVaultMarketShareViewingBookingCancelResponseToJSON,
+    CreateVaultMarketSupplyBatchLabelRequest,
+    CreateVaultMarketSupplyBatchLabelRequestFromJSON,
+    CreateVaultMarketSupplyBatchLabelRequestToJSON,
+    CreateVaultMarketSupplySendInRequest,
+    CreateVaultMarketSupplySendInRequestFromJSON,
+    CreateVaultMarketSupplySendInRequestToJSON,
     CreateVaultMarketSupplySendInResponse,
     CreateVaultMarketSupplySendInResponseFromJSON,
     CreateVaultMarketSupplySendInResponseToJSON,
+    CreateVaultMarketSupplySendRequest,
+    CreateVaultMarketSupplySendRequestFromJSON,
+    CreateVaultMarketSupplySendRequestToJSON,
     CreateVaultMarketSupplySendResponse,
     CreateVaultMarketSupplySendResponseFromJSON,
     CreateVaultMarketSupplySendResponseToJSON,
@@ -393,30 +525,48 @@ import {
     CreateVaultMarketTodMyClaimResponse,
     CreateVaultMarketTodMyClaimResponseFromJSON,
     CreateVaultMarketTodMyClaimResponseToJSON,
+    CreateVaultMarketValuationStatementRequest,
+    CreateVaultMarketValuationStatementRequestFromJSON,
+    CreateVaultMarketValuationStatementRequestToJSON,
     CreateVaultMarketValuationStatementResponse,
     CreateVaultMarketValuationStatementResponseFromJSON,
     CreateVaultMarketValuationStatementResponseToJSON,
     CreateVaultMarketWatchlistResponse,
     CreateVaultMarketWatchlistResponseFromJSON,
     CreateVaultMarketWatchlistResponseToJSON,
+    CreateVaultMarketWidgetTokenRequest,
+    CreateVaultMarketWidgetTokenRequestFromJSON,
+    CreateVaultMarketWidgetTokenRequestToJSON,
     CreateVaultMarketWidgetTokenResponse,
     CreateVaultMarketWidgetTokenResponseFromJSON,
     CreateVaultMarketWidgetTokenResponseToJSON,
+    CreateVaultReceiptTokenConfirmRequest,
+    CreateVaultReceiptTokenConfirmRequestFromJSON,
+    CreateVaultReceiptTokenConfirmRequestToJSON,
     CreateVaultReceiptTokenConfirmResponse,
     CreateVaultReceiptTokenConfirmResponseFromJSON,
     CreateVaultReceiptTokenConfirmResponseToJSON,
+    CreateVaultReceiptTokenExportRequest,
+    CreateVaultReceiptTokenExportRequestFromJSON,
+    CreateVaultReceiptTokenExportRequestToJSON,
     CreateVaultReceiptTokenExportResponse,
     CreateVaultReceiptTokenExportResponseFromJSON,
     CreateVaultReceiptTokenExportResponseToJSON,
     CreateVaultReceiptTokenRedeemConfirmResponse,
     CreateVaultReceiptTokenRedeemConfirmResponseFromJSON,
     CreateVaultReceiptTokenRedeemConfirmResponseToJSON,
+    CreateVaultReceiptTokenRedeemRequest,
+    CreateVaultReceiptTokenRedeemRequestFromJSON,
+    CreateVaultReceiptTokenRedeemRequestToJSON,
     CreateVaultReceiptTokenRedeemResponse,
     CreateVaultReceiptTokenRedeemResponseFromJSON,
     CreateVaultReceiptTokenRedeemResponseToJSON,
     CreateVaultReceiptTokenWalletAllowResponse,
     CreateVaultReceiptTokenWalletAllowResponseFromJSON,
     CreateVaultReceiptTokenWalletAllowResponseToJSON,
+    CreateWorldSpaceRequestByUserIdRequest,
+    CreateWorldSpaceRequestByUserIdRequestFromJSON,
+    CreateWorldSpaceRequestByUserIdRequestToJSON,
     DeleteVaultMarketAutoBuyResponse,
     DeleteVaultMarketAutoBuyResponseFromJSON,
     DeleteVaultMarketAutoBuyResponseToJSON,
@@ -1548,30 +1698,60 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    ReasonRequest,
+    ReasonRequestFromJSON,
+    ReasonRequestToJSON,
     StatusResponse,
     StatusResponseFromJSON,
     StatusResponseToJSON,
     TermsVersionResponse,
     TermsVersionResponseFromJSON,
     TermsVersionResponseToJSON,
+    UpdateVaultMarketAutoBuyRequest,
+    UpdateVaultMarketAutoBuyRequestFromJSON,
+    UpdateVaultMarketAutoBuyRequestToJSON,
     UpdateVaultMarketAutoBuyResponse,
     UpdateVaultMarketAutoBuyResponseFromJSON,
     UpdateVaultMarketAutoBuyResponseToJSON,
+    UpdateVaultMarketBlockAllocationRequest,
+    UpdateVaultMarketBlockAllocationRequestFromJSON,
+    UpdateVaultMarketBlockAllocationRequestToJSON,
+    UpdateVaultMarketEntityMemberRequest,
+    UpdateVaultMarketEntityMemberRequestFromJSON,
+    UpdateVaultMarketEntityMemberRequestToJSON,
+    UpdateVaultMarketEntitySubaccountLimitRequest,
+    UpdateVaultMarketEntitySubaccountLimitRequestFromJSON,
+    UpdateVaultMarketEntitySubaccountLimitRequestToJSON,
+    UpdateVaultMarketEntityUsdElectionRequest,
+    UpdateVaultMarketEntityUsdElectionRequestFromJSON,
+    UpdateVaultMarketEntityUsdElectionRequestToJSON,
     UpdateVaultMarketHomeUnitResponse,
     UpdateVaultMarketHomeUnitResponseFromJSON,
     UpdateVaultMarketHomeUnitResponseToJSON,
+    UpdateVaultMarketItemSellFromRequest,
+    UpdateVaultMarketItemSellFromRequestFromJSON,
+    UpdateVaultMarketItemSellFromRequestToJSON,
     UpdateVaultMarketOfferAlertResponse,
     UpdateVaultMarketOfferAlertResponseFromJSON,
     UpdateVaultMarketOfferAlertResponseToJSON,
     UpdateVaultMarketPaperLeaderboardResponse,
     UpdateVaultMarketPaperLeaderboardResponseFromJSON,
     UpdateVaultMarketPaperLeaderboardResponseToJSON,
+    UpdateVaultMarketPartnerMeRequest,
+    UpdateVaultMarketPartnerMeRequestFromJSON,
+    UpdateVaultMarketPartnerMeRequestToJSON,
     UpdateVaultMarketPartnerMeResponse,
     UpdateVaultMarketPartnerMeResponseFromJSON,
     UpdateVaultMarketPartnerMeResponseToJSON,
     UpdateVaultMarketPositionExitResponse,
     UpdateVaultMarketPositionExitResponseFromJSON,
     UpdateVaultMarketPositionExitResponseToJSON,
+    UpdateVaultMarketSettingRequest,
+    UpdateVaultMarketSettingRequestFromJSON,
+    UpdateVaultMarketSettingRequestToJSON,
+    UpdateVaultMarketSupplyDepositRequest,
+    UpdateVaultMarketSupplyDepositRequestFromJSON,
+    UpdateVaultMarketSupplyDepositRequestToJSON,
     UpdateVaultMarketSupplyDepositResponse,
     UpdateVaultMarketSupplyDepositResponseFromJSON,
     UpdateVaultMarketSupplyDepositResponseToJSON,
@@ -1606,6 +1786,10 @@ export interface CreateVaultMarketAuctionLotWithdrawRequest {
     id: string;
 }
 
+export interface CreateVaultMarketBlockOperationRequest {
+    createVaultMarketBlockRequest: CreateVaultMarketBlockRequest;
+}
+
 export interface CreateVaultMarketBlockAllocateRequest {
     orderId: string;
 }
@@ -1618,16 +1802,29 @@ export interface CreateVaultMarketCreditRepayRequest {
     id: string;
 }
 
+export interface CreateVaultMarketDcmLinkOperationRequest {
+    createVaultMarketDcmLinkRequest: CreateVaultMarketDcmLinkRequest;
+}
+
+export interface CreateVaultMarketDcmUnlinkOperationRequest {
+    createVaultMarketDcmUnlinkRequest?: CreateVaultMarketDcmUnlinkRequest;
+}
+
 export interface CreateVaultMarketDealerPoolCloseRequest {
     id: string;
+}
+
+export interface CreateVaultMarketEntityOperationRequest {
+    createVaultMarketEntityRequest: CreateVaultMarketEntityRequest;
 }
 
 export interface CreateVaultMarketEntityEcpRequest {
     id: string;
 }
 
-export interface CreateVaultMarketEntityHaltRequest {
+export interface CreateVaultMarketEntityHaltOperationRequest {
     id: string;
+    createVaultMarketEntityHaltRequest: CreateVaultMarketEntityHaltRequest;
 }
 
 export interface CreateVaultMarketEntityHaltClearRequest {
@@ -1637,18 +1834,21 @@ export interface CreateVaultMarketEntityHaltClearRequest {
 
 export interface CreateVaultMarketEntityInvitationRequest {
     id: string;
+    createWorldSpaceRequestByUserIdRequest: CreateWorldSpaceRequestByUserIdRequest;
 }
 
 export interface CreateVaultMarketEntityKybRequest {
     id: string;
 }
 
-export interface CreateVaultMarketEntityMemberRequest {
+export interface CreateVaultMarketEntityMemberOperationRequest {
     id: string;
+    createVaultMarketEntityMemberRequest: CreateVaultMarketEntityMemberRequest;
 }
 
-export interface CreateVaultMarketEntitySubaccountRequest {
+export interface CreateVaultMarketEntitySubaccountOperationRequest {
     id: string;
+    createVaultMarketEntitySubaccountRequest: CreateVaultMarketEntitySubaccountRequest;
 }
 
 export interface CreateVaultMarketEntitySubaccountCloseRequest {
@@ -1668,8 +1868,13 @@ export interface CreateVaultMarketGiftDeclineRequest {
     id: string;
 }
 
-export interface CreateVaultMarketGradeToVaultBookRequest {
+export interface CreateVaultMarketGradeToVaultOperationRequest {
+    createVaultMarketGradeToVaultRequest?: CreateVaultMarketGradeToVaultRequest;
+}
+
+export interface CreateVaultMarketGradeToVaultBookOperationRequest {
     id: string;
+    createVaultMarketGradeToVaultBookRequest?: CreateVaultMarketGradeToVaultBookRequest;
 }
 
 export interface CreateVaultMarketGradeToVaultCancelRequest {
@@ -1680,12 +1885,14 @@ export interface CreateVaultMarketGradeToVaultKeepRequest {
     id: string;
 }
 
-export interface CreateVaultMarketGradeToVaultListRequest {
+export interface CreateVaultMarketGradeToVaultListOperationRequest {
     id: string;
+    createVaultMarketGradeToVaultListRequest?: CreateVaultMarketGradeToVaultListRequest;
 }
 
 export interface CreateVaultMarketGradeToVaultShippedRequest {
     id: string;
+    createGradingSubmissionShippedRequest?: CreateGradingSubmissionShippedRequest;
 }
 
 export interface CreateVaultMarketGradingPullRequest {
@@ -1793,6 +2000,10 @@ export interface CreateVaultMarketOpeningWaitlistRequest {
     slug: string;
 }
 
+export interface CreateVaultMarketOptionComboOperationRequest {
+    createVaultMarketOptionComboRequest: CreateVaultMarketOptionComboRequest;
+}
+
 export interface CreateVaultMarketOptionComboCancelRequest {
     id: string;
 }
@@ -1813,8 +2024,16 @@ export interface CreateVaultMarketOptionComboRfqResponseWithdrawRequest {
     id: string;
 }
 
+export interface CreateVaultMarketOptionCoveredCallOperationRequest {
+    createVaultMarketOptionCoveredCallRequest: CreateVaultMarketOptionCoveredCallRequest;
+}
+
 export interface CreateVaultMarketOptionCoveredCallReleaseRequest {
     id: string;
+}
+
+export interface CreateVaultMarketOptionOrderOperationRequest {
+    createVaultMarketOptionOrderRequest: CreateVaultMarketOptionOrderRequest;
 }
 
 export interface CreateVaultMarketOptionOrderCancelRequest {
@@ -1823,6 +2042,10 @@ export interface CreateVaultMarketOptionOrderCancelRequest {
 
 export interface CreateVaultMarketOptionPracticeOrderCancelRequest {
     id: string;
+}
+
+export interface CreateVaultMarketOptionQuoteOperationRequest {
+    createVaultMarketOptionQuoteRequest: CreateVaultMarketOptionQuoteRequest;
 }
 
 export interface CreateVaultMarketOptionRfqAcceptRequest {
@@ -1841,6 +2064,10 @@ export interface CreateVaultMarketOptionRfqResponseWithdrawRequest {
     id: string;
 }
 
+export interface CreateVaultMarketOptionRollOperationRequest {
+    createVaultMarketOptionRollRequest: CreateVaultMarketOptionRollRequest;
+}
+
 export interface CreateVaultMarketP2pLoanCallRequest {
     id: string;
 }
@@ -1849,28 +2076,36 @@ export interface CreateVaultMarketP2pLoanCancelCallRequest {
     id: string;
 }
 
-export interface CreateVaultMarketP2pLoanRefiAuctionRequest {
+export interface CreateVaultMarketP2pLoanRefiAuctionOperationRequest {
     id: string;
+    createVaultMarketP2pLoanRefiAuctionRequest?: CreateVaultMarketP2pLoanRefiAuctionRequest;
 }
 
 export interface CreateVaultMarketP2pLoanRefiAuctionCancelRequest {
     id: string;
 }
 
-export interface CreateVaultMarketP2pLoanRefinanceRequest {
+export interface CreateVaultMarketP2pLoanRefinanceOperationRequest {
     id: string;
+    createVaultMarketP2pLoanRefinanceRequest?: CreateVaultMarketP2pLoanRefinanceRequest;
 }
 
-export interface CreateVaultMarketP2pLoanRepayRequest {
+export interface CreateVaultMarketP2pLoanRepayOperationRequest {
     id: string;
+    createVaultMarketP2pLoanRepayRequest?: CreateVaultMarketP2pLoanRepayRequest;
+}
+
+export interface CreateVaultMarketP2pOfferOperationRequest {
+    createVaultMarketP2pOfferRequest: CreateVaultMarketP2pOfferRequest;
 }
 
 export interface CreateVaultMarketP2pOfferCancelRequest {
     id: string;
 }
 
-export interface CreateVaultMarketP2pOfferTakeRequest {
+export interface CreateVaultMarketP2pOfferTakeOperationRequest {
     id: string;
+    createVaultMarketP2pOfferTakeRequest: CreateVaultMarketP2pOfferTakeRequest;
 }
 
 export interface CreateVaultMarketPaperOrderCancelRequest {
@@ -1879,6 +2114,14 @@ export interface CreateVaultMarketPaperOrderCancelRequest {
 
 export interface CreateVaultMarketPoolStakeUnstakeRequest {
     id: string;
+}
+
+export interface CreateVaultMarketPortfolioMarginEnrollRequest {
+    createVaultMarketPortfolioMarginLeaveRequest: CreateVaultMarketPortfolioMarginLeaveRequest;
+}
+
+export interface CreateVaultMarketPortfolioMarginLeaveOperationRequest {
+    createVaultMarketPortfolioMarginLeaveRequest: CreateVaultMarketPortfolioMarginLeaveRequest;
 }
 
 export interface CreateVaultMarketPositionCancelRequest {
@@ -1937,8 +2180,16 @@ export interface CreateVaultMarketProLinkCancelRequest {
     id: string;
 }
 
+export interface CreateVaultMarketProOrderOperationRequest {
+    createVaultMarketProOrderRequest: CreateVaultMarketProOrderRequest;
+}
+
 export interface CreateVaultMarketProOrderCancelRequest {
     id: string;
+}
+
+export interface CreateVaultMarketProOrderCancelAllOperationRequest {
+    createVaultMarketProOrderCancelAllRequest?: CreateVaultMarketProOrderCancelAllRequest;
 }
 
 export interface CreateVaultMarketProOrderReplaceRequest {
@@ -1973,24 +2224,31 @@ export interface CreateVaultMarketSetGoalBasketCancelRequest {
     id: string;
 }
 
+export interface CreateVaultMarketShareAutoInvestOperationRequest {
+    createVaultMarketShareAutoInvestRequest: CreateVaultMarketShareAutoInvestRequest;
+}
+
 export interface CreateVaultMarketShareAutoInvestRunRequest {
     id: string;
 }
 
-export interface CreateVaultMarketShareAutoInvestUpdateRequest {
+export interface CreateVaultMarketShareAutoInvestUpdateOperationRequest {
     id: string;
+    createVaultMarketShareAutoInvestUpdateRequest: CreateVaultMarketShareAutoInvestUpdateRequest;
 }
 
-export interface CreateVaultMarketShareBasketBuyRequest {
+export interface CreateVaultMarketShareBasketBuyOperationRequest {
     id: string;
+    createVaultMarketShareBasketBuyRequest: CreateVaultMarketShareBasketBuyRequest;
 }
 
 export interface CreateVaultMarketShareBuyoutFundRequest {
     id: string;
 }
 
-export interface CreateVaultMarketShareBuyoutVoteRequest {
+export interface CreateVaultMarketShareBuyoutVoteOperationRequest {
     id: string;
+    createVaultMarketShareBuyoutVoteRequest: CreateVaultMarketShareBuyoutVoteRequest;
 }
 
 export interface CreateVaultMarketShareBuyoutWithdrawRequest {
@@ -2009,6 +2267,10 @@ export interface CreateVaultMarketShareGiftDeclineRequest {
     id: string;
 }
 
+export interface CreateVaultMarketShareInvestorOperationRequest {
+    createVaultMarketShareInvestorRequest: CreateVaultMarketShareInvestorRequest;
+}
+
 export interface CreateVaultMarketShareOrderCancelRequest {
     id: string;
 }
@@ -2019,50 +2281,66 @@ export interface CreateVaultMarketSharePaperOrderCancelRequest {
 
 export interface CreateVaultMarketSharePaperSeryOrderRequest {
     id: string;
+    createVaultMarketShareSeryOrderRequest: CreateVaultMarketShareSeryOrderRequest;
 }
 
-export interface CreateVaultMarketSharePaperSerySubscribeRequest {
+export interface CreateVaultMarketSharePaperSerySubscribeOperationRequest {
     id: string;
+    createVaultMarketSharePaperSerySubscribeRequest: CreateVaultMarketSharePaperSerySubscribeRequest;
 }
 
 export interface CreateVaultMarketShareRoomHideRequest {
     id: string;
+    reasonRequest: ReasonRequest;
 }
 
-export interface CreateVaultMarketShareSeryBuyoutRequest {
-    id: string;
+export interface CreateVaultMarketShareSeryOperationRequest {
+    createVaultMarketShareSeryRequest: CreateVaultMarketShareSeryRequest;
 }
 
-export interface CreateVaultMarketShareSeryGiftRequest {
+export interface CreateVaultMarketShareSeryBuyoutOperationRequest {
     id: string;
+    createVaultMarketShareSeryBuyoutRequest: CreateVaultMarketShareSeryBuyoutRequest;
 }
 
-export interface CreateVaultMarketShareSeryOrderRequest {
+export interface CreateVaultMarketShareSeryGiftOperationRequest {
     id: string;
+    createVaultMarketShareSeryGiftRequest: CreateVaultMarketShareSeryGiftRequest;
 }
 
-export interface CreateVaultMarketShareSeryRecombineRequest {
+export interface CreateVaultMarketShareSeryOrderOperationRequest {
     id: string;
+    createVaultMarketShareSeryOrderRequest: CreateVaultMarketShareSeryOrderRequest;
+}
+
+export interface CreateVaultMarketShareSeryRecombineOperationRequest {
+    id: string;
+    createVaultMarketShareSeryRecombineRequest?: CreateVaultMarketShareSeryRecombineRequest;
 }
 
 export interface CreateVaultMarketShareSeryRoomRequest {
     id: string;
+    bodyRequest: BodyRequest;
 }
 
-export interface CreateVaultMarketShareSerySubscribeRequest {
+export interface CreateVaultMarketShareSerySubscribeOperationRequest {
     id: string;
+    createVaultMarketShareSerySubscribeRequest: CreateVaultMarketShareSerySubscribeRequest;
 }
 
-export interface CreateVaultMarketShareSeryUnwatchRequest {
+export interface CreateVaultMarketShareSeryUnwatchOperationRequest {
     id: string;
+    createVaultMarketShareSeryUnwatchRequest?: CreateVaultMarketShareSeryUnwatchRequest;
 }
 
-export interface CreateVaultMarketShareSeryUpdateRequest {
+export interface CreateVaultMarketShareSeryUpdateOperationRequest {
     id: string;
+    createVaultMarketShareSeryUpdateRequest: CreateVaultMarketShareSeryUpdateRequest;
 }
 
-export interface CreateVaultMarketShareSeryWatchRequest {
+export interface CreateVaultMarketShareSeryWatchOperationRequest {
     id: string;
+    createVaultMarketShareSeryWatchRequest: CreateVaultMarketShareSeryWatchRequest;
 }
 
 export interface CreateVaultMarketShareSeryWithdrawProposalRequest {
@@ -2073,20 +2351,30 @@ export interface CreateVaultMarketShareSubscriptionCancelRequest {
     id: string;
 }
 
-export interface CreateVaultMarketShareViewingBookRequest {
+export interface CreateVaultMarketShareViewingBookOperationRequest {
     id: string;
+    createVaultMarketShareViewingBookRequest?: CreateVaultMarketShareViewingBookRequest;
 }
 
 export interface CreateVaultMarketShareViewingBookingCancelRequest {
     id: string;
 }
 
-export interface CreateVaultMarketSupplyBatchLabelRequest {
+export interface CreateVaultMarketSupplyBatchLabelOperationRequest {
     id: string;
+    createVaultMarketSupplyBatchLabelRequest?: CreateVaultMarketSupplyBatchLabelRequest;
 }
 
 export interface CreateVaultMarketSupplyInviteRequest {
     id: string;
+}
+
+export interface CreateVaultMarketSupplySendOperationRequest {
+    createVaultMarketSupplySendRequest: CreateVaultMarketSupplySendRequest;
+}
+
+export interface CreateVaultMarketSupplySendInOperationRequest {
+    createVaultMarketSupplySendInRequest: CreateVaultMarketSupplySendInRequest;
 }
 
 export interface CreateVaultMarketTodClaimObjectRequest {
@@ -2113,16 +2401,35 @@ export interface CreateVaultMarketUnitSellNowRequest {
     id: string;
 }
 
-export interface CreateVaultReceiptTokenConfirmRequest {
-    id: string;
+export interface CreateVaultMarketValuationStatementOperationRequest {
+    createVaultMarketValuationStatementRequest: CreateVaultMarketValuationStatementRequest;
 }
 
-export interface CreateVaultReceiptTokenRedeemRequest {
+export interface CreateVaultMarketWidgetTokenOperationRequest {
+    createVaultMarketWidgetTokenRequest?: CreateVaultMarketWidgetTokenRequest;
+}
+
+export interface CreateVaultReceiptTokenConfirmOperationRequest {
     id: string;
+    createVaultReceiptTokenConfirmRequest?: CreateVaultReceiptTokenConfirmRequest;
+}
+
+export interface CreateVaultReceiptTokenExportOperationRequest {
+    createVaultReceiptTokenExportRequest: CreateVaultReceiptTokenExportRequest;
+}
+
+export interface CreateVaultReceiptTokenRedeemOperationRequest {
+    id: string;
+    createVaultReceiptTokenRedeemRequest: CreateVaultReceiptTokenRedeemRequest;
 }
 
 export interface CreateVaultReceiptTokenRedeemConfirmRequest {
     id: string;
+    createVaultReceiptTokenConfirmRequest?: CreateVaultReceiptTokenConfirmRequest;
+}
+
+export interface CreateVaultReceiptTokenWalletAllowRequest {
+    createVaultReceiptTokenRedeemRequest: CreateVaultReceiptTokenRedeemRequest;
 }
 
 export interface DeleteVaultMarketAgentWatchRequest {
@@ -2302,10 +2609,13 @@ export interface GetVaultMarketIndexFeedRequest {
 
 export interface GetVaultMarketIndexFeedFundingRequest {
     slug: string;
+    premiumBps: number;
+    interestBps?: number;
 }
 
 export interface GetVaultMarketIndexFeedSettlementRequest {
     slug: string;
+    days?: number;
 }
 
 export interface GetVaultMarketIndexLevelRequest {
@@ -2445,12 +2755,20 @@ export interface GetVaultMarketPredictionMarketTradeRequest {
     id: string;
 }
 
+export interface GetVaultMarketPredictionStreamRequest {
+    markets: string;
+}
+
 export interface GetVaultMarketPriceWidgetRequest {
     id: string;
 }
 
 export interface GetVaultMarketProOrderRequest {
     id: string;
+}
+
+export interface GetVaultMarketProStreamRequest {
+    bookKey: string;
 }
 
 export interface GetVaultMarketProfileByHandleRequest {
@@ -2598,6 +2916,10 @@ export interface ListVaultMarketFollowProfileActivityRequest {
     handle: string;
 }
 
+export interface ListVaultMarketGradeToVaultRequest {
+    live?: ListVaultMarketGradeToVaultLiveEnum;
+}
+
 export interface ListVaultMarketIndexConstituentsRequest {
     slug: string;
 }
@@ -2624,6 +2946,11 @@ export interface ListVaultMarketOptionContractDailyRequest {
 
 export interface ListVaultMarketOracleHistoryRequest {
     slug: string;
+}
+
+export interface ListVaultMarketPartnerFinderRequest {
+    postalCode?: string;
+    service?: ListVaultMarketPartnerFinderServiceEnum;
 }
 
 export interface ListVaultMarketPositionUnitsRequest {
@@ -2658,26 +2985,47 @@ export interface ListVaultMarketShareSeryUpdatesRequest {
     id: string;
 }
 
-export interface UpdateVaultMarketBlockAllocationRequest {
+export interface ListVaultMarketSupplyDeclaredValuesRequest {
+    inventoryItemIds?: string;
+}
+
+export interface ListVaultMarketSupplyDepositsRequest {
+    inventoryItemIds?: string;
+}
+
+export interface ListVaultMarketSupplyEligibilityRequest {
+    inventoryItemIds?: string;
+    listingId?: string;
+}
+
+export interface UpdateVaultMarketAutoBuyOperationRequest {
+    updateVaultMarketAutoBuyRequest: UpdateVaultMarketAutoBuyRequest;
+}
+
+export interface UpdateVaultMarketBlockAllocationOperationRequest {
     orderId: string;
+    updateVaultMarketBlockAllocationRequest: UpdateVaultMarketBlockAllocationRequest;
 }
 
 export interface UpdateVaultMarketDealerPoolRequest {
     id: string;
 }
 
-export interface UpdateVaultMarketEntityMemberRequest {
+export interface UpdateVaultMarketEntityMemberOperationRequest {
     id: string;
     memberId: string;
+    updateVaultMarketEntityMemberRequest?: UpdateVaultMarketEntityMemberRequest;
 }
 
-export interface UpdateVaultMarketEntitySubaccountLimitRequest {
+export interface UpdateVaultMarketEntitySubaccountLimitOperationRequest {
     id: string;
     subId: string;
+    updateVaultMarketEntitySubaccountLimitRequest: UpdateVaultMarketEntitySubaccountLimitRequest;
 }
 
-export interface UpdateVaultMarketEntityUsdElectionRequest {
+export interface UpdateVaultMarketEntityUsdElectionOperationRequest {
     id: string;
+    updateVaultMarketEntityUsdElectionRequest: UpdateVaultMarketEntityUsdElectionRequest;
 }
 
 export interface UpdateVaultMarketFollowCopyWatchRequest {
@@ -2688,8 +3036,13 @@ export interface UpdateVaultMarketIndexRequest {
     slug: string;
 }
 
-export interface UpdateVaultMarketItemSellFromRequest {
+export interface UpdateVaultMarketItemSellFromOperationRequest {
     inventoryItemId: string;
+    updateVaultMarketItemSellFromRequest: UpdateVaultMarketItemSellFromRequest;
+}
+
+export interface UpdateVaultMarketPartnerMeOperationRequest {
+    updateVaultMarketPartnerMeRequest?: UpdateVaultMarketPartnerMeRequest;
 }
 
 export interface UpdateVaultMarketPositionExitRequest {
@@ -2712,12 +3065,17 @@ export interface UpdateVaultMarketSetGoalRequest {
     id: string;
 }
 
+export interface UpdateVaultMarketSettingOperationRequest {
+    updateVaultMarketSettingRequest?: UpdateVaultMarketSettingRequest;
+}
+
 export interface UpdateVaultMarketShareCardRequest {
     id: string;
 }
 
-export interface UpdateVaultMarketSupplyDepositRequest {
+export interface UpdateVaultMarketSupplyDepositOperationRequest {
     id: string;
+    updateVaultMarketSupplyDepositRequest: UpdateVaultMarketSupplyDepositRequest;
 }
 
 export interface UpdateVaultMarketWorldRoomVaultGateRequest {
@@ -3232,10 +3590,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place a block buy for an entity: one order booked to the first sub-account in `plan` (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share\'s cash moves between the entity\'s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits.
      */
-    async createVaultMarketBlockRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketBlocksItem>> {
+    async createVaultMarketBlockRaw(requestParameters: CreateVaultMarketBlockOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketBlocksItem>> {
+        if (requestParameters.createVaultMarketBlockRequest === null || requestParameters.createVaultMarketBlockRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketBlockRequest','Required parameter requestParameters.createVaultMarketBlockRequest was null or undefined when calling createVaultMarketBlock.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3250,6 +3614,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketBlockRequestToJSON(requestParameters.createVaultMarketBlockRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketBlocksItemFromJSON(jsonValue));
@@ -3258,8 +3623,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place a block buy for an entity: one order booked to the first sub-account in `plan` (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share\'s cash moves between the entity\'s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits.
      */
-    async createVaultMarketBlock(initOverrides?: RequestInit): Promise<ListVaultMarketBlocksItem> {
-        const response = await this.createVaultMarketBlockRaw(initOverrides);
+    async createVaultMarketBlock(requestParameters: CreateVaultMarketBlockOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketBlocksItem> {
+        const response = await this.createVaultMarketBlockRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3516,10 +3881,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Link a partner exchange account to your account (or to a firm sub-account you manage, `subaccountId`) so Crossly can show its positions: `accountRef` (the account id there) and `code` (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it.
      */
-    async createVaultMarketDcmLinkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketDcmLinkResponse>> {
+    async createVaultMarketDcmLinkRaw(requestParameters: CreateVaultMarketDcmLinkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketDcmLinkResponse>> {
+        if (requestParameters.createVaultMarketDcmLinkRequest === null || requestParameters.createVaultMarketDcmLinkRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketDcmLinkRequest','Required parameter requestParameters.createVaultMarketDcmLinkRequest was null or undefined when calling createVaultMarketDcmLink.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3534,6 +3905,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketDcmLinkRequestToJSON(requestParameters.createVaultMarketDcmLinkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketDcmLinkResponseFromJSON(jsonValue));
@@ -3542,18 +3914,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Link a partner exchange account to your account (or to a firm sub-account you manage, `subaccountId`) so Crossly can show its positions: `accountRef` (the account id there) and `code` (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it.
      */
-    async createVaultMarketDcmLink(initOverrides?: RequestInit): Promise<CreateVaultMarketDcmLinkResponse> {
-        const response = await this.createVaultMarketDcmLinkRaw(initOverrides);
+    async createVaultMarketDcmLink(requestParameters: CreateVaultMarketDcmLinkOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketDcmLinkResponse> {
+        const response = await this.createVaultMarketDcmLinkRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Unlink the partner exchange account from your account (or the firm sub-account `subaccountId`): Crossly stops reading it and its hedges leave portfolio margin.
      */
-    async createVaultMarketDcmUnlinkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketDcmUnlinkResponse>> {
+    async createVaultMarketDcmUnlinkRaw(requestParameters: CreateVaultMarketDcmUnlinkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketDcmUnlinkResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3568,6 +3942,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketDcmUnlinkRequestToJSON(requestParameters.createVaultMarketDcmUnlinkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketDcmUnlinkResponseFromJSON(jsonValue));
@@ -3576,8 +3951,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Unlink the partner exchange account from your account (or the firm sub-account `subaccountId`): Crossly stops reading it and its hedges leave portfolio margin.
      */
-    async createVaultMarketDcmUnlink(initOverrides?: RequestInit): Promise<CreateVaultMarketDcmUnlinkResponse> {
-        const response = await this.createVaultMarketDcmUnlinkRaw(initOverrides);
+    async createVaultMarketDcmUnlink(requestParameters: CreateVaultMarketDcmUnlinkOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateVaultMarketDcmUnlinkResponse> {
+        const response = await this.createVaultMarketDcmUnlinkRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3826,10 +4201,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing).
      */
-    async createVaultMarketEntityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketEntityResponse>> {
+    async createVaultMarketEntityRaw(requestParameters: CreateVaultMarketEntityOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketEntityResponse>> {
+        if (requestParameters.createVaultMarketEntityRequest === null || requestParameters.createVaultMarketEntityRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketEntityRequest','Required parameter requestParameters.createVaultMarketEntityRequest was null or undefined when calling createVaultMarketEntity.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3844,6 +4225,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketEntityRequestToJSON(requestParameters.createVaultMarketEntityRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketEntityResponseFromJSON(jsonValue));
@@ -3852,8 +4234,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing).
      */
-    async createVaultMarketEntity(initOverrides?: RequestInit): Promise<CreateVaultMarketEntityResponse> {
-        const response = await this.createVaultMarketEntityRaw(initOverrides);
+    async createVaultMarketEntity(requestParameters: CreateVaultMarketEntityOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketEntityResponse> {
+        const response = await this.createVaultMarketEntityRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3898,14 +4280,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin or risk: the firm kill switch. Halts the entity (no `subaccountId`) or one sub-account: open orders on it are cancelled and no new ones are placed until cleared.
      */
-    async createVaultMarketEntityHaltRaw(requestParameters: CreateVaultMarketEntityHaltRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketEntityHaltResponse>> {
+    async createVaultMarketEntityHaltRaw(requestParameters: CreateVaultMarketEntityHaltOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketEntityHaltResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketEntityHalt.');
+        }
+
+        if (requestParameters.createVaultMarketEntityHaltRequest === null || requestParameters.createVaultMarketEntityHaltRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketEntityHaltRequest','Required parameter requestParameters.createVaultMarketEntityHaltRequest was null or undefined when calling createVaultMarketEntityHalt.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3920,6 +4308,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketEntityHaltRequestToJSON(requestParameters.createVaultMarketEntityHaltRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketEntityHaltResponseFromJSON(jsonValue));
@@ -3928,7 +4317,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin or risk: the firm kill switch. Halts the entity (no `subaccountId`) or one sub-account: open orders on it are cancelled and no new ones are placed until cleared.
      */
-    async createVaultMarketEntityHalt(requestParameters: CreateVaultMarketEntityHaltRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketEntityHaltResponse> {
+    async createVaultMarketEntityHalt(requestParameters: CreateVaultMarketEntityHaltOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketEntityHaltResponse> {
         const response = await this.createVaultMarketEntityHaltRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3983,9 +4372,15 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketEntityInvitation.');
         }
 
+        if (requestParameters.createWorldSpaceRequestByUserIdRequest === null || requestParameters.createWorldSpaceRequestByUserIdRequest === undefined) {
+            throw new runtime.RequiredError('createWorldSpaceRequestByUserIdRequest','Required parameter requestParameters.createWorldSpaceRequestByUserIdRequest was null or undefined when calling createVaultMarketEntityInvitation.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4000,6 +4395,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldSpaceRequestByUserIdRequestToJSON(requestParameters.createWorldSpaceRequestByUserIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketEntityResponseFromJSON(jsonValue));
@@ -4054,14 +4450,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: invite a Crossly user by email as admin, trader, risk, ops or viewer (a viewer can never place an order), with optional limits and sub-accounts.
      */
-    async createVaultMarketEntityMemberRaw(requestParameters: CreateVaultMarketEntityMemberRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
+    async createVaultMarketEntityMemberRaw(requestParameters: CreateVaultMarketEntityMemberOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketEntityMember.');
+        }
+
+        if (requestParameters.createVaultMarketEntityMemberRequest === null || requestParameters.createVaultMarketEntityMemberRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketEntityMemberRequest','Required parameter requestParameters.createVaultMarketEntityMemberRequest was null or undefined when calling createVaultMarketEntityMember.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4076,6 +4478,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketEntityMemberRequestToJSON(requestParameters.createVaultMarketEntityMemberRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketEntityByIdResponseFromJSON(jsonValue));
@@ -4084,7 +4487,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: invite a Crossly user by email as admin, trader, risk, ops or viewer (a viewer can never place an order), with optional limits and sub-accounts.
      */
-    async createVaultMarketEntityMember(requestParameters: CreateVaultMarketEntityMemberRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
+    async createVaultMarketEntityMember(requestParameters: CreateVaultMarketEntityMemberOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
         const response = await this.createVaultMarketEntityMemberRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4092,14 +4495,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: open a sub-account once the custodian approved the entity; its limits are held to the entity\'s caps.
      */
-    async createVaultMarketEntitySubaccountRaw(requestParameters: CreateVaultMarketEntitySubaccountRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
+    async createVaultMarketEntitySubaccountRaw(requestParameters: CreateVaultMarketEntitySubaccountOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketEntitySubaccount.');
+        }
+
+        if (requestParameters.createVaultMarketEntitySubaccountRequest === null || requestParameters.createVaultMarketEntitySubaccountRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketEntitySubaccountRequest','Required parameter requestParameters.createVaultMarketEntitySubaccountRequest was null or undefined when calling createVaultMarketEntitySubaccount.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4114,6 +4523,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketEntitySubaccountRequestToJSON(requestParameters.createVaultMarketEntitySubaccountRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketEntityByIdResponseFromJSON(jsonValue));
@@ -4122,7 +4532,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: open a sub-account once the custodian approved the entity; its limits are held to the entity\'s caps.
      */
-    async createVaultMarketEntitySubaccount(requestParameters: CreateVaultMarketEntitySubaccountRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
+    async createVaultMarketEntitySubaccount(requestParameters: CreateVaultMarketEntitySubaccountOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
         const response = await this.createVaultMarketEntitySubaccountRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4354,10 +4764,12 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Start Grade to Vault on one item (`source` inventory or vault_unit). With `runId` the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade.
      */
-    async createVaultMarketGradeToVaultRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradeToVaultItem>> {
+    async createVaultMarketGradeToVaultRaw(requestParameters: CreateVaultMarketGradeToVaultOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradeToVaultItem>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4372,6 +4784,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketGradeToVaultRequestToJSON(requestParameters.createVaultMarketGradeToVaultRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketGradeToVaultItemFromJSON(jsonValue));
@@ -4380,15 +4793,15 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Start Grade to Vault on one item (`source` inventory or vault_unit). With `runId` the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade.
      */
-    async createVaultMarketGradeToVault(initOverrides?: RequestInit): Promise<ListVaultMarketGradeToVaultItem> {
-        const response = await this.createVaultMarketGradeToVaultRaw(initOverrides);
+    async createVaultMarketGradeToVault(requestParameters: CreateVaultMarketGradeToVaultOperationRequest = {}, initOverrides?: RequestInit): Promise<ListVaultMarketGradeToVaultItem> {
+        const response = await this.createVaultMarketGradeToVaultRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Book (or re-book) the grading slot of a flow still at \"picked\". Answers 503 naming GRADING_HUB_ADDRESS when runs are not open.
      */
-    async createVaultMarketGradeToVaultBookRaw(requestParameters: CreateVaultMarketGradeToVaultBookRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradeToVaultItem>> {
+    async createVaultMarketGradeToVaultBookRaw(requestParameters: CreateVaultMarketGradeToVaultBookOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradeToVaultItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketGradeToVaultBook.');
         }
@@ -4396,6 +4809,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4410,6 +4825,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketGradeToVaultBookRequestToJSON(requestParameters.createVaultMarketGradeToVaultBookRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketGradeToVaultItemFromJSON(jsonValue));
@@ -4418,7 +4834,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Book (or re-book) the grading slot of a flow still at \"picked\". Answers 503 naming GRADING_HUB_ADDRESS when runs are not open.
      */
-    async createVaultMarketGradeToVaultBook(requestParameters: CreateVaultMarketGradeToVaultBookRequest, initOverrides?: RequestInit): Promise<ListVaultMarketGradeToVaultItem> {
+    async createVaultMarketGradeToVaultBook(requestParameters: CreateVaultMarketGradeToVaultBookOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketGradeToVaultItem> {
         const response = await this.createVaultMarketGradeToVaultBookRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4502,7 +4918,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Confirm the price for the grade the unit came back with (`confirm: true`, `gradeKey` must match the unit). Pre-trade risk, the price band and the ID line apply, then one shelf ask is placed on the Crossly order book.
      */
-    async createVaultMarketGradeToVaultListRaw(requestParameters: CreateVaultMarketGradeToVaultListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradeToVaultItem>> {
+    async createVaultMarketGradeToVaultListRaw(requestParameters: CreateVaultMarketGradeToVaultListOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradeToVaultItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketGradeToVaultList.');
         }
@@ -4510,6 +4926,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4524,6 +4942,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketGradeToVaultListRequestToJSON(requestParameters.createVaultMarketGradeToVaultListRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketGradeToVaultItemFromJSON(jsonValue));
@@ -4532,7 +4951,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Confirm the price for the grade the unit came back with (`confirm: true`, `gradeKey` must match the unit). Pre-trade risk, the price band and the ID line apply, then one shelf ask is placed on the Crossly order book.
      */
-    async createVaultMarketGradeToVaultList(requestParameters: CreateVaultMarketGradeToVaultListRequest, initOverrides?: RequestInit): Promise<ListVaultMarketGradeToVaultItem> {
+    async createVaultMarketGradeToVaultList(requestParameters: CreateVaultMarketGradeToVaultListOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketGradeToVaultItem> {
         const response = await this.createVaultMarketGradeToVaultListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4549,6 +4968,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -4562,6 +4983,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateGradingSubmissionShippedRequestToJSON(requestParameters.createGradingSubmissionShippedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketGradeToVaultItemFromJSON(jsonValue));
@@ -6058,10 +6480,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs\' own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
      */
-    async createVaultMarketOptionComboRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionComboResponse>> {
+    async createVaultMarketOptionComboRaw(requestParameters: CreateVaultMarketOptionComboOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionComboResponse>> {
+        if (requestParameters.createVaultMarketOptionComboRequest === null || requestParameters.createVaultMarketOptionComboRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketOptionComboRequest','Required parameter requestParameters.createVaultMarketOptionComboRequest was null or undefined when calling createVaultMarketOptionCombo.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -6076,6 +6504,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketOptionComboRequestToJSON(requestParameters.createVaultMarketOptionComboRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionComboResponseFromJSON(jsonValue));
@@ -6084,8 +6513,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs\' own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
      */
-    async createVaultMarketOptionCombo(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionComboResponse> {
-        const response = await this.createVaultMarketOptionComboRaw(initOverrides);
+    async createVaultMarketOptionCombo(requestParameters: CreateVaultMarketOptionComboOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionComboResponse> {
+        const response = await this.createVaultMarketOptionComboRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -6316,10 +6745,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Write a covered call: lock a stored vault unit (`vaultItemId`) as collateral and sell up to one call on its own key (`contractId`, `quantity` <= 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
      */
-    async createVaultMarketOptionCoveredCallRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionCoveredCallResponse>> {
+    async createVaultMarketOptionCoveredCallRaw(requestParameters: CreateVaultMarketOptionCoveredCallOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionCoveredCallResponse>> {
+        if (requestParameters.createVaultMarketOptionCoveredCallRequest === null || requestParameters.createVaultMarketOptionCoveredCallRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketOptionCoveredCallRequest','Required parameter requestParameters.createVaultMarketOptionCoveredCallRequest was null or undefined when calling createVaultMarketOptionCoveredCall.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -6334,6 +6769,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketOptionCoveredCallRequestToJSON(requestParameters.createVaultMarketOptionCoveredCallRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionCoveredCallResponseFromJSON(jsonValue));
@@ -6342,8 +6778,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Write a covered call: lock a stored vault unit (`vaultItemId`) as collateral and sell up to one call on its own key (`contractId`, `quantity` <= 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
      */
-    async createVaultMarketOptionCoveredCall(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionCoveredCallResponse> {
-        const response = await this.createVaultMarketOptionCoveredCallRaw(initOverrides);
+    async createVaultMarketOptionCoveredCall(requestParameters: CreateVaultMarketOptionCoveredCallOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionCoveredCallResponse> {
+        const response = await this.createVaultMarketOptionCoveredCallRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -6490,10 +6926,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place an options order: `contractId`, `side`, `quantity` in contracts (three decimals), a `priceCents` or an `iv` (`quoteMode`), `tif` gtc / gtd (with `expiresAt`) / ioc, `postOnly`. Idempotent on `clientOrderId`. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its `termsVersion`). `subaccountId` trades for a firm sub-account you may trade.
      */
-    async createVaultMarketOptionOrderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionOrderResponse>> {
+    async createVaultMarketOptionOrderRaw(requestParameters: CreateVaultMarketOptionOrderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionOrderResponse>> {
+        if (requestParameters.createVaultMarketOptionOrderRequest === null || requestParameters.createVaultMarketOptionOrderRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketOptionOrderRequest','Required parameter requestParameters.createVaultMarketOptionOrderRequest was null or undefined when calling createVaultMarketOptionOrder.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -6508,6 +6950,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketOptionOrderRequestToJSON(requestParameters.createVaultMarketOptionOrderRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionOrderResponseFromJSON(jsonValue));
@@ -6516,8 +6959,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place an options order: `contractId`, `side`, `quantity` in contracts (three decimals), a `priceCents` or an `iv` (`quoteMode`), `tif` gtc / gtd (with `expiresAt`) / ioc, `postOnly`. Idempotent on `clientOrderId`. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its `termsVersion`). `subaccountId` trades for a firm sub-account you may trade.
      */
-    async createVaultMarketOptionOrder(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionOrderResponse> {
-        const response = await this.createVaultMarketOptionOrderRaw(initOverrides);
+    async createVaultMarketOptionOrder(requestParameters: CreateVaultMarketOptionOrderOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionOrderResponse> {
+        const response = await this.createVaultMarketOptionOrderRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -6702,10 +7145,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Price a ticket without placing it: give a price per contract or an implied vol (`quoteMode`), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
      */
-    async createVaultMarketOptionQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionQuoteResponse>> {
+    async createVaultMarketOptionQuoteRaw(requestParameters: CreateVaultMarketOptionQuoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionQuoteResponse>> {
+        if (requestParameters.createVaultMarketOptionQuoteRequest === null || requestParameters.createVaultMarketOptionQuoteRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketOptionQuoteRequest','Required parameter requestParameters.createVaultMarketOptionQuoteRequest was null or undefined when calling createVaultMarketOptionQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -6720,6 +7169,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketOptionQuoteRequestToJSON(requestParameters.createVaultMarketOptionQuoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionQuoteResponseFromJSON(jsonValue));
@@ -6728,8 +7178,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Price a ticket without placing it: give a price per contract or an implied vol (`quoteMode`), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
      */
-    async createVaultMarketOptionQuote(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionQuoteResponse> {
-        const response = await this.createVaultMarketOptionQuoteRaw(initOverrides);
+    async createVaultMarketOptionQuote(requestParameters: CreateVaultMarketOptionQuoteOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionQuoteResponse> {
+        const response = await this.createVaultMarketOptionQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -6922,10 +7372,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. `practice` rolls a practice position.
      */
-    async createVaultMarketOptionRollRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionRollResponse>> {
+    async createVaultMarketOptionRollRaw(requestParameters: CreateVaultMarketOptionRollOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketOptionRollResponse>> {
+        if (requestParameters.createVaultMarketOptionRollRequest === null || requestParameters.createVaultMarketOptionRollRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketOptionRollRequest','Required parameter requestParameters.createVaultMarketOptionRollRequest was null or undefined when calling createVaultMarketOptionRoll.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -6940,6 +7396,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketOptionRollRequestToJSON(requestParameters.createVaultMarketOptionRollRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketOptionRollResponseFromJSON(jsonValue));
@@ -6948,8 +7405,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. `practice` rolls a practice position.
      */
-    async createVaultMarketOptionRoll(initOverrides?: RequestInit): Promise<CreateVaultMarketOptionRollResponse> {
-        const response = await this.createVaultMarketOptionRollRaw(initOverrides);
+    async createVaultMarketOptionRoll(requestParameters: CreateVaultMarketOptionRollOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketOptionRollResponse> {
+        const response = await this.createVaultMarketOptionRollRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -7066,7 +7523,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Borrower: look for a cheaper lender. A refinancing auction runs for `hours` (1-72, default 24); the rate a new lender gets climbs from `startAprBps` (default half the loan rate) to just under the loan rate now. The first lender to take it pays your lender off and the loan carries on at that lower rate. Nobody by the end: nothing changes.
      */
-    async createVaultMarketP2pLoanRefiAuctionRaw(requestParameters: CreateVaultMarketP2pLoanRefiAuctionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
+    async createVaultMarketP2pLoanRefiAuctionRaw(requestParameters: CreateVaultMarketP2pLoanRefiAuctionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketP2pLoanRefiAuction.');
         }
@@ -7074,6 +7531,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -7088,6 +7547,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketP2pLoanRefiAuctionRequestToJSON(requestParameters.createVaultMarketP2pLoanRefiAuctionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketP2pLoanResponseFromJSON(jsonValue));
@@ -7096,7 +7556,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Borrower: look for a cheaper lender. A refinancing auction runs for `hours` (1-72, default 24); the rate a new lender gets climbs from `startAprBps` (default half the loan rate) to just under the loan rate now. The first lender to take it pays your lender off and the loan carries on at that lower rate. Nobody by the end: nothing changes.
      */
-    async createVaultMarketP2pLoanRefiAuction(requestParameters: CreateVaultMarketP2pLoanRefiAuctionRequest, initOverrides?: RequestInit): Promise<GetVaultMarketP2pLoanResponse> {
+    async createVaultMarketP2pLoanRefiAuction(requestParameters: CreateVaultMarketP2pLoanRefiAuctionOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketP2pLoanResponse> {
         const response = await this.createVaultMarketP2pLoanRefiAuctionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7142,7 +7602,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Take over a loan in a refinancing auction (a lender call or a borrower search for a cheaper lender): you pay the old lender everything owed now (refused above `maxPayoffCents`), which becomes your loan to the same borrower at the auction rate now. Needs a verified ID, an active account and the current lending terms. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketP2pLoanRefinanceRaw(requestParameters: CreateVaultMarketP2pLoanRefinanceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
+    async createVaultMarketP2pLoanRefinanceRaw(requestParameters: CreateVaultMarketP2pLoanRefinanceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketP2pLoanRefinance.');
         }
@@ -7150,6 +7610,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -7164,6 +7626,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketP2pLoanRefinanceRequestToJSON(requestParameters.createVaultMarketP2pLoanRefinanceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketP2pLoanResponseFromJSON(jsonValue));
@@ -7172,7 +7635,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Take over a loan in a refinancing auction (a lender call or a borrower search for a cheaper lender): you pay the old lender everything owed now (refused above `maxPayoffCents`), which becomes your loan to the same borrower at the auction rate now. Needs a verified ID, an active account and the current lending terms. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketP2pLoanRefinance(requestParameters: CreateVaultMarketP2pLoanRefinanceRequest, initOverrides?: RequestInit): Promise<GetVaultMarketP2pLoanResponse> {
+    async createVaultMarketP2pLoanRefinance(requestParameters: CreateVaultMarketP2pLoanRefinanceOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketP2pLoanResponse> {
         const response = await this.createVaultMarketP2pLoanRefinanceRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7180,7 +7643,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Borrower: repay from your custodian account to the lender. Without `amountCents`, in full (principal plus interest to the second; the unit is free once the custodian has it). With `amountCents` below what is owed, a part payment: interest first, then principal, at least the interest owed now and at least $1; the loan stays open on the principal left. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketP2pLoanRepayRaw(requestParameters: CreateVaultMarketP2pLoanRepayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
+    async createVaultMarketP2pLoanRepayRaw(requestParameters: CreateVaultMarketP2pLoanRepayOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketP2pLoanRepay.');
         }
@@ -7188,6 +7651,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -7202,6 +7667,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketP2pLoanRepayRequestToJSON(requestParameters.createVaultMarketP2pLoanRepayRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketP2pLoanResponseFromJSON(jsonValue));
@@ -7210,7 +7676,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Borrower: repay from your custodian account to the lender. Without `amountCents`, in full (principal plus interest to the second; the unit is free once the custodian has it). With `amountCents` below what is owed, a part payment: interest first, then principal, at least the interest owed now and at least $1; the loan stays open on the principal left. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketP2pLoanRepay(requestParameters: CreateVaultMarketP2pLoanRepayRequest, initOverrides?: RequestInit): Promise<GetVaultMarketP2pLoanResponse> {
+    async createVaultMarketP2pLoanRepay(requestParameters: CreateVaultMarketP2pLoanRepayOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketP2pLoanResponse> {
         const response = await this.createVaultMarketP2pLoanRepayRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7218,10 +7684,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Offer to lend: `principalCents` per loan at `aprBps` a year against an item (`bookKey`) or one unit (`vaultItemId`), for up to `maxLoans` loans, lasting `expiresInDays` (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms.
      */
-    async createVaultMarketP2pOfferRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketP2pOffersItem>> {
+    async createVaultMarketP2pOfferRaw(requestParameters: CreateVaultMarketP2pOfferOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketP2pOffersItem>> {
+        if (requestParameters.createVaultMarketP2pOfferRequest === null || requestParameters.createVaultMarketP2pOfferRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketP2pOfferRequest','Required parameter requestParameters.createVaultMarketP2pOfferRequest was null or undefined when calling createVaultMarketP2pOffer.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -7236,6 +7708,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketP2pOfferRequestToJSON(requestParameters.createVaultMarketP2pOfferRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketP2pOffersItemFromJSON(jsonValue));
@@ -7244,8 +7717,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Offer to lend: `principalCents` per loan at `aprBps` a year against an item (`bookKey`) or one unit (`vaultItemId`), for up to `maxLoans` loans, lasting `expiresInDays` (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms.
      */
-    async createVaultMarketP2pOffer(initOverrides?: RequestInit): Promise<ListVaultMarketP2pOffersItem> {
-        const response = await this.createVaultMarketP2pOfferRaw(initOverrides);
+    async createVaultMarketP2pOffer(requestParameters: CreateVaultMarketP2pOfferOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketP2pOffersItem> {
+        const response = await this.createVaultMarketP2pOfferRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -7290,14 +7763,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Borrow: take an offer against one of your stored vault units (`vaultItemId`). The unit is pledged (no listing, lending or withdrawal) and the principal is paid into your custodian account. Interest accrues by the second; repay any time. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketP2pOfferTakeRaw(requestParameters: CreateVaultMarketP2pOfferTakeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
+    async createVaultMarketP2pOfferTakeRaw(requestParameters: CreateVaultMarketP2pOfferTakeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketP2pLoanResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketP2pOfferTake.');
+        }
+
+        if (requestParameters.createVaultMarketP2pOfferTakeRequest === null || requestParameters.createVaultMarketP2pOfferTakeRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketP2pOfferTakeRequest','Required parameter requestParameters.createVaultMarketP2pOfferTakeRequest was null or undefined when calling createVaultMarketP2pOfferTake.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -7312,6 +7791,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketP2pOfferTakeRequestToJSON(requestParameters.createVaultMarketP2pOfferTakeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketP2pLoanResponseFromJSON(jsonValue));
@@ -7320,7 +7800,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Borrow: take an offer against one of your stored vault units (`vaultItemId`). The unit is pledged (no listing, lending or withdrawal) and the principal is paid into your custodian account. Interest accrues by the second; repay any time. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketP2pOfferTake(requestParameters: CreateVaultMarketP2pOfferTakeRequest, initOverrides?: RequestInit): Promise<GetVaultMarketP2pLoanResponse> {
+    async createVaultMarketP2pOfferTake(requestParameters: CreateVaultMarketP2pOfferTakeOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketP2pLoanResponse> {
         const response = await this.createVaultMarketP2pOfferTakeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -7608,10 +8088,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited.
      */
-    async createVaultMarketPortfolioMarginEnrollRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse>> {
+    async createVaultMarketPortfolioMarginEnrollRaw(requestParameters: CreateVaultMarketPortfolioMarginEnrollRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse>> {
+        if (requestParameters.createVaultMarketPortfolioMarginLeaveRequest === null || requestParameters.createVaultMarketPortfolioMarginLeaveRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketPortfolioMarginLeaveRequest','Required parameter requestParameters.createVaultMarketPortfolioMarginLeaveRequest was null or undefined when calling createVaultMarketPortfolioMarginEnroll.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -7626,6 +8112,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketPortfolioMarginLeaveRequestToJSON(requestParameters.createVaultMarketPortfolioMarginLeaveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPortfolioMarginEnrollResponseFromJSON(jsonValue));
@@ -7634,18 +8121,24 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited.
      */
-    async createVaultMarketPortfolioMarginEnroll(initOverrides?: RequestInit): Promise<CreateVaultMarketPortfolioMarginEnrollResponse> {
-        const response = await this.createVaultMarketPortfolioMarginEnrollRaw(initOverrides);
+    async createVaultMarketPortfolioMarginEnroll(requestParameters: CreateVaultMarketPortfolioMarginEnrollRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPortfolioMarginEnrollResponse> {
+        const response = await this.createVaultMarketPortfolioMarginEnrollRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited.
      */
-    async createVaultMarketPortfolioMarginLeaveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse>> {
+    async createVaultMarketPortfolioMarginLeaveRaw(requestParameters: CreateVaultMarketPortfolioMarginLeaveOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse>> {
+        if (requestParameters.createVaultMarketPortfolioMarginLeaveRequest === null || requestParameters.createVaultMarketPortfolioMarginLeaveRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketPortfolioMarginLeaveRequest','Required parameter requestParameters.createVaultMarketPortfolioMarginLeaveRequest was null or undefined when calling createVaultMarketPortfolioMarginLeave.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -7660,6 +8153,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketPortfolioMarginLeaveRequestToJSON(requestParameters.createVaultMarketPortfolioMarginLeaveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketPortfolioMarginLeaveResponseFromJSON(jsonValue));
@@ -7668,8 +8162,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited.
      */
-    async createVaultMarketPortfolioMarginLeave(initOverrides?: RequestInit): Promise<CreateVaultMarketPortfolioMarginLeaveResponse> {
-        const response = await this.createVaultMarketPortfolioMarginLeaveRaw(initOverrides);
+    async createVaultMarketPortfolioMarginLeave(requestParameters: CreateVaultMarketPortfolioMarginLeaveOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketPortfolioMarginLeaveResponse> {
+        const response = await this.createVaultMarketPortfolioMarginLeaveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -9024,10 +9518,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg `displayQuantity`; a TWAP or VWAP algo over a window. Idempotent on `clientOrderId`. `subaccountId` trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it).
      */
-    async createVaultMarketProOrderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketProOrderResponse>> {
+    async createVaultMarketProOrderRaw(requestParameters: CreateVaultMarketProOrderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketProOrderResponse>> {
+        if (requestParameters.createVaultMarketProOrderRequest === null || requestParameters.createVaultMarketProOrderRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketProOrderRequest','Required parameter requestParameters.createVaultMarketProOrderRequest was null or undefined when calling createVaultMarketProOrder.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -9042,6 +9542,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketProOrderRequestToJSON(requestParameters.createVaultMarketProOrderRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketProOrderResponseFromJSON(jsonValue));
@@ -9050,8 +9551,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg `displayQuantity`; a TWAP or VWAP algo over a window. Idempotent on `clientOrderId`. `subaccountId` trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it).
      */
-    async createVaultMarketProOrder(initOverrides?: RequestInit): Promise<CreateVaultMarketProOrderResponse> {
-        const response = await this.createVaultMarketProOrderRaw(initOverrides);
+    async createVaultMarketProOrder(requestParameters: CreateVaultMarketProOrderOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketProOrderResponse> {
+        const response = await this.createVaultMarketProOrderRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -9096,10 +9597,12 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Cancel every open order, or every one on a book key. Returns `{ cancelled }`.
      */
-    async createVaultMarketProOrderCancelAllRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketProOrderCancelAllResponse>> {
+    async createVaultMarketProOrderCancelAllRaw(requestParameters: CreateVaultMarketProOrderCancelAllOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketProOrderCancelAllResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -9114,6 +9617,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketProOrderCancelAllRequestToJSON(requestParameters.createVaultMarketProOrderCancelAllRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketProOrderCancelAllResponseFromJSON(jsonValue));
@@ -9122,8 +9626,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Cancel every open order, or every one on a book key. Returns `{ cancelled }`.
      */
-    async createVaultMarketProOrderCancelAll(initOverrides?: RequestInit): Promise<CreateVaultMarketProOrderCancelAllResponse> {
-        const response = await this.createVaultMarketProOrderCancelAllRaw(initOverrides);
+    async createVaultMarketProOrderCancelAll(requestParameters: CreateVaultMarketProOrderCancelAllOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateVaultMarketProOrderCancelAllResponse> {
+        const response = await this.createVaultMarketProOrderCancelAllRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -9638,10 +10142,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Start auto-invest: `amountCents` ($5-$10,000) `every` week or month into `seriesIds` (equal weights) or `targets` (seriesId + weightBps summing to 10,000) or a `basketId` (with `rebalance` to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to `maxPremiumBps` over the indicative value. `practice` runs it on paper.
      */
-    async createVaultMarketShareAutoInvestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareAutoInvestItem>> {
+    async createVaultMarketShareAutoInvestRaw(requestParameters: CreateVaultMarketShareAutoInvestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareAutoInvestItem>> {
+        if (requestParameters.createVaultMarketShareAutoInvestRequest === null || requestParameters.createVaultMarketShareAutoInvestRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareAutoInvestRequest','Required parameter requestParameters.createVaultMarketShareAutoInvestRequest was null or undefined when calling createVaultMarketShareAutoInvest.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -9656,6 +10166,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareAutoInvestRequestToJSON(requestParameters.createVaultMarketShareAutoInvestRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareAutoInvestItemFromJSON(jsonValue));
@@ -9664,8 +10175,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Start auto-invest: `amountCents` ($5-$10,000) `every` week or month into `seriesIds` (equal weights) or `targets` (seriesId + weightBps summing to 10,000) or a `basketId` (with `rebalance` to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to `maxPremiumBps` over the indicative value. `practice` runs it on paper.
      */
-    async createVaultMarketShareAutoInvest(initOverrides?: RequestInit): Promise<ListVaultMarketShareAutoInvestItem> {
-        const response = await this.createVaultMarketShareAutoInvestRaw(initOverrides);
+    async createVaultMarketShareAutoInvest(requestParameters: CreateVaultMarketShareAutoInvestOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareAutoInvestItem> {
+        const response = await this.createVaultMarketShareAutoInvestRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -9710,14 +10221,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Change a plan (amount, cadence, series or weights, cap, rebalance) or set its `status` active, paused or cancelled.
      */
-    async createVaultMarketShareAutoInvestUpdateRaw(requestParameters: CreateVaultMarketShareAutoInvestUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareAutoInvestItem>> {
+    async createVaultMarketShareAutoInvestUpdateRaw(requestParameters: CreateVaultMarketShareAutoInvestUpdateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareAutoInvestItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareAutoInvestUpdate.');
+        }
+
+        if (requestParameters.createVaultMarketShareAutoInvestUpdateRequest === null || requestParameters.createVaultMarketShareAutoInvestUpdateRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareAutoInvestUpdateRequest','Required parameter requestParameters.createVaultMarketShareAutoInvestUpdateRequest was null or undefined when calling createVaultMarketShareAutoInvestUpdate.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -9732,6 +10249,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareAutoInvestUpdateRequestToJSON(requestParameters.createVaultMarketShareAutoInvestUpdateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareAutoInvestItemFromJSON(jsonValue));
@@ -9740,7 +10258,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Change a plan (amount, cadence, series or weights, cap, rebalance) or set its `status` active, paused or cancelled.
      */
-    async createVaultMarketShareAutoInvestUpdate(requestParameters: CreateVaultMarketShareAutoInvestUpdateRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareAutoInvestItem> {
+    async createVaultMarketShareAutoInvestUpdate(requestParameters: CreateVaultMarketShareAutoInvestUpdateOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareAutoInvestItem> {
         const response = await this.createVaultMarketShareAutoInvestUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9748,14 +10266,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Buy a basket once: `amountCents` split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to `maxPremiumBps`). `practice` buys on paper.
      */
-    async createVaultMarketShareBasketBuyRaw(requestParameters: CreateVaultMarketShareBasketBuyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBasketBuyResponse>> {
+    async createVaultMarketShareBasketBuyRaw(requestParameters: CreateVaultMarketShareBasketBuyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBasketBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareBasketBuy.');
+        }
+
+        if (requestParameters.createVaultMarketShareBasketBuyRequest === null || requestParameters.createVaultMarketShareBasketBuyRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareBasketBuyRequest','Required parameter requestParameters.createVaultMarketShareBasketBuyRequest was null or undefined when calling createVaultMarketShareBasketBuy.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -9770,6 +10294,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareBasketBuyRequestToJSON(requestParameters.createVaultMarketShareBasketBuyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareBasketBuyResponseFromJSON(jsonValue));
@@ -9778,7 +10303,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Buy a basket once: `amountCents` split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to `maxPremiumBps`). `practice` buys on paper.
      */
-    async createVaultMarketShareBasketBuy(requestParameters: CreateVaultMarketShareBasketBuyRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBasketBuyResponse> {
+    async createVaultMarketShareBasketBuy(requestParameters: CreateVaultMarketShareBasketBuyOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBasketBuyResponse> {
         const response = await this.createVaultMarketShareBasketBuyRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -9824,14 +10349,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Vote `yes` or `no` on a buyout with the shares you held when the vote opened. You can change your vote while it is open.
      */
-    async createVaultMarketShareBuyoutVoteRaw(requestParameters: CreateVaultMarketShareBuyoutVoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> {
+    async createVaultMarketShareBuyoutVoteRaw(requestParameters: CreateVaultMarketShareBuyoutVoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareBuyoutVote.');
+        }
+
+        if (requestParameters.createVaultMarketShareBuyoutVoteRequest === null || requestParameters.createVaultMarketShareBuyoutVoteRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareBuyoutVoteRequest','Required parameter requestParameters.createVaultMarketShareBuyoutVoteRequest was null or undefined when calling createVaultMarketShareBuyoutVote.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -9846,6 +10377,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareBuyoutVoteRequestToJSON(requestParameters.createVaultMarketShareBuyoutVoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareBuyoutFundResponseFromJSON(jsonValue));
@@ -9854,7 +10386,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Vote `yes` or `no` on a buyout with the shares you held when the vote opened. You can change your vote while it is open.
      */
-    async createVaultMarketShareBuyoutVote(requestParameters: CreateVaultMarketShareBuyoutVoteRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBuyoutFundResponse> {
+    async createVaultMarketShareBuyoutVote(requestParameters: CreateVaultMarketShareBuyoutVoteOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBuyoutFundResponse> {
         const response = await this.createVaultMarketShareBuyoutVoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10048,10 +10580,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Open or update your investor account at the venue: accept the current investor terms (`acceptTerms`), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
      */
-    async createVaultMarketShareInvestorRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareInvestorResponse>> {
+    async createVaultMarketShareInvestorRaw(requestParameters: CreateVaultMarketShareInvestorOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketShareInvestorResponse>> {
+        if (requestParameters.createVaultMarketShareInvestorRequest === null || requestParameters.createVaultMarketShareInvestorRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareInvestorRequest','Required parameter requestParameters.createVaultMarketShareInvestorRequest was null or undefined when calling createVaultMarketShareInvestor.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10066,6 +10604,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareInvestorRequestToJSON(requestParameters.createVaultMarketShareInvestorRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketShareInvestorResponseFromJSON(jsonValue));
@@ -10074,8 +10613,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Open or update your investor account at the venue: accept the current investor terms (`acceptTerms`), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
      */
-    async createVaultMarketShareInvestor(initOverrides?: RequestInit): Promise<GetVaultMarketShareInvestorResponse> {
-        const response = await this.createVaultMarketShareInvestorRaw(initOverrides);
+    async createVaultMarketShareInvestor(requestParameters: CreateVaultMarketShareInvestorOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketShareInvestorResponse> {
+        const response = await this.createVaultMarketShareInvestorRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -10197,9 +10736,15 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketSharePaperSeryOrder.');
         }
 
+        if (requestParameters.createVaultMarketShareSeryOrderRequest === null || requestParameters.createVaultMarketShareSeryOrderRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareSeryOrderRequest','Required parameter requestParameters.createVaultMarketShareSeryOrderRequest was null or undefined when calling createVaultMarketSharePaperSeryOrder.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10214,6 +10759,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryOrderRequestToJSON(requestParameters.createVaultMarketShareSeryOrderRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketSharePaperSeryOrderResponseFromJSON(jsonValue));
@@ -10230,14 +10776,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Subscribe with play money to a practice series’ offering.
      */
-    async createVaultMarketSharePaperSerySubscribeRaw(requestParameters: CreateVaultMarketSharePaperSerySubscribeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSharePaperResponse>> {
+    async createVaultMarketSharePaperSerySubscribeRaw(requestParameters: CreateVaultMarketSharePaperSerySubscribeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSharePaperResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketSharePaperSerySubscribe.');
+        }
+
+        if (requestParameters.createVaultMarketSharePaperSerySubscribeRequest === null || requestParameters.createVaultMarketSharePaperSerySubscribeRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketSharePaperSerySubscribeRequest','Required parameter requestParameters.createVaultMarketSharePaperSerySubscribeRequest was null or undefined when calling createVaultMarketSharePaperSerySubscribe.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10252,6 +10804,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketSharePaperSerySubscribeRequestToJSON(requestParameters.createVaultMarketSharePaperSerySubscribeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSharePaperResponseFromJSON(jsonValue));
@@ -10260,7 +10813,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Subscribe with play money to a practice series’ offering.
      */
-    async createVaultMarketSharePaperSerySubscribe(requestParameters: CreateVaultMarketSharePaperSerySubscribeRequest, initOverrides?: RequestInit): Promise<GetVaultMarketSharePaperResponse> {
+    async createVaultMarketSharePaperSerySubscribe(requestParameters: CreateVaultMarketSharePaperSerySubscribeOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketSharePaperResponse> {
         const response = await this.createVaultMarketSharePaperSerySubscribeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10273,9 +10826,15 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareRoomHide.');
         }
 
+        if (requestParameters.reasonRequest === null || requestParameters.reasonRequest === undefined) {
+            throw new runtime.RequiredError('reasonRequest','Required parameter requestParameters.reasonRequest was null or undefined when calling createVaultMarketShareRoomHide.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10290,6 +10849,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequestToJSON(requestParameters.reasonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareRoomHideResponseFromJSON(jsonValue));
@@ -10306,10 +10866,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Propose a Vault Shares series for one of your units (`vaultItemId`), keeping `retainedShares` (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketShareSeryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSeriesItem>> {
+    async createVaultMarketShareSeryRaw(requestParameters: CreateVaultMarketShareSeryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSeriesItem>> {
+        if (requestParameters.createVaultMarketShareSeryRequest === null || requestParameters.createVaultMarketShareSeryRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareSeryRequest','Required parameter requestParameters.createVaultMarketShareSeryRequest was null or undefined when calling createVaultMarketShareSery.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10324,6 +10890,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryRequestToJSON(requestParameters.createVaultMarketShareSeryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSeriesItemFromJSON(jsonValue));
@@ -10332,22 +10899,28 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Propose a Vault Shares series for one of your units (`vaultItemId`), keeping `retainedShares` (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketShareSery(initOverrides?: RequestInit): Promise<ListVaultMarketShareSeriesItem> {
-        const response = await this.createVaultMarketShareSeryRaw(initOverrides);
+    async createVaultMarketShareSery(requestParameters: CreateVaultMarketShareSeryOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSeriesItem> {
+        const response = await this.createVaultMarketShareSeryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bid for the whole item (`offerCents`, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
      */
-    async createVaultMarketShareSeryBuyoutRaw(requestParameters: CreateVaultMarketShareSeryBuyoutRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> {
+    async createVaultMarketShareSeryBuyoutRaw(requestParameters: CreateVaultMarketShareSeryBuyoutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryBuyout.');
+        }
+
+        if (requestParameters.createVaultMarketShareSeryBuyoutRequest === null || requestParameters.createVaultMarketShareSeryBuyoutRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareSeryBuyoutRequest','Required parameter requestParameters.createVaultMarketShareSeryBuyoutRequest was null or undefined when calling createVaultMarketShareSeryBuyout.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10362,6 +10935,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryBuyoutRequestToJSON(requestParameters.createVaultMarketShareSeryBuyoutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareBuyoutFundResponseFromJSON(jsonValue));
@@ -10370,7 +10944,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Bid for the whole item (`offerCents`, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
      */
-    async createVaultMarketShareSeryBuyout(requestParameters: CreateVaultMarketShareSeryBuyoutRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBuyoutFundResponse> {
+    async createVaultMarketShareSeryBuyout(requestParameters: CreateVaultMarketShareSeryBuyoutOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareBuyoutFundResponse> {
         const response = await this.createVaultMarketShareSeryBuyoutRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10378,14 +10952,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Give whole `shares` of a series to someone (`to`: their @handle, email or user id), with an optional `message`. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
      */
-    async createVaultMarketShareSeryGiftRaw(requestParameters: CreateVaultMarketShareSeryGiftRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareGiftsItem>> {
+    async createVaultMarketShareSeryGiftRaw(requestParameters: CreateVaultMarketShareSeryGiftOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareGiftsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryGift.');
+        }
+
+        if (requestParameters.createVaultMarketShareSeryGiftRequest === null || requestParameters.createVaultMarketShareSeryGiftRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareSeryGiftRequest','Required parameter requestParameters.createVaultMarketShareSeryGiftRequest was null or undefined when calling createVaultMarketShareSeryGift.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10400,6 +10980,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryGiftRequestToJSON(requestParameters.createVaultMarketShareSeryGiftRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareGiftsItemFromJSON(jsonValue));
@@ -10408,7 +10989,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Give whole `shares` of a series to someone (`to`: their @handle, email or user id), with an optional `message`. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
      */
-    async createVaultMarketShareSeryGift(requestParameters: CreateVaultMarketShareSeryGiftRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareGiftsItem> {
+    async createVaultMarketShareSeryGift(requestParameters: CreateVaultMarketShareSeryGiftOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareGiftsItem> {
         const response = await this.createVaultMarketShareSeryGiftRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10416,14 +10997,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place an order on a series’ share book: `side`, `type` limit or market (immediate-or-cancel inside a 10% band), `tif` gtc / gtd (`expiresAt`) / ioc, whole `shares` or a buy’s `amountCents` (turned into whole shares at the most it could pay), integer `limitCents` a share, `postOnly`. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketShareSeryOrderRaw(requestParameters: CreateVaultMarketShareSeryOrderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareOrdersItem>> {
+    async createVaultMarketShareSeryOrderRaw(requestParameters: CreateVaultMarketShareSeryOrderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareOrdersItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryOrder.');
+        }
+
+        if (requestParameters.createVaultMarketShareSeryOrderRequest === null || requestParameters.createVaultMarketShareSeryOrderRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareSeryOrderRequest','Required parameter requestParameters.createVaultMarketShareSeryOrderRequest was null or undefined when calling createVaultMarketShareSeryOrder.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10438,6 +11025,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryOrderRequestToJSON(requestParameters.createVaultMarketShareSeryOrderRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareOrdersItemFromJSON(jsonValue));
@@ -10446,7 +11034,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Place an order on a series’ share book: `side`, `type` limit or market (immediate-or-cancel inside a 10% band), `tif` gtc / gtd (`expiresAt`) / ioc, whole `shares` or a buy’s `amountCents` (turned into whole shares at the most it could pay), integer `limitCents` a share, `postOnly`. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketShareSeryOrder(requestParameters: CreateVaultMarketShareSeryOrderRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareOrdersItem> {
+    async createVaultMarketShareSeryOrder(requestParameters: CreateVaultMarketShareSeryOrderOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareOrdersItem> {
         const response = await this.createVaultMarketShareSeryOrderRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10454,7 +11042,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * You hold every share: take the item back whole. With `withdraw`, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
      */
-    async createVaultMarketShareSeryRecombineRaw(requestParameters: CreateVaultMarketShareSeryRecombineRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryRecombineResponse>> {
+    async createVaultMarketShareSeryRecombineRaw(requestParameters: CreateVaultMarketShareSeryRecombineOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryRecombineResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryRecombine.');
         }
@@ -10462,6 +11050,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10476,6 +11066,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryRecombineRequestToJSON(requestParameters.createVaultMarketShareSeryRecombineRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareSeryRecombineResponseFromJSON(jsonValue));
@@ -10484,7 +11075,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * You hold every share: take the item back whole. With `withdraw`, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
      */
-    async createVaultMarketShareSeryRecombine(requestParameters: CreateVaultMarketShareSeryRecombineRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryRecombineResponse> {
+    async createVaultMarketShareSeryRecombine(requestParameters: CreateVaultMarketShareSeryRecombineOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryRecombineResponse> {
         const response = await this.createVaultMarketShareSeryRecombineRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10497,9 +11088,15 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryRoom.');
         }
 
+        if (requestParameters.bodyRequest === null || requestParameters.bodyRequest === undefined) {
+            throw new runtime.RequiredError('bodyRequest','Required parameter requestParameters.bodyRequest was null or undefined when calling createVaultMarketShareSeryRoom.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10514,6 +11111,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: BodyRequestToJSON(requestParameters.bodyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareSeryRoomResponseFromJSON(jsonValue));
@@ -10530,14 +11128,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Subscribe for whole `shares` in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass `jointVaultId`. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketShareSerySubscribeRaw(requestParameters: CreateVaultMarketShareSerySubscribeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSubscriptionsItem>> {
+    async createVaultMarketShareSerySubscribeRaw(requestParameters: CreateVaultMarketShareSerySubscribeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketShareSubscriptionsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSerySubscribe.');
+        }
+
+        if (requestParameters.createVaultMarketShareSerySubscribeRequest === null || requestParameters.createVaultMarketShareSerySubscribeRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareSerySubscribeRequest','Required parameter requestParameters.createVaultMarketShareSerySubscribeRequest was null or undefined when calling createVaultMarketShareSerySubscribe.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10552,6 +11156,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSerySubscribeRequestToJSON(requestParameters.createVaultMarketShareSerySubscribeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketShareSubscriptionsItemFromJSON(jsonValue));
@@ -10560,7 +11165,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Subscribe for whole `shares` in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass `jointVaultId`. Pass `requestId` to make a retry safe.
      */
-    async createVaultMarketShareSerySubscribe(requestParameters: CreateVaultMarketShareSerySubscribeRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSubscriptionsItem> {
+    async createVaultMarketShareSerySubscribe(requestParameters: CreateVaultMarketShareSerySubscribeOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketShareSubscriptionsItem> {
         const response = await this.createVaultMarketShareSerySubscribeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10568,7 +11173,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Stop being told about a drop (`kind` notify) or leave its waitlist (`kind` waitlist).
      */
-    async createVaultMarketShareSeryUnwatchRaw(requestParameters: CreateVaultMarketShareSeryUnwatchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> {
+    async createVaultMarketShareSeryUnwatchRaw(requestParameters: CreateVaultMarketShareSeryUnwatchOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryUnwatch.');
         }
@@ -10576,6 +11181,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10590,6 +11197,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryUnwatchRequestToJSON(requestParameters.createVaultMarketShareSeryUnwatchRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareSeryWatchResponseFromJSON(jsonValue));
@@ -10598,7 +11206,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Stop being told about a drop (`kind` notify) or leave its waitlist (`kind` waitlist).
      */
-    async createVaultMarketShareSeryUnwatch(requestParameters: CreateVaultMarketShareSeryUnwatchRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryWatchResponse> {
+    async createVaultMarketShareSeryUnwatch(requestParameters: CreateVaultMarketShareSeryUnwatchOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryWatchResponse> {
         const response = await this.createVaultMarketShareSeryUnwatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10606,14 +11214,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Post an update on your own item’s series (you are its originator): `kind` story, provenance, condition, appraisal, exhibition or event, a `title`, a `body`, an optional https `mediaUrl`, `holdersOnly`. Holders are told.
      */
-    async createVaultMarketShareSeryUpdateRaw(requestParameters: CreateVaultMarketShareSeryUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
+    async createVaultMarketShareSeryUpdateRaw(requestParameters: CreateVaultMarketShareSeryUpdateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryUpdate.');
+        }
+
+        if (requestParameters.createVaultMarketShareSeryUpdateRequest === null || requestParameters.createVaultMarketShareSeryUpdateRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareSeryUpdateRequest','Required parameter requestParameters.createVaultMarketShareSeryUpdateRequest was null or undefined when calling createVaultMarketShareSeryUpdate.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10628,6 +11242,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryUpdateRequestToJSON(requestParameters.createVaultMarketShareSeryUpdateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => IdResponseFromJSON(jsonValue));
@@ -10636,7 +11251,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Post an update on your own item’s series (you are its originator): `kind` story, provenance, condition, appraisal, exhibition or event, a `title`, a `body`, an optional https `mediaUrl`, `holdersOnly`. Holders are told.
      */
-    async createVaultMarketShareSeryUpdate(requestParameters: CreateVaultMarketShareSeryUpdateRequest, initOverrides?: RequestInit): Promise<IdResponse> {
+    async createVaultMarketShareSeryUpdate(requestParameters: CreateVaultMarketShareSeryUpdateOperationRequest, initOverrides?: RequestInit): Promise<IdResponse> {
         const response = await this.createVaultMarketShareSeryUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10644,14 +11259,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Ask to be told about a drop (`kind` notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (`kind` waitlist, with the `shares` you want).
      */
-    async createVaultMarketShareSeryWatchRaw(requestParameters: CreateVaultMarketShareSeryWatchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> {
+    async createVaultMarketShareSeryWatchRaw(requestParameters: CreateVaultMarketShareSeryWatchOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareSeryWatch.');
+        }
+
+        if (requestParameters.createVaultMarketShareSeryWatchRequest === null || requestParameters.createVaultMarketShareSeryWatchRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketShareSeryWatchRequest','Required parameter requestParameters.createVaultMarketShareSeryWatchRequest was null or undefined when calling createVaultMarketShareSeryWatch.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10666,6 +11287,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareSeryWatchRequestToJSON(requestParameters.createVaultMarketShareSeryWatchRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareSeryWatchResponseFromJSON(jsonValue));
@@ -10674,7 +11296,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Ask to be told about a drop (`kind` notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (`kind` waitlist, with the `shares` you want).
      */
-    async createVaultMarketShareSeryWatch(requestParameters: CreateVaultMarketShareSeryWatchRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryWatchResponse> {
+    async createVaultMarketShareSeryWatch(requestParameters: CreateVaultMarketShareSeryWatchOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareSeryWatchResponse> {
         const response = await this.createVaultMarketShareSeryWatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10758,7 +11380,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Book a place on a viewing day (shareholders only), with up to the day’s `guests`. Bookings close a day before; booking again changes your guests.
      */
-    async createVaultMarketShareViewingBookRaw(requestParameters: CreateVaultMarketShareViewingBookRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareViewingBookResponse>> {
+    async createVaultMarketShareViewingBookRaw(requestParameters: CreateVaultMarketShareViewingBookOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketShareViewingBookResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketShareViewingBook.');
         }
@@ -10766,6 +11388,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10780,6 +11404,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketShareViewingBookRequestToJSON(requestParameters.createVaultMarketShareViewingBookRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketShareViewingBookResponseFromJSON(jsonValue));
@@ -10788,7 +11413,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Book a place on a viewing day (shareholders only), with up to the day’s `guests`. Bookings close a day before; booking again changes your guests.
      */
-    async createVaultMarketShareViewingBook(requestParameters: CreateVaultMarketShareViewingBookRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareViewingBookResponse> {
+    async createVaultMarketShareViewingBook(requestParameters: CreateVaultMarketShareViewingBookOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketShareViewingBookResponse> {
         const response = await this.createVaultMarketShareViewingBookRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10868,7 +11493,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Buy a box\'s prepaid label again after it failed (for example once a ship-from address is saved). A box that has a label keeps it.
      */
-    async createVaultMarketSupplyBatchLabelRaw(requestParameters: CreateVaultMarketSupplyBatchLabelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSupplyBatchResponse>> {
+    async createVaultMarketSupplyBatchLabelRaw(requestParameters: CreateVaultMarketSupplyBatchLabelOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSupplyBatchResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultMarketSupplyBatchLabel.');
         }
@@ -10876,6 +11501,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10890,6 +11517,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketSupplyBatchLabelRequestToJSON(requestParameters.createVaultMarketSupplyBatchLabelRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSupplyBatchResponseFromJSON(jsonValue));
@@ -10898,7 +11526,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Buy a box\'s prepaid label again after it failed (for example once a ship-from address is saved). A box that has a label keeps it.
      */
-    async createVaultMarketSupplyBatchLabel(requestParameters: CreateVaultMarketSupplyBatchLabelRequest, initOverrides?: RequestInit): Promise<GetVaultMarketSupplyBatchResponse> {
+    async createVaultMarketSupplyBatchLabel(requestParameters: CreateVaultMarketSupplyBatchLabelOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketSupplyBatchResponse> {
         const response = await this.createVaultMarketSupplyBatchLabelRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -10944,10 +11572,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live.
      */
-    async createVaultMarketSupplySendRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketSupplySendResponse>> {
+    async createVaultMarketSupplySendRaw(requestParameters: CreateVaultMarketSupplySendOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketSupplySendResponse>> {
+        if (requestParameters.createVaultMarketSupplySendRequest === null || requestParameters.createVaultMarketSupplySendRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketSupplySendRequest','Required parameter requestParameters.createVaultMarketSupplySendRequest was null or undefined when calling createVaultMarketSupplySend.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10962,6 +11596,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketSupplySendRequestToJSON(requestParameters.createVaultMarketSupplySendRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketSupplySendResponseFromJSON(jsonValue));
@@ -10970,18 +11605,24 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live.
      */
-    async createVaultMarketSupplySend(initOverrides?: RequestInit): Promise<CreateVaultMarketSupplySendResponse> {
-        const response = await this.createVaultMarketSupplySendRaw(initOverrides);
+    async createVaultMarketSupplySend(requestParameters: CreateVaultMarketSupplySendOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketSupplySendResponse> {
+        const response = await this.createVaultMarketSupplySendRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Send inventory items to the vault: `method: label` (one box on a prepaid label) or `dropoff` at a partner (`partnerId`, from the finder; you get a counter code). Each item can carry its declared value; `insured` insures the box for it.
      */
-    async createVaultMarketSupplySendInRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketSupplySendInResponse>> {
+    async createVaultMarketSupplySendInRaw(requestParameters: CreateVaultMarketSupplySendInOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketSupplySendInResponse>> {
+        if (requestParameters.createVaultMarketSupplySendInRequest === null || requestParameters.createVaultMarketSupplySendInRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketSupplySendInRequest','Required parameter requestParameters.createVaultMarketSupplySendInRequest was null or undefined when calling createVaultMarketSupplySendIn.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -10996,6 +11637,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketSupplySendInRequestToJSON(requestParameters.createVaultMarketSupplySendInRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketSupplySendInResponseFromJSON(jsonValue));
@@ -11004,8 +11646,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Send inventory items to the vault: `method: label` (one box on a prepaid label) or `dropoff` at a partner (`partnerId`, from the finder; you get a counter code). Each item can carry its declared value; `insured` insures the box for it.
      */
-    async createVaultMarketSupplySendIn(initOverrides?: RequestInit): Promise<CreateVaultMarketSupplySendInResponse> {
-        const response = await this.createVaultMarketSupplySendInRaw(initOverrides);
+    async createVaultMarketSupplySendIn(requestParameters: CreateVaultMarketSupplySendInOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketSupplySendInResponse> {
+        const response = await this.createVaultMarketSupplySendInRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -11342,10 +11984,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money.
      */
-    async createVaultMarketValuationStatementRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketValuationStatementResponse>> {
+    async createVaultMarketValuationStatementRaw(requestParameters: CreateVaultMarketValuationStatementOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketValuationStatementResponse>> {
+        if (requestParameters.createVaultMarketValuationStatementRequest === null || requestParameters.createVaultMarketValuationStatementRequest === undefined) {
+            throw new runtime.RequiredError('createVaultMarketValuationStatementRequest','Required parameter requestParameters.createVaultMarketValuationStatementRequest was null or undefined when calling createVaultMarketValuationStatement.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -11360,6 +12008,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketValuationStatementRequestToJSON(requestParameters.createVaultMarketValuationStatementRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketValuationStatementResponseFromJSON(jsonValue));
@@ -11368,8 +12017,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money.
      */
-    async createVaultMarketValuationStatement(initOverrides?: RequestInit): Promise<CreateVaultMarketValuationStatementResponse> {
-        const response = await this.createVaultMarketValuationStatementRaw(initOverrides);
+    async createVaultMarketValuationStatement(requestParameters: CreateVaultMarketValuationStatementOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultMarketValuationStatementResponse> {
+        const response = await this.createVaultMarketValuationStatementRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -11410,10 +12059,12 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Mint a widget token for one phone (`deviceName`, `installId`); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones.
      */
-    async createVaultMarketWidgetTokenRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketWidgetTokenResponse>> {
+    async createVaultMarketWidgetTokenRaw(requestParameters: CreateVaultMarketWidgetTokenOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultMarketWidgetTokenResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -11428,6 +12079,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultMarketWidgetTokenRequestToJSON(requestParameters.createVaultMarketWidgetTokenRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultMarketWidgetTokenResponseFromJSON(jsonValue));
@@ -11436,15 +12088,15 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Mint a widget token for one phone (`deviceName`, `installId`); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones.
      */
-    async createVaultMarketWidgetToken(initOverrides?: RequestInit): Promise<CreateVaultMarketWidgetTokenResponse> {
-        const response = await this.createVaultMarketWidgetTokenRaw(initOverrides);
+    async createVaultMarketWidgetToken(requestParameters: CreateVaultMarketWidgetTokenOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateVaultMarketWidgetTokenResponse> {
+        const response = await this.createVaultMarketWidgetTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * After your wallet sent the export: read the chain and mark the token live once its one token exists. Pass the `signature` your wallet returned to record it (kept only if it landed).
      */
-    async createVaultReceiptTokenConfirmRaw(requestParameters: CreateVaultReceiptTokenConfirmRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultReceiptTokenConfirmResponse>> {
+    async createVaultReceiptTokenConfirmRaw(requestParameters: CreateVaultReceiptTokenConfirmOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultReceiptTokenConfirmResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultReceiptTokenConfirm.');
         }
@@ -11452,6 +12104,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -11466,6 +12120,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultReceiptTokenConfirmRequestToJSON(requestParameters.createVaultReceiptTokenConfirmRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultReceiptTokenConfirmResponseFromJSON(jsonValue));
@@ -11474,7 +12129,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * After your wallet sent the export: read the chain and mark the token live once its one token exists. Pass the `signature` your wallet returned to record it (kept only if it landed).
      */
-    async createVaultReceiptTokenConfirm(requestParameters: CreateVaultReceiptTokenConfirmRequest, initOverrides?: RequestInit): Promise<CreateVaultReceiptTokenConfirmResponse> {
+    async createVaultReceiptTokenConfirm(requestParameters: CreateVaultReceiptTokenConfirmOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultReceiptTokenConfirmResponse> {
         const response = await this.createVaultReceiptTokenConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -11482,10 +12137,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Send one unit (`vaultItemId`) warehouse receipt to one of your verified Solana wallets (`wallet`) as a token, accepting the current terms (`acceptTerms`). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale.
      */
-    async createVaultReceiptTokenExportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultReceiptTokenExportResponse>> {
+    async createVaultReceiptTokenExportRaw(requestParameters: CreateVaultReceiptTokenExportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultReceiptTokenExportResponse>> {
+        if (requestParameters.createVaultReceiptTokenExportRequest === null || requestParameters.createVaultReceiptTokenExportRequest === undefined) {
+            throw new runtime.RequiredError('createVaultReceiptTokenExportRequest','Required parameter requestParameters.createVaultReceiptTokenExportRequest was null or undefined when calling createVaultReceiptTokenExport.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -11500,6 +12161,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultReceiptTokenExportRequestToJSON(requestParameters.createVaultReceiptTokenExportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultReceiptTokenExportResponseFromJSON(jsonValue));
@@ -11508,22 +12170,28 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Send one unit (`vaultItemId`) warehouse receipt to one of your verified Solana wallets (`wallet`) as a token, accepting the current terms (`acceptTerms`). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale.
      */
-    async createVaultReceiptTokenExport(initOverrides?: RequestInit): Promise<CreateVaultReceiptTokenExportResponse> {
-        const response = await this.createVaultReceiptTokenExportRaw(initOverrides);
+    async createVaultReceiptTokenExport(requestParameters: CreateVaultReceiptTokenExportOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultReceiptTokenExportResponse> {
+        const response = await this.createVaultReceiptTokenExportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Redeem a receipt token held in one of your verified Solana wallets (`wallet`): returns an unsigned base64 burn your wallet signs and sends (it also closes the token account and returns its rent to you). Once it lands, call redeem/confirm and the unit is yours in the vault. Refused while the token is frozen.
      */
-    async createVaultReceiptTokenRedeemRaw(requestParameters: CreateVaultReceiptTokenRedeemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultReceiptTokenRedeemResponse>> {
+    async createVaultReceiptTokenRedeemRaw(requestParameters: CreateVaultReceiptTokenRedeemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultReceiptTokenRedeemResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVaultReceiptTokenRedeem.');
+        }
+
+        if (requestParameters.createVaultReceiptTokenRedeemRequest === null || requestParameters.createVaultReceiptTokenRedeemRequest === undefined) {
+            throw new runtime.RequiredError('createVaultReceiptTokenRedeemRequest','Required parameter requestParameters.createVaultReceiptTokenRedeemRequest was null or undefined when calling createVaultReceiptTokenRedeem.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -11538,6 +12206,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultReceiptTokenRedeemRequestToJSON(requestParameters.createVaultReceiptTokenRedeemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultReceiptTokenRedeemResponseFromJSON(jsonValue));
@@ -11546,7 +12215,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Redeem a receipt token held in one of your verified Solana wallets (`wallet`): returns an unsigned base64 burn your wallet signs and sends (it also closes the token account and returns its rent to you). Once it lands, call redeem/confirm and the unit is yours in the vault. Refused while the token is frozen.
      */
-    async createVaultReceiptTokenRedeem(requestParameters: CreateVaultReceiptTokenRedeemRequest, initOverrides?: RequestInit): Promise<CreateVaultReceiptTokenRedeemResponse> {
+    async createVaultReceiptTokenRedeem(requestParameters: CreateVaultReceiptTokenRedeemOperationRequest, initOverrides?: RequestInit): Promise<CreateVaultReceiptTokenRedeemResponse> {
         const response = await this.createVaultReceiptTokenRedeemRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -11563,6 +12232,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -11576,6 +12247,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultReceiptTokenConfirmRequestToJSON(requestParameters.createVaultReceiptTokenConfirmRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultReceiptTokenRedeemConfirmResponseFromJSON(jsonValue));
@@ -11592,10 +12264,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Put one of your verified Solana wallets (`wallet`) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen.
      */
-    async createVaultReceiptTokenWalletAllowRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse>> {
+    async createVaultReceiptTokenWalletAllowRaw(requestParameters: CreateVaultReceiptTokenWalletAllowRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse>> {
+        if (requestParameters.createVaultReceiptTokenRedeemRequest === null || requestParameters.createVaultReceiptTokenRedeemRequest === undefined) {
+            throw new runtime.RequiredError('createVaultReceiptTokenRedeemRequest','Required parameter requestParameters.createVaultReceiptTokenRedeemRequest was null or undefined when calling createVaultReceiptTokenWalletAllow.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -11610,6 +12288,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVaultReceiptTokenRedeemRequestToJSON(requestParameters.createVaultReceiptTokenRedeemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVaultReceiptTokenWalletAllowResponseFromJSON(jsonValue));
@@ -11618,8 +12297,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Put one of your verified Solana wallets (`wallet`) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen.
      */
-    async createVaultReceiptTokenWalletAllow(initOverrides?: RequestInit): Promise<CreateVaultReceiptTokenWalletAllowResponse> {
-        const response = await this.createVaultReceiptTokenWalletAllowRaw(initOverrides);
+    async createVaultReceiptTokenWalletAllow(requestParameters: CreateVaultReceiptTokenWalletAllowRequest, initOverrides?: RequestInit): Promise<CreateVaultReceiptTokenWalletAllowResponse> {
+        const response = await this.createVaultReceiptTokenWalletAllowRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -14577,7 +15256,19 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling getVaultMarketIndexFeedFunding.');
         }
 
+        if (requestParameters.premiumBps === null || requestParameters.premiumBps === undefined) {
+            throw new runtime.RequiredError('premiumBps','Required parameter requestParameters.premiumBps was null or undefined when calling getVaultMarketIndexFeedFunding.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.premiumBps !== undefined) {
+            queryParameters['premiumBps'] = requestParameters.premiumBps;
+        }
+
+        if (requestParameters.interestBps !== undefined) {
+            queryParameters['interestBps'] = requestParameters.interestBps;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -14616,6 +15307,10 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -17546,8 +18241,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * A server-sent event stream for up to 50 markets (`markets`=id,id): `ready`, then `pm_depth`, `pm_trades`, `pm_probability`, `pm_status` and `pm_settlement`, each carrying its marketId.
      */
-    async getVaultMarketPredictionStreamRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+    async getVaultMarketPredictionStreamRaw(requestParameters: GetVaultMarketPredictionStreamRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.markets === null || requestParameters.markets === undefined) {
+            throw new runtime.RequiredError('markets','Required parameter requestParameters.markets was null or undefined when calling getVaultMarketPredictionStream.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.markets !== undefined) {
+            queryParameters['markets'] = requestParameters.markets;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -17572,8 +18275,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * A server-sent event stream for up to 50 markets (`markets`=id,id): `ready`, then `pm_depth`, `pm_trades`, `pm_probability`, `pm_status` and `pm_settlement`, each carrying its marketId.
      */
-    async getVaultMarketPredictionStream(initOverrides?: RequestInit): Promise<string> {
-        const response = await this.getVaultMarketPredictionStreamRaw(initOverrides);
+    async getVaultMarketPredictionStream(requestParameters: GetVaultMarketPredictionStreamRequest, initOverrides?: RequestInit): Promise<string> {
+        const response = await this.getVaultMarketPredictionStreamRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -17860,8 +18563,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * A long-lived text/event-stream for a book key: `snapshot` first, then `depth`, `trades`, `mark` and `halt` events as they change.
      */
-    async getVaultMarketProStreamRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+    async getVaultMarketProStreamRaw(requestParameters: GetVaultMarketProStreamRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.bookKey === null || requestParameters.bookKey === undefined) {
+            throw new runtime.RequiredError('bookKey','Required parameter requestParameters.bookKey was null or undefined when calling getVaultMarketProStream.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.bookKey !== undefined) {
+            queryParameters['bookKey'] = requestParameters.bookKey;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -17886,8 +18597,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * A long-lived text/event-stream for a book key: `snapshot` first, then `depth`, `trades`, `mark` and `halt` events as they change.
      */
-    async getVaultMarketProStream(initOverrides?: RequestInit): Promise<string> {
-        const response = await this.getVaultMarketProStreamRaw(initOverrides);
+    async getVaultMarketProStream(requestParameters: GetVaultMarketProStreamRequest, initOverrides?: RequestInit): Promise<string> {
+        const response = await this.getVaultMarketProStreamRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -21374,8 +22085,12 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. `live=1` for those still going.
      */
-    async listVaultMarketGradeToVaultRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradeToVaultResponse>> {
+    async listVaultMarketGradeToVaultRaw(requestParameters: ListVaultMarketGradeToVaultRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketGradeToVaultResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.live !== undefined) {
+            queryParameters['live'] = requestParameters.live;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -21400,8 +22115,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. `live=1` for those still going.
      */
-    async listVaultMarketGradeToVault(initOverrides?: RequestInit): Promise<ListVaultMarketGradeToVaultResponse> {
-        const response = await this.listVaultMarketGradeToVaultRaw(initOverrides);
+    async listVaultMarketGradeToVault(requestParameters: ListVaultMarketGradeToVaultRequest = {}, initOverrides?: RequestInit): Promise<ListVaultMarketGradeToVaultResponse> {
+        const response = await this.listVaultMarketGradeToVaultRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -23204,8 +23919,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Vault drop-off partners near a `postalCode`, optionally offering a `service`: address, hours and services.
      */
-    async listVaultMarketPartnerFinderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPartnerFinderResponse>> {
+    async listVaultMarketPartnerFinderRaw(requestParameters: ListVaultMarketPartnerFinderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketPartnerFinderResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.postalCode !== undefined) {
+            queryParameters['postalCode'] = requestParameters.postalCode;
+        }
+
+        if (requestParameters.service !== undefined) {
+            queryParameters['service'] = requestParameters.service;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -23230,8 +23953,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Vault drop-off partners near a `postalCode`, optionally offering a `service`: address, hours and services.
      */
-    async listVaultMarketPartnerFinder(initOverrides?: RequestInit): Promise<ListVaultMarketPartnerFinderResponse> {
-        const response = await this.listVaultMarketPartnerFinderRaw(initOverrides);
+    async listVaultMarketPartnerFinder(requestParameters: ListVaultMarketPartnerFinderRequest = {}, initOverrides?: RequestInit): Promise<ListVaultMarketPartnerFinderResponse> {
+        const response = await this.listVaultMarketPartnerFinderRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -24970,8 +25693,12 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * What each item\'s declared value starts at, by your insurance rule (market, cost or price). `inventoryItemIds` comma-separated.
      */
-    async listVaultMarketSupplyDeclaredValuesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse>> {
+    async listVaultMarketSupplyDeclaredValuesRaw(requestParameters: ListVaultMarketSupplyDeclaredValuesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.inventoryItemIds !== undefined) {
+            queryParameters['inventoryItemIds'] = requestParameters.inventoryItemIds;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -24996,16 +25723,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * What each item\'s declared value starts at, by your insurance rule (market, cost or price). `inventoryItemIds` comma-separated.
      */
-    async listVaultMarketSupplyDeclaredValues(initOverrides?: RequestInit): Promise<ListVaultMarketSupplyDeclaredValuesResponse> {
-        const response = await this.listVaultMarketSupplyDeclaredValuesRaw(initOverrides);
+    async listVaultMarketSupplyDeclaredValues(requestParameters: ListVaultMarketSupplyDeclaredValuesRequest = {}, initOverrides?: RequestInit): Promise<ListVaultMarketSupplyDeclaredValuesResponse> {
+        const response = await this.listVaultMarketSupplyDeclaredValuesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Your units sent to the vault, newest first, each with its state and its key\'s Instant Exit line (\"Instant Exit now: $X (N% of mark)\" or \"No market yet\"). Filter with `inventoryItemIds` (comma-separated).
      */
-    async listVaultMarketSupplyDepositsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyDepositsResponse>> {
+    async listVaultMarketSupplyDepositsRaw(requestParameters: ListVaultMarketSupplyDepositsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyDepositsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.inventoryItemIds !== undefined) {
+            queryParameters['inventoryItemIds'] = requestParameters.inventoryItemIds;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -25030,16 +25761,24 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Your units sent to the vault, newest first, each with its state and its key\'s Instant Exit line (\"Instant Exit now: $X (N% of mark)\" or \"No market yet\"). Filter with `inventoryItemIds` (comma-separated).
      */
-    async listVaultMarketSupplyDeposits(initOverrides?: RequestInit): Promise<ListVaultMarketSupplyDepositsResponse> {
-        const response = await this.listVaultMarketSupplyDepositsRaw(initOverrides);
+    async listVaultMarketSupplyDeposits(requestParameters: ListVaultMarketSupplyDepositsRequest = {}, initOverrides?: RequestInit): Promise<ListVaultMarketSupplyDepositsResponse> {
+        const response = await this.listVaultMarketSupplyDepositsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Can these inventory items (`inventoryItemIds`, comma-separated, or every item linked to `listingId`) be sent to the vault now? Each says why not.
      */
-    async listVaultMarketSupplyEligibilityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyEligibilityResponse>> {
+    async listVaultMarketSupplyEligibilityRaw(requestParameters: ListVaultMarketSupplyEligibilityRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketSupplyEligibilityResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.inventoryItemIds !== undefined) {
+            queryParameters['inventoryItemIds'] = requestParameters.inventoryItemIds;
+        }
+
+        if (requestParameters.listingId !== undefined) {
+            queryParameters['listingId'] = requestParameters.listingId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -25064,8 +25803,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Can these inventory items (`inventoryItemIds`, comma-separated, or every item linked to `listingId`) be sent to the vault now? Each says why not.
      */
-    async listVaultMarketSupplyEligibility(initOverrides?: RequestInit): Promise<ListVaultMarketSupplyEligibilityResponse> {
-        const response = await this.listVaultMarketSupplyEligibilityRaw(initOverrides);
+    async listVaultMarketSupplyEligibility(requestParameters: ListVaultMarketSupplyEligibilityRequest = {}, initOverrides?: RequestInit): Promise<ListVaultMarketSupplyEligibilityResponse> {
+        const response = await this.listVaultMarketSupplyEligibilityRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -25548,10 +26287,16 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Set up or change Auto-buy with payouts: `shareBps` (1–50%) and the whole want list in order, each with an optional `maxPriceCents` (fee included).
      */
-    async updateVaultMarketAutoBuyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketAutoBuyResponse>> {
+    async updateVaultMarketAutoBuyRaw(requestParameters: UpdateVaultMarketAutoBuyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketAutoBuyResponse>> {
+        if (requestParameters.updateVaultMarketAutoBuyRequest === null || requestParameters.updateVaultMarketAutoBuyRequest === undefined) {
+            throw new runtime.RequiredError('updateVaultMarketAutoBuyRequest','Required parameter requestParameters.updateVaultMarketAutoBuyRequest was null or undefined when calling updateVaultMarketAutoBuy.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -25566,6 +26311,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketAutoBuyRequestToJSON(requestParameters.updateVaultMarketAutoBuyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateVaultMarketAutoBuyResponseFromJSON(jsonValue));
@@ -25574,22 +26320,28 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Set up or change Auto-buy with payouts: `shareBps` (1–50%) and the whole want list in order, each with an optional `maxPriceCents` (fee included).
      */
-    async updateVaultMarketAutoBuy(initOverrides?: RequestInit): Promise<UpdateVaultMarketAutoBuyResponse> {
-        const response = await this.updateVaultMarketAutoBuyRaw(initOverrides);
+    async updateVaultMarketAutoBuy(requestParameters: UpdateVaultMarketAutoBuyOperationRequest, initOverrides?: RequestInit): Promise<UpdateVaultMarketAutoBuyResponse> {
+        const response = await this.updateVaultMarketAutoBuyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Post-trade allocation: set or replace the plan for a buy you placed for one of the entity\'s sub-accounts (that sub-account leads). Refused once any share has moved.
      */
-    async updateVaultMarketBlockAllocationRaw(requestParameters: UpdateVaultMarketBlockAllocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketBlocksItem>> {
+    async updateVaultMarketBlockAllocationRaw(requestParameters: UpdateVaultMarketBlockAllocationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVaultMarketBlocksItem>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling updateVaultMarketBlockAllocation.');
+        }
+
+        if (requestParameters.updateVaultMarketBlockAllocationRequest === null || requestParameters.updateVaultMarketBlockAllocationRequest === undefined) {
+            throw new runtime.RequiredError('updateVaultMarketBlockAllocationRequest','Required parameter requestParameters.updateVaultMarketBlockAllocationRequest was null or undefined when calling updateVaultMarketBlockAllocation.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -25604,6 +26356,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketBlockAllocationRequestToJSON(requestParameters.updateVaultMarketBlockAllocationRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListVaultMarketBlocksItemFromJSON(jsonValue));
@@ -25612,7 +26365,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Post-trade allocation: set or replace the plan for a buy you placed for one of the entity\'s sub-accounts (that sub-account leads). Refused once any share has moved.
      */
-    async updateVaultMarketBlockAllocation(requestParameters: UpdateVaultMarketBlockAllocationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketBlocksItem> {
+    async updateVaultMarketBlockAllocation(requestParameters: UpdateVaultMarketBlockAllocationOperationRequest, initOverrides?: RequestInit): Promise<ListVaultMarketBlocksItem> {
         const response = await this.updateVaultMarketBlockAllocationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -25726,7 +26479,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: change a member\'s role, limits or sub-accounts. The last admin cannot be demoted.
      */
-    async updateVaultMarketEntityMemberRaw(requestParameters: UpdateVaultMarketEntityMemberRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
+    async updateVaultMarketEntityMemberRaw(requestParameters: UpdateVaultMarketEntityMemberOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateVaultMarketEntityMember.');
         }
@@ -25738,6 +26491,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -25752,6 +26507,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketEntityMemberRequestToJSON(requestParameters.updateVaultMarketEntityMemberRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketEntityByIdResponseFromJSON(jsonValue));
@@ -25760,7 +26516,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: change a member\'s role, limits or sub-accounts. The last admin cannot be demoted.
      */
-    async updateVaultMarketEntityMember(requestParameters: UpdateVaultMarketEntityMemberRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
+    async updateVaultMarketEntityMember(requestParameters: UpdateVaultMarketEntityMemberOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
         const response = await this.updateVaultMarketEntityMemberRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -25768,7 +26524,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: set a sub-account\'s limits (per-order notional, units per key, gross, net, leverage), held to the entity\'s caps. `limits: null` clears them.
      */
-    async updateVaultMarketEntitySubaccountLimitRaw(requestParameters: UpdateVaultMarketEntitySubaccountLimitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
+    async updateVaultMarketEntitySubaccountLimitRaw(requestParameters: UpdateVaultMarketEntitySubaccountLimitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateVaultMarketEntitySubaccountLimit.');
         }
@@ -25777,9 +26533,15 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('subId','Required parameter requestParameters.subId was null or undefined when calling updateVaultMarketEntitySubaccountLimit.');
         }
 
+        if (requestParameters.updateVaultMarketEntitySubaccountLimitRequest === null || requestParameters.updateVaultMarketEntitySubaccountLimitRequest === undefined) {
+            throw new runtime.RequiredError('updateVaultMarketEntitySubaccountLimitRequest','Required parameter requestParameters.updateVaultMarketEntitySubaccountLimitRequest was null or undefined when calling updateVaultMarketEntitySubaccountLimit.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -25794,6 +26556,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketEntitySubaccountLimitRequestToJSON(requestParameters.updateVaultMarketEntitySubaccountLimitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketEntityByIdResponseFromJSON(jsonValue));
@@ -25802,7 +26565,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: set a sub-account\'s limits (per-order notional, units per key, gross, net, leverage), held to the entity\'s caps. `limits: null` clears them.
      */
-    async updateVaultMarketEntitySubaccountLimit(requestParameters: UpdateVaultMarketEntitySubaccountLimitRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
+    async updateVaultMarketEntitySubaccountLimit(requestParameters: UpdateVaultMarketEntitySubaccountLimitOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
         const response = await this.updateVaultMarketEntitySubaccountLimitRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -25810,14 +26573,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: elect USD for the entity (`usdOnly`). Its sub-accounts then post collateral in USD only and pay every fee in USD, and any CBX reward paid to one of them is converted to USD by the custodian in that account. Audited; it can be turned off again.
      */
-    async updateVaultMarketEntityUsdElectionRaw(requestParameters: UpdateVaultMarketEntityUsdElectionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
+    async updateVaultMarketEntityUsdElectionRaw(requestParameters: UpdateVaultMarketEntityUsdElectionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketEntityByIdResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateVaultMarketEntityUsdElection.');
+        }
+
+        if (requestParameters.updateVaultMarketEntityUsdElectionRequest === null || requestParameters.updateVaultMarketEntityUsdElectionRequest === undefined) {
+            throw new runtime.RequiredError('updateVaultMarketEntityUsdElectionRequest','Required parameter requestParameters.updateVaultMarketEntityUsdElectionRequest was null or undefined when calling updateVaultMarketEntityUsdElection.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -25832,6 +26601,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketEntityUsdElectionRequestToJSON(requestParameters.updateVaultMarketEntityUsdElectionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketEntityByIdResponseFromJSON(jsonValue));
@@ -25840,7 +26610,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Admin: elect USD for the entity (`usdOnly`). Its sub-accounts then post collateral in USD only and pay every fee in USD, and any CBX reward paid to one of them is converted to USD by the custodian in that account. Audited; it can be turned off again.
      */
-    async updateVaultMarketEntityUsdElection(requestParameters: UpdateVaultMarketEntityUsdElectionRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
+    async updateVaultMarketEntityUsdElection(requestParameters: UpdateVaultMarketEntityUsdElectionOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketEntityByIdResponse> {
         const response = await this.updateVaultMarketEntityUsdElectionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -25992,14 +26762,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Set which unit a sale of this item ships first: `vault_first`, `warehouse_first` or `cheapest` (to ship); null = your default. Quantities stay the same on every channel: only who ships changes.
      */
-    async updateVaultMarketItemSellFromRaw(requestParameters: UpdateVaultMarketItemSellFromRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketItemLocationResponse>> {
+    async updateVaultMarketItemSellFromRaw(requestParameters: UpdateVaultMarketItemSellFromOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketItemLocationResponse>> {
         if (requestParameters.inventoryItemId === null || requestParameters.inventoryItemId === undefined) {
             throw new runtime.RequiredError('inventoryItemId','Required parameter requestParameters.inventoryItemId was null or undefined when calling updateVaultMarketItemSellFrom.');
+        }
+
+        if (requestParameters.updateVaultMarketItemSellFromRequest === null || requestParameters.updateVaultMarketItemSellFromRequest === undefined) {
+            throw new runtime.RequiredError('updateVaultMarketItemSellFromRequest','Required parameter requestParameters.updateVaultMarketItemSellFromRequest was null or undefined when calling updateVaultMarketItemSellFrom.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -26014,6 +26790,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketItemSellFromRequestToJSON(requestParameters.updateVaultMarketItemSellFromRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketItemLocationResponseFromJSON(jsonValue));
@@ -26022,7 +26799,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Set which unit a sale of this item ships first: `vault_first`, `warehouse_first` or `cheapest` (to ship); null = your default. Quantities stay the same on every channel: only who ships changes.
      */
-    async updateVaultMarketItemSellFrom(requestParameters: UpdateVaultMarketItemSellFromRequest, initOverrides?: RequestInit): Promise<GetVaultMarketItemLocationResponse> {
+    async updateVaultMarketItemSellFrom(requestParameters: UpdateVaultMarketItemSellFromOperationRequest, initOverrides?: RequestInit): Promise<GetVaultMarketItemLocationResponse> {
         const response = await this.updateVaultMarketItemSellFromRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -26234,10 +27011,12 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Your drop-off partnership\'s finder profile: postal code, opening hours, services and whether you are listed.
      */
-    async updateVaultMarketPartnerMeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketPartnerMeResponse>> {
+    async updateVaultMarketPartnerMeRaw(requestParameters: UpdateVaultMarketPartnerMeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketPartnerMeResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -26252,6 +27031,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketPartnerMeRequestToJSON(requestParameters.updateVaultMarketPartnerMeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateVaultMarketPartnerMeResponseFromJSON(jsonValue));
@@ -26260,8 +27040,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Your drop-off partnership\'s finder profile: postal code, opening hours, services and whether you are listed.
      */
-    async updateVaultMarketPartnerMe(initOverrides?: RequestInit): Promise<UpdateVaultMarketPartnerMeResponse> {
-        const response = await this.updateVaultMarketPartnerMeRaw(initOverrides);
+    async updateVaultMarketPartnerMe(requestParameters: UpdateVaultMarketPartnerMeOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateVaultMarketPartnerMeResponse> {
+        const response = await this.updateVaultMarketPartnerMeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -26560,10 +27340,12 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Change your vault defaults; send only the fields you change.
      */
-    async updateVaultMarketSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSettingResponse>> {
+    async updateVaultMarketSettingRaw(requestParameters: UpdateVaultMarketSettingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetVaultMarketSettingResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -26578,6 +27360,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketSettingRequestToJSON(requestParameters.updateVaultMarketSettingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetVaultMarketSettingResponseFromJSON(jsonValue));
@@ -26586,8 +27369,8 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Change your vault defaults; send only the fields you change.
      */
-    async updateVaultMarketSetting(initOverrides?: RequestInit): Promise<GetVaultMarketSettingResponse> {
-        const response = await this.updateVaultMarketSettingRaw(initOverrides);
+    async updateVaultMarketSetting(requestParameters: UpdateVaultMarketSettingOperationRequest = {}, initOverrides?: RequestInit): Promise<GetVaultMarketSettingResponse> {
+        const response = await this.updateVaultMarketSettingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -26632,14 +27415,20 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Change a deposit\'s toggles: `autoListBps` (list at that share of the mark once stored; null = do not) and `lendWhenIdle`.
      */
-    async updateVaultMarketSupplyDepositRaw(requestParameters: UpdateVaultMarketSupplyDepositRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketSupplyDepositResponse>> {
+    async updateVaultMarketSupplyDepositRaw(requestParameters: UpdateVaultMarketSupplyDepositOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateVaultMarketSupplyDepositResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateVaultMarketSupplyDeposit.');
+        }
+
+        if (requestParameters.updateVaultMarketSupplyDepositRequest === null || requestParameters.updateVaultMarketSupplyDepositRequest === undefined) {
+            throw new runtime.RequiredError('updateVaultMarketSupplyDepositRequest','Required parameter requestParameters.updateVaultMarketSupplyDepositRequest was null or undefined when calling updateVaultMarketSupplyDeposit.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -26654,6 +27443,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateVaultMarketSupplyDepositRequestToJSON(requestParameters.updateVaultMarketSupplyDepositRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateVaultMarketSupplyDepositResponseFromJSON(jsonValue));
@@ -26662,7 +27452,7 @@ export class VaultMarketsApi extends runtime.BaseAPI {
     /**
      * Change a deposit\'s toggles: `autoListBps` (list at that share of the mark once stored; null = do not) and `lendWhenIdle`.
      */
-    async updateVaultMarketSupplyDeposit(requestParameters: UpdateVaultMarketSupplyDepositRequest, initOverrides?: RequestInit): Promise<UpdateVaultMarketSupplyDepositResponse> {
+    async updateVaultMarketSupplyDeposit(requestParameters: UpdateVaultMarketSupplyDepositOperationRequest, initOverrides?: RequestInit): Promise<UpdateVaultMarketSupplyDepositResponse> {
         const response = await this.updateVaultMarketSupplyDepositRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -26845,4 +27635,24 @@ export class VaultMarketsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListVaultMarketGradeToVaultLiveEnum {
+    _0 = '0',
+    _1 = '1'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListVaultMarketPartnerFinderServiceEnum {
+    Consignment = 'consignment',
+    Photography = 'photography',
+    Authentication = 'authentication',
+    WalkIn = 'walk_in',
+    GradingPrep = 'grading_prep'
 }

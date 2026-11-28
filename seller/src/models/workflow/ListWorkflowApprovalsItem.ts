@@ -117,8 +117,8 @@ export interface ListWorkflowApprovalsItem {
 * @enum {string}
 */
 export enum ListWorkflowApprovalsItemStatusEnum {
-    Pending = 'pending',
     Expired = 'expired',
+    Pending = 'pending',
     Rejected = 'rejected',
     Approved = 'approved'
 }

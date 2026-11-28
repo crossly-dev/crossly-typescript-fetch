@@ -25,6 +25,12 @@ import {
     ListBrandingDropsItemCountsFromJSONTyped,
     ListBrandingDropsItemCountsToJSON,
 } from './ListBrandingDropsItemCounts';
+import {
+    ListBrandingDropsItemLinkedGroupBuy,
+    ListBrandingDropsItemLinkedGroupBuyFromJSON,
+    ListBrandingDropsItemLinkedGroupBuyFromJSONTyped,
+    ListBrandingDropsItemLinkedGroupBuyToJSON,
+} from './ListBrandingDropsItemLinkedGroupBuy';
 
 /**
  * 
@@ -196,6 +202,18 @@ export interface CreateBrandingDropResponseDataDrop {
     href: string;
     /**
      * 
+     * @type {ListBrandingDropsItemLinkedGroupBuy}
+     * @memberof CreateBrandingDropResponseDataDrop
+     */
+    linkedGroupBuy?: ListBrandingDropsItemLinkedGroupBuy | null;
+    /**
+     * E5: the drop's Crossly listings with their stock now; only set by getSellerDrop.
+     * @type {Array<{ [key: string]: any; }>}
+     * @memberof CreateBrandingDropResponseDataDrop
+     */
+    restockListings?: Array<{ [key: string]: any; }> | null;
+    /**
+     * 
      * @type {string}
      * @memberof CreateBrandingDropResponseDataDrop
      */
@@ -258,6 +276,8 @@ export function CreateBrandingDropResponseDataDropFromJSONTyped(json: any, ignor
         'unitsAvailable': !exists(json, 'unitsAvailable') ? undefined : json['unitsAvailable'],
         'currentPriceCents': !exists(json, 'currentPriceCents') ? undefined : json['currentPriceCents'],
         'href': json['href'],
+        'linkedGroupBuy': !exists(json, 'linkedGroupBuy') ? undefined : ListBrandingDropsItemLinkedGroupBuyFromJSON(json['linkedGroupBuy']),
+        'restockListings': !exists(json, 'restockListings') ? undefined : json['restockListings'],
         'createdAt': json['createdAt'],
         'updatedAt': json['updatedAt'],
     };
@@ -299,6 +319,8 @@ export function CreateBrandingDropResponseDataDropToJSON(value?: CreateBrandingD
         'unitsAvailable': value.unitsAvailable,
         'currentPriceCents': value.currentPriceCents,
         'href': value.href,
+        'linkedGroupBuy': ListBrandingDropsItemLinkedGroupBuyToJSON(value.linkedGroupBuy),
+        'restockListings': value.restockListings,
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,
     };

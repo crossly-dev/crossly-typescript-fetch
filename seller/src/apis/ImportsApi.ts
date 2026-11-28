@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateImportRequest,
+    CreateImportRequestFromJSON,
+    CreateImportRequestToJSON,
     CreateImportResponse,
     CreateImportResponseFromJSON,
     CreateImportResponseToJSON,
@@ -28,6 +31,10 @@ import {
     ListImportsResponseFromJSON,
     ListImportsResponseToJSON,
 } from '../models';
+
+export interface CreateImportOperationRequest {
+    createImportRequest: CreateImportRequest;
+}
 
 export interface GetImportRequest {
     id: string;
@@ -45,10 +52,16 @@ export class ImportsApi extends runtime.BaseAPI {
     /**
      * Start a bulk-import job for an existing platform connection.
      */
-    async createImportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateImportResponse>> {
+    async createImportRaw(requestParameters: CreateImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateImportResponse>> {
+        if (requestParameters.createImportRequest === null || requestParameters.createImportRequest === undefined) {
+            throw new runtime.RequiredError('createImportRequest','Required parameter requestParameters.createImportRequest was null or undefined when calling createImport.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -63,6 +76,7 @@ export class ImportsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateImportRequestToJSON(requestParameters.createImportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateImportResponseFromJSON(jsonValue));
@@ -71,8 +85,8 @@ export class ImportsApi extends runtime.BaseAPI {
     /**
      * Start a bulk-import job for an existing platform connection.
      */
-    async createImport(initOverrides?: RequestInit): Promise<CreateImportResponse> {
-        const response = await this.createImportRaw(initOverrides);
+    async createImport(requestParameters: CreateImportOperationRequest, initOverrides?: RequestInit): Promise<CreateImportResponse> {
+        const response = await this.createImportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

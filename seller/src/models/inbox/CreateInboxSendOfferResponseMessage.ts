@@ -182,10 +182,10 @@ export interface CreateInboxSendOfferResponseMessage {
 * @enum {string}
 */
 export enum CreateInboxSendOfferResponseMessageOfferStatusEnum {
+    Expired = 'expired',
     Pending = 'pending',
     Accepted = 'accepted',
     Declined = 'declined',
-    Expired = 'expired',
     Voided = 'voided'
 }/**
 * @export

@@ -15,21 +15,54 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCreatorCardGamePublishResponse,
+    CreateCreatorCardGamePublishResponseFromJSON,
+    CreateCreatorCardGamePublishResponseToJSON,
+    CreateCreatorCardSetArtRequest,
+    CreateCreatorCardSetArtRequestFromJSON,
+    CreateCreatorCardSetArtRequestToJSON,
     CreateCreatorCardSetPublishResponse,
     CreateCreatorCardSetPublishResponseFromJSON,
     CreateCreatorCardSetPublishResponseToJSON,
+    CreateCreatorCardSetRequest,
+    CreateCreatorCardSetRequestFromJSON,
+    CreateCreatorCardSetRequestToJSON,
+    CreateCreatorCreationSubmitRequest,
+    CreateCreatorCreationSubmitRequestFromJSON,
+    CreateCreatorCreationSubmitRequestToJSON,
     CreateCreatorCreationSubmitResponse,
     CreateCreatorCreationSubmitResponseFromJSON,
     CreateCreatorCreationSubmitResponseToJSON,
     CreateCreatorImportCommitResponse,
     CreateCreatorImportCommitResponseFromJSON,
     CreateCreatorImportCommitResponseToJSON,
+    CreateCreatorImportRequest,
+    CreateCreatorImportRequestFromJSON,
+    CreateCreatorImportRequestToJSON,
+    CreateCreatorItemModelCheckRequest,
+    CreateCreatorItemModelCheckRequestFromJSON,
+    CreateCreatorItemModelCheckRequestToJSON,
     CreateCreatorItemModelCheckResponse,
     CreateCreatorItemModelCheckResponseFromJSON,
     CreateCreatorItemModelCheckResponseToJSON,
+    CreateCreatorItemModelRequest,
+    CreateCreatorItemModelRequestFromJSON,
+    CreateCreatorItemModelRequestToJSON,
     CreateCreatorItemPreviewResponse,
     CreateCreatorItemPreviewResponseFromJSON,
     CreateCreatorItemPreviewResponseToJSON,
+    CreateCreatorItemWearableRequest,
+    CreateCreatorItemWearableRequestFromJSON,
+    CreateCreatorItemWearableRequestToJSON,
+    CreateCreatorItemWearableSubmitRequest,
+    CreateCreatorItemWearableSubmitRequestFromJSON,
+    CreateCreatorItemWearableSubmitRequestToJSON,
+    CreateCreatorReviewReplyRequest,
+    CreateCreatorReviewReplyRequestFromJSON,
+    CreateCreatorReviewReplyRequestToJSON,
+    CreatorCardGameResponse,
+    CreatorCardGameResponseFromJSON,
+    CreatorCardGameResponseToJSON,
     CreatorCardSetResponse,
     CreatorCardSetResponseFromJSON,
     CreatorCardSetResponseToJSON,
@@ -75,6 +108,9 @@ import {
     GetCreatorTemplateResponse,
     GetCreatorTemplateResponseFromJSON,
     GetCreatorTemplateResponseToJSON,
+    ListCreatorCardGamesResponse,
+    ListCreatorCardGamesResponseFromJSON,
+    ListCreatorCardGamesResponseToJSON,
     ListCreatorCardSetsResponse,
     ListCreatorCardSetsResponseFromJSON,
     ListCreatorCardSetsResponseToJSON,
@@ -102,11 +138,33 @@ import {
     ListCreatorReviewsResponse,
     ListCreatorReviewsResponseFromJSON,
     ListCreatorReviewsResponseToJSON,
+    ReasonRequest,
+    ReasonRequestFromJSON,
+    ReasonRequestToJSON,
+    ReasonRequest2,
+    ReasonRequest2FromJSON,
+    ReasonRequest2ToJSON,
+    UpdateCreatorItemWearableRequest,
+    UpdateCreatorItemWearableRequestFromJSON,
+    UpdateCreatorItemWearableRequestToJSON,
 } from '../models';
 
-export interface CreateCreatorCardSetArtRequest {
+export interface CreateCreatorCardGameCheckRequest {
+    id: string;
+}
+
+export interface CreateCreatorCardGamePublishRequest {
+    id: string;
+}
+
+export interface CreateCreatorCardSetOperationRequest {
+    createCreatorCardSetRequest?: CreateCreatorCardSetRequest;
+}
+
+export interface CreateCreatorCardSetArtOperationRequest {
     id: string;
     slug: string;
+    createCreatorCardSetArtRequest?: CreateCreatorCardSetArtRequest;
 }
 
 export interface CreateCreatorCardSetCheckRequest {
@@ -117,37 +175,66 @@ export interface CreateCreatorCardSetPublishRequest {
     id: string;
 }
 
-export interface CreateCreatorCreationSubmitRequest {
+export interface CreateCreatorCreationSubmitOperationRequest {
     format: string;
     id: string;
+    createCreatorCreationSubmitRequest?: CreateCreatorCreationSubmitRequest;
+}
+
+export interface CreateCreatorImportOperationRequest {
+    createCreatorImportRequest?: CreateCreatorImportRequest;
 }
 
 export interface CreateCreatorImportCommitRequest {
     id: string;
 }
 
+export interface CreateCreatorItemModelOperationRequest {
+    createCreatorItemModelRequest?: CreateCreatorItemModelRequest;
+}
+
+export interface CreateCreatorItemModelCheckOperationRequest {
+    createCreatorItemModelCheckRequest?: CreateCreatorItemModelCheckRequest;
+}
+
 export interface CreateCreatorItemModelSubmitRequest {
     id: string;
 }
 
-export interface CreateCreatorItemWearableSubmitRequest {
+export interface CreateCreatorItemPreviewRequest {
+    createCreatorCardSetArtRequest?: CreateCreatorCardSetArtRequest;
+}
+
+export interface CreateCreatorItemWearableOperationRequest {
+    createCreatorItemWearableRequest?: CreateCreatorItemWearableRequest;
+}
+
+export interface CreateCreatorItemWearableSubmitOperationRequest {
     id: string;
+    createCreatorItemWearableSubmitRequest?: CreateCreatorItemWearableSubmitRequest;
 }
 
 export interface CreateCreatorReviewHideRequest {
     reviewId: string;
+    reasonRequest2?: ReasonRequest2;
 }
 
-export interface CreateCreatorReviewReplyRequest {
+export interface CreateCreatorReviewReplyOperationRequest {
     reviewId: string;
+    createCreatorReviewReplyRequest?: CreateCreatorReviewReplyRequest;
 }
 
 export interface CreateCreatorReviewReportRequest {
     reviewId: string;
+    reasonRequest?: ReasonRequest;
 }
 
 export interface CreateCreatorReviewUnhideRequest {
     reviewId: string;
+}
+
+export interface DeleteCreatorCardGameRequest {
+    id: string;
 }
 
 export interface DeleteCreatorCardSetRequest {
@@ -159,6 +246,10 @@ export interface DeleteCreatorItemModelRequest {
 }
 
 export interface DeleteCreatorItemWearableRequest {
+    id: string;
+}
+
+export interface GetCreatorCardGameRequest {
     id: string;
 }
 
@@ -222,6 +313,16 @@ export interface GetCreatorTemplateZipRequest {
 export interface ListCreatorCreationReviewsRequest {
     format: string;
     id: string;
+    cursor?: string;
+    limit?: number;
+}
+
+export interface ListCreatorCreationsRequest {
+    kind?: ListCreatorCreationsKindEnum;
+    format?: ListCreatorCreationsFormatEnum;
+    status?: ListCreatorCreationsStatusEnum;
+    collection?: string;
+    q?: string;
 }
 
 export interface ListCreatorEarningTrendRequest {
@@ -257,6 +358,10 @@ export interface ListCreatorReviewsRequest {
     limit?: number;
 }
 
+export interface UpdateCreatorCardGameRequest {
+    id: string;
+}
+
 export interface UpdateCreatorCardSetRequest {
     id: string;
 }
@@ -265,8 +370,9 @@ export interface UpdateCreatorCollectionPerkRequest {
     collectionId: string;
 }
 
-export interface UpdateCreatorItemWearableRequest {
+export interface UpdateCreatorItemWearableOperationRequest {
     id: string;
+    updateCreatorItemWearableRequest?: UpdateCreatorItemWearableRequest;
 }
 
 /**
@@ -275,12 +381,124 @@ export interface UpdateCreatorItemWearableRequest {
 export class CreatorStudioApi extends runtime.BaseAPI {
 
     /**
-     * Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
+     * Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
      */
-    async createCreatorCardSetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardSetResponse>> {
+    async createCreatorCardGameRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardGameResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/creator/cards/games`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatorCardGameResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
+     */
+    async createCreatorCardGame(initOverrides?: RequestInit): Promise<CreatorCardGameResponse> {
+        const response = await this.createCreatorCardGameRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+     */
+    async createCreatorCardGameCheckRaw(requestParameters: CreateCreatorCardGameCheckRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardGameResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCreatorCardGameCheck.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/creator/cards/games/{id}/check`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatorCardGameResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+     */
+    async createCreatorCardGameCheck(requestParameters: CreateCreatorCardGameCheckRequest, initOverrides?: RequestInit): Promise<CreatorCardGameResponse> {
+        const response = await this.createCreatorCardGameCheckRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
+     */
+    async createCreatorCardGamePublishRaw(requestParameters: CreateCreatorCardGamePublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorCardGamePublishResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCreatorCardGamePublish.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/creator/cards/games/{id}/publish`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateCreatorCardGamePublishResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
+     */
+    async createCreatorCardGamePublish(requestParameters: CreateCreatorCardGamePublishRequest, initOverrides?: RequestInit): Promise<CreateCreatorCardGamePublishResponse> {
+        const response = await this.createCreatorCardGamePublishRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
+     */
+    async createCreatorCardSetRaw(requestParameters: CreateCreatorCardSetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardSetResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -295,6 +513,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorCardSetRequestToJSON(requestParameters.createCreatorCardSetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorCardSetResponseFromJSON(jsonValue));
@@ -303,15 +522,15 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
      */
-    async createCreatorCardSet(initOverrides?: RequestInit): Promise<CreatorCardSetResponse> {
-        const response = await this.createCreatorCardSetRaw(initOverrides);
+    async createCreatorCardSet(requestParameters: CreateCreatorCardSetOperationRequest = {}, initOverrides?: RequestInit): Promise<CreatorCardSetResponse> {
+        const response = await this.createCreatorCardSetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * One card\'s art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
      */
-    async createCreatorCardSetArtRaw(requestParameters: CreateCreatorCardSetArtRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardSetResponse>> {
+    async createCreatorCardSetArtRaw(requestParameters: CreateCreatorCardSetArtOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardSetResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCreatorCardSetArt.');
         }
@@ -323,6 +542,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -337,6 +558,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorCardSetArtRequestToJSON(requestParameters.createCreatorCardSetArtRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorCardSetResponseFromJSON(jsonValue));
@@ -345,7 +567,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * One card\'s art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
      */
-    async createCreatorCardSetArt(requestParameters: CreateCreatorCardSetArtRequest, initOverrides?: RequestInit): Promise<CreatorCardSetResponse> {
+    async createCreatorCardSetArt(requestParameters: CreateCreatorCardSetArtOperationRequest, initOverrides?: RequestInit): Promise<CreatorCardSetResponse> {
         const response = await this.createCreatorCardSetArtRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -429,7 +651,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Send one creation to review through its format\'s own submit (wearable, model, decor, interactive, card: its whole set). Games are published from world-kit.
      */
-    async createCreatorCreationSubmitRaw(requestParameters: CreateCreatorCreationSubmitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorCreationSubmitResponse>> {
+    async createCreatorCreationSubmitRaw(requestParameters: CreateCreatorCreationSubmitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorCreationSubmitResponse>> {
         if (requestParameters.format === null || requestParameters.format === undefined) {
             throw new runtime.RequiredError('format','Required parameter requestParameters.format was null or undefined when calling createCreatorCreationSubmit.');
         }
@@ -441,6 +663,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -455,6 +679,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorCreationSubmitRequestToJSON(requestParameters.createCreatorCreationSubmitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCreatorCreationSubmitResponseFromJSON(jsonValue));
@@ -463,7 +688,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Send one creation to review through its format\'s own submit (wearable, model, decor, interactive, card: its whole set). Games are published from world-kit.
      */
-    async createCreatorCreationSubmit(requestParameters: CreateCreatorCreationSubmitRequest, initOverrides?: RequestInit): Promise<CreateCreatorCreationSubmitResponse> {
+    async createCreatorCreationSubmit(requestParameters: CreateCreatorCreationSubmitOperationRequest, initOverrides?: RequestInit): Promise<CreateCreatorCreationSubmitResponse> {
         const response = await this.createCreatorCreationSubmitRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -471,10 +696,12 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing.
      */
-    async createCreatorImportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCreatorImportResponse>> {
+    async createCreatorImportRaw(requestParameters: CreateCreatorImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetCreatorImportResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -489,6 +716,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorImportRequestToJSON(requestParameters.createCreatorImportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetCreatorImportResponseFromJSON(jsonValue));
@@ -497,8 +725,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing.
      */
-    async createCreatorImport(initOverrides?: RequestInit): Promise<GetCreatorImportResponse> {
-        const response = await this.createCreatorImportRaw(initOverrides);
+    async createCreatorImport(requestParameters: CreateCreatorImportOperationRequest = {}, initOverrides?: RequestInit): Promise<GetCreatorImportResponse> {
+        const response = await this.createCreatorImportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -543,10 +771,12 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number.
      */
-    async createCreatorItemModelRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorItemModelResponse>> {
+    async createCreatorItemModelRaw(requestParameters: CreateCreatorItemModelOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorItemModelResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -561,6 +791,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorItemModelRequestToJSON(requestParameters.createCreatorItemModelRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorItemModelResponseFromJSON(jsonValue));
@@ -569,18 +800,20 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number.
      */
-    async createCreatorItemModel(initOverrides?: RequestInit): Promise<CreatorItemModelResponse> {
-        const response = await this.createCreatorItemModelRaw(initOverrides);
+    async createCreatorItemModel(requestParameters: CreateCreatorItemModelOperationRequest = {}, initOverrides?: RequestInit): Promise<CreatorItemModelResponse> {
+        const response = await this.createCreatorItemModelRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions.
      */
-    async createCreatorItemModelCheckRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorItemModelCheckResponse>> {
+    async createCreatorItemModelCheckRaw(requestParameters: CreateCreatorItemModelCheckOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorItemModelCheckResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -595,6 +828,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorItemModelCheckRequestToJSON(requestParameters.createCreatorItemModelCheckRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCreatorItemModelCheckResponseFromJSON(jsonValue));
@@ -603,8 +837,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions.
      */
-    async createCreatorItemModelCheck(initOverrides?: RequestInit): Promise<CreateCreatorItemModelCheckResponse> {
-        const response = await this.createCreatorItemModelCheckRaw(initOverrides);
+    async createCreatorItemModelCheck(requestParameters: CreateCreatorItemModelCheckOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateCreatorItemModelCheckResponse> {
+        const response = await this.createCreatorItemModelCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -649,10 +883,12 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL.
      */
-    async createCreatorItemPreviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorItemPreviewResponse>> {
+    async createCreatorItemPreviewRaw(requestParameters: CreateCreatorItemPreviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorItemPreviewResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -667,6 +903,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorCardSetArtRequestToJSON(requestParameters.createCreatorCardSetArtRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCreatorItemPreviewResponseFromJSON(jsonValue));
@@ -675,18 +912,20 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL.
      */
-    async createCreatorItemPreview(initOverrides?: RequestInit): Promise<CreateCreatorItemPreviewResponse> {
-        const response = await this.createCreatorItemPreviewRaw(initOverrides);
+    async createCreatorItemPreview(requestParameters: CreateCreatorItemPreviewRequest = {}, initOverrides?: RequestInit): Promise<CreateCreatorItemPreviewResponse> {
+        const response = await this.createCreatorItemPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Start a wearable from a template: slug, name, colourways (panel -> #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only.
      */
-    async createCreatorItemWearableRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorItemWearableResponse>> {
+    async createCreatorItemWearableRaw(requestParameters: CreateCreatorItemWearableOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorItemWearableResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -701,6 +940,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorItemWearableRequestToJSON(requestParameters.createCreatorItemWearableRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorItemWearableResponseFromJSON(jsonValue));
@@ -709,15 +949,15 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Start a wearable from a template: slug, name, colourways (panel -> #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only.
      */
-    async createCreatorItemWearable(initOverrides?: RequestInit): Promise<CreatorItemWearableResponse> {
-        const response = await this.createCreatorItemWearableRaw(initOverrides);
+    async createCreatorItemWearable(requestParameters: CreateCreatorItemWearableOperationRequest = {}, initOverrides?: RequestInit): Promise<CreatorItemWearableResponse> {
+        const response = await this.createCreatorItemWearableRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Submit a wearable whose checks pass: each colourway becomes a COSM design (inactive) filed for review. Needs an https preview image (POST /v1/creator/items/previews).
      */
-    async createCreatorItemWearableSubmitRaw(requestParameters: CreateCreatorItemWearableSubmitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorItemWearableResponse>> {
+    async createCreatorItemWearableSubmitRaw(requestParameters: CreateCreatorItemWearableSubmitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorItemWearableResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCreatorItemWearableSubmit.');
         }
@@ -725,6 +965,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -739,6 +981,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorItemWearableSubmitRequestToJSON(requestParameters.createCreatorItemWearableSubmitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorItemWearableResponseFromJSON(jsonValue));
@@ -747,7 +990,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Submit a wearable whose checks pass: each colourway becomes a COSM design (inactive) filed for review. Needs an https preview image (POST /v1/creator/items/previews).
      */
-    async createCreatorItemWearableSubmit(requestParameters: CreateCreatorItemWearableSubmitRequest, initOverrides?: RequestInit): Promise<CreatorItemWearableResponse> {
+    async createCreatorItemWearableSubmit(requestParameters: CreateCreatorItemWearableSubmitOperationRequest, initOverrides?: RequestInit): Promise<CreatorItemWearableResponse> {
         const response = await this.createCreatorItemWearableSubmitRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -764,6 +1007,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -777,6 +1022,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequest2ToJSON(requestParameters.reasonRequest2),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorReviewResponseFromJSON(jsonValue));
@@ -793,7 +1039,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Reply to a buyer review of your creation (or change your reply).
      */
-    async createCreatorReviewReplyRaw(requestParameters: CreateCreatorReviewReplyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorReviewResponse>> {
+    async createCreatorReviewReplyRaw(requestParameters: CreateCreatorReviewReplyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorReviewResponse>> {
         if (requestParameters.reviewId === null || requestParameters.reviewId === undefined) {
             throw new runtime.RequiredError('reviewId','Required parameter requestParameters.reviewId was null or undefined when calling createCreatorReviewReply.');
         }
@@ -801,6 +1047,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -815,6 +1063,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorReviewReplyRequestToJSON(requestParameters.createCreatorReviewReplyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorReviewResponseFromJSON(jsonValue));
@@ -823,7 +1072,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Reply to a buyer review of your creation (or change your reply).
      */
-    async createCreatorReviewReply(requestParameters: CreateCreatorReviewReplyRequest, initOverrides?: RequestInit): Promise<CreatorReviewResponse> {
+    async createCreatorReviewReply(requestParameters: CreateCreatorReviewReplyOperationRequest, initOverrides?: RequestInit): Promise<CreatorReviewResponse> {
         const response = await this.createCreatorReviewReplyRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -840,6 +1089,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -853,6 +1104,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequestToJSON(requestParameters.reasonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorReviewResponseFromJSON(jsonValue));
@@ -902,6 +1154,43 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     async createCreatorReviewUnhide(requestParameters: CreateCreatorReviewUnhideRequest, initOverrides?: RequestInit): Promise<CreatorReviewResponse> {
         const response = await this.createCreatorReviewUnhideRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Delete a composed card game that was never published.
+     */
+    async deleteCreatorCardGameRaw(requestParameters: DeleteCreatorCardGameRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteCreatorCardGame.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/creator/cards/games/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Delete a composed card game that was never published.
+     */
+    async deleteCreatorCardGame(requestParameters: DeleteCreatorCardGameRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteCreatorCardGameRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -1013,6 +1302,44 @@ export class CreatorStudioApi extends runtime.BaseAPI {
      */
     async deleteCreatorItemWearable(requestParameters: DeleteCreatorItemWearableRequest, initOverrides?: RequestInit): Promise<void> {
         await this.deleteCreatorItemWearableRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * One composed card game with its check: issues by field and conformance problems.
+     */
+    async getCreatorCardGameRaw(requestParameters: GetCreatorCardGameRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardGameResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getCreatorCardGame.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/creator/cards/games/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatorCardGameResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One composed card game with its check: issues by field and conformance problems.
+     */
+    async getCreatorCardGame(requestParameters: GetCreatorCardGameRequest, initOverrides?: RequestInit): Promise<CreatorCardGameResponse> {
+        const response = await this.getCreatorCardGameRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
@@ -1644,6 +1971,40 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
+     */
+    async listCreatorCardGamesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCreatorCardGamesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/creator/cards/games`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListCreatorCardGamesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
+     */
+    async listCreatorCardGames(initOverrides?: RequestInit): Promise<ListCreatorCardGamesResponse> {
+        const response = await this.listCreatorCardGamesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your card set drafts, each with its road from COSM to print: live on COSM, the mint threshold (collectors, packs opened, resales) and the print-run cost against what NFT sales have banked.
      */
     async listCreatorCardSetsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCreatorCardSetsResponse>> {
@@ -1691,6 +2052,14 @@ export class CreatorStudioApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -1722,8 +2091,28 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
      */
-    async listCreatorCreationsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCreatorCreationsResponse>> {
+    async listCreatorCreationsRaw(requestParameters: ListCreatorCreationsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCreatorCreationsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.kind !== undefined) {
+            queryParameters['kind'] = requestParameters.kind;
+        }
+
+        if (requestParameters.format !== undefined) {
+            queryParameters['format'] = requestParameters.format;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.collection !== undefined) {
+            queryParameters['collection'] = requestParameters.collection;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1748,8 +2137,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
      */
-    async listCreatorCreations(initOverrides?: RequestInit): Promise<ListCreatorCreationsResponse> {
-        const response = await this.listCreatorCreationsRaw(initOverrides);
+    async listCreatorCreations(requestParameters: ListCreatorCreationsRequest = {}, initOverrides?: RequestInit): Promise<ListCreatorCreationsResponse> {
+        const response = await this.listCreatorCreationsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2042,6 +2431,44 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     }
 
     /**
+     * Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
+     */
+    async updateCreatorCardGameRaw(requestParameters: UpdateCreatorCardGameRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardGameResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateCreatorCardGame.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/creator/cards/games/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatorCardGameResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
+     */
+    async updateCreatorCardGame(requestParameters: UpdateCreatorCardGameRequest, initOverrides?: RequestInit): Promise<CreatorCardGameResponse> {
+        const response = await this.updateCreatorCardGameRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Save the whole draft: cards (name, type, rarity, rules text, flavour, power/draw/guard), COSM prices and supply, frame colours, print plan. Every word goes through the text filter. Art is merged: a card without `art` (or with art as read) keeps its stored art, `art: null` clears it; only the art upload sets art. Answers the check.
      */
     async updateCreatorCardSetRaw(requestParameters: UpdateCreatorCardSetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorCardSetResponse>> {
@@ -2120,7 +2547,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Edit a draft wearable (name, description, colourways, price, edition). Submitted wearables are frozen.
      */
-    async updateCreatorItemWearableRaw(requestParameters: UpdateCreatorItemWearableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorItemWearableResponse>> {
+    async updateCreatorItemWearableRaw(requestParameters: UpdateCreatorItemWearableOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatorItemWearableResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateCreatorItemWearable.');
         }
@@ -2128,6 +2555,8 @@ export class CreatorStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2142,6 +2571,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateCreatorItemWearableRequestToJSON(requestParameters.updateCreatorItemWearableRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatorItemWearableResponseFromJSON(jsonValue));
@@ -2150,7 +2580,7 @@ export class CreatorStudioApi extends runtime.BaseAPI {
     /**
      * Edit a draft wearable (name, description, colourways, price, edition). Submitted wearables are frozen.
      */
-    async updateCreatorItemWearable(requestParameters: UpdateCreatorItemWearableRequest, initOverrides?: RequestInit): Promise<CreatorItemWearableResponse> {
+    async updateCreatorItemWearable(requestParameters: UpdateCreatorItemWearableOperationRequest, initOverrides?: RequestInit): Promise<CreatorItemWearableResponse> {
         const response = await this.updateCreatorItemWearableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2219,6 +2649,43 @@ export enum GetCreatorEarningExportGroupEnum {
     Cards = 'cards',
     Collections = 'collections',
     Royalties = 'royalties'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListCreatorCreationsKindEnum {
+    Item = 'item',
+    Decor = 'decor',
+    Interactive = 'interactive',
+    Card = 'card',
+    Game = 'game'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListCreatorCreationsFormatEnum {
+    Wearable = 'wearable',
+    Model = 'model',
+    Decor = 'decor',
+    Interactive = 'interactive',
+    Card = 'card',
+    ClassicGame = 'classic_game',
+    CardGame = 'card_game'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListCreatorCreationsStatusEnum {
+    Draft = 'draft',
+    Live = 'live',
+    Paused = 'paused',
+    InReview = 'in_review',
+    ChangesRequested = 'changes_requested',
+    Rejected = 'rejected',
+    Retired = 'retired'
 }
 /**
     * @export

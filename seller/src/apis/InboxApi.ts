@@ -15,21 +15,45 @@
 
 import * as runtime from '../runtime';
 import {
+    BodyRequest,
+    BodyRequestFromJSON,
+    BodyRequestToJSON,
+    CreateFundingInvoiceFileRequest,
+    CreateFundingInvoiceFileRequestFromJSON,
+    CreateFundingInvoiceFileRequestToJSON,
+    CreateInboxAiSuggestRequest,
+    CreateInboxAiSuggestRequestFromJSON,
+    CreateInboxAiSuggestRequestToJSON,
     CreateInboxAiSuggestResponse,
     CreateInboxAiSuggestResponseFromJSON,
     CreateInboxAiSuggestResponseToJSON,
+    CreateInboxCannedResponseRequest,
+    CreateInboxCannedResponseRequestFromJSON,
+    CreateInboxCannedResponseRequestToJSON,
     CreateInboxCannedResponseResponse,
     CreateInboxCannedResponseResponseFromJSON,
     CreateInboxCannedResponseResponseToJSON,
+    CreateInboxConversationBulkAiRespondRequest,
+    CreateInboxConversationBulkAiRespondRequestFromJSON,
+    CreateInboxConversationBulkAiRespondRequestToJSON,
     CreateInboxConversationBulkAiRespondResponse,
     CreateInboxConversationBulkAiRespondResponseFromJSON,
     CreateInboxConversationBulkAiRespondResponseToJSON,
+    CreateInboxConversationBulkRequest,
+    CreateInboxConversationBulkRequestFromJSON,
+    CreateInboxConversationBulkRequestToJSON,
     CreateInboxConversationBulkResponse,
     CreateInboxConversationBulkResponseFromJSON,
     CreateInboxConversationBulkResponseToJSON,
+    CreateInboxConversationOfferActionRequest,
+    CreateInboxConversationOfferActionRequestFromJSON,
+    CreateInboxConversationOfferActionRequestToJSON,
     CreateInboxMessageTriageResponse,
     CreateInboxMessageTriageResponseFromJSON,
     CreateInboxMessageTriageResponseToJSON,
+    CreateInboxOfferRequest,
+    CreateInboxOfferRequestFromJSON,
+    CreateInboxOfferRequestToJSON,
     CreateInboxOfferResponse,
     CreateInboxOfferResponseFromJSON,
     CreateInboxOfferResponseToJSON,
@@ -42,9 +66,15 @@ import {
     CreateInboxSendOfferResponse,
     CreateInboxSendOfferResponseFromJSON,
     CreateInboxSendOfferResponseToJSON,
+    CreateVideoRequestAnswerRequest,
+    CreateVideoRequestAnswerRequestFromJSON,
+    CreateVideoRequestAnswerRequestToJSON,
     CreateVideoRequestAnswerResponse,
     CreateVideoRequestAnswerResponseFromJSON,
     CreateVideoRequestAnswerResponseToJSON,
+    CreateVideoRequestDeclineRequest,
+    CreateVideoRequestDeclineRequestFromJSON,
+    CreateVideoRequestDeclineRequestToJSON,
     CreateVideoRequestUploadUrlResponse,
     CreateVideoRequestUploadUrlResponseFromJSON,
     CreateVideoRequestUploadUrlResponseToJSON,
@@ -72,25 +102,50 @@ import {
     UpdateInboxCannedResponseOrderRequest,
     UpdateInboxCannedResponseOrderRequestFromJSON,
     UpdateInboxCannedResponseOrderRequestToJSON,
+    UpdateInboxCannedResponseRequest,
+    UpdateInboxCannedResponseRequestFromJSON,
+    UpdateInboxCannedResponseRequestToJSON,
+    UpdateInboxConversationRequest,
+    UpdateInboxConversationRequestFromJSON,
+    UpdateInboxConversationRequestToJSON,
     UpdateInboxConversationResponse,
     UpdateInboxConversationResponseFromJSON,
     UpdateInboxConversationResponseToJSON,
 } from '../models';
 
-export interface CreateInboxConversationOfferActionRequest {
+export interface CreateInboxAiSuggestOperationRequest {
+    createInboxAiSuggestRequest: CreateInboxAiSuggestRequest;
+}
+
+export interface CreateInboxCannedResponseOperationRequest {
+    createInboxCannedResponseRequest: CreateInboxCannedResponseRequest;
+}
+
+export interface CreateInboxConversationBulkOperationRequest {
+    createInboxConversationBulkRequest: CreateInboxConversationBulkRequest;
+}
+
+export interface CreateInboxConversationBulkAiRespondOperationRequest {
+    createInboxConversationBulkAiRespondRequest: CreateInboxConversationBulkAiRespondRequest;
+}
+
+export interface CreateInboxConversationOfferActionOperationRequest {
     id: string;
+    createInboxConversationOfferActionRequest: CreateInboxConversationOfferActionRequest;
 }
 
 export interface CreateInboxMessageTriageRequest {
     id: string;
 }
 
-export interface CreateInboxOfferRequest {
+export interface CreateInboxOfferOperationRequest {
     id: string;
+    createInboxOfferRequest: CreateInboxOfferRequest;
 }
 
 export interface CreateInboxReplyRequest {
     id: string;
+    bodyRequest: BodyRequest;
 }
 
 export interface CreateInboxSendOfferOperationRequest {
@@ -98,12 +153,18 @@ export interface CreateInboxSendOfferOperationRequest {
     createInboxSendOfferRequest: CreateInboxSendOfferRequest;
 }
 
-export interface CreateVideoRequestAnswerRequest {
+export interface CreateVideoRequestAnswerOperationRequest {
     id: string;
+    createVideoRequestAnswerRequest: CreateVideoRequestAnswerRequest;
 }
 
-export interface CreateVideoRequestDeclineRequest {
+export interface CreateVideoRequestDeclineOperationRequest {
     id: string;
+    createVideoRequestDeclineRequest?: CreateVideoRequestDeclineRequest;
+}
+
+export interface CreateVideoRequestUploadUrlRequest {
+    createFundingInvoiceFileRequest: CreateFundingInvoiceFileRequest;
 }
 
 export interface DeleteInboxCannedResponseRequest {
@@ -124,16 +185,22 @@ export interface ListInboxRequest {
     filter?: ListInboxFilterEnum;
 }
 
-export interface UpdateInboxCannedResponseRequest {
+export interface ListVideoRequestsRequest {
+    status?: ListVideoRequestsStatusEnum;
+}
+
+export interface UpdateInboxCannedResponseOperationRequest {
     id: string;
+    updateInboxCannedResponseRequest: UpdateInboxCannedResponseRequest;
 }
 
 export interface UpdateInboxCannedResponseOrderOperationRequest {
     updateInboxCannedResponseOrderRequest: UpdateInboxCannedResponseOrderRequest;
 }
 
-export interface UpdateInboxConversationRequest {
+export interface UpdateInboxConversationOperationRequest {
     id: string;
+    updateInboxConversationRequest: UpdateInboxConversationRequest;
 }
 
 /**
@@ -144,10 +211,16 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * AI reply suggestion for a conversation.
      */
-    async createInboxAiSuggestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxAiSuggestResponse>> {
+    async createInboxAiSuggestRaw(requestParameters: CreateInboxAiSuggestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxAiSuggestResponse>> {
+        if (requestParameters.createInboxAiSuggestRequest === null || requestParameters.createInboxAiSuggestRequest === undefined) {
+            throw new runtime.RequiredError('createInboxAiSuggestRequest','Required parameter requestParameters.createInboxAiSuggestRequest was null or undefined when calling createInboxAiSuggest.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -162,6 +235,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInboxAiSuggestRequestToJSON(requestParameters.createInboxAiSuggestRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxAiSuggestResponseFromJSON(jsonValue));
@@ -170,18 +244,24 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * AI reply suggestion for a conversation.
      */
-    async createInboxAiSuggest(initOverrides?: RequestInit): Promise<CreateInboxAiSuggestResponse> {
-        const response = await this.createInboxAiSuggestRaw(initOverrides);
+    async createInboxAiSuggest(requestParameters: CreateInboxAiSuggestOperationRequest, initOverrides?: RequestInit): Promise<CreateInboxAiSuggestResponse> {
+        const response = await this.createInboxAiSuggestRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Create a canned response (added to the end of the list).
      */
-    async createInboxCannedResponseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxCannedResponseResponse>> {
+    async createInboxCannedResponseRaw(requestParameters: CreateInboxCannedResponseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxCannedResponseResponse>> {
+        if (requestParameters.createInboxCannedResponseRequest === null || requestParameters.createInboxCannedResponseRequest === undefined) {
+            throw new runtime.RequiredError('createInboxCannedResponseRequest','Required parameter requestParameters.createInboxCannedResponseRequest was null or undefined when calling createInboxCannedResponse.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -196,6 +276,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInboxCannedResponseRequestToJSON(requestParameters.createInboxCannedResponseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxCannedResponseResponseFromJSON(jsonValue));
@@ -204,18 +285,24 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Create a canned response (added to the end of the list).
      */
-    async createInboxCannedResponse(initOverrides?: RequestInit): Promise<CreateInboxCannedResponseResponse> {
-        const response = await this.createInboxCannedResponseRaw(initOverrides);
+    async createInboxCannedResponse(requestParameters: CreateInboxCannedResponseOperationRequest, initOverrides?: RequestInit): Promise<CreateInboxCannedResponseResponse> {
+        const response = await this.createInboxCannedResponseRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk mark read / mark unread / soft-delete conversations.
      */
-    async createInboxConversationBulkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxConversationBulkResponse>> {
+    async createInboxConversationBulkRaw(requestParameters: CreateInboxConversationBulkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxConversationBulkResponse>> {
+        if (requestParameters.createInboxConversationBulkRequest === null || requestParameters.createInboxConversationBulkRequest === undefined) {
+            throw new runtime.RequiredError('createInboxConversationBulkRequest','Required parameter requestParameters.createInboxConversationBulkRequest was null or undefined when calling createInboxConversationBulk.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -230,6 +317,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInboxConversationBulkRequestToJSON(requestParameters.createInboxConversationBulkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxConversationBulkResponseFromJSON(jsonValue));
@@ -238,18 +326,24 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Bulk mark read / mark unread / soft-delete conversations.
      */
-    async createInboxConversationBulk(initOverrides?: RequestInit): Promise<CreateInboxConversationBulkResponse> {
-        const response = await this.createInboxConversationBulkRaw(initOverrides);
+    async createInboxConversationBulk(requestParameters: CreateInboxConversationBulkOperationRequest, initOverrides?: RequestInit): Promise<CreateInboxConversationBulkResponse> {
+        const response = await this.createInboxConversationBulkRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * AI reply suggestion for multiple conversations — draft or send.
      */
-    async createInboxConversationBulkAiRespondRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxConversationBulkAiRespondResponse>> {
+    async createInboxConversationBulkAiRespondRaw(requestParameters: CreateInboxConversationBulkAiRespondOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxConversationBulkAiRespondResponse>> {
+        if (requestParameters.createInboxConversationBulkAiRespondRequest === null || requestParameters.createInboxConversationBulkAiRespondRequest === undefined) {
+            throw new runtime.RequiredError('createInboxConversationBulkAiRespondRequest','Required parameter requestParameters.createInboxConversationBulkAiRespondRequest was null or undefined when calling createInboxConversationBulkAiRespond.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -264,6 +358,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInboxConversationBulkAiRespondRequestToJSON(requestParameters.createInboxConversationBulkAiRespondRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxConversationBulkAiRespondResponseFromJSON(jsonValue));
@@ -272,22 +367,28 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * AI reply suggestion for multiple conversations — draft or send.
      */
-    async createInboxConversationBulkAiRespond(initOverrides?: RequestInit): Promise<CreateInboxConversationBulkAiRespondResponse> {
-        const response = await this.createInboxConversationBulkAiRespondRaw(initOverrides);
+    async createInboxConversationBulkAiRespond(requestParameters: CreateInboxConversationBulkAiRespondOperationRequest, initOverrides?: RequestInit): Promise<CreateInboxConversationBulkAiRespondResponse> {
+        const response = await this.createInboxConversationBulkAiRespondRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Accept / counter / decline an active offer on a conversation.
      */
-    async createInboxConversationOfferActionRaw(requestParameters: CreateInboxConversationOfferActionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateInboxConversationResponse>> {
+    async createInboxConversationOfferActionRaw(requestParameters: CreateInboxConversationOfferActionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateInboxConversationResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createInboxConversationOfferAction.');
+        }
+
+        if (requestParameters.createInboxConversationOfferActionRequest === null || requestParameters.createInboxConversationOfferActionRequest === undefined) {
+            throw new runtime.RequiredError('createInboxConversationOfferActionRequest','Required parameter requestParameters.createInboxConversationOfferActionRequest was null or undefined when calling createInboxConversationOfferAction.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -302,6 +403,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInboxConversationOfferActionRequestToJSON(requestParameters.createInboxConversationOfferActionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateInboxConversationResponseFromJSON(jsonValue));
@@ -310,7 +412,7 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Accept / counter / decline an active offer on a conversation.
      */
-    async createInboxConversationOfferAction(requestParameters: CreateInboxConversationOfferActionRequest, initOverrides?: RequestInit): Promise<UpdateInboxConversationResponse> {
+    async createInboxConversationOfferAction(requestParameters: CreateInboxConversationOfferActionOperationRequest, initOverrides?: RequestInit): Promise<UpdateInboxConversationResponse> {
         const response = await this.createInboxConversationOfferActionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -356,14 +458,20 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Accept, counter, or decline an offer on a conversation.
      */
-    async createInboxOfferRaw(requestParameters: CreateInboxOfferRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxOfferResponse>> {
+    async createInboxOfferRaw(requestParameters: CreateInboxOfferOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxOfferResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createInboxOffer.');
+        }
+
+        if (requestParameters.createInboxOfferRequest === null || requestParameters.createInboxOfferRequest === undefined) {
+            throw new runtime.RequiredError('createInboxOfferRequest','Required parameter requestParameters.createInboxOfferRequest was null or undefined when calling createInboxOffer.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -378,6 +486,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInboxOfferRequestToJSON(requestParameters.createInboxOfferRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxOfferResponseFromJSON(jsonValue));
@@ -386,7 +495,7 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Accept, counter, or decline an offer on a conversation.
      */
-    async createInboxOffer(requestParameters: CreateInboxOfferRequest, initOverrides?: RequestInit): Promise<CreateInboxOfferResponse> {
+    async createInboxOffer(requestParameters: CreateInboxOfferOperationRequest, initOverrides?: RequestInit): Promise<CreateInboxOfferResponse> {
         const response = await this.createInboxOfferRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -399,9 +508,15 @@ export class InboxApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createInboxReply.');
         }
 
+        if (requestParameters.bodyRequest === null || requestParameters.bodyRequest === undefined) {
+            throw new runtime.RequiredError('bodyRequest','Required parameter requestParameters.bodyRequest was null or undefined when calling createInboxReply.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -416,6 +531,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: BodyRequestToJSON(requestParameters.bodyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxReplyResponseFromJSON(jsonValue));
@@ -477,14 +593,20 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
      */
-    async createVideoRequestAnswerRaw(requestParameters: CreateVideoRequestAnswerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoRequestAnswerResponse>> {
+    async createVideoRequestAnswerRaw(requestParameters: CreateVideoRequestAnswerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoRequestAnswerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVideoRequestAnswer.');
+        }
+
+        if (requestParameters.createVideoRequestAnswerRequest === null || requestParameters.createVideoRequestAnswerRequest === undefined) {
+            throw new runtime.RequiredError('createVideoRequestAnswerRequest','Required parameter requestParameters.createVideoRequestAnswerRequest was null or undefined when calling createVideoRequestAnswer.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -499,6 +621,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVideoRequestAnswerRequestToJSON(requestParameters.createVideoRequestAnswerRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVideoRequestAnswerResponseFromJSON(jsonValue));
@@ -507,7 +630,7 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
      */
-    async createVideoRequestAnswer(requestParameters: CreateVideoRequestAnswerRequest, initOverrides?: RequestInit): Promise<CreateVideoRequestAnswerResponse> {
+    async createVideoRequestAnswer(requestParameters: CreateVideoRequestAnswerOperationRequest, initOverrides?: RequestInit): Promise<CreateVideoRequestAnswerResponse> {
         const response = await this.createVideoRequestAnswerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -515,7 +638,7 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Decline a video request, with an optional note to the buyer.
      */
-    async createVideoRequestDeclineRaw(requestParameters: CreateVideoRequestDeclineRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoRequestAnswerResponse>> {
+    async createVideoRequestDeclineRaw(requestParameters: CreateVideoRequestDeclineOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoRequestAnswerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createVideoRequestDecline.');
         }
@@ -523,6 +646,8 @@ export class InboxApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -537,6 +662,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateVideoRequestDeclineRequestToJSON(requestParameters.createVideoRequestDeclineRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVideoRequestAnswerResponseFromJSON(jsonValue));
@@ -545,7 +671,7 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Decline a video request, with an optional note to the buyer.
      */
-    async createVideoRequestDecline(requestParameters: CreateVideoRequestDeclineRequest, initOverrides?: RequestInit): Promise<CreateVideoRequestAnswerResponse> {
+    async createVideoRequestDecline(requestParameters: CreateVideoRequestDeclineOperationRequest, initOverrides?: RequestInit): Promise<CreateVideoRequestAnswerResponse> {
         const response = await this.createVideoRequestDeclineRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -553,10 +679,16 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
      */
-    async createVideoRequestUploadUrlRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoRequestUploadUrlResponse>> {
+    async createVideoRequestUploadUrlRaw(requestParameters: CreateVideoRequestUploadUrlRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateVideoRequestUploadUrlResponse>> {
+        if (requestParameters.createFundingInvoiceFileRequest === null || requestParameters.createFundingInvoiceFileRequest === undefined) {
+            throw new runtime.RequiredError('createFundingInvoiceFileRequest','Required parameter requestParameters.createFundingInvoiceFileRequest was null or undefined when calling createVideoRequestUploadUrl.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -571,6 +703,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingInvoiceFileRequestToJSON(requestParameters.createFundingInvoiceFileRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateVideoRequestUploadUrlResponseFromJSON(jsonValue));
@@ -579,8 +712,8 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
      */
-    async createVideoRequestUploadUrl(initOverrides?: RequestInit): Promise<CreateVideoRequestUploadUrlResponse> {
-        const response = await this.createVideoRequestUploadUrlRaw(initOverrides);
+    async createVideoRequestUploadUrl(requestParameters: CreateVideoRequestUploadUrlRequest, initOverrides?: RequestInit): Promise<CreateVideoRequestUploadUrlResponse> {
+        const response = await this.createVideoRequestUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -848,8 +981,12 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Buyers asking for a video of your items. status: open (default), answered, declined or all.
      */
-    async listVideoRequestsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVideoRequestsResponse>> {
+    async listVideoRequestsRaw(requestParameters: ListVideoRequestsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListVideoRequestsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -874,22 +1011,28 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Buyers asking for a video of your items. status: open (default), answered, declined or all.
      */
-    async listVideoRequests(initOverrides?: RequestInit): Promise<ListVideoRequestsResponse> {
-        const response = await this.listVideoRequestsRaw(initOverrides);
+    async listVideoRequests(requestParameters: ListVideoRequestsRequest = {}, initOverrides?: RequestInit): Promise<ListVideoRequestsResponse> {
+        const response = await this.listVideoRequestsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Update a canned response.
      */
-    async updateInboxCannedResponseRaw(requestParameters: UpdateInboxCannedResponseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxCannedResponseResponse>> {
+    async updateInboxCannedResponseRaw(requestParameters: UpdateInboxCannedResponseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInboxCannedResponseResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateInboxCannedResponse.');
+        }
+
+        if (requestParameters.updateInboxCannedResponseRequest === null || requestParameters.updateInboxCannedResponseRequest === undefined) {
+            throw new runtime.RequiredError('updateInboxCannedResponseRequest','Required parameter requestParameters.updateInboxCannedResponseRequest was null or undefined when calling updateInboxCannedResponse.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -904,6 +1047,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateInboxCannedResponseRequestToJSON(requestParameters.updateInboxCannedResponseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInboxCannedResponseResponseFromJSON(jsonValue));
@@ -912,7 +1056,7 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Update a canned response.
      */
-    async updateInboxCannedResponse(requestParameters: UpdateInboxCannedResponseRequest, initOverrides?: RequestInit): Promise<CreateInboxCannedResponseResponse> {
+    async updateInboxCannedResponse(requestParameters: UpdateInboxCannedResponseOperationRequest, initOverrides?: RequestInit): Promise<CreateInboxCannedResponseResponse> {
         const response = await this.updateInboxCannedResponseRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -963,14 +1107,20 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Mark read / change status / close conversation.
      */
-    async updateInboxConversationRaw(requestParameters: UpdateInboxConversationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateInboxConversationResponse>> {
+    async updateInboxConversationRaw(requestParameters: UpdateInboxConversationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateInboxConversationResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateInboxConversation.');
+        }
+
+        if (requestParameters.updateInboxConversationRequest === null || requestParameters.updateInboxConversationRequest === undefined) {
+            throw new runtime.RequiredError('updateInboxConversationRequest','Required parameter requestParameters.updateInboxConversationRequest was null or undefined when calling updateInboxConversation.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -985,6 +1135,7 @@ export class InboxApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateInboxConversationRequestToJSON(requestParameters.updateInboxConversationRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateInboxConversationResponseFromJSON(jsonValue));
@@ -993,7 +1144,7 @@ export class InboxApi extends runtime.BaseAPI {
     /**
      * Mark read / change status / close conversation.
      */
-    async updateInboxConversation(requestParameters: UpdateInboxConversationRequest, initOverrides?: RequestInit): Promise<UpdateInboxConversationResponse> {
+    async updateInboxConversation(requestParameters: UpdateInboxConversationOperationRequest, initOverrides?: RequestInit): Promise<UpdateInboxConversationResponse> {
         const response = await this.updateInboxConversationRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1007,4 +1158,14 @@ export class InboxApi extends runtime.BaseAPI {
 export enum ListInboxFilterEnum {
     Unread = 'unread',
     NeedsReply = 'needs_reply'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListVideoRequestsStatusEnum {
+    All = 'all',
+    Open = 'open',
+    Declined = 'declined',
+    Answered = 'answered'
 }

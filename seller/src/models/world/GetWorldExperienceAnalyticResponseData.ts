@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    FromTo2,
-    FromTo2FromJSON,
-    FromTo2FromJSONTyped,
-    FromTo2ToJSON,
-} from '../common/FromTo2';
+    CreateListingTagRenameRequest,
+    CreateListingTagRenameRequestFromJSON,
+    CreateListingTagRenameRequestFromJSONTyped,
+    CreateListingTagRenameRequestToJSON,
+} from '../listing/CreateListingTagRenameRequest';
 import {
     GetWorldExperienceAnalyticResponseDataOneOf1ByPlatformItem,
     GetWorldExperienceAnalyticResponseDataOneOf1ByPlatformItemFromJSON,
@@ -148,10 +148,10 @@ import {
 export interface GetWorldExperienceAnalyticResponseData {
     /**
      * 
-     * @type {FromTo2}
+     * @type {CreateListingTagRenameRequest}
      * @memberof GetWorldExperienceAnalyticResponseData
      */
-    range: FromTo2;
+    range: CreateListingTagRenameRequest;
     /**
      * 
      * @type {GetWorldExperienceAnalyticResponseDataOneOfLive}
@@ -202,10 +202,10 @@ export interface GetWorldExperienceAnalyticResponseData {
     alerts?: Array<GetWorldExperienceAnalyticResponseDataOneOfAlerts>;
     /**
      * 
-     * @type {FromTo2}
+     * @type {CreateListingTagRenameRequest}
      * @memberof GetWorldExperienceAnalyticResponseData
      */
-    rawRange?: FromTo2;
+    rawRange?: CreateListingTagRenameRequest;
     /**
      * 
      * @type {Array<GetWorldExperienceAnalyticResponseDataOneOf1SessionLength>}
@@ -344,7 +344,7 @@ export function GetWorldExperienceAnalyticResponseDataFromJSONTyped(json: any, i
     }
     return {
         
-        'range': FromTo2FromJSON(json['range']),
+        'range': CreateListingTagRenameRequestFromJSON(json['range']),
         'live': !exists(json, 'live') ? undefined : GetWorldExperienceAnalyticResponseDataOneOfLiveFromJSON(json['live']),
         'totals': !exists(json, 'totals') ? undefined : json['totals'],
         'retention': !exists(json, 'retention') ? undefined : GetWorldExperienceAnalyticResponseDataOneOfRetentionFromJSON(json['retention']),
@@ -353,7 +353,7 @@ export function GetWorldExperienceAnalyticResponseDataFromJSONTyped(json: any, i
         'sampled': !exists(json, 'sampled') ? undefined : json['sampled'],
         'sampledOutEvents': !exists(json, 'sampledOutEvents') ? undefined : json['sampledOutEvents'],
         'alerts': !exists(json, 'alerts') ? undefined : ((json['alerts'] as Array<any>).map(GetWorldExperienceAnalyticResponseDataOneOfAlertsFromJSON)),
-        'rawRange': !exists(json, 'rawRange') ? undefined : FromTo2FromJSON(json['rawRange']),
+        'rawRange': !exists(json, 'rawRange') ? undefined : CreateListingTagRenameRequestFromJSON(json['rawRange']),
         'sessionLength': !exists(json, 'sessionLength') ? undefined : ((json['sessionLength'] as Array<any>).map(GetWorldExperienceAnalyticResponseDataOneOf1SessionLengthFromJSON)),
         'byPlatform': !exists(json, 'byPlatform') ? undefined : ((json['byPlatform'] as Array<any>).map(GetWorldExperienceAnalyticResponseDataOneOf1ByPlatformItemFromJSON)),
         'bySource': !exists(json, 'bySource') ? undefined : ((json['bySource'] as Array<any>).map(GetWorldExperienceAnalyticResponseDataOneOf1BySourceItemFromJSON)),
@@ -387,7 +387,7 @@ export function GetWorldExperienceAnalyticResponseDataToJSON(value?: GetWorldExp
     }
     return {
         
-        'range': FromTo2ToJSON(value.range),
+        'range': CreateListingTagRenameRequestToJSON(value.range),
         'live': GetWorldExperienceAnalyticResponseDataOneOfLiveToJSON(value.live),
         'totals': value.totals,
         'retention': GetWorldExperienceAnalyticResponseDataOneOfRetentionToJSON(value.retention),
@@ -396,7 +396,7 @@ export function GetWorldExperienceAnalyticResponseDataToJSON(value?: GetWorldExp
         'sampled': value.sampled,
         'sampledOutEvents': value.sampledOutEvents,
         'alerts': value.alerts === undefined ? undefined : ((value.alerts as Array<any>).map(GetWorldExperienceAnalyticResponseDataOneOfAlertsToJSON)),
-        'rawRange': FromTo2ToJSON(value.rawRange),
+        'rawRange': CreateListingTagRenameRequestToJSON(value.rawRange),
         'sessionLength': value.sessionLength === undefined ? undefined : ((value.sessionLength as Array<any>).map(GetWorldExperienceAnalyticResponseDataOneOf1SessionLengthToJSON)),
         'byPlatform': value.byPlatform === undefined ? undefined : ((value.byPlatform as Array<any>).map(GetWorldExperienceAnalyticResponseDataOneOf1ByPlatformItemToJSON)),
         'bySource': value.bySource === undefined ? undefined : ((value.bySource as Array<any>).map(GetWorldExperienceAnalyticResponseDataOneOf1BySourceItemToJSON)),

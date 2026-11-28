@@ -42,6 +42,9 @@ import {
     ListStreetStallsResponse,
     ListStreetStallsResponseFromJSON,
     ListStreetStallsResponseToJSON,
+    UpdateStallBookingRequest,
+    UpdateStallBookingRequestFromJSON,
+    UpdateStallBookingRequestToJSON,
 } from '../models';
 
 export interface CreateStallBookingCancelRequest {
@@ -63,6 +66,8 @@ export interface GetStallQuoteRequest {
 
 export interface GetStallStreetAerialRequest {
     slug: string;
+    from?: string;
+    days?: number;
 }
 
 export interface ListStreetEventsRequest {
@@ -73,8 +78,9 @@ export interface ListStreetStallsRequest {
     slug: string;
 }
 
-export interface UpdateStallBookingRequest {
+export interface UpdateStallBookingOperationRequest {
     id: string;
+    updateStallBookingRequest?: UpdateStallBookingRequest;
 }
 
 /**
@@ -268,6 +274,14 @@ export class StallsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -443,7 +457,7 @@ export class StallsApi extends runtime.BaseAPI {
     /**
      * Change a booked stall before or while it is up: listingIds (up to 6 of your live listings), awning { colour, pattern }, booth { canopy, pattern, lights, counter, piece } (premium values need holding), sign, attendant.
      */
-    async updateStallBookingRaw(requestParameters: UpdateStallBookingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStallBookResponse>> {
+    async updateStallBookingRaw(requestParameters: UpdateStallBookingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateStallBookResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateStallBooking.');
         }
@@ -451,6 +465,8 @@ export class StallsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -465,6 +481,7 @@ export class StallsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateStallBookingRequestToJSON(requestParameters.updateStallBookingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateStallBookResponseFromJSON(jsonValue));
@@ -473,7 +490,7 @@ export class StallsApi extends runtime.BaseAPI {
     /**
      * Change a booked stall before or while it is up: listingIds (up to 6 of your live listings), awning { colour, pattern }, booth { canopy, pattern, lights, counter, piece } (premium values need holding), sign, attendant.
      */
-    async updateStallBooking(requestParameters: UpdateStallBookingRequest, initOverrides?: RequestInit): Promise<CreateStallBookResponse> {
+    async updateStallBooking(requestParameters: UpdateStallBookingOperationRequest, initOverrides?: RequestInit): Promise<CreateStallBookResponse> {
         const response = await this.updateStallBookingRaw(requestParameters, initOverrides);
         return await response.value();
     }

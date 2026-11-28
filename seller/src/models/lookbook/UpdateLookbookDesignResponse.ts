@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    UpdateLookbookDesignResponseData,
-    UpdateLookbookDesignResponseDataFromJSON,
-    UpdateLookbookDesignResponseDataFromJSONTyped,
-    UpdateLookbookDesignResponseDataToJSON,
-} from './UpdateLookbookDesignResponseData';
+    CreateWorldExperienceConfigRollbackRequest,
+    CreateWorldExperienceConfigRollbackRequestFromJSON,
+    CreateWorldExperienceConfigRollbackRequestFromJSONTyped,
+    CreateWorldExperienceConfigRollbackRequestToJSON,
+} from '../world/CreateWorldExperienceConfigRollbackRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface UpdateLookbookDesignResponse {
     /**
      * 
-     * @type {UpdateLookbookDesignResponseData}
+     * @type {CreateWorldExperienceConfigRollbackRequest}
      * @memberof UpdateLookbookDesignResponse
      */
-    data: UpdateLookbookDesignResponseData;
+    data: CreateWorldExperienceConfigRollbackRequest;
 }
 
 export function UpdateLookbookDesignResponseFromJSON(json: any): UpdateLookbookDesignResponse {
@@ -44,7 +44,7 @@ export function UpdateLookbookDesignResponseFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
-        'data': UpdateLookbookDesignResponseDataFromJSON(json['data']),
+        'data': CreateWorldExperienceConfigRollbackRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function UpdateLookbookDesignResponseToJSON(value?: UpdateLookbookDesignR
     }
     return {
         
-        'data': UpdateLookbookDesignResponseDataToJSON(value.data),
+        'data': CreateWorldExperienceConfigRollbackRequestToJSON(value.data),
     };
 }
 

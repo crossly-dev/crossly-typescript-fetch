@@ -37,6 +37,12 @@ export interface GetBuyerSellerLoyaltyResponseDataMemberStanding {
      * @memberof GetBuyerSellerLoyaltyResponseDataMemberStanding
      */
     points: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerSellerLoyaltyResponseDataMemberStanding
+     */
+    balance?: number | null;
 }
 
 export function GetBuyerSellerLoyaltyResponseDataMemberStandingFromJSON(json: any): GetBuyerSellerLoyaltyResponseDataMemberStanding {
@@ -52,6 +58,7 @@ export function GetBuyerSellerLoyaltyResponseDataMemberStandingFromJSONTyped(jso
         'spendCents': json['spendCents'],
         'orders': json['orders'],
         'points': json['points'],
+        'balance': !exists(json, 'balance') ? undefined : json['balance'],
     };
 }
 
@@ -67,6 +74,7 @@ export function GetBuyerSellerLoyaltyResponseDataMemberStandingToJSON(value?: Ge
         'spendCents': value.spendCents,
         'orders': value.orders,
         'points': value.points,
+        'balance': value.balance,
     };
 }
 

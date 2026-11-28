@@ -222,8 +222,8 @@ export interface GetWorldPlazaResponseDataRing {
 export enum GetWorldPlazaResponseDataRingGenreEnum {
     Shopping = 'shopping',
     Other = 'other',
-    Strategy = 'strategy',
     Social = 'social',
+    Strategy = 'strategy',
     Hangout = 'hangout',
     Simulation = 'simulation',
     Obby = 'obby',

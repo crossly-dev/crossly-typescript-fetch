@@ -81,8 +81,8 @@ export interface StorefrontResponse2DataDraftTheme {
 */
 export enum StorefrontResponse2DataDraftThemeButtonStyleEnum {
     Solid = 'solid',
-    Pill = 'pill',
     Outline = 'outline',
+    Pill = 'pill',
     Soft = 'soft',
     Underline = 'underline'
 }/**

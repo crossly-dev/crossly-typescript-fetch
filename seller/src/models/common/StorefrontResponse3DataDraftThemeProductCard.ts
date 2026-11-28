@@ -98,9 +98,9 @@ export interface StorefrontResponse3DataDraftThemeProductCard {
 * @enum {string}
 */
 export enum StorefrontResponse3DataDraftThemeProductCardStyleEnum {
+    Minimal = 'minimal',
     Standard = 'standard',
     Overlay = 'overlay',
-    Minimal = 'minimal',
     Bordered = 'bordered',
     Polaroid = 'polaroid'
 }/**

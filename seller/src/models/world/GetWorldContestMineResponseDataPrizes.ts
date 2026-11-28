@@ -51,16 +51,16 @@ export interface GetWorldContestMineResponseDataPrizes {
     status: GetWorldContestMineResponseDataPrizesStatusEnum;
     /**
      * 
-     * @type {number}
-     * @memberof GetWorldContestMineResponseDataPrizes
-     */
-    amount: number;
-    /**
-     * 
      * @type {string}
      * @memberof GetWorldContestMineResponseDataPrizes
      */
     kind: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetWorldContestMineResponseDataPrizes
+     */
+    amount: number;
     /**
      * 
      * @type {string}
@@ -109,8 +109,8 @@ export function GetWorldContestMineResponseDataPrizesFromJSONTyped(json: any, ig
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
         'status': json['status'],
-        'amount': json['amount'],
         'kind': json['kind'],
+        'amount': json['amount'],
         'note': !exists(json, 'note') ? undefined : json['note'],
         'place': json['place'],
         'contestId': json['contestId'],
@@ -131,8 +131,8 @@ export function GetWorldContestMineResponseDataPrizesToJSON(value?: GetWorldCont
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
         'status': value.status,
-        'amount': value.amount,
         'kind': value.kind,
+        'amount': value.amount,
         'note': value.note,
         'place': value.place,
         'contestId': value.contestId,

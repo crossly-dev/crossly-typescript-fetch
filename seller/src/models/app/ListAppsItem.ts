@@ -14,17 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    LabelUrl,
+    LabelUrlFromJSON,
+    LabelUrlFromJSONTyped,
+    LabelUrlToJSON,
+} from '../common/LabelUrl';
+import {
     ListAppsItemCapabilities,
     ListAppsItemCapabilitiesFromJSON,
     ListAppsItemCapabilitiesFromJSONTyped,
     ListAppsItemCapabilitiesToJSON,
 } from './ListAppsItemCapabilities';
-import {
-    ListAppsItemDocsLinks,
-    ListAppsItemDocsLinksFromJSON,
-    ListAppsItemDocsLinksFromJSONTyped,
-    ListAppsItemDocsLinksToJSON,
-} from './ListAppsItemDocsLinks';
 
 /**
  * 
@@ -208,10 +208,10 @@ export interface ListAppsItem {
     termsUrl?: string | null;
     /**
      * 
-     * @type {Array<ListAppsItemDocsLinks>}
+     * @type {Array<LabelUrl>}
      * @memberof ListAppsItem
      */
-    docsLinks: Array<ListAppsItemDocsLinks>;
+    docsLinks: Array<LabelUrl>;
     /**
      * Live connections (grants not revoked).
      * @type {number}
@@ -281,7 +281,7 @@ export function ListAppsItemFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'supportUrl': !exists(json, 'supportUrl') ? undefined : json['supportUrl'],
         'privacyUrl': !exists(json, 'privacyUrl') ? undefined : json['privacyUrl'],
         'termsUrl': !exists(json, 'termsUrl') ? undefined : json['termsUrl'],
-        'docsLinks': ((json['docsLinks'] as Array<any>).map(ListAppsItemDocsLinksFromJSON)),
+        'docsLinks': ((json['docsLinks'] as Array<any>).map(LabelUrlFromJSON)),
         'installCount': json['installCount'],
         'listedAt': !exists(json, 'listedAt') ? undefined : json['listedAt'],
         'profilePath': json['profilePath'],
@@ -326,7 +326,7 @@ export function ListAppsItemToJSON(value?: ListAppsItem | null): any {
         'supportUrl': value.supportUrl,
         'privacyUrl': value.privacyUrl,
         'termsUrl': value.termsUrl,
-        'docsLinks': ((value.docsLinks as Array<any>).map(ListAppsItemDocsLinksToJSON)),
+        'docsLinks': ((value.docsLinks as Array<any>).map(LabelUrlToJSON)),
         'installCount': value.installCount,
         'listedAt': value.listedAt,
         'profilePath': value.profilePath,

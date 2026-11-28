@@ -37,6 +37,12 @@ export interface GetLoyaltyProgramMemberResponseDataStanding {
      * @memberof GetLoyaltyProgramMemberResponseDataStanding
      */
     points: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLoyaltyProgramMemberResponseDataStanding
+     */
+    balance: number;
 }
 
 export function GetLoyaltyProgramMemberResponseDataStandingFromJSON(json: any): GetLoyaltyProgramMemberResponseDataStanding {
@@ -52,6 +58,7 @@ export function GetLoyaltyProgramMemberResponseDataStandingFromJSONTyped(json: a
         'spendCents': json['spendCents'],
         'orders': json['orders'],
         'points': json['points'],
+        'balance': json['balance'],
     };
 }
 
@@ -67,6 +74,7 @@ export function GetLoyaltyProgramMemberResponseDataStandingToJSON(value?: GetLoy
         'spendCents': value.spendCents,
         'orders': value.orders,
         'points': value.points,
+        'balance': value.balance,
     };
 }
 

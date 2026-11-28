@@ -14,17 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    AmountCurrency,
+    AmountCurrencyFromJSON,
+    AmountCurrencyFromJSONTyped,
+    AmountCurrencyToJSON,
+} from '../common/AmountCurrency';
+import {
     ListEmailEventsItemCandidates,
     ListEmailEventsItemCandidatesFromJSON,
     ListEmailEventsItemCandidatesFromJSONTyped,
     ListEmailEventsItemCandidatesToJSON,
 } from './ListEmailEventsItemCandidates';
-import {
-    ListEmailEventsItemPrice,
-    ListEmailEventsItemPriceFromJSON,
-    ListEmailEventsItemPriceFromJSONTyped,
-    ListEmailEventsItemPriceToJSON,
-} from './ListEmailEventsItemPrice';
 
 /**
  * 
@@ -58,10 +58,10 @@ export interface ListEmailEventsItem {
     title?: string | null;
     /**
      * 
-     * @type {ListEmailEventsItemPrice}
+     * @type {AmountCurrency}
      * @memberof ListEmailEventsItem
      */
-    price?: ListEmailEventsItemPrice | null;
+    price?: AmountCurrency | null;
     /**
      * 
      * @type {string}
@@ -80,6 +80,12 @@ export interface ListEmailEventsItem {
      * @memberof ListEmailEventsItem
      */
     candidates: Array<ListEmailEventsItemCandidates>;
+    /**
+     * The detected event the email was reported as (email_events.detected_event_id): the card's "Open in History".
+     * @type {string}
+     * @memberof ListEmailEventsItem
+     */
+    detectedEventId?: string | null;
 }
 
 export function ListEmailEventsItemFromJSON(json: any): ListEmailEventsItem {
@@ -96,10 +102,11 @@ export function ListEmailEventsItemFromJSONTyped(json: any, ignoreDiscriminator:
         'platform': !exists(json, 'platform') ? undefined : json['platform'],
         'event': !exists(json, 'event') ? undefined : json['event'],
         'title': !exists(json, 'title') ? undefined : json['title'],
-        'price': !exists(json, 'price') ? undefined : ListEmailEventsItemPriceFromJSON(json['price']),
+        'price': !exists(json, 'price') ? undefined : AmountCurrencyFromJSON(json['price']),
         'detail': !exists(json, 'detail') ? undefined : json['detail'],
         'createdAt': json['createdAt'],
         'candidates': ((json['candidates'] as Array<any>).map(ListEmailEventsItemCandidatesFromJSON)),
+        'detectedEventId': !exists(json, 'detectedEventId') ? undefined : json['detectedEventId'],
     };
 }
 
@@ -116,10 +123,11 @@ export function ListEmailEventsItemToJSON(value?: ListEmailEventsItem | null): a
         'platform': value.platform,
         'event': value.event,
         'title': value.title,
-        'price': ListEmailEventsItemPriceToJSON(value.price),
+        'price': AmountCurrencyToJSON(value.price),
         'detail': value.detail,
         'createdAt': value.createdAt,
         'candidates': ((value.candidates as Array<any>).map(ListEmailEventsItemCandidatesToJSON)),
+        'detectedEventId': value.detectedEventId,
     };
 }
 

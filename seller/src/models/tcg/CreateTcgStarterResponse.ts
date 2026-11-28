@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateTcgStarterResponseData,
-    CreateTcgStarterResponseDataFromJSON,
-    CreateTcgStarterResponseDataFromJSONTyped,
-    CreateTcgStarterResponseDataToJSON,
-} from './CreateTcgStarterResponseData';
+    DeckIdRequest,
+    DeckIdRequestFromJSON,
+    DeckIdRequestFromJSONTyped,
+    DeckIdRequestToJSON,
+} from '../common/DeckIdRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface CreateTcgStarterResponse {
     /**
      * 
-     * @type {CreateTcgStarterResponseData}
+     * @type {DeckIdRequest}
      * @memberof CreateTcgStarterResponse
      */
-    data: CreateTcgStarterResponseData;
+    data: DeckIdRequest;
 }
 
 export function CreateTcgStarterResponseFromJSON(json: any): CreateTcgStarterResponse {
@@ -44,7 +44,7 @@ export function CreateTcgStarterResponseFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'data': CreateTcgStarterResponseDataFromJSON(json['data']),
+        'data': DeckIdRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function CreateTcgStarterResponseToJSON(value?: CreateTcgStarterResponse 
     }
     return {
         
-        'data': CreateTcgStarterResponseDataToJSON(value.data),
+        'data': DeckIdRequestToJSON(value.data),
     };
 }
 

@@ -21,9 +21,15 @@ import {
     CreateTcgCreatorGamePackOpenResponse,
     CreateTcgCreatorGamePackOpenResponseFromJSON,
     CreateTcgCreatorGamePackOpenResponseToJSON,
+    CreateTcgCreatorGameRequest,
+    CreateTcgCreatorGameRequestFromJSON,
+    CreateTcgCreatorGameRequestToJSON,
     CreateTcgCreatorGameResponse,
     CreateTcgCreatorGameResponseFromJSON,
     CreateTcgCreatorGameResponseToJSON,
+    CreateTcgCreatorGameStarterRequest,
+    CreateTcgCreatorGameStarterRequestFromJSON,
+    CreateTcgCreatorGameStarterRequestToJSON,
     CreateTcgStarterResponse,
     CreateTcgStarterResponseFromJSON,
     CreateTcgStarterResponseToJSON,
@@ -50,13 +56,22 @@ import {
     ListTcgCreatorMineResponseToJSON,
 } from '../models';
 
+export interface CreateTcgCreatorGameOperationRequest {
+    createTcgCreatorGameRequest: CreateTcgCreatorGameRequest;
+}
+
+export interface CreateTcgCreatorGameCheckRequest {
+    createTcgCreatorGameRequest: CreateTcgCreatorGameRequest;
+}
+
 export interface CreateTcgCreatorGamePackOpenRequest {
     id: string;
     packId: string;
 }
 
-export interface CreateTcgCreatorGameStarterRequest {
+export interface CreateTcgCreatorGameStarterOperationRequest {
     id: string;
+    createTcgCreatorGameStarterRequest?: CreateTcgCreatorGameStarterRequest;
 }
 
 export interface CreateTcgCreatorGameVersionWithdrawRequest {
@@ -92,10 +107,16 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
     /**
      * Submit a card-game package version for review: game.json, cards.json, rules/game.js, thumb.png, art/_*.png as { path, base64 }. Checked, conformance-run, art quarantined, then reviewed by a person.
      */
-    async createTcgCreatorGameRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgCreatorGameResponse>> {
+    async createTcgCreatorGameRaw(requestParameters: CreateTcgCreatorGameOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgCreatorGameResponse>> {
+        if (requestParameters.createTcgCreatorGameRequest === null || requestParameters.createTcgCreatorGameRequest === undefined) {
+            throw new runtime.RequiredError('createTcgCreatorGameRequest','Required parameter requestParameters.createTcgCreatorGameRequest was null or undefined when calling createTcgCreatorGame.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -110,6 +131,7 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgCreatorGameRequestToJSON(requestParameters.createTcgCreatorGameRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTcgCreatorGameResponseFromJSON(jsonValue));
@@ -118,18 +140,24 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
     /**
      * Submit a card-game package version for review: game.json, cards.json, rules/game.js, thumb.png, art/_*.png as { path, base64 }. Checked, conformance-run, art quarantined, then reviewed by a person.
      */
-    async createTcgCreatorGame(initOverrides?: RequestInit): Promise<CreateTcgCreatorGameResponse> {
-        const response = await this.createTcgCreatorGameRaw(initOverrides);
+    async createTcgCreatorGame(requestParameters: CreateTcgCreatorGameOperationRequest, initOverrides?: RequestInit): Promise<CreateTcgCreatorGameResponse> {
+        const response = await this.createTcgCreatorGameRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Check a card-game package exactly as a submission is checked -- the static report and bot games played against your rules in the sandbox -- storing nothing. Files as { path, base64 }.
      */
-    async createTcgCreatorGameCheckRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgCreatorGameCheckResponse>> {
+    async createTcgCreatorGameCheckRaw(requestParameters: CreateTcgCreatorGameCheckRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgCreatorGameCheckResponse>> {
+        if (requestParameters.createTcgCreatorGameRequest === null || requestParameters.createTcgCreatorGameRequest === undefined) {
+            throw new runtime.RequiredError('createTcgCreatorGameRequest','Required parameter requestParameters.createTcgCreatorGameRequest was null or undefined when calling createTcgCreatorGameCheck.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -144,6 +172,7 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgCreatorGameRequestToJSON(requestParameters.createTcgCreatorGameRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTcgCreatorGameCheckResponseFromJSON(jsonValue));
@@ -152,8 +181,8 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
     /**
      * Check a card-game package exactly as a submission is checked -- the static report and bot games played against your rules in the sandbox -- storing nothing. Files as { path, base64 }.
      */
-    async createTcgCreatorGameCheck(initOverrides?: RequestInit): Promise<CreateTcgCreatorGameCheckResponse> {
-        const response = await this.createTcgCreatorGameCheckRaw(initOverrides);
+    async createTcgCreatorGameCheck(requestParameters: CreateTcgCreatorGameCheckRequest, initOverrides?: RequestInit): Promise<CreateTcgCreatorGameCheckResponse> {
+        const response = await this.createTcgCreatorGameCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -202,7 +231,7 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
     /**
      * Claim a creator game\'s free starter deck by its key (once per account; account-bound, never tradeable).
      */
-    async createTcgCreatorGameStarterRaw(requestParameters: CreateTcgCreatorGameStarterRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgStarterResponse>> {
+    async createTcgCreatorGameStarterRaw(requestParameters: CreateTcgCreatorGameStarterOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgStarterResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createTcgCreatorGameStarter.');
         }
@@ -210,6 +239,8 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -224,6 +255,7 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgCreatorGameStarterRequestToJSON(requestParameters.createTcgCreatorGameStarterRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTcgStarterResponseFromJSON(jsonValue));
@@ -232,7 +264,7 @@ export class TCGCreatorsApi extends runtime.BaseAPI {
     /**
      * Claim a creator game\'s free starter deck by its key (once per account; account-bound, never tradeable).
      */
-    async createTcgCreatorGameStarter(requestParameters: CreateTcgCreatorGameStarterRequest, initOverrides?: RequestInit): Promise<CreateTcgStarterResponse> {
+    async createTcgCreatorGameStarter(requestParameters: CreateTcgCreatorGameStarterOperationRequest, initOverrides?: RequestInit): Promise<CreateTcgStarterResponse> {
         const response = await this.createTcgCreatorGameStarterRaw(requestParameters, initOverrides);
         return await response.value();
     }

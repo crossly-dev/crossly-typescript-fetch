@@ -15,10 +15,84 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateProfileMilestoneCelebrateRequest,
+    CreateProfileMilestoneCelebrateRequestFromJSON,
+    CreateProfileMilestoneCelebrateRequestToJSON,
+    CreateProfileMilestoneCelebrateResponse,
+    CreateProfileMilestoneCelebrateResponseFromJSON,
+    CreateProfileMilestoneCelebrateResponseToJSON,
+    CreateProfilePublishRequest,
+    CreateProfilePublishRequestFromJSON,
+    CreateProfilePublishRequestToJSON,
+    CreateProfilePublishResponse,
+    CreateProfilePublishResponseFromJSON,
+    CreateProfilePublishResponseToJSON,
+    CreateProfileShareCardRequest,
+    CreateProfileShareCardRequestFromJSON,
+    CreateProfileShareCardRequestToJSON,
+    CreateProfileShareCardResponse,
+    CreateProfileShareCardResponseFromJSON,
+    CreateProfileShareCardResponseToJSON,
+    GetProfileResponse,
+    GetProfileResponseFromJSON,
+    GetProfileResponseToJSON,
+    GetSellerProfileResponse,
+    GetSellerProfileResponseFromJSON,
+    GetSellerProfileResponseToJSON,
+    ListProfileMilestonesResponse,
+    ListProfileMilestonesResponseFromJSON,
+    ListProfileMilestonesResponseToJSON,
+    ListProfileSourcesResponse,
+    ListProfileSourcesResponseFromJSON,
+    ListProfileSourcesResponseToJSON,
+    ListProfileStatsResponse,
+    ListProfileStatsResponseFromJSON,
+    ListProfileStatsResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateMeRequest,
+    UpdateMeRequestFromJSON,
+    UpdateMeRequestToJSON,
+    UpdateProfileDocumentRequest,
+    UpdateProfileDocumentRequestFromJSON,
+    UpdateProfileDocumentRequestToJSON,
+    UpdateProfileDocumentResponse,
+    UpdateProfileDocumentResponseFromJSON,
+    UpdateProfileDocumentResponseToJSON,
 } from '../models';
+
+export interface CreateProfileMilestoneCelebrateOperationRequest {
+    key: string;
+    createProfileMilestoneCelebrateRequest: CreateProfileMilestoneCelebrateRequest;
+}
+
+export interface CreateProfilePublishOperationRequest {
+    createProfilePublishRequest: CreateProfilePublishRequest;
+}
+
+export interface CreateProfileShareCardOperationRequest {
+    createProfileShareCardRequest: CreateProfileShareCardRequest;
+}
+
+export interface GetSellerProfileRequest {
+    handle: string;
+}
+
+export interface ListProfileStatsRequest {
+    keys: string;
+    timeframe?: string;
+    display?: ListProfileStatsDisplayEnum;
+    basis?: ListProfileStatsBasisEnum;
+}
+
+export interface UpdateMeOperationRequest {
+    updateMeRequest: UpdateMeRequest;
+}
+
+export interface UpdateProfileDocumentOperationRequest {
+    updateProfileDocumentRequest: UpdateProfileDocumentRequest;
+}
 
 /**
  * 
@@ -26,12 +100,339 @@ import {
 export class ProfileApi extends runtime.BaseAPI {
 
     /**
-     * Update the authenticated user\'s profile (display name, etc).
+     * Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \"We just hit 1,000 sales\"). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404.
      */
-    async updateMeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+    async createProfileMilestoneCelebrateRaw(requestParameters: CreateProfileMilestoneCelebrateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProfileMilestoneCelebrateResponse>> {
+        if (requestParameters.key === null || requestParameters.key === undefined) {
+            throw new runtime.RequiredError('key','Required parameter requestParameters.key was null or undefined when calling createProfileMilestoneCelebrate.');
+        }
+
+        if (requestParameters.createProfileMilestoneCelebrateRequest === null || requestParameters.createProfileMilestoneCelebrateRequest === undefined) {
+            throw new runtime.RequiredError('createProfileMilestoneCelebrateRequest','Required parameter requestParameters.createProfileMilestoneCelebrateRequest was null or undefined when calling createProfileMilestoneCelebrate.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/profile/milestones/{key}/celebrate`.replace(`{${"key"}}`, encodeURIComponent(String(requestParameters.key))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateProfileMilestoneCelebrateRequestToJSON(requestParameters.createProfileMilestoneCelebrateRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateProfileMilestoneCelebrateResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \"We just hit 1,000 sales\"). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404.
+     */
+    async createProfileMilestoneCelebrate(requestParameters: CreateProfileMilestoneCelebrateOperationRequest, initOverrides?: RequestInit): Promise<CreateProfileMilestoneCelebrateResponse> {
+        const response = await this.createProfileMilestoneCelebrateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Publish the draft: crossly.net/seller/<handle>, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters).
+     */
+    async createProfilePublishRaw(requestParameters: CreateProfilePublishOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProfilePublishResponse>> {
+        if (requestParameters.createProfilePublishRequest === null || requestParameters.createProfilePublishRequest === undefined) {
+            throw new runtime.RequiredError('createProfilePublishRequest','Required parameter requestParameters.createProfilePublishRequest was null or undefined when calling createProfilePublish.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/profile/publish`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateProfilePublishRequestToJSON(requestParameters.createProfilePublishRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateProfilePublishResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Publish the draft: crossly.net/seller/<handle>, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters).
+     */
+    async createProfilePublish(requestParameters: CreateProfilePublishOperationRequest, initOverrides?: RequestInit): Promise<CreateProfilePublishResponse> {
+        const response = await this.createProfilePublishRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…).
+     */
+    async createProfileShareCardRaw(requestParameters: CreateProfileShareCardOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProfileShareCardResponse>> {
+        if (requestParameters.createProfileShareCardRequest === null || requestParameters.createProfileShareCardRequest === undefined) {
+            throw new runtime.RequiredError('createProfileShareCardRequest','Required parameter requestParameters.createProfileShareCardRequest was null or undefined when calling createProfileShareCard.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/profile/share-cards`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateProfileShareCardRequestToJSON(requestParameters.createProfileShareCardRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateProfileShareCardResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…).
+     */
+    async createProfileShareCard(requestParameters: CreateProfileShareCardOperationRequest, initOverrides?: RequestInit): Promise<CreateProfileShareCardResponse> {
+        const response = await this.createProfileShareCardRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/<handle> shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account.
+     */
+    async getProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetProfileResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/profile`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProfileResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/<handle> shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account.
+     */
+    async getProfile(initOverrides?: RequestInit): Promise<GetProfileResponse> {
+        const response = await this.getProfileRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Any seller\'s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private.
+     */
+    async getSellerProfileRaw(requestParameters: GetSellerProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSellerProfileResponse>> {
+        if (requestParameters.handle === null || requestParameters.handle === undefined) {
+            throw new runtime.RequiredError('handle','Required parameter requestParameters.handle was null or undefined when calling getSellerProfile.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/sellers/{handle}/profile`.replace(`{${"handle"}}`, encodeURIComponent(String(requestParameters.handle))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetSellerProfileResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Any seller\'s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private.
+     */
+    async getSellerProfile(requestParameters: GetSellerProfileRequest, initOverrides?: RequestInit): Promise<GetSellerProfileResponse> {
+        const response = await this.getSellerProfileRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card.
+     */
+    async listProfileMilestonesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProfileMilestonesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/profile/milestones`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListProfileMilestonesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card.
+     */
+    async listProfileMilestones(initOverrides?: RequestInit): Promise<ListProfileMilestonesResponse> {
+        const response = await this.listProfileMilestonesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources.
+     */
+    async listProfileSourcesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProfileSourcesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/profile/sources`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListProfileSourcesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources.
+     */
+    async listProfileSources(initOverrides?: RequestInit): Promise<ListProfileSourcesResponse> {
+        const response = await this.listProfileSourcesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales.
+     */
+    async listProfileStatsRaw(requestParameters: ListProfileStatsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProfileStatsResponse>> {
+        if (requestParameters.keys === null || requestParameters.keys === undefined) {
+            throw new runtime.RequiredError('keys','Required parameter requestParameters.keys was null or undefined when calling listProfileStats.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.keys !== undefined) {
+            queryParameters['keys'] = requestParameters.keys;
+        }
+
+        if (requestParameters.timeframe !== undefined) {
+            queryParameters['timeframe'] = requestParameters.timeframe;
+        }
+
+        if (requestParameters.display !== undefined) {
+            queryParameters['display'] = requestParameters.display;
+        }
+
+        if (requestParameters.basis !== undefined) {
+            queryParameters['basis'] = requestParameters.basis;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/profile/stats`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListProfileStatsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales.
+     */
+    async listProfileStats(requestParameters: ListProfileStatsRequest, initOverrides?: RequestInit): Promise<ListProfileStatsResponse> {
+        const response = await this.listProfileStatsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update the authenticated user\'s profile (display name, etc).
+     */
+    async updateMeRaw(requestParameters: UpdateMeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.updateMeRequest === null || requestParameters.updateMeRequest === undefined) {
+            throw new runtime.RequiredError('updateMeRequest','Required parameter requestParameters.updateMeRequest was null or undefined when calling updateMe.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -46,6 +447,7 @@ export class ProfileApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateMeRequestToJSON(requestParameters.updateMeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
@@ -54,9 +456,68 @@ export class ProfileApi extends runtime.BaseAPI {
     /**
      * Update the authenticated user\'s profile (display name, etc).
      */
-    async updateMe(initOverrides?: RequestInit): Promise<OkResponse> {
-        const response = await this.updateMeRaw(initOverrides);
+    async updateMe(requestParameters: UpdateMeOperationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.updateMeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+    /**
+     * Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field.
+     */
+    async updateProfileDocumentRaw(requestParameters: UpdateProfileDocumentOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateProfileDocumentResponse>> {
+        if (requestParameters.updateProfileDocumentRequest === null || requestParameters.updateProfileDocumentRequest === undefined) {
+            throw new runtime.RequiredError('updateProfileDocumentRequest','Required parameter requestParameters.updateProfileDocumentRequest was null or undefined when calling updateProfileDocument.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/profile/document`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateProfileDocumentRequestToJSON(requestParameters.updateProfileDocumentRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateProfileDocumentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field.
+     */
+    async updateProfileDocument(requestParameters: UpdateProfileDocumentOperationRequest, initOverrides?: RequestInit): Promise<UpdateProfileDocumentResponse> {
+        const response = await this.updateProfileDocumentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListProfileStatsDisplayEnum {
+    Exact = 'exact',
+    Rounded = 'rounded',
+    Tier = 'tier'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListProfileStatsBasisEnum {
+    Verified = 'verified',
+    All = 'all'
 }

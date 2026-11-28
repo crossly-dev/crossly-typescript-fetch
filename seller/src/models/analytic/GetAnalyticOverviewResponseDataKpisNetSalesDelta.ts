@@ -56,10 +56,10 @@ export interface GetAnalyticOverviewResponseDataKpisNetSalesDelta {
 * @enum {string}
 */
 export enum GetAnalyticOverviewResponseDataKpisNetSalesDeltaStateEnum {
+    Flat = 'flat',
     None = 'none',
     Up = 'up',
     Down = 'down',
-    Flat = 'flat',
     New = 'new',
     Insufficient = 'insufficient'
 }

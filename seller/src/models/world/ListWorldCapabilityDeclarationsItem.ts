@@ -107,8 +107,8 @@ export enum ListWorldCapabilityDeclarationsItemDeclarerEnum {
 * @enum {string}
 */
 export enum ListWorldCapabilityDeclarationsItemReviewStateEnum {
-    Pending = 'pending',
     Live = 'live',
+    Pending = 'pending',
     Rejected = 'rejected'
 }
 

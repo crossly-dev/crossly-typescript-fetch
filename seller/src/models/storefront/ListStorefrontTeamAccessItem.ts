@@ -61,6 +61,24 @@ export interface ListStorefrontTeamAccessItem {
      * @memberof ListStorefrontTeamAccessItem
      */
     memberUserId: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListStorefrontTeamAccessItem
+     */
+    spendingCapCents?: number | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ListStorefrontTeamAccessItem
+     */
+    limits: { [key: string]: any; };
+    /**
+     * 
+     * @type {string}
+     * @memberof ListStorefrontTeamAccessItem
+     */
+    updatedByUserId?: string | null;
 }
 
 export function ListStorefrontTeamAccessItemFromJSON(json: any): ListStorefrontTeamAccessItem {
@@ -80,6 +98,9 @@ export function ListStorefrontTeamAccessItemFromJSONTyped(json: any, ignoreDiscr
         'ownerUserId': json['ownerUserId'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'memberUserId': json['memberUserId'],
+        'spendingCapCents': !exists(json, 'spendingCapCents') ? undefined : json['spendingCapCents'],
+        'limits': json['limits'],
+        'updatedByUserId': !exists(json, 'updatedByUserId') ? undefined : json['updatedByUserId'],
     };
 }
 
@@ -99,6 +120,9 @@ export function ListStorefrontTeamAccessItemToJSON(value?: ListStorefrontTeamAcc
         'ownerUserId': value.ownerUserId,
         'storefrontId': value.storefrontId,
         'memberUserId': value.memberUserId,
+        'spendingCapCents': value.spendingCapCents,
+        'limits': value.limits,
+        'updatedByUserId': value.updatedByUserId,
     };
 }
 

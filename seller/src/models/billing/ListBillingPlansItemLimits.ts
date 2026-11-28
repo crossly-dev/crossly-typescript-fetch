@@ -61,6 +61,18 @@ export interface ListBillingPlansItemLimits {
      * @memberof ListBillingPlansItemLimits
      */
     teamMode: boolean;
+    /**
+     * Magic List photo identifications a month.
+     * @type {number}
+     * @memberof ListBillingPlansItemLimits
+     */
+    visionCallsPerMonth?: number | null;
+    /**
+     * Connection addresses (region slots) included before the extra-account add-on.
+     * @type {number}
+     * @memberof ListBillingPlansItemLimits
+     */
+    includedAccounts: number;
 }
 
 export function ListBillingPlansItemLimitsFromJSON(json: any): ListBillingPlansItemLimits {
@@ -80,6 +92,8 @@ export function ListBillingPlansItemLimitsFromJSONTyped(json: any, ignoreDiscrim
         'aiEnhancements': !exists(json, 'aiEnhancements') ? undefined : json['aiEnhancements'],
         'bulkActions': json['bulkActions'],
         'teamMode': json['teamMode'],
+        'visionCallsPerMonth': !exists(json, 'visionCallsPerMonth') ? undefined : json['visionCallsPerMonth'],
+        'includedAccounts': json['includedAccounts'],
     };
 }
 
@@ -99,6 +113,8 @@ export function ListBillingPlansItemLimitsToJSON(value?: ListBillingPlansItemLim
         'aiEnhancements': value.aiEnhancements,
         'bulkActions': value.bulkActions,
         'teamMode': value.teamMode,
+        'visionCallsPerMonth': value.visionCallsPerMonth,
+        'includedAccounts': value.includedAccounts,
     };
 }
 

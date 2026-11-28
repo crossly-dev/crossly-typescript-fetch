@@ -82,9 +82,9 @@ export interface GetAccountIdentityVerificationResponseData {
 */
 export enum GetAccountIdentityVerificationResponseDataStatusEnum {
     Verified = 'verified',
+    Processing = 'processing',
     Unverified = 'unverified',
     RequiresInput = 'requires_input',
-    Processing = 'processing',
     Canceled = 'canceled'
 }
 

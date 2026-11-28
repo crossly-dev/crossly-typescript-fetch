@@ -19,12 +19,6 @@ import {
     GetConnectionEmailResponseDataFromJSONTyped,
     GetConnectionEmailResponseDataToJSON,
 } from './GetConnectionEmailResponseData';
-import {
-    GetConnectionEmailResponseOauth,
-    GetConnectionEmailResponseOauthFromJSON,
-    GetConnectionEmailResponseOauthFromJSONTyped,
-    GetConnectionEmailResponseOauthToJSON,
-} from './GetConnectionEmailResponseOauth';
 
 /**
  * 
@@ -34,22 +28,10 @@ import {
 export interface GetConnectionEmailResponse {
     /**
      * 
-     * @type {Array<GetConnectionEmailResponseData>}
+     * @type {GetConnectionEmailResponseData}
      * @memberof GetConnectionEmailResponse
      */
-    data: Array<GetConnectionEmailResponseData>;
-    /**
-     * 
-     * @type {Array<GetConnectionEmailResponseData>}
-     * @memberof GetConnectionEmailResponse
-     */
-    imap: Array<GetConnectionEmailResponseData>;
-    /**
-     * 
-     * @type {Array<GetConnectionEmailResponseOauth>}
-     * @memberof GetConnectionEmailResponse
-     */
-    oauth: Array<GetConnectionEmailResponseOauth>;
+    data: GetConnectionEmailResponseData;
 }
 
 export function GetConnectionEmailResponseFromJSON(json: any): GetConnectionEmailResponse {
@@ -62,9 +44,7 @@ export function GetConnectionEmailResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'data': ((json['data'] as Array<any>).map(GetConnectionEmailResponseDataFromJSON)),
-        'imap': ((json['imap'] as Array<any>).map(GetConnectionEmailResponseDataFromJSON)),
-        'oauth': ((json['oauth'] as Array<any>).map(GetConnectionEmailResponseOauthFromJSON)),
+        'data': GetConnectionEmailResponseDataFromJSON(json['data']),
     };
 }
 
@@ -77,9 +57,7 @@ export function GetConnectionEmailResponseToJSON(value?: GetConnectionEmailRespo
     }
     return {
         
-        'data': ((value.data as Array<any>).map(GetConnectionEmailResponseDataToJSON)),
-        'imap': ((value.imap as Array<any>).map(GetConnectionEmailResponseDataToJSON)),
-        'oauth': ((value.oauth as Array<any>).map(GetConnectionEmailResponseOauthToJSON)),
+        'data': GetConnectionEmailResponseDataToJSON(value.data),
     };
 }
 

@@ -75,8 +75,8 @@ export interface CreateWorldExperiencePlaceAssistantResponseDataAllowance {
 */
 export enum CreateWorldExperiencePlaceAssistantResponseDataAllowanceReasonEnum {
     Monthly = 'monthly',
-    Daily = 'daily',
-    Plan = 'plan'
+    Plan = 'plan',
+    Daily = 'daily'
 }
 
 export function CreateWorldExperiencePlaceAssistantResponseDataAllowanceFromJSON(json: any): CreateWorldExperiencePlaceAssistantResponseDataAllowance {

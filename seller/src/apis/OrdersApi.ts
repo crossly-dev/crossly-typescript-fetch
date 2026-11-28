@@ -15,45 +15,99 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateLiveShipmentShipRequest,
+    CreateLiveShipmentShipRequestFromJSON,
+    CreateLiveShipmentShipRequestToJSON,
     CreateLiveShipmentShipResponse,
     CreateLiveShipmentShipResponseFromJSON,
     CreateLiveShipmentShipResponseToJSON,
+    CreateOrderBulkDeleteRequest,
+    CreateOrderBulkDeleteRequestFromJSON,
+    CreateOrderBulkDeleteRequestToJSON,
     CreateOrderBulkDeleteResponse,
     CreateOrderBulkDeleteResponseFromJSON,
     CreateOrderBulkDeleteResponseToJSON,
+    CreateOrderBulkExportRequest,
+    CreateOrderBulkExportRequestFromJSON,
+    CreateOrderBulkExportRequestToJSON,
+    CreateOrderBulkMarkDisputedRequest,
+    CreateOrderBulkMarkDisputedRequestFromJSON,
+    CreateOrderBulkMarkDisputedRequestToJSON,
+    CreateOrderBulkMarkShippedRequest,
+    CreateOrderBulkMarkShippedRequestFromJSON,
+    CreateOrderBulkMarkShippedRequestToJSON,
     CreateOrderBulkMarkShippedResponse,
     CreateOrderBulkMarkShippedResponseFromJSON,
     CreateOrderBulkMarkShippedResponseToJSON,
+    CreateOrderCancelRequest,
+    CreateOrderCancelRequestFromJSON,
+    CreateOrderCancelRequestToJSON,
     CreateOrderCancelResponse,
     CreateOrderCancelResponseFromJSON,
     CreateOrderCancelResponseToJSON,
+    CreateOrderCorrectTrackingRequest,
+    CreateOrderCorrectTrackingRequestFromJSON,
+    CreateOrderCorrectTrackingRequestToJSON,
     CreateOrderCorrectTrackingResponse,
     CreateOrderCorrectTrackingResponseFromJSON,
     CreateOrderCorrectTrackingResponseToJSON,
+    CreateOrderDisputeRequest,
+    CreateOrderDisputeRequestFromJSON,
+    CreateOrderDisputeRequestToJSON,
     CreateOrderDisputeResponse,
     CreateOrderDisputeResponseFromJSON,
     CreateOrderDisputeResponseToJSON,
+    CreateOrderImportRequest,
+    CreateOrderImportRequestFromJSON,
+    CreateOrderImportRequestToJSON,
     CreateOrderImportResponse,
     CreateOrderImportResponseFromJSON,
     CreateOrderImportResponseToJSON,
+    CreateOrderLabelPrintRequest,
+    CreateOrderLabelPrintRequestFromJSON,
+    CreateOrderLabelPrintRequestToJSON,
+    CreateOrderLabelPrintResponse,
+    CreateOrderLabelPrintResponseFromJSON,
+    CreateOrderLabelPrintResponseToJSON,
+    CreateOrderLabelRequest,
+    CreateOrderLabelRequestFromJSON,
+    CreateOrderLabelRequestToJSON,
     CreateOrderLabelResponse,
     CreateOrderLabelResponseFromJSON,
     CreateOrderLabelResponseToJSON,
     CreateOrderLabelVoidResponse,
     CreateOrderLabelVoidResponseFromJSON,
     CreateOrderLabelVoidResponseToJSON,
+    CreateOrderLinkListingRequest,
+    CreateOrderLinkListingRequestFromJSON,
+    CreateOrderLinkListingRequestToJSON,
     CreateOrderLinkListingResponse,
     CreateOrderLinkListingResponseFromJSON,
     CreateOrderLinkListingResponseToJSON,
+    CreateOrderMessageRequest,
+    CreateOrderMessageRequestFromJSON,
+    CreateOrderMessageRequestToJSON,
     CreateOrderMessageResponse,
     CreateOrderMessageResponseFromJSON,
     CreateOrderMessageResponseToJSON,
     CreateOrderOrderChatRequest,
     CreateOrderOrderChatRequestFromJSON,
     CreateOrderOrderChatRequestToJSON,
+    CreateOrderPackScanRequest,
+    CreateOrderPackScanRequestFromJSON,
+    CreateOrderPackScanRequestToJSON,
+    CreateOrderPackScanResponse,
+    CreateOrderPackScanResponseFromJSON,
+    CreateOrderPackScanResponseToJSON,
+    CreateOrderPickupLabelRequest,
+    CreateOrderPickupLabelRequestFromJSON,
+    CreateOrderPickupLabelRequestToJSON,
     CreateOrderPickupLabelResponse,
     CreateOrderPickupLabelResponseFromJSON,
     CreateOrderPickupLabelResponseToJSON,
+    CreateOrderPickupRequest,
+    CreateOrderPickupRequestFromJSON,
+    CreateOrderPickupRequestToJSON,
     CreateOrderPickupResponse,
     CreateOrderPickupResponseFromJSON,
     CreateOrderPickupResponseToJSON,
@@ -69,30 +123,69 @@ import {
     CreateOrderPullPlatformLabelResponse,
     CreateOrderPullPlatformLabelResponseFromJSON,
     CreateOrderPullPlatformLabelResponseToJSON,
+    CreateOrderRateRequest,
+    CreateOrderRateRequestFromJSON,
+    CreateOrderRateRequestToJSON,
     CreateOrderRateResponse,
     CreateOrderRateResponseFromJSON,
     CreateOrderRateResponseToJSON,
+    CreateOrderRefundByIdRequest,
+    CreateOrderRefundByIdRequestFromJSON,
+    CreateOrderRefundByIdRequestToJSON,
     CreateOrderRefundByIdResponse,
     CreateOrderRefundByIdResponseFromJSON,
     CreateOrderRefundByIdResponseToJSON,
+    CreateOrderRefundRequest,
+    CreateOrderRefundRequestFromJSON,
+    CreateOrderRefundRequestToJSON,
+    CreateOrderRefundResolveRequest,
+    CreateOrderRefundResolveRequestFromJSON,
+    CreateOrderRefundResolveRequestToJSON,
     CreateOrderRefundResponse,
     CreateOrderRefundResponseFromJSON,
     CreateOrderRefundResponseToJSON,
+    CreateOrderScanFormRequest,
+    CreateOrderScanFormRequestFromJSON,
+    CreateOrderScanFormRequestToJSON,
     CreateOrderScanFormResponse,
     CreateOrderScanFormResponseFromJSON,
     CreateOrderScanFormResponseToJSON,
+    CreateOrderTrackingRequest,
+    CreateOrderTrackingRequestFromJSON,
+    CreateOrderTrackingRequestToJSON,
     CreateOrderTrackingResponse,
     CreateOrderTrackingResponseFromJSON,
     CreateOrderTrackingResponseToJSON,
+    CreateOrderWhatnotLabelRequest,
+    CreateOrderWhatnotLabelRequestFromJSON,
+    CreateOrderWhatnotLabelRequestToJSON,
     CreateOrderWhatnotLabelResponse,
     CreateOrderWhatnotLabelResponseFromJSON,
     CreateOrderWhatnotLabelResponseToJSON,
     CreateOrderWhatnotPackageQuoteResponse,
     CreateOrderWhatnotPackageQuoteResponseFromJSON,
     CreateOrderWhatnotPackageQuoteResponseToJSON,
+    CreateOrderWhatnotPackageRequest,
+    CreateOrderWhatnotPackageRequestFromJSON,
+    CreateOrderWhatnotPackageRequestToJSON,
+    CreateRentalClaimRequest,
+    CreateRentalClaimRequestFromJSON,
+    CreateRentalClaimRequestToJSON,
+    CreateRentalExtensionDecideRequest,
+    CreateRentalExtensionDecideRequestFromJSON,
+    CreateRentalExtensionDecideRequestToJSON,
     CreateRentalExtensionDecideResponse,
     CreateRentalExtensionDecideResponseFromJSON,
     CreateRentalExtensionDecideResponseToJSON,
+    CreateRentalInspectRequest,
+    CreateRentalInspectRequestFromJSON,
+    CreateRentalInspectRequestToJSON,
+    CreateRentalShippedRequest,
+    CreateRentalShippedRequestFromJSON,
+    CreateRentalShippedRequestToJSON,
+    GetDeviceScaleResponse,
+    GetDeviceScaleResponseFromJSON,
+    GetDeviceScaleResponseToJSON,
     GetOrderCancelEligibilityResponse,
     GetOrderCancelEligibilityResponseFromJSON,
     GetOrderCancelEligibilityResponseToJSON,
@@ -105,6 +198,9 @@ import {
     GetOrderOrderChatResponse,
     GetOrderOrderChatResponseFromJSON,
     GetOrderOrderChatResponseToJSON,
+    GetOrderPickListResponse,
+    GetOrderPickListResponseFromJSON,
+    GetOrderPickListResponseToJSON,
     GetOrderPlatformLabelOptionResponse,
     GetOrderPlatformLabelOptionResponseFromJSON,
     GetOrderPlatformLabelOptionResponseToJSON,
@@ -126,12 +222,18 @@ import {
     GetOrderShipmentResponse,
     GetOrderShipmentResponseFromJSON,
     GetOrderShipmentResponseToJSON,
+    GetOrderSuggestedParcelResponse,
+    GetOrderSuggestedParcelResponseFromJSON,
+    GetOrderSuggestedParcelResponseToJSON,
     GetOrderWhatnotShipmentResponse,
     GetOrderWhatnotShipmentResponseFromJSON,
     GetOrderWhatnotShipmentResponseToJSON,
     GetRentalCalendarResponse,
     GetRentalCalendarResponseFromJSON,
     GetRentalCalendarResponseToJSON,
+    GetRentalInventoryResponse,
+    GetRentalInventoryResponseFromJSON,
+    GetRentalInventoryResponseToJSON,
     GetRentalResponse,
     GetRentalResponseFromJSON,
     GetRentalResponseToJSON,
@@ -174,6 +276,15 @@ import {
     RentalResponse,
     RentalResponseFromJSON,
     RentalResponseToJSON,
+    UpdateOrderAssigneeByIdResponse,
+    UpdateOrderAssigneeByIdResponseFromJSON,
+    UpdateOrderAssigneeByIdResponseToJSON,
+    UpdateOrderAssigneeResponse,
+    UpdateOrderAssigneeResponseFromJSON,
+    UpdateOrderAssigneeResponseToJSON,
+    UpdateOrderRequest,
+    UpdateOrderRequestFromJSON,
+    UpdateOrderRequestToJSON,
     UpdateOrderResponse,
     UpdateOrderResponseFromJSON,
     UpdateOrderResponseToJSON,
@@ -189,36 +300,72 @@ export interface CreateLiveShipmentLabelRequest {
     id: string;
 }
 
-export interface CreateLiveShipmentShipRequest {
+export interface CreateLiveShipmentShipOperationRequest {
     id: string;
+    createLiveShipmentShipRequest: CreateLiveShipmentShipRequest;
 }
 
-export interface CreateOrderCancelRequest {
-    id: string;
+export interface CreateOrderBulkDeleteOperationRequest {
+    createOrderBulkDeleteRequest: CreateOrderBulkDeleteRequest;
 }
 
-export interface CreateOrderCorrectTrackingRequest {
-    id: string;
+export interface CreateOrderBulkExportOperationRequest {
+    createOrderBulkExportRequest: CreateOrderBulkExportRequest;
 }
 
-export interface CreateOrderDisputeRequest {
-    id: string;
+export interface CreateOrderBulkMarkDisputedOperationRequest {
+    createOrderBulkMarkDisputedRequest: CreateOrderBulkMarkDisputedRequest;
 }
 
-export interface CreateOrderLabelRequest {
+export interface CreateOrderBulkMarkShippedOperationRequest {
+    createOrderBulkMarkShippedRequest: CreateOrderBulkMarkShippedRequest;
+}
+
+export interface CreateOrderBulkPackingSlipRequest {
+    createOrderBulkExportRequest: CreateOrderBulkExportRequest;
+}
+
+export interface CreateOrderCancelOperationRequest {
     id: string;
+    createOrderCancelRequest?: CreateOrderCancelRequest;
+}
+
+export interface CreateOrderCorrectTrackingOperationRequest {
+    id: string;
+    createOrderCorrectTrackingRequest?: CreateOrderCorrectTrackingRequest;
+}
+
+export interface CreateOrderDisputeOperationRequest {
+    id: string;
+    createOrderDisputeRequest: CreateOrderDisputeRequest;
+}
+
+export interface CreateOrderImportOperationRequest {
+    createOrderImportRequest: CreateOrderImportRequest;
+}
+
+export interface CreateOrderLabelOperationRequest {
+    id: string;
+    createOrderLabelRequest: CreateOrderLabelRequest;
+}
+
+export interface CreateOrderLabelPrintOperationRequest {
+    id: string;
+    createOrderLabelPrintRequest?: CreateOrderLabelPrintRequest;
 }
 
 export interface CreateOrderLabelVoidRequest {
     id: string;
 }
 
-export interface CreateOrderLinkListingRequest {
+export interface CreateOrderLinkListingOperationRequest {
     id: string;
+    createOrderLinkListingRequest: CreateOrderLinkListingRequest;
 }
 
-export interface CreateOrderMessageRequest {
+export interface CreateOrderMessageOperationRequest {
     id: string;
+    createOrderMessageRequest: CreateOrderMessageRequest;
 }
 
 export interface CreateOrderOrderChatOperationRequest {
@@ -226,8 +373,18 @@ export interface CreateOrderOrderChatOperationRequest {
     createOrderOrderChatRequest: CreateOrderOrderChatRequest;
 }
 
-export interface CreateOrderPickupLabelRequest {
+export interface CreateOrderPackScanOperationRequest {
     id: string;
+    createOrderPackScanRequest?: CreateOrderPackScanRequest;
+}
+
+export interface CreateOrderPickupOperationRequest {
+    createOrderPickupRequest: CreateOrderPickupRequest;
+}
+
+export interface CreateOrderPickupLabelOperationRequest {
+    id: string;
+    createOrderPickupLabelRequest?: CreateOrderPickupLabelRequest;
 }
 
 export interface CreateOrderPlatformLabelPackageRequest {
@@ -254,37 +411,49 @@ export interface CreateOrderPullPlatformLabelRequest {
     id: string;
 }
 
-export interface CreateOrderRateRequest {
+export interface CreateOrderRateOperationRequest {
     id: string;
+    createOrderRateRequest: CreateOrderRateRequest;
 }
 
-export interface CreateOrderRefundRequest {
+export interface CreateOrderRefundOperationRequest {
     id: string;
+    createOrderRefundRequest?: CreateOrderRefundRequest;
 }
 
-export interface CreateOrderRefundByIdRequest {
+export interface CreateOrderRefundByIdOperationRequest {
     id: string;
+    createOrderRefundByIdRequest?: CreateOrderRefundByIdRequest;
 }
 
-export interface CreateOrderRefundResolveRequest {
+export interface CreateOrderRefundResolveOperationRequest {
     id: string;
     refundId: string;
+    createOrderRefundResolveRequest?: CreateOrderRefundResolveRequest;
 }
 
-export interface CreateOrderTrackingRequest {
-    id: string;
+export interface CreateOrderScanFormOperationRequest {
+    createOrderScanFormRequest?: CreateOrderScanFormRequest;
 }
 
-export interface CreateOrderWhatnotLabelRequest {
+export interface CreateOrderTrackingOperationRequest {
     id: string;
+    createOrderTrackingRequest: CreateOrderTrackingRequest;
 }
 
-export interface CreateOrderWhatnotPackageRequest {
+export interface CreateOrderWhatnotLabelOperationRequest {
     id: string;
+    createOrderWhatnotLabelRequest?: CreateOrderWhatnotLabelRequest;
+}
+
+export interface CreateOrderWhatnotPackageOperationRequest {
+    id: string;
+    createOrderWhatnotPackageRequest: CreateOrderWhatnotPackageRequest;
 }
 
 export interface CreateOrderWhatnotPackageQuoteRequest {
     id: string;
+    createOrderWhatnotPackageRequest: CreateOrderWhatnotPackageRequest;
 }
 
 export interface CreateRentalApproveRequest {
@@ -295,8 +464,9 @@ export interface CreateRentalCancelRequest {
     id: string;
 }
 
-export interface CreateRentalClaimRequest {
+export interface CreateRentalClaimOperationRequest {
     id: string;
+    createRentalClaimRequest: CreateRentalClaimRequest;
 }
 
 export interface CreateRentalDeclineRequest {
@@ -307,13 +477,15 @@ export interface CreateRentalDeliveredRequest {
     id: string;
 }
 
-export interface CreateRentalExtensionDecideRequest {
+export interface CreateRentalExtensionDecideOperationRequest {
     id: string;
     extensionId: string;
+    createRentalExtensionDecideRequest: CreateRentalExtensionDecideRequest;
 }
 
-export interface CreateRentalInspectRequest {
+export interface CreateRentalInspectOperationRequest {
     id: string;
+    createRentalInspectRequest?: CreateRentalInspectRequest;
 }
 
 export interface CreateRentalLabelRequest {
@@ -332,8 +504,14 @@ export interface CreateRentalReturnedRequest {
     id: string;
 }
 
-export interface CreateRentalShippedRequest {
+export interface CreateRentalShippedOperationRequest {
     id: string;
+    createRentalShippedRequest?: CreateRentalShippedRequest;
+}
+
+export interface GetDeviceScaleRequest {
+    agentId?: string;
+    timeoutMs?: number;
 }
 
 export interface GetOrderRequest {
@@ -365,6 +543,12 @@ export interface GetOrderOrderChatRequest {
 
 export interface GetOrderPackingSlipRequest {
     id: string;
+}
+
+export interface GetOrderPickListRequest {
+    orderIds?: string;
+    format?: GetOrderPickListFormatEnum;
+    storefrontId?: string;
 }
 
 export interface GetOrderPlatformLabelOptionRequest {
@@ -403,6 +587,10 @@ export interface GetOrderShipmentRequest {
     id: string;
 }
 
+export interface GetOrderSuggestedParcelRequest {
+    id: string;
+}
+
 export interface GetOrderWhatnotPackingSlipRequest {
     id: string;
 }
@@ -413,6 +601,21 @@ export interface GetOrderWhatnotShipmentRequest {
 
 export interface GetRentalRequest {
     id: string;
+}
+
+export interface GetRentalCalendarRequest {
+    from: string;
+    to: string;
+    platformListingId?: string;
+}
+
+export interface GetRentalInventoryRequest {
+    inventoryItemId: string;
+}
+
+export interface ListLiveShipmentsRequest {
+    streamId?: string;
+    status?: ListLiveShipmentsStatusEnum;
 }
 
 export interface ListOrderRefundsRequest {
@@ -431,10 +634,28 @@ export interface ListOrdersRequest {
     channel?: ListOrdersChannelEnum;
     details?: ListOrdersDetailsEnum;
     unlinked?: ListOrdersUnlinkedEnum;
+    orderNumber?: string;
     updatedSince?: Date;
+    assignee?: string;
 }
 
-export interface UpdateOrderRequest {
+export interface ListRentalHistoryRequest {
+    view?: ListRentalHistoryViewEnum;
+    status?: Array<string>;
+    q?: string;
+    from?: string;
+    to?: string;
+    platformListingId?: string;
+    limit?: number;
+    offset?: number;
+}
+
+export interface UpdateOrderOperationRequest {
+    id: string;
+    updateOrderRequest: UpdateOrderRequest;
+}
+
+export interface UpdateOrderAssigneeByIdRequest {
     id: string;
 }
 
@@ -484,14 +705,20 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Ship a show box with your own label: every order is marked shipped with this tracking and the buyer’s extra postage is refunded.
      */
-    async createLiveShipmentShipRaw(requestParameters: CreateLiveShipmentShipRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLiveShipmentShipResponse>> {
+    async createLiveShipmentShipRaw(requestParameters: CreateLiveShipmentShipOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLiveShipmentShipResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLiveShipmentShip.');
+        }
+
+        if (requestParameters.createLiveShipmentShipRequest === null || requestParameters.createLiveShipmentShipRequest === undefined) {
+            throw new runtime.RequiredError('createLiveShipmentShipRequest','Required parameter requestParameters.createLiveShipmentShipRequest was null or undefined when calling createLiveShipmentShip.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -506,6 +733,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLiveShipmentShipRequestToJSON(requestParameters.createLiveShipmentShipRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateLiveShipmentShipResponseFromJSON(jsonValue));
@@ -514,7 +742,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Ship a show box with your own label: every order is marked shipped with this tracking and the buyer’s extra postage is refunded.
      */
-    async createLiveShipmentShip(requestParameters: CreateLiveShipmentShipRequest, initOverrides?: RequestInit): Promise<CreateLiveShipmentShipResponse> {
+    async createLiveShipmentShip(requestParameters: CreateLiveShipmentShipOperationRequest, initOverrides?: RequestInit): Promise<CreateLiveShipmentShipResponse> {
         const response = await this.createLiveShipmentShipRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -522,10 +750,16 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Bulk soft- or hard-delete orders by id.
      */
-    async createOrderBulkDeleteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderBulkDeleteResponse>> {
+    async createOrderBulkDeleteRaw(requestParameters: CreateOrderBulkDeleteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderBulkDeleteResponse>> {
+        if (requestParameters.createOrderBulkDeleteRequest === null || requestParameters.createOrderBulkDeleteRequest === undefined) {
+            throw new runtime.RequiredError('createOrderBulkDeleteRequest','Required parameter requestParameters.createOrderBulkDeleteRequest was null or undefined when calling createOrderBulkDelete.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -540,6 +774,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderBulkDeleteRequestToJSON(requestParameters.createOrderBulkDeleteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderBulkDeleteResponseFromJSON(jsonValue));
@@ -548,18 +783,24 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Bulk soft- or hard-delete orders by id.
      */
-    async createOrderBulkDelete(initOverrides?: RequestInit): Promise<CreateOrderBulkDeleteResponse> {
-        const response = await this.createOrderBulkDeleteRaw(initOverrides);
+    async createOrderBulkDelete(requestParameters: CreateOrderBulkDeleteOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderBulkDeleteResponse> {
+        const response = await this.createOrderBulkDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk export selected orders as CSV.
      */
-    async createOrderBulkExportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+    async createOrderBulkExportRaw(requestParameters: CreateOrderBulkExportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.createOrderBulkExportRequest === null || requestParameters.createOrderBulkExportRequest === undefined) {
+            throw new runtime.RequiredError('createOrderBulkExportRequest','Required parameter requestParameters.createOrderBulkExportRequest was null or undefined when calling createOrderBulkExport.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -574,6 +815,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderBulkExportRequestToJSON(requestParameters.createOrderBulkExportRequest),
         }, initOverrides);
 
         return new runtime.TextApiResponse(response) as any;
@@ -582,18 +824,24 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Bulk export selected orders as CSV.
      */
-    async createOrderBulkExport(initOverrides?: RequestInit): Promise<string> {
-        const response = await this.createOrderBulkExportRaw(initOverrides);
+    async createOrderBulkExport(requestParameters: CreateOrderBulkExportOperationRequest, initOverrides?: RequestInit): Promise<string> {
+        const response = await this.createOrderBulkExportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk mark orders as disputed with a shared reason.
      */
-    async createOrderBulkMarkDisputedRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatedResponse>> {
+    async createOrderBulkMarkDisputedRaw(requestParameters: CreateOrderBulkMarkDisputedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatedResponse>> {
+        if (requestParameters.createOrderBulkMarkDisputedRequest === null || requestParameters.createOrderBulkMarkDisputedRequest === undefined) {
+            throw new runtime.RequiredError('createOrderBulkMarkDisputedRequest','Required parameter requestParameters.createOrderBulkMarkDisputedRequest was null or undefined when calling createOrderBulkMarkDisputed.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -608,6 +856,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderBulkMarkDisputedRequestToJSON(requestParameters.createOrderBulkMarkDisputedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdatedResponseFromJSON(jsonValue));
@@ -616,18 +865,24 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Bulk mark orders as disputed with a shared reason.
      */
-    async createOrderBulkMarkDisputed(initOverrides?: RequestInit): Promise<UpdatedResponse> {
-        const response = await this.createOrderBulkMarkDisputedRaw(initOverrides);
+    async createOrderBulkMarkDisputed(requestParameters: CreateOrderBulkMarkDisputedOperationRequest, initOverrides?: RequestInit): Promise<UpdatedResponse> {
+        const response = await this.createOrderBulkMarkDisputedRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk flip status=shipped, clear the reserved-stock marker, and notify each platform.
      */
-    async createOrderBulkMarkShippedRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderBulkMarkShippedResponse>> {
+    async createOrderBulkMarkShippedRaw(requestParameters: CreateOrderBulkMarkShippedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderBulkMarkShippedResponse>> {
+        if (requestParameters.createOrderBulkMarkShippedRequest === null || requestParameters.createOrderBulkMarkShippedRequest === undefined) {
+            throw new runtime.RequiredError('createOrderBulkMarkShippedRequest','Required parameter requestParameters.createOrderBulkMarkShippedRequest was null or undefined when calling createOrderBulkMarkShipped.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -642,6 +897,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderBulkMarkShippedRequestToJSON(requestParameters.createOrderBulkMarkShippedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderBulkMarkShippedResponseFromJSON(jsonValue));
@@ -650,18 +906,24 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Bulk flip status=shipped, clear the reserved-stock marker, and notify each platform.
      */
-    async createOrderBulkMarkShipped(initOverrides?: RequestInit): Promise<CreateOrderBulkMarkShippedResponse> {
-        const response = await this.createOrderBulkMarkShippedRaw(initOverrides);
+    async createOrderBulkMarkShipped(requestParameters: CreateOrderBulkMarkShippedOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderBulkMarkShippedResponse> {
+        const response = await this.createOrderBulkMarkShippedRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk packing slips PDF.
      */
-    async createOrderBulkPackingSlipRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Blob>> {
+    async createOrderBulkPackingSlipRaw(requestParameters: CreateOrderBulkPackingSlipRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Blob>> {
+        if (requestParameters.createOrderBulkExportRequest === null || requestParameters.createOrderBulkExportRequest === undefined) {
+            throw new runtime.RequiredError('createOrderBulkExportRequest','Required parameter requestParameters.createOrderBulkExportRequest was null or undefined when calling createOrderBulkPackingSlip.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -676,6 +938,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderBulkExportRequestToJSON(requestParameters.createOrderBulkExportRequest),
         }, initOverrides);
 
         return new runtime.BlobApiResponse(response);
@@ -684,15 +947,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Bulk packing slips PDF.
      */
-    async createOrderBulkPackingSlip(initOverrides?: RequestInit): Promise<Blob> {
-        const response = await this.createOrderBulkPackingSlipRaw(initOverrides);
+    async createOrderBulkPackingSlip(requestParameters: CreateOrderBulkPackingSlipRequest, initOverrides?: RequestInit): Promise<Blob> {
+        const response = await this.createOrderBulkPackingSlipRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled.
      */
-    async createOrderCancelRaw(requestParameters: CreateOrderCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderCancelResponse>> {
+    async createOrderCancelRaw(requestParameters: CreateOrderCancelOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderCancelResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderCancel.');
         }
@@ -700,6 +963,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -714,6 +979,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderCancelRequestToJSON(requestParameters.createOrderCancelRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderCancelResponseFromJSON(jsonValue));
@@ -722,7 +988,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled.
      */
-    async createOrderCancel(requestParameters: CreateOrderCancelRequest, initOverrides?: RequestInit): Promise<CreateOrderCancelResponse> {
+    async createOrderCancel(requestParameters: CreateOrderCancelOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderCancelResponse> {
         const response = await this.createOrderCancelRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -731,7 +997,7 @@ export class OrdersApi extends runtime.BaseAPI {
      * Replaces the order\'s tracking number with `trackingNumber`, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): `correction` is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
      * Correct a wrong tracking number the marketplace already holds.
      */
-    async createOrderCorrectTrackingRaw(requestParameters: CreateOrderCorrectTrackingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderCorrectTrackingResponse>> {
+    async createOrderCorrectTrackingRaw(requestParameters: CreateOrderCorrectTrackingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderCorrectTrackingResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderCorrectTracking.');
         }
@@ -739,6 +1005,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -753,6 +1021,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderCorrectTrackingRequestToJSON(requestParameters.createOrderCorrectTrackingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderCorrectTrackingResponseFromJSON(jsonValue));
@@ -762,7 +1031,7 @@ export class OrdersApi extends runtime.BaseAPI {
      * Replaces the order\'s tracking number with `trackingNumber`, on Crossly and on the marketplace, where the platform can change tracking it already has (its trackingCorrection capability): `correction` is replace (overwritten), remove_then_submit (the old number removed, then the new one sent) or submit (the platform held none). Refused with validation_error where the platform cannot change it (update it there), when the order has no tracking, its tracking came with a label (void the label instead), or it is closed or delivered; conflict while the previous tracking update is still in flight.
      * Correct a wrong tracking number the marketplace already holds.
      */
-    async createOrderCorrectTracking(requestParameters: CreateOrderCorrectTrackingRequest, initOverrides?: RequestInit): Promise<CreateOrderCorrectTrackingResponse> {
+    async createOrderCorrectTracking(requestParameters: CreateOrderCorrectTrackingOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderCorrectTrackingResponse> {
         const response = await this.createOrderCorrectTrackingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -770,14 +1039,20 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Flag an order as disputed.
      */
-    async createOrderDisputeRaw(requestParameters: CreateOrderDisputeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderDisputeResponse>> {
+    async createOrderDisputeRaw(requestParameters: CreateOrderDisputeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderDisputeResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderDispute.');
+        }
+
+        if (requestParameters.createOrderDisputeRequest === null || requestParameters.createOrderDisputeRequest === undefined) {
+            throw new runtime.RequiredError('createOrderDisputeRequest','Required parameter requestParameters.createOrderDisputeRequest was null or undefined when calling createOrderDispute.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -792,6 +1067,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderDisputeRequestToJSON(requestParameters.createOrderDisputeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderDisputeResponseFromJSON(jsonValue));
@@ -800,7 +1076,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Flag an order as disputed.
      */
-    async createOrderDispute(requestParameters: CreateOrderDisputeRequest, initOverrides?: RequestInit): Promise<CreateOrderDisputeResponse> {
+    async createOrderDispute(requestParameters: CreateOrderDisputeOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderDisputeResponse> {
         const response = await this.createOrderDisputeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -808,10 +1084,16 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Manually (re-)pull one or more connected platforms\' order history for a day-window.
      */
-    async createOrderImportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderImportResponse>> {
+    async createOrderImportRaw(requestParameters: CreateOrderImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderImportResponse>> {
+        if (requestParameters.createOrderImportRequest === null || requestParameters.createOrderImportRequest === undefined) {
+            throw new runtime.RequiredError('createOrderImportRequest','Required parameter requestParameters.createOrderImportRequest was null or undefined when calling createOrderImport.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -826,6 +1108,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderImportRequestToJSON(requestParameters.createOrderImportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderImportResponseFromJSON(jsonValue));
@@ -834,22 +1117,28 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Manually (re-)pull one or more connected platforms\' order history for a day-window.
      */
-    async createOrderImport(initOverrides?: RequestInit): Promise<CreateOrderImportResponse> {
-        const response = await this.createOrderImportRaw(initOverrides);
+    async createOrderImport(requestParameters: CreateOrderImportOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderImportResponse> {
+        const response = await this.createOrderImportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
      */
-    async createOrderLabelRaw(requestParameters: CreateOrderLabelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderLabelResponse>> {
+    async createOrderLabelRaw(requestParameters: CreateOrderLabelOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderLabelResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderLabel.');
+        }
+
+        if (requestParameters.createOrderLabelRequest === null || requestParameters.createOrderLabelRequest === undefined) {
+            throw new runtime.RequiredError('createOrderLabelRequest','Required parameter requestParameters.createOrderLabelRequest was null or undefined when calling createOrderLabel.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -864,6 +1153,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderLabelRequestToJSON(requestParameters.createOrderLabelRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderLabelResponseFromJSON(jsonValue));
@@ -872,8 +1162,49 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
      */
-    async createOrderLabel(requestParameters: CreateOrderLabelRequest, initOverrides?: RequestInit): Promise<CreateOrderLabelResponse> {
+    async createOrderLabel(requestParameters: CreateOrderLabelOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderLabelResponse> {
         const response = await this.createOrderLabelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Send the label to your print agent: mode agent (jobId), pdf (url, reason no_agent | offline | not_capable) or skipped (already_printed; pass reprint true to print again).
+     */
+    async createOrderLabelPrintRaw(requestParameters: CreateOrderLabelPrintOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderLabelPrintResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderLabelPrint.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/orders/{id}/label/print`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateOrderLabelPrintRequestToJSON(requestParameters.createOrderLabelPrintRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderLabelPrintResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Send the label to your print agent: mode agent (jobId), pdf (url, reason no_agent | offline | not_capable) or skipped (already_printed; pass reprint true to print again).
+     */
+    async createOrderLabelPrint(requestParameters: CreateOrderLabelPrintOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderLabelPrintResponse> {
+        const response = await this.createOrderLabelPrintRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -921,14 +1252,20 @@ export class OrdersApi extends runtime.BaseAPI {
      * For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing\'s row on the order\'s platform (or moves the stub\'s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
      * Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
      */
-    async createOrderLinkListingRaw(requestParameters: CreateOrderLinkListingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderLinkListingResponse>> {
+    async createOrderLinkListingRaw(requestParameters: CreateOrderLinkListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderLinkListingResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderLinkListing.');
+        }
+
+        if (requestParameters.createOrderLinkListingRequest === null || requestParameters.createOrderLinkListingRequest === undefined) {
+            throw new runtime.RequiredError('createOrderLinkListingRequest','Required parameter requestParameters.createOrderLinkListingRequest was null or undefined when calling createOrderLinkListing.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -943,6 +1280,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderLinkListingRequestToJSON(requestParameters.createOrderLinkListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderLinkListingResponseFromJSON(jsonValue));
@@ -952,7 +1290,7 @@ export class OrdersApi extends runtime.BaseAPI {
      * For an order whose listing is an auto-created external-sale stub. Body: { listingId, platformListingId? }. Moves the sale onto the listing\'s row on the order\'s platform (or moves the stub\'s row under the listing when it has none), decrements its stock like a detected sale, archives the stub, and delists the item from every other marketplace once no unit is left. 409 when the order is already linked.
      * Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
      */
-    async createOrderLinkListing(requestParameters: CreateOrderLinkListingRequest, initOverrides?: RequestInit): Promise<CreateOrderLinkListingResponse> {
+    async createOrderLinkListing(requestParameters: CreateOrderLinkListingOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderLinkListingResponse> {
         const response = await this.createOrderLinkListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -960,14 +1298,20 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Message the order\'s buyer on the marketplace.
      */
-    async createOrderMessageRaw(requestParameters: CreateOrderMessageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderMessageResponse>> {
+    async createOrderMessageRaw(requestParameters: CreateOrderMessageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderMessageResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderMessage.');
+        }
+
+        if (requestParameters.createOrderMessageRequest === null || requestParameters.createOrderMessageRequest === undefined) {
+            throw new runtime.RequiredError('createOrderMessageRequest','Required parameter requestParameters.createOrderMessageRequest was null or undefined when calling createOrderMessage.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -982,6 +1326,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderMessageRequestToJSON(requestParameters.createOrderMessageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderMessageResponseFromJSON(jsonValue));
@@ -990,7 +1335,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Message the order\'s buyer on the marketplace.
      */
-    async createOrderMessage(requestParameters: CreateOrderMessageRequest, initOverrides?: RequestInit): Promise<CreateOrderMessageResponse> {
+    async createOrderMessage(requestParameters: CreateOrderMessageOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderMessageResponse> {
         const response = await this.createOrderMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1041,12 +1386,59 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead).
+     * Check a scanned item against the order being packed: ok true with matchedBy (sku | custom_label | item_id) and expectedQuantity, or ok false with reason (wrong_item | no_item) and the expected item.
      */
-    async createOrderPickupRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderPickupResponse>> {
+    async createOrderPackScanRaw(requestParameters: CreateOrderPackScanOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderPackScanResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderPackScan.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/orders/{id}/pack-scan`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateOrderPackScanRequestToJSON(requestParameters.createOrderPackScanRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderPackScanResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Check a scanned item against the order being packed: ok true with matchedBy (sku | custom_label | item_id) and expectedQuantity, or ok false with reason (wrong_item | no_item) and the expected item.
+     */
+    async createOrderPackScan(requestParameters: CreateOrderPackScanOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderPackScanResponse> {
+        const response = await this.createOrderPackScanRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead).
+     */
+    async createOrderPickupRaw(requestParameters: CreateOrderPickupOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderPickupResponse>> {
+        if (requestParameters.createOrderPickupRequest === null || requestParameters.createOrderPickupRequest === undefined) {
+            throw new runtime.RequiredError('createOrderPickupRequest','Required parameter requestParameters.createOrderPickupRequest was null or undefined when calling createOrderPickup.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1061,6 +1453,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderPickupRequestToJSON(requestParameters.createOrderPickupRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderPickupResponseFromJSON(jsonValue));
@@ -1069,15 +1462,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead).
      */
-    async createOrderPickup(initOverrides?: RequestInit): Promise<CreateOrderPickupResponse> {
-        const response = await this.createOrderPickupRaw(initOverrides);
+    async createOrderPickup(requestParameters: CreateOrderPickupOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderPickupResponse> {
+        const response = await this.createOrderPickupRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
      */
-    async createOrderPickupLabelRaw(requestParameters: CreateOrderPickupLabelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderPickupLabelResponse>> {
+    async createOrderPickupLabelRaw(requestParameters: CreateOrderPickupLabelOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderPickupLabelResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderPickupLabel.');
         }
@@ -1085,6 +1478,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1099,6 +1494,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderPickupLabelRequestToJSON(requestParameters.createOrderPickupLabelRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderPickupLabelResponseFromJSON(jsonValue));
@@ -1107,7 +1503,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
      */
-    async createOrderPickupLabel(requestParameters: CreateOrderPickupLabelRequest, initOverrides?: RequestInit): Promise<CreateOrderPickupLabelResponse> {
+    async createOrderPickupLabel(requestParameters: CreateOrderPickupLabelOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderPickupLabelResponse> {
         const response = await this.createOrderPickupLabelRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1343,14 +1739,20 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Crossly Shipping rate quote for an order.
      */
-    async createOrderRateRaw(requestParameters: CreateOrderRateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderRateResponse>> {
+    async createOrderRateRaw(requestParameters: CreateOrderRateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderRateResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderRate.');
+        }
+
+        if (requestParameters.createOrderRateRequest === null || requestParameters.createOrderRateRequest === undefined) {
+            throw new runtime.RequiredError('createOrderRateRequest','Required parameter requestParameters.createOrderRateRequest was null or undefined when calling createOrderRate.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1365,6 +1767,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderRateRequestToJSON(requestParameters.createOrderRateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderRateResponseFromJSON(jsonValue));
@@ -1373,7 +1776,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Crossly Shipping rate quote for an order.
      */
-    async createOrderRate(requestParameters: CreateOrderRateRequest, initOverrides?: RequestInit): Promise<CreateOrderRateResponse> {
+    async createOrderRate(requestParameters: CreateOrderRateOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderRateResponse> {
         const response = await this.createOrderRateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1381,7 +1784,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid.
      */
-    async createOrderRefundRaw(requestParameters: CreateOrderRefundRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderRefundResponse>> {
+    async createOrderRefundRaw(requestParameters: CreateOrderRefundOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderRefundResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderRefund.');
         }
@@ -1389,6 +1792,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1403,6 +1808,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderRefundRequestToJSON(requestParameters.createOrderRefundRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderRefundResponseFromJSON(jsonValue));
@@ -1411,7 +1817,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid.
      */
-    async createOrderRefund(requestParameters: CreateOrderRefundRequest, initOverrides?: RequestInit): Promise<CreateOrderRefundResponse> {
+    async createOrderRefund(requestParameters: CreateOrderRefundOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderRefundResponse> {
         const response = await this.createOrderRefundRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1419,7 +1825,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Refund an order, in full or in part. `amount` is dollars; omit it for everything left (or the line items\' value). Crossly-marketplace orders refund the buyer\'s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order\'s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded.
      */
-    async createOrderRefundByIdRaw(requestParameters: CreateOrderRefundByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderRefundByIdResponse>> {
+    async createOrderRefundByIdRaw(requestParameters: CreateOrderRefundByIdOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderRefundByIdResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderRefundById.');
         }
@@ -1427,6 +1833,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1441,6 +1849,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderRefundByIdRequestToJSON(requestParameters.createOrderRefundByIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderRefundByIdResponseFromJSON(jsonValue));
@@ -1449,7 +1858,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Refund an order, in full or in part. `amount` is dollars; omit it for everything left (or the line items\' value). Crossly-marketplace orders refund the buyer\'s card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order\'s status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded.
      */
-    async createOrderRefundById(requestParameters: CreateOrderRefundByIdRequest, initOverrides?: RequestInit): Promise<CreateOrderRefundByIdResponse> {
+    async createOrderRefundById(requestParameters: CreateOrderRefundByIdOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderRefundByIdResponse> {
         const response = await this.createOrderRefundByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1457,7 +1866,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Settle an `unverified` refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead.
      */
-    async createOrderRefundResolveRaw(requestParameters: CreateOrderRefundResolveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListOrderRefundsItem>> {
+    async createOrderRefundResolveRaw(requestParameters: CreateOrderRefundResolveOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListOrderRefundsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderRefundResolve.');
         }
@@ -1469,6 +1878,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1483,6 +1894,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderRefundResolveRequestToJSON(requestParameters.createOrderRefundResolveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListOrderRefundsItemFromJSON(jsonValue));
@@ -1491,7 +1903,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Settle an `unverified` refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead.
      */
-    async createOrderRefundResolve(requestParameters: CreateOrderRefundResolveRequest, initOverrides?: RequestInit): Promise<ListOrderRefundsItem> {
+    async createOrderRefundResolve(requestParameters: CreateOrderRefundResolveOperationRequest, initOverrides?: RequestInit): Promise<ListOrderRefundsItem> {
         const response = await this.createOrderRefundResolveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1499,10 +1911,12 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Create SCAN forms (one per carrier account and ship-from address) for labels the carrier has not scanned yet.
      */
-    async createOrderScanFormRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderScanFormResponse>> {
+    async createOrderScanFormRaw(requestParameters: CreateOrderScanFormOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderScanFormResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1517,6 +1931,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderScanFormRequestToJSON(requestParameters.createOrderScanFormRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderScanFormResponseFromJSON(jsonValue));
@@ -1525,22 +1940,28 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Create SCAN forms (one per carrier account and ship-from address) for labels the carrier has not scanned yet.
      */
-    async createOrderScanForm(initOverrides?: RequestInit): Promise<CreateOrderScanFormResponse> {
-        const response = await this.createOrderScanFormRaw(initOverrides);
+    async createOrderScanForm(requestParameters: CreateOrderScanFormOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateOrderScanFormResponse> {
+        const response = await this.createOrderScanFormRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Submit tracking number + carrier and notify the platform.
      */
-    async createOrderTrackingRaw(requestParameters: CreateOrderTrackingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderTrackingResponse>> {
+    async createOrderTrackingRaw(requestParameters: CreateOrderTrackingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderTrackingResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderTracking.');
+        }
+
+        if (requestParameters.createOrderTrackingRequest === null || requestParameters.createOrderTrackingRequest === undefined) {
+            throw new runtime.RequiredError('createOrderTrackingRequest','Required parameter requestParameters.createOrderTrackingRequest was null or undefined when calling createOrderTracking.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1555,6 +1976,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderTrackingRequestToJSON(requestParameters.createOrderTrackingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderTrackingResponseFromJSON(jsonValue));
@@ -1563,7 +1985,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Submit tracking number + carrier and notify the platform.
      */
-    async createOrderTracking(requestParameters: CreateOrderTrackingRequest, initOverrides?: RequestInit): Promise<CreateOrderTrackingResponse> {
+    async createOrderTracking(requestParameters: CreateOrderTrackingOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderTrackingResponse> {
         const response = await this.createOrderTrackingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1571,7 +1993,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Generate the Whatnot shipping label and record it on the order.
      */
-    async createOrderWhatnotLabelRaw(requestParameters: CreateOrderWhatnotLabelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderWhatnotLabelResponse>> {
+    async createOrderWhatnotLabelRaw(requestParameters: CreateOrderWhatnotLabelOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderWhatnotLabelResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderWhatnotLabel.');
         }
@@ -1579,6 +2001,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1593,6 +2017,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderWhatnotLabelRequestToJSON(requestParameters.createOrderWhatnotLabelRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderWhatnotLabelResponseFromJSON(jsonValue));
@@ -1601,7 +2026,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Generate the Whatnot shipping label and record it on the order.
      */
-    async createOrderWhatnotLabel(requestParameters: CreateOrderWhatnotLabelRequest, initOverrides?: RequestInit): Promise<CreateOrderWhatnotLabelResponse> {
+    async createOrderWhatnotLabel(requestParameters: CreateOrderWhatnotLabelOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderWhatnotLabelResponse> {
         const response = await this.createOrderWhatnotLabelRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1609,14 +2034,20 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Save a Whatnot shipment package (weight oz, box inches).
      */
-    async createOrderWhatnotPackageRaw(requestParameters: CreateOrderWhatnotPackageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetOrderWhatnotShipmentResponse>> {
+    async createOrderWhatnotPackageRaw(requestParameters: CreateOrderWhatnotPackageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetOrderWhatnotShipmentResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderWhatnotPackage.');
+        }
+
+        if (requestParameters.createOrderWhatnotPackageRequest === null || requestParameters.createOrderWhatnotPackageRequest === undefined) {
+            throw new runtime.RequiredError('createOrderWhatnotPackageRequest','Required parameter requestParameters.createOrderWhatnotPackageRequest was null or undefined when calling createOrderWhatnotPackage.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1631,6 +2062,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderWhatnotPackageRequestToJSON(requestParameters.createOrderWhatnotPackageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetOrderWhatnotShipmentResponseFromJSON(jsonValue));
@@ -1639,7 +2071,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Save a Whatnot shipment package (weight oz, box inches).
      */
-    async createOrderWhatnotPackage(requestParameters: CreateOrderWhatnotPackageRequest, initOverrides?: RequestInit): Promise<GetOrderWhatnotShipmentResponse> {
+    async createOrderWhatnotPackage(requestParameters: CreateOrderWhatnotPackageOperationRequest, initOverrides?: RequestInit): Promise<GetOrderWhatnotShipmentResponse> {
         const response = await this.createOrderWhatnotPackageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1652,9 +2084,15 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderWhatnotPackageQuote.');
         }
 
+        if (requestParameters.createOrderWhatnotPackageRequest === null || requestParameters.createOrderWhatnotPackageRequest === undefined) {
+            throw new runtime.RequiredError('createOrderWhatnotPackageRequest','Required parameter requestParameters.createOrderWhatnotPackageRequest was null or undefined when calling createOrderWhatnotPackageQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1669,6 +2107,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderWhatnotPackageRequestToJSON(requestParameters.createOrderWhatnotPackageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderWhatnotPackageQuoteResponseFromJSON(jsonValue));
@@ -1761,14 +2200,20 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Claim part or all of the deposit (cents, a note, photo URLs): within 3 days of the return, or 14 days after the end if it never came back.
      */
-    async createRentalClaimRaw(requestParameters: CreateRentalClaimRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<RentalResponse>> {
+    async createRentalClaimRaw(requestParameters: CreateRentalClaimOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<RentalResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createRentalClaim.');
+        }
+
+        if (requestParameters.createRentalClaimRequest === null || requestParameters.createRentalClaimRequest === undefined) {
+            throw new runtime.RequiredError('createRentalClaimRequest','Required parameter requestParameters.createRentalClaimRequest was null or undefined when calling createRentalClaim.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1783,6 +2228,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateRentalClaimRequestToJSON(requestParameters.createRentalClaimRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => RentalResponseFromJSON(jsonValue));
@@ -1791,7 +2237,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Claim part or all of the deposit (cents, a note, photo URLs): within 3 days of the return, or 14 days after the end if it never came back.
      */
-    async createRentalClaim(requestParameters: CreateRentalClaimRequest, initOverrides?: RequestInit): Promise<RentalResponse> {
+    async createRentalClaim(requestParameters: CreateRentalClaimOperationRequest, initOverrides?: RequestInit): Promise<RentalResponse> {
         const response = await this.createRentalClaimRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1875,7 +2321,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Approve or decline a renter’s request for more days.
      */
-    async createRentalExtensionDecideRaw(requestParameters: CreateRentalExtensionDecideRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateRentalExtensionDecideResponse>> {
+    async createRentalExtensionDecideRaw(requestParameters: CreateRentalExtensionDecideOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateRentalExtensionDecideResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createRentalExtensionDecide.');
         }
@@ -1884,9 +2330,15 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('extensionId','Required parameter requestParameters.extensionId was null or undefined when calling createRentalExtensionDecide.');
         }
 
+        if (requestParameters.createRentalExtensionDecideRequest === null || requestParameters.createRentalExtensionDecideRequest === undefined) {
+            throw new runtime.RequiredError('createRentalExtensionDecideRequest','Required parameter requestParameters.createRentalExtensionDecideRequest was null or undefined when calling createRentalExtensionDecide.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1901,6 +2353,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateRentalExtensionDecideRequestToJSON(requestParameters.createRentalExtensionDecideRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateRentalExtensionDecideResponseFromJSON(jsonValue));
@@ -1909,7 +2362,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Approve or decline a renter’s request for more days.
      */
-    async createRentalExtensionDecide(requestParameters: CreateRentalExtensionDecideRequest, initOverrides?: RequestInit): Promise<CreateRentalExtensionDecideResponse> {
+    async createRentalExtensionDecide(requestParameters: CreateRentalExtensionDecideOperationRequest, initOverrides?: RequestInit): Promise<CreateRentalExtensionDecideResponse> {
         const response = await this.createRentalExtensionDecideRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1917,7 +2370,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Record the return inspection: the checklist, photos, and optionally release the deposit.
      */
-    async createRentalInspectRaw(requestParameters: CreateRentalInspectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<RentalResponse>> {
+    async createRentalInspectRaw(requestParameters: CreateRentalInspectOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<RentalResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createRentalInspect.');
         }
@@ -1925,6 +2378,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1939,6 +2394,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateRentalInspectRequestToJSON(requestParameters.createRentalInspectRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => RentalResponseFromJSON(jsonValue));
@@ -1947,7 +2403,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Record the return inspection: the checklist, photos, and optionally release the deposit.
      */
-    async createRentalInspect(requestParameters: CreateRentalInspectRequest, initOverrides?: RequestInit): Promise<RentalResponse> {
+    async createRentalInspect(requestParameters: CreateRentalInspectOperationRequest, initOverrides?: RequestInit): Promise<RentalResponse> {
         const response = await this.createRentalInspectRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2107,7 +2563,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Mark a booked rental shipped, with at least 2 photos of its condition as it leaves (URLs you uploaded) — the evidence any later claim is judged against.
      */
-    async createRentalShippedRaw(requestParameters: CreateRentalShippedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<RentalResponse>> {
+    async createRentalShippedRaw(requestParameters: CreateRentalShippedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<RentalResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createRentalShipped.');
         }
@@ -2115,6 +2571,8 @@ export class OrdersApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2129,6 +2587,7 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateRentalShippedRequestToJSON(requestParameters.createRentalShippedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => RentalResponseFromJSON(jsonValue));
@@ -2137,13 +2596,55 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Mark a booked rental shipped, with at least 2 photos of its condition as it leaves (URLs you uploaded) — the evidence any later claim is judged against.
      */
-    async createRentalShipped(requestParameters: CreateRentalShippedRequest, initOverrides?: RequestInit): Promise<RentalResponse> {
+    async createRentalShipped(requestParameters: CreateRentalShippedOperationRequest, initOverrides?: RequestInit): Promise<RentalResponse> {
         const response = await this.createRentalShippedRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer\'s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
+     * Read your USB postal scale: ok true with weightOz and stable, or ok false with reason (no_agent | not_capable | offline | failed | timeout).
+     */
+    async getDeviceScaleRaw(requestParameters: GetDeviceScaleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDeviceScaleResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.agentId !== undefined) {
+            queryParameters['agentId'] = requestParameters.agentId;
+        }
+
+        if (requestParameters.timeoutMs !== undefined) {
+            queryParameters['timeoutMs'] = requestParameters.timeoutMs;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/devices/scale`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDeviceScaleResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Read your USB postal scale: ok true with weightOz and stable, or ok false with reason (no_agent | not_capable | offline | failed | timeout).
+     */
+    async getDeviceScale(requestParameters: GetDeviceScaleRequest = {}, initOverrides?: RequestInit): Promise<GetDeviceScaleResponse> {
+        const response = await this.getDeviceScaleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer\'s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null, and buyerCompany the trade buyer\'s business {id, name}: their company (id set), else their verified business name (id null), or null on a consumer order. orderNumber is the readable order number of a Crossly sale (NNN-NNNNNNN-NNNNNNN, the same number the buyer sees); null on other platforms, whose platformOrderId is readable. Show orderNumber ?? platformOrderId; platformOrderId stays the payment reference of a Crossly sale.
      * Get one order, with its sale price, fees, SKU and line items.
      */
     async getOrderRaw(requestParameters: GetOrderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetOrderResponse>> {
@@ -2174,7 +2675,7 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer\'s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
+     * Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer\'s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null, and buyerCompany the trade buyer\'s business {id, name}: their company (id set), else their verified business name (id null), or null on a consumer order. orderNumber is the readable order number of a Crossly sale (NNN-NNNNNNN-NNNNNNN, the same number the buyer sees); null on other platforms, whose platformOrderId is readable. Show orderNumber ?? platformOrderId; platformOrderId stays the payment reference of a Crossly sale.
      * Get one order, with its sale price, fees, SKU and line items.
      */
     async getOrder(requestParameters: GetOrderRequest, initOverrides?: RequestInit): Promise<GetOrderResponse> {
@@ -2457,6 +2958,52 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async getOrderPackingSlip(requestParameters: GetOrderPackingSlipRequest, initOverrides?: RequestInit): Promise<Blob> {
         const response = await this.getOrderPackingSlipRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The items to pull for a batch of orders, grouped by storage bin: groups[{bin, lines[{orderId, orderNumber, platform, title, sku, quantity, buyer}]}], orderCount, itemCount. orderIds (comma list, at most 500) or every order still to ship; storefrontId for one store; format=pdf for the printable list.
+     */
+    async getOrderPickListRaw(requestParameters: GetOrderPickListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetOrderPickListResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.orderIds !== undefined) {
+            queryParameters['orderIds'] = requestParameters.orderIds;
+        }
+
+        if (requestParameters.format !== undefined) {
+            queryParameters['format'] = requestParameters.format;
+        }
+
+        if (requestParameters.storefrontId !== undefined) {
+            queryParameters['storefrontId'] = requestParameters.storefrontId;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/orders/pick-list`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetOrderPickListResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The items to pull for a batch of orders, grouped by storage bin: groups[{bin, lines[{orderId, orderNumber, platform, title, sku, quantity, buyer}]}], orderCount, itemCount. orderIds (comma list, at most 500) or every order still to ship; storefrontId for one store; format=pdf for the printable list.
+     */
+    async getOrderPickList(requestParameters: GetOrderPickListRequest = {}, initOverrides?: RequestInit): Promise<GetOrderPickListResponse> {
+        const response = await this.getOrderPickListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2805,6 +3352,44 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
+     * The suggested parcel for this order: source (learned | box | item | none), presetId, presetName, lengthIn, widthIn, heightIn, weightOz, sampleSize.
+     */
+    async getOrderSuggestedParcelRaw(requestParameters: GetOrderSuggestedParcelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetOrderSuggestedParcelResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getOrderSuggestedParcel.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/orders/{id}/suggested-parcel`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetOrderSuggestedParcelResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The suggested parcel for this order: source (learned | box | item | none), presetId, presetName, lengthIn, widthIn, heightIn, weightOz, sampleSize.
+     */
+    async getOrderSuggestedParcel(requestParameters: GetOrderSuggestedParcelRequest, initOverrides?: RequestInit): Promise<GetOrderSuggestedParcelResponse> {
+        const response = await this.getOrderSuggestedParcelRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * A fresh link to Whatnot\'s packing slip PDF.
      */
     async getOrderWhatnotPackingSlipRaw(requestParameters: GetOrderWhatnotPackingSlipRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UrlExpiresInSecondsResponse>> {
@@ -2921,8 +3506,28 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
      */
-    async getRentalCalendarRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRentalCalendarResponse>> {
+    async getRentalCalendarRaw(requestParameters: GetRentalCalendarRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRentalCalendarResponse>> {
+        if (requestParameters.from === null || requestParameters.from === undefined) {
+            throw new runtime.RequiredError('from','Required parameter requestParameters.from was null or undefined when calling getRentalCalendar.');
+        }
+
+        if (requestParameters.to === null || requestParameters.to === undefined) {
+            throw new runtime.RequiredError('to','Required parameter requestParameters.to was null or undefined when calling getRentalCalendar.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.platformListingId !== undefined) {
+            queryParameters['platformListingId'] = requestParameters.platformListingId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -2947,8 +3552,46 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
      */
-    async getRentalCalendar(initOverrides?: RequestInit): Promise<GetRentalCalendarResponse> {
-        const response = await this.getRentalCalendarRaw(initOverrides);
+    async getRentalCalendar(requestParameters: GetRentalCalendarRequest, initOverrides?: RequestInit): Promise<GetRentalCalendarResponse> {
+        const response = await this.getRentalCalendarRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * An inventory item’s rentals: units out with a renter now (reserved on the item), upcoming bookings and returns waiting for inspection.
+     */
+    async getRentalInventoryRaw(requestParameters: GetRentalInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRentalInventoryResponse>> {
+        if (requestParameters.inventoryItemId === null || requestParameters.inventoryItemId === undefined) {
+            throw new runtime.RequiredError('inventoryItemId','Required parameter requestParameters.inventoryItemId was null or undefined when calling getRentalInventory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/rentals/inventory/{inventoryItemId}`.replace(`{${"inventoryItemId"}}`, encodeURIComponent(String(requestParameters.inventoryItemId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetRentalInventoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * An inventory item’s rentals: units out with a renter now (reserved on the item), upcoming bookings and returns waiting for inspection.
+     */
+    async getRentalInventory(requestParameters: GetRentalInventoryRequest, initOverrides?: RequestInit): Promise<GetRentalInventoryResponse> {
+        const response = await this.getRentalInventoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2989,8 +3632,16 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Your show boxes: every buyer’s orders from one live show, to ship together.
      */
-    async listLiveShipmentsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLiveShipmentsResponse>> {
+    async listLiveShipmentsRaw(requestParameters: ListLiveShipmentsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLiveShipmentsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.streamId !== undefined) {
+            queryParameters['streamId'] = requestParameters.streamId;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -3015,8 +3666,8 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Your show boxes: every buyer’s orders from one live show, to ship together.
      */
-    async listLiveShipments(initOverrides?: RequestInit): Promise<ListLiveShipmentsResponse> {
-        const response = await this.listLiveShipmentsRaw(initOverrides);
+    async listLiveShipments(requestParameters: ListLiveShipmentsRequest = {}, initOverrides?: RequestInit): Promise<ListLiveShipmentsResponse> {
+        const response = await this.listLiveShipmentsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3201,7 +3852,7 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer\'s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
+     * Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer\'s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null, and buyerCompany the trade buyer\'s business {id, name}: their company (id set), else their verified business name (id null), or null on a consumer order. orderNumber is the readable order number of a Crossly sale (NNN-NNNNNNN-NNNNNNN, the same number the buyer sees); null on other platforms, whose platformOrderId is readable. Show orderNumber ?? platformOrderId; platformOrderId stays the payment reference of a Crossly sale.
      * List orders, each with its sale price, fees, SKU and line items.
      */
     async listOrdersRaw(requestParameters: ListOrdersRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListOrdersResponse>> {
@@ -3235,8 +3886,16 @@ export class OrdersApi extends runtime.BaseAPI {
             queryParameters['unlinked'] = requestParameters.unlinked;
         }
 
+        if (requestParameters.orderNumber !== undefined) {
+            queryParameters['orderNumber'] = requestParameters.orderNumber;
+        }
+
         if (requestParameters.updatedSince !== undefined) {
             queryParameters['updatedSince'] = (requestParameters.updatedSince as any).toISOString();
+        }
+
+        if (requestParameters.assignee !== undefined) {
+            queryParameters['assignee'] = requestParameters.assignee;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -3260,7 +3919,7 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer\'s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
+     * Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer\'s PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null, and buyerCompany the trade buyer\'s business {id, name}: their company (id set), else their verified business name (id null), or null on a consumer order. orderNumber is the readable order number of a Crossly sale (NNN-NNNNNNN-NNNNNNN, the same number the buyer sees); null on other platforms, whose platformOrderId is readable. Show orderNumber ?? platformOrderId; platformOrderId stays the payment reference of a Crossly sale.
      * List orders, each with its sale price, fees, SKU and line items.
      */
     async listOrders(requestParameters: ListOrdersRequest = {}, initOverrides?: RequestInit): Promise<ListOrdersResponse> {
@@ -3271,8 +3930,40 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Active rentals and history, filtered by view, status, dates, item or a search.
      */
-    async listRentalHistoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListRentalHistoryResponse>> {
+    async listRentalHistoryRaw(requestParameters: ListRentalHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListRentalHistoryResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.view !== undefined) {
+            queryParameters['view'] = requestParameters.view;
+        }
+
+        if (requestParameters.status) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.platformListingId !== undefined) {
+            queryParameters['platformListingId'] = requestParameters.platformListingId;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.offset !== undefined) {
+            queryParameters['offset'] = requestParameters.offset;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -3297,8 +3988,8 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Active rentals and history, filtered by view, status, dates, item or a search.
      */
-    async listRentalHistory(initOverrides?: RequestInit): Promise<ListRentalHistoryResponse> {
-        const response = await this.listRentalHistoryRaw(initOverrides);
+    async listRentalHistory(requestParameters: ListRentalHistoryRequest = {}, initOverrides?: RequestInit): Promise<ListRentalHistoryResponse> {
+        const response = await this.listRentalHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3339,9 +4030,88 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Update order (status, notes, tracking).
      */
-    async updateOrderRaw(requestParameters: UpdateOrderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateOrderResponse>> {
+    async updateOrderRaw(requestParameters: UpdateOrderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateOrderResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateOrder.');
+        }
+
+        if (requestParameters.updateOrderRequest === null || requestParameters.updateOrderRequest === undefined) {
+            throw new runtime.RequiredError('updateOrderRequest','Required parameter requestParameters.updateOrderRequest was null or undefined when calling updateOrder.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/orders/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateOrderRequestToJSON(requestParameters.updateOrderRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateOrderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Update order (status, notes, tracking).
+     */
+    async updateOrder(requestParameters: UpdateOrderOperationRequest, initOverrides?: RequestInit): Promise<UpdateOrderResponse> {
+        const response = await this.updateOrderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Assign many orders to a teammate, round robin across several, or unassign them (null).
+     */
+    async updateOrderAssigneeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateOrderAssigneeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/orders/assignee`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateOrderAssigneeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Assign many orders to a teammate, round robin across several, or unassign them (null).
+     */
+    async updateOrderAssignee(initOverrides?: RequestInit): Promise<UpdateOrderAssigneeResponse> {
+        const response = await this.updateOrderAssigneeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Assign one order to a teammate, or unassign it (null).
+     */
+    async updateOrderAssigneeByIdRaw(requestParameters: UpdateOrderAssigneeByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateOrderAssigneeByIdResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateOrderAssigneeById.');
         }
 
         const queryParameters: any = {};
@@ -3357,20 +4127,20 @@ export class OrdersApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/v1/orders/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/v1/orders/{id}/assignee`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateOrderResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateOrderAssigneeByIdResponseFromJSON(jsonValue));
     }
 
     /**
-     * Update order (status, notes, tracking).
+     * Assign one order to a teammate, or unassign it (null).
      */
-    async updateOrder(requestParameters: UpdateOrderRequest, initOverrides?: RequestInit): Promise<UpdateOrderResponse> {
-        const response = await this.updateOrderRaw(requestParameters, initOverrides);
+    async updateOrderAssigneeById(requestParameters: UpdateOrderAssigneeByIdRequest, initOverrides?: RequestInit): Promise<UpdateOrderAssigneeByIdResponse> {
+        const response = await this.updateOrderAssigneeByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3395,6 +4165,22 @@ export enum GetOrderLabelPrintFlipEnum {
     _1 = '1',
     True = 'true',
     False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetOrderPickListFormatEnum {
+    Json = 'json',
+    Pdf = 'pdf'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListLiveShipmentsStatusEnum {
+    Open = 'open',
+    Shipped = 'shipped'
 }
 /**
     * @export
@@ -3425,4 +4211,13 @@ export enum ListOrdersUnlinkedEnum {
     True = 'true',
     _0 = '0',
     False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListRentalHistoryViewEnum {
+    Active = 'active',
+    All = 'all',
+    History = 'history'
 }

@@ -234,8 +234,8 @@ export interface GetWorldChartResponseDataEntries {
 export enum GetWorldChartResponseDataEntriesGenreEnum {
     Shopping = 'shopping',
     Other = 'other',
-    Strategy = 'strategy',
     Social = 'social',
+    Strategy = 'strategy',
     Hangout = 'hangout',
     Simulation = 'simulation',
     Obby = 'obby',

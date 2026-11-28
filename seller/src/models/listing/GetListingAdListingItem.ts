@@ -86,9 +86,9 @@ export interface GetListingAdListingItem {
 * @enum {string}
 */
 export enum GetListingAdListingItemStatusEnum {
-    Pending = 'pending',
     Live = 'live',
     Paused = 'paused',
+    Pending = 'pending',
     Failed = 'failed',
     Ended = 'ended',
     Rejected = 'rejected',

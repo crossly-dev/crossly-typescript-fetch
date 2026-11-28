@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    FromTo2,
-    FromTo2FromJSON,
-    FromTo2FromJSONTyped,
-    FromTo2ToJSON,
-} from '../common/FromTo2';
+    CreateListingTagRenameRequest,
+    CreateListingTagRenameRequestFromJSON,
+    CreateListingTagRenameRequestFromJSONTyped,
+    CreateListingTagRenameRequestToJSON,
+} from '../listing/CreateListingTagRenameRequest';
 import {
     GetAnalyticDashboardResponseSellThroughCohortPrev,
     GetAnalyticDashboardResponseSellThroughCohortPrevFromJSON,
@@ -40,10 +40,10 @@ import {
 export interface GetAnalyticDashboardResponseSellThroughCohort {
     /**
      * 
-     * @type {FromTo2}
+     * @type {CreateListingTagRenameRequest}
      * @memberof GetAnalyticDashboardResponseSellThroughCohort
      */
-    window: FromTo2;
+    window: CreateListingTagRenameRequest;
     /**
      * 
      * @type {number}
@@ -98,7 +98,7 @@ export function GetAnalyticDashboardResponseSellThroughCohortFromJSONTyped(json:
     }
     return {
         
-        'window': FromTo2FromJSON(json['window']),
+        'window': CreateListingTagRenameRequestFromJSON(json['window']),
         'maturityDays': json['maturityDays'],
         'rate': !exists(json, 'rate') ? undefined : json['rate'],
         'sold': json['sold'],
@@ -118,7 +118,7 @@ export function GetAnalyticDashboardResponseSellThroughCohortToJSON(value?: GetA
     }
     return {
         
-        'window': FromTo2ToJSON(value.window),
+        'window': CreateListingTagRenameRequestToJSON(value.window),
         'maturityDays': value.maturityDays,
         'rate': value.rate,
         'sold': value.sold,

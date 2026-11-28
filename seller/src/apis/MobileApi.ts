@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateMobilePushTokenRequest,
+    CreateMobilePushTokenRequestFromJSON,
+    CreateMobilePushTokenRequestToJSON,
     DeleteMobilePushTokenResponse,
     DeleteMobilePushTokenResponseFromJSON,
     DeleteMobilePushTokenResponseToJSON,
@@ -25,6 +28,10 @@ import {
     OkResponseFromJSON,
     OkResponseToJSON,
 } from '../models';
+
+export interface CreateMobilePushTokenOperationRequest {
+    createMobilePushTokenRequest: CreateMobilePushTokenRequest;
+}
 
 /**
  * 
@@ -68,10 +75,16 @@ export class MobileApi extends runtime.BaseAPI {
     /**
      * Register an Expo push token for this user.
      */
-    async createMobilePushTokenRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+    async createMobilePushTokenRaw(requestParameters: CreateMobilePushTokenOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.createMobilePushTokenRequest === null || requestParameters.createMobilePushTokenRequest === undefined) {
+            throw new runtime.RequiredError('createMobilePushTokenRequest','Required parameter requestParameters.createMobilePushTokenRequest was null or undefined when calling createMobilePushToken.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -86,6 +99,7 @@ export class MobileApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMobilePushTokenRequestToJSON(requestParameters.createMobilePushTokenRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
@@ -94,8 +108,8 @@ export class MobileApi extends runtime.BaseAPI {
     /**
      * Register an Expo push token for this user.
      */
-    async createMobilePushToken(initOverrides?: RequestInit): Promise<OkResponse> {
-        const response = await this.createMobilePushTokenRaw(initOverrides);
+    async createMobilePushToken(requestParameters: CreateMobilePushTokenOperationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.createMobilePushTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

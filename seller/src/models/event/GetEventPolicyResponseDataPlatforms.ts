@@ -50,9 +50,9 @@ export interface GetEventPolicyResponseDataPlatforms {
 * @enum {string}
 */
 export enum GetEventPolicyResponseDataPlatformsKindEnum {
+    Api = 'api',
     Cookie = 'cookie',
-    Crossly = 'crossly',
-    Api = 'api'
+    Crossly = 'crossly'
 }
 
 export function GetEventPolicyResponseDataPlatformsFromJSON(json: any): GetEventPolicyResponseDataPlatforms {

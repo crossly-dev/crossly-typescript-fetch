@@ -136,8 +136,8 @@ export enum GetBuyerVaultMarketOptionPositionResponsePositionsContractCycleEnum 
 * @enum {string}
 */
 export enum GetBuyerVaultMarketOptionPositionResponsePositionsContractStatusEnum {
-    Open = 'open',
     Expired = 'expired',
+    Open = 'open',
     Delisted = 'delisted',
     Settled = 'settled',
     Frozen = 'frozen'

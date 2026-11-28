@@ -84,9 +84,9 @@ export enum ListConnectionPolicyManagementItemPlatformEnum {
     Ebay = 'ebay',
     Etsy = 'etsy',
     Shopify = 'shopify',
+    GoogleShopping = 'google_shopping',
     Allegro = 'allegro',
-    Trademe = 'trademe',
-    GoogleShopping = 'google_shopping'
+    Trademe = 'trademe'
 }/**
 * @export
 * @enum {string}

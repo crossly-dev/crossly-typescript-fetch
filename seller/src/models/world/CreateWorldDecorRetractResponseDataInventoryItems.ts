@@ -111,8 +111,8 @@ export interface CreateWorldDecorRetractResponseDataInventoryItems {
 */
 export enum CreateWorldDecorRetractResponseDataInventoryItemsSurfaceEnum {
     Home = 'home',
-    Street = 'street',
     Shop = 'shop',
+    Street = 'street',
     Avatar = 'avatar',
     Stall = 'stall'
 }

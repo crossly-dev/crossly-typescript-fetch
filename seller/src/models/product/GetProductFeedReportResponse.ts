@@ -14,11 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetProductFeedReportResponseItems,
-    GetProductFeedReportResponseItemsFromJSON,
-    GetProductFeedReportResponseItemsFromJSONTyped,
-    GetProductFeedReportResponseItemsToJSON,
-} from './GetProductFeedReportResponseItems';
+    GetProductFeedIssueResponseItems,
+    GetProductFeedIssueResponseItemsFromJSON,
+    GetProductFeedIssueResponseItemsFromJSONTyped,
+    GetProductFeedIssueResponseItemsToJSON,
+} from './GetProductFeedIssueResponseItems';
+import {
+    GetProductFeedReportResponseCurrency,
+    GetProductFeedReportResponseCurrencyFromJSON,
+    GetProductFeedReportResponseCurrencyFromJSONTyped,
+    GetProductFeedReportResponseCurrencyToJSON,
+} from './GetProductFeedReportResponseCurrency';
 import {
     GetProductFeedReportResponseSample,
     GetProductFeedReportResponseSampleFromJSON,
@@ -31,6 +37,12 @@ import {
     GetProductFeedReportResponseStatsFromJSONTyped,
     GetProductFeedReportResponseStatsToJSON,
 } from './GetProductFeedReportResponseStats';
+import {
+    GetProductFeedReportResponseStore,
+    GetProductFeedReportResponseStoreFromJSON,
+    GetProductFeedReportResponseStoreFromJSONTyped,
+    GetProductFeedReportResponseStoreToJSON,
+} from './GetProductFeedReportResponseStore';
 
 /**
  * 
@@ -58,16 +70,28 @@ export interface GetProductFeedReportResponse {
     truncated: boolean;
     /**
      * Items with at least one issue (errors first), capped.
-     * @type {Array<GetProductFeedReportResponseItems>}
+     * @type {Array<GetProductFeedIssueResponseItems>}
      * @memberof GetProductFeedReportResponse
      */
-    items: Array<GetProductFeedReportResponseItems>;
+    items: Array<GetProductFeedIssueResponseItems>;
     /**
      * The first few items exactly as the channel will receive them.
      * @type {Array<GetProductFeedReportResponseSample>}
      * @memberof GetProductFeedReportResponse
      */
     sample: Array<GetProductFeedReportResponseSample>;
+    /**
+     * 
+     * @type {GetProductFeedReportResponseStore}
+     * @memberof GetProductFeedReportResponse
+     */
+    store: GetProductFeedReportResponseStore;
+    /**
+     * 
+     * @type {GetProductFeedReportResponseCurrency}
+     * @memberof GetProductFeedReportResponse
+     */
+    currency: GetProductFeedReportResponseCurrency;
 }
 
 export function GetProductFeedReportResponseFromJSON(json: any): GetProductFeedReportResponse {
@@ -83,8 +107,10 @@ export function GetProductFeedReportResponseFromJSONTyped(json: any, ignoreDiscr
         'stats': GetProductFeedReportResponseStatsFromJSON(json['stats']),
         'scanned': json['scanned'],
         'truncated': json['truncated'],
-        'items': ((json['items'] as Array<any>).map(GetProductFeedReportResponseItemsFromJSON)),
+        'items': ((json['items'] as Array<any>).map(GetProductFeedIssueResponseItemsFromJSON)),
         'sample': ((json['sample'] as Array<any>).map(GetProductFeedReportResponseSampleFromJSON)),
+        'store': GetProductFeedReportResponseStoreFromJSON(json['store']),
+        'currency': GetProductFeedReportResponseCurrencyFromJSON(json['currency']),
     };
 }
 
@@ -100,8 +126,10 @@ export function GetProductFeedReportResponseToJSON(value?: GetProductFeedReportR
         'stats': GetProductFeedReportResponseStatsToJSON(value.stats),
         'scanned': value.scanned,
         'truncated': value.truncated,
-        'items': ((value.items as Array<any>).map(GetProductFeedReportResponseItemsToJSON)),
+        'items': ((value.items as Array<any>).map(GetProductFeedIssueResponseItemsToJSON)),
         'sample': ((value.sample as Array<any>).map(GetProductFeedReportResponseSampleToJSON)),
+        'store': GetProductFeedReportResponseStoreToJSON(value.store),
+        'currency': GetProductFeedReportResponseCurrencyToJSON(value.currency),
     };
 }
 

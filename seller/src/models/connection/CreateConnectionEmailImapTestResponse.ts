@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    CreateAiKeyTestResponse,
+    CreateAiKeyTestResponseFromJSON,
+    CreateAiKeyTestResponseFromJSONTyped,
+    CreateAiKeyTestResponseToJSON,
+} from '../ai/CreateAiKeyTestResponse';
+
 /**
  * 
  * @export
@@ -21,16 +28,16 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateConnectionEmailImapTestResponse {
     /**
      * 
+     * @type {CreateAiKeyTestResponse}
+     * @memberof CreateConnectionEmailImapTestResponse
+     */
+    data: CreateAiKeyTestResponse;
+    /**
+     * 
      * @type {boolean}
      * @memberof CreateConnectionEmailImapTestResponse
      */
     success: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateConnectionEmailImapTestResponse
-     */
-    message: string;
 }
 
 export function CreateConnectionEmailImapTestResponseFromJSON(json: any): CreateConnectionEmailImapTestResponse {
@@ -43,8 +50,8 @@ export function CreateConnectionEmailImapTestResponseFromJSONTyped(json: any, ig
     }
     return {
         
+        'data': CreateAiKeyTestResponseFromJSON(json['data']),
         'success': json['success'],
-        'message': json['message'],
     };
 }
 
@@ -57,8 +64,8 @@ export function CreateConnectionEmailImapTestResponseToJSON(value?: CreateConnec
     }
     return {
         
+        'data': CreateAiKeyTestResponseToJSON(value.data),
         'success': value.success,
-        'message': value.message,
     };
 }
 

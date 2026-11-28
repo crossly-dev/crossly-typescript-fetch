@@ -18,6 +18,9 @@ import {
     CreatePolicyReturnReceivedResponse,
     CreatePolicyReturnReceivedResponseFromJSON,
     CreatePolicyReturnReceivedResponseToJSON,
+    CreateReturnAcceptRequest,
+    CreateReturnAcceptRequestFromJSON,
+    CreateReturnAcceptRequestToJSON,
     CreateReturnAcceptResponse,
     CreateReturnAcceptResponseFromJSON,
     CreateReturnAcceptResponseToJSON,
@@ -36,14 +39,31 @@ import {
     ListReturnsResponse,
     ListReturnsResponseFromJSON,
     ListReturnsResponseToJSON,
+    OrderIdReasonRequest,
+    OrderIdReasonRequestFromJSON,
+    OrderIdReasonRequestToJSON,
+    UpdateOrderAssigneeByIdResponse,
+    UpdateOrderAssigneeByIdResponseFromJSON,
+    UpdateOrderAssigneeByIdResponseToJSON,
+    UpdateOrderAssigneeResponse,
+    UpdateOrderAssigneeResponseFromJSON,
+    UpdateOrderAssigneeResponseToJSON,
+    UpdateReturnRequest,
+    UpdateReturnRequestFromJSON,
+    UpdateReturnRequestToJSON,
 } from '../models';
 
 export interface CreatePolicyReturnReceivedRequest {
     id: string;
 }
 
-export interface CreateReturnAcceptRequest {
+export interface CreateReturnRequest {
+    orderIdReasonRequest: OrderIdReasonRequest;
+}
+
+export interface CreateReturnAcceptOperationRequest {
     id: string;
+    createReturnAcceptRequest?: CreateReturnAcceptRequest;
 }
 
 export interface CreateReturnDeclineOperationRequest {
@@ -55,7 +75,20 @@ export interface GetReturnRequest {
     id: string;
 }
 
-export interface UpdateReturnRequest {
+export interface ListPolicyReturnsRequest {
+    orderId?: string;
+}
+
+export interface ListReturnsRequest {
+    assignee?: string;
+}
+
+export interface UpdateReturnOperationRequest {
+    id: string;
+    updateReturnRequest: UpdateReturnRequest;
+}
+
+export interface UpdateReturnAssigneeByIdRequest {
     id: string;
 }
 
@@ -105,10 +138,16 @@ export class ReturnsApi extends runtime.BaseAPI {
     /**
      * Open a return record on an order (rejects if another open return exists).
      */
-    async createReturnRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetReturnResponse>> {
+    async createReturnRaw(requestParameters: CreateReturnRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetReturnResponse>> {
+        if (requestParameters.orderIdReasonRequest === null || requestParameters.orderIdReasonRequest === undefined) {
+            throw new runtime.RequiredError('orderIdReasonRequest','Required parameter requestParameters.orderIdReasonRequest was null or undefined when calling createReturn.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -123,6 +162,7 @@ export class ReturnsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: OrderIdReasonRequestToJSON(requestParameters.orderIdReasonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetReturnResponseFromJSON(jsonValue));
@@ -131,15 +171,15 @@ export class ReturnsApi extends runtime.BaseAPI {
     /**
      * Open a return record on an order (rejects if another open return exists).
      */
-    async createReturn(initOverrides?: RequestInit): Promise<GetReturnResponse> {
-        const response = await this.createReturnRaw(initOverrides);
+    async createReturn(requestParameters: CreateReturnRequest, initOverrides?: RequestInit): Promise<GetReturnResponse> {
+        const response = await this.createReturnRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
      */
-    async createReturnAcceptRaw(requestParameters: CreateReturnAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateReturnAcceptResponse>> {
+    async createReturnAcceptRaw(requestParameters: CreateReturnAcceptOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateReturnAcceptResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createReturnAccept.');
         }
@@ -147,6 +187,8 @@ export class ReturnsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -161,6 +203,7 @@ export class ReturnsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateReturnAcceptRequestToJSON(requestParameters.createReturnAcceptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateReturnAcceptResponseFromJSON(jsonValue));
@@ -169,7 +212,7 @@ export class ReturnsApi extends runtime.BaseAPI {
     /**
      * Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
      */
-    async createReturnAccept(requestParameters: CreateReturnAcceptRequest, initOverrides?: RequestInit): Promise<CreateReturnAcceptResponse> {
+    async createReturnAccept(requestParameters: CreateReturnAcceptOperationRequest, initOverrides?: RequestInit): Promise<CreateReturnAcceptResponse> {
         const response = await this.createReturnAcceptRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -260,8 +303,12 @@ export class ReturnsApi extends runtime.BaseAPI {
     /**
      * Returns Crossly buyers opened under your return policy or try at home; filter by orderId.
      */
-    async listPolicyReturnsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPolicyReturnsResponse>> {
+    async listPolicyReturnsRaw(requestParameters: ListPolicyReturnsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPolicyReturnsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.orderId !== undefined) {
+            queryParameters['orderId'] = requestParameters.orderId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -286,16 +333,20 @@ export class ReturnsApi extends runtime.BaseAPI {
     /**
      * Returns Crossly buyers opened under your return policy or try at home; filter by orderId.
      */
-    async listPolicyReturns(initOverrides?: RequestInit): Promise<ListPolicyReturnsResponse> {
-        const response = await this.listPolicyReturnsRaw(initOverrides);
+    async listPolicyReturns(requestParameters: ListPolicyReturnsRequest = {}, initOverrides?: RequestInit): Promise<ListPolicyReturnsResponse> {
+        const response = await this.listPolicyReturnsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * List returns. Default: your return records (the physical-return workflow), status=open|closed|<exact>. source=request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
      */
-    async listReturnsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListReturnsResponse>> {
+    async listReturnsRaw(requestParameters: ListReturnsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListReturnsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.assignee !== undefined) {
+            queryParameters['assignee'] = requestParameters.assignee;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -320,17 +371,96 @@ export class ReturnsApi extends runtime.BaseAPI {
     /**
      * List returns. Default: your return records (the physical-return workflow), status=open|closed|<exact>. source=request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
      */
-    async listReturns(initOverrides?: RequestInit): Promise<ListReturnsResponse> {
-        const response = await this.listReturnsRaw(initOverrides);
+    async listReturns(requestParameters: ListReturnsRequest = {}, initOverrides?: RequestInit): Promise<ListReturnsResponse> {
+        const response = await this.listReturnsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Transition return status (received/inspected/restocked) and bump inventory on restock.
      */
-    async updateReturnRaw(requestParameters: UpdateReturnRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetReturnResponse>> {
+    async updateReturnRaw(requestParameters: UpdateReturnOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetReturnResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateReturn.');
+        }
+
+        if (requestParameters.updateReturnRequest === null || requestParameters.updateReturnRequest === undefined) {
+            throw new runtime.RequiredError('updateReturnRequest','Required parameter requestParameters.updateReturnRequest was null or undefined when calling updateReturn.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/returns/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateReturnRequestToJSON(requestParameters.updateReturnRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetReturnResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Transition return status (received/inspected/restocked) and bump inventory on restock.
+     */
+    async updateReturn(requestParameters: UpdateReturnOperationRequest, initOverrides?: RequestInit): Promise<GetReturnResponse> {
+        const response = await this.updateReturnRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Assign many returns to a teammate, round robin across several, or unassign them (null).
+     */
+    async updateReturnAssigneeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateOrderAssigneeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/returns/assignee`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateOrderAssigneeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Assign many returns to a teammate, round robin across several, or unassign them (null).
+     */
+    async updateReturnAssignee(initOverrides?: RequestInit): Promise<UpdateOrderAssigneeResponse> {
+        const response = await this.updateReturnAssigneeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Assign one return to a teammate, or unassign it (null).
+     */
+    async updateReturnAssigneeByIdRaw(requestParameters: UpdateReturnAssigneeByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateOrderAssigneeByIdResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateReturnAssigneeById.');
         }
 
         const queryParameters: any = {};
@@ -346,20 +476,20 @@ export class ReturnsApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/v1/returns/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/v1/returns/{id}/assignee`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetReturnResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateOrderAssigneeByIdResponseFromJSON(jsonValue));
     }
 
     /**
-     * Transition return status (received/inspected/restocked) and bump inventory on restock.
+     * Assign one return to a teammate, or unassign it (null).
      */
-    async updateReturn(requestParameters: UpdateReturnRequest, initOverrides?: RequestInit): Promise<GetReturnResponse> {
-        const response = await this.updateReturnRaw(requestParameters, initOverrides);
+    async updateReturnAssigneeById(requestParameters: UpdateReturnAssigneeByIdRequest, initOverrides?: RequestInit): Promise<UpdateOrderAssigneeByIdResponse> {
+        const response = await this.updateReturnAssigneeByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

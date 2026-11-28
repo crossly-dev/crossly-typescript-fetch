@@ -15,36 +15,69 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateFundingApplyRequest,
+    CreateFundingApplyRequestFromJSON,
+    CreateFundingApplyRequestToJSON,
     CreateFundingApplyResponse,
     CreateFundingApplyResponseFromJSON,
     CreateFundingApplyResponseToJSON,
+    CreateFundingDrawQuoteRequest,
+    CreateFundingDrawQuoteRequestFromJSON,
+    CreateFundingDrawQuoteRequestToJSON,
     CreateFundingDrawQuoteResponse,
     CreateFundingDrawQuoteResponseFromJSON,
     CreateFundingDrawQuoteResponseToJSON,
     CreateFundingDrawRejectResponse,
     CreateFundingDrawRejectResponseFromJSON,
     CreateFundingDrawRejectResponseToJSON,
+    CreateFundingDrawRequest,
+    CreateFundingDrawRequestFromJSON,
+    CreateFundingDrawRequestToJSON,
     CreateFundingDrawResponse,
     CreateFundingDrawResponseFromJSON,
     CreateFundingDrawResponseToJSON,
+    CreateFundingDrawUseRequest,
+    CreateFundingDrawUseRequestFromJSON,
+    CreateFundingDrawUseRequestToJSON,
     CreateFundingDrawUseResponse,
     CreateFundingDrawUseResponseFromJSON,
     CreateFundingDrawUseResponseToJSON,
+    CreateFundingInvoiceFileRequest,
+    CreateFundingInvoiceFileRequestFromJSON,
+    CreateFundingInvoiceFileRequestToJSON,
     CreateFundingInvoiceFileResponse,
     CreateFundingInvoiceFileResponseFromJSON,
     CreateFundingInvoiceFileResponseToJSON,
+    CreateFundingPayCrosslyFeeRequest,
+    CreateFundingPayCrosslyFeeRequestFromJSON,
+    CreateFundingPayCrosslyFeeRequestToJSON,
     CreateFundingPayCrosslyFeeResponse,
     CreateFundingPayCrosslyFeeResponseFromJSON,
     CreateFundingPayCrosslyFeeResponseToJSON,
+    CreateFundingPayShippingLabelRequest,
+    CreateFundingPayShippingLabelRequestFromJSON,
+    CreateFundingPayShippingLabelRequestToJSON,
     CreateFundingPayShippingLabelResponse,
     CreateFundingPayShippingLabelResponseFromJSON,
     CreateFundingPayShippingLabelResponseToJSON,
+    CreateFundingPayVaultFeeRequest,
+    CreateFundingPayVaultFeeRequestFromJSON,
+    CreateFundingPayVaultFeeRequestToJSON,
     CreateFundingPayVaultFeeResponse,
     CreateFundingPayVaultFeeResponseFromJSON,
     CreateFundingPayVaultFeeResponseToJSON,
+    CreateFundingPoolStakeRequest,
+    CreateFundingPoolStakeRequestFromJSON,
+    CreateFundingPoolStakeRequestToJSON,
     CreateFundingPoolStakeResponse,
     CreateFundingPoolStakeResponseFromJSON,
     CreateFundingPoolStakeResponseToJSON,
+    CreateFundingPoolUnstakeRequest,
+    CreateFundingPoolUnstakeRequestFromJSON,
+    CreateFundingPoolUnstakeRequestToJSON,
+    CreateFundingRepayRequest,
+    CreateFundingRepayRequestFromJSON,
+    CreateFundingRepayRequestToJSON,
     CreateFundingRepayResponse,
     CreateFundingRepayResponseFromJSON,
     CreateFundingRepayResponseToJSON,
@@ -63,6 +96,9 @@ import {
     GetFundingDrawResponse,
     GetFundingDrawResponseFromJSON,
     GetFundingDrawResponseToJSON,
+    GetFundingInvoiceAdvanceEligibilityResponse,
+    GetFundingInvoiceAdvanceEligibilityResponseFromJSON,
+    GetFundingInvoiceAdvanceEligibilityResponseToJSON,
     GetFundingLineResponse,
     GetFundingLineResponseFromJSON,
     GetFundingLineResponseToJSON,
@@ -90,27 +126,85 @@ import {
     ListFundingRepaymentsResponse,
     ListFundingRepaymentsResponseFromJSON,
     ListFundingRepaymentsResponseToJSON,
+    NoteRequest,
+    NoteRequestFromJSON,
+    NoteRequestToJSON,
+    UpdateFundingAutorepayRequest,
+    UpdateFundingAutorepayRequestFromJSON,
+    UpdateFundingAutorepayRequestToJSON,
     UpdateFundingAutorepayResponse,
     UpdateFundingAutorepayResponseFromJSON,
     UpdateFundingAutorepayResponseToJSON,
+    UpdateFundingControlRequest,
+    UpdateFundingControlRequestFromJSON,
+    UpdateFundingControlRequestToJSON,
     UpdateFundingControlResponse,
     UpdateFundingControlResponseFromJSON,
     UpdateFundingControlResponseToJSON,
+    UpdateFundingMemberRequest,
+    UpdateFundingMemberRequestFromJSON,
+    UpdateFundingMemberRequestToJSON,
     UpdateFundingMemberResponse,
     UpdateFundingMemberResponseFromJSON,
     UpdateFundingMemberResponseToJSON,
 } from '../models';
 
+export interface CreateFundingApplyOperationRequest {
+    createFundingApplyRequest: CreateFundingApplyRequest;
+}
+
+export interface CreateFundingDrawOperationRequest {
+    createFundingDrawRequest: CreateFundingDrawRequest;
+}
+
 export interface CreateFundingDrawApproveRequest {
     id: string;
+    noteRequest?: NoteRequest;
+}
+
+export interface CreateFundingDrawQuoteOperationRequest {
+    createFundingDrawQuoteRequest: CreateFundingDrawQuoteRequest;
 }
 
 export interface CreateFundingDrawRejectRequest {
     id: string;
+    noteRequest?: NoteRequest;
+}
+
+export interface CreateFundingDrawUseOperationRequest {
+    createFundingDrawUseRequest: CreateFundingDrawUseRequest;
+}
+
+export interface CreateFundingInvoiceFileOperationRequest {
+    createFundingInvoiceFileRequest: CreateFundingInvoiceFileRequest;
+}
+
+export interface CreateFundingPayCrosslyFeeOperationRequest {
+    createFundingPayCrosslyFeeRequest: CreateFundingPayCrosslyFeeRequest;
+}
+
+export interface CreateFundingPayShippingLabelOperationRequest {
+    createFundingPayShippingLabelRequest: CreateFundingPayShippingLabelRequest;
+}
+
+export interface CreateFundingPayVaultFeeOperationRequest {
+    createFundingPayVaultFeeRequest: CreateFundingPayVaultFeeRequest;
+}
+
+export interface CreateFundingPoolStakeOperationRequest {
+    createFundingPoolStakeRequest: CreateFundingPoolStakeRequest;
+}
+
+export interface CreateFundingPoolUnstakeOperationRequest {
+    createFundingPoolUnstakeRequest: CreateFundingPoolUnstakeRequest;
 }
 
 export interface CreateFundingPoolUnstakeCancelRequest {
     id: string;
+}
+
+export interface CreateFundingRepayOperationRequest {
+    createFundingRepayRequest: CreateFundingRepayRequest;
 }
 
 export interface DeleteFundingMemberRequest {
@@ -125,8 +219,21 @@ export interface GetFundingDrawInvoiceRequest {
     id: string;
 }
 
-export interface UpdateFundingMemberRequest {
+export interface ListFundingReceiptsRequest {
+    limit?: number;
+}
+
+export interface UpdateFundingAutorepayOperationRequest {
+    updateFundingAutorepayRequest: UpdateFundingAutorepayRequest;
+}
+
+export interface UpdateFundingControlOperationRequest {
+    updateFundingControlRequest: UpdateFundingControlRequest;
+}
+
+export interface UpdateFundingMemberOperationRequest {
     memberUserId: string;
+    updateFundingMemberRequest: UpdateFundingMemberRequest;
 }
 
 /**
@@ -137,10 +244,16 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit = 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person.
      */
-    async createFundingApplyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingApplyResponse>> {
+    async createFundingApplyRaw(requestParameters: CreateFundingApplyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingApplyResponse>> {
+        if (requestParameters.createFundingApplyRequest === null || requestParameters.createFundingApplyRequest === undefined) {
+            throw new runtime.RequiredError('createFundingApplyRequest','Required parameter requestParameters.createFundingApplyRequest was null or undefined when calling createFundingApply.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -155,6 +268,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingApplyRequestToJSON(requestParameters.createFundingApplyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingApplyResponseFromJSON(jsonValue));
@@ -163,18 +277,24 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit = 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person.
      */
-    async createFundingApply(initOverrides?: RequestInit): Promise<CreateFundingApplyResponse> {
-        const response = await this.createFundingApplyRaw(initOverrides);
+    async createFundingApply(requestParameters: CreateFundingApplyOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingApplyResponse> {
+        const response = await this.createFundingApplyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey.
      */
-    async createFundingDrawRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingDrawResponse>> {
+    async createFundingDrawRaw(requestParameters: CreateFundingDrawOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingDrawResponse>> {
+        if (requestParameters.createFundingDrawRequest === null || requestParameters.createFundingDrawRequest === undefined) {
+            throw new runtime.RequiredError('createFundingDrawRequest','Required parameter requestParameters.createFundingDrawRequest was null or undefined when calling createFundingDraw.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -189,6 +309,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingDrawRequestToJSON(requestParameters.createFundingDrawRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingDrawResponseFromJSON(jsonValue));
@@ -197,8 +318,8 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey.
      */
-    async createFundingDraw(initOverrides?: RequestInit): Promise<CreateFundingDrawResponse> {
-        const response = await this.createFundingDrawRaw(initOverrides);
+    async createFundingDraw(requestParameters: CreateFundingDrawOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingDrawResponse> {
+        const response = await this.createFundingDrawRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -214,6 +335,8 @@ export class FundingApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -227,6 +350,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: NoteRequestToJSON(requestParameters.noteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingDrawRejectResponseFromJSON(jsonValue));
@@ -243,10 +367,16 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn.
      */
-    async createFundingDrawQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingDrawQuoteResponse>> {
+    async createFundingDrawQuoteRaw(requestParameters: CreateFundingDrawQuoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingDrawQuoteResponse>> {
+        if (requestParameters.createFundingDrawQuoteRequest === null || requestParameters.createFundingDrawQuoteRequest === undefined) {
+            throw new runtime.RequiredError('createFundingDrawQuoteRequest','Required parameter requestParameters.createFundingDrawQuoteRequest was null or undefined when calling createFundingDrawQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -261,6 +391,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingDrawQuoteRequestToJSON(requestParameters.createFundingDrawQuoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingDrawQuoteResponseFromJSON(jsonValue));
@@ -269,8 +400,8 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn.
      */
-    async createFundingDrawQuote(initOverrides?: RequestInit): Promise<CreateFundingDrawQuoteResponse> {
-        const response = await this.createFundingDrawQuoteRaw(initOverrides);
+    async createFundingDrawQuote(requestParameters: CreateFundingDrawQuoteOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingDrawQuoteResponse> {
+        const response = await this.createFundingDrawQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -286,6 +417,8 @@ export class FundingApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -299,6 +432,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: NoteRequestToJSON(requestParameters.noteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingDrawRejectResponseFromJSON(jsonValue));
@@ -315,10 +449,16 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first.
      */
-    async createFundingDrawUseRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingDrawUseResponse>> {
+    async createFundingDrawUseRaw(requestParameters: CreateFundingDrawUseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingDrawUseResponse>> {
+        if (requestParameters.createFundingDrawUseRequest === null || requestParameters.createFundingDrawUseRequest === undefined) {
+            throw new runtime.RequiredError('createFundingDrawUseRequest','Required parameter requestParameters.createFundingDrawUseRequest was null or undefined when calling createFundingDrawUse.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -333,6 +473,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingDrawUseRequestToJSON(requestParameters.createFundingDrawUseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingDrawUseResponseFromJSON(jsonValue));
@@ -341,18 +482,24 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first.
      */
-    async createFundingDrawUse(initOverrides?: RequestInit): Promise<CreateFundingDrawUseResponse> {
-        const response = await this.createFundingDrawUseRaw(initOverrides);
+    async createFundingDrawUse(requestParameters: CreateFundingDrawUseOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingDrawUseResponse> {
+        const response = await this.createFundingDrawUseRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId = file.id. Stored privately; one draw per file.
      */
-    async createFundingInvoiceFileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingInvoiceFileResponse>> {
+    async createFundingInvoiceFileRaw(requestParameters: CreateFundingInvoiceFileOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingInvoiceFileResponse>> {
+        if (requestParameters.createFundingInvoiceFileRequest === null || requestParameters.createFundingInvoiceFileRequest === undefined) {
+            throw new runtime.RequiredError('createFundingInvoiceFileRequest','Required parameter requestParameters.createFundingInvoiceFileRequest was null or undefined when calling createFundingInvoiceFile.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -367,6 +514,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingInvoiceFileRequestToJSON(requestParameters.createFundingInvoiceFileRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingInvoiceFileResponseFromJSON(jsonValue));
@@ -375,18 +523,24 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId = file.id. Stored privately; one draw per file.
      */
-    async createFundingInvoiceFile(initOverrides?: RequestInit): Promise<CreateFundingInvoiceFileResponse> {
-        const response = await this.createFundingInvoiceFileRaw(initOverrides);
+    async createFundingInvoiceFile(requestParameters: CreateFundingInvoiceFileOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingInvoiceFileResponse> {
+        const response = await this.createFundingInvoiceFileRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice.
      */
-    async createFundingPayCrosslyFeeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingPayCrosslyFeeResponse>> {
+    async createFundingPayCrosslyFeeRaw(requestParameters: CreateFundingPayCrosslyFeeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingPayCrosslyFeeResponse>> {
+        if (requestParameters.createFundingPayCrosslyFeeRequest === null || requestParameters.createFundingPayCrosslyFeeRequest === undefined) {
+            throw new runtime.RequiredError('createFundingPayCrosslyFeeRequest','Required parameter requestParameters.createFundingPayCrosslyFeeRequest was null or undefined when calling createFundingPayCrosslyFee.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -401,6 +555,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingPayCrosslyFeeRequestToJSON(requestParameters.createFundingPayCrosslyFeeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingPayCrosslyFeeResponseFromJSON(jsonValue));
@@ -409,18 +564,24 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice.
      */
-    async createFundingPayCrosslyFee(initOverrides?: RequestInit): Promise<CreateFundingPayCrosslyFeeResponse> {
-        const response = await this.createFundingPayCrosslyFeeRaw(initOverrides);
+    async createFundingPayCrosslyFee(requestParameters: CreateFundingPayCrosslyFeeOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingPayCrosslyFeeResponse> {
+        const response = await this.createFundingPayCrosslyFeeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw.
      */
-    async createFundingPayShippingLabelRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingPayShippingLabelResponse>> {
+    async createFundingPayShippingLabelRaw(requestParameters: CreateFundingPayShippingLabelOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingPayShippingLabelResponse>> {
+        if (requestParameters.createFundingPayShippingLabelRequest === null || requestParameters.createFundingPayShippingLabelRequest === undefined) {
+            throw new runtime.RequiredError('createFundingPayShippingLabelRequest','Required parameter requestParameters.createFundingPayShippingLabelRequest was null or undefined when calling createFundingPayShippingLabel.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -435,6 +596,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingPayShippingLabelRequestToJSON(requestParameters.createFundingPayShippingLabelRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingPayShippingLabelResponseFromJSON(jsonValue));
@@ -443,18 +605,24 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw.
      */
-    async createFundingPayShippingLabel(initOverrides?: RequestInit): Promise<CreateFundingPayShippingLabelResponse> {
-        const response = await this.createFundingPayShippingLabelRaw(initOverrides);
+    async createFundingPayShippingLabel(requestParameters: CreateFundingPayShippingLabelOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingPayShippingLabelResponse> {
+        const response = await this.createFundingPayShippingLabelRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card.
      */
-    async createFundingPayVaultFeeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingPayVaultFeeResponse>> {
+    async createFundingPayVaultFeeRaw(requestParameters: CreateFundingPayVaultFeeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingPayVaultFeeResponse>> {
+        if (requestParameters.createFundingPayVaultFeeRequest === null || requestParameters.createFundingPayVaultFeeRequest === undefined) {
+            throw new runtime.RequiredError('createFundingPayVaultFeeRequest','Required parameter requestParameters.createFundingPayVaultFeeRequest was null or undefined when calling createFundingPayVaultFee.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -469,6 +637,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingPayVaultFeeRequestToJSON(requestParameters.createFundingPayVaultFeeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingPayVaultFeeResponseFromJSON(jsonValue));
@@ -477,18 +646,24 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card.
      */
-    async createFundingPayVaultFee(initOverrides?: RequestInit): Promise<CreateFundingPayVaultFeeResponse> {
-        const response = await this.createFundingPayVaultFeeRaw(initOverrides);
+    async createFundingPayVaultFee(requestParameters: CreateFundingPayVaultFeeOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingPayVaultFeeResponse> {
+        const response = await this.createFundingPayVaultFeeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open.
      */
-    async createFundingPoolStakeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingPoolStakeResponse>> {
+    async createFundingPoolStakeRaw(requestParameters: CreateFundingPoolStakeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingPoolStakeResponse>> {
+        if (requestParameters.createFundingPoolStakeRequest === null || requestParameters.createFundingPoolStakeRequest === undefined) {
+            throw new runtime.RequiredError('createFundingPoolStakeRequest','Required parameter requestParameters.createFundingPoolStakeRequest was null or undefined when calling createFundingPoolStake.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -503,6 +678,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingPoolStakeRequestToJSON(requestParameters.createFundingPoolStakeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingPoolStakeResponseFromJSON(jsonValue));
@@ -511,18 +687,24 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open.
      */
-    async createFundingPoolStake(initOverrides?: RequestInit): Promise<CreateFundingPoolStakeResponse> {
-        const response = await this.createFundingPoolStakeRaw(initOverrides);
+    async createFundingPoolStake(requestParameters: CreateFundingPoolStakeOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingPoolStakeResponse> {
+        const response = await this.createFundingPoolStakeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Queue an unstake. Paid first-in first-out once your lockup has passed.
      */
-    async createFundingPoolUnstakeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<FundingPoolResponse>> {
+    async createFundingPoolUnstakeRaw(requestParameters: CreateFundingPoolUnstakeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FundingPoolResponse>> {
+        if (requestParameters.createFundingPoolUnstakeRequest === null || requestParameters.createFundingPoolUnstakeRequest === undefined) {
+            throw new runtime.RequiredError('createFundingPoolUnstakeRequest','Required parameter requestParameters.createFundingPoolUnstakeRequest was null or undefined when calling createFundingPoolUnstake.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -537,6 +719,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingPoolUnstakeRequestToJSON(requestParameters.createFundingPoolUnstakeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => FundingPoolResponseFromJSON(jsonValue));
@@ -545,8 +728,8 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Queue an unstake. Paid first-in first-out once your lockup has passed.
      */
-    async createFundingPoolUnstake(initOverrides?: RequestInit): Promise<FundingPoolResponse> {
-        const response = await this.createFundingPoolUnstakeRaw(initOverrides);
+    async createFundingPoolUnstake(requestParameters: CreateFundingPoolUnstakeOperationRequest, initOverrides?: RequestInit): Promise<FundingPoolResponse> {
+        const response = await this.createFundingPoolUnstakeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -625,10 +808,16 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Repay. source \"balance\" (default) takes it from your available Stripe payout balance and applies it at once. source \"card\" returns a PaymentIntent client secret to confirm with Stripe; source \"checkout\" returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \"cbx\" pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey.
      */
-    async createFundingRepayRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingRepayResponse>> {
+    async createFundingRepayRaw(requestParameters: CreateFundingRepayOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFundingRepayResponse>> {
+        if (requestParameters.createFundingRepayRequest === null || requestParameters.createFundingRepayRequest === undefined) {
+            throw new runtime.RequiredError('createFundingRepayRequest','Required parameter requestParameters.createFundingRepayRequest was null or undefined when calling createFundingRepay.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -643,6 +832,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFundingRepayRequestToJSON(requestParameters.createFundingRepayRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFundingRepayResponseFromJSON(jsonValue));
@@ -651,8 +841,8 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Repay. source \"balance\" (default) takes it from your available Stripe payout balance and applies it at once. source \"card\" returns a PaymentIntent client secret to confirm with Stripe; source \"checkout\" returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \"cbx\" pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey.
      */
-    async createFundingRepay(initOverrides?: RequestInit): Promise<CreateFundingRepayResponse> {
-        const response = await this.createFundingRepayRaw(initOverrides);
+    async createFundingRepay(requestParameters: CreateFundingRepayOperationRequest, initOverrides?: RequestInit): Promise<CreateFundingRepayResponse> {
+        const response = await this.createFundingRepayRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -801,6 +991,40 @@ export class FundingApi extends runtime.BaseAPI {
      */
     async getFundingDrawInvoice(requestParameters: GetFundingDrawInvoiceRequest, initOverrides?: RequestInit): Promise<GetFundingDrawInvoiceResponse> {
         const response = await this.getFundingDrawInvoiceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
+     */
+    async getFundingInvoiceAdvanceEligibilityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetFundingInvoiceAdvanceEligibilityResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/funding/invoice-advance-eligibility`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetFundingInvoiceAdvanceEligibilityResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
+     */
+    async getFundingInvoiceAdvanceEligibility(initOverrides?: RequestInit): Promise<GetFundingInvoiceAdvanceEligibilityResponse> {
+        const response = await this.getFundingInvoiceAdvanceEligibilityRaw(initOverrides);
         return await response.value();
     }
 
@@ -1079,8 +1303,12 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against.
      */
-    async listFundingReceiptsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListFundingReceiptsResponse>> {
+    async listFundingReceiptsRaw(requestParameters: ListFundingReceiptsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListFundingReceiptsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1105,8 +1333,8 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against.
      */
-    async listFundingReceipts(initOverrides?: RequestInit): Promise<ListFundingReceiptsResponse> {
-        const response = await this.listFundingReceiptsRaw(initOverrides);
+    async listFundingReceipts(requestParameters: ListFundingReceiptsRequest = {}, initOverrides?: RequestInit): Promise<ListFundingReceiptsResponse> {
+        const response = await this.listFundingReceiptsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1147,10 +1375,16 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken.
      */
-    async updateFundingAutorepayRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateFundingAutorepayResponse>> {
+    async updateFundingAutorepayRaw(requestParameters: UpdateFundingAutorepayOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateFundingAutorepayResponse>> {
+        if (requestParameters.updateFundingAutorepayRequest === null || requestParameters.updateFundingAutorepayRequest === undefined) {
+            throw new runtime.RequiredError('updateFundingAutorepayRequest','Required parameter requestParameters.updateFundingAutorepayRequest was null or undefined when calling updateFundingAutorepay.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1165,6 +1399,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateFundingAutorepayRequestToJSON(requestParameters.updateFundingAutorepayRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateFundingAutorepayResponseFromJSON(jsonValue));
@@ -1173,18 +1408,24 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken.
      */
-    async updateFundingAutorepay(initOverrides?: RequestInit): Promise<UpdateFundingAutorepayResponse> {
-        const response = await this.updateFundingAutorepayRaw(initOverrides);
+    async updateFundingAutorepay(requestParameters: UpdateFundingAutorepayOperationRequest, initOverrides?: RequestInit): Promise<UpdateFundingAutorepayResponse> {
+        const response = await this.updateFundingAutorepayRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees.
      */
-    async updateFundingControlRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateFundingControlResponse>> {
+    async updateFundingControlRaw(requestParameters: UpdateFundingControlOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateFundingControlResponse>> {
+        if (requestParameters.updateFundingControlRequest === null || requestParameters.updateFundingControlRequest === undefined) {
+            throw new runtime.RequiredError('updateFundingControlRequest','Required parameter requestParameters.updateFundingControlRequest was null or undefined when calling updateFundingControl.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1199,6 +1440,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateFundingControlRequestToJSON(requestParameters.updateFundingControlRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateFundingControlResponseFromJSON(jsonValue));
@@ -1207,22 +1449,28 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees.
      */
-    async updateFundingControl(initOverrides?: RequestInit): Promise<UpdateFundingControlResponse> {
-        const response = await this.updateFundingControlRaw(initOverrides);
+    async updateFundingControl(requestParameters: UpdateFundingControlOperationRequest, initOverrides?: RequestInit): Promise<UpdateFundingControlResponse> {
+        const response = await this.updateFundingControlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Set a team member’s funding limit (per draw or per month).
      */
-    async updateFundingMemberRaw(requestParameters: UpdateFundingMemberRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateFundingMemberResponse>> {
+    async updateFundingMemberRaw(requestParameters: UpdateFundingMemberOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateFundingMemberResponse>> {
         if (requestParameters.memberUserId === null || requestParameters.memberUserId === undefined) {
             throw new runtime.RequiredError('memberUserId','Required parameter requestParameters.memberUserId was null or undefined when calling updateFundingMember.');
+        }
+
+        if (requestParameters.updateFundingMemberRequest === null || requestParameters.updateFundingMemberRequest === undefined) {
+            throw new runtime.RequiredError('updateFundingMemberRequest','Required parameter requestParameters.updateFundingMemberRequest was null or undefined when calling updateFundingMember.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1237,6 +1485,7 @@ export class FundingApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateFundingMemberRequestToJSON(requestParameters.updateFundingMemberRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateFundingMemberResponseFromJSON(jsonValue));
@@ -1245,7 +1494,7 @@ export class FundingApi extends runtime.BaseAPI {
     /**
      * Set a team member’s funding limit (per draw or per month).
      */
-    async updateFundingMember(requestParameters: UpdateFundingMemberRequest, initOverrides?: RequestInit): Promise<UpdateFundingMemberResponse> {
+    async updateFundingMember(requestParameters: UpdateFundingMemberOperationRequest, initOverrides?: RequestInit): Promise<UpdateFundingMemberResponse> {
         const response = await this.updateFundingMemberRaw(requestParameters, initOverrides);
         return await response.value();
     }

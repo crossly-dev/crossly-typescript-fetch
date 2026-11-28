@@ -14,17 +14,17 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    CreateListingTagRenameRequest,
+    CreateListingTagRenameRequestFromJSON,
+    CreateListingTagRenameRequestFromJSONTyped,
+    CreateListingTagRenameRequestToJSON,
+} from '../listing/CreateListingTagRenameRequest';
+import {
     CreateWorldExperienceAnalyticQueryResponseDataSeries,
     CreateWorldExperienceAnalyticQueryResponseDataSeriesFromJSON,
     CreateWorldExperienceAnalyticQueryResponseDataSeriesFromJSONTyped,
     CreateWorldExperienceAnalyticQueryResponseDataSeriesToJSON,
 } from './CreateWorldExperienceAnalyticQueryResponseDataSeries';
-import {
-    FromTo2,
-    FromTo2FromJSON,
-    FromTo2FromJSONTyped,
-    FromTo2ToJSON,
-} from '../common/FromTo2';
 
 /**
  * 
@@ -34,10 +34,10 @@ import {
 export interface CreateWorldExperienceAnalyticQueryResponseData {
     /**
      * 
-     * @type {FromTo2}
+     * @type {CreateListingTagRenameRequest}
      * @memberof CreateWorldExperienceAnalyticQueryResponseData
      */
-    range: FromTo2;
+    range: CreateListingTagRenameRequest;
     /**
      * 
      * @type {string}
@@ -91,7 +91,7 @@ export function CreateWorldExperienceAnalyticQueryResponseDataFromJSONTyped(json
     }
     return {
         
-        'range': FromTo2FromJSON(json['range']),
+        'range': CreateListingTagRenameRequestFromJSON(json['range']),
         'name': json['name'],
         'agg': json['agg'],
         'interval': json['interval'],
@@ -109,7 +109,7 @@ export function CreateWorldExperienceAnalyticQueryResponseDataToJSON(value?: Cre
     }
     return {
         
-        'range': FromTo2ToJSON(value.range),
+        'range': CreateListingTagRenameRequestToJSON(value.range),
         'name': value.name,
         'agg': value.agg,
         'interval': value.interval,

@@ -24,13 +24,19 @@ export interface CreateWebhookResponse {
      * @type {string}
      * @memberof CreateWebhookResponse
      */
-    secret: string;
+    secret?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateWebhookResponse
      */
     id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWebhookResponse
+     */
+    name?: string | null;
     /**
      * 
      * @type {Date}
@@ -45,6 +51,42 @@ export interface CreateWebhookResponse {
     description?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof CreateWebhookResponse
+     */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWebhookResponse
+     */
+    kind: CreateWebhookResponseKindEnum;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateWebhookResponse
+     */
+    enabled: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateWebhookResponse
+     */
+    consecutiveFailures: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWebhookResponse
+     */
+    lastError?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CreateWebhookResponse
+     */
+    lastErrorAt?: Date | null;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof CreateWebhookResponse
      */
@@ -57,10 +99,55 @@ export interface CreateWebhookResponse {
     url: string;
     /**
      * 
+     * @type {Date}
+     * @memberof CreateWebhookResponse
+     */
+    lastDeliveryAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWebhookResponse
+     */
+    oauthAppId?: string | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof CreateWebhookResponse
+     */
+    destination: { [key: string]: any; };
+    /**
+     * 
      * @type {boolean}
      * @memberof CreateWebhookResponse
      */
-    enabled: boolean;
+    eventDelivery: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateWebhookResponse
+     */
+    hasBotToken: boolean;
+    /**
+     * json: the custom header NAMES (values are credentials and never leave the api).
+     * @type {Array<string>}
+     * @memberof CreateWebhookResponse
+     */
+    headerNames: Array<string>;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum CreateWebhookResponseKindEnum {
+    Json = 'json',
+    Teams = 'teams',
+    Discord = 'discord',
+    Slack = 'slack',
+    Telegram = 'telegram',
+    GoogleChat = 'google_chat',
+    Mattermost = 'mattermost',
+    Zapier = 'zapier'
 }
 
 export function CreateWebhookResponseFromJSON(json: any): CreateWebhookResponse {
@@ -73,13 +160,25 @@ export function CreateWebhookResponseFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'secret': json['secret'],
+        'secret': !exists(json, 'secret') ? undefined : json['secret'],
         'id': json['id'],
+        'name': !exists(json, 'name') ? undefined : json['name'],
         'createdAt': (new Date(json['createdAt'])),
         'description': !exists(json, 'description') ? undefined : json['description'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'kind': json['kind'],
+        'enabled': json['enabled'],
+        'consecutiveFailures': json['consecutiveFailures'],
+        'lastError': !exists(json, 'lastError') ? undefined : json['lastError'],
+        'lastErrorAt': !exists(json, 'lastErrorAt') ? undefined : (json['lastErrorAt'] === null ? null : new Date(json['lastErrorAt'])),
         'events': json['events'],
         'url': json['url'],
-        'enabled': json['enabled'],
+        'lastDeliveryAt': !exists(json, 'lastDeliveryAt') ? undefined : (json['lastDeliveryAt'] === null ? null : new Date(json['lastDeliveryAt'])),
+        'oauthAppId': !exists(json, 'oauthAppId') ? undefined : json['oauthAppId'],
+        'destination': json['destination'],
+        'eventDelivery': json['eventDelivery'],
+        'hasBotToken': json['hasBotToken'],
+        'headerNames': json['headerNames'],
     };
 }
 
@@ -94,11 +193,23 @@ export function CreateWebhookResponseToJSON(value?: CreateWebhookResponse | null
         
         'secret': value.secret,
         'id': value.id,
+        'name': value.name,
         'createdAt': (value.createdAt.toISOString()),
         'description': value.description,
+        'storefrontId': value.storefrontId,
+        'kind': value.kind,
+        'enabled': value.enabled,
+        'consecutiveFailures': value.consecutiveFailures,
+        'lastError': value.lastError,
+        'lastErrorAt': value.lastErrorAt === undefined ? undefined : (value.lastErrorAt === null ? null : value.lastErrorAt.toISOString()),
         'events': value.events,
         'url': value.url,
-        'enabled': value.enabled,
+        'lastDeliveryAt': value.lastDeliveryAt === undefined ? undefined : (value.lastDeliveryAt === null ? null : value.lastDeliveryAt.toISOString()),
+        'oauthAppId': value.oauthAppId,
+        'destination': value.destination,
+        'eventDelivery': value.eventDelivery,
+        'hasBotToken': value.hasBotToken,
+        'headerNames': value.headerNames,
     };
 }
 

@@ -21,9 +21,15 @@ import {
     CreateInventoryBulkArchiveResponse,
     CreateInventoryBulkArchiveResponseFromJSON,
     CreateInventoryBulkArchiveResponseToJSON,
+    CreateInventoryBulkDeleteRequest,
+    CreateInventoryBulkDeleteRequestFromJSON,
+    CreateInventoryBulkDeleteRequestToJSON,
     CreateInventoryBulkDeleteResponse,
     CreateInventoryBulkDeleteResponseFromJSON,
     CreateInventoryBulkDeleteResponseToJSON,
+    CreateInventoryBulkLabelRequest,
+    CreateInventoryBulkLabelRequestFromJSON,
+    CreateInventoryBulkLabelRequestToJSON,
     CreateInventoryBulkQuantityResponse,
     CreateInventoryBulkQuantityResponseFromJSON,
     CreateInventoryBulkQuantityResponseToJSON,
@@ -33,24 +39,54 @@ import {
     CreateInventoryCatalogMatchRefreshResponse,
     CreateInventoryCatalogMatchRefreshResponseFromJSON,
     CreateInventoryCatalogMatchRefreshResponseToJSON,
+    CreateInventoryCsvExportRequest,
+    CreateInventoryCsvExportRequestFromJSON,
+    CreateInventoryCsvExportRequestToJSON,
+    CreateInventoryCsvImportRequest,
+    CreateInventoryCsvImportRequestFromJSON,
+    CreateInventoryCsvImportRequestToJSON,
     CreateInventoryCsvImportResponse,
     CreateInventoryCsvImportResponseFromJSON,
     CreateInventoryCsvImportResponseToJSON,
+    CreateInventoryHoldReleaseRequest,
+    CreateInventoryHoldReleaseRequestFromJSON,
+    CreateInventoryHoldReleaseRequestToJSON,
+    CreateInventoryHoldReleaseResponse,
+    CreateInventoryHoldReleaseResponseFromJSON,
+    CreateInventoryHoldReleaseResponseToJSON,
+    CreateInventoryMergeRequest,
+    CreateInventoryMergeRequestFromJSON,
+    CreateInventoryMergeRequestToJSON,
     CreateInventoryMergeResponse,
     CreateInventoryMergeResponseFromJSON,
     CreateInventoryMergeResponseToJSON,
+    CreateInventoryRequest,
+    CreateInventoryRequestFromJSON,
+    CreateInventoryRequestToJSON,
     CreateInventoryResponse,
     CreateInventoryResponseFromJSON,
     CreateInventoryResponseToJSON,
+    CreateInventoryUnitIdentifierRequest,
+    CreateInventoryUnitIdentifierRequestFromJSON,
+    CreateInventoryUnitIdentifierRequestToJSON,
     CreateInventoryUnitIdentifierResponse,
     CreateInventoryUnitIdentifierResponseFromJSON,
     CreateInventoryUnitIdentifierResponseToJSON,
+    CreateInventoryUnitLookupRequest,
+    CreateInventoryUnitLookupRequestFromJSON,
+    CreateInventoryUnitLookupRequestToJSON,
     CreateInventoryUnitLookupResponse,
     CreateInventoryUnitLookupResponseFromJSON,
     CreateInventoryUnitLookupResponseToJSON,
     CreateListingBulkUpdateResponse,
     CreateListingBulkUpdateResponseFromJSON,
     CreateListingBulkUpdateResponseToJSON,
+    CreateListingByIdRequest,
+    CreateListingByIdRequestFromJSON,
+    CreateListingByIdRequestToJSON,
+    CreateListingTagRenameRequest,
+    CreateListingTagRenameRequestFromJSON,
+    CreateListingTagRenameRequestToJSON,
     CreateSpatialPropertyDeedLeaseResponse,
     CreateSpatialPropertyDeedLeaseResponseFromJSON,
     CreateSpatialPropertyDeedLeaseResponseToJSON,
@@ -93,9 +129,6 @@ import {
     DeleteWorldJobShiftResponse,
     DeleteWorldJobShiftResponseFromJSON,
     DeleteWorldJobShiftResponseToJSON,
-    GetAnalyticInventoryResponse,
-    GetAnalyticInventoryResponseFromJSON,
-    GetAnalyticInventoryResponseToJSON,
     GetGameEventSummaryResponse,
     GetGameEventSummaryResponseFromJSON,
     GetGameEventSummaryResponseToJSON,
@@ -228,6 +261,12 @@ import {
     ListInventoryActivityResponse,
     ListInventoryActivityResponseFromJSON,
     ListInventoryActivityResponseToJSON,
+    ListInventoryHoldIssuesResponse,
+    ListInventoryHoldIssuesResponseFromJSON,
+    ListInventoryHoldIssuesResponseToJSON,
+    ListInventoryHoldsResponse,
+    ListInventoryHoldsResponseFromJSON,
+    ListInventoryHoldsResponseToJSON,
     ListInventoryResponse,
     ListInventoryResponseFromJSON,
     ListInventoryResponseToJSON,
@@ -303,6 +342,18 @@ import {
     SpatialStreetResponse,
     SpatialStreetResponseFromJSON,
     SpatialStreetResponseToJSON,
+    UpdateInventoryRequest,
+    UpdateInventoryRequestFromJSON,
+    UpdateInventoryRequestToJSON,
+    UpdateOrderAssigneeByIdResponse,
+    UpdateOrderAssigneeByIdResponseFromJSON,
+    UpdateOrderAssigneeByIdResponseToJSON,
+    UpdateOrderAssigneeResponse,
+    UpdateOrderAssigneeResponseFromJSON,
+    UpdateOrderAssigneeResponseToJSON,
+    UpdateSpatialEmployeeConfigRequest,
+    UpdateSpatialEmployeeConfigRequestFromJSON,
+    UpdateSpatialEmployeeConfigRequestToJSON,
     UpdateSpatialEmployeeConfigResponse,
     UpdateSpatialEmployeeConfigResponseFromJSON,
     UpdateSpatialEmployeeConfigResponseToJSON,
@@ -322,12 +373,58 @@ export interface CreateCatalogMatchDismissRequest {
     id: string;
 }
 
+export interface CreateInventoryOperationRequest {
+    createInventoryRequest: CreateInventoryRequest;
+}
+
+export interface CreateInventoryBulkArchiveRequest {
+    createListingByIdRequest: CreateListingByIdRequest;
+}
+
+export interface CreateInventoryBulkDeleteOperationRequest {
+    createInventoryBulkDeleteRequest: CreateInventoryBulkDeleteRequest;
+}
+
+export interface CreateInventoryBulkLabelOperationRequest {
+    createInventoryBulkLabelRequest: CreateInventoryBulkLabelRequest;
+}
+
+export interface CreateInventoryBulkRestoreRequest {
+    createListingByIdRequest: CreateListingByIdRequest;
+}
+
 export interface CreateInventoryCatalogMatchRefreshRequest {
     id: string;
 }
 
-export interface CreateInventoryUnitIdentifierRequest {
+export interface CreateInventoryCsvExportOperationRequest {
+    createInventoryCsvExportRequest?: CreateInventoryCsvExportRequest;
+}
+
+export interface CreateInventoryCsvImportOperationRequest {
+    createInventoryCsvImportRequest: CreateInventoryCsvImportRequest;
+}
+
+export interface CreateInventoryHoldReleaseOperationRequest {
+    holdId: string;
+    createInventoryHoldReleaseRequest?: CreateInventoryHoldReleaseRequest;
+}
+
+export interface CreateInventoryLabelRenameRequest {
+    createListingTagRenameRequest: CreateListingTagRenameRequest;
+}
+
+export interface CreateInventoryMergeOperationRequest {
+    createInventoryMergeRequest: CreateInventoryMergeRequest;
+}
+
+export interface CreateInventoryUnitIdentifierOperationRequest {
     id: string;
+    createInventoryUnitIdentifierRequest: CreateInventoryUnitIdentifierRequest;
+}
+
+export interface CreateInventoryUnitLookupOperationRequest {
+    createInventoryUnitLookupRequest: CreateInventoryUnitLookupRequest;
 }
 
 export interface CreateSpatialPropertyDeedLeaseRequest {
@@ -391,21 +488,6 @@ export interface DeleteSpatialStreetPlotRequest {
     slug: string;
 }
 
-export interface InventoryApiGetAnalyticInventoryRequest {
-    range?: InventoryApiGetAnalyticInventoryRangeEnum;
-    from?: string;
-    to?: string;
-    compare?: InventoryApiGetAnalyticInventoryCompareEnum;
-    cmpFrom?: string;
-    cmpTo?: string;
-    labels?: string;
-    platforms?: string;
-    category?: string;
-    brand?: string;
-    tz?: string;
-    maturity?: InventoryApiGetAnalyticInventoryMaturityEnum;
-}
-
 export interface GetGameEventSummaryRequest {
     eventId: string;
 }
@@ -426,8 +508,17 @@ export interface GetInventoryCatalogMatchRequest {
     id: string;
 }
 
+export interface GetInventorySellThroughRequest {
+    start?: string;
+    end?: string;
+}
+
 export interface GetInventorySkuExistRequest {
     sku: string;
+}
+
+export interface GetInventoryValueHistoryRequest {
+    days?: number;
 }
 
 export interface GetReputationRequest {
@@ -502,6 +593,7 @@ export interface ListInventoryRequest {
     kind?: ListInventoryKindEnum;
     platforms?: string;
     platformMode?: ListInventoryPlatformModeEnum;
+    assignee?: string;
     sku?: string;
     updatedSince?: Date;
 }
@@ -509,6 +601,11 @@ export interface ListInventoryRequest {
 export interface ListInventoryActivityRequest {
     id: string;
     limit?: number;
+}
+
+export interface ListInventoryHoldsRequest {
+    id: string;
+    history?: ListInventoryHoldsHistoryEnum;
 }
 
 export interface ListInventoryUnitsRequest {
@@ -564,8 +661,17 @@ export interface ListWorldRoomWantsRequest {
     sceneId: string;
 }
 
-export interface UpdateInventoryRequest {
+export interface UpdateInventoryOperationRequest {
     id: string;
+    updateInventoryRequest: UpdateInventoryRequest;
+}
+
+export interface UpdateInventoryAssigneeByIdRequest {
+    id: string;
+}
+
+export interface UpdateSpatialEmployeeConfigOperationRequest {
+    updateSpatialEmployeeConfigRequest?: UpdateSpatialEmployeeConfigRequest;
 }
 
 export interface UpdateSpatialShopStaffWageRequest {
@@ -656,10 +762,16 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Create a new inventory item.
      */
-    async createInventoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryResponse>> {
+    async createInventoryRaw(requestParameters: CreateInventoryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryResponse>> {
+        if (requestParameters.createInventoryRequest === null || requestParameters.createInventoryRequest === undefined) {
+            throw new runtime.RequiredError('createInventoryRequest','Required parameter requestParameters.createInventoryRequest was null or undefined when calling createInventory.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -674,6 +786,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInventoryRequestToJSON(requestParameters.createInventoryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryResponseFromJSON(jsonValue));
@@ -682,18 +795,24 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Create a new inventory item.
      */
-    async createInventory(initOverrides?: RequestInit): Promise<CreateInventoryResponse> {
-        const response = await this.createInventoryRaw(initOverrides);
+    async createInventory(requestParameters: CreateInventoryOperationRequest, initOverrides?: RequestInit): Promise<CreateInventoryResponse> {
+        const response = await this.createInventoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk archive inventory items (soft).
      */
-    async createInventoryBulkArchiveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryBulkArchiveResponse>> {
+    async createInventoryBulkArchiveRaw(requestParameters: CreateInventoryBulkArchiveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryBulkArchiveResponse>> {
+        if (requestParameters.createListingByIdRequest === null || requestParameters.createListingByIdRequest === undefined) {
+            throw new runtime.RequiredError('createListingByIdRequest','Required parameter requestParameters.createListingByIdRequest was null or undefined when calling createInventoryBulkArchive.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -708,6 +827,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingByIdRequestToJSON(requestParameters.createListingByIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryBulkArchiveResponseFromJSON(jsonValue));
@@ -716,18 +836,24 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Bulk archive inventory items (soft).
      */
-    async createInventoryBulkArchive(initOverrides?: RequestInit): Promise<CreateInventoryBulkArchiveResponse> {
-        const response = await this.createInventoryBulkArchiveRaw(initOverrides);
+    async createInventoryBulkArchive(requestParameters: CreateInventoryBulkArchiveRequest, initOverrides?: RequestInit): Promise<CreateInventoryBulkArchiveResponse> {
+        const response = await this.createInventoryBulkArchiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk delete inventory items (delinks listings).
      */
-    async createInventoryBulkDeleteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryBulkDeleteResponse>> {
+    async createInventoryBulkDeleteRaw(requestParameters: CreateInventoryBulkDeleteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryBulkDeleteResponse>> {
+        if (requestParameters.createInventoryBulkDeleteRequest === null || requestParameters.createInventoryBulkDeleteRequest === undefined) {
+            throw new runtime.RequiredError('createInventoryBulkDeleteRequest','Required parameter requestParameters.createInventoryBulkDeleteRequest was null or undefined when calling createInventoryBulkDelete.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -742,6 +868,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInventoryBulkDeleteRequestToJSON(requestParameters.createInventoryBulkDeleteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryBulkDeleteResponseFromJSON(jsonValue));
@@ -750,18 +877,24 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Bulk delete inventory items (delinks listings).
      */
-    async createInventoryBulkDelete(initOverrides?: RequestInit): Promise<CreateInventoryBulkDeleteResponse> {
-        const response = await this.createInventoryBulkDeleteRaw(initOverrides);
+    async createInventoryBulkDelete(requestParameters: CreateInventoryBulkDeleteOperationRequest, initOverrides?: RequestInit): Promise<CreateInventoryBulkDeleteResponse> {
+        const response = await this.createInventoryBulkDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk add/remove labels on inventory items.
      */
-    async createInventoryBulkLabelRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingBulkUpdateResponse>> {
+    async createInventoryBulkLabelRaw(requestParameters: CreateInventoryBulkLabelOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingBulkUpdateResponse>> {
+        if (requestParameters.createInventoryBulkLabelRequest === null || requestParameters.createInventoryBulkLabelRequest === undefined) {
+            throw new runtime.RequiredError('createInventoryBulkLabelRequest','Required parameter requestParameters.createInventoryBulkLabelRequest was null or undefined when calling createInventoryBulkLabel.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -776,6 +909,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInventoryBulkLabelRequestToJSON(requestParameters.createInventoryBulkLabelRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingBulkUpdateResponseFromJSON(jsonValue));
@@ -784,8 +918,8 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Bulk add/remove labels on inventory items.
      */
-    async createInventoryBulkLabel(initOverrides?: RequestInit): Promise<CreateListingBulkUpdateResponse> {
-        const response = await this.createInventoryBulkLabelRaw(initOverrides);
+    async createInventoryBulkLabel(requestParameters: CreateInventoryBulkLabelOperationRequest, initOverrides?: RequestInit): Promise<CreateListingBulkUpdateResponse> {
+        const response = await this.createInventoryBulkLabelRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -828,10 +962,16 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Restore archived inventory items (status returns to active, or sold_out when no stock).
      */
-    async createInventoryBulkRestoreRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryBulkRestoreResponse>> {
+    async createInventoryBulkRestoreRaw(requestParameters: CreateInventoryBulkRestoreRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryBulkRestoreResponse>> {
+        if (requestParameters.createListingByIdRequest === null || requestParameters.createListingByIdRequest === undefined) {
+            throw new runtime.RequiredError('createListingByIdRequest','Required parameter requestParameters.createListingByIdRequest was null or undefined when calling createInventoryBulkRestore.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -846,6 +986,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingByIdRequestToJSON(requestParameters.createListingByIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryBulkRestoreResponseFromJSON(jsonValue));
@@ -854,8 +995,8 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Restore archived inventory items (status returns to active, or sold_out when no stock).
      */
-    async createInventoryBulkRestore(initOverrides?: RequestInit): Promise<CreateInventoryBulkRestoreResponse> {
-        const response = await this.createInventoryBulkRestoreRaw(initOverrides);
+    async createInventoryBulkRestore(requestParameters: CreateInventoryBulkRestoreRequest, initOverrides?: RequestInit): Promise<CreateInventoryBulkRestoreResponse> {
+        const response = await this.createInventoryBulkRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -900,10 +1041,12 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Export inventory as CSV. Round-trips back through csv/import.
      */
-    async createInventoryCsvExportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+    async createInventoryCsvExportRaw(requestParameters: CreateInventoryCsvExportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -918,6 +1061,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInventoryCsvExportRequestToJSON(requestParameters.createInventoryCsvExportRequest),
         }, initOverrides);
 
         return new runtime.TextApiResponse(response) as any;
@@ -926,18 +1070,24 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Export inventory as CSV. Round-trips back through csv/import.
      */
-    async createInventoryCsvExport(initOverrides?: RequestInit): Promise<string> {
-        const response = await this.createInventoryCsvExportRaw(initOverrides);
+    async createInventoryCsvExport(requestParameters: CreateInventoryCsvExportOperationRequest = {}, initOverrides?: RequestInit): Promise<string> {
+        const response = await this.createInventoryCsvExportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
      */
-    async createInventoryCsvImportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryCsvImportResponse>> {
+    async createInventoryCsvImportRaw(requestParameters: CreateInventoryCsvImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryCsvImportResponse>> {
+        if (requestParameters.createInventoryCsvImportRequest === null || requestParameters.createInventoryCsvImportRequest === undefined) {
+            throw new runtime.RequiredError('createInventoryCsvImportRequest','Required parameter requestParameters.createInventoryCsvImportRequest was null or undefined when calling createInventoryCsvImport.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -952,6 +1102,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInventoryCsvImportRequestToJSON(requestParameters.createInventoryCsvImportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryCsvImportResponseFromJSON(jsonValue));
@@ -960,18 +1111,67 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
      */
-    async createInventoryCsvImport(initOverrides?: RequestInit): Promise<CreateInventoryCsvImportResponse> {
-        const response = await this.createInventoryCsvImportRaw(initOverrides);
+    async createInventoryCsvImport(requestParameters: CreateInventoryCsvImportOperationRequest, initOverrides?: RequestInit): Promise<CreateInventoryCsvImportResponse> {
+        const response = await this.createInventoryCsvImportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 `hold_already_released` for one that already ended (released, converted to an order or expired).
+     * Release an inventory hold.
+     */
+    async createInventoryHoldReleaseRaw(requestParameters: CreateInventoryHoldReleaseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryHoldReleaseResponse>> {
+        if (requestParameters.holdId === null || requestParameters.holdId === undefined) {
+            throw new runtime.RequiredError('holdId','Required parameter requestParameters.holdId was null or undefined when calling createInventoryHoldRelease.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inventory/holds/{holdId}/release`.replace(`{${"holdId"}}`, encodeURIComponent(String(requestParameters.holdId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateInventoryHoldReleaseRequestToJSON(requestParameters.createInventoryHoldReleaseRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryHoldReleaseResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 `hold_already_released` for one that already ended (released, converted to an order or expired).
+     * Release an inventory hold.
+     */
+    async createInventoryHoldRelease(requestParameters: CreateInventoryHoldReleaseOperationRequest, initOverrides?: RequestInit): Promise<CreateInventoryHoldReleaseResponse> {
+        const response = await this.createInventoryHoldReleaseRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Rename a label across every inventory item.
      */
-    async createInventoryLabelRenameRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatedResponse>> {
+    async createInventoryLabelRenameRaw(requestParameters: CreateInventoryLabelRenameRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatedResponse>> {
+        if (requestParameters.createListingTagRenameRequest === null || requestParameters.createListingTagRenameRequest === undefined) {
+            throw new runtime.RequiredError('createListingTagRenameRequest','Required parameter requestParameters.createListingTagRenameRequest was null or undefined when calling createInventoryLabelRename.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -986,6 +1186,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingTagRenameRequestToJSON(requestParameters.createListingTagRenameRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdatedResponseFromJSON(jsonValue));
@@ -994,18 +1195,24 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Rename a label across every inventory item.
      */
-    async createInventoryLabelRename(initOverrides?: RequestInit): Promise<UpdatedResponse> {
-        const response = await this.createInventoryLabelRenameRaw(initOverrides);
+    async createInventoryLabelRename(requestParameters: CreateInventoryLabelRenameRequest, initOverrides?: RequestInit): Promise<UpdatedResponse> {
+        const response = await this.createInventoryLabelRenameRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Merge inventory items that are the same physical item into one (stock is not summed).
      */
-    async createInventoryMergeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryMergeResponse>> {
+    async createInventoryMergeRaw(requestParameters: CreateInventoryMergeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryMergeResponse>> {
+        if (requestParameters.createInventoryMergeRequest === null || requestParameters.createInventoryMergeRequest === undefined) {
+            throw new runtime.RequiredError('createInventoryMergeRequest','Required parameter requestParameters.createInventoryMergeRequest was null or undefined when calling createInventoryMerge.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1020,6 +1227,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInventoryMergeRequestToJSON(requestParameters.createInventoryMergeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryMergeResponseFromJSON(jsonValue));
@@ -1028,8 +1236,8 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Merge inventory items that are the same physical item into one (stock is not summed).
      */
-    async createInventoryMerge(initOverrides?: RequestInit): Promise<CreateInventoryMergeResponse> {
-        const response = await this.createInventoryMergeRaw(initOverrides);
+    async createInventoryMerge(requestParameters: CreateInventoryMergeOperationRequest, initOverrides?: RequestInit): Promise<CreateInventoryMergeResponse> {
+        const response = await this.createInventoryMergeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1037,14 +1245,20 @@ export class InventoryApi extends runtime.BaseAPI {
      * Creates the unit lazily if no `unitId` is given. Recording BEFORE the item sells is what makes the identifier usable as evidence on a return — one first recorded after a dispute opens is graded `weak` and says so.
      * Record a serial, IMEI, or licence key against an inventory item.
      */
-    async createInventoryUnitIdentifierRaw(requestParameters: CreateInventoryUnitIdentifierRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryUnitIdentifierResponse>> {
+    async createInventoryUnitIdentifierRaw(requestParameters: CreateInventoryUnitIdentifierOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryUnitIdentifierResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createInventoryUnitIdentifier.');
+        }
+
+        if (requestParameters.createInventoryUnitIdentifierRequest === null || requestParameters.createInventoryUnitIdentifierRequest === undefined) {
+            throw new runtime.RequiredError('createInventoryUnitIdentifierRequest','Required parameter requestParameters.createInventoryUnitIdentifierRequest was null or undefined when calling createInventoryUnitIdentifier.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1059,6 +1273,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInventoryUnitIdentifierRequestToJSON(requestParameters.createInventoryUnitIdentifierRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryUnitIdentifierResponseFromJSON(jsonValue));
@@ -1068,7 +1283,7 @@ export class InventoryApi extends runtime.BaseAPI {
      * Creates the unit lazily if no `unitId` is given. Recording BEFORE the item sells is what makes the identifier usable as evidence on a return — one first recorded after a dispute opens is graded `weak` and says so.
      * Record a serial, IMEI, or licence key against an inventory item.
      */
-    async createInventoryUnitIdentifier(requestParameters: CreateInventoryUnitIdentifierRequest, initOverrides?: RequestInit): Promise<CreateInventoryUnitIdentifierResponse> {
+    async createInventoryUnitIdentifier(requestParameters: CreateInventoryUnitIdentifierOperationRequest, initOverrides?: RequestInit): Promise<CreateInventoryUnitIdentifierResponse> {
         const response = await this.createInventoryUnitIdentifierRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1077,10 +1292,16 @@ export class InventoryApi extends runtime.BaseAPI {
      * \"Have I ever seen this serial?\" — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller\'s stock.
      * Find a unit by identifier.
      */
-    async createInventoryUnitLookupRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryUnitLookupResponse>> {
+    async createInventoryUnitLookupRaw(requestParameters: CreateInventoryUnitLookupOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryUnitLookupResponse>> {
+        if (requestParameters.createInventoryUnitLookupRequest === null || requestParameters.createInventoryUnitLookupRequest === undefined) {
+            throw new runtime.RequiredError('createInventoryUnitLookupRequest','Required parameter requestParameters.createInventoryUnitLookupRequest was null or undefined when calling createInventoryUnitLookup.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1095,6 +1316,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateInventoryUnitLookupRequestToJSON(requestParameters.createInventoryUnitLookupRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryUnitLookupResponseFromJSON(jsonValue));
@@ -1104,8 +1326,8 @@ export class InventoryApi extends runtime.BaseAPI {
      * \"Have I ever seen this serial?\" — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller\'s stock.
      * Find a unit by identifier.
      */
-    async createInventoryUnitLookup(initOverrides?: RequestInit): Promise<CreateInventoryUnitLookupResponse> {
-        const response = await this.createInventoryUnitLookupRaw(initOverrides);
+    async createInventoryUnitLookup(requestParameters: CreateInventoryUnitLookupOperationRequest, initOverrides?: RequestInit): Promise<CreateInventoryUnitLookupResponse> {
+        const response = await this.createInventoryUnitLookupRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1748,88 +1970,6 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
-     */
-    async getAnalyticInventoryRaw(requestParameters: InventoryApiGetAnalyticInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAnalyticInventoryResponse>> {
-        const queryParameters: any = {};
-
-        if (requestParameters.range !== undefined) {
-            queryParameters['range'] = requestParameters.range;
-        }
-
-        if (requestParameters.from !== undefined) {
-            queryParameters['from'] = requestParameters.from;
-        }
-
-        if (requestParameters.to !== undefined) {
-            queryParameters['to'] = requestParameters.to;
-        }
-
-        if (requestParameters.compare !== undefined) {
-            queryParameters['compare'] = requestParameters.compare;
-        }
-
-        if (requestParameters.cmpFrom !== undefined) {
-            queryParameters['cmpFrom'] = requestParameters.cmpFrom;
-        }
-
-        if (requestParameters.cmpTo !== undefined) {
-            queryParameters['cmpTo'] = requestParameters.cmpTo;
-        }
-
-        if (requestParameters.labels !== undefined) {
-            queryParameters['labels'] = requestParameters.labels;
-        }
-
-        if (requestParameters.platforms !== undefined) {
-            queryParameters['platforms'] = requestParameters.platforms;
-        }
-
-        if (requestParameters.category !== undefined) {
-            queryParameters['category'] = requestParameters.category;
-        }
-
-        if (requestParameters.brand !== undefined) {
-            queryParameters['brand'] = requestParameters.brand;
-        }
-
-        if (requestParameters.tz !== undefined) {
-            queryParameters['tz'] = requestParameters.tz;
-        }
-
-        if (requestParameters.maturity !== undefined) {
-            queryParameters['maturity'] = requestParameters.maturity;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("PersonalAccessToken", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/v1/analytics/inventory`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetAnalyticInventoryResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
-     */
-    async getAnalyticInventory(requestParameters: InventoryApiGetAnalyticInventoryRequest = {}, initOverrides?: RequestInit): Promise<GetAnalyticInventoryResponse> {
-        const response = await this.getAnalyticInventoryRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
      */
     async getGameEventSummaryRaw(requestParameters: GetGameEventSummaryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetGameEventSummaryResponse>> {
@@ -2226,8 +2366,16 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      */
-    async getInventorySellThroughRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInventorySellThroughResponse>> {
+    async getInventorySellThroughRaw(requestParameters: GetInventorySellThroughRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInventorySellThroughResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.start !== undefined) {
+            queryParameters['start'] = requestParameters.start;
+        }
+
+        if (requestParameters.end !== undefined) {
+            queryParameters['end'] = requestParameters.end;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -2252,8 +2400,8 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      */
-    async getInventorySellThrough(initOverrides?: RequestInit): Promise<GetInventorySellThroughResponse> {
-        const response = await this.getInventorySellThroughRaw(initOverrides);
+    async getInventorySellThrough(requestParameters: GetInventorySellThroughRequest = {}, initOverrides?: RequestInit): Promise<GetInventorySellThroughResponse> {
+        const response = await this.getInventorySellThroughRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2302,8 +2450,12 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      */
-    async getInventoryValueHistoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInventoryValueHistoryResponse>> {
+    async getInventoryValueHistoryRaw(requestParameters: GetInventoryValueHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetInventoryValueHistoryResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -2328,8 +2480,8 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      */
-    async getInventoryValueHistory(initOverrides?: RequestInit): Promise<GetInventoryValueHistoryResponse> {
-        const response = await this.getInventoryValueHistoryRaw(initOverrides);
+    async getInventoryValueHistory(requestParameters: GetInventoryValueHistoryRequest = {}, initOverrides?: RequestInit): Promise<GetInventoryValueHistoryResponse> {
+        const response = await this.getInventoryValueHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3491,6 +3643,10 @@ export class InventoryApi extends runtime.BaseAPI {
             queryParameters['platformMode'] = requestParameters.platformMode;
         }
 
+        if (requestParameters.assignee !== undefined) {
+            queryParameters['assignee'] = requestParameters.assignee;
+        }
+
         if (requestParameters.sku !== undefined) {
             queryParameters['sku'] = requestParameters.sku;
         }
@@ -3566,6 +3722,86 @@ export class InventoryApi extends runtime.BaseAPI {
      */
     async listInventoryActivity(requestParameters: ListInventoryActivityRequest, initOverrides?: RequestInit): Promise<ListInventoryActivityResponse> {
         const response = await this.listInventoryActivityRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * `held_but_listed`: every unit of an item is held for a program while a marketplace listing is still live. `expired_hold_unreleased`: a hold ran past its expiry and still keeps its units off sale.
+     * List the stock problems the holds ledger finds.
+     */
+    async listInventoryHoldIssuesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListInventoryHoldIssuesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inventory/holds/issues`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListInventoryHoldIssuesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * `held_but_listed`: every unit of an item is held for a program while a marketplace listing is still live. `expired_hold_unreleased`: a hold ran past its expiry and still keeps its units off sale.
+     * List the stock problems the holds ledger finds.
+     */
+    async listInventoryHoldIssues(initOverrides?: RequestInit): Promise<ListInventoryHoldIssuesResponse> {
+        const response = await this.listInventoryHoldIssuesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Each hold names the program that set units aside (`sourceKind`: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (`sourceId`), how many units and until when. `state` is `active`, `lapsed` (past its expiry, not released yet) or `released`. Holds in force by default; `history=true` adds released ones.
+     * List the holds on an inventory item.
+     */
+    async listInventoryHoldsRaw(requestParameters: ListInventoryHoldsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListInventoryHoldsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listInventoryHolds.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.history !== undefined) {
+            queryParameters['history'] = requestParameters.history;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inventory/{id}/holds`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListInventoryHoldsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Each hold names the program that set units aside (`sourceKind`: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (`sourceId`), how many units and until when. `state` is `active`, `lapsed` (past its expiry, not released yet) or `released`. Holds in force by default; `history=true` adds released ones.
+     * List the holds on an inventory item.
+     */
+    async listInventoryHolds(requestParameters: ListInventoryHoldsRequest, initOverrides?: RequestInit): Promise<ListInventoryHoldsResponse> {
+        const response = await this.listInventoryHoldsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4278,8 +4514,8 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Streets you hold or asked to found, newest first: `status` (pending review, approved, founding, active, dormant, rejected, released), `upkeep` (active, grace, delinquent -- a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), `paidThrough`, `admission`, `occupied` of `plotCount`, `pendingApplications`, and Crossly\'s `reviewNote`.
-     * Your streets.
+     * Streets the store (`X-Storefront-Id`, else your default store) holds or asked to found, newest first: `status` (pending review, approved, founding, active, dormant, rejected, released), `upkeep` (active, grace, delinquent -- a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), `paidThrough`, `admission`, `occupied` of `plotCount`, `pendingApplications`, and Crossly\'s `reviewNote`.
+     * Streets your store holds.
      */
     async listSpatialStreetMineRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSpatialStreetMineResponse>> {
         const queryParameters: any = {};
@@ -4305,8 +4541,8 @@ export class InventoryApi extends runtime.BaseAPI {
     }
 
     /**
-     * Streets you hold or asked to found, newest first: `status` (pending review, approved, founding, active, dormant, rejected, released), `upkeep` (active, grace, delinquent -- a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), `paidThrough`, `admission`, `occupied` of `plotCount`, `pendingApplications`, and Crossly\'s `reviewNote`.
-     * Your streets.
+     * Streets the store (`X-Storefront-Id`, else your default store) holds or asked to found, newest first: `status` (pending review, approved, founding, active, dormant, rejected, released), `upkeep` (active, grace, delinquent -- a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), `paidThrough`, `admission`, `occupied` of `plotCount`, `pendingApplications`, and Crossly\'s `reviewNote`.
+     * Streets your store holds.
      */
     async listSpatialStreetMine(initOverrides?: RequestInit): Promise<ListSpatialStreetMineResponse> {
         const response = await this.listSpatialStreetMineRaw(initOverrides);
@@ -4462,14 +4698,20 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Update an inventory item (partial).
      */
-    async updateInventoryRaw(requestParameters: UpdateInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryResponse>> {
+    async updateInventoryRaw(requestParameters: UpdateInventoryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateInventoryResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateInventory.');
+        }
+
+        if (requestParameters.updateInventoryRequest === null || requestParameters.updateInventoryRequest === undefined) {
+            throw new runtime.RequiredError('updateInventoryRequest','Required parameter requestParameters.updateInventoryRequest was null or undefined when calling updateInventory.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4484,6 +4726,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateInventoryRequestToJSON(requestParameters.updateInventoryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateInventoryResponseFromJSON(jsonValue));
@@ -4492,8 +4735,80 @@ export class InventoryApi extends runtime.BaseAPI {
     /**
      * Update an inventory item (partial).
      */
-    async updateInventory(requestParameters: UpdateInventoryRequest, initOverrides?: RequestInit): Promise<CreateInventoryResponse> {
+    async updateInventory(requestParameters: UpdateInventoryOperationRequest, initOverrides?: RequestInit): Promise<CreateInventoryResponse> {
         const response = await this.updateInventoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+     */
+    async updateInventoryAssigneeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateOrderAssigneeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inventory/assignee`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateOrderAssigneeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+     */
+    async updateInventoryAssignee(initOverrides?: RequestInit): Promise<UpdateOrderAssigneeResponse> {
+        const response = await this.updateInventoryAssigneeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Assign one inventory item to a teammate, or unassign it (null).
+     */
+    async updateInventoryAssigneeByIdRaw(requestParameters: UpdateInventoryAssigneeByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateOrderAssigneeByIdResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateInventoryAssigneeById.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/inventory/{id}/assignee`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateOrderAssigneeByIdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Assign one inventory item to a teammate, or unassign it (null).
+     */
+    async updateInventoryAssigneeById(requestParameters: UpdateInventoryAssigneeByIdRequest, initOverrides?: RequestInit): Promise<UpdateOrderAssigneeByIdResponse> {
+        const response = await this.updateInventoryAssigneeByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4501,10 +4816,12 @@ export class InventoryApi extends runtime.BaseAPI {
      * A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. `brainKind` is idle (stands there), rules (`rules` evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is `{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }`; `when` and `do.act` must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — `do.offerId` is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. `displayName` and `do.line` must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. `agentEndpointUrl` is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass `rotateSecret: true`, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and `hasAgentSecret` is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
      * Create or replace the shop employee in one of your rooms.
      */
-    async updateSpatialEmployeeConfigRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSpatialEmployeeConfigResponse>> {
+    async updateSpatialEmployeeConfigRaw(requestParameters: UpdateSpatialEmployeeConfigOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSpatialEmployeeConfigResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4519,6 +4836,7 @@ export class InventoryApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSpatialEmployeeConfigRequestToJSON(requestParameters.updateSpatialEmployeeConfigRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateSpatialEmployeeConfigResponseFromJSON(jsonValue));
@@ -4528,8 +4846,8 @@ export class InventoryApi extends runtime.BaseAPI {
      * A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. `brainKind` is idle (stands there), rules (`rules` evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is `{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }`; `when` and `do.act` must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — `do.offerId` is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. `displayName` and `do.line` must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. `agentEndpointUrl` is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass `rotateSecret: true`, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and `hasAgentSecret` is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
      * Create or replace the shop employee in one of your rooms.
      */
-    async updateSpatialEmployeeConfig(initOverrides?: RequestInit): Promise<UpdateSpatialEmployeeConfigResponse> {
-        const response = await this.updateSpatialEmployeeConfigRaw(initOverrides);
+    async updateSpatialEmployeeConfig(requestParameters: UpdateSpatialEmployeeConfigOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateSpatialEmployeeConfigResponse> {
+        const response = await this.updateSpatialEmployeeConfigRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -4579,38 +4897,6 @@ export class InventoryApi extends runtime.BaseAPI {
     * @export
     * @enum {string}
     */
-export enum InventoryApiGetAnalyticInventoryRangeEnum {
-    _7d = '7d',
-    _30d = '30d',
-    _90d = '90d',
-    _1y = '1y',
-    Ytd = 'ytd',
-    All = 'all',
-    Custom = 'custom'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum InventoryApiGetAnalyticInventoryCompareEnum {
-    Prev = 'prev',
-    Yoy = 'yoy',
-    None = 'none',
-    Custom = 'custom'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum InventoryApiGetAnalyticInventoryMaturityEnum {
-    NUMBER_30 = 30,
-    NUMBER_60 = 60,
-    NUMBER_90 = 90
-}
-/**
-    * @export
-    * @enum {string}
-    */
 export enum ListInventoryKindEnum {
     Physical = 'physical',
     Web3 = 'web3'
@@ -4622,6 +4908,14 @@ export enum ListInventoryKindEnum {
 export enum ListInventoryPlatformModeEnum {
     Listed = 'listed',
     NotListed = 'not_listed'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListInventoryHoldsHistoryEnum {
+    True = 'true',
+    False = 'false'
 }
 /**
     * @export

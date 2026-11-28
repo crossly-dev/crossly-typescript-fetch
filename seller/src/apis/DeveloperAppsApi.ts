@@ -21,6 +21,9 @@ import {
     CreateDeveloperAppConformanceRunAbortResponse,
     CreateDeveloperAppConformanceRunAbortResponseFromJSON,
     CreateDeveloperAppConformanceRunAbortResponseToJSON,
+    CreateDeveloperAppResponse,
+    CreateDeveloperAppResponseFromJSON,
+    CreateDeveloperAppResponseToJSON,
     DeveloperAppCertificationResponse,
     DeveloperAppCertificationResponseFromJSON,
     DeveloperAppCertificationResponseToJSON,
@@ -42,6 +45,9 @@ import {
     GetDeveloperAppProfileResponse,
     GetDeveloperAppProfileResponseFromJSON,
     GetDeveloperAppProfileResponseToJSON,
+    GetDeveloperAppResponse,
+    GetDeveloperAppResponseFromJSON,
+    GetDeveloperAppResponseToJSON,
     GetDeveloperAppReviewResponse,
     GetDeveloperAppReviewResponseFromJSON,
     GetDeveloperAppReviewResponseToJSON,
@@ -54,12 +60,27 @@ import {
     ListDeveloperAppConformanceRunsResponse,
     ListDeveloperAppConformanceRunsResponseFromJSON,
     ListDeveloperAppConformanceRunsResponseToJSON,
+    ListDeveloperAppsResponse,
+    ListDeveloperAppsResponseFromJSON,
+    ListDeveloperAppsResponseToJSON,
+    UpdateDeveloperAppListingRequest,
+    UpdateDeveloperAppListingRequestFromJSON,
+    UpdateDeveloperAppListingRequestToJSON,
     UpdateDeveloperAppListingResponse,
     UpdateDeveloperAppListingResponseFromJSON,
     UpdateDeveloperAppListingResponseToJSON,
     UpdateDeveloperAppProfileResponse,
     UpdateDeveloperAppProfileResponseFromJSON,
     UpdateDeveloperAppProfileResponseToJSON,
+    UpdateDeveloperAppResponse,
+    UpdateDeveloperAppResponseFromJSON,
+    UpdateDeveloperAppResponseToJSON,
+    UpdateDeveloperAppStoreRequest,
+    UpdateDeveloperAppStoreRequestFromJSON,
+    UpdateDeveloperAppStoreRequestToJSON,
+    UpdateDeveloperAppStoreResponse,
+    UpdateDeveloperAppStoreResponseFromJSON,
+    UpdateDeveloperAppStoreResponseToJSON,
 } from '../models';
 
 export interface CreateDeveloperAppCertificationSubmitRequest {
@@ -97,6 +118,10 @@ export interface CreateDeveloperAppVerificationSubmitRequest {
 }
 
 export interface CreateDeveloperAppVerificationWithdrawRequest {
+    appId: string;
+}
+
+export interface GetDeveloperAppRequest {
     appId: string;
 }
 
@@ -138,16 +163,34 @@ export interface ListDeveloperAppConformanceRunsRequest {
     appId: string;
 }
 
+export interface ListDeveloperAppsRequest {
+    storefrontId?: string;
+    q?: string;
+    status?: ListDeveloperAppsStatusEnum;
+    page?: number;
+    pageSize?: number;
+}
+
+export interface UpdateDeveloperAppRequest {
+    appId: string;
+}
+
 export interface UpdateDeveloperAppCertificationRequest {
     appId: string;
 }
 
-export interface UpdateDeveloperAppListingRequest {
+export interface UpdateDeveloperAppListingOperationRequest {
     appId: string;
+    updateDeveloperAppListingRequest?: UpdateDeveloperAppListingRequest;
 }
 
 export interface UpdateDeveloperAppProfileRequest {
     appId: string;
+}
+
+export interface UpdateDeveloperAppStoreOperationRequest {
+    appId: string;
+    updateDeveloperAppStoreRequest: UpdateDeveloperAppStoreRequest;
 }
 
 export interface UpdateDeveloperAppVerificationRequest {
@@ -158,6 +201,40 @@ export interface UpdateDeveloperAppVerificationRequest {
  * 
  */
 export class DeveloperAppsApi extends runtime.BaseAPI {
+
+    /**
+     * Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
+     */
+    async createDeveloperAppRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDeveloperAppResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/developer/apps`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateDeveloperAppResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
+     */
+    async createDeveloperApp(initOverrides?: RequestInit): Promise<CreateDeveloperAppResponse> {
+        const response = await this.createDeveloperAppRaw(initOverrides);
+        return await response.value();
+    }
 
     /**
      * Send the application to Crossly review. Needs a passing conformance run on this client version and report-menu evidence.
@@ -506,6 +583,44 @@ export class DeveloperAppsApi extends runtime.BaseAPI {
      */
     async createDeveloperAppVerificationWithdraw(requestParameters: CreateDeveloperAppVerificationWithdrawRequest, initOverrides?: RequestInit): Promise<DeveloperAppVerificationResponse> {
         const response = await this.createDeveloperAppVerificationWithdrawRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One of your OAuth apps, with the store that owns it.
+     */
+    async getDeveloperAppRaw(requestParameters: GetDeveloperAppRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDeveloperAppResponse>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling getDeveloperApp.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/developer/apps/{appId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDeveloperAppResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One of your OAuth apps, with the store that owns it.
+     */
+    async getDeveloperApp(requestParameters: GetDeveloperAppRequest, initOverrides?: RequestInit): Promise<GetDeveloperAppResponse> {
+        const response = await this.getDeveloperAppRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -860,6 +975,98 @@ export class DeveloperAppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Your stores\' OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+     */
+    async listDeveloperAppsRaw(requestParameters: ListDeveloperAppsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListDeveloperAppsResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.storefrontId !== undefined) {
+            queryParameters['storefrontId'] = requestParameters.storefrontId;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.pageSize !== undefined) {
+            queryParameters['pageSize'] = requestParameters.pageSize;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/developer/apps`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListDeveloperAppsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your stores\' OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+     */
+    async listDeveloperApps(requestParameters: ListDeveloperAppsRequest = {}, initOverrides?: RequestInit): Promise<ListDeveloperAppsResponse> {
+        const response = await this.listDeveloperAppsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit an app\'s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
+     */
+    async updateDeveloperAppRaw(requestParameters: UpdateDeveloperAppRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateDeveloperAppResponse>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling updateDeveloperApp.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/developer/apps/{appId}`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateDeveloperAppResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit an app\'s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
+     */
+    async updateDeveloperApp(requestParameters: UpdateDeveloperAppRequest, initOverrides?: RequestInit): Promise<UpdateDeveloperAppResponse> {
+        const response = await this.updateDeveloperAppRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Create or edit the application: client name, platform, version, build and source URLs, description and evidence (report menu, chat, Policy UI). Changing the client clears the passing run.
      */
     async updateDeveloperAppCertificationRaw(requestParameters: UpdateDeveloperAppCertificationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeveloperAppCertificationResponse>> {
@@ -900,7 +1107,7 @@ export class DeveloperAppsApi extends runtime.BaseAPI {
     /**
      * Turn \"Listed publicly\" on or off. On: an app Crossly approved whose name, scopes and audience are unchanged is listed at once; anything else goes to review (pending_review). Off: unlisted immediately.
      */
-    async updateDeveloperAppListingRaw(requestParameters: UpdateDeveloperAppListingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateDeveloperAppListingResponse>> {
+    async updateDeveloperAppListingRaw(requestParameters: UpdateDeveloperAppListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateDeveloperAppListingResponse>> {
         if (requestParameters.appId === null || requestParameters.appId === undefined) {
             throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling updateDeveloperAppListing.');
         }
@@ -908,6 +1115,8 @@ export class DeveloperAppsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -922,6 +1131,7 @@ export class DeveloperAppsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateDeveloperAppListingRequestToJSON(requestParameters.updateDeveloperAppListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateDeveloperAppListingResponseFromJSON(jsonValue));
@@ -930,7 +1140,7 @@ export class DeveloperAppsApi extends runtime.BaseAPI {
     /**
      * Turn \"Listed publicly\" on or off. On: an app Crossly approved whose name, scopes and audience are unchanged is listed at once; anything else goes to review (pending_review). Off: unlisted immediately.
      */
-    async updateDeveloperAppListing(requestParameters: UpdateDeveloperAppListingRequest, initOverrides?: RequestInit): Promise<UpdateDeveloperAppListingResponse> {
+    async updateDeveloperAppListing(requestParameters: UpdateDeveloperAppListingOperationRequest, initOverrides?: RequestInit): Promise<UpdateDeveloperAppListingResponse> {
         const response = await this.updateDeveloperAppListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -974,6 +1184,51 @@ export class DeveloperAppsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don\'t change.
+     */
+    async updateDeveloperAppStoreRaw(requestParameters: UpdateDeveloperAppStoreOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateDeveloperAppStoreResponse>> {
+        if (requestParameters.appId === null || requestParameters.appId === undefined) {
+            throw new runtime.RequiredError('appId','Required parameter requestParameters.appId was null or undefined when calling updateDeveloperAppStore.');
+        }
+
+        if (requestParameters.updateDeveloperAppStoreRequest === null || requestParameters.updateDeveloperAppStoreRequest === undefined) {
+            throw new runtime.RequiredError('updateDeveloperAppStoreRequest','Required parameter requestParameters.updateDeveloperAppStoreRequest was null or undefined when calling updateDeveloperAppStore.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/developer/apps/{appId}/store`.replace(`{${"appId"}}`, encodeURIComponent(String(requestParameters.appId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateDeveloperAppStoreRequestToJSON(requestParameters.updateDeveloperAppStoreRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateDeveloperAppStoreResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don\'t change.
+     */
+    async updateDeveloperAppStore(requestParameters: UpdateDeveloperAppStoreOperationRequest, initOverrides?: RequestInit): Promise<UpdateDeveloperAppStoreResponse> {
+        const response = await this.updateDeveloperAppStoreRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Create or edit the verification: domain, requested scopes with a justification each, privacy policy, terms, support email, demo.
      */
     async updateDeveloperAppVerificationRaw(requestParameters: UpdateDeveloperAppVerificationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeveloperAppVerificationResponse>> {
@@ -1011,4 +1266,17 @@ export class DeveloperAppsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListDeveloperAppsStatusEnum {
+    Live = 'live',
+    InReview = 'in_review',
+    Listed = 'listed',
+    NeedsStore = 'needs_store',
+    Revoked = 'revoked',
+    All = 'all'
 }

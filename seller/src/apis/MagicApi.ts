@@ -18,18 +18,33 @@ import {
     CreateMagicAutoDecisionUndoResponse,
     CreateMagicAutoDecisionUndoResponseFromJSON,
     CreateMagicAutoDecisionUndoResponseToJSON,
+    CreateMagicAutoItemRequest,
+    CreateMagicAutoItemRequestFromJSON,
+    CreateMagicAutoItemRequestToJSON,
     CreateMagicAutoItemResponse,
     CreateMagicAutoItemResponseFromJSON,
     CreateMagicAutoItemResponseToJSON,
+    CreateMagicAutoRunRequest,
+    CreateMagicAutoRunRequestFromJSON,
+    CreateMagicAutoRunRequestToJSON,
     CreateMagicAutoRunResponse,
     CreateMagicAutoRunResponseFromJSON,
     CreateMagicAutoRunResponseToJSON,
+    CreateMagicAutoRunSwipeRequest,
+    CreateMagicAutoRunSwipeRequestFromJSON,
+    CreateMagicAutoRunSwipeRequestToJSON,
     CreateMagicAutoRunSwipeResponse,
     CreateMagicAutoRunSwipeResponseFromJSON,
     CreateMagicAutoRunSwipeResponseToJSON,
+    CreateMagicScanRequest,
+    CreateMagicScanRequestFromJSON,
+    CreateMagicScanRequestToJSON,
     CreateMagicScanResponse,
     CreateMagicScanResponseFromJSON,
     CreateMagicScanResponseToJSON,
+    CreateMagicScanSynthesizeRequest,
+    CreateMagicScanSynthesizeRequestFromJSON,
+    CreateMagicScanSynthesizeRequestToJSON,
     CreateMagicScanSynthesizeResponse,
     CreateMagicScanSynthesizeResponseFromJSON,
     CreateMagicScanSynthesizeResponseToJSON,
@@ -54,16 +69,27 @@ export interface CreateMagicAutoDecisionUndoRequest {
     decisionId: string;
 }
 
-export interface CreateMagicAutoRunRequest {
-    runId: string;
+export interface CreateMagicAutoItemOperationRequest {
+    createMagicAutoItemRequest: CreateMagicAutoItemRequest;
 }
 
-export interface CreateMagicAutoRunSwipeRequest {
+export interface CreateMagicAutoRunOperationRequest {
     runId: string;
+    createMagicAutoRunRequest?: CreateMagicAutoRunRequest;
 }
 
-export interface CreateMagicScanSynthesizeRequest {
+export interface CreateMagicAutoRunSwipeOperationRequest {
     runId: string;
+    createMagicAutoRunSwipeRequest?: CreateMagicAutoRunSwipeRequest;
+}
+
+export interface CreateMagicScanOperationRequest {
+    createMagicScanRequest: CreateMagicScanRequest;
+}
+
+export interface CreateMagicScanSynthesizeOperationRequest {
+    runId: string;
+    createMagicScanSynthesizeRequest: CreateMagicScanSynthesizeRequest;
 }
 
 export interface GetMagicDraftRequest {
@@ -124,10 +150,16 @@ export class MagicApi extends runtime.BaseAPI {
     /**
      * Scan one item and match it automatically (drafts only, never publishes).
      */
-    async createMagicAutoItemRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoItemResponse>> {
+    async createMagicAutoItemRaw(requestParameters: CreateMagicAutoItemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoItemResponse>> {
+        if (requestParameters.createMagicAutoItemRequest === null || requestParameters.createMagicAutoItemRequest === undefined) {
+            throw new runtime.RequiredError('createMagicAutoItemRequest','Required parameter requestParameters.createMagicAutoItemRequest was null or undefined when calling createMagicAutoItem.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -142,6 +174,7 @@ export class MagicApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMagicAutoItemRequestToJSON(requestParameters.createMagicAutoItemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicAutoItemResponseFromJSON(jsonValue));
@@ -150,15 +183,15 @@ export class MagicApi extends runtime.BaseAPI {
     /**
      * Scan one item and match it automatically (drafts only, never publishes).
      */
-    async createMagicAutoItem(initOverrides?: RequestInit): Promise<CreateMagicAutoItemResponse> {
-        const response = await this.createMagicAutoItemRaw(initOverrides);
+    async createMagicAutoItem(requestParameters: CreateMagicAutoItemOperationRequest, initOverrides?: RequestInit): Promise<CreateMagicAutoItemResponse> {
+        const response = await this.createMagicAutoItemRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Score a Magic List run automatically; a confident match in auto mode becomes a draft.
      */
-    async createMagicAutoRunRaw(requestParameters: CreateMagicAutoRunRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoRunResponse>> {
+    async createMagicAutoRunRaw(requestParameters: CreateMagicAutoRunOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoRunResponse>> {
         if (requestParameters.runId === null || requestParameters.runId === undefined) {
             throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling createMagicAutoRun.');
         }
@@ -166,6 +199,8 @@ export class MagicApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -180,6 +215,7 @@ export class MagicApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMagicAutoRunRequestToJSON(requestParameters.createMagicAutoRunRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicAutoRunResponseFromJSON(jsonValue));
@@ -188,7 +224,7 @@ export class MagicApi extends runtime.BaseAPI {
     /**
      * Score a Magic List run automatically; a confident match in auto mode becomes a draft.
      */
-    async createMagicAutoRun(requestParameters: CreateMagicAutoRunRequest, initOverrides?: RequestInit): Promise<CreateMagicAutoRunResponse> {
+    async createMagicAutoRun(requestParameters: CreateMagicAutoRunOperationRequest, initOverrides?: RequestInit): Promise<CreateMagicAutoRunResponse> {
         const response = await this.createMagicAutoRunRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -196,7 +232,7 @@ export class MagicApi extends runtime.BaseAPI {
     /**
      * Record a seller swipe session (kept and rejected match keys) for a Magic List run.
      */
-    async createMagicAutoRunSwipeRaw(requestParameters: CreateMagicAutoRunSwipeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoRunSwipeResponse>> {
+    async createMagicAutoRunSwipeRaw(requestParameters: CreateMagicAutoRunSwipeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicAutoRunSwipeResponse>> {
         if (requestParameters.runId === null || requestParameters.runId === undefined) {
             throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling createMagicAutoRunSwipe.');
         }
@@ -204,6 +240,8 @@ export class MagicApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -218,6 +256,7 @@ export class MagicApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMagicAutoRunSwipeRequestToJSON(requestParameters.createMagicAutoRunSwipeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicAutoRunSwipeResponseFromJSON(jsonValue));
@@ -226,18 +265,24 @@ export class MagicApi extends runtime.BaseAPI {
     /**
      * Record a seller swipe session (kept and rejected match keys) for a Magic List run.
      */
-    async createMagicAutoRunSwipe(requestParameters: CreateMagicAutoRunSwipeRequest, initOverrides?: RequestInit): Promise<CreateMagicAutoRunSwipeResponse> {
+    async createMagicAutoRunSwipe(requestParameters: CreateMagicAutoRunSwipeOperationRequest, initOverrides?: RequestInit): Promise<CreateMagicAutoRunSwipeResponse> {
         const response = await this.createMagicAutoRunSwipeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Run a Magic List image scan.
+     * Run a Magic List image scan. Optional matchMode (off | auto | review_all) sets this scan\'s automated matching; omitted = your remembered default.
      */
-    async createMagicScanRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicScanResponse>> {
+    async createMagicScanRaw(requestParameters: CreateMagicScanOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicScanResponse>> {
+        if (requestParameters.createMagicScanRequest === null || requestParameters.createMagicScanRequest === undefined) {
+            throw new runtime.RequiredError('createMagicScanRequest','Required parameter requestParameters.createMagicScanRequest was null or undefined when calling createMagicScan.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -252,30 +297,37 @@ export class MagicApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMagicScanRequestToJSON(requestParameters.createMagicScanRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicScanResponseFromJSON(jsonValue));
     }
 
     /**
-     * Run a Magic List image scan.
+     * Run a Magic List image scan. Optional matchMode (off | auto | review_all) sets this scan\'s automated matching; omitted = your remembered default.
      */
-    async createMagicScan(initOverrides?: RequestInit): Promise<CreateMagicScanResponse> {
-        const response = await this.createMagicScanRaw(initOverrides);
+    async createMagicScan(requestParameters: CreateMagicScanOperationRequest, initOverrides?: RequestInit): Promise<CreateMagicScanResponse> {
+        const response = await this.createMagicScanRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Synthesize a draft from confirmed matches.
      */
-    async createMagicScanSynthesizeRaw(requestParameters: CreateMagicScanSynthesizeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicScanSynthesizeResponse>> {
+    async createMagicScanSynthesizeRaw(requestParameters: CreateMagicScanSynthesizeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateMagicScanSynthesizeResponse>> {
         if (requestParameters.runId === null || requestParameters.runId === undefined) {
             throw new runtime.RequiredError('runId','Required parameter requestParameters.runId was null or undefined when calling createMagicScanSynthesize.');
+        }
+
+        if (requestParameters.createMagicScanSynthesizeRequest === null || requestParameters.createMagicScanSynthesizeRequest === undefined) {
+            throw new runtime.RequiredError('createMagicScanSynthesizeRequest','Required parameter requestParameters.createMagicScanSynthesizeRequest was null or undefined when calling createMagicScanSynthesize.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -290,6 +342,7 @@ export class MagicApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateMagicScanSynthesizeRequestToJSON(requestParameters.createMagicScanSynthesizeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateMagicScanSynthesizeResponseFromJSON(jsonValue));
@@ -298,7 +351,7 @@ export class MagicApi extends runtime.BaseAPI {
     /**
      * Synthesize a draft from confirmed matches.
      */
-    async createMagicScanSynthesize(requestParameters: CreateMagicScanSynthesizeRequest, initOverrides?: RequestInit): Promise<CreateMagicScanSynthesizeResponse> {
+    async createMagicScanSynthesize(requestParameters: CreateMagicScanSynthesizeOperationRequest, initOverrides?: RequestInit): Promise<CreateMagicScanSynthesizeResponse> {
         const response = await this.createMagicScanSynthesizeRaw(requestParameters, initOverrides);
         return await response.value();
     }

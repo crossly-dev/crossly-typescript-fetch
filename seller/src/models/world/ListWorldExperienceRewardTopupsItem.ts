@@ -104,9 +104,9 @@ export interface ListWorldExperienceRewardTopupsItem {
 * @enum {string}
 */
 export enum ListWorldExperienceRewardTopupsItemStatusEnum {
+    Expired = 'expired',
     Cancelled = 'cancelled',
     Open = 'open',
-    Expired = 'expired',
     Paid = 'paid',
     Refused = 'refused',
     Paying = 'paying'

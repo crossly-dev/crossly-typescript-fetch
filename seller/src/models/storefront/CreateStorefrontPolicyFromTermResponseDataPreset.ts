@@ -60,6 +60,12 @@ export interface CreateStorefrontPolicyFromTermResponseDataPreset {
      * @type {string}
      * @memberof CreateStorefrontPolicyFromTermResponseDataPreset
      */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateStorefrontPolicyFromTermResponseDataPreset
+     */
     kind: string;
     /**
      * 
@@ -91,6 +97,7 @@ export function CreateStorefrontPolicyFromTermResponseDataPresetFromJSONTyped(js
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': json['userId'],
         'isDefault': json['isDefault'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'kind': json['kind'],
         'revision': json['revision'],
         'hasDomesticRules': json['hasDomesticRules'],
@@ -112,6 +119,7 @@ export function CreateStorefrontPolicyFromTermResponseDataPresetToJSON(value?: C
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
         'isDefault': value.isDefault,
+        'storefrontId': value.storefrontId,
         'kind': value.kind,
         'revision': value.revision,
         'hasDomesticRules': value.hasDomesticRules,

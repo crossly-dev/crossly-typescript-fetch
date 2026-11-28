@@ -185,8 +185,8 @@ export interface ListWorldDecorCatalogueItem {
 */
 export enum ListWorldDecorCatalogueItemSurfaceEnum {
     Home = 'home',
-    Street = 'street',
     Shop = 'shop',
+    Street = 'street',
     Avatar = 'avatar',
     Stall = 'stall'
 }

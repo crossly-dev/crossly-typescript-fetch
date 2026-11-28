@@ -45,8 +45,8 @@ export interface BuyerCompanyResponseDataYou {
 */
 export enum BuyerCompanyResponseDataYouRoleEnum {
     Buyer = 'buyer',
-    Viewer = 'viewer',
     Owner = 'owner',
+    Viewer = 'viewer',
     AccountsPayable = 'accounts_payable'
 }
 

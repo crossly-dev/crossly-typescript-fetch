@@ -69,10 +69,10 @@ export interface GetStorefrontResponseDataTheme {
 */
 export enum GetStorefrontResponseDataThemeFontEnum {
     System = 'system',
+    Rounded = 'rounded',
     Display = 'display',
     Mono = 'mono',
-    Serif = 'serif',
-    Rounded = 'rounded'
+    Serif = 'serif'
 }/**
 * @export
 * @enum {string}
@@ -87,8 +87,8 @@ export enum GetStorefrontResponseDataThemeDensityEnum {
 */
 export enum GetStorefrontResponseDataThemeButtonStyleEnum {
     Square = 'square',
-    Rounded = 'rounded',
-    Pill = 'pill'
+    Pill = 'pill',
+    Rounded = 'rounded'
 }
 
 export function GetStorefrontResponseDataThemeFromJSON(json: any): GetStorefrontResponseDataTheme {

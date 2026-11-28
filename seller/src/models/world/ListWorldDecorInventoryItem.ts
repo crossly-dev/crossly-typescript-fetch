@@ -124,8 +124,8 @@ export interface ListWorldDecorInventoryItem {
 */
 export enum ListWorldDecorInventoryItemSurfaceEnum {
     Home = 'home',
-    Street = 'street',
     Shop = 'shop',
+    Street = 'street',
     Avatar = 'avatar',
     Stall = 'stall'
 }

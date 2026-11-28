@@ -66,7 +66,8 @@ export enum GetCreatorImportResponseDataResultPreviewFormatEnum {
     Wearable = 'wearable',
     Model = 'model',
     Decor = 'decor',
-    Interactive = 'interactive'
+    Interactive = 'interactive',
+    CardGame = 'card_game'
 }
 
 export function GetCreatorImportResponseDataResultPreviewFromJSON(json: any): GetCreatorImportResponseDataResultPreview {

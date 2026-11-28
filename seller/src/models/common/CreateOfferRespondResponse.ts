@@ -21,6 +21,18 @@ import { exists, mapValues } from '../../runtime';
 export interface CreateOfferRespondResponse {
     /**
      * 
+     * @type {number}
+     * @memberof CreateOfferRespondResponse
+     */
+    floorCents?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOfferRespondResponse
+     */
+    floorSource?: CreateOfferRespondResponseFloorSourceEnum;
+    /**
+     * 
      * @type {boolean}
      * @memberof CreateOfferRespondResponse
      */
@@ -33,6 +45,16 @@ export interface CreateOfferRespondResponse {
     status: string;
 }
 
+/**
+* @export
+* @enum {string}
+*/
+export enum CreateOfferRespondResponseFloorSourceEnum {
+    Listing = 'listing',
+    Item = 'item',
+    BreakEven = 'break_even'
+}
+
 export function CreateOfferRespondResponseFromJSON(json: any): CreateOfferRespondResponse {
     return CreateOfferRespondResponseFromJSONTyped(json, false);
 }
@@ -43,6 +65,8 @@ export function CreateOfferRespondResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
+        'floorCents': !exists(json, 'floorCents') ? undefined : json['floorCents'],
+        'floorSource': !exists(json, 'floorSource') ? undefined : json['floorSource'],
         'ok': json['ok'],
         'status': json['status'],
     };
@@ -57,6 +81,8 @@ export function CreateOfferRespondResponseToJSON(value?: CreateOfferRespondRespo
     }
     return {
         
+        'floorCents': value.floorCents,
+        'floorSource': value.floorSource,
         'ok': value.ok,
         'status': value.status,
     };

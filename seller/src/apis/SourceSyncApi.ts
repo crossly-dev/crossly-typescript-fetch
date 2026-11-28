@@ -33,6 +33,9 @@ import {
     UpdateSourceSyncLocationRequest,
     UpdateSourceSyncLocationRequestFromJSON,
     UpdateSourceSyncLocationRequestToJSON,
+    UpdateSourceSyncRequest,
+    UpdateSourceSyncRequestFromJSON,
+    UpdateSourceSyncRequestToJSON,
 } from '../models';
 
 export interface CreateSourceSyncSyncRequest {
@@ -48,8 +51,9 @@ export interface ListSourceSyncEventsRequest {
     limit?: number;
 }
 
-export interface UpdateSourceSyncRequest {
+export interface UpdateSourceSyncOperationRequest {
     platform: UpdateSourceSyncPlatformEnum;
+    updateSourceSyncRequest?: UpdateSourceSyncRequest;
 }
 
 export interface UpdateSourceSyncLocationOperationRequest {
@@ -217,7 +221,7 @@ export class SourceSyncApi extends runtime.BaseAPI {
     /**
      * Update a store\'s source-sync settings: on/off, source-owned fields, deletion handling, auto-export channels.
      */
-    async updateSourceSyncRaw(requestParameters: UpdateSourceSyncRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSourceSyncItem>> {
+    async updateSourceSyncRaw(requestParameters: UpdateSourceSyncOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSourceSyncItem>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling updateSourceSync.');
         }
@@ -225,6 +229,8 @@ export class SourceSyncApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -239,6 +245,7 @@ export class SourceSyncApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSourceSyncRequestToJSON(requestParameters.updateSourceSyncRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListSourceSyncItemFromJSON(jsonValue));
@@ -247,7 +254,7 @@ export class SourceSyncApi extends runtime.BaseAPI {
     /**
      * Update a store\'s source-sync settings: on/off, source-owned fields, deletion handling, auto-export channels.
      */
-    async updateSourceSync(requestParameters: UpdateSourceSyncRequest, initOverrides?: RequestInit): Promise<ListSourceSyncItem> {
+    async updateSourceSync(requestParameters: UpdateSourceSyncOperationRequest, initOverrides?: RequestInit): Promise<ListSourceSyncItem> {
         const response = await this.updateSourceSyncRaw(requestParameters, initOverrides);
         return await response.value();
     }

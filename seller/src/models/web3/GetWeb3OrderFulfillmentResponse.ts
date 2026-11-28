@@ -75,9 +75,9 @@ export interface GetWeb3OrderFulfillmentResponse {
 * @enum {string}
 */
 export enum GetWeb3OrderFulfillmentResponseKindEnum {
+    Listing = 'listing',
     Bundle = 'bundle',
     Offer = 'offer',
-    Listing = 'listing',
     PrivateListing = 'private_listing',
     CollectionOffer = 'collection_offer',
     TraitOffer = 'trait_offer'

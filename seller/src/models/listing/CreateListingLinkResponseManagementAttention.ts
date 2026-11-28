@@ -63,11 +63,11 @@ export enum CreateListingLinkResponseManagementAttentionTypeEnum {
 * @enum {string}
 */
 export enum CreateListingLinkResponseManagementAttentionStateEnum {
+    Expired = 'expired',
     Pending = 'pending',
     Completed = 'completed',
     Cancelled = 'cancelled',
     Failed = 'failed',
-    Expired = 'expired',
     Acked = 'acked'
 }
 

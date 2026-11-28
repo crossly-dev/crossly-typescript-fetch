@@ -44,8 +44,8 @@ export interface ListWorldGameMineItemFlags {
 * @enum {string}
 */
 export enum ListWorldGameMineItemFlagsModerationEnum {
-    Unlisted = 'unlisted',
     Ok = 'ok',
+    Unlisted = 'unlisted',
     TakenDown = 'taken_down'
 }
 

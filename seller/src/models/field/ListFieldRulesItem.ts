@@ -63,6 +63,12 @@ export interface ListFieldRulesItem {
     accountSlot?: number | null;
     /**
      * 
+     * @type {boolean}
+     * @memberof ListFieldRulesItem
+     */
+    enabled: boolean;
+    /**
+     * 
      * @type {number}
      * @memberof ListFieldRulesItem
      */
@@ -73,12 +79,6 @@ export interface ListFieldRulesItem {
      * @memberof ListFieldRulesItem
      */
     target: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ListFieldRulesItem
-     */
-    enabled: boolean;
     /**
      * 
      * @type {string}
@@ -110,9 +110,9 @@ export function ListFieldRulesItemFromJSONTyped(json: any, ignoreDiscriminator: 
         'userId': json['userId'],
         'platform': json['platform'],
         'accountSlot': !exists(json, 'accountSlot') ? undefined : json['accountSlot'],
+        'enabled': json['enabled'],
         'position': json['position'],
         'target': json['target'],
-        'enabled': json['enabled'],
         'targetKey': !exists(json, 'targetKey') ? undefined : json['targetKey'],
         'stopAfter': json['stopAfter'],
     };
@@ -134,9 +134,9 @@ export function ListFieldRulesItemToJSON(value?: ListFieldRulesItem | null): any
         'userId': value.userId,
         'platform': value.platform,
         'accountSlot': value.accountSlot,
+        'enabled': value.enabled,
         'position': value.position,
         'target': value.target,
-        'enabled': value.enabled,
         'targetKey': value.targetKey,
         'stopAfter': value.stopAfter,
     };

@@ -49,7 +49,8 @@ export enum GetCreatorTemplateResponseDataFormatEnum {
     Wearable = 'wearable',
     Model = 'model',
     Decor = 'decor',
-    Interactive = 'interactive'
+    Interactive = 'interactive',
+    CardGame = 'card_game'
 }
 
 export function GetCreatorTemplateResponseDataFromJSON(json: any): GetCreatorTemplateResponseData {

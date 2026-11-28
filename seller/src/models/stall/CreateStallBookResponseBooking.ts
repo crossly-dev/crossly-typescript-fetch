@@ -225,8 +225,8 @@ export enum CreateStallBookResponseBookingRailEnum {
 * @enum {string}
 */
 export enum CreateStallBookResponseBookingBoothKindEnum {
-    Booth = 'booth',
     Cart = 'cart',
+    Booth = 'booth',
     Pavilion = 'pavilion'
 }
 

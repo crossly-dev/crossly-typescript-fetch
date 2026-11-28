@@ -44,11 +44,11 @@ import {
     ListAutomaticDiscountsItemStackingToJSON,
 } from './ListAutomaticDiscountsItemStacking';
 import {
-    ListAutomaticDiscountsItemTiers,
-    ListAutomaticDiscountsItemTiersFromJSON,
-    ListAutomaticDiscountsItemTiersFromJSONTyped,
-    ListAutomaticDiscountsItemTiersToJSON,
-} from './ListAutomaticDiscountsItemTiers';
+    MinQtyPercentBps,
+    MinQtyPercentBpsFromJSON,
+    MinQtyPercentBpsFromJSONTyped,
+    MinQtyPercentBpsToJSON,
+} from '../common/MinQtyPercentBps';
 
 /**
  * 
@@ -76,10 +76,10 @@ export interface ListAutomaticDiscountsItem {
     kind: ListAutomaticDiscountsItemKindEnum;
     /**
      * 
-     * @type {Array<ListAutomaticDiscountsItemTiers>}
+     * @type {Array<MinQtyPercentBps>}
      * @memberof ListAutomaticDiscountsItem
      */
-    tiers: Array<ListAutomaticDiscountsItemTiers>;
+    tiers: Array<MinQtyPercentBps>;
     /**
      * 
      * @type {ListAutomaticDiscountsItemAppliesTo}
@@ -152,7 +152,7 @@ export function ListAutomaticDiscountsItemFromJSONTyped(json: any, ignoreDiscrim
         'id': json['id'],
         'name': json['name'],
         'kind': json['kind'],
-        'tiers': ((json['tiers'] as Array<any>).map(ListAutomaticDiscountsItemTiersFromJSON)),
+        'tiers': ((json['tiers'] as Array<any>).map(MinQtyPercentBpsFromJSON)),
         'appliesTo': ListAutomaticDiscountsItemAppliesToFromJSON(json['appliesTo']),
         'exclusions': ListAutomaticDiscountsItemExclusionsFromJSON(json['exclusions']),
         'channels': ((json['channels'] as Array<any>).map(ListAutomaticDiscountsItemChannelsItemFromJSON)),
@@ -176,7 +176,7 @@ export function ListAutomaticDiscountsItemToJSON(value?: ListAutomaticDiscountsI
         'id': value.id,
         'name': value.name,
         'kind': value.kind,
-        'tiers': ((value.tiers as Array<any>).map(ListAutomaticDiscountsItemTiersToJSON)),
+        'tiers': ((value.tiers as Array<any>).map(MinQtyPercentBpsToJSON)),
         'appliesTo': ListAutomaticDiscountsItemAppliesToToJSON(value.appliesTo),
         'exclusions': ListAutomaticDiscountsItemExclusionsToJSON(value.exclusions),
         'channels': ((value.channels as Array<any>).map(ListAutomaticDiscountsItemChannelsItemToJSON)),

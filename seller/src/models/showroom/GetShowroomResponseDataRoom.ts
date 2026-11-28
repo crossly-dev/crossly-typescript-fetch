@@ -70,9 +70,9 @@ export interface GetShowroomResponseDataRoom {
 */
 export enum GetShowroomResponseDataRoomSizeEnum {
     Auto = 'auto',
+    Compact = 'compact',
     Standard = 'standard',
     Large = 'large',
-    Compact = 'compact',
     Flagship = 'flagship'
 }
 

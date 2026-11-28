@@ -13,6 +13,19 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    ListProductFeedsItemFiltersConditionsItem,
+    ListProductFeedsItemFiltersConditionsItemFromJSON,
+    ListProductFeedsItemFiltersConditionsItemFromJSONTyped,
+    ListProductFeedsItemFiltersConditionsItemToJSON,
+} from './ListProductFeedsItemFiltersConditionsItem';
+import {
+    ListProductFeedsItemFiltersStatusesItem,
+    ListProductFeedsItemFiltersStatusesItemFromJSON,
+    ListProductFeedsItemFiltersStatusesItemFromJSONTyped,
+    ListProductFeedsItemFiltersStatusesItemToJSON,
+} from './ListProductFeedsItemFiltersStatusesItem';
+
 /**
  * 
  * @export
@@ -20,13 +33,13 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface ListProductFeedsItemFilters {
     /**
-     * Only these top-level categories (listing category `main`).
+     * Only listings in one of these categories, at ANY level (main, sub or leaf name).
      * @type {Array<string>}
      * @memberof ListProductFeedsItemFilters
      */
     includeCategories?: Array<string> | null;
     /**
-     * Never these top-level categories.
+     * Never listings in one of these categories, at any level.
      * @type {Array<string>}
      * @memberof ListProductFeedsItemFilters
      */
@@ -44,25 +57,37 @@ export interface ListProductFeedsItemFilters {
      */
     excludeBrands?: Array<string> | null;
     /**
+     * Only listings carrying at least one of these tags.
+     * @type {Array<string>}
+     * @memberof ListProductFeedsItemFilters
+     */
+    includeTags?: Array<string> | null;
+    /**
+     * Never listings carrying any of these tags.
+     * @type {Array<string>}
+     * @memberof ListProductFeedsItemFilters
+     */
+    excludeTags?: Array<string> | null;
+    /**
      * Only these listings (listing ids).
      * @type {Array<string>}
      * @memberof ListProductFeedsItemFilters
      */
     includeListingIds?: Array<string> | null;
     /**
-     * Never these listings (listing ids) — the per-item "block" switch.
+     * Never these listings (listing ids) — the per-item "leave out" switch.
      * @type {Array<string>}
      * @memberof ListProductFeedsItemFilters
      */
     excludeListingIds?: Array<string> | null;
     /**
-     * Price floor in DOLLARS of the shop price (USD).
+     * Price floor in the FEED's currency (settings.currency, USD when unset), on the shop price.
      * @type {number}
      * @memberof ListProductFeedsItemFilters
      */
     minPrice?: number | null;
     /**
-     * Price ceiling in DOLLARS of the shop price (USD).
+     * Price ceiling in the feed's currency.
      * @type {number}
      * @memberof ListProductFeedsItemFilters
      */
@@ -73,6 +98,42 @@ export interface ListProductFeedsItemFilters {
      * @memberof ListProductFeedsItemFilters
      */
     includeOutOfStock?: boolean | null;
+    /**
+     * Only listings with at least this many in stock (0/absent = no floor).
+     * @type {number}
+     * @memberof ListProductFeedsItemFilters
+     */
+    minQuantity?: number | null;
+    /**
+     * Stock / sale status: empty = all. `on_sale` = a storefront sale is running on it.
+     * @type {Array<ListProductFeedsItemFiltersStatusesItem>}
+     * @memberof ListProductFeedsItemFilters
+     */
+    statuses?: Array<ListProductFeedsItemFiltersStatusesItem> | null;
+    /**
+     * Item condition as the channels read it: empty = all.
+     * @type {Array<ListProductFeedsItemFiltersConditionsItem>}
+     * @memberof ListProductFeedsItemFilters
+     */
+    conditions?: Array<ListProductFeedsItemFiltersConditionsItem> | null;
+    /**
+     * Only listings ALSO live on one of these marketplaces (platform ids, e.g. 'ebay').
+     * @type {Array<string>}
+     * @memberof ListProductFeedsItemFilters
+     */
+    onPlatforms?: Array<string> | null;
+    /**
+     * Never listings live on any of these marketplaces.
+     * @type {Array<string>}
+     * @memberof ListProductFeedsItemFilters
+     */
+    notOnPlatforms?: Array<string> | null;
+    /**
+     * Only listings put on the storefront in the last N days (new arrivals).
+     * @type {number}
+     * @memberof ListProductFeedsItemFilters
+     */
+    listedWithinDays?: number | null;
 }
 
 export function ListProductFeedsItemFiltersFromJSON(json: any): ListProductFeedsItemFilters {
@@ -89,11 +150,19 @@ export function ListProductFeedsItemFiltersFromJSONTyped(json: any, ignoreDiscri
         'excludeCategories': !exists(json, 'excludeCategories') ? undefined : json['excludeCategories'],
         'includeBrands': !exists(json, 'includeBrands') ? undefined : json['includeBrands'],
         'excludeBrands': !exists(json, 'excludeBrands') ? undefined : json['excludeBrands'],
+        'includeTags': !exists(json, 'includeTags') ? undefined : json['includeTags'],
+        'excludeTags': !exists(json, 'excludeTags') ? undefined : json['excludeTags'],
         'includeListingIds': !exists(json, 'includeListingIds') ? undefined : json['includeListingIds'],
         'excludeListingIds': !exists(json, 'excludeListingIds') ? undefined : json['excludeListingIds'],
         'minPrice': !exists(json, 'minPrice') ? undefined : json['minPrice'],
         'maxPrice': !exists(json, 'maxPrice') ? undefined : json['maxPrice'],
         'includeOutOfStock': !exists(json, 'includeOutOfStock') ? undefined : json['includeOutOfStock'],
+        'minQuantity': !exists(json, 'minQuantity') ? undefined : json['minQuantity'],
+        'statuses': !exists(json, 'statuses') ? undefined : (json['statuses'] === null ? null : (json['statuses'] as Array<any>).map(ListProductFeedsItemFiltersStatusesItemFromJSON)),
+        'conditions': !exists(json, 'conditions') ? undefined : (json['conditions'] === null ? null : (json['conditions'] as Array<any>).map(ListProductFeedsItemFiltersConditionsItemFromJSON)),
+        'onPlatforms': !exists(json, 'onPlatforms') ? undefined : json['onPlatforms'],
+        'notOnPlatforms': !exists(json, 'notOnPlatforms') ? undefined : json['notOnPlatforms'],
+        'listedWithinDays': !exists(json, 'listedWithinDays') ? undefined : json['listedWithinDays'],
     };
 }
 
@@ -110,11 +179,19 @@ export function ListProductFeedsItemFiltersToJSON(value?: ListProductFeedsItemFi
         'excludeCategories': value.excludeCategories,
         'includeBrands': value.includeBrands,
         'excludeBrands': value.excludeBrands,
+        'includeTags': value.includeTags,
+        'excludeTags': value.excludeTags,
         'includeListingIds': value.includeListingIds,
         'excludeListingIds': value.excludeListingIds,
         'minPrice': value.minPrice,
         'maxPrice': value.maxPrice,
         'includeOutOfStock': value.includeOutOfStock,
+        'minQuantity': value.minQuantity,
+        'statuses': value.statuses === undefined ? undefined : (value.statuses === null ? null : (value.statuses as Array<any>).map(ListProductFeedsItemFiltersStatusesItemToJSON)),
+        'conditions': value.conditions === undefined ? undefined : (value.conditions === null ? null : (value.conditions as Array<any>).map(ListProductFeedsItemFiltersConditionsItemToJSON)),
+        'onPlatforms': value.onPlatforms,
+        'notOnPlatforms': value.notOnPlatforms,
+        'listedWithinDays': value.listedWithinDays,
     };
 }
 

@@ -72,6 +72,12 @@ import {
     CreateBuyerAuctionRetractResponse,
     CreateBuyerAuctionRetractResponseFromJSON,
     CreateBuyerAuctionRetractResponseToJSON,
+    CreateBuyerBoardItemRequest,
+    CreateBuyerBoardItemRequestFromJSON,
+    CreateBuyerBoardItemRequestToJSON,
+    CreateBuyerBoardRequest,
+    CreateBuyerBoardRequestFromJSON,
+    CreateBuyerBoardRequestToJSON,
     CreateBuyerBoardResponse,
     CreateBuyerBoardResponseFromJSON,
     CreateBuyerBoardResponseToJSON,
@@ -84,9 +90,15 @@ import {
     CreateBuyerCartItemResponse,
     CreateBuyerCartItemResponseFromJSON,
     CreateBuyerCartItemResponseToJSON,
+    CreateBuyerCartOptimizerRequest,
+    CreateBuyerCartOptimizerRequestFromJSON,
+    CreateBuyerCartOptimizerRequestToJSON,
     CreateBuyerCartOptimizerResponse,
     CreateBuyerCartOptimizerResponseFromJSON,
     CreateBuyerCartOptimizerResponseToJSON,
+    CreateBuyerCartQuoteRequest,
+    CreateBuyerCartQuoteRequestFromJSON,
+    CreateBuyerCartQuoteRequestToJSON,
     CreateBuyerCartQuoteResponse,
     CreateBuyerCartQuoteResponseFromJSON,
     CreateBuyerCartQuoteResponseToJSON,
@@ -102,9 +114,15 @@ import {
     CreateBuyerCatalogListingRentalQuoteResponse,
     CreateBuyerCatalogListingRentalQuoteResponseFromJSON,
     CreateBuyerCatalogListingRentalQuoteResponseToJSON,
+    CreateBuyerCatalogListingRentalRequest,
+    CreateBuyerCatalogListingRentalRequestFromJSON,
+    CreateBuyerCatalogListingRentalRequestToJSON,
     CreateBuyerCatalogListingRentalResponse,
     CreateBuyerCatalogListingRentalResponseFromJSON,
     CreateBuyerCatalogListingRentalResponseToJSON,
+    CreateBuyerCatalogListingVideoRequestRequest,
+    CreateBuyerCatalogListingVideoRequestRequestFromJSON,
+    CreateBuyerCatalogListingVideoRequestRequestToJSON,
     CreateBuyerCatalogListingVideoRequestResponse,
     CreateBuyerCatalogListingVideoRequestResponseFromJSON,
     CreateBuyerCatalogListingVideoRequestResponseToJSON,
@@ -114,6 +132,9 @@ import {
     CreateBuyerConversationJoinResponse,
     CreateBuyerConversationJoinResponseFromJSON,
     CreateBuyerConversationJoinResponseToJSON,
+    CreateBuyerEventRsvpRequest,
+    CreateBuyerEventRsvpRequestFromJSON,
+    CreateBuyerEventRsvpRequestToJSON,
     CreateBuyerEventRsvpResponse,
     CreateBuyerEventRsvpResponseFromJSON,
     CreateBuyerEventRsvpResponseToJSON,
@@ -144,12 +165,21 @@ import {
     CreateBuyerGroupBuyJoinResponse,
     CreateBuyerGroupBuyJoinResponseFromJSON,
     CreateBuyerGroupBuyJoinResponseToJSON,
+    CreateBuyerLayawayPayRequest,
+    CreateBuyerLayawayPayRequestFromJSON,
+    CreateBuyerLayawayPayRequestToJSON,
     CreateBuyerListingSplitResponse,
     CreateBuyerListingSplitResponseFromJSON,
     CreateBuyerListingSplitResponseToJSON,
+    CreateBuyerListingTryOnRequest,
+    CreateBuyerListingTryOnRequestFromJSON,
+    CreateBuyerListingTryOnRequestToJSON,
     CreateBuyerListingTryOnResponse,
     CreateBuyerListingTryOnResponseFromJSON,
     CreateBuyerListingTryOnResponseToJSON,
+    CreateBuyerLoyaltyRewardRedeemResponse,
+    CreateBuyerLoyaltyRewardRedeemResponseFromJSON,
+    CreateBuyerLoyaltyRewardRedeemResponseToJSON,
     CreateBuyerMarketBidResponse,
     CreateBuyerMarketBidResponseFromJSON,
     CreateBuyerMarketBidResponseToJSON,
@@ -180,33 +210,63 @@ import {
     CreateBuyerOrderTipResponse,
     CreateBuyerOrderTipResponseFromJSON,
     CreateBuyerOrderTipResponseToJSON,
+    CreateBuyerPackFairnessRotateRequest,
+    CreateBuyerPackFairnessRotateRequestFromJSON,
+    CreateBuyerPackFairnessRotateRequestToJSON,
+    CreateBuyerPackOpenRequest,
+    CreateBuyerPackOpenRequestFromJSON,
+    CreateBuyerPackOpenRequestToJSON,
     CreateBuyerPackOpenResponse,
     CreateBuyerPackOpenResponseFromJSON,
     CreateBuyerPackOpenResponseToJSON,
     CreateBuyerPackOpeningSellBackResponse,
     CreateBuyerPackOpeningSellBackResponseFromJSON,
     CreateBuyerPackOpeningSellBackResponseToJSON,
+    CreateBuyerPassportClaimRequest,
+    CreateBuyerPassportClaimRequestFromJSON,
+    CreateBuyerPassportClaimRequestToJSON,
     CreateBuyerProtectionPlanCancelResponse,
     CreateBuyerProtectionPlanCancelResponseFromJSON,
     CreateBuyerProtectionPlanCancelResponseToJSON,
+    CreateBuyerPurchaseFitRequest,
+    CreateBuyerPurchaseFitRequestFromJSON,
+    CreateBuyerPurchaseFitRequestToJSON,
+    CreateBuyerRegistryGiftThankedRequest,
+    CreateBuyerRegistryGiftThankedRequestFromJSON,
+    CreateBuyerRegistryGiftThankedRequestToJSON,
     CreateBuyerRegistryGiftThankedResponse,
     CreateBuyerRegistryGiftThankedResponseFromJSON,
     CreateBuyerRegistryGiftThankedResponseToJSON,
+    CreateBuyerRegistryRequest,
+    CreateBuyerRegistryRequestFromJSON,
+    CreateBuyerRegistryRequestToJSON,
     CreateBuyerRegistryResponse,
     CreateBuyerRegistryResponseFromJSON,
     CreateBuyerRegistryResponseToJSON,
+    CreateBuyerRentalArrivalPhotoRequest,
+    CreateBuyerRentalArrivalPhotoRequestFromJSON,
+    CreateBuyerRentalArrivalPhotoRequestToJSON,
     CreateBuyerRentalBuyoutResponse,
     CreateBuyerRentalBuyoutResponseFromJSON,
     CreateBuyerRentalBuyoutResponseToJSON,
+    CreateBuyerRentalClaimResponseRequest,
+    CreateBuyerRentalClaimResponseRequestFromJSON,
+    CreateBuyerRentalClaimResponseRequestToJSON,
     CreateBuyerRentalExtensionPayResponse,
     CreateBuyerRentalExtensionPayResponseFromJSON,
     CreateBuyerRentalExtensionPayResponseToJSON,
+    CreateBuyerRentalExtensionRequest,
+    CreateBuyerRentalExtensionRequestFromJSON,
+    CreateBuyerRentalExtensionRequestToJSON,
     CreateBuyerRentalExtensionResponse,
     CreateBuyerRentalExtensionResponseFromJSON,
     CreateBuyerRentalExtensionResponseToJSON,
     CreateBuyerRentalIdentityStartResponse,
     CreateBuyerRentalIdentityStartResponseFromJSON,
     CreateBuyerRentalIdentityStartResponseToJSON,
+    CreateBuyerRentalReturnShippedRequest,
+    CreateBuyerRentalReturnShippedRequestFromJSON,
+    CreateBuyerRentalReturnShippedRequestToJSON,
     CreateBuyerSellerClubJoinResponse,
     CreateBuyerSellerClubJoinResponseFromJSON,
     CreateBuyerSellerClubJoinResponseToJSON,
@@ -225,9 +285,15 @@ import {
     CreateBuyerTotalRequestResponse,
     CreateBuyerTotalRequestResponseFromJSON,
     CreateBuyerTotalRequestResponseToJSON,
+    CreateBuyerVaultListRequest,
+    CreateBuyerVaultListRequestFromJSON,
+    CreateBuyerVaultListRequestToJSON,
     CreateBuyerVaultListResponse,
     CreateBuyerVaultListResponseFromJSON,
     CreateBuyerVaultListResponseToJSON,
+    CreateBuyerVaultWithdrawRequest,
+    CreateBuyerVaultWithdrawRequestFromJSON,
+    CreateBuyerVaultWithdrawRequestToJSON,
     CreateBuyerVaultWithdrawResponse,
     CreateBuyerVaultWithdrawResponseFromJSON,
     CreateBuyerVaultWithdrawResponseToJSON,
@@ -321,6 +387,12 @@ import {
     GetBuyerGiftFinderOptionResponse,
     GetBuyerGiftFinderOptionResponseFromJSON,
     GetBuyerGiftFinderOptionResponseToJSON,
+    GetBuyerGroupBuyShareLinkResponse,
+    GetBuyerGroupBuyShareLinkResponseFromJSON,
+    GetBuyerGroupBuyShareLinkResponseToJSON,
+    GetBuyerHomePetResponse,
+    GetBuyerHomePetResponseFromJSON,
+    GetBuyerHomePetResponseToJSON,
     GetBuyerHomePlaceableResponse,
     GetBuyerHomePlaceableResponseFromJSON,
     GetBuyerHomePlaceableResponseToJSON,
@@ -360,6 +432,9 @@ import {
     GetBuyerLiveStreamAuctionResponse,
     GetBuyerLiveStreamAuctionResponseFromJSON,
     GetBuyerLiveStreamAuctionResponseToJSON,
+    GetBuyerLoyaltyRewardResponse,
+    GetBuyerLoyaltyRewardResponseFromJSON,
+    GetBuyerLoyaltyRewardResponseToJSON,
     GetBuyerMarketPurchaseOptionResponse,
     GetBuyerMarketPurchaseOptionResponseFromJSON,
     GetBuyerMarketPurchaseOptionResponseToJSON,
@@ -576,6 +651,9 @@ import {
     ListBuyerLiveStreamLineupResponse,
     ListBuyerLiveStreamLineupResponseFromJSON,
     ListBuyerLiveStreamLineupResponseToJSON,
+    ListBuyerLoyaltyPointsResponse,
+    ListBuyerLoyaltyPointsResponseFromJSON,
+    ListBuyerLoyaltyPointsResponseToJSON,
     ListBuyerLoyaltyResponse,
     ListBuyerLoyaltyResponseFromJSON,
     ListBuyerLoyaltyResponseToJSON,
@@ -705,6 +783,15 @@ import {
     ListBuyerWishlistsResponse,
     ListBuyerWishlistsResponseFromJSON,
     ListBuyerWishlistsResponseToJSON,
+    UpdateBuyerBoardLayoutRequest,
+    UpdateBuyerBoardLayoutRequestFromJSON,
+    UpdateBuyerBoardLayoutRequestToJSON,
+    UpdateBuyerBoardRequest,
+    UpdateBuyerBoardRequestFromJSON,
+    UpdateBuyerBoardRequestToJSON,
+    UpdateBuyerCollectionSetLeaderboardRequest,
+    UpdateBuyerCollectionSetLeaderboardRequestFromJSON,
+    UpdateBuyerCollectionSetLeaderboardRequestToJSON,
     UpdateBuyerCollectionSetLeaderboardResponse,
     UpdateBuyerCollectionSetLeaderboardResponseFromJSON,
     UpdateBuyerCollectionSetLeaderboardResponseToJSON,
@@ -717,9 +804,27 @@ import {
     UpdateBuyerFeedbackRequest,
     UpdateBuyerFeedbackRequestFromJSON,
     UpdateBuyerFeedbackRequestToJSON,
+    UpdateBuyerHomeBuilderRequest,
+    UpdateBuyerHomeBuilderRequestFromJSON,
+    UpdateBuyerHomeBuilderRequestToJSON,
+    UpdateBuyerHomeLayoutRequest,
+    UpdateBuyerHomeLayoutRequestFromJSON,
+    UpdateBuyerHomeLayoutRequestToJSON,
+    UpdateBuyerHomePetActiveRequest,
+    UpdateBuyerHomePetActiveRequestFromJSON,
+    UpdateBuyerHomePetActiveRequestToJSON,
+    UpdateBuyerHomePetActiveResponse,
+    UpdateBuyerHomePetActiveResponseFromJSON,
+    UpdateBuyerHomePetActiveResponseToJSON,
+    UpdateBuyerHomeRequest,
+    UpdateBuyerHomeRequestFromJSON,
+    UpdateBuyerHomeRequestToJSON,
     UpdateBuyerPaymentMethodDefaultResponse,
     UpdateBuyerPaymentMethodDefaultResponseFromJSON,
     UpdateBuyerPaymentMethodDefaultResponseToJSON,
+    UpdateBuyerRegistryItemRequest,
+    UpdateBuyerRegistryItemRequestFromJSON,
+    UpdateBuyerRegistryItemRequestToJSON,
     UpdateBuyerRegistryItemResponse,
     UpdateBuyerRegistryItemResponseFromJSON,
     UpdateBuyerRegistryItemResponseToJSON,
@@ -752,8 +857,13 @@ export interface CreateBuyerAuctionRetractOperationRequest {
     createBuyerAuctionRetractRequest: CreateBuyerAuctionRetractRequest;
 }
 
-export interface CreateBuyerBoardItemRequest {
+export interface CreateBuyerBoardOperationRequest {
+    createBuyerBoardRequest: CreateBuyerBoardRequest;
+}
+
+export interface CreateBuyerBoardItemOperationRequest {
     id: string;
+    createBuyerBoardItemRequest: CreateBuyerBoardItemRequest;
 }
 
 export interface CreateBuyerBreakSpotHoldRequest {
@@ -771,6 +881,14 @@ export interface CreateBuyerCartItemOperationRequest {
 
 export interface CreateBuyerCartItemSaveForLaterRequest {
     id: string;
+}
+
+export interface CreateBuyerCartOptimizerOperationRequest {
+    createBuyerCartOptimizerRequest: CreateBuyerCartOptimizerRequest;
+}
+
+export interface CreateBuyerCartQuoteOperationRequest {
+    createBuyerCartQuoteRequest?: CreateBuyerCartQuoteRequest;
 }
 
 export interface CreateBuyerCartSavedMoveToCartRequest {
@@ -800,16 +918,19 @@ export interface CreateBuyerCaseWithdrawRequest {
     id: string;
 }
 
-export interface CreateBuyerCatalogListingRentalRequest {
+export interface CreateBuyerCatalogListingRentalOperationRequest {
     slug: string;
+    createBuyerCatalogListingRentalRequest: CreateBuyerCatalogListingRentalRequest;
 }
 
 export interface CreateBuyerCatalogListingRentalQuoteRequest {
     slug: string;
+    createBuyerCatalogListingRentalRequest: CreateBuyerCatalogListingRentalRequest;
 }
 
-export interface CreateBuyerCatalogListingVideoRequestRequest {
+export interface CreateBuyerCatalogListingVideoRequestOperationRequest {
     slug: string;
+    createBuyerCatalogListingVideoRequestRequest?: CreateBuyerCatalogListingVideoRequestRequest;
 }
 
 export interface CreateBuyerCompanyApprovalDecideRequest {
@@ -824,8 +945,9 @@ export interface CreateBuyerConversationJoinRequest {
     token: string;
 }
 
-export interface CreateBuyerEventRsvpRequest {
+export interface CreateBuyerEventRsvpOperationRequest {
     slug: string;
+    createBuyerEventRsvpRequest?: CreateBuyerEventRsvpRequest;
 }
 
 export interface CreateBuyerFeedbackOperationRequest {
@@ -860,8 +982,9 @@ export interface CreateBuyerLayawayCancelRequest {
     id: string;
 }
 
-export interface CreateBuyerLayawayPayRequest {
+export interface CreateBuyerLayawayPayOperationRequest {
     id: string;
+    createBuyerLayawayPayRequest?: CreateBuyerLayawayPayRequest;
 }
 
 export interface CreateBuyerListingAudioSummaryRequest {
@@ -876,8 +999,14 @@ export interface CreateBuyerListingSubscribeRequest {
     slug: string;
 }
 
-export interface CreateBuyerListingTryOnRequest {
+export interface CreateBuyerListingTryOnOperationRequest {
     slug: string;
+    createBuyerListingTryOnRequest: CreateBuyerListingTryOnRequest;
+}
+
+export interface CreateBuyerLoyaltyRewardRedeemRequest {
+    clubId: string;
+    rewardId: string;
 }
 
 export interface CreateBuyerOfferOperationRequest {
@@ -906,37 +1035,50 @@ export interface CreateBuyerOrderTipRequest {
     id: string;
 }
 
-export interface CreateBuyerPackOpenRequest {
+export interface CreateBuyerPackFairnessRotateOperationRequest {
+    createBuyerPackFairnessRotateRequest?: CreateBuyerPackFairnessRotateRequest;
+}
+
+export interface CreateBuyerPackOpenOperationRequest {
     slug: string;
+    createBuyerPackOpenRequest: CreateBuyerPackOpenRequest;
 }
 
 export interface CreateBuyerPackOpeningSellBackRequest {
     id: string;
 }
 
-export interface CreateBuyerPassportClaimRequest {
+export interface CreateBuyerPassportClaimOperationRequest {
     code: string;
+    createBuyerPassportClaimRequest?: CreateBuyerPassportClaimRequest;
 }
 
 export interface CreateBuyerProtectionPlanCancelRequest {
     id: string;
 }
 
-export interface CreateBuyerPurchaseFitRequest {
+export interface CreateBuyerPurchaseFitOperationRequest {
     id: string;
+    createBuyerPurchaseFitRequest: CreateBuyerPurchaseFitRequest;
 }
 
 export interface CreateBuyerPurchaseReturnRequest {
     id: string;
 }
 
-export interface CreateBuyerRegistryGiftThankedRequest {
-    id: string;
-    giftId: string;
+export interface CreateBuyerRegistryOperationRequest {
+    createBuyerRegistryRequest?: CreateBuyerRegistryRequest;
 }
 
-export interface CreateBuyerRentalArrivalPhotoRequest {
+export interface CreateBuyerRegistryGiftThankedOperationRequest {
     id: string;
+    giftId: string;
+    createBuyerRegistryGiftThankedRequest: CreateBuyerRegistryGiftThankedRequest;
+}
+
+export interface CreateBuyerRentalArrivalPhotoOperationRequest {
+    id: string;
+    createBuyerRentalArrivalPhotoRequest: CreateBuyerRentalArrivalPhotoRequest;
 }
 
 export interface CreateBuyerRentalBuyoutRequest {
@@ -947,16 +1089,18 @@ export interface CreateBuyerRentalCancelRequest {
     id: string;
 }
 
-export interface CreateBuyerRentalClaimResponseRequest {
+export interface CreateBuyerRentalClaimResponseOperationRequest {
     id: string;
+    createBuyerRentalClaimResponseRequest: CreateBuyerRentalClaimResponseRequest;
 }
 
 export interface CreateBuyerRentalDeliveredRequest {
     id: string;
 }
 
-export interface CreateBuyerRentalExtensionRequest {
+export interface CreateBuyerRentalExtensionOperationRequest {
     id: string;
+    createBuyerRentalExtensionRequest: CreateBuyerRentalExtensionRequest;
 }
 
 export interface CreateBuyerRentalExtensionPayRequest {
@@ -964,8 +1108,9 @@ export interface CreateBuyerRentalExtensionPayRequest {
     extensionId: string;
 }
 
-export interface CreateBuyerRentalReturnShippedRequest {
+export interface CreateBuyerRentalReturnShippedOperationRequest {
     id: string;
+    createBuyerRentalReturnShippedRequest?: CreateBuyerRentalReturnShippedRequest;
 }
 
 export interface CreateBuyerReturnCancelRequest {
@@ -1023,16 +1168,18 @@ export interface CreateBuyerTotalRequestOperationRequest {
     createBuyerTotalRequestRequest: CreateBuyerTotalRequestRequest;
 }
 
-export interface CreateBuyerVaultListRequest {
+export interface CreateBuyerVaultListOperationRequest {
     id: string;
+    createBuyerVaultListRequest: CreateBuyerVaultListRequest;
 }
 
 export interface CreateBuyerVaultUnlistRequest {
     id: string;
 }
 
-export interface CreateBuyerVaultWithdrawRequest {
+export interface CreateBuyerVaultWithdrawOperationRequest {
     id: string;
+    createBuyerVaultWithdrawRequest?: CreateBuyerVaultWithdrawRequest;
 }
 
 export interface CreateBuyerWholesaleCatalogApplyRequest {
@@ -1236,6 +1383,10 @@ export interface GetBuyerEventRequest {
     slug: string;
 }
 
+export interface GetBuyerGroupBuyShareLinkRequest {
+    id: string;
+}
+
 export interface GetBuyerLayawayRequest {
     id: string;
 }
@@ -1284,6 +1435,15 @@ export interface GetBuyerLiveStreamAuctionRequest {
     id: string;
 }
 
+export interface GetBuyerLoyaltyRewardRequest {
+    clubId: string;
+}
+
+export interface GetBuyerMarketPurchaseOptionRequest {
+    variantId: string;
+    condition?: GetBuyerMarketPurchaseOptionConditionEnum;
+}
+
 export interface GetBuyerOrderEligibilityRequest {
     id: string;
 }
@@ -1307,6 +1467,7 @@ export interface GetBuyerPartyRequest {
 
 export interface GetBuyerPassportRequest {
     code: string;
+    uid?: string;
 }
 
 export interface GetBuyerPurchaseDeliveryRequest {
@@ -1456,6 +1617,11 @@ export interface ListBuyerCreationReviewableRequest {
     purchaseRef?: string;
 }
 
+export interface ListBuyerHotspotsRequest {
+    targetType: ListBuyerHotspotsTargetTypeEnum;
+    targetId: string;
+}
+
 export interface ListBuyerListingQuickQuestionsRequest {
     slug: string;
 }
@@ -1466,6 +1632,10 @@ export interface ListBuyerListingSellerReviewsRequest {
 
 export interface ListBuyerLiveStreamLineupRequest {
     id: string;
+}
+
+export interface ListBuyerLoyaltyPointsRequest {
+    clubId: string;
 }
 
 export interface ListBuyerOffersRequest {
@@ -1485,8 +1655,20 @@ export interface ListBuyerRegistryGiftsRequest {
     id: string;
 }
 
+export interface ListBuyerRegistrySearchRequest {
+    q?: string;
+}
+
 export interface ListBuyerStoreListingsRequest {
     slug: string;
+    tag?: string;
+    category?: string;
+    sub?: string;
+    q?: string;
+    sort?: ListBuyerStoreListingsSortEnum;
+    f?: string;
+    limit?: number;
+    offset?: number;
 }
 
 export interface ListBuyerWishlistItemsRequest {
@@ -1497,12 +1679,18 @@ export interface ListBuyerWishlistMembersRequest {
     id: string;
 }
 
-export interface UpdateBuyerBoardRequest {
+export interface UpdateBuyerBoardOperationRequest {
     id: string;
+    updateBuyerBoardRequest: UpdateBuyerBoardRequest;
 }
 
-export interface UpdateBuyerBoardLayoutRequest {
+export interface UpdateBuyerBoardLayoutOperationRequest {
     id: string;
+    updateBuyerBoardLayoutRequest: UpdateBuyerBoardLayoutRequest;
+}
+
+export interface UpdateBuyerCollectionSetLeaderboardOperationRequest {
+    updateBuyerCollectionSetLeaderboardRequest: UpdateBuyerCollectionSetLeaderboardRequest;
 }
 
 export interface UpdateBuyerCompanyMemberRequest {
@@ -1520,6 +1708,22 @@ export interface UpdateBuyerFeedbackOperationRequest {
     updateBuyerFeedbackRequest: UpdateBuyerFeedbackRequest;
 }
 
+export interface UpdateBuyerHomeOperationRequest {
+    updateBuyerHomeRequest?: UpdateBuyerHomeRequest;
+}
+
+export interface UpdateBuyerHomeBuilderOperationRequest {
+    updateBuyerHomeBuilderRequest?: UpdateBuyerHomeBuilderRequest;
+}
+
+export interface UpdateBuyerHomeLayoutOperationRequest {
+    updateBuyerHomeLayoutRequest?: UpdateBuyerHomeLayoutRequest;
+}
+
+export interface UpdateBuyerHomePetActiveOperationRequest {
+    updateBuyerHomePetActiveRequest?: UpdateBuyerHomePetActiveRequest;
+}
+
 export interface UpdateBuyerHuntRequest {
     id: string;
 }
@@ -1534,11 +1738,13 @@ export interface UpdateBuyerPurchaseStoryRequest {
 
 export interface UpdateBuyerRegistryRequest {
     id: string;
+    createBuyerRegistryRequest?: CreateBuyerRegistryRequest;
 }
 
-export interface UpdateBuyerRegistryItemRequest {
+export interface UpdateBuyerRegistryItemOperationRequest {
     id: string;
     platformListingId: string;
+    updateBuyerRegistryItemRequest: UpdateBuyerRegistryItemRequest;
 }
 
 export interface UpdateBuyerSubscriptionRequest {
@@ -1739,10 +1945,16 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Create an outfit board.
      */
-    async createBuyerBoardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerBoardResponse>> {
+    async createBuyerBoardRaw(requestParameters: CreateBuyerBoardOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerBoardResponse>> {
+        if (requestParameters.createBuyerBoardRequest === null || requestParameters.createBuyerBoardRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerBoardRequest','Required parameter requestParameters.createBuyerBoardRequest was null or undefined when calling createBuyerBoard.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1757,6 +1969,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerBoardRequestToJSON(requestParameters.createBuyerBoardRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerBoardResponseFromJSON(jsonValue));
@@ -1765,22 +1978,28 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Create an outfit board.
      */
-    async createBuyerBoard(initOverrides?: RequestInit): Promise<CreateBuyerBoardResponse> {
-        const response = await this.createBuyerBoardRaw(initOverrides);
+    async createBuyerBoard(requestParameters: CreateBuyerBoardOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerBoardResponse> {
+        const response = await this.createBuyerBoardRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Add a listing (by slug) to a board, at the next free spot.
      */
-    async createBuyerBoardItemRaw(requestParameters: CreateBuyerBoardItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
+    async createBuyerBoardItemRaw(requestParameters: CreateBuyerBoardItemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerBoardItem.');
+        }
+
+        if (requestParameters.createBuyerBoardItemRequest === null || requestParameters.createBuyerBoardItemRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerBoardItemRequest','Required parameter requestParameters.createBuyerBoardItemRequest was null or undefined when calling createBuyerBoardItem.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1795,6 +2014,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerBoardItemRequestToJSON(requestParameters.createBuyerBoardItemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponseFromJSON(jsonValue));
@@ -1803,7 +2023,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Add a listing (by slug) to a board, at the next free spot.
      */
-    async createBuyerBoardItem(requestParameters: CreateBuyerBoardItemRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
+    async createBuyerBoardItem(requestParameters: CreateBuyerBoardItemOperationRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
         const response = await this.createBuyerBoardItemRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1972,10 +2192,16 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Cart optimizer: send a shopping list (one item per line, \"2 Charizard Base Set\") and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart.
      */
-    async createBuyerCartOptimizerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCartOptimizerResponse>> {
+    async createBuyerCartOptimizerRaw(requestParameters: CreateBuyerCartOptimizerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCartOptimizerResponse>> {
+        if (requestParameters.createBuyerCartOptimizerRequest === null || requestParameters.createBuyerCartOptimizerRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerCartOptimizerRequest','Required parameter requestParameters.createBuyerCartOptimizerRequest was null or undefined when calling createBuyerCartOptimizer.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1990,6 +2216,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerCartOptimizerRequestToJSON(requestParameters.createBuyerCartOptimizerRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerCartOptimizerResponseFromJSON(jsonValue));
@@ -1998,8 +2225,8 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Cart optimizer: send a shopping list (one item per line, \"2 Charizard Base Set\") and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart.
      */
-    async createBuyerCartOptimizer(initOverrides?: RequestInit): Promise<CreateBuyerCartOptimizerResponse> {
-        const response = await this.createBuyerCartOptimizerRaw(initOverrides);
+    async createBuyerCartOptimizer(requestParameters: CreateBuyerCartOptimizerOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerCartOptimizerResponse> {
+        const response = await this.createBuyerCartOptimizerRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2007,10 +2234,12 @@ export class BuyerApi extends runtime.BaseAPI {
      * Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. `taxComplete: false` means there is no saved delivery address, so the total is a floor rather than a final figure. `shippingOptions` lists each seller’s shipping services; send `shippingServiceBySeller` to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: `{ \"shippingServiceBySeller\": { \"<sellerUserId>\": \"<serviceId>\" } }` — omitted sellers get the cheapest service; `registryToken` prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
      * Price the cart, delivered — item, shipping, tax, total.
      */
-    async createBuyerCartQuoteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCartQuoteResponse>> {
+    async createBuyerCartQuoteRaw(requestParameters: CreateBuyerCartQuoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCartQuoteResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2025,6 +2254,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerCartQuoteRequestToJSON(requestParameters.createBuyerCartQuoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerCartQuoteResponseFromJSON(jsonValue));
@@ -2034,8 +2264,8 @@ export class BuyerApi extends runtime.BaseAPI {
      * Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. `taxComplete: false` means there is no saved delivery address, so the total is a floor rather than a final figure. `shippingOptions` lists each seller’s shipping services; send `shippingServiceBySeller` to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: `{ \"shippingServiceBySeller\": { \"<sellerUserId>\": \"<serviceId>\" } }` — omitted sellers get the cheapest service; `registryToken` prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
      * Price the cart, delivered — item, shipping, tax, total.
      */
-    async createBuyerCartQuote(initOverrides?: RequestInit): Promise<CreateBuyerCartQuoteResponse> {
-        const response = await this.createBuyerCartQuoteRaw(initOverrides);
+    async createBuyerCartQuote(requestParameters: CreateBuyerCartQuoteOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateBuyerCartQuoteResponse> {
+        const response = await this.createBuyerCartQuoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -2301,14 +2531,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
      */
-    async createBuyerCatalogListingRentalRaw(requestParameters: CreateBuyerCatalogListingRentalRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCatalogListingRentalResponse>> {
+    async createBuyerCatalogListingRentalRaw(requestParameters: CreateBuyerCatalogListingRentalOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCatalogListingRentalResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createBuyerCatalogListingRental.');
+        }
+
+        if (requestParameters.createBuyerCatalogListingRentalRequest === null || requestParameters.createBuyerCatalogListingRentalRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerCatalogListingRentalRequest','Required parameter requestParameters.createBuyerCatalogListingRentalRequest was null or undefined when calling createBuyerCatalogListingRental.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2323,6 +2559,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerCatalogListingRentalRequestToJSON(requestParameters.createBuyerCatalogListingRentalRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerCatalogListingRentalResponseFromJSON(jsonValue));
@@ -2331,7 +2568,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
      */
-    async createBuyerCatalogListingRental(requestParameters: CreateBuyerCatalogListingRentalRequest, initOverrides?: RequestInit): Promise<CreateBuyerCatalogListingRentalResponse> {
+    async createBuyerCatalogListingRental(requestParameters: CreateBuyerCatalogListingRentalOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerCatalogListingRentalResponse> {
         const response = await this.createBuyerCatalogListingRentalRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2344,9 +2581,15 @@ export class BuyerApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createBuyerCatalogListingRentalQuote.');
         }
 
+        if (requestParameters.createBuyerCatalogListingRentalRequest === null || requestParameters.createBuyerCatalogListingRentalRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerCatalogListingRentalRequest','Required parameter requestParameters.createBuyerCatalogListingRentalRequest was null or undefined when calling createBuyerCatalogListingRentalQuote.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2361,6 +2604,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerCatalogListingRentalRequestToJSON(requestParameters.createBuyerCatalogListingRentalRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerCatalogListingRentalQuoteResponseFromJSON(jsonValue));
@@ -2377,7 +2621,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
      */
-    async createBuyerCatalogListingVideoRequestRaw(requestParameters: CreateBuyerCatalogListingVideoRequestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse>> {
+    async createBuyerCatalogListingVideoRequestRaw(requestParameters: CreateBuyerCatalogListingVideoRequestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createBuyerCatalogListingVideoRequest.');
         }
@@ -2385,6 +2629,8 @@ export class BuyerApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2399,6 +2645,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerCatalogListingVideoRequestRequestToJSON(requestParameters.createBuyerCatalogListingVideoRequestRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerCatalogListingVideoRequestResponseFromJSON(jsonValue));
@@ -2407,7 +2654,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
      */
-    async createBuyerCatalogListingVideoRequest(requestParameters: CreateBuyerCatalogListingVideoRequestRequest, initOverrides?: RequestInit): Promise<CreateBuyerCatalogListingVideoRequestResponse> {
+    async createBuyerCatalogListingVideoRequest(requestParameters: CreateBuyerCatalogListingVideoRequestOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerCatalogListingVideoRequestResponse> {
         const response = await this.createBuyerCatalogListingVideoRequestRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2631,7 +2878,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * RSVP to an event: going (counts against its capacity) or interested.
      */
-    async createBuyerEventRsvpRaw(requestParameters: CreateBuyerEventRsvpRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerEventRsvpResponse>> {
+    async createBuyerEventRsvpRaw(requestParameters: CreateBuyerEventRsvpOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerEventRsvpResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createBuyerEventRsvp.');
         }
@@ -2639,6 +2886,8 @@ export class BuyerApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2653,6 +2902,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerEventRsvpRequestToJSON(requestParameters.createBuyerEventRsvpRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerEventRsvpResponseFromJSON(jsonValue));
@@ -2661,7 +2911,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * RSVP to an event: going (counts against its capacity) or interested.
      */
-    async createBuyerEventRsvp(requestParameters: CreateBuyerEventRsvpRequest, initOverrides?: RequestInit): Promise<CreateBuyerEventRsvpResponse> {
+    async createBuyerEventRsvp(requestParameters: CreateBuyerEventRsvpOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerEventRsvpResponse> {
         const response = await this.createBuyerEventRsvpRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3059,7 +3309,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Pay some (at least $1) or all of what is left now, on the saved card. Paid in full, it ships.
      */
-    async createBuyerLayawayPayRaw(requestParameters: CreateBuyerLayawayPayRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerLayawayResponse>> {
+    async createBuyerLayawayPayRaw(requestParameters: CreateBuyerLayawayPayOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerLayawayResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerLayawayPay.');
         }
@@ -3067,6 +3317,8 @@ export class BuyerApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3081,6 +3333,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerLayawayPayRequestToJSON(requestParameters.createBuyerLayawayPayRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerLayawayResponseFromJSON(jsonValue));
@@ -3089,7 +3342,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Pay some (at least $1) or all of what is left now, on the saved card. Paid in full, it ships.
      */
-    async createBuyerLayawayPay(requestParameters: CreateBuyerLayawayPayRequest, initOverrides?: RequestInit): Promise<BuyerLayawayResponse> {
+    async createBuyerLayawayPay(requestParameters: CreateBuyerLayawayPayOperationRequest, initOverrides?: RequestInit): Promise<BuyerLayawayResponse> {
         const response = await this.createBuyerLayawayPayRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3211,9 +3464,58 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Render an AI try-on of this listing on the buyer’s own photo (base64 `photo`, or `reuseLastPhoto`). `confirmSelfAdult` must be true: the photo is of the buyer and they are 18+. Wearables only; capped per day; 503 naming TRYON_API_KEY when no image model is configured.
      */
-    async createBuyerListingTryOnRaw(requestParameters: CreateBuyerListingTryOnRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerListingTryOnResponse>> {
+    async createBuyerListingTryOnRaw(requestParameters: CreateBuyerListingTryOnOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerListingTryOnResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createBuyerListingTryOn.');
+        }
+
+        if (requestParameters.createBuyerListingTryOnRequest === null || requestParameters.createBuyerListingTryOnRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerListingTryOnRequest','Required parameter requestParameters.createBuyerListingTryOnRequest was null or undefined when calling createBuyerListingTryOn.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/listings/{slug}/try-on`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateBuyerListingTryOnRequestToJSON(requestParameters.createBuyerListingTryOnRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerListingTryOnResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Render an AI try-on of this listing on the buyer’s own photo (base64 `photo`, or `reuseLastPhoto`). `confirmSelfAdult` must be true: the photo is of the buyer and they are 18+. Wearables only; capped per day; 503 naming TRYON_API_KEY when no image model is configured.
+     */
+    async createBuyerListingTryOn(requestParameters: CreateBuyerListingTryOnOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerListingTryOnResponse> {
+        const response = await this.createBuyerListingTryOnRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
+     */
+    async createBuyerLoyaltyRewardRedeemRaw(requestParameters: CreateBuyerLoyaltyRewardRedeemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerLoyaltyRewardRedeemResponse>> {
+        if (requestParameters.clubId === null || requestParameters.clubId === undefined) {
+            throw new runtime.RequiredError('clubId','Required parameter requestParameters.clubId was null or undefined when calling createBuyerLoyaltyRewardRedeem.');
+        }
+
+        if (requestParameters.rewardId === null || requestParameters.rewardId === undefined) {
+            throw new runtime.RequiredError('rewardId','Required parameter requestParameters.rewardId was null or undefined when calling createBuyerLoyaltyRewardRedeem.');
         }
 
         const queryParameters: any = {};
@@ -3229,20 +3531,20 @@ export class BuyerApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/v1/buyer/listings/{slug}/try-on`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            path: `/v1/buyer/loyalty/{clubId}/rewards/{rewardId}/redeem`.replace(`{${"clubId"}}`, encodeURIComponent(String(requestParameters.clubId))).replace(`{${"rewardId"}}`, encodeURIComponent(String(requestParameters.rewardId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerListingTryOnResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerLoyaltyRewardRedeemResponseFromJSON(jsonValue));
     }
 
     /**
-     * Render an AI try-on of this listing on the buyer’s own photo (base64 `photo`, or `reuseLastPhoto`). `confirmSelfAdult` must be true: the photo is of the buyer and they are 18+. Wearables only; capped per day; 503 naming TRYON_API_KEY when no image model is configured.
+     * Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
      */
-    async createBuyerListingTryOn(requestParameters: CreateBuyerListingTryOnRequest, initOverrides?: RequestInit): Promise<CreateBuyerListingTryOnResponse> {
-        const response = await this.createBuyerListingTryOnRaw(requestParameters, initOverrides);
+    async createBuyerLoyaltyRewardRedeem(requestParameters: CreateBuyerLoyaltyRewardRedeemRequest, initOverrides?: RequestInit): Promise<CreateBuyerLoyaltyRewardRedeemResponse> {
+        const response = await this.createBuyerLoyaltyRewardRedeemRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -3572,10 +3874,12 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
      */
-    async createBuyerPackFairnessRotateRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerPackFairnessResponse>> {
+    async createBuyerPackFairnessRotateRaw(requestParameters: CreateBuyerPackFairnessRotateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerPackFairnessResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3590,6 +3894,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerPackFairnessRotateRequestToJSON(requestParameters.createBuyerPackFairnessRotateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerPackFairnessResponseFromJSON(jsonValue));
@@ -3598,22 +3903,28 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
      */
-    async createBuyerPackFairnessRotate(initOverrides?: RequestInit): Promise<GetBuyerPackFairnessResponse> {
-        const response = await this.createBuyerPackFairnessRotateRaw(initOverrides);
+    async createBuyerPackFairnessRotate(requestParameters: CreateBuyerPackFairnessRotateOperationRequest = {}, initOverrides?: RequestInit): Promise<GetBuyerPackFairnessResponse> {
+        const response = await this.createBuyerPackFairnessRotateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
      */
-    async createBuyerPackOpenRaw(requestParameters: CreateBuyerPackOpenRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerPackOpenResponse>> {
+    async createBuyerPackOpenRaw(requestParameters: CreateBuyerPackOpenOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerPackOpenResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling createBuyerPackOpen.');
+        }
+
+        if (requestParameters.createBuyerPackOpenRequest === null || requestParameters.createBuyerPackOpenRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerPackOpenRequest','Required parameter requestParameters.createBuyerPackOpenRequest was null or undefined when calling createBuyerPackOpen.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3628,6 +3939,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerPackOpenRequestToJSON(requestParameters.createBuyerPackOpenRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerPackOpenResponseFromJSON(jsonValue));
@@ -3636,7 +3948,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
      */
-    async createBuyerPackOpen(requestParameters: CreateBuyerPackOpenRequest, initOverrides?: RequestInit): Promise<CreateBuyerPackOpenResponse> {
+    async createBuyerPackOpen(requestParameters: CreateBuyerPackOpenOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerPackOpenResponse> {
         const response = await this.createBuyerPackOpenRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3682,7 +3994,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
      */
-    async createBuyerPassportClaimRaw(requestParameters: CreateBuyerPassportClaimRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerPassportResponse>> {
+    async createBuyerPassportClaimRaw(requestParameters: CreateBuyerPassportClaimOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerPassportResponse>> {
         if (requestParameters.code === null || requestParameters.code === undefined) {
             throw new runtime.RequiredError('code','Required parameter requestParameters.code was null or undefined when calling createBuyerPassportClaim.');
         }
@@ -3690,6 +4002,8 @@ export class BuyerApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3704,6 +4018,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerPassportClaimRequestToJSON(requestParameters.createBuyerPassportClaimRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerPassportResponseFromJSON(jsonValue));
@@ -3712,7 +4027,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
      */
-    async createBuyerPassportClaim(requestParameters: CreateBuyerPassportClaimRequest, initOverrides?: RequestInit): Promise<GetBuyerPassportResponse> {
+    async createBuyerPassportClaim(requestParameters: CreateBuyerPassportClaimOperationRequest, initOverrides?: RequestInit): Promise<GetBuyerPassportResponse> {
         const response = await this.createBuyerPassportClaimRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3758,14 +4073,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
      */
-    async createBuyerPurchaseFitRaw(requestParameters: CreateBuyerPurchaseFitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
+    async createBuyerPurchaseFitRaw(requestParameters: CreateBuyerPurchaseFitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerPurchaseFit.');
+        }
+
+        if (requestParameters.createBuyerPurchaseFitRequest === null || requestParameters.createBuyerPurchaseFitRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerPurchaseFitRequest','Required parameter requestParameters.createBuyerPurchaseFitRequest was null or undefined when calling createBuyerPurchaseFit.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3780,6 +4101,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerPurchaseFitRequestToJSON(requestParameters.createBuyerPurchaseFitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponseFromJSON(jsonValue));
@@ -3788,7 +4110,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
      */
-    async createBuyerPurchaseFit(requestParameters: CreateBuyerPurchaseFitRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
+    async createBuyerPurchaseFit(requestParameters: CreateBuyerPurchaseFitOperationRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
         const response = await this.createBuyerPurchaseFitRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3834,10 +4156,12 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
      */
-    async createBuyerRegistryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRegistryResponse>> {
+    async createBuyerRegistryRaw(requestParameters: CreateBuyerRegistryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRegistryResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3852,6 +4176,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerRegistryRequestToJSON(requestParameters.createBuyerRegistryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerRegistryResponseFromJSON(jsonValue));
@@ -3860,15 +4185,15 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
      */
-    async createBuyerRegistry(initOverrides?: RequestInit): Promise<CreateBuyerRegistryResponse> {
-        const response = await this.createBuyerRegistryRaw(initOverrides);
+    async createBuyerRegistry(requestParameters: CreateBuyerRegistryOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateBuyerRegistryResponse> {
+        const response = await this.createBuyerRegistryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Tick a gift as thanked (or untick it).
      */
-    async createBuyerRegistryGiftThankedRaw(requestParameters: CreateBuyerRegistryGiftThankedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRegistryGiftThankedResponse>> {
+    async createBuyerRegistryGiftThankedRaw(requestParameters: CreateBuyerRegistryGiftThankedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRegistryGiftThankedResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRegistryGiftThanked.');
         }
@@ -3877,9 +4202,15 @@ export class BuyerApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('giftId','Required parameter requestParameters.giftId was null or undefined when calling createBuyerRegistryGiftThanked.');
         }
 
+        if (requestParameters.createBuyerRegistryGiftThankedRequest === null || requestParameters.createBuyerRegistryGiftThankedRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerRegistryGiftThankedRequest','Required parameter requestParameters.createBuyerRegistryGiftThankedRequest was null or undefined when calling createBuyerRegistryGiftThanked.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3894,6 +4225,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerRegistryGiftThankedRequestToJSON(requestParameters.createBuyerRegistryGiftThankedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerRegistryGiftThankedResponseFromJSON(jsonValue));
@@ -3902,7 +4234,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Tick a gift as thanked (or untick it).
      */
-    async createBuyerRegistryGiftThanked(requestParameters: CreateBuyerRegistryGiftThankedRequest, initOverrides?: RequestInit): Promise<CreateBuyerRegistryGiftThankedResponse> {
+    async createBuyerRegistryGiftThanked(requestParameters: CreateBuyerRegistryGiftThankedOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerRegistryGiftThankedResponse> {
         const response = await this.createBuyerRegistryGiftThankedRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -3910,14 +4242,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
      */
-    async createBuyerRentalArrivalPhotoRaw(requestParameters: CreateBuyerRentalArrivalPhotoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerRentalResponse>> {
+    async createBuyerRentalArrivalPhotoRaw(requestParameters: CreateBuyerRentalArrivalPhotoOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerRentalResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalArrivalPhoto.');
+        }
+
+        if (requestParameters.createBuyerRentalArrivalPhotoRequest === null || requestParameters.createBuyerRentalArrivalPhotoRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerRentalArrivalPhotoRequest','Required parameter requestParameters.createBuyerRentalArrivalPhotoRequest was null or undefined when calling createBuyerRentalArrivalPhoto.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -3932,6 +4270,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerRentalArrivalPhotoRequestToJSON(requestParameters.createBuyerRentalArrivalPhotoRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerRentalResponseFromJSON(jsonValue));
@@ -3940,7 +4279,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
      */
-    async createBuyerRentalArrivalPhoto(requestParameters: CreateBuyerRentalArrivalPhotoRequest, initOverrides?: RequestInit): Promise<BuyerRentalResponse> {
+    async createBuyerRentalArrivalPhoto(requestParameters: CreateBuyerRentalArrivalPhotoOperationRequest, initOverrides?: RequestInit): Promise<BuyerRentalResponse> {
         const response = await this.createBuyerRentalArrivalPhotoRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4024,14 +4363,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
      */
-    async createBuyerRentalClaimResponseRaw(requestParameters: CreateBuyerRentalClaimResponseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
+    async createBuyerRentalClaimResponseRaw(requestParameters: CreateBuyerRentalClaimResponseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalClaimResponse.');
+        }
+
+        if (requestParameters.createBuyerRentalClaimResponseRequest === null || requestParameters.createBuyerRentalClaimResponseRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerRentalClaimResponseRequest','Required parameter requestParameters.createBuyerRentalClaimResponseRequest was null or undefined when calling createBuyerRentalClaimResponse.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4046,6 +4391,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerRentalClaimResponseRequestToJSON(requestParameters.createBuyerRentalClaimResponseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponseFromJSON(jsonValue));
@@ -4054,7 +4400,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
      */
-    async createBuyerRentalClaimResponse(requestParameters: CreateBuyerRentalClaimResponseRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
+    async createBuyerRentalClaimResponse(requestParameters: CreateBuyerRentalClaimResponseOperationRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
         const response = await this.createBuyerRentalClaimResponseRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4100,14 +4446,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
      */
-    async createBuyerRentalExtensionRaw(requestParameters: CreateBuyerRentalExtensionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRentalExtensionResponse>> {
+    async createBuyerRentalExtensionRaw(requestParameters: CreateBuyerRentalExtensionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerRentalExtensionResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalExtension.');
+        }
+
+        if (requestParameters.createBuyerRentalExtensionRequest === null || requestParameters.createBuyerRentalExtensionRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerRentalExtensionRequest','Required parameter requestParameters.createBuyerRentalExtensionRequest was null or undefined when calling createBuyerRentalExtension.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4122,6 +4474,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerRentalExtensionRequestToJSON(requestParameters.createBuyerRentalExtensionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerRentalExtensionResponseFromJSON(jsonValue));
@@ -4130,7 +4483,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
      */
-    async createBuyerRentalExtension(requestParameters: CreateBuyerRentalExtensionRequest, initOverrides?: RequestInit): Promise<CreateBuyerRentalExtensionResponse> {
+    async createBuyerRentalExtension(requestParameters: CreateBuyerRentalExtensionOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerRentalExtensionResponse> {
         const response = await this.createBuyerRentalExtensionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4214,7 +4567,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Say you sent your rental back (optionally with photos).
      */
-    async createBuyerRentalReturnShippedRaw(requestParameters: CreateBuyerRentalReturnShippedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerRentalResponse>> {
+    async createBuyerRentalReturnShippedRaw(requestParameters: CreateBuyerRentalReturnShippedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerRentalResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerRentalReturnShipped.');
         }
@@ -4222,6 +4575,8 @@ export class BuyerApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4236,6 +4591,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerRentalReturnShippedRequestToJSON(requestParameters.createBuyerRentalReturnShippedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerRentalResponseFromJSON(jsonValue));
@@ -4244,7 +4600,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Say you sent your rental back (optionally with photos).
      */
-    async createBuyerRentalReturnShipped(requestParameters: CreateBuyerRentalReturnShippedRequest, initOverrides?: RequestInit): Promise<BuyerRentalResponse> {
+    async createBuyerRentalReturnShipped(requestParameters: CreateBuyerRentalReturnShippedOperationRequest, initOverrides?: RequestInit): Promise<BuyerRentalResponse> {
         const response = await this.createBuyerRentalReturnShippedRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4807,14 +5163,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
      */
-    async createBuyerVaultListRaw(requestParameters: CreateBuyerVaultListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerVaultListResponse>> {
+    async createBuyerVaultListRaw(requestParameters: CreateBuyerVaultListOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerVaultListResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerVaultList.');
+        }
+
+        if (requestParameters.createBuyerVaultListRequest === null || requestParameters.createBuyerVaultListRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerVaultListRequest','Required parameter requestParameters.createBuyerVaultListRequest was null or undefined when calling createBuyerVaultList.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4829,6 +5191,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerVaultListRequestToJSON(requestParameters.createBuyerVaultListRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerVaultListResponseFromJSON(jsonValue));
@@ -4837,7 +5200,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
      */
-    async createBuyerVaultList(requestParameters: CreateBuyerVaultListRequest, initOverrides?: RequestInit): Promise<CreateBuyerVaultListResponse> {
+    async createBuyerVaultList(requestParameters: CreateBuyerVaultListOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerVaultListResponse> {
         const response = await this.createBuyerVaultListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -4883,7 +5246,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
      */
-    async createBuyerVaultWithdrawRaw(requestParameters: CreateBuyerVaultWithdrawRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerVaultWithdrawResponse>> {
+    async createBuyerVaultWithdrawRaw(requestParameters: CreateBuyerVaultWithdrawOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerVaultWithdrawResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerVaultWithdraw.');
         }
@@ -4891,6 +5254,8 @@ export class BuyerApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -4905,6 +5270,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerVaultWithdrawRequestToJSON(requestParameters.createBuyerVaultWithdrawRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerVaultWithdrawResponseFromJSON(jsonValue));
@@ -4913,7 +5279,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
      */
-    async createBuyerVaultWithdraw(requestParameters: CreateBuyerVaultWithdrawRequest, initOverrides?: RequestInit): Promise<CreateBuyerVaultWithdrawResponse> {
+    async createBuyerVaultWithdraw(requestParameters: CreateBuyerVaultWithdrawOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerVaultWithdrawResponse> {
         const response = await this.createBuyerVaultWithdrawRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -6734,7 +7100,7 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+     * Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and `policy`: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
      */
     async getBuyerCatalogListingRentalRaw(requestParameters: GetBuyerCatalogListingRentalRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerCatalogListingRentalResponse>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
@@ -6764,7 +7130,7 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+     * Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and `policy`: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
      */
     async getBuyerCatalogListingRental(requestParameters: GetBuyerCatalogListingRentalRequest, initOverrides?: RequestInit): Promise<GetBuyerCatalogListingRentalResponse> {
         const response = await this.getBuyerCatalogListingRentalRaw(requestParameters, initOverrides);
@@ -7110,6 +7476,44 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
+     */
+    async getBuyerGroupBuyShareLinkRaw(requestParameters: GetBuyerGroupBuyShareLinkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerGroupBuyShareLinkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getBuyerGroupBuyShareLink.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/group-buys/{id}/share-link`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerGroupBuyShareLinkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
+     */
+    async getBuyerGroupBuyShareLink(requestParameters: GetBuyerGroupBuyShareLinkRequest, initOverrides?: RequestInit): Promise<GetBuyerGroupBuyShareLinkResponse> {
+        const response = await this.getBuyerGroupBuyShareLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your home in Crossly World (made on first read).
      */
     async getBuyerHomeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerHomeResponse>> {
@@ -7140,6 +7544,40 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async getBuyerHome(initOverrides?: RequestInit): Promise<BuyerHomeResponse> {
         const response = await this.getBuyerHomeRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
+     */
+    async getBuyerHomePetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerHomePetResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home/pets`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerHomePetResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
+     */
+    async getBuyerHomePet(initOverrides?: RequestInit): Promise<GetBuyerHomePetResponse> {
+        const response = await this.getBuyerHomePetRaw(initOverrides);
         return await response.value();
     }
 
@@ -7668,10 +8106,60 @@ export class BuyerApi extends runtime.BaseAPI {
     }
 
     /**
+     * A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
+     */
+    async getBuyerLoyaltyRewardRaw(requestParameters: GetBuyerLoyaltyRewardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerLoyaltyRewardResponse>> {
+        if (requestParameters.clubId === null || requestParameters.clubId === undefined) {
+            throw new runtime.RequiredError('clubId','Required parameter requestParameters.clubId was null or undefined when calling getBuyerLoyaltyReward.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/loyalty/{clubId}/rewards`.replace(`{${"clubId"}}`, encodeURIComponent(String(requestParameters.clubId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerLoyaltyRewardResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
+     */
+    async getBuyerLoyaltyReward(requestParameters: GetBuyerLoyaltyRewardRequest, initOverrides?: RequestInit): Promise<GetBuyerLoyaltyRewardResponse> {
+        const response = await this.getBuyerLoyaltyRewardRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
      */
-    async getBuyerMarketPurchaseOptionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerMarketPurchaseOptionResponse>> {
+    async getBuyerMarketPurchaseOptionRaw(requestParameters: GetBuyerMarketPurchaseOptionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerMarketPurchaseOptionResponse>> {
+        if (requestParameters.variantId === null || requestParameters.variantId === undefined) {
+            throw new runtime.RequiredError('variantId','Required parameter requestParameters.variantId was null or undefined when calling getBuyerMarketPurchaseOption.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.variantId !== undefined) {
+            queryParameters['variantId'] = requestParameters.variantId;
+        }
+
+        if (requestParameters.condition !== undefined) {
+            queryParameters['condition'] = requestParameters.condition;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -7696,8 +8184,8 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
      */
-    async getBuyerMarketPurchaseOption(initOverrides?: RequestInit): Promise<GetBuyerMarketPurchaseOptionResponse> {
-        const response = await this.getBuyerMarketPurchaseOptionRaw(initOverrides);
+    async getBuyerMarketPurchaseOption(requestParameters: GetBuyerMarketPurchaseOptionRequest, initOverrides?: RequestInit): Promise<GetBuyerMarketPurchaseOptionResponse> {
+        const response = await this.getBuyerMarketPurchaseOptionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -7942,6 +8430,10 @@ export class BuyerApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.uid !== undefined) {
+            queryParameters['uid'] = requestParameters.uid;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -10490,8 +10982,24 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
      */
-    async listBuyerHotspotsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerHotspotsResponse>> {
+    async listBuyerHotspotsRaw(requestParameters: ListBuyerHotspotsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerHotspotsResponse>> {
+        if (requestParameters.targetType === null || requestParameters.targetType === undefined) {
+            throw new runtime.RequiredError('targetType','Required parameter requestParameters.targetType was null or undefined when calling listBuyerHotspots.');
+        }
+
+        if (requestParameters.targetId === null || requestParameters.targetId === undefined) {
+            throw new runtime.RequiredError('targetId','Required parameter requestParameters.targetId was null or undefined when calling listBuyerHotspots.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.targetType !== undefined) {
+            queryParameters['targetType'] = requestParameters.targetType;
+        }
+
+        if (requestParameters.targetId !== undefined) {
+            queryParameters['targetId'] = requestParameters.targetId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -10516,8 +11024,8 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
      */
-    async listBuyerHotspots(initOverrides?: RequestInit): Promise<ListBuyerHotspotsResponse> {
-        const response = await this.listBuyerHotspotsRaw(initOverrides);
+    async listBuyerHotspots(requestParameters: ListBuyerHotspotsRequest, initOverrides?: RequestInit): Promise<ListBuyerHotspotsResponse> {
+        const response = await this.listBuyerHotspotsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -10802,6 +11310,44 @@ export class BuyerApi extends runtime.BaseAPI {
      */
     async listBuyerLoyalty(initOverrides?: RequestInit): Promise<ListBuyerLoyaltyResponse> {
         const response = await this.listBuyerLoyaltyRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
+     */
+    async listBuyerLoyaltyPointsRaw(requestParameters: ListBuyerLoyaltyPointsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerLoyaltyPointsResponse>> {
+        if (requestParameters.clubId === null || requestParameters.clubId === undefined) {
+            throw new runtime.RequiredError('clubId','Required parameter requestParameters.clubId was null or undefined when calling listBuyerLoyaltyPoints.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/loyalty/{clubId}/points`.replace(`{${"clubId"}}`, encodeURIComponent(String(requestParameters.clubId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerLoyaltyPointsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
+     */
+    async listBuyerLoyaltyPoints(requestParameters: ListBuyerLoyaltyPointsRequest, initOverrides?: RequestInit): Promise<ListBuyerLoyaltyPointsResponse> {
+        const response = await this.listBuyerLoyaltyPointsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -11274,8 +11820,12 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Find a registry by its name or the registrant’s name. Current and recent registries only.
      */
-    async listBuyerRegistrySearchRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerRegistrySearchResponse>> {
+    async listBuyerRegistrySearchRaw(requestParameters: ListBuyerRegistrySearchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerRegistrySearchResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -11300,8 +11850,8 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Find a registry by its name or the registrant’s name. Current and recent registries only.
      */
-    async listBuyerRegistrySearch(initOverrides?: RequestInit): Promise<ListBuyerRegistrySearchResponse> {
-        const response = await this.listBuyerRegistrySearchRaw(initOverrides);
+    async listBuyerRegistrySearch(requestParameters: ListBuyerRegistrySearchRequest = {}, initOverrides?: RequestInit): Promise<ListBuyerRegistrySearchResponse> {
+        const response = await this.listBuyerRegistrySearchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -11450,6 +12000,38 @@ export class BuyerApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.tag !== undefined) {
+            queryParameters['tag'] = requestParameters.tag;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.sub !== undefined) {
+            queryParameters['sub'] = requestParameters.sub;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.f !== undefined) {
+            queryParameters['f'] = requestParameters.f;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.offset !== undefined) {
+            queryParameters['offset'] = requestParameters.offset;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -12648,14 +13230,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Rename a board, change its description, or make it public / private.
      */
-    async updateBuyerBoardRaw(requestParameters: UpdateBuyerBoardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
+    async updateBuyerBoardRaw(requestParameters: UpdateBuyerBoardOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBuyerBoard.');
+        }
+
+        if (requestParameters.updateBuyerBoardRequest === null || requestParameters.updateBuyerBoardRequest === undefined) {
+            throw new runtime.RequiredError('updateBuyerBoardRequest','Required parameter requestParameters.updateBuyerBoardRequest was null or undefined when calling updateBuyerBoard.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12670,6 +13258,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerBoardRequestToJSON(requestParameters.updateBuyerBoardRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerResponseFromJSON(jsonValue));
@@ -12678,7 +13267,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Rename a board, change its description, or make it public / private.
      */
-    async updateBuyerBoard(requestParameters: UpdateBuyerBoardRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
+    async updateBuyerBoard(requestParameters: UpdateBuyerBoardOperationRequest, initOverrides?: RequestInit): Promise<BuyerResponse> {
         const response = await this.updateBuyerBoardRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -12686,14 +13275,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
      */
-    async updateBuyerBoardLayoutRaw(requestParameters: UpdateBuyerBoardLayoutRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerBoardResponse>> {
+    async updateBuyerBoardLayoutRaw(requestParameters: UpdateBuyerBoardLayoutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerBoardResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBuyerBoardLayout.');
+        }
+
+        if (requestParameters.updateBuyerBoardLayoutRequest === null || requestParameters.updateBuyerBoardLayoutRequest === undefined) {
+            throw new runtime.RequiredError('updateBuyerBoardLayoutRequest','Required parameter requestParameters.updateBuyerBoardLayoutRequest was null or undefined when calling updateBuyerBoardLayout.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12708,6 +13303,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerBoardLayoutRequestToJSON(requestParameters.updateBuyerBoardLayoutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerBoardResponseFromJSON(jsonValue));
@@ -12716,7 +13312,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
      */
-    async updateBuyerBoardLayout(requestParameters: UpdateBuyerBoardLayoutRequest, initOverrides?: RequestInit): Promise<BuyerBoardResponse> {
+    async updateBuyerBoardLayout(requestParameters: UpdateBuyerBoardLayoutOperationRequest, initOverrides?: RequestInit): Promise<BuyerBoardResponse> {
         const response = await this.updateBuyerBoardLayoutRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -12724,10 +13320,16 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Show or hide yourself (by your public handle) on set leaderboards.
      */
-    async updateBuyerCollectionSetLeaderboardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse>> {
+    async updateBuyerCollectionSetLeaderboardRaw(requestParameters: UpdateBuyerCollectionSetLeaderboardOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse>> {
+        if (requestParameters.updateBuyerCollectionSetLeaderboardRequest === null || requestParameters.updateBuyerCollectionSetLeaderboardRequest === undefined) {
+            throw new runtime.RequiredError('updateBuyerCollectionSetLeaderboardRequest','Required parameter requestParameters.updateBuyerCollectionSetLeaderboardRequest was null or undefined when calling updateBuyerCollectionSetLeaderboard.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12742,6 +13344,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerCollectionSetLeaderboardRequestToJSON(requestParameters.updateBuyerCollectionSetLeaderboardRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateBuyerCollectionSetLeaderboardResponseFromJSON(jsonValue));
@@ -12750,8 +13353,8 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Show or hide yourself (by your public handle) on set leaderboards.
      */
-    async updateBuyerCollectionSetLeaderboard(initOverrides?: RequestInit): Promise<UpdateBuyerCollectionSetLeaderboardResponse> {
-        const response = await this.updateBuyerCollectionSetLeaderboardRaw(initOverrides);
+    async updateBuyerCollectionSetLeaderboard(requestParameters: UpdateBuyerCollectionSetLeaderboardOperationRequest, initOverrides?: RequestInit): Promise<UpdateBuyerCollectionSetLeaderboardResponse> {
+        const response = await this.updateBuyerCollectionSetLeaderboardRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -12962,10 +13565,12 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
      */
-    async updateBuyerHomeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerHomeResponse>> {
+    async updateBuyerHomeRaw(requestParameters: UpdateBuyerHomeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerHomeResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -12980,6 +13585,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerHomeRequestToJSON(requestParameters.updateBuyerHomeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerHomeResponseFromJSON(jsonValue));
@@ -12988,18 +13594,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
      */
-    async updateBuyerHome(initOverrides?: RequestInit): Promise<BuyerHomeResponse> {
-        const response = await this.updateBuyerHomeRaw(initOverrides);
+    async updateBuyerHome(requestParameters: UpdateBuyerHomeOperationRequest = {}, initOverrides?: RequestInit): Promise<BuyerHomeResponse> {
+        const response = await this.updateBuyerHomeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Set your co-builders (friends only, at most 4).
      */
-    async updateBuyerHomeBuilderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerHomeBuildersResponse>> {
+    async updateBuyerHomeBuilderRaw(requestParameters: UpdateBuyerHomeBuilderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerHomeBuildersResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13014,6 +13622,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerHomeBuilderRequestToJSON(requestParameters.updateBuyerHomeBuilderRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListBuyerHomeBuildersResponseFromJSON(jsonValue));
@@ -13022,18 +13631,20 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Set your co-builders (friends only, at most 4).
      */
-    async updateBuyerHomeBuilder(initOverrides?: RequestInit): Promise<ListBuyerHomeBuildersResponse> {
-        const response = await this.updateBuyerHomeBuilderRaw(initOverrides);
+    async updateBuyerHomeBuilder(requestParameters: UpdateBuyerHomeBuilderOperationRequest = {}, initOverrides?: RequestInit): Promise<ListBuyerHomeBuildersResponse> {
+        const response = await this.updateBuyerHomeBuilderRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Arrange your home: the whole layout, checked against what you own.
      */
-    async updateBuyerHomeLayoutRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerHomeResponse>> {
+    async updateBuyerHomeLayoutRaw(requestParameters: UpdateBuyerHomeLayoutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BuyerHomeResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13048,6 +13659,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerHomeLayoutRequestToJSON(requestParameters.updateBuyerHomeLayoutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerHomeResponseFromJSON(jsonValue));
@@ -13056,8 +13668,45 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * Arrange your home: the whole layout, checked against what you own.
      */
-    async updateBuyerHomeLayout(initOverrides?: RequestInit): Promise<BuyerHomeResponse> {
-        const response = await this.updateBuyerHomeLayoutRaw(initOverrides);
+    async updateBuyerHomeLayout(requestParameters: UpdateBuyerHomeLayoutOperationRequest = {}, initOverrides?: RequestInit): Promise<BuyerHomeResponse> {
+        const response = await this.updateBuyerHomeLayoutRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
+     */
+    async updateBuyerHomePetActiveRaw(requestParameters: UpdateBuyerHomePetActiveOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBuyerHomePetActiveResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BuyerOAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/buyer/home/pets/active`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateBuyerHomePetActiveRequestToJSON(requestParameters.updateBuyerHomePetActiveRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateBuyerHomePetActiveResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
+     */
+    async updateBuyerHomePetActive(requestParameters: UpdateBuyerHomePetActiveOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateBuyerHomePetActiveResponse> {
+        const response = await this.updateBuyerHomePetActiveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -13189,6 +13838,8 @@ export class BuyerApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("BuyerOAuth", []);
@@ -13202,6 +13853,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerRegistryRequestToJSON(requestParameters.createBuyerRegistryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BuyerRegistryResponseFromJSON(jsonValue));
@@ -13218,7 +13870,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * How many of an item you want (1–50).
      */
-    async updateBuyerRegistryItemRaw(requestParameters: UpdateBuyerRegistryItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBuyerRegistryItemResponse>> {
+    async updateBuyerRegistryItemRaw(requestParameters: UpdateBuyerRegistryItemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBuyerRegistryItemResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBuyerRegistryItem.');
         }
@@ -13227,9 +13879,15 @@ export class BuyerApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('platformListingId','Required parameter requestParameters.platformListingId was null or undefined when calling updateBuyerRegistryItem.');
         }
 
+        if (requestParameters.updateBuyerRegistryItemRequest === null || requestParameters.updateBuyerRegistryItemRequest === undefined) {
+            throw new runtime.RequiredError('updateBuyerRegistryItemRequest','Required parameter requestParameters.updateBuyerRegistryItemRequest was null or undefined when calling updateBuyerRegistryItem.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -13244,6 +13902,7 @@ export class BuyerApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerRegistryItemRequestToJSON(requestParameters.updateBuyerRegistryItemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateBuyerRegistryItemResponseFromJSON(jsonValue));
@@ -13252,7 +13911,7 @@ export class BuyerApi extends runtime.BaseAPI {
     /**
      * How many of an item you want (1–50).
      */
-    async updateBuyerRegistryItem(requestParameters: UpdateBuyerRegistryItemRequest, initOverrides?: RequestInit): Promise<UpdateBuyerRegistryItemResponse> {
+    async updateBuyerRegistryItem(requestParameters: UpdateBuyerRegistryItemOperationRequest, initOverrides?: RequestInit): Promise<UpdateBuyerRegistryItemResponse> {
         const response = await this.updateBuyerRegistryItemRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -13440,6 +14099,15 @@ export enum GetBuyerCreationFormatEnum {
     * @export
     * @enum {string}
     */
+export enum GetBuyerMarketPurchaseOptionConditionEnum {
+    Ds = 'DS',
+    Vnds = 'VNDS',
+    Used = 'Used'
+}
+/**
+    * @export
+    * @enum {string}
+    */
 export enum ListBuyerAuctionsTabEnum {
     Bidding = 'bidding',
     Won = 'won',
@@ -13469,9 +14137,29 @@ export enum ListBuyerCashbackStatusEnum {
     * @export
     * @enum {string}
     */
+export enum ListBuyerHotspotsTargetTypeEnum {
+    Story = 'story',
+    Collection = 'collection',
+    StoryV1 = 'story_v1'
+}
+/**
+    * @export
+    * @enum {string}
+    */
 export enum ListBuyerOffersAwaitingBuyerEnum {
     True = 'true',
     False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBuyerStoreListingsSortEnum {
+    Title = 'title',
+    Newest = 'newest',
+    Popular = 'popular',
+    PriceAsc = 'price_asc',
+    PriceDesc = 'price_desc'
 }
 /**
     * @export

@@ -56,9 +56,9 @@ export interface ListVaultMarketShareCardsItemChange {
 * @enum {string}
 */
 export enum ListVaultMarketShareCardsItemChangeSinceEnum {
+    Fill = 'fill',
     Entry = 'entry',
     Cost = 'cost',
-    Fill = 'fill',
     Inception = 'inception'
 }/**
 * @export

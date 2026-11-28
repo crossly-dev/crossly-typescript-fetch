@@ -15,48 +15,93 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateWholesaleBuyerInviteRequest,
+    CreateWholesaleBuyerInviteRequestFromJSON,
+    CreateWholesaleBuyerInviteRequestToJSON,
     CreateWholesaleBuyerInviteResponse,
     CreateWholesaleBuyerInviteResponseFromJSON,
     CreateWholesaleBuyerInviteResponseToJSON,
+    CreateWholesaleBuyerRemoveRequest,
+    CreateWholesaleBuyerRemoveRequestFromJSON,
+    CreateWholesaleBuyerRemoveRequestToJSON,
     CreateWholesaleBuyerRemoveResponse,
     CreateWholesaleBuyerRemoveResponseFromJSON,
     CreateWholesaleBuyerRemoveResponseToJSON,
+    CreateWholesaleCatalogAccessResendResponse,
+    CreateWholesaleCatalogAccessResendResponseFromJSON,
+    CreateWholesaleCatalogAccessResendResponseToJSON,
+    CreateWholesaleCatalogItemRequest,
+    CreateWholesaleCatalogItemRequestFromJSON,
+    CreateWholesaleCatalogItemRequestToJSON,
     CreateWholesaleCatalogItemResponse,
     CreateWholesaleCatalogItemResponseFromJSON,
     CreateWholesaleCatalogItemResponseToJSON,
+    CreateWholesaleCatalogRequest,
+    CreateWholesaleCatalogRequestFromJSON,
+    CreateWholesaleCatalogRequestToJSON,
     CreateWholesaleCatalogResponse,
     CreateWholesaleCatalogResponseFromJSON,
     CreateWholesaleCatalogResponseToJSON,
     CreateWholesaleDropReleaseResponse,
     CreateWholesaleDropReleaseResponseFromJSON,
     CreateWholesaleDropReleaseResponseToJSON,
+    CreateWholesaleDropRequest,
+    CreateWholesaleDropRequestFromJSON,
+    CreateWholesaleDropRequestToJSON,
     CreateWholesaleDropResponse,
     CreateWholesaleDropResponseFromJSON,
     CreateWholesaleDropResponseToJSON,
+    CreateWholesaleFreightRequestAnswerRequest,
+    CreateWholesaleFreightRequestAnswerRequestFromJSON,
+    CreateWholesaleFreightRequestAnswerRequestToJSON,
     CreateWholesaleFreightRequestAnswerResponse,
     CreateWholesaleFreightRequestAnswerResponseFromJSON,
     CreateWholesaleFreightRequestAnswerResponseToJSON,
     CreateWholesaleGroupMemberResponse,
     CreateWholesaleGroupMemberResponseFromJSON,
     CreateWholesaleGroupMemberResponseToJSON,
+    CreateWholesaleGroupRequest,
+    CreateWholesaleGroupRequestFromJSON,
+    CreateWholesaleGroupRequestToJSON,
     CreateWholesaleGroupResponse,
     CreateWholesaleGroupResponseFromJSON,
     CreateWholesaleGroupResponseToJSON,
+    CreateWholesaleInvoiceCreditNoteRequest,
+    CreateWholesaleInvoiceCreditNoteRequestFromJSON,
+    CreateWholesaleInvoiceCreditNoteRequestToJSON,
     CreateWholesaleInvoiceCreditNoteResponse,
     CreateWholesaleInvoiceCreditNoteResponseFromJSON,
     CreateWholesaleInvoiceCreditNoteResponseToJSON,
+    CreateWholesaleInvoiceMarkPaidRequest,
+    CreateWholesaleInvoiceMarkPaidRequestFromJSON,
+    CreateWholesaleInvoiceMarkPaidRequestToJSON,
     CreateWholesaleInvoiceSendResponse,
     CreateWholesaleInvoiceSendResponseFromJSON,
     CreateWholesaleInvoiceSendResponseToJSON,
+    CreateWholesaleProfileShipsFromValidateRequest,
+    CreateWholesaleProfileShipsFromValidateRequestFromJSON,
+    CreateWholesaleProfileShipsFromValidateRequestToJSON,
     CreateWholesaleProfileShipsFromValidateResponse,
     CreateWholesaleProfileShipsFromValidateResponseFromJSON,
     CreateWholesaleProfileShipsFromValidateResponseToJSON,
+    CreateWholesaleQuoteAnswerRequest,
+    CreateWholesaleQuoteAnswerRequestFromJSON,
+    CreateWholesaleQuoteAnswerRequestToJSON,
+    CreateWholesaleRequestDecideRequest,
+    CreateWholesaleRequestDecideRequestFromJSON,
+    CreateWholesaleRequestDecideRequestToJSON,
     CreateWholesaleRequestDecideResponse,
     CreateWholesaleRequestDecideResponseFromJSON,
     CreateWholesaleRequestDecideResponseToJSON,
+    CreateWholesaleTierBulkRequest,
+    CreateWholesaleTierBulkRequestFromJSON,
+    CreateWholesaleTierBulkRequestToJSON,
     CreateWholesaleTierBulkResponse,
     CreateWholesaleTierBulkResponseFromJSON,
     CreateWholesaleTierBulkResponseToJSON,
+    DeleteWholesaleCatalogAccessResponse,
+    DeleteWholesaleCatalogAccessResponseFromJSON,
+    DeleteWholesaleCatalogAccessResponseToJSON,
     GetWholesaleCatalogLineSheetResponse,
     GetWholesaleCatalogLineSheetResponseFromJSON,
     GetWholesaleCatalogLineSheetResponseToJSON,
@@ -114,21 +159,57 @@ import {
     ListWholesaleSetupStepsResponse,
     ListWholesaleSetupStepsResponseFromJSON,
     ListWholesaleSetupStepsResponseToJSON,
+    NoteRequest,
+    NoteRequestFromJSON,
+    NoteRequestToJSON,
+    ReasonRequest2,
+    ReasonRequest2FromJSON,
+    ReasonRequest2ToJSON,
     UpdateGroupBuyResponse,
     UpdateGroupBuyResponseFromJSON,
     UpdateGroupBuyResponseToJSON,
+    UpdateLiveStreamLineupRequest,
+    UpdateLiveStreamLineupRequestFromJSON,
+    UpdateLiveStreamLineupRequestToJSON,
+    UpdateWholesaleBuyerTermRequest,
+    UpdateWholesaleBuyerTermRequestFromJSON,
+    UpdateWholesaleBuyerTermRequestToJSON,
     UpdateWholesaleBuyerTermResponse,
     UpdateWholesaleBuyerTermResponseFromJSON,
     UpdateWholesaleBuyerTermResponseToJSON,
+    UpdateWholesaleCatalogItemByPlatformListingIdRequest,
+    UpdateWholesaleCatalogItemByPlatformListingIdRequestFromJSON,
+    UpdateWholesaleCatalogItemByPlatformListingIdRequestToJSON,
+    UpdateWholesaleCatalogItemRequest,
+    UpdateWholesaleCatalogItemRequestFromJSON,
+    UpdateWholesaleCatalogItemRequestToJSON,
     UpdateWholesaleCatalogItemResponse,
     UpdateWholesaleCatalogItemResponseFromJSON,
     UpdateWholesaleCatalogItemResponseToJSON,
+    UpdateWholesaleCatalogRequest,
+    UpdateWholesaleCatalogRequestFromJSON,
+    UpdateWholesaleCatalogRequestToJSON,
+    UpdateWholesaleDropRequest,
+    UpdateWholesaleDropRequestFromJSON,
+    UpdateWholesaleDropRequestToJSON,
+    UpdateWholesaleGroupRequest,
+    UpdateWholesaleGroupRequestFromJSON,
+    UpdateWholesaleGroupRequestToJSON,
+    UpdateWholesaleListingTierRequest,
+    UpdateWholesaleListingTierRequestFromJSON,
+    UpdateWholesaleListingTierRequestToJSON,
     UpdateWholesaleListingTierResponse,
     UpdateWholesaleListingTierResponseFromJSON,
     UpdateWholesaleListingTierResponseToJSON,
+    UpdateWholesaleProfileRequest,
+    UpdateWholesaleProfileRequestFromJSON,
+    UpdateWholesaleProfileRequestToJSON,
     UpdateWholesaleProfileResponse,
     UpdateWholesaleProfileResponseFromJSON,
     UpdateWholesaleProfileResponseToJSON,
+    UpdateWholesaleReserveRequest,
+    UpdateWholesaleReserveRequestFromJSON,
+    UpdateWholesaleReserveRequestToJSON,
     WholesaleInvoiceResponse,
     WholesaleInvoiceResponseFromJSON,
     WholesaleInvoiceResponseToJSON,
@@ -137,32 +218,62 @@ import {
     WholesaleQuoteResponseToJSON,
 } from '../models';
 
-export interface CreateWholesaleCatalogItemRequest {
+export interface CreateWholesaleBuyerInviteOperationRequest {
+    createWholesaleBuyerInviteRequest?: CreateWholesaleBuyerInviteRequest;
+}
+
+export interface CreateWholesaleBuyerRemoveOperationRequest {
+    createWholesaleBuyerRemoveRequest?: CreateWholesaleBuyerRemoveRequest;
+}
+
+export interface CreateWholesaleCatalogOperationRequest {
+    createWholesaleCatalogRequest?: CreateWholesaleCatalogRequest;
+}
+
+export interface CreateWholesaleCatalogAccessResendRequest {
     id: string;
+    grantId: string;
+}
+
+export interface CreateWholesaleCatalogItemOperationRequest {
+    id: string;
+    createWholesaleCatalogItemRequest?: CreateWholesaleCatalogItemRequest;
+}
+
+export interface CreateWholesaleDropOperationRequest {
+    createWholesaleDropRequest?: CreateWholesaleDropRequest;
 }
 
 export interface CreateWholesaleDropReleaseRequest {
     id: string;
 }
 
-export interface CreateWholesaleFreightRequestAnswerRequest {
+export interface CreateWholesaleFreightRequestAnswerOperationRequest {
     id: string;
+    createWholesaleFreightRequestAnswerRequest?: CreateWholesaleFreightRequestAnswerRequest;
+}
+
+export interface CreateWholesaleGroupOperationRequest {
+    createWholesaleGroupRequest?: CreateWholesaleGroupRequest;
 }
 
 export interface CreateWholesaleGroupMemberRequest {
     id: string;
+    createWholesaleBuyerRemoveRequest?: CreateWholesaleBuyerRemoveRequest;
 }
 
-export interface CreateWholesaleInvoiceCreditNoteRequest {
+export interface CreateWholesaleInvoiceCreditNoteOperationRequest {
     id: string;
+    createWholesaleInvoiceCreditNoteRequest?: CreateWholesaleInvoiceCreditNoteRequest;
 }
 
 export interface CreateWholesaleInvoiceLateFeeRequest {
     id: string;
 }
 
-export interface CreateWholesaleInvoiceMarkPaidRequest {
+export interface CreateWholesaleInvoiceMarkPaidOperationRequest {
     id: string;
+    createWholesaleInvoiceMarkPaidRequest?: CreateWholesaleInvoiceMarkPaidRequest;
 }
 
 export interface CreateWholesaleInvoiceSendRequest {
@@ -175,18 +286,30 @@ export interface CreateWholesaleInvoiceVoidRequest {
 
 export interface CreateWholesaleInvoiceWriteOffRequest {
     id: string;
+    noteRequest?: NoteRequest;
 }
 
-export interface CreateWholesaleQuoteAnswerRequest {
+export interface CreateWholesaleProfileShipsFromValidateOperationRequest {
+    createWholesaleProfileShipsFromValidateRequest?: CreateWholesaleProfileShipsFromValidateRequest;
+}
+
+export interface CreateWholesaleQuoteAnswerOperationRequest {
     id: string;
+    createWholesaleQuoteAnswerRequest?: CreateWholesaleQuoteAnswerRequest;
 }
 
 export interface CreateWholesaleQuoteDeclineRequest {
     id: string;
+    reasonRequest2?: ReasonRequest2;
 }
 
-export interface CreateWholesaleRequestDecideRequest {
+export interface CreateWholesaleRequestDecideOperationRequest {
     id: string;
+    createWholesaleRequestDecideRequest?: CreateWholesaleRequestDecideRequest;
+}
+
+export interface CreateWholesaleTierBulkOperationRequest {
+    createWholesaleTierBulkRequest?: CreateWholesaleTierBulkRequest;
 }
 
 export interface DeleteWholesaleBuyerTermRequest {
@@ -195,6 +318,11 @@ export interface DeleteWholesaleBuyerTermRequest {
 
 export interface DeleteWholesaleCatalogRequest {
     id: string;
+}
+
+export interface DeleteWholesaleCatalogAccessRequest {
+    id: string;
+    grantId: string;
 }
 
 export interface DeleteWholesaleCatalogItemRequest {
@@ -235,45 +363,78 @@ export interface GetWholesaleReserveRequest {
     inventoryItemId: string;
 }
 
+export interface GetWholesaleTermPreviewRequest {
+    catalogId?: string;
+    platformListingId?: string;
+    storefrontId?: string;
+}
+
 export interface ListWholesaleCatalogItemsRequest {
     id: string;
 }
 
-export interface UpdateWholesaleBuyerTermRequest {
+export interface ListWholesaleDropsRequest {
+    status?: ListWholesaleDropsStatusEnum;
+}
+
+export interface ListWholesaleInvoicesRequest {
+    status?: ListWholesaleInvoicesStatusEnum;
+    buyerUserId?: string;
+    limit?: number;
+}
+
+export interface ListWholesaleQuotesRequest {
+    status?: ListWholesaleQuotesStatusEnum;
+}
+
+export interface UpdateWholesaleBuyerTermOperationRequest {
     buyerUserId: string;
+    updateWholesaleBuyerTermRequest?: UpdateWholesaleBuyerTermRequest;
 }
 
-export interface UpdateWholesaleCatalogRequest {
+export interface UpdateWholesaleCatalogOperationRequest {
     id: string;
+    updateWholesaleCatalogRequest?: UpdateWholesaleCatalogRequest;
 }
 
-export interface UpdateWholesaleCatalogItemRequest {
+export interface UpdateWholesaleCatalogItemOperationRequest {
     id: string;
+    updateWholesaleCatalogItemRequest?: UpdateWholesaleCatalogItemRequest;
 }
 
-export interface UpdateWholesaleCatalogItemByPlatformListingIdRequest {
+export interface UpdateWholesaleCatalogItemByPlatformListingIdOperationRequest {
     id: string;
     platformListingId: string;
+    updateWholesaleCatalogItemByPlatformListingIdRequest?: UpdateWholesaleCatalogItemByPlatformListingIdRequest;
 }
 
 export interface UpdateWholesaleCatalogItemOrderRequest {
     id: string;
+    updateLiveStreamLineupRequest?: UpdateLiveStreamLineupRequest;
 }
 
-export interface UpdateWholesaleDropRequest {
+export interface UpdateWholesaleDropOperationRequest {
     id: string;
+    updateWholesaleDropRequest?: UpdateWholesaleDropRequest;
 }
 
-export interface UpdateWholesaleGroupRequest {
+export interface UpdateWholesaleGroupOperationRequest {
     id: string;
+    updateWholesaleGroupRequest?: UpdateWholesaleGroupRequest;
 }
 
-export interface UpdateWholesaleListingTierRequest {
+export interface UpdateWholesaleListingTierOperationRequest {
     platformListingId: string;
+    updateWholesaleListingTierRequest?: UpdateWholesaleListingTierRequest;
 }
 
-export interface UpdateWholesaleReserveRequest {
+export interface UpdateWholesaleProfileOperationRequest {
+    updateWholesaleProfileRequest?: UpdateWholesaleProfileRequest;
+}
+
+export interface UpdateWholesaleReserveOperationRequest {
     inventoryItemId: string;
+    updateWholesaleReserveRequest?: UpdateWholesaleReserveRequest;
 }
 
 /**
@@ -284,10 +445,12 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Invite a buyer by email to one or more of your catalogs. Binds to their account now if they have one, or when they sign up.
      */
-    async createWholesaleBuyerInviteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleBuyerInviteResponse>> {
+    async createWholesaleBuyerInviteRaw(requestParameters: CreateWholesaleBuyerInviteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleBuyerInviteResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -302,6 +465,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleBuyerInviteRequestToJSON(requestParameters.createWholesaleBuyerInviteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleBuyerInviteResponseFromJSON(jsonValue));
@@ -310,18 +474,20 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Invite a buyer by email to one or more of your catalogs. Binds to their account now if they have one, or when they sign up.
      */
-    async createWholesaleBuyerInvite(initOverrides?: RequestInit): Promise<CreateWholesaleBuyerInviteResponse> {
-        const response = await this.createWholesaleBuyerInviteRaw(initOverrides);
+    async createWholesaleBuyerInvite(requestParameters: CreateWholesaleBuyerInviteOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWholesaleBuyerInviteResponse> {
+        const response = await this.createWholesaleBuyerInviteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Revoke every catalog grant a buyer (or invited email) has with you. Their terms and invoices are kept.
      */
-    async createWholesaleBuyerRemoveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleBuyerRemoveResponse>> {
+    async createWholesaleBuyerRemoveRaw(requestParameters: CreateWholesaleBuyerRemoveOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleBuyerRemoveResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -336,6 +502,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleBuyerRemoveRequestToJSON(requestParameters.createWholesaleBuyerRemoveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleBuyerRemoveResponseFromJSON(jsonValue));
@@ -344,18 +511,20 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Revoke every catalog grant a buyer (or invited email) has with you. Their terms and invoices are kept.
      */
-    async createWholesaleBuyerRemove(initOverrides?: RequestInit): Promise<CreateWholesaleBuyerRemoveResponse> {
-        const response = await this.createWholesaleBuyerRemoveRaw(initOverrides);
+    async createWholesaleBuyerRemove(requestParameters: CreateWholesaleBuyerRemoveOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWholesaleBuyerRemoveResponse> {
+        const response = await this.createWholesaleBuyerRemoveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Create a catalog. visibility public | public_prices_private (prices for approved buyers) | private_discoverable (listed, opened on approval) | link (anyone with the URL) | invite (named buyers only; \"private\" is accepted as invite); autoApprove never | verified | all; the cascade terms (minOrderQuantity, casePack, leadTimeDays, verifiedOnly, priceVisibility, maxPerOrder, backorder, restockEta, preset ids) default every item; listed advertises a public catalog in the wholesale directory (never its prices).
      */
-    async createWholesaleCatalogRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleCatalogResponse>> {
+    async createWholesaleCatalogRaw(requestParameters: CreateWholesaleCatalogOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleCatalogResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -370,6 +539,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleCatalogRequestToJSON(requestParameters.createWholesaleCatalogRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleCatalogResponseFromJSON(jsonValue));
@@ -378,15 +548,57 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Create a catalog. visibility public | public_prices_private (prices for approved buyers) | private_discoverable (listed, opened on approval) | link (anyone with the URL) | invite (named buyers only; \"private\" is accepted as invite); autoApprove never | verified | all; the cascade terms (minOrderQuantity, casePack, leadTimeDays, verifiedOnly, priceVisibility, maxPerOrder, backorder, restockEta, preset ids) default every item; listed advertises a public catalog in the wholesale directory (never its prices).
      */
-    async createWholesaleCatalog(initOverrides?: RequestInit): Promise<CreateWholesaleCatalogResponse> {
-        const response = await this.createWholesaleCatalogRaw(initOverrides);
+    async createWholesaleCatalog(requestParameters: CreateWholesaleCatalogOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWholesaleCatalogResponse> {
+        const response = await this.createWholesaleCatalogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Email a pending catalog invite again (an invited address with no Crossly account yet). One send per invite every 15 minutes: 429 with Retry-After inside that window. grantId is the catalogs[].grantId of GET /wholesale/buyers. Uses the X-Storefront-Id store.
+     */
+    async createWholesaleCatalogAccessResendRaw(requestParameters: CreateWholesaleCatalogAccessResendRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleCatalogAccessResendResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWholesaleCatalogAccessResend.');
+        }
+
+        if (requestParameters.grantId === null || requestParameters.grantId === undefined) {
+            throw new runtime.RequiredError('grantId','Required parameter requestParameters.grantId was null or undefined when calling createWholesaleCatalogAccessResend.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/wholesale/catalogs/{id}/access/{grantId}/resend`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"grantId"}}`, encodeURIComponent(String(requestParameters.grantId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleCatalogAccessResendResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Email a pending catalog invite again (an invited address with no Crossly account yet). One send per invite every 15 minutes: 429 with Retry-After inside that window. grantId is the catalogs[].grantId of GET /wholesale/buyers. Uses the X-Storefront-Id store.
+     */
+    async createWholesaleCatalogAccessResend(requestParameters: CreateWholesaleCatalogAccessResendRequest, initOverrides?: RequestInit): Promise<CreateWholesaleCatalogAccessResendResponse> {
+        const response = await this.createWholesaleCatalogAccessResendRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Add your Crossly listings to a catalog (up to 500), each with an optional wholesalePriceCents, minOrderQuantity and casePack. Items already in the catalog have their terms updated.
      */
-    async createWholesaleCatalogItemRaw(requestParameters: CreateWholesaleCatalogItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleCatalogItemResponse>> {
+    async createWholesaleCatalogItemRaw(requestParameters: CreateWholesaleCatalogItemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleCatalogItemResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWholesaleCatalogItem.');
         }
@@ -394,6 +606,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -408,6 +622,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleCatalogItemRequestToJSON(requestParameters.createWholesaleCatalogItemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleCatalogItemResponseFromJSON(jsonValue));
@@ -416,7 +631,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Add your Crossly listings to a catalog (up to 500), each with an optional wholesalePriceCents, minOrderQuantity and casePack. Items already in the catalog have their terms updated.
      */
-    async createWholesaleCatalogItem(requestParameters: CreateWholesaleCatalogItemRequest, initOverrides?: RequestInit): Promise<CreateWholesaleCatalogItemResponse> {
+    async createWholesaleCatalogItem(requestParameters: CreateWholesaleCatalogItemOperationRequest, initOverrides?: RequestInit): Promise<CreateWholesaleCatalogItemResponse> {
         const response = await this.createWholesaleCatalogItemRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -424,10 +639,12 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Create a draft trade drop: name, dropAt (ISO; when it opens), audience trade|catalog (+ audienceCatalogId), kind release|prebook. A pre-book needs depositBps (100-9900) and shipBy (YYYY-MM-DD), and takes balanceNetDays (0-90) for the balance invoice. listingIds are your listing ids, each on Crossly. A pre-book makes its listings pre-orders, so buyers pay the deposit at checkout. Schedule it with PATCH status \"scheduled\".
      */
-    async createWholesaleDropRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleDropResponse>> {
+    async createWholesaleDropRaw(requestParameters: CreateWholesaleDropOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleDropResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -442,6 +659,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleDropRequestToJSON(requestParameters.createWholesaleDropRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleDropResponseFromJSON(jsonValue));
@@ -450,8 +668,8 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Create a draft trade drop: name, dropAt (ISO; when it opens), audience trade|catalog (+ audienceCatalogId), kind release|prebook. A pre-book needs depositBps (100-9900) and shipBy (YYYY-MM-DD), and takes balanceNetDays (0-90) for the balance invoice. listingIds are your listing ids, each on Crossly. A pre-book makes its listings pre-orders, so buyers pay the deposit at checkout. Schedule it with PATCH status \"scheduled\".
      */
-    async createWholesaleDrop(initOverrides?: RequestInit): Promise<CreateWholesaleDropResponse> {
-        const response = await this.createWholesaleDropRaw(initOverrides);
+    async createWholesaleDrop(requestParameters: CreateWholesaleDropOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWholesaleDropResponse> {
+        const response = await this.createWholesaleDropRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -496,7 +714,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Answer an open freight request with a figure in CENTS (and an optional note).
      */
-    async createWholesaleFreightRequestAnswerRaw(requestParameters: CreateWholesaleFreightRequestAnswerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleFreightRequestAnswerResponse>> {
+    async createWholesaleFreightRequestAnswerRaw(requestParameters: CreateWholesaleFreightRequestAnswerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleFreightRequestAnswerResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWholesaleFreightRequestAnswer.');
         }
@@ -504,6 +722,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -518,6 +738,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleFreightRequestAnswerRequestToJSON(requestParameters.createWholesaleFreightRequestAnswerRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleFreightRequestAnswerResponseFromJSON(jsonValue));
@@ -526,7 +747,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Answer an open freight request with a figure in CENTS (and an optional note).
      */
-    async createWholesaleFreightRequestAnswer(requestParameters: CreateWholesaleFreightRequestAnswerRequest, initOverrides?: RequestInit): Promise<CreateWholesaleFreightRequestAnswerResponse> {
+    async createWholesaleFreightRequestAnswer(requestParameters: CreateWholesaleFreightRequestAnswerOperationRequest, initOverrides?: RequestInit): Promise<CreateWholesaleFreightRequestAnswerResponse> {
         const response = await this.createWholesaleFreightRequestAnswerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -534,10 +755,12 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Create a customer group with a discount in basis points (up to 9000). A buyer in several groups gets the best rate, never a stacked one.
      */
-    async createWholesaleGroupRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleGroupResponse>> {
+    async createWholesaleGroupRaw(requestParameters: CreateWholesaleGroupOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleGroupResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -552,6 +775,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleGroupRequestToJSON(requestParameters.createWholesaleGroupRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleGroupResponseFromJSON(jsonValue));
@@ -560,8 +784,8 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Create a customer group with a discount in basis points (up to 9000). A buyer in several groups gets the best rate, never a stacked one.
      */
-    async createWholesaleGroup(initOverrides?: RequestInit): Promise<CreateWholesaleGroupResponse> {
-        const response = await this.createWholesaleGroupRaw(initOverrides);
+    async createWholesaleGroup(requestParameters: CreateWholesaleGroupOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWholesaleGroupResponse> {
+        const response = await this.createWholesaleGroupRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -577,6 +801,8 @@ export class WholesaleApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -590,6 +816,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleBuyerRemoveRequestToJSON(requestParameters.createWholesaleBuyerRemoveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleGroupMemberResponseFromJSON(jsonValue));
@@ -606,7 +833,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Issue a credit note on an on-account invoice (short shipment, damaged, pricing error, returned, goodwill, other): at most the balance due. Numbered <invoice>-CN<n>; settling the rest closes the invoice paid. Not a refund.
      */
-    async createWholesaleInvoiceCreditNoteRaw(requestParameters: CreateWholesaleInvoiceCreditNoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleInvoiceCreditNoteResponse>> {
+    async createWholesaleInvoiceCreditNoteRaw(requestParameters: CreateWholesaleInvoiceCreditNoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleInvoiceCreditNoteResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWholesaleInvoiceCreditNote.');
         }
@@ -614,6 +841,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -628,6 +857,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleInvoiceCreditNoteRequestToJSON(requestParameters.createWholesaleInvoiceCreditNoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleInvoiceCreditNoteResponseFromJSON(jsonValue));
@@ -636,7 +866,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Issue a credit note on an on-account invoice (short shipment, damaged, pricing error, returned, goodwill, other): at most the balance due. Numbered <invoice>-CN<n>; settling the rest closes the invoice paid. Not a refund.
      */
-    async createWholesaleInvoiceCreditNote(requestParameters: CreateWholesaleInvoiceCreditNoteRequest, initOverrides?: RequestInit): Promise<CreateWholesaleInvoiceCreditNoteResponse> {
+    async createWholesaleInvoiceCreditNote(requestParameters: CreateWholesaleInvoiceCreditNoteOperationRequest, initOverrides?: RequestInit): Promise<CreateWholesaleInvoiceCreditNoteResponse> {
         const response = await this.createWholesaleInvoiceCreditNoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -682,7 +912,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Record a payment the buyer made to you directly: method ach | check | wire | card | other, a reference, and amountCents (omit for the whole balance). When the invoice is settled, Crossly\'s fee and the tax it remits are charged to your billing card.
      */
-    async createWholesaleInvoiceMarkPaidRaw(requestParameters: CreateWholesaleInvoiceMarkPaidRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WholesaleInvoiceResponse>> {
+    async createWholesaleInvoiceMarkPaidRaw(requestParameters: CreateWholesaleInvoiceMarkPaidOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WholesaleInvoiceResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWholesaleInvoiceMarkPaid.');
         }
@@ -690,6 +920,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -704,6 +936,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleInvoiceMarkPaidRequestToJSON(requestParameters.createWholesaleInvoiceMarkPaidRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WholesaleInvoiceResponseFromJSON(jsonValue));
@@ -712,7 +945,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Record a payment the buyer made to you directly: method ach | check | wire | card | other, a reference, and amountCents (omit for the whole balance). When the invoice is settled, Crossly\'s fee and the tax it remits are charged to your billing card.
      */
-    async createWholesaleInvoiceMarkPaid(requestParameters: CreateWholesaleInvoiceMarkPaidRequest, initOverrides?: RequestInit): Promise<WholesaleInvoiceResponse> {
+    async createWholesaleInvoiceMarkPaid(requestParameters: CreateWholesaleInvoiceMarkPaidOperationRequest, initOverrides?: RequestInit): Promise<WholesaleInvoiceResponse> {
         const response = await this.createWholesaleInvoiceMarkPaidRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -805,6 +1038,8 @@ export class WholesaleApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -818,6 +1053,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: NoteRequestToJSON(requestParameters.noteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WholesaleInvoiceResponseFromJSON(jsonValue));
@@ -834,10 +1070,12 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Check a ships-from origin ({ postalCode, country, city?, region? }) with the shipping validator without saving it. 400 invalid_ships_from with the issues; 422 for an embargoed origin.
      */
-    async createWholesaleProfileShipsFromValidateRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleProfileShipsFromValidateResponse>> {
+    async createWholesaleProfileShipsFromValidateRaw(requestParameters: CreateWholesaleProfileShipsFromValidateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleProfileShipsFromValidateResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -852,6 +1090,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleProfileShipsFromValidateRequestToJSON(requestParameters.createWholesaleProfileShipsFromValidateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleProfileShipsFromValidateResponseFromJSON(jsonValue));
@@ -860,15 +1099,15 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Check a ships-from origin ({ postalCode, country, city?, region? }) with the shipping validator without saving it. 400 invalid_ships_from with the issues; 422 for an embargoed origin.
      */
-    async createWholesaleProfileShipsFromValidate(initOverrides?: RequestInit): Promise<CreateWholesaleProfileShipsFromValidateResponse> {
-        const response = await this.createWholesaleProfileShipsFromValidateRaw(initOverrides);
+    async createWholesaleProfileShipsFromValidate(requestParameters: CreateWholesaleProfileShipsFromValidateOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWholesaleProfileShipsFromValidateResponse> {
+        const response = await this.createWholesaleProfileShipsFromValidateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Answer (or revise) a quote: a unit price in CENTS per item you quote, an expiresAt (ISO, at most 90 days out) and an optional note. Items left out are not quoted. The buyer is notified and can accept until expiry.
      */
-    async createWholesaleQuoteAnswerRaw(requestParameters: CreateWholesaleQuoteAnswerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WholesaleQuoteResponse>> {
+    async createWholesaleQuoteAnswerRaw(requestParameters: CreateWholesaleQuoteAnswerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WholesaleQuoteResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWholesaleQuoteAnswer.');
         }
@@ -876,6 +1115,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -890,6 +1131,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleQuoteAnswerRequestToJSON(requestParameters.createWholesaleQuoteAnswerRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WholesaleQuoteResponseFromJSON(jsonValue));
@@ -898,7 +1140,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Answer (or revise) a quote: a unit price in CENTS per item you quote, an expiresAt (ISO, at most 90 days out) and an optional note. Items left out are not quoted. The buyer is notified and can accept until expiry.
      */
-    async createWholesaleQuoteAnswer(requestParameters: CreateWholesaleQuoteAnswerRequest, initOverrides?: RequestInit): Promise<WholesaleQuoteResponse> {
+    async createWholesaleQuoteAnswer(requestParameters: CreateWholesaleQuoteAnswerOperationRequest, initOverrides?: RequestInit): Promise<WholesaleQuoteResponse> {
         const response = await this.createWholesaleQuoteAnswerRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -915,6 +1157,8 @@ export class WholesaleApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -928,6 +1172,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequest2ToJSON(requestParameters.reasonRequest2),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WholesaleQuoteResponseFromJSON(jsonValue));
@@ -944,7 +1189,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Approve (grants access to that catalog; optional groupId adds the buyer to a customer group) or decline (optional reason) an access request.
      */
-    async createWholesaleRequestDecideRaw(requestParameters: CreateWholesaleRequestDecideRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleRequestDecideResponse>> {
+    async createWholesaleRequestDecideRaw(requestParameters: CreateWholesaleRequestDecideOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleRequestDecideResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWholesaleRequestDecide.');
         }
@@ -952,6 +1197,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -966,6 +1213,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleRequestDecideRequestToJSON(requestParameters.createWholesaleRequestDecideRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleRequestDecideResponseFromJSON(jsonValue));
@@ -974,7 +1222,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Approve (grants access to that catalog; optional groupId adds the buyer to a customer group) or decline (optional reason) an access request.
      */
-    async createWholesaleRequestDecide(requestParameters: CreateWholesaleRequestDecideRequest, initOverrides?: RequestInit): Promise<CreateWholesaleRequestDecideResponse> {
+    async createWholesaleRequestDecide(requestParameters: CreateWholesaleRequestDecideOperationRequest, initOverrides?: RequestInit): Promise<CreateWholesaleRequestDecideResponse> {
         const response = await this.createWholesaleRequestDecideRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -982,10 +1230,12 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * One ladder for many listings: breaks as [{ minQuantity, discountBps }] off each listing\'s own price. Returns how many were updated and which were skipped and why.
      */
-    async createWholesaleTierBulkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleTierBulkResponse>> {
+    async createWholesaleTierBulkRaw(requestParameters: CreateWholesaleTierBulkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleTierBulkResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1000,6 +1250,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWholesaleTierBulkRequestToJSON(requestParameters.createWholesaleTierBulkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleTierBulkResponseFromJSON(jsonValue));
@@ -1008,8 +1259,8 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * One ladder for many listings: breaks as [{ minQuantity, discountBps }] off each listing\'s own price. Returns how many were updated and which were skipped and why.
      */
-    async createWholesaleTierBulk(initOverrides?: RequestInit): Promise<CreateWholesaleTierBulkResponse> {
-        const response = await this.createWholesaleTierBulkRaw(initOverrides);
+    async createWholesaleTierBulk(requestParameters: CreateWholesaleTierBulkOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWholesaleTierBulkResponse> {
+        const response = await this.createWholesaleTierBulkRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1086,6 +1337,48 @@ export class WholesaleApi extends runtime.BaseAPI {
      */
     async deleteWholesaleCatalog(requestParameters: DeleteWholesaleCatalogRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.deleteWholesaleCatalogRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Revoke one buyer\'s (or invited address\'s) access to this ONE catalog; their other catalogs, terms, groups and invoices are kept. /wholesale/buyers/remove revokes every catalog. Uses the X-Storefront-Id store.
+     */
+    async deleteWholesaleCatalogAccessRaw(requestParameters: DeleteWholesaleCatalogAccessRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteWholesaleCatalogAccessResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteWholesaleCatalogAccess.');
+        }
+
+        if (requestParameters.grantId === null || requestParameters.grantId === undefined) {
+            throw new runtime.RequiredError('grantId','Required parameter requestParameters.grantId was null or undefined when calling deleteWholesaleCatalogAccess.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/wholesale/catalogs/{id}/access/{grantId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"grantId"}}`, encodeURIComponent(String(requestParameters.grantId))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteWholesaleCatalogAccessResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Revoke one buyer\'s (or invited address\'s) access to this ONE catalog; their other catalogs, terms, groups and invoices are kept. /wholesale/buyers/remove revokes every catalog. Uses the X-Storefront-Id store.
+     */
+    async deleteWholesaleCatalogAccess(requestParameters: DeleteWholesaleCatalogAccessRequest, initOverrides?: RequestInit): Promise<DeleteWholesaleCatalogAccessResponse> {
+        const response = await this.deleteWholesaleCatalogAccessRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1544,8 +1837,20 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * The trade terms that apply to a catalog item (?catalogId&platformListingId), a catalog (?catalogId) or the trade profile alone, each with its source (item, catalog, profile, default), plus the return, payment and shipping policies they resolve to.
      */
-    async getWholesaleTermPreviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWholesaleTermPreviewResponse>> {
+    async getWholesaleTermPreviewRaw(requestParameters: GetWholesaleTermPreviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWholesaleTermPreviewResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.catalogId !== undefined) {
+            queryParameters['catalogId'] = requestParameters.catalogId;
+        }
+
+        if (requestParameters.platformListingId !== undefined) {
+            queryParameters['platformListingId'] = requestParameters.platformListingId;
+        }
+
+        if (requestParameters.storefrontId !== undefined) {
+            queryParameters['storefrontId'] = requestParameters.storefrontId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1570,8 +1875,8 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * The trade terms that apply to a catalog item (?catalogId&platformListingId), a catalog (?catalogId) or the trade profile alone, each with its source (item, catalog, profile, default), plus the return, payment and shipping policies they resolve to.
      */
-    async getWholesaleTermPreview(initOverrides?: RequestInit): Promise<GetWholesaleTermPreviewResponse> {
-        const response = await this.getWholesaleTermPreviewRaw(initOverrides);
+    async getWholesaleTermPreview(requestParameters: GetWholesaleTermPreviewRequest = {}, initOverrides?: RequestInit): Promise<GetWholesaleTermPreviewResponse> {
+        const response = await this.getWholesaleTermPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1684,8 +1989,12 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Your trade drops and pre-books: audience (trade = your approved trade buyers, catalog = whoever can open audienceCatalogId), kind (release | prebook), deposit, ship date, status, and for a pre-book its reservation totals (buyers, units, deposits taken, balances still to invoice).
      */
-    async listWholesaleDropsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWholesaleDropsResponse>> {
+    async listWholesaleDropsRaw(requestParameters: ListWholesaleDropsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWholesaleDropsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1710,8 +2019,8 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Your trade drops and pre-books: audience (trade = your approved trade buyers, catalog = whoever can open audienceCatalogId), kind (release | prebook), deposit, ship date, status, and for a pre-book its reservation totals (buyers, units, deposits taken, balances still to invoice).
      */
-    async listWholesaleDrops(initOverrides?: RequestInit): Promise<ListWholesaleDropsResponse> {
-        const response = await this.listWholesaleDropsRaw(initOverrides);
+    async listWholesaleDrops(requestParameters: ListWholesaleDropsRequest = {}, initOverrides?: RequestInit): Promise<ListWholesaleDropsResponse> {
+        const response = await this.listWholesaleDropsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1786,8 +2095,20 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * On-account invoices, newest first, with balance due. ?status=unpaid for open, partial and overdue together.
      */
-    async listWholesaleInvoicesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWholesaleInvoicesResponse>> {
+    async listWholesaleInvoicesRaw(requestParameters: ListWholesaleInvoicesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWholesaleInvoicesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.buyerUserId !== undefined) {
+            queryParameters['buyerUserId'] = requestParameters.buyerUserId;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1812,8 +2133,8 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * On-account invoices, newest first, with balance due. ?status=unpaid for open, partial and overdue together.
      */
-    async listWholesaleInvoices(initOverrides?: RequestInit): Promise<ListWholesaleInvoicesResponse> {
-        const response = await this.listWholesaleInvoicesRaw(initOverrides);
+    async listWholesaleInvoices(requestParameters: ListWholesaleInvoicesRequest = {}, initOverrides?: RequestInit): Promise<ListWholesaleInvoicesResponse> {
+        const response = await this.listWholesaleInvoicesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1854,8 +2175,12 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Quote requests (RFQ) from trade buyers: items with quantity and target price, your quoted prices and expiry. ?status=open lists the ones waiting on you or the buyer.
      */
-    async listWholesaleQuotesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWholesaleQuotesResponse>> {
+    async listWholesaleQuotesRaw(requestParameters: ListWholesaleQuotesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWholesaleQuotesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1880,8 +2205,8 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Quote requests (RFQ) from trade buyers: items with quantity and target price, your quoted prices and expiry. ?status=open lists the ones waiting on you or the buyer.
      */
-    async listWholesaleQuotes(initOverrides?: RequestInit): Promise<ListWholesaleQuotesResponse> {
-        const response = await this.listWholesaleQuotesRaw(initOverrides);
+    async listWholesaleQuotes(requestParameters: ListWholesaleQuotesRequest = {}, initOverrides?: RequestInit): Promise<ListWholesaleQuotesResponse> {
+        const response = await this.listWholesaleQuotesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1956,7 +2281,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Set a buyer\'s account terms: netDays (0-120) for paying on account, creditLimitCents (the most they may owe you at once; null = no limit) and discountPercentBps (their negotiated rate).
      */
-    async updateWholesaleBuyerTermRaw(requestParameters: UpdateWholesaleBuyerTermRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWholesaleBuyerTermResponse>> {
+    async updateWholesaleBuyerTermRaw(requestParameters: UpdateWholesaleBuyerTermOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWholesaleBuyerTermResponse>> {
         if (requestParameters.buyerUserId === null || requestParameters.buyerUserId === undefined) {
             throw new runtime.RequiredError('buyerUserId','Required parameter requestParameters.buyerUserId was null or undefined when calling updateWholesaleBuyerTerm.');
         }
@@ -1964,6 +2289,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1978,6 +2305,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleBuyerTermRequestToJSON(requestParameters.updateWholesaleBuyerTermRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWholesaleBuyerTermResponseFromJSON(jsonValue));
@@ -1986,7 +2314,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Set a buyer\'s account terms: netDays (0-120) for paying on account, creditLimitCents (the most they may owe you at once; null = no limit) and discountPercentBps (their negotiated rate).
      */
-    async updateWholesaleBuyerTerm(requestParameters: UpdateWholesaleBuyerTermRequest, initOverrides?: RequestInit): Promise<UpdateWholesaleBuyerTermResponse> {
+    async updateWholesaleBuyerTerm(requestParameters: UpdateWholesaleBuyerTermOperationRequest, initOverrides?: RequestInit): Promise<UpdateWholesaleBuyerTermResponse> {
         const response = await this.updateWholesaleBuyerTermRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1994,7 +2322,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Edit a catalog: name, slug, description, cover image, visibility, opening-order minimum, trade gate, directory listing, active.
      */
-    async updateWholesaleCatalogRaw(requestParameters: UpdateWholesaleCatalogRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleCatalogResponse>> {
+    async updateWholesaleCatalogRaw(requestParameters: UpdateWholesaleCatalogOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleCatalogResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWholesaleCatalog.');
         }
@@ -2002,6 +2330,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2016,6 +2346,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleCatalogRequestToJSON(requestParameters.updateWholesaleCatalogRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleCatalogResponseFromJSON(jsonValue));
@@ -2024,7 +2355,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Edit a catalog: name, slug, description, cover image, visibility, opening-order minimum, trade gate, directory listing, active.
      */
-    async updateWholesaleCatalog(requestParameters: UpdateWholesaleCatalogRequest, initOverrides?: RequestInit): Promise<CreateWholesaleCatalogResponse> {
+    async updateWholesaleCatalog(requestParameters: UpdateWholesaleCatalogOperationRequest, initOverrides?: RequestInit): Promise<CreateWholesaleCatalogResponse> {
         const response = await this.updateWholesaleCatalogRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2032,7 +2363,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Change many catalog items at once: items[] sets each row (trade price, MOQ, case pack, lead time, max per order, backorder, restock date, verified-only, price visibility, preset ids); or platformListingIds + set applies the same values to each, set.pctOffRetailBps pricing each from its retail price.
      */
-    async updateWholesaleCatalogItemRaw(requestParameters: UpdateWholesaleCatalogItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWholesaleCatalogItemResponse>> {
+    async updateWholesaleCatalogItemRaw(requestParameters: UpdateWholesaleCatalogItemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWholesaleCatalogItemResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWholesaleCatalogItem.');
         }
@@ -2040,6 +2371,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2054,6 +2387,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleCatalogItemRequestToJSON(requestParameters.updateWholesaleCatalogItemRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWholesaleCatalogItemResponseFromJSON(jsonValue));
@@ -2062,7 +2396,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Change many catalog items at once: items[] sets each row (trade price, MOQ, case pack, lead time, max per order, backorder, restock date, verified-only, price visibility, preset ids); or platformListingIds + set applies the same values to each, set.pctOffRetailBps pricing each from its retail price.
      */
-    async updateWholesaleCatalogItem(requestParameters: UpdateWholesaleCatalogItemRequest, initOverrides?: RequestInit): Promise<UpdateWholesaleCatalogItemResponse> {
+    async updateWholesaleCatalogItem(requestParameters: UpdateWholesaleCatalogItemOperationRequest, initOverrides?: RequestInit): Promise<UpdateWholesaleCatalogItemResponse> {
         const response = await this.updateWholesaleCatalogItemRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2070,7 +2404,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Change one item\'s trade price and its own trade terms in this catalog (MOQ, case pack, lead time, max per order, backorder, restock date, verified-only, price visibility, preset ids). null clears = inherit from the catalog.
      */
-    async updateWholesaleCatalogItemByPlatformListingIdRaw(requestParameters: UpdateWholesaleCatalogItemByPlatformListingIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+    async updateWholesaleCatalogItemByPlatformListingIdRaw(requestParameters: UpdateWholesaleCatalogItemByPlatformListingIdOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWholesaleCatalogItemByPlatformListingId.');
         }
@@ -2082,6 +2416,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2096,6 +2432,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleCatalogItemByPlatformListingIdRequestToJSON(requestParameters.updateWholesaleCatalogItemByPlatformListingIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
@@ -2104,7 +2441,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Change one item\'s trade price and its own trade terms in this catalog (MOQ, case pack, lead time, max per order, backorder, restock date, verified-only, price visibility, preset ids). null clears = inherit from the catalog.
      */
-    async updateWholesaleCatalogItemByPlatformListingId(requestParameters: UpdateWholesaleCatalogItemByPlatformListingIdRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+    async updateWholesaleCatalogItemByPlatformListingId(requestParameters: UpdateWholesaleCatalogItemByPlatformListingIdOperationRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.updateWholesaleCatalogItemByPlatformListingIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2121,6 +2458,8 @@ export class WholesaleApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -2134,6 +2473,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateLiveStreamLineupRequestToJSON(requestParameters.updateLiveStreamLineupRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListWholesaleCatalogItemsResponseFromJSON(jsonValue));
@@ -2150,7 +2490,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Edit a trade drop (any create field but kind), schedule it (status \"scheduled\", with dropAt in the future) or cancel it. A live drop can only be cancelled or have endsAt / perCustomerLimit changed.
      */
-    async updateWholesaleDropRaw(requestParameters: UpdateWholesaleDropRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleDropResponse>> {
+    async updateWholesaleDropRaw(requestParameters: UpdateWholesaleDropOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleDropResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWholesaleDrop.');
         }
@@ -2158,6 +2498,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2172,6 +2514,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleDropRequestToJSON(requestParameters.updateWholesaleDropRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleDropResponseFromJSON(jsonValue));
@@ -2180,7 +2523,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Edit a trade drop (any create field but kind), schedule it (status \"scheduled\", with dropAt in the future) or cancel it. A live drop can only be cancelled or have endsAt / perCustomerLimit changed.
      */
-    async updateWholesaleDrop(requestParameters: UpdateWholesaleDropRequest, initOverrides?: RequestInit): Promise<CreateWholesaleDropResponse> {
+    async updateWholesaleDrop(requestParameters: UpdateWholesaleDropOperationRequest, initOverrides?: RequestInit): Promise<CreateWholesaleDropResponse> {
         const response = await this.updateWholesaleDropRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2188,7 +2531,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Rename a group, change its discount, or pause it (active=false).
      */
-    async updateWholesaleGroupRaw(requestParameters: UpdateWholesaleGroupRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleGroupResponse>> {
+    async updateWholesaleGroupRaw(requestParameters: UpdateWholesaleGroupOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWholesaleGroupResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWholesaleGroup.');
         }
@@ -2196,6 +2539,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2210,6 +2555,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleGroupRequestToJSON(requestParameters.updateWholesaleGroupRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWholesaleGroupResponseFromJSON(jsonValue));
@@ -2218,7 +2564,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Rename a group, change its discount, or pause it (active=false).
      */
-    async updateWholesaleGroup(requestParameters: UpdateWholesaleGroupRequest, initOverrides?: RequestInit): Promise<CreateWholesaleGroupResponse> {
+    async updateWholesaleGroup(requestParameters: UpdateWholesaleGroupOperationRequest, initOverrides?: RequestInit): Promise<CreateWholesaleGroupResponse> {
         const response = await this.updateWholesaleGroupRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2226,7 +2572,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Replace one listing\'s quantity breaks: [{ minQuantity ≥ 2, unitPriceCents }], each cheaper than the last and than the list price. An empty list removes them. Applies to every buyer at checkout.
      */
-    async updateWholesaleListingTierRaw(requestParameters: UpdateWholesaleListingTierRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWholesaleListingTierResponse>> {
+    async updateWholesaleListingTierRaw(requestParameters: UpdateWholesaleListingTierOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWholesaleListingTierResponse>> {
         if (requestParameters.platformListingId === null || requestParameters.platformListingId === undefined) {
             throw new runtime.RequiredError('platformListingId','Required parameter requestParameters.platformListingId was null or undefined when calling updateWholesaleListingTier.');
         }
@@ -2234,6 +2580,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2248,6 +2596,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleListingTierRequestToJSON(requestParameters.updateWholesaleListingTierRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWholesaleListingTierResponseFromJSON(jsonValue));
@@ -2256,7 +2605,7 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Replace one listing\'s quantity breaks: [{ minQuantity ≥ 2, unitPriceCents }], each cheaper than the last and than the list price. An empty list removes them. Applies to every buyer at checkout.
      */
-    async updateWholesaleListingTier(requestParameters: UpdateWholesaleListingTierRequest, initOverrides?: RequestInit): Promise<UpdateWholesaleListingTierResponse> {
+    async updateWholesaleListingTier(requestParameters: UpdateWholesaleListingTierOperationRequest, initOverrides?: RequestInit): Promise<UpdateWholesaleListingTierResponse> {
         const response = await this.updateWholesaleListingTierRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -2264,10 +2613,12 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Save a store\'s trade profile. Omitted fields are unchanged; null clears. shipsFrom is checked by the shipping validator (400 invalid_ships_from). The profile is the bottom of the trade-terms cascade: catalogs and items that leave a term empty inherit it — saving never rewrites catalogs. Preset ids must be your own presets of that kind.
      */
-    async updateWholesaleProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWholesaleProfileResponse>> {
+    async updateWholesaleProfileRaw(requestParameters: UpdateWholesaleProfileOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWholesaleProfileResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2282,6 +2633,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleProfileRequestToJSON(requestParameters.updateWholesaleProfileRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWholesaleProfileResponseFromJSON(jsonValue));
@@ -2290,15 +2642,15 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Save a store\'s trade profile. Omitted fields are unchanged; null clears. shipsFrom is checked by the shipping validator (400 invalid_ships_from). The profile is the bottom of the trade-terms cascade: catalogs and items that leave a term empty inherit it — saving never rewrites catalogs. Preset ids must be your own presets of that kind.
      */
-    async updateWholesaleProfile(initOverrides?: RequestInit): Promise<UpdateWholesaleProfileResponse> {
-        const response = await this.updateWholesaleProfileRaw(initOverrides);
+    async updateWholesaleProfile(requestParameters: UpdateWholesaleProfileOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateWholesaleProfileResponse> {
+        const response = await this.updateWholesaleProfileRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Reserve N units of an inventory item for wholesale: retail channels advertise the rest and come down when only the reserve is left. 0 clears it.
      */
-    async updateWholesaleReserveRaw(requestParameters: UpdateWholesaleReserveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWholesaleReserveResponse>> {
+    async updateWholesaleReserveRaw(requestParameters: UpdateWholesaleReserveOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWholesaleReserveResponse>> {
         if (requestParameters.inventoryItemId === null || requestParameters.inventoryItemId === undefined) {
             throw new runtime.RequiredError('inventoryItemId','Required parameter requestParameters.inventoryItemId was null or undefined when calling updateWholesaleReserve.');
         }
@@ -2306,6 +2658,8 @@ export class WholesaleApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -2320,6 +2674,7 @@ export class WholesaleApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWholesaleReserveRequestToJSON(requestParameters.updateWholesaleReserveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWholesaleReserveResponseFromJSON(jsonValue));
@@ -2328,9 +2683,49 @@ export class WholesaleApi extends runtime.BaseAPI {
     /**
      * Reserve N units of an inventory item for wholesale: retail channels advertise the rest and come down when only the reserve is left. 0 clears it.
      */
-    async updateWholesaleReserve(requestParameters: UpdateWholesaleReserveRequest, initOverrides?: RequestInit): Promise<GetWholesaleReserveResponse> {
+    async updateWholesaleReserve(requestParameters: UpdateWholesaleReserveOperationRequest, initOverrides?: RequestInit): Promise<GetWholesaleReserveResponse> {
         const response = await this.updateWholesaleReserveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWholesaleDropsStatusEnum {
+    Draft = 'draft',
+    Live = 'live',
+    Cancelled = 'cancelled',
+    Scheduled = 'scheduled',
+    Ended = 'ended',
+    SoldOut = 'sold_out'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWholesaleInvoicesStatusEnum {
+    Partial = 'partial',
+    Open = 'open',
+    Void = 'void',
+    Paid = 'paid',
+    Overdue = 'overdue',
+    Unpaid = 'unpaid',
+    WrittenOff = 'written_off'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWholesaleQuotesStatusEnum {
+    All = 'all',
+    Expired = 'expired',
+    Open = 'open',
+    Accepted = 'accepted',
+    Declined = 'declined',
+    Requested = 'requested',
+    Withdrawn = 'withdrawn',
+    Answered = 'answered'
 }

@@ -20,23 +20,23 @@ import {
     CreateBulkBatchItemResponseGradingToJSON,
 } from '../bulk/CreateBulkBatchItemResponseGrading';
 import {
-    CreateMagicScanSynthesizeResponsePayloadCategory,
-    CreateMagicScanSynthesizeResponsePayloadCategoryFromJSON,
-    CreateMagicScanSynthesizeResponsePayloadCategoryFromJSONTyped,
-    CreateMagicScanSynthesizeResponsePayloadCategoryToJSON,
-} from './CreateMagicScanSynthesizeResponsePayloadCategory';
-import {
-    CreateMagicScanSynthesizeResponsePayloadDimensions,
-    CreateMagicScanSynthesizeResponsePayloadDimensionsFromJSON,
-    CreateMagicScanSynthesizeResponsePayloadDimensionsFromJSONTyped,
-    CreateMagicScanSynthesizeResponsePayloadDimensionsToJSON,
-} from './CreateMagicScanSynthesizeResponsePayloadDimensions';
-import {
     CreateMagicScanSynthesizeResponsePayloadSectionApplicability,
     CreateMagicScanSynthesizeResponsePayloadSectionApplicabilityFromJSON,
     CreateMagicScanSynthesizeResponsePayloadSectionApplicabilityFromJSONTyped,
     CreateMagicScanSynthesizeResponsePayloadSectionApplicabilityToJSON,
 } from './CreateMagicScanSynthesizeResponsePayloadSectionApplicability';
+import {
+    CreateMeTemplateRequestCategoryPath,
+    CreateMeTemplateRequestCategoryPathFromJSON,
+    CreateMeTemplateRequestCategoryPathFromJSONTyped,
+    CreateMeTemplateRequestCategoryPathToJSON,
+} from '../me/CreateMeTemplateRequestCategoryPath';
+import {
+    CreateMeTemplateRequestDimensions,
+    CreateMeTemplateRequestDimensionsFromJSON,
+    CreateMeTemplateRequestDimensionsFromJSONTyped,
+    CreateMeTemplateRequestDimensionsToJSON,
+} from '../me/CreateMeTemplateRequestDimensions';
 
 /**
  * 
@@ -108,10 +108,10 @@ export interface CreateMagicScanSynthesizeResponsePayload {
     weightOz?: number | null;
     /**
      * 
-     * @type {CreateMagicScanSynthesizeResponsePayloadDimensions}
+     * @type {CreateMeTemplateRequestDimensions}
      * @memberof CreateMagicScanSynthesizeResponsePayload
      */
-    dimensions?: CreateMagicScanSynthesizeResponsePayloadDimensions | null;
+    dimensions?: CreateMeTemplateRequestDimensions | null;
     /**
      * Echoed user-selected price (cents). Set on every synthesize call
      * so the master form's defaultPrice input gets populated regardless
@@ -198,10 +198,10 @@ export interface CreateMagicScanSynthesizeResponsePayload {
     costBasisCents?: number | null;
     /**
      * 
-     * @type {CreateMagicScanSynthesizeResponsePayloadDimensions}
+     * @type {CreateMeTemplateRequestDimensions}
      * @memberof CreateMagicScanSynthesizeResponsePayload
      */
-    chosenDimensions?: CreateMagicScanSynthesizeResponsePayloadDimensions | null;
+    chosenDimensions?: CreateMeTemplateRequestDimensions | null;
     /**
      * Every photo the seller uploaded for the source scan, primary
      * first. The NewListingPage hydrator drops these straight into the
@@ -212,10 +212,10 @@ export interface CreateMagicScanSynthesizeResponsePayload {
     imageUrls?: Array<string> | null;
     /**
      * 
-     * @type {CreateMagicScanSynthesizeResponsePayloadCategory}
+     * @type {CreateMeTemplateRequestCategoryPath}
      * @memberof CreateMagicScanSynthesizeResponsePayload
      */
-    category?: CreateMagicScanSynthesizeResponsePayloadCategory | null;
+    category?: CreateMeTemplateRequestCategoryPath | null;
     /**
      * eBay item-specifics: Department/Gender/Style/Pattern/Type. These
      * drive the eBay-required aspects on the form's Item Details
@@ -372,7 +372,7 @@ export function CreateMagicScanSynthesizeResponsePayloadFromJSONTyped(json: any,
         'size': !exists(json, 'size') ? undefined : json['size'],
         'sizeSystem': !exists(json, 'sizeSystem') ? undefined : json['sizeSystem'],
         'weightOz': !exists(json, 'weightOz') ? undefined : json['weightOz'],
-        'dimensions': !exists(json, 'dimensions') ? undefined : CreateMagicScanSynthesizeResponsePayloadDimensionsFromJSON(json['dimensions']),
+        'dimensions': !exists(json, 'dimensions') ? undefined : CreateMeTemplateRequestDimensionsFromJSON(json['dimensions']),
         'priceCents': !exists(json, 'priceCents') ? undefined : json['priceCents'],
         'sellerNote': !exists(json, 'sellerNote') ? undefined : json['sellerNote'],
         'priceLowCents': !exists(json, 'priceLowCents') ? undefined : json['priceLowCents'],
@@ -383,9 +383,9 @@ export function CreateMagicScanSynthesizeResponsePayloadFromJSONTyped(json: any,
         'inventoryQuantity': !exists(json, 'inventoryQuantity') ? undefined : json['inventoryQuantity'],
         'unitsPerListing': !exists(json, 'unitsPerListing') ? undefined : json['unitsPerListing'],
         'costBasisCents': !exists(json, 'costBasisCents') ? undefined : json['costBasisCents'],
-        'chosenDimensions': !exists(json, 'chosenDimensions') ? undefined : CreateMagicScanSynthesizeResponsePayloadDimensionsFromJSON(json['chosenDimensions']),
+        'chosenDimensions': !exists(json, 'chosenDimensions') ? undefined : CreateMeTemplateRequestDimensionsFromJSON(json['chosenDimensions']),
         'imageUrls': !exists(json, 'imageUrls') ? undefined : json['imageUrls'],
-        'category': !exists(json, 'category') ? undefined : CreateMagicScanSynthesizeResponsePayloadCategoryFromJSON(json['category']),
+        'category': !exists(json, 'category') ? undefined : CreateMeTemplateRequestCategoryPathFromJSON(json['category']),
         'department': !exists(json, 'department') ? undefined : json['department'],
         'gender': !exists(json, 'gender') ? undefined : json['gender'],
         'style': !exists(json, 'style') ? undefined : json['style'],
@@ -424,7 +424,7 @@ export function CreateMagicScanSynthesizeResponsePayloadToJSON(value?: CreateMag
         'size': value.size,
         'sizeSystem': value.sizeSystem,
         'weightOz': value.weightOz,
-        'dimensions': CreateMagicScanSynthesizeResponsePayloadDimensionsToJSON(value.dimensions),
+        'dimensions': CreateMeTemplateRequestDimensionsToJSON(value.dimensions),
         'priceCents': value.priceCents,
         'sellerNote': value.sellerNote,
         'priceLowCents': value.priceLowCents,
@@ -435,9 +435,9 @@ export function CreateMagicScanSynthesizeResponsePayloadToJSON(value?: CreateMag
         'inventoryQuantity': value.inventoryQuantity,
         'unitsPerListing': value.unitsPerListing,
         'costBasisCents': value.costBasisCents,
-        'chosenDimensions': CreateMagicScanSynthesizeResponsePayloadDimensionsToJSON(value.chosenDimensions),
+        'chosenDimensions': CreateMeTemplateRequestDimensionsToJSON(value.chosenDimensions),
         'imageUrls': value.imageUrls,
-        'category': CreateMagicScanSynthesizeResponsePayloadCategoryToJSON(value.category),
+        'category': CreateMeTemplateRequestCategoryPathToJSON(value.category),
         'department': value.department,
         'gender': value.gender,
         'style': value.style,

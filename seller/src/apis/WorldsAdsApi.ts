@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    EnabledRequest,
+    EnabledRequestFromJSON,
+    EnabledRequestToJSON,
     GetWorldExperienceAdReportResponse,
     GetWorldExperienceAdReportResponseFromJSON,
     GetWorldExperienceAdReportResponseToJSON,
@@ -28,10 +31,12 @@ import {
 
 export interface GetWorldExperienceAdRequest {
     experienceId: string;
+    slots?: number;
 }
 
 export interface GetWorldExperienceAdReportRequest {
     experienceId: string;
+    days?: number;
 }
 
 export interface GetWorldExperienceAdSettingRequest {
@@ -40,6 +45,7 @@ export interface GetWorldExperienceAdSettingRequest {
 
 export interface UpdateWorldExperienceAdSettingRequest {
     experienceId: string;
+    enabledRequest?: EnabledRequest;
 }
 
 /**
@@ -56,6 +62,10 @@ export class WorldsAdsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.slots !== undefined) {
+            queryParameters['slots'] = requestParameters.slots;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -94,6 +104,10 @@ export class WorldsAdsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.days !== undefined) {
+            queryParameters['days'] = requestParameters.days;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -173,6 +187,8 @@ export class WorldsAdsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -186,6 +202,7 @@ export class WorldsAdsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: EnabledRequestToJSON(requestParameters.enabledRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldExperienceAdSettingResponseFromJSON(jsonValue));

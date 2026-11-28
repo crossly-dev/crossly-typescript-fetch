@@ -20,6 +20,12 @@ import {
     GetOrderResponseAppShareToJSON,
 } from './GetOrderResponseAppShare';
 import {
+    GetOrderResponseBuyerCompany,
+    GetOrderResponseBuyerCompanyFromJSON,
+    GetOrderResponseBuyerCompanyFromJSONTyped,
+    GetOrderResponseBuyerCompanyToJSON,
+} from './GetOrderResponseBuyerCompany';
+import {
     GetOrderResponseLineItems,
     GetOrderResponseLineItemsFromJSON,
     GetOrderResponseLineItemsFromJSONTyped,
@@ -62,6 +68,12 @@ export interface GetOrderResponse {
      * @memberof GetOrderResponse
      */
     trade?: GetOrderResponseTrade | null;
+    /**
+     * 
+     * @type {GetOrderResponseBuyerCompany}
+     * @memberof GetOrderResponse
+     */
+    buyerCompany?: GetOrderResponseBuyerCompany | null;
     /**
      * DOLLARS (numbers, as order.created sends them). null = not known (no sale row, or details pending).
      * @type {number}
@@ -163,7 +175,19 @@ export interface GetOrderResponse {
      * @type {string}
      * @memberof GetOrderResponse
      */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderResponse
+     */
     source?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderResponse
+     */
+    assigneeMemberId?: string | null;
     /**
      * 
      * @type {string}
@@ -184,12 +208,6 @@ export interface GetOrderResponse {
     platformListingId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof GetOrderResponse
-     */
-    storefrontId?: string | null;
-    /**
-     * 
      * @type {number}
      * @memberof GetOrderResponse
      */
@@ -200,6 +218,12 @@ export interface GetOrderResponse {
      * @memberof GetOrderResponse
      */
     platformOrderId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetOrderResponse
+     */
+    orderNumber?: string | null;
     /**
      * 
      * @type {string}
@@ -436,6 +460,12 @@ export interface GetOrderResponse {
     lastChatCheckAt?: Date | null;
     /**
      * 
+     * @type {Date}
+     * @memberof GetOrderResponse
+     */
+    lastTrackingCheckAt?: Date | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof GetOrderResponse
      */
@@ -568,8 +598,8 @@ export interface GetOrderResponse {
 */
 export enum GetOrderResponseCarrierTrackingEnum {
     Platform = 'platform',
-    None = 'none',
     Crossly = 'crossly',
+    None = 'none',
     Off = 'off',
     CrosslyLabel = 'crossly_label'
 }
@@ -587,6 +617,7 @@ export function GetOrderResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
         'appShare': !exists(json, 'appShare') ? undefined : GetOrderResponseAppShareFromJSON(json['appShare']),
         'carrierTracking': json['carrierTracking'],
         'trade': !exists(json, 'trade') ? undefined : GetOrderResponseTradeFromJSON(json['trade']),
+        'buyerCompany': !exists(json, 'buyerCompany') ? undefined : GetOrderResponseBuyerCompanyFromJSON(json['buyerCompany']),
         'salePrice': !exists(json, 'salePrice') ? undefined : json['salePrice'],
         'platformFee': !exists(json, 'platformFee') ? undefined : json['platformFee'],
         'taxCollected': !exists(json, 'taxCollected') ? undefined : json['taxCollected'],
@@ -603,13 +634,15 @@ export function GetOrderResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
         'platform': json['platform'],
         'status': json['status'],
         'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'source': !exists(json, 'source') ? undefined : json['source'],
+        'assigneeMemberId': !exists(json, 'assigneeMemberId') ? undefined : json['assigneeMemberId'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
         'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
-        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'handlingTimeDays': !exists(json, 'handlingTimeDays') ? undefined : json['handlingTimeDays'],
         'platformOrderId': !exists(json, 'platformOrderId') ? undefined : json['platformOrderId'],
+        'orderNumber': !exists(json, 'orderNumber') ? undefined : json['orderNumber'],
         'reportedByAppId': !exists(json, 'reportedByAppId') ? undefined : json['reportedByAppId'],
         'buyerUsername': !exists(json, 'buyerUsername') ? undefined : json['buyerUsername'],
         'pickupPoint': !exists(json, 'pickupPoint') ? undefined : json['pickupPoint'],
@@ -649,6 +682,7 @@ export function GetOrderResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
         'oversoldBy': json['oversoldBy'],
         'lastStatusCheckAt': !exists(json, 'lastStatusCheckAt') ? undefined : (json['lastStatusCheckAt'] === null ? null : new Date(json['lastStatusCheckAt'])),
         'lastChatCheckAt': !exists(json, 'lastChatCheckAt') ? undefined : (json['lastChatCheckAt'] === null ? null : new Date(json['lastChatCheckAt'])),
+        'lastTrackingCheckAt': !exists(json, 'lastTrackingCheckAt') ? undefined : (json['lastTrackingCheckAt'] === null ? null : new Date(json['lastTrackingCheckAt'])),
         'isDisputed': json['isDisputed'],
         'disputeReason': !exists(json, 'disputeReason') ? undefined : json['disputeReason'],
         'disputePlatformCaseId': !exists(json, 'disputePlatformCaseId') ? undefined : json['disputePlatformCaseId'],
@@ -685,6 +719,7 @@ export function GetOrderResponseToJSON(value?: GetOrderResponse | null): any {
         'appShare': GetOrderResponseAppShareToJSON(value.appShare),
         'carrierTracking': value.carrierTracking,
         'trade': GetOrderResponseTradeToJSON(value.trade),
+        'buyerCompany': GetOrderResponseBuyerCompanyToJSON(value.buyerCompany),
         'salePrice': value.salePrice,
         'platformFee': value.platformFee,
         'taxCollected': value.taxCollected,
@@ -701,13 +736,15 @@ export function GetOrderResponseToJSON(value?: GetOrderResponse | null): any {
         'platform': value.platform,
         'status': value.status,
         'notes': value.notes,
+        'storefrontId': value.storefrontId,
         'source': value.source,
+        'assigneeMemberId': value.assigneeMemberId,
         'inventoryItemId': value.inventoryItemId,
         'listingId': value.listingId,
         'platformListingId': value.platformListingId,
-        'storefrontId': value.storefrontId,
         'handlingTimeDays': value.handlingTimeDays,
         'platformOrderId': value.platformOrderId,
+        'orderNumber': value.orderNumber,
         'reportedByAppId': value.reportedByAppId,
         'buyerUsername': value.buyerUsername,
         'pickupPoint': value.pickupPoint,
@@ -747,6 +784,7 @@ export function GetOrderResponseToJSON(value?: GetOrderResponse | null): any {
         'oversoldBy': value.oversoldBy,
         'lastStatusCheckAt': value.lastStatusCheckAt === undefined ? undefined : (value.lastStatusCheckAt === null ? null : value.lastStatusCheckAt.toISOString()),
         'lastChatCheckAt': value.lastChatCheckAt === undefined ? undefined : (value.lastChatCheckAt === null ? null : value.lastChatCheckAt.toISOString()),
+        'lastTrackingCheckAt': value.lastTrackingCheckAt === undefined ? undefined : (value.lastTrackingCheckAt === null ? null : value.lastTrackingCheckAt.toISOString()),
         'isDisputed': value.isDisputed,
         'disputeReason': value.disputeReason,
         'disputePlatformCaseId': value.disputePlatformCaseId,

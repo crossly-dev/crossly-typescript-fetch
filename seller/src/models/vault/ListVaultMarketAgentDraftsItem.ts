@@ -174,8 +174,8 @@ export enum ListVaultMarketAgentDraftsItemFundingEnum {
 * @enum {string}
 */
 export enum ListVaultMarketAgentDraftsItemStatusEnum {
-    Cancelled = 'cancelled',
     Expired = 'expired',
+    Cancelled = 'cancelled',
     Drafted = 'drafted',
     Rejected = 'rejected',
     Placing = 'placing',

@@ -79,8 +79,8 @@ export enum GetEventPolicyResponseDataMatrixEventEnum {
 * @enum {string}
 */
 export enum GetEventPolicyResponseDataMatrixOwnershipEnum {
-    Imported = 'imported',
     Crossly = 'crossly',
+    Imported = 'imported',
     OtherTool = 'other_tool',
     AppManaged = 'app_managed',
     Untracked = 'untracked'

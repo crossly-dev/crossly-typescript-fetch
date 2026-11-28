@@ -15,6 +15,15 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateListingByIdRequest,
+    CreateListingByIdRequestFromJSON,
+    CreateListingByIdRequestToJSON,
+    CreateWorldExperienceGalleryRequest,
+    CreateWorldExperienceGalleryRequestFromJSON,
+    CreateWorldExperienceGalleryRequestToJSON,
+    CreateWorldExperienceGalleryUploadUrlRequest,
+    CreateWorldExperienceGalleryUploadUrlRequestFromJSON,
+    CreateWorldExperienceGalleryUploadUrlRequestToJSON,
     CreateWorldExperienceGalleryUploadUrlResponse,
     CreateWorldExperienceGalleryUploadUrlResponseFromJSON,
     CreateWorldExperienceGalleryUploadUrlResponseToJSON,
@@ -24,20 +33,31 @@ import {
     GetWorldExperienceGalleryResponse,
     GetWorldExperienceGalleryResponseFromJSON,
     GetWorldExperienceGalleryResponseToJSON,
+    UpdateWorldExperienceGalleryRequest,
+    UpdateWorldExperienceGalleryRequestFromJSON,
+    UpdateWorldExperienceGalleryRequestToJSON,
+    UpdateWorldExperienceGalleryRoleRequest,
+    UpdateWorldExperienceGalleryRoleRequestFromJSON,
+    UpdateWorldExperienceGalleryRoleRequestToJSON,
     UpdateWorldExperienceGalleryRoleResponse,
     UpdateWorldExperienceGalleryRoleResponseFromJSON,
     UpdateWorldExperienceGalleryRoleResponseToJSON,
+    UpdateWorldExperienceGalleryTrailerUrlRequest,
+    UpdateWorldExperienceGalleryTrailerUrlRequestFromJSON,
+    UpdateWorldExperienceGalleryTrailerUrlRequestToJSON,
     WorldExperienceGalleryResponse,
     WorldExperienceGalleryResponseFromJSON,
     WorldExperienceGalleryResponseToJSON,
 } from '../models';
 
-export interface CreateWorldExperienceGalleryRequest {
+export interface CreateWorldExperienceGalleryOperationRequest {
     experienceId: string;
+    createWorldExperienceGalleryRequest?: CreateWorldExperienceGalleryRequest;
 }
 
-export interface CreateWorldExperienceGalleryUploadUrlRequest {
+export interface CreateWorldExperienceGalleryUploadUrlOperationRequest {
     experienceId: string;
+    createWorldExperienceGalleryUploadUrlRequest?: CreateWorldExperienceGalleryUploadUrlRequest;
 }
 
 export interface DeleteWorldExperienceGalleryRequest {
@@ -49,22 +69,26 @@ export interface GetWorldExperienceGalleryRequest {
     experienceId: string;
 }
 
-export interface UpdateWorldExperienceGalleryRequest {
+export interface UpdateWorldExperienceGalleryOperationRequest {
     experienceId: string;
     mediaId: string;
+    updateWorldExperienceGalleryRequest?: UpdateWorldExperienceGalleryRequest;
 }
 
 export interface UpdateWorldExperienceGalleryOrderRequest {
     experienceId: string;
+    createListingByIdRequest?: CreateListingByIdRequest;
 }
 
-export interface UpdateWorldExperienceGalleryRoleRequest {
+export interface UpdateWorldExperienceGalleryRoleOperationRequest {
     experienceId: string;
     mediaId: string;
+    updateWorldExperienceGalleryRoleRequest?: UpdateWorldExperienceGalleryRoleRequest;
 }
 
-export interface UpdateWorldExperienceGalleryTrailerUrlRequest {
+export interface UpdateWorldExperienceGalleryTrailerUrlOperationRequest {
     experienceId: string;
+    updateWorldExperienceGalleryTrailerUrlRequest?: UpdateWorldExperienceGalleryTrailerUrlRequest;
 }
 
 /**
@@ -75,7 +99,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * Add an uploaded screenshot or video (your own upload\'s publicUrl; a video may carry a poster image). Images are scanned at once; every item waits for a person and shows on the game\'s page once approved.
      */
-    async createWorldExperienceGalleryRaw(requestParameters: CreateWorldExperienceGalleryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceGalleryResponse>> {
+    async createWorldExperienceGalleryRaw(requestParameters: CreateWorldExperienceGalleryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceGalleryResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceGallery.');
         }
@@ -83,6 +107,8 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -97,6 +123,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceGalleryRequestToJSON(requestParameters.createWorldExperienceGalleryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceGalleryResponseFromJSON(jsonValue));
@@ -105,7 +132,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * Add an uploaded screenshot or video (your own upload\'s publicUrl; a video may carry a poster image). Images are scanned at once; every item waits for a person and shows on the game\'s page once approved.
      */
-    async createWorldExperienceGallery(requestParameters: CreateWorldExperienceGalleryRequest, initOverrides?: RequestInit): Promise<WorldExperienceGalleryResponse> {
+    async createWorldExperienceGallery(requestParameters: CreateWorldExperienceGalleryOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceGalleryResponse> {
         const response = await this.createWorldExperienceGalleryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -113,7 +140,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * A presigned upload for a gallery screenshot (JPEG/PNG/WebP/GIF, ≤ 10 MB) or video (MP4/QuickTime/WebM): PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then add publicUrl to the gallery.
      */
-    async createWorldExperienceGalleryUploadUrlRaw(requestParameters: CreateWorldExperienceGalleryUploadUrlRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse>> {
+    async createWorldExperienceGalleryUploadUrlRaw(requestParameters: CreateWorldExperienceGalleryUploadUrlOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceGalleryUploadUrl.');
         }
@@ -121,6 +148,8 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -135,6 +164,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceGalleryUploadUrlRequestToJSON(requestParameters.createWorldExperienceGalleryUploadUrlRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceGalleryUploadUrlResponseFromJSON(jsonValue));
@@ -143,7 +173,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * A presigned upload for a gallery screenshot (JPEG/PNG/WebP/GIF, ≤ 10 MB) or video (MP4/QuickTime/WebM): PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then add publicUrl to the gallery.
      */
-    async createWorldExperienceGalleryUploadUrl(requestParameters: CreateWorldExperienceGalleryUploadUrlRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceGalleryUploadUrlResponse> {
+    async createWorldExperienceGalleryUploadUrl(requestParameters: CreateWorldExperienceGalleryUploadUrlOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceGalleryUploadUrlResponse> {
         const response = await this.createWorldExperienceGalleryUploadUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -231,7 +261,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * Change an item\'s caption (filtered; an approved item with a new caption goes back to review).
      */
-    async updateWorldExperienceGalleryRaw(requestParameters: UpdateWorldExperienceGalleryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceGalleryResponse>> {
+    async updateWorldExperienceGalleryRaw(requestParameters: UpdateWorldExperienceGalleryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceGalleryResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceGallery.');
         }
@@ -243,6 +273,8 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -257,6 +289,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceGalleryRequestToJSON(requestParameters.updateWorldExperienceGalleryRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceGalleryResponseFromJSON(jsonValue));
@@ -265,7 +298,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * Change an item\'s caption (filtered; an approved item with a new caption goes back to review).
      */
-    async updateWorldExperienceGallery(requestParameters: UpdateWorldExperienceGalleryRequest, initOverrides?: RequestInit): Promise<WorldExperienceGalleryResponse> {
+    async updateWorldExperienceGallery(requestParameters: UpdateWorldExperienceGalleryOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceGalleryResponse> {
         const response = await this.updateWorldExperienceGalleryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -282,6 +315,8 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -295,6 +330,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingByIdRequestToJSON(requestParameters.createListingByIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperienceGalleryRoleResponseFromJSON(jsonValue));
@@ -311,7 +347,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * Make an item the game\'s icon or thumbnail (an image), its trailer (a video), or put it back in the gallery. The previous holder of that role goes back to the gallery.
      */
-    async updateWorldExperienceGalleryRoleRaw(requestParameters: UpdateWorldExperienceGalleryRoleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> {
+    async updateWorldExperienceGalleryRoleRaw(requestParameters: UpdateWorldExperienceGalleryRoleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceGalleryRole.');
         }
@@ -323,6 +359,8 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -337,6 +375,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceGalleryRoleRequestToJSON(requestParameters.updateWorldExperienceGalleryRoleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperienceGalleryRoleResponseFromJSON(jsonValue));
@@ -345,7 +384,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * Make an item the game\'s icon or thumbnail (an image), its trailer (a video), or put it back in the gallery. The previous holder of that role goes back to the gallery.
      */
-    async updateWorldExperienceGalleryRole(requestParameters: UpdateWorldExperienceGalleryRoleRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperienceGalleryRoleResponse> {
+    async updateWorldExperienceGalleryRole(requestParameters: UpdateWorldExperienceGalleryRoleOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperienceGalleryRoleResponse> {
         const response = await this.updateWorldExperienceGalleryRoleRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -353,7 +392,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * Set the game\'s trailer to a YouTube or Vimeo video link (https; youtube.com, youtu.be, vimeo.com, player.vimeo.com only; any other host is 400 trailer_host_not_allowed). It waits for a person like any gallery item; the current trailer goes back to the gallery (an uploaded clip) or off the page (a link).
      */
-    async updateWorldExperienceGalleryTrailerUrlRaw(requestParameters: UpdateWorldExperienceGalleryTrailerUrlRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceGalleryResponse>> {
+    async updateWorldExperienceGalleryTrailerUrlRaw(requestParameters: UpdateWorldExperienceGalleryTrailerUrlOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceGalleryResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceGalleryTrailerUrl.');
         }
@@ -361,6 +400,8 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -375,6 +416,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceGalleryTrailerUrlRequestToJSON(requestParameters.updateWorldExperienceGalleryTrailerUrlRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceGalleryResponseFromJSON(jsonValue));
@@ -383,7 +425,7 @@ export class WorldsGalleryApi extends runtime.BaseAPI {
     /**
      * Set the game\'s trailer to a YouTube or Vimeo video link (https; youtube.com, youtu.be, vimeo.com, player.vimeo.com only; any other host is 400 trailer_host_not_allowed). It waits for a person like any gallery item; the current trailer goes back to the gallery (an uploaded clip) or off the page (a link).
      */
-    async updateWorldExperienceGalleryTrailerUrl(requestParameters: UpdateWorldExperienceGalleryTrailerUrlRequest, initOverrides?: RequestInit): Promise<WorldExperienceGalleryResponse> {
+    async updateWorldExperienceGalleryTrailerUrl(requestParameters: UpdateWorldExperienceGalleryTrailerUrlOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceGalleryResponse> {
         const response = await this.updateWorldExperienceGalleryTrailerUrlRaw(requestParameters, initOverrides);
         return await response.value();
     }

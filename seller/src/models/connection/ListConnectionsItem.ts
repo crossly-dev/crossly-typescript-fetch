@@ -21,6 +21,12 @@ import { exists, mapValues } from '../../runtime';
 export interface ListConnectionsItem {
     /**
      * 
+     * @type {boolean}
+     * @memberof ListConnectionsItem
+     */
+    attachedToStore?: boolean | null;
+    /**
+     * 
      * @type {string}
      * @memberof ListConnectionsItem
      */
@@ -73,6 +79,7 @@ export function ListConnectionsItemFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
+        'attachedToStore': !exists(json, 'attachedToStore') ? undefined : json['attachedToStore'],
         'id': json['id'],
         'platform': json['platform'],
         'isActive': json['isActive'],
@@ -92,6 +99,7 @@ export function ListConnectionsItemToJSON(value?: ListConnectionsItem | null): a
     }
     return {
         
+        'attachedToStore': value.attachedToStore,
         'id': value.id,
         'platform': value.platform,
         'isActive': value.isActive,

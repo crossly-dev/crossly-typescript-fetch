@@ -129,8 +129,8 @@ export interface ListWorldExperienceProductsItem {
 */
 export enum ListWorldExperienceProductsItemKindEnum {
     Product = 'product',
-    Subscription = 'subscription',
     Pass = 'pass',
+    Subscription = 'subscription',
     PrivateServer = 'private_server',
     PaidAccess = 'paid_access'
 }

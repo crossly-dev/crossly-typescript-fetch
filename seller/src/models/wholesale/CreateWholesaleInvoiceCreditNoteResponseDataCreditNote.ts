@@ -42,7 +42,25 @@ export interface CreateWholesaleInvoiceCreditNoteResponseDataCreditNote {
      * @type {string}
      * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
      */
+    kind: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
+     */
     invoiceId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
+     */
+    note?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
+     */
+    createdByUserId?: string | null;
     /**
      * 
      * @type {string}
@@ -57,12 +75,6 @@ export interface CreateWholesaleInvoiceCreditNoteResponseDataCreditNote {
     reason?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
-     */
-    kind: string;
-    /**
-     * 
      * @type {number}
      * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
      */
@@ -73,18 +85,6 @@ export interface CreateWholesaleInvoiceCreditNoteResponseDataCreditNote {
      * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
      */
     sellerUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
-     */
-    note?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateWholesaleInvoiceCreditNoteResponseDataCreditNote
-     */
-    createdByUserId?: string | null;
 }
 
 export function CreateWholesaleInvoiceCreditNoteResponseDataCreditNoteFromJSON(json: any): CreateWholesaleInvoiceCreditNoteResponseDataCreditNote {
@@ -100,14 +100,14 @@ export function CreateWholesaleInvoiceCreditNoteResponseDataCreditNoteFromJSONTy
         'number': !exists(json, 'number') ? undefined : json['number'],
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
-        'invoiceId': json['invoiceId'],
-        'buyerUserId': json['buyerUserId'],
-        'reason': !exists(json, 'reason') ? undefined : json['reason'],
         'kind': json['kind'],
-        'amountCents': json['amountCents'],
-        'sellerUserId': json['sellerUserId'],
+        'invoiceId': json['invoiceId'],
         'note': !exists(json, 'note') ? undefined : json['note'],
         'createdByUserId': !exists(json, 'createdByUserId') ? undefined : json['createdByUserId'],
+        'buyerUserId': json['buyerUserId'],
+        'reason': !exists(json, 'reason') ? undefined : json['reason'],
+        'amountCents': json['amountCents'],
+        'sellerUserId': json['sellerUserId'],
     };
 }
 
@@ -123,14 +123,14 @@ export function CreateWholesaleInvoiceCreditNoteResponseDataCreditNoteToJSON(val
         'number': value.number,
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
-        'invoiceId': value.invoiceId,
-        'buyerUserId': value.buyerUserId,
-        'reason': value.reason,
         'kind': value.kind,
-        'amountCents': value.amountCents,
-        'sellerUserId': value.sellerUserId,
+        'invoiceId': value.invoiceId,
         'note': value.note,
         'createdByUserId': value.createdByUserId,
+        'buyerUserId': value.buyerUserId,
+        'reason': value.reason,
+        'amountCents': value.amountCents,
+        'sellerUserId': value.sellerUserId,
     };
 }
 

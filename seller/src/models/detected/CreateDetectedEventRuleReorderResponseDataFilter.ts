@@ -62,6 +62,13 @@ export interface CreateDetectedEventRuleReorderResponseDataFilter {
      * @memberof CreateDetectedEventRuleReorderResponseDataFilter
      */
     itemIds?: Array<string> | null;
+    /**
+     * The stores this rule applies in (storefront ids); unset = every store of the account. "Copy to other stores…"
+     * writes a copy limited to each target store (api-sale detected-events/copy-rule.ts).
+     * @type {Array<string>}
+     * @memberof CreateDetectedEventRuleReorderResponseDataFilter
+     */
+    storefronts?: Array<string> | null;
 }
 
 export function CreateDetectedEventRuleReorderResponseDataFilterFromJSON(json: any): CreateDetectedEventRuleReorderResponseDataFilter {
@@ -80,6 +87,7 @@ export function CreateDetectedEventRuleReorderResponseDataFilterFromJSONTyped(js
         'apps': !exists(json, 'apps') ? undefined : json['apps'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'itemIds': !exists(json, 'itemIds') ? undefined : json['itemIds'],
+        'storefronts': !exists(json, 'storefronts') ? undefined : json['storefronts'],
     };
 }
 
@@ -98,6 +106,7 @@ export function CreateDetectedEventRuleReorderResponseDataFilterToJSON(value?: C
         'apps': value.apps,
         'tags': value.tags,
         'itemIds': value.itemIds,
+        'storefronts': value.storefronts,
     };
 }
 

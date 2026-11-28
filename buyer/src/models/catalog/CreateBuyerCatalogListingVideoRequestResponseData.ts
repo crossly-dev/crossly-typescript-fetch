@@ -54,6 +54,12 @@ export interface CreateBuyerCatalogListingVideoRequestResponseData {
      * @type {string}
      * @memberof CreateBuyerCatalogListingVideoRequestResponseData
      */
+    note?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBuyerCatalogListingVideoRequestResponseData
+     */
     buyerUserId: string;
     /**
      * 
@@ -61,12 +67,6 @@ export interface CreateBuyerCatalogListingVideoRequestResponseData {
      * @memberof CreateBuyerCatalogListingVideoRequestResponseData
      */
     sellerUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateBuyerCatalogListingVideoRequestResponseData
-     */
-    note?: string | null;
     /**
      * 
      * @type {Date}
@@ -96,9 +96,9 @@ export function CreateBuyerCatalogListingVideoRequestResponseDataFromJSONTyped(j
         'status': json['status'],
         'videoUrl': !exists(json, 'videoUrl') ? undefined : json['videoUrl'],
         'platformListingId': json['platformListingId'],
+        'note': !exists(json, 'note') ? undefined : json['note'],
         'buyerUserId': json['buyerUserId'],
         'sellerUserId': json['sellerUserId'],
-        'note': !exists(json, 'note') ? undefined : json['note'],
         'answeredAt': !exists(json, 'answeredAt') ? undefined : (json['answeredAt'] === null ? null : new Date(json['answeredAt'])),
         'sellerNote': !exists(json, 'sellerNote') ? undefined : json['sellerNote'],
     };
@@ -118,9 +118,9 @@ export function CreateBuyerCatalogListingVideoRequestResponseDataToJSON(value?: 
         'status': value.status,
         'videoUrl': value.videoUrl,
         'platformListingId': value.platformListingId,
+        'note': value.note,
         'buyerUserId': value.buyerUserId,
         'sellerUserId': value.sellerUserId,
-        'note': value.note,
         'answeredAt': value.answeredAt === undefined ? undefined : (value.answeredAt === null ? null : value.answeredAt.toISOString()),
         'sellerNote': value.sellerNote,
     };

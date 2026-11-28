@@ -39,6 +39,12 @@ export interface GetBuyerRentalResponseDataExtensions {
     cents: number;
     /**
      * 
+     * @type {number}
+     * @memberof GetBuyerRentalResponseDataExtensions
+     */
+    freeDays: number;
+    /**
+     * 
      * @type {string}
      * @memberof GetBuyerRentalResponseDataExtensions
      */
@@ -70,6 +76,7 @@ export function GetBuyerRentalResponseDataExtensionsFromJSONTyped(json: any, ign
         'id': json['id'],
         'days': json['days'],
         'cents': json['cents'],
+        'freeDays': json['freeDays'],
         'status': json['status'],
         'createdAt': json['createdAt'],
         'decidedAt': !exists(json, 'decidedAt') ? undefined : json['decidedAt'],
@@ -88,6 +95,7 @@ export function GetBuyerRentalResponseDataExtensionsToJSON(value?: GetBuyerRenta
         'id': value.id,
         'days': value.days,
         'cents': value.cents,
+        'freeDays': value.freeDays,
         'status': value.status,
         'createdAt': value.createdAt,
         'decidedAt': value.decidedAt,

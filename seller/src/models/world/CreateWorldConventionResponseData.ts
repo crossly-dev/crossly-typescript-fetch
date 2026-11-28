@@ -54,13 +54,13 @@ export interface CreateWorldConventionResponseData {
      * @type {string}
      * @memberof CreateWorldConventionResponseData
      */
-    title: string;
+    storefrontId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateWorldConventionResponseData
      */
-    storefrontId?: string | null;
+    title: string;
     /**
      * 
      * @type {Date}
@@ -207,8 +207,8 @@ export function CreateWorldConventionResponseDataFromJSONTyped(json: any, ignore
         'updatedAt': (new Date(json['updatedAt'])),
         'description': !exists(json, 'description') ? undefined : json['description'],
         'status': json['status'],
-        'title': json['title'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'title': json['title'],
         'endsAt': (new Date(json['endsAt'])),
         'startsAt': (new Date(json['startsAt'])),
         'timezone': json['timezone'],
@@ -244,8 +244,8 @@ export function CreateWorldConventionResponseDataToJSON(value?: CreateWorldConve
         'updatedAt': (value.updatedAt.toISOString()),
         'description': value.description,
         'status': value.status,
-        'title': value.title,
         'storefrontId': value.storefrontId,
+        'title': value.title,
         'endsAt': (value.endsAt.toISOString()),
         'startsAt': (value.startsAt.toISOString()),
         'timezone': value.timezone,

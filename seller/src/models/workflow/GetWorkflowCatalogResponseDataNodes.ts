@@ -152,6 +152,7 @@ export enum GetWorkflowCatalogResponseDataNodesKindEnum {
 */
 export enum GetWorkflowCatalogResponseDataNodesGroupEnum {
     Data = 'data',
+    Storefront = 'storefront',
     Listings = 'listings',
     Inventory = 'inventory',
     Orders = 'orders',
@@ -160,7 +161,6 @@ export enum GetWorkflowCatalogResponseDataNodesGroupEnum {
     Offers = 'offers',
     Sales = 'sales',
     Inbox = 'inbox',
-    Storefront = 'storefront',
     Notify = 'notify',
     Flow = 'flow',
     Triggers = 'triggers',
@@ -199,8 +199,8 @@ export enum GetWorkflowCatalogResponseDataNodesDynamicPortsEnum {
 * @enum {string}
 */
 export enum GetWorkflowCatalogResponseDataNodesStatusEnum {
-    Ready = 'ready',
-    Beta = 'beta'
+    Beta = 'beta',
+    Ready = 'ready'
 }
 
 export function GetWorkflowCatalogResponseDataNodesFromJSON(json: any): GetWorkflowCatalogResponseDataNodes {

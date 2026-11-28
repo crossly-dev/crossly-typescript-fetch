@@ -15,9 +15,18 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateNftMarketExternalResaleRequest,
+    CreateNftMarketExternalResaleRequestFromJSON,
+    CreateNftMarketExternalResaleRequestToJSON,
     CreateNftMarketExternalResaleResponse,
     CreateNftMarketExternalResaleResponseFromJSON,
     CreateNftMarketExternalResaleResponseToJSON,
+    CreateNftMarketListingConfirmSaleRequest,
+    CreateNftMarketListingConfirmSaleRequestFromJSON,
+    CreateNftMarketListingConfirmSaleRequestToJSON,
+    CreateNftMarketListingRequest,
+    CreateNftMarketListingRequestFromJSON,
+    CreateNftMarketListingRequestToJSON,
     CreateNftMarketListingResponse,
     CreateNftMarketListingResponseFromJSON,
     CreateNftMarketListingResponseToJSON,
@@ -29,12 +38,21 @@ import {
     OkResponseToJSON,
 } from '../models';
 
+export interface CreateNftMarketExternalResaleOperationRequest {
+    createNftMarketExternalResaleRequest: CreateNftMarketExternalResaleRequest;
+}
+
+export interface CreateNftMarketListingOperationRequest {
+    createNftMarketListingRequest: CreateNftMarketListingRequest;
+}
+
 export interface CreateNftMarketListingCancelRequest {
     id: string;
 }
 
-export interface CreateNftMarketListingConfirmSaleRequest {
+export interface CreateNftMarketListingConfirmSaleOperationRequest {
     id: string;
+    createNftMarketListingConfirmSaleRequest: CreateNftMarketListingConfirmSaleRequest;
 }
 
 /**
@@ -45,10 +63,16 @@ export class NFTMarketApi extends runtime.BaseAPI {
     /**
      * Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only.
      */
-    async createNftMarketExternalResaleRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateNftMarketExternalResaleResponse>> {
+    async createNftMarketExternalResaleRaw(requestParameters: CreateNftMarketExternalResaleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateNftMarketExternalResaleResponse>> {
+        if (requestParameters.createNftMarketExternalResaleRequest === null || requestParameters.createNftMarketExternalResaleRequest === undefined) {
+            throw new runtime.RequiredError('createNftMarketExternalResaleRequest','Required parameter requestParameters.createNftMarketExternalResaleRequest was null or undefined when calling createNftMarketExternalResale.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -63,6 +87,7 @@ export class NFTMarketApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateNftMarketExternalResaleRequestToJSON(requestParameters.createNftMarketExternalResaleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateNftMarketExternalResaleResponseFromJSON(jsonValue));
@@ -71,18 +96,24 @@ export class NFTMarketApi extends runtime.BaseAPI {
     /**
      * Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only.
      */
-    async createNftMarketExternalResale(initOverrides?: RequestInit): Promise<CreateNftMarketExternalResaleResponse> {
-        const response = await this.createNftMarketExternalResaleRaw(initOverrides);
+    async createNftMarketExternalResale(requestParameters: CreateNftMarketExternalResaleOperationRequest, initOverrides?: RequestInit): Promise<CreateNftMarketExternalResaleResponse> {
+        const response = await this.createNftMarketExternalResaleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * List an NFT you own for resale on the Crossly marketplace.
      */
-    async createNftMarketListingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateNftMarketListingResponse>> {
+    async createNftMarketListingRaw(requestParameters: CreateNftMarketListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateNftMarketListingResponse>> {
+        if (requestParameters.createNftMarketListingRequest === null || requestParameters.createNftMarketListingRequest === undefined) {
+            throw new runtime.RequiredError('createNftMarketListingRequest','Required parameter requestParameters.createNftMarketListingRequest was null or undefined when calling createNftMarketListing.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -97,6 +128,7 @@ export class NFTMarketApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateNftMarketListingRequestToJSON(requestParameters.createNftMarketListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateNftMarketListingResponseFromJSON(jsonValue));
@@ -105,8 +137,8 @@ export class NFTMarketApi extends runtime.BaseAPI {
     /**
      * List an NFT you own for resale on the Crossly marketplace.
      */
-    async createNftMarketListing(initOverrides?: RequestInit): Promise<CreateNftMarketListingResponse> {
-        const response = await this.createNftMarketListingRaw(initOverrides);
+    async createNftMarketListing(requestParameters: CreateNftMarketListingOperationRequest, initOverrides?: RequestInit): Promise<CreateNftMarketListingResponse> {
+        const response = await this.createNftMarketListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -151,14 +183,20 @@ export class NFTMarketApi extends runtime.BaseAPI {
     /**
      * Ops: record a finalized on-Crossly NFT sale (verifies the royalty landed, funds the pot). Admin PAT only.
      */
-    async createNftMarketListingConfirmSaleRaw(requestParameters: CreateNftMarketListingConfirmSaleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+    async createNftMarketListingConfirmSaleRaw(requestParameters: CreateNftMarketListingConfirmSaleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createNftMarketListingConfirmSale.');
+        }
+
+        if (requestParameters.createNftMarketListingConfirmSaleRequest === null || requestParameters.createNftMarketListingConfirmSaleRequest === undefined) {
+            throw new runtime.RequiredError('createNftMarketListingConfirmSaleRequest','Required parameter requestParameters.createNftMarketListingConfirmSaleRequest was null or undefined when calling createNftMarketListingConfirmSale.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -173,6 +211,7 @@ export class NFTMarketApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateNftMarketListingConfirmSaleRequestToJSON(requestParameters.createNftMarketListingConfirmSaleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
@@ -181,7 +220,7 @@ export class NFTMarketApi extends runtime.BaseAPI {
     /**
      * Ops: record a finalized on-Crossly NFT sale (verifies the royalty landed, funds the pot). Admin PAT only.
      */
-    async createNftMarketListingConfirmSale(requestParameters: CreateNftMarketListingConfirmSaleRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+    async createNftMarketListingConfirmSale(requestParameters: CreateNftMarketListingConfirmSaleOperationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
         const response = await this.createNftMarketListingConfirmSaleRaw(requestParameters, initOverrides);
         return await response.value();
     }

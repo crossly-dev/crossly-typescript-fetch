@@ -52,12 +52,6 @@ export interface ListVaultMarketOptionComboRfqItem {
     status: ListVaultMarketOptionComboRfqItemStatusEnum;
     /**
      * 
-     * @type {string}
-     * @memberof ListVaultMarketOptionComboRfqItem
-     */
-    strategy: string;
-    /**
-     * 
      * @type {Date}
      * @memberof ListVaultMarketOptionComboRfqItem
      */
@@ -80,6 +74,12 @@ export interface ListVaultMarketOptionComboRfqItem {
      * @memberof ListVaultMarketOptionComboRfqItem
      */
     seriesId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListVaultMarketOptionComboRfqItem
+     */
+    strategy: string;
     /**
      * 
      * @type {string}
@@ -123,9 +123,9 @@ export interface ListVaultMarketOptionComboRfqItem {
 * @enum {string}
 */
 export enum ListVaultMarketOptionComboRfqItemStatusEnum {
+    Expired = 'expired',
     Cancelled = 'cancelled',
     Open = 'open',
-    Expired = 'expired',
     Filled = 'filled'
 }/**
 * @export
@@ -150,11 +150,11 @@ export function ListVaultMarketOptionComboRfqItemFromJSONTyped(json: any, ignore
         'createdAt': (new Date(json['createdAt'])),
         'expiresAt': (new Date(json['expiresAt'])),
         'status': json['status'],
-        'strategy': json['strategy'],
         'closedAt': !exists(json, 'closedAt') ? undefined : (json['closedAt'] === null ? null : new Date(json['closedAt'])),
         'holderAccountId': !exists(json, 'holderAccountId') ? undefined : json['holderAccountId'],
         'side': json['side'],
         'seriesId': json['seriesId'],
+        'strategy': json['strategy'],
         'comboKey': json['comboKey'],
         'legs': ((json['legs'] as Array<any>).map(ListVaultMarketOptionCombosItemLegsFromJSON)),
         'qtyMilli': json['qtyMilli'],
@@ -177,11 +177,11 @@ export function ListVaultMarketOptionComboRfqItemToJSON(value?: ListVaultMarketO
         'createdAt': (value.createdAt.toISOString()),
         'expiresAt': (value.expiresAt.toISOString()),
         'status': value.status,
-        'strategy': value.strategy,
         'closedAt': value.closedAt === undefined ? undefined : (value.closedAt === null ? null : value.closedAt.toISOString()),
         'holderAccountId': value.holderAccountId,
         'side': value.side,
         'seriesId': value.seriesId,
+        'strategy': value.strategy,
         'comboKey': value.comboKey,
         'legs': ((value.legs as Array<any>).map(ListVaultMarketOptionCombosItemLegsToJSON)),
         'qtyMilli': value.qtyMilli,

@@ -64,9 +64,9 @@ export interface UpdateShowroom2ResponseDataRoom {
 */
 export enum UpdateShowroom2ResponseDataRoomSizeEnum {
     Auto = 'auto',
+    Compact = 'compact',
     Standard = 'standard',
     Large = 'large',
-    Compact = 'compact',
     Flagship = 'flagship'
 }
 

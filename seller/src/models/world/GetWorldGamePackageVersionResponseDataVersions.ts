@@ -86,8 +86,8 @@ export interface GetWorldGamePackageVersionResponseDataVersions {
 * @enum {string}
 */
 export enum GetWorldGamePackageVersionResponseDataVersionsStateEnum {
-    Pending = 'pending',
     Draft = 'draft',
+    Pending = 'pending',
     Cancelled = 'cancelled',
     Rejected = 'rejected',
     Approved = 'approved',

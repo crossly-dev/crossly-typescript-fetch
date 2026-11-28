@@ -38,14 +38,14 @@ export interface ListActionLogItemViewBy {
 * @enum {string}
 */
 export enum ListActionLogItemViewByKindEnum {
+    App = 'app',
+    Unknown = 'unknown',
     Person = 'person',
     Rule = 'rule',
     Sale = 'sale',
     Bulk = 'bulk',
     Schedule = 'schedule',
-    App = 'app',
-    System = 'system',
-    Unknown = 'unknown'
+    System = 'system'
 }
 
 export function ListActionLogItemViewByFromJSON(json: any): ListActionLogItemViewBy {

@@ -44,6 +44,12 @@ export interface CreateRentalExtensionDecideResponseData {
      */
     cents: number;
     /**
+     * Days of it a loyalty perk gave free (rental_free_extension; `cents` is for the rest). Migration 1521.
+     * @type {number}
+     * @memberof CreateRentalExtensionDecideResponseData
+     */
+    freeDays?: number | null;
+    /**
      * 'requested' (waiting on the seller) | 'approved' (waiting on payment) | 'paid' | 'declined' | 'expired'.
      * @type {string}
      * @memberof CreateRentalExtensionDecideResponseData
@@ -83,6 +89,7 @@ export function CreateRentalExtensionDecideResponseDataFromJSONTyped(json: any, 
         'rentalId': json['rentalId'],
         'days': json['days'],
         'cents': json['cents'],
+        'freeDays': !exists(json, 'freeDays') ? undefined : json['freeDays'],
         'status': json['status'],
         'stripePaymentIntentId': !exists(json, 'stripePaymentIntentId') ? undefined : json['stripePaymentIntentId'],
         'createdAt': (new Date(json['createdAt'])),
@@ -103,6 +110,7 @@ export function CreateRentalExtensionDecideResponseDataToJSON(value?: CreateRent
         'rentalId': value.rentalId,
         'days': value.days,
         'cents': value.cents,
+        'freeDays': value.freeDays,
         'status': value.status,
         'stripePaymentIntentId': value.stripePaymentIntentId,
         'createdAt': (value.createdAt.toISOString()),

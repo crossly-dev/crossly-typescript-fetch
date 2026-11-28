@@ -20,19 +20,19 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface WorldStaffPostingResponseDataCheckIn {
     /**
-     * How early a worker may check in, and how late before it counts as missed.
+     * 
      * @type {number}
      * @memberof WorldStaffPostingResponseDataCheckIn
      */
     graceMinutes: number;
     /**
-     * Share of the shift (less unpaid breaks) the server must see the worker in the place.
+     * 
      * @type {number}
      * @memberof WorldStaffPostingResponseDataCheckIn
      */
     presenceRatio: number;
     /**
-     * In-world: the worker must check in at the place (true), or presence alone counts (false).
+     * 
      * @type {boolean}
      * @memberof WorldStaffPostingResponseDataCheckIn
      */

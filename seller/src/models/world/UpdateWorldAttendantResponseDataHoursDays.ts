@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    OpenClose,
-    OpenCloseFromJSON,
-    OpenCloseFromJSONTyped,
-    OpenCloseToJSON,
-} from '../common/OpenClose';
+    OpenClose2,
+    OpenClose2FromJSON,
+    OpenClose2FromJSONTyped,
+    OpenClose2ToJSON,
+} from '../common/OpenClose2';
 
 /**
  * 
@@ -28,46 +28,46 @@ import {
 export interface UpdateWorldAttendantResponseDataHoursDays {
     /**
      * 
-     * @type {OpenClose}
+     * @type {OpenClose2}
      * @memberof UpdateWorldAttendantResponseDataHoursDays
      */
-    _0?: OpenClose | null;
+    _0?: OpenClose2 | null;
     /**
      * 
-     * @type {OpenClose}
+     * @type {OpenClose2}
      * @memberof UpdateWorldAttendantResponseDataHoursDays
      */
-    _1?: OpenClose | null;
+    _1?: OpenClose2 | null;
     /**
      * 
-     * @type {OpenClose}
+     * @type {OpenClose2}
      * @memberof UpdateWorldAttendantResponseDataHoursDays
      */
-    _2?: OpenClose | null;
+    _2?: OpenClose2 | null;
     /**
      * 
-     * @type {OpenClose}
+     * @type {OpenClose2}
      * @memberof UpdateWorldAttendantResponseDataHoursDays
      */
-    _3?: OpenClose | null;
+    _3?: OpenClose2 | null;
     /**
      * 
-     * @type {OpenClose}
+     * @type {OpenClose2}
      * @memberof UpdateWorldAttendantResponseDataHoursDays
      */
-    _4?: OpenClose | null;
+    _4?: OpenClose2 | null;
     /**
      * 
-     * @type {OpenClose}
+     * @type {OpenClose2}
      * @memberof UpdateWorldAttendantResponseDataHoursDays
      */
-    _5?: OpenClose | null;
+    _5?: OpenClose2 | null;
     /**
      * 
-     * @type {OpenClose}
+     * @type {OpenClose2}
      * @memberof UpdateWorldAttendantResponseDataHoursDays
      */
-    _6?: OpenClose | null;
+    _6?: OpenClose2 | null;
 }
 
 export function UpdateWorldAttendantResponseDataHoursDaysFromJSON(json: any): UpdateWorldAttendantResponseDataHoursDays {
@@ -80,13 +80,13 @@ export function UpdateWorldAttendantResponseDataHoursDaysFromJSONTyped(json: any
     }
     return {
         
-        '_0': !exists(json, '0') ? undefined : OpenCloseFromJSON(json['0']),
-        '_1': !exists(json, '1') ? undefined : OpenCloseFromJSON(json['1']),
-        '_2': !exists(json, '2') ? undefined : OpenCloseFromJSON(json['2']),
-        '_3': !exists(json, '3') ? undefined : OpenCloseFromJSON(json['3']),
-        '_4': !exists(json, '4') ? undefined : OpenCloseFromJSON(json['4']),
-        '_5': !exists(json, '5') ? undefined : OpenCloseFromJSON(json['5']),
-        '_6': !exists(json, '6') ? undefined : OpenCloseFromJSON(json['6']),
+        '_0': !exists(json, '0') ? undefined : OpenClose2FromJSON(json['0']),
+        '_1': !exists(json, '1') ? undefined : OpenClose2FromJSON(json['1']),
+        '_2': !exists(json, '2') ? undefined : OpenClose2FromJSON(json['2']),
+        '_3': !exists(json, '3') ? undefined : OpenClose2FromJSON(json['3']),
+        '_4': !exists(json, '4') ? undefined : OpenClose2FromJSON(json['4']),
+        '_5': !exists(json, '5') ? undefined : OpenClose2FromJSON(json['5']),
+        '_6': !exists(json, '6') ? undefined : OpenClose2FromJSON(json['6']),
     };
 }
 
@@ -99,13 +99,13 @@ export function UpdateWorldAttendantResponseDataHoursDaysToJSON(value?: UpdateWo
     }
     return {
         
-        '0': OpenCloseToJSON(value._0),
-        '1': OpenCloseToJSON(value._1),
-        '2': OpenCloseToJSON(value._2),
-        '3': OpenCloseToJSON(value._3),
-        '4': OpenCloseToJSON(value._4),
-        '5': OpenCloseToJSON(value._5),
-        '6': OpenCloseToJSON(value._6),
+        '0': OpenClose2ToJSON(value._0),
+        '1': OpenClose2ToJSON(value._1),
+        '2': OpenClose2ToJSON(value._2),
+        '3': OpenClose2ToJSON(value._3),
+        '4': OpenClose2ToJSON(value._4),
+        '5': OpenClose2ToJSON(value._5),
+        '6': OpenClose2ToJSON(value._6),
     };
 }
 

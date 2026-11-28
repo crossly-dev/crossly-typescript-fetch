@@ -18,6 +18,9 @@ import {
     BrandDropResponse,
     BrandDropResponseFromJSON,
     BrandDropResponseToJSON,
+    CreateBrandDropRequest,
+    CreateBrandDropRequestFromJSON,
+    CreateBrandDropRequestToJSON,
     GetBrandDropPartnerResponse,
     GetBrandDropPartnerResponseFromJSON,
     GetBrandDropPartnerResponseToJSON,
@@ -27,7 +30,17 @@ import {
     ListBrandDropsResponse,
     ListBrandDropsResponseFromJSON,
     ListBrandDropsResponseToJSON,
+    UpdateBrandDropListingRequest,
+    UpdateBrandDropListingRequestFromJSON,
+    UpdateBrandDropListingRequestToJSON,
+    UpdateBrandDropRequest,
+    UpdateBrandDropRequestFromJSON,
+    UpdateBrandDropRequestToJSON,
 } from '../models';
+
+export interface CreateBrandDropOperationRequest {
+    createBrandDropRequest: CreateBrandDropRequest;
+}
 
 export interface GetBrandDropRequest {
     id: string;
@@ -37,12 +50,19 @@ export interface ListBrandDropListingsRequest {
     id: string;
 }
 
-export interface UpdateBrandDropRequest {
-    id: string;
+export interface ListBrandDropsRequest {
+    status?: ListBrandDropsStatusEnum;
+    limit?: number;
 }
 
-export interface UpdateBrandDropListingRequest {
+export interface UpdateBrandDropOperationRequest {
     id: string;
+    updateBrandDropRequest?: UpdateBrandDropRequest;
+}
+
+export interface UpdateBrandDropListingOperationRequest {
+    id: string;
+    updateBrandDropListingRequest: UpdateBrandDropListingRequest;
 }
 
 /**
@@ -53,10 +73,16 @@ export class BrandDropsApi extends runtime.BaseAPI {
     /**
      * Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted).
      */
-    async createBrandDropRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<BrandDropResponse>> {
+    async createBrandDropRaw(requestParameters: CreateBrandDropOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BrandDropResponse>> {
+        if (requestParameters.createBrandDropRequest === null || requestParameters.createBrandDropRequest === undefined) {
+            throw new runtime.RequiredError('createBrandDropRequest','Required parameter requestParameters.createBrandDropRequest was null or undefined when calling createBrandDrop.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -71,6 +97,7 @@ export class BrandDropsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBrandDropRequestToJSON(requestParameters.createBrandDropRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BrandDropResponseFromJSON(jsonValue));
@@ -79,8 +106,8 @@ export class BrandDropsApi extends runtime.BaseAPI {
     /**
      * Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted).
      */
-    async createBrandDrop(initOverrides?: RequestInit): Promise<BrandDropResponse> {
-        const response = await this.createBrandDropRaw(initOverrides);
+    async createBrandDrop(requestParameters: CreateBrandDropOperationRequest, initOverrides?: RequestInit): Promise<BrandDropResponse> {
+        const response = await this.createBrandDropRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -197,8 +224,16 @@ export class BrandDropsApi extends runtime.BaseAPI {
     /**
      * Your brand drops, newest start time first. Filter with ?status=draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner.
      */
-    async listBrandDropsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandDropsResponse>> {
+    async listBrandDropsRaw(requestParameters: ListBrandDropsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandDropsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -223,15 +258,15 @@ export class BrandDropsApi extends runtime.BaseAPI {
     /**
      * Your brand drops, newest start time first. Filter with ?status=draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner.
      */
-    async listBrandDrops(initOverrides?: RequestInit): Promise<ListBrandDropsResponse> {
-        const response = await this.listBrandDropsRaw(initOverrides);
+    async listBrandDrops(requestParameters: ListBrandDropsRequest = {}, initOverrides?: RequestInit): Promise<ListBrandDropsResponse> {
+        const response = await this.listBrandDropsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Edit a brand drop and/or change its status: draft (withdraw / unschedule), pending_review (submit for review), scheduled (only with canSelfPublish — 403 drop_review_required otherwise), cancelled. Editing name, time or description of a reviewed drop sends it back to review. Live and finished drops cannot be changed.
      */
-    async updateBrandDropRaw(requestParameters: UpdateBrandDropRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BrandDropResponse>> {
+    async updateBrandDropRaw(requestParameters: UpdateBrandDropOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BrandDropResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBrandDrop.');
         }
@@ -239,6 +274,8 @@ export class BrandDropsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -253,6 +290,7 @@ export class BrandDropsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBrandDropRequestToJSON(requestParameters.updateBrandDropRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => BrandDropResponseFromJSON(jsonValue));
@@ -261,7 +299,7 @@ export class BrandDropsApi extends runtime.BaseAPI {
     /**
      * Edit a brand drop and/or change its status: draft (withdraw / unschedule), pending_review (submit for review), scheduled (only with canSelfPublish — 403 drop_review_required otherwise), cancelled. Editing name, time or description of a reviewed drop sends it back to review. Live and finished drops cannot be changed.
      */
-    async updateBrandDrop(requestParameters: UpdateBrandDropRequest, initOverrides?: RequestInit): Promise<BrandDropResponse> {
+    async updateBrandDrop(requestParameters: UpdateBrandDropOperationRequest, initOverrides?: RequestInit): Promise<BrandDropResponse> {
         const response = await this.updateBrandDropRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -269,14 +307,20 @@ export class BrandDropsApi extends runtime.BaseAPI {
     /**
      * Replace the listings a brand drop releases, by master listing id (up to 100). Each must already be listed on Crossly — otherwise 400 listing_not_on_crossly naming them. Not allowed once the drop is live or finished.
      */
-    async updateBrandDropListingRaw(requestParameters: UpdateBrandDropListingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandDropListingsResponse>> {
+    async updateBrandDropListingRaw(requestParameters: UpdateBrandDropListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandDropListingsResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBrandDropListing.');
+        }
+
+        if (requestParameters.updateBrandDropListingRequest === null || requestParameters.updateBrandDropListingRequest === undefined) {
+            throw new runtime.RequiredError('updateBrandDropListingRequest','Required parameter requestParameters.updateBrandDropListingRequest was null or undefined when calling updateBrandDropListing.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -291,6 +335,7 @@ export class BrandDropsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBrandDropListingRequestToJSON(requestParameters.updateBrandDropListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListBrandDropListingsResponseFromJSON(jsonValue));
@@ -299,9 +344,23 @@ export class BrandDropsApi extends runtime.BaseAPI {
     /**
      * Replace the listings a brand drop releases, by master listing id (up to 100). Each must already be listed on Crossly — otherwise 400 listing_not_on_crossly naming them. Not allowed once the drop is live or finished.
      */
-    async updateBrandDropListing(requestParameters: UpdateBrandDropListingRequest, initOverrides?: RequestInit): Promise<ListBrandDropListingsResponse> {
+    async updateBrandDropListing(requestParameters: UpdateBrandDropListingOperationRequest, initOverrides?: RequestInit): Promise<ListBrandDropListingsResponse> {
         const response = await this.updateBrandDropListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBrandDropsStatusEnum {
+    Draft = 'draft',
+    Live = 'live',
+    Cancelled = 'cancelled',
+    Scheduled = 'scheduled',
+    Ended = 'ended',
+    SoldOut = 'sold_out',
+    PendingReview = 'pending_review'
 }

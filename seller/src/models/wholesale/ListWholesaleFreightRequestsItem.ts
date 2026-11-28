@@ -61,6 +61,12 @@ export interface ListWholesaleFreightRequestsItem {
      * @type {string}
      * @memberof ListWholesaleFreightRequestsItem
      */
+    note?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListWholesaleFreightRequestsItem
+     */
     buyerUserId: string;
     /**
      * 
@@ -68,12 +74,6 @@ export interface ListWholesaleFreightRequestsItem {
      * @memberof ListWholesaleFreightRequestsItem
      */
     sellerUserId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListWholesaleFreightRequestsItem
-     */
-    note?: string | null;
     /**
      * 
      * @type {Array<CreateWholesaleFreightRequestAnswerResponseDataLines>}
@@ -121,9 +121,9 @@ export function ListWholesaleFreightRequestsItemFromJSONTyped(json: any, ignoreD
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'status': json['status'],
+        'note': !exists(json, 'note') ? undefined : json['note'],
         'buyerUserId': json['buyerUserId'],
         'sellerUserId': json['sellerUserId'],
-        'note': !exists(json, 'note') ? undefined : json['note'],
         'lines': ((json['lines'] as Array<any>).map(CreateWholesaleFreightRequestAnswerResponseDataLinesFromJSON)),
         'shipTo': !exists(json, 'shipTo') ? undefined : json['shipTo'],
         'sellerNote': !exists(json, 'sellerNote') ? undefined : json['sellerNote'],
@@ -146,9 +146,9 @@ export function ListWholesaleFreightRequestsItemToJSON(value?: ListWholesaleFrei
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'status': value.status,
+        'note': value.note,
         'buyerUserId': value.buyerUserId,
         'sellerUserId': value.sellerUserId,
-        'note': value.note,
         'lines': ((value.lines as Array<any>).map(CreateWholesaleFreightRequestAnswerResponseDataLinesToJSON)),
         'shipTo': value.shipTo,
         'sellerNote': value.sellerNote,

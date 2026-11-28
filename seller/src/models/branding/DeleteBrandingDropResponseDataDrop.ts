@@ -26,6 +26,18 @@ import {
     ListBrandingDropsItemCountsToJSON,
 } from './ListBrandingDropsItemCounts';
 import {
+    ListBrandingDropsItemLinkedGroupBuy,
+    ListBrandingDropsItemLinkedGroupBuyFromJSON,
+    ListBrandingDropsItemLinkedGroupBuyFromJSONTyped,
+    ListBrandingDropsItemLinkedGroupBuyToJSON,
+} from './ListBrandingDropsItemLinkedGroupBuy';
+import {
+    ListBrandingDropsItemRestockListings,
+    ListBrandingDropsItemRestockListingsFromJSON,
+    ListBrandingDropsItemRestockListingsFromJSONTyped,
+    ListBrandingDropsItemRestockListingsToJSON,
+} from './ListBrandingDropsItemRestockListings';
+import {
     ListBrandingDropsItemWaves,
     ListBrandingDropsItemWavesFromJSON,
     ListBrandingDropsItemWavesFromJSONTyped,
@@ -202,6 +214,18 @@ export interface DeleteBrandingDropResponseDataDrop {
     href: string;
     /**
      * 
+     * @type {ListBrandingDropsItemLinkedGroupBuy}
+     * @memberof DeleteBrandingDropResponseDataDrop
+     */
+    linkedGroupBuy?: ListBrandingDropsItemLinkedGroupBuy | null;
+    /**
+     * E5: the drop's Crossly listings with their stock now; only set by getSellerDrop.
+     * @type {Array<ListBrandingDropsItemRestockListings>}
+     * @memberof DeleteBrandingDropResponseDataDrop
+     */
+    restockListings?: Array<ListBrandingDropsItemRestockListings> | null;
+    /**
+     * 
      * @type {string}
      * @memberof DeleteBrandingDropResponseDataDrop
      */
@@ -264,6 +288,8 @@ export function DeleteBrandingDropResponseDataDropFromJSONTyped(json: any, ignor
         'unitsAvailable': !exists(json, 'unitsAvailable') ? undefined : json['unitsAvailable'],
         'currentPriceCents': !exists(json, 'currentPriceCents') ? undefined : json['currentPriceCents'],
         'href': json['href'],
+        'linkedGroupBuy': !exists(json, 'linkedGroupBuy') ? undefined : ListBrandingDropsItemLinkedGroupBuyFromJSON(json['linkedGroupBuy']),
+        'restockListings': !exists(json, 'restockListings') ? undefined : (json['restockListings'] === null ? null : (json['restockListings'] as Array<any>).map(ListBrandingDropsItemRestockListingsFromJSON)),
         'createdAt': json['createdAt'],
         'updatedAt': json['updatedAt'],
     };
@@ -305,6 +331,8 @@ export function DeleteBrandingDropResponseDataDropToJSON(value?: DeleteBrandingD
         'unitsAvailable': value.unitsAvailable,
         'currentPriceCents': value.currentPriceCents,
         'href': value.href,
+        'linkedGroupBuy': ListBrandingDropsItemLinkedGroupBuyToJSON(value.linkedGroupBuy),
+        'restockListings': value.restockListings === undefined ? undefined : (value.restockListings === null ? null : (value.restockListings as Array<any>).map(ListBrandingDropsItemRestockListingsToJSON)),
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,
     };

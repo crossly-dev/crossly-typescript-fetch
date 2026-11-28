@@ -104,9 +104,9 @@ export interface GetVaultReceiptTokenByMintResponse {
 * @enum {string}
 */
 export enum GetVaultReceiptTokenByMintResponseStatusEnum {
-    Pending = 'pending',
-    Live = 'live',
     Expired = 'expired',
+    Live = 'live',
+    Pending = 'pending',
     Conflict = 'conflict',
     Frozen = 'frozen',
     Burned = 'burned'

@@ -103,7 +103,25 @@ export interface ListListingsItem {
      * @type {string}
      * @memberof ListListingsItem
      */
+    currency?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
     source: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListListingsItem
+     */
+    images?: Array<string> | null;
     /**
      * 
      * @type {string}
@@ -184,12 +202,6 @@ export interface ListListingsItem {
     color: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof ListListingsItem
-     */
-    images?: Array<string> | null;
-    /**
-     * 
      * @type {string}
      * @memberof ListListingsItem
      */
@@ -259,6 +271,12 @@ export interface ListListingsItem {
      * @type {string}
      * @memberof ListListingsItem
      */
+    assigneeMemberId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListListingsItem
+     */
     title?: string | null;
     /**
      * 
@@ -272,12 +290,6 @@ export interface ListListingsItem {
      * @memberof ListListingsItem
      */
     price?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListListingsItem
-     */
-    currency?: string | null;
     /**
      * 
      * @type {Array<string>}
@@ -461,7 +473,10 @@ export function ListListingsItemFromJSONTyped(json: any, ignoreDiscriminator: bo
         'userId': json['userId'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'status': json['status'],
+        'currency': !exists(json, 'currency') ? undefined : json['currency'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'source': json['source'],
+        'images': !exists(json, 'images') ? undefined : json['images'],
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'quantity': json['quantity'],
         'quantityAvailable': json['quantityAvailable'],
@@ -475,7 +490,6 @@ export function ListListingsItemFromJSONTyped(json: any, ignoreDiscriminator: bo
         'itemType': !exists(json, 'itemType') ? undefined : json['itemType'],
         'sizeSystem': !exists(json, 'sizeSystem') ? undefined : json['sizeSystem'],
         'color': json['color'],
-        'images': !exists(json, 'images') ? undefined : json['images'],
         'videoUrl': !exists(json, 'videoUrl') ? undefined : json['videoUrl'],
         'tags': json['tags'],
         'gradeKey': !exists(json, 'gradeKey') ? undefined : json['gradeKey'],
@@ -487,10 +501,10 @@ export function ListListingsItemFromJSONTyped(json: any, ignoreDiscriminator: bo
         'dimensionLIn': !exists(json, 'dimensionLIn') ? undefined : json['dimensionLIn'],
         'dimensionWIn': !exists(json, 'dimensionWIn') ? undefined : json['dimensionWIn'],
         'dimensionHIn': !exists(json, 'dimensionHIn') ? undefined : json['dimensionHIn'],
+        'assigneeMemberId': !exists(json, 'assigneeMemberId') ? undefined : json['assigneeMemberId'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'descriptionHtml': !exists(json, 'descriptionHtml') ? undefined : json['descriptionHtml'],
         'price': !exists(json, 'price') ? undefined : json['price'],
-        'currency': !exists(json, 'currency') ? undefined : json['currency'],
         'aiMediaUrls': json['aiMediaUrls'],
         'aiMediaDeclared': json['aiMediaDeclared'],
         'aiMediaDetectedUrls': json['aiMediaDetectedUrls'],
@@ -539,7 +553,10 @@ export function ListListingsItemToJSON(value?: ListListingsItem | null): any {
         'userId': value.userId,
         'description': value.description,
         'status': value.status,
+        'currency': value.currency,
+        'storefrontId': value.storefrontId,
         'source': value.source,
+        'images': value.images,
         'sku': value.sku,
         'quantity': value.quantity,
         'quantityAvailable': value.quantityAvailable,
@@ -553,7 +570,6 @@ export function ListListingsItemToJSON(value?: ListListingsItem | null): any {
         'itemType': value.itemType,
         'sizeSystem': value.sizeSystem,
         'color': value.color,
-        'images': value.images,
         'videoUrl': value.videoUrl,
         'tags': value.tags,
         'gradeKey': value.gradeKey,
@@ -565,10 +581,10 @@ export function ListListingsItemToJSON(value?: ListListingsItem | null): any {
         'dimensionLIn': value.dimensionLIn,
         'dimensionWIn': value.dimensionWIn,
         'dimensionHIn': value.dimensionHIn,
+        'assigneeMemberId': value.assigneeMemberId,
         'title': value.title,
         'descriptionHtml': value.descriptionHtml,
         'price': value.price,
-        'currency': value.currency,
         'aiMediaUrls': value.aiMediaUrls,
         'aiMediaDeclared': value.aiMediaDeclared,
         'aiMediaDetectedUrls': value.aiMediaDetectedUrls,

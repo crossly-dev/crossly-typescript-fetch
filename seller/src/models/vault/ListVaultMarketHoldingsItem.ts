@@ -195,6 +195,13 @@ export interface ListVaultMarketHoldingsItem {
      */
     deposit?: ListVaultMarketHoldingsItemDeposit | null;
     /**
+     * The seller's inventory item for this unit (p5-13: a holding opens its item page): the one it was sent in from,
+     * else the one it got when it was bought on the book (migration 1496). 1496 backfilled older units.
+     * @type {string}
+     * @memberof ListVaultMarketHoldingsItem
+     */
+    inventoryItemId?: string | null;
+    /**
      * 
      * @type {ListVaultMarketHoldingsItemActions}
      * @memberof ListVaultMarketHoldingsItem
@@ -250,6 +257,7 @@ export function ListVaultMarketHoldingsItemFromJSONTyped(json: any, ignoreDiscri
         'createdAt': json['createdAt'],
         'updatedAt': json['updatedAt'],
         'deposit': !exists(json, 'deposit') ? undefined : ListVaultMarketHoldingsItemDepositFromJSON(json['deposit']),
+        'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
         'actions': ListVaultMarketHoldingsItemActionsFromJSON(json['actions']),
     };
 }
@@ -290,6 +298,7 @@ export function ListVaultMarketHoldingsItemToJSON(value?: ListVaultMarketHolding
         'createdAt': value.createdAt,
         'updatedAt': value.updatedAt,
         'deposit': ListVaultMarketHoldingsItemDepositToJSON(value.deposit),
+        'inventoryItemId': value.inventoryItemId,
         'actions': ListVaultMarketHoldingsItemActionsToJSON(value.actions),
     };
 }

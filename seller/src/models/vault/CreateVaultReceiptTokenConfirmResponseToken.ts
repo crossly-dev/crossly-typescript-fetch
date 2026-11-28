@@ -158,9 +158,9 @@ export interface CreateVaultReceiptTokenConfirmResponseToken {
 * @enum {string}
 */
 export enum CreateVaultReceiptTokenConfirmResponseTokenStatusEnum {
-    Pending = 'pending',
-    Live = 'live',
     Expired = 'expired',
+    Live = 'live',
+    Pending = 'pending',
     Conflict = 'conflict',
     Frozen = 'frozen',
     Burned = 'burned'

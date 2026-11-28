@@ -20,6 +20,12 @@ import {
     ListProductFeedsItemFiltersToJSON,
 } from './ListProductFeedsItemFilters';
 import {
+    ListProductFeedsItemFormatLabels,
+    ListProductFeedsItemFormatLabelsFromJSON,
+    ListProductFeedsItemFormatLabelsFromJSONTyped,
+    ListProductFeedsItemFormatLabelsToJSON,
+} from './ListProductFeedsItemFormatLabels';
+import {
     ListProductFeedsItemFormatsItem,
     ListProductFeedsItemFormatsItemFromJSON,
     ListProductFeedsItemFormatsItemFromJSONTyped,
@@ -37,12 +43,6 @@ import {
     ListProductFeedsItemSettingsFromJSONTyped,
     ListProductFeedsItemSettingsToJSON,
 } from './ListProductFeedsItemSettings';
-import {
-    ListProductFeedsItemUrls,
-    ListProductFeedsItemUrlsFromJSON,
-    ListProductFeedsItemUrlsFromJSONTyped,
-    ListProductFeedsItemUrlsToJSON,
-} from './ListProductFeedsItemUrls';
 
 /**
  * 
@@ -61,6 +61,12 @@ export interface ListProductFeedsItem {
      * @type {string}
      * @memberof ListProductFeedsItem
      */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListProductFeedsItem
+     */
     channel: ListProductFeedsItemChannelEnum;
     /**
      * 
@@ -68,6 +74,12 @@ export interface ListProductFeedsItem {
      * @memberof ListProductFeedsItem
      */
     channelLabel: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListProductFeedsItem
+     */
+    kind: ListProductFeedsItemKindEnum;
     /**
      * 
      * @type {string}
@@ -88,6 +100,12 @@ export interface ListProductFeedsItem {
     formats: Array<ListProductFeedsItemFormatsItem>;
     /**
      * 
+     * @type {ListProductFeedsItemFormatLabels}
+     * @memberof ListProductFeedsItem
+     */
+    formatLabels: ListProductFeedsItemFormatLabels;
+    /**
+     * 
      * @type {boolean}
      * @memberof ListProductFeedsItem
      */
@@ -100,16 +118,22 @@ export interface ListProductFeedsItem {
     url: string;
     /**
      * 
-     * @type {ListProductFeedsItemUrls}
+     * @type {ListProductFeedsItemFormatLabels}
      * @memberof ListProductFeedsItem
      */
-    urls: ListProductFeedsItemUrls;
+    urls: ListProductFeedsItemFormatLabels;
     /**
      * 
      * @type {string}
      * @memberof ListProductFeedsItem
      */
     destination: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListProductFeedsItem
+     */
+    recommendedSchedule: string;
     /**
      * 
      * @type {ListProductFeedsItemFilters}
@@ -128,6 +152,12 @@ export interface ListProductFeedsItem {
      * @memberof ListProductFeedsItem
      */
     tokenRotatedAt?: string | null;
+    /**
+     * While the previous URL still answers (a rotation's grace window), its end.
+     * @type {string}
+     * @memberof ListProductFeedsItem
+     */
+    previousUrlExpiresAt?: string | null;
     /**
      * 
      * @type {string}
@@ -177,17 +207,32 @@ export interface ListProductFeedsItem {
 * @enum {string}
 */
 export enum ListProductFeedsItemChannelEnum {
+    Json = 'json',
     Google = 'google',
+    Tiktok = 'tiktok',
     Meta = 'meta',
-    Tiktok = 'tiktok'
+    Pinterest = 'pinterest',
+    Bing = 'bing',
+    Snapchat = 'snapchat',
+    Rss = 'rss',
+    Csv = 'csv'
+}/**
+* @export
+* @enum {string}
+*/
+export enum ListProductFeedsItemKindEnum {
+    Marketplace = 'marketplace',
+    Generic = 'generic'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListProductFeedsItemFormatEnum {
+    Json = 'json',
+    Csv = 'csv',
     Xml = 'xml',
     Tsv = 'tsv',
-    Csv = 'csv'
+    Atom = 'atom'
 }
 
 export function ListProductFeedsItemFromJSON(json: any): ListProductFeedsItem {
@@ -201,18 +246,23 @@ export function ListProductFeedsItemFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'id': json['id'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'channel': json['channel'],
         'channelLabel': json['channelLabel'],
+        'kind': json['kind'],
         'name': json['name'],
         'format': json['format'],
         'formats': ((json['formats'] as Array<any>).map(ListProductFeedsItemFormatsItemFromJSON)),
+        'formatLabels': ListProductFeedsItemFormatLabelsFromJSON(json['formatLabels']),
         'enabled': json['enabled'],
         'url': json['url'],
-        'urls': ListProductFeedsItemUrlsFromJSON(json['urls']),
+        'urls': ListProductFeedsItemFormatLabelsFromJSON(json['urls']),
         'destination': json['destination'],
+        'recommendedSchedule': json['recommendedSchedule'],
         'filters': ListProductFeedsItemFiltersFromJSON(json['filters']),
         'settings': ListProductFeedsItemSettingsFromJSON(json['settings']),
         'tokenRotatedAt': !exists(json, 'tokenRotatedAt') ? undefined : json['tokenRotatedAt'],
+        'previousUrlExpiresAt': !exists(json, 'previousUrlExpiresAt') ? undefined : json['previousUrlExpiresAt'],
         'lastFetchedAt': !exists(json, 'lastFetchedAt') ? undefined : json['lastFetchedAt'],
         'lastFetchedBy': !exists(json, 'lastFetchedBy') ? undefined : json['lastFetchedBy'],
         'fetchCount': json['fetchCount'],
@@ -233,18 +283,23 @@ export function ListProductFeedsItemToJSON(value?: ListProductFeedsItem | null):
     return {
         
         'id': value.id,
+        'storefrontId': value.storefrontId,
         'channel': value.channel,
         'channelLabel': value.channelLabel,
+        'kind': value.kind,
         'name': value.name,
         'format': value.format,
         'formats': ((value.formats as Array<any>).map(ListProductFeedsItemFormatsItemToJSON)),
+        'formatLabels': ListProductFeedsItemFormatLabelsToJSON(value.formatLabels),
         'enabled': value.enabled,
         'url': value.url,
-        'urls': ListProductFeedsItemUrlsToJSON(value.urls),
+        'urls': ListProductFeedsItemFormatLabelsToJSON(value.urls),
         'destination': value.destination,
+        'recommendedSchedule': value.recommendedSchedule,
         'filters': ListProductFeedsItemFiltersToJSON(value.filters),
         'settings': ListProductFeedsItemSettingsToJSON(value.settings),
         'tokenRotatedAt': value.tokenRotatedAt,
+        'previousUrlExpiresAt': value.previousUrlExpiresAt,
         'lastFetchedAt': value.lastFetchedAt,
         'lastFetchedBy': value.lastFetchedBy,
         'fetchCount': value.fetchCount,

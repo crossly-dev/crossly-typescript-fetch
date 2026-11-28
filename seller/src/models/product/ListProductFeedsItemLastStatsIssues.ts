@@ -67,6 +67,30 @@ export interface ListProductFeedsItemLastStatsIssues {
      * @memberof ListProductFeedsItemLastStatsIssues
      */
     invalidGtin?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListProductFeedsItemLastStatsIssues
+     */
+    missingLink?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListProductFeedsItemLastStatsIssues
+     */
+    invalidLink?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListProductFeedsItemLastStatsIssues
+     */
+    titleTooLong?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ListProductFeedsItemLastStatsIssues
+     */
+    descriptionTooLong?: number | null;
 }
 
 export function ListProductFeedsItemLastStatsIssuesFromJSON(json: any): ListProductFeedsItemLastStatsIssues {
@@ -87,6 +111,10 @@ export function ListProductFeedsItemLastStatsIssuesFromJSONTyped(json: any, igno
         'missingGtin': !exists(json, 'missing_gtin') ? undefined : json['missing_gtin'],
         'missingCategory': !exists(json, 'missing_category') ? undefined : json['missing_category'],
         'invalidGtin': !exists(json, 'invalid_gtin') ? undefined : json['invalid_gtin'],
+        'missingLink': !exists(json, 'missing_link') ? undefined : json['missing_link'],
+        'invalidLink': !exists(json, 'invalid_link') ? undefined : json['invalid_link'],
+        'titleTooLong': !exists(json, 'title_too_long') ? undefined : json['title_too_long'],
+        'descriptionTooLong': !exists(json, 'description_too_long') ? undefined : json['description_too_long'],
     };
 }
 
@@ -107,6 +135,10 @@ export function ListProductFeedsItemLastStatsIssuesToJSON(value?: ListProductFee
         'missing_gtin': value.missingGtin,
         'missing_category': value.missingCategory,
         'invalid_gtin': value.invalidGtin,
+        'missing_link': value.missingLink,
+        'invalid_link': value.invalidLink,
+        'title_too_long': value.titleTooLong,
+        'description_too_long': value.descriptionTooLong,
     };
 }
 

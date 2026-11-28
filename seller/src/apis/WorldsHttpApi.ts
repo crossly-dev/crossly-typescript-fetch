@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateWorldExperienceHttpDomainRequest,
+    CreateWorldExperienceHttpDomainRequestFromJSON,
+    CreateWorldExperienceHttpDomainRequestToJSON,
     CreateWorldExperienceHttpDomainResponse,
     CreateWorldExperienceHttpDomainResponseFromJSON,
     CreateWorldExperienceHttpDomainResponseToJSON,
@@ -24,13 +27,17 @@ import {
     GetWorldExperienceHttpResponse,
     GetWorldExperienceHttpResponseFromJSON,
     GetWorldExperienceHttpResponseToJSON,
+    UpdateWorldExperienceHttpSecretRequest,
+    UpdateWorldExperienceHttpSecretRequestFromJSON,
+    UpdateWorldExperienceHttpSecretRequestToJSON,
     UpdateWorldExperienceHttpSecretResponse,
     UpdateWorldExperienceHttpSecretResponseFromJSON,
     UpdateWorldExperienceHttpSecretResponseToJSON,
 } from '../models';
 
-export interface CreateWorldExperienceHttpDomainRequest {
+export interface CreateWorldExperienceHttpDomainOperationRequest {
     experienceId: string;
+    createWorldExperienceHttpDomainRequest?: CreateWorldExperienceHttpDomainRequest;
 }
 
 export interface DeleteWorldExperienceHttpDomainRequest {
@@ -47,9 +54,10 @@ export interface GetWorldExperienceHttpRequest {
     experienceId: string;
 }
 
-export interface UpdateWorldExperienceHttpSecretRequest {
+export interface UpdateWorldExperienceHttpSecretOperationRequest {
     experienceId: string;
     name: string;
+    updateWorldExperienceHttpSecretRequest?: UpdateWorldExperienceHttpSecretRequest;
 }
 
 /**
@@ -60,7 +68,7 @@ export class WorldsHttpApi extends runtime.BaseAPI {
     /**
      * Declare a domain server scripts may call (example.com or *.example.com). It is reviewed by a person before it works.
      */
-    async createWorldExperienceHttpDomainRaw(requestParameters: CreateWorldExperienceHttpDomainRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceHttpDomainResponse>> {
+    async createWorldExperienceHttpDomainRaw(requestParameters: CreateWorldExperienceHttpDomainOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceHttpDomainResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceHttpDomain.');
         }
@@ -68,6 +76,8 @@ export class WorldsHttpApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -82,6 +92,7 @@ export class WorldsHttpApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceHttpDomainRequestToJSON(requestParameters.createWorldExperienceHttpDomainRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceHttpDomainResponseFromJSON(jsonValue));
@@ -90,7 +101,7 @@ export class WorldsHttpApi extends runtime.BaseAPI {
     /**
      * Declare a domain server scripts may call (example.com or *.example.com). It is reviewed by a person before it works.
      */
-    async createWorldExperienceHttpDomain(requestParameters: CreateWorldExperienceHttpDomainRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceHttpDomainResponse> {
+    async createWorldExperienceHttpDomain(requestParameters: CreateWorldExperienceHttpDomainOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceHttpDomainResponse> {
         const response = await this.createWorldExperienceHttpDomainRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -220,7 +231,7 @@ export class WorldsHttpApi extends runtime.BaseAPI {
     /**
      * Set a secret (UPPER_SNAKE name). Scripts reference it as Http.secret(\"NAME\"); the value is never returned.
      */
-    async updateWorldExperienceHttpSecretRaw(requestParameters: UpdateWorldExperienceHttpSecretRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperienceHttpSecretResponse>> {
+    async updateWorldExperienceHttpSecretRaw(requestParameters: UpdateWorldExperienceHttpSecretOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperienceHttpSecretResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceHttpSecret.');
         }
@@ -232,6 +243,8 @@ export class WorldsHttpApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -246,6 +259,7 @@ export class WorldsHttpApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceHttpSecretRequestToJSON(requestParameters.updateWorldExperienceHttpSecretRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperienceHttpSecretResponseFromJSON(jsonValue));
@@ -254,7 +268,7 @@ export class WorldsHttpApi extends runtime.BaseAPI {
     /**
      * Set a secret (UPPER_SNAKE name). Scripts reference it as Http.secret(\"NAME\"); the value is never returned.
      */
-    async updateWorldExperienceHttpSecret(requestParameters: UpdateWorldExperienceHttpSecretRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperienceHttpSecretResponse> {
+    async updateWorldExperienceHttpSecret(requestParameters: UpdateWorldExperienceHttpSecretOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperienceHttpSecretResponse> {
         const response = await this.updateWorldExperienceHttpSecretRaw(requestParameters, initOverrides);
         return await response.value();
     }

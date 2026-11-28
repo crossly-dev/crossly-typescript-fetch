@@ -15,15 +15,27 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateAccountRequest,
+    CreateAccountRequestFromJSON,
+    CreateAccountRequestToJSON,
     CreateAccountResponse,
     CreateAccountResponseFromJSON,
     CreateAccountResponseToJSON,
     CreateConnectionCardnexusApiKeyResponse,
     CreateConnectionCardnexusApiKeyResponseFromJSON,
     CreateConnectionCardnexusApiKeyResponseToJSON,
+    CreateConnectionEmailCheckResponse,
+    CreateConnectionEmailCheckResponseFromJSON,
+    CreateConnectionEmailCheckResponseToJSON,
+    CreateConnectionEmailImapRequest,
+    CreateConnectionEmailImapRequestFromJSON,
+    CreateConnectionEmailImapRequestToJSON,
     CreateConnectionEmailImapResponse,
     CreateConnectionEmailImapResponseFromJSON,
     CreateConnectionEmailImapResponseToJSON,
+    CreateConnectionEmailImapTestRequest,
+    CreateConnectionEmailImapTestRequestFromJSON,
+    CreateConnectionEmailImapTestRequestToJSON,
     CreateConnectionEmailImapTestResponse,
     CreateConnectionEmailImapTestResponseFromJSON,
     CreateConnectionEmailImapTestResponseToJSON,
@@ -33,6 +45,24 @@ import {
     CreateConnectionLightspeedXTokenResponse,
     CreateConnectionLightspeedXTokenResponseFromJSON,
     CreateConnectionLightspeedXTokenResponseToJSON,
+    CreateConnectionStoreAttachRequest,
+    CreateConnectionStoreAttachRequestFromJSON,
+    CreateConnectionStoreAttachRequestToJSON,
+    CreateConnectionStoreAttachResponse,
+    CreateConnectionStoreAttachResponseFromJSON,
+    CreateConnectionStoreAttachResponseToJSON,
+    CreateConnectionStoreCopyRequest,
+    CreateConnectionStoreCopyRequestFromJSON,
+    CreateConnectionStoreCopyRequestToJSON,
+    CreateConnectionStoreCopyResponse,
+    CreateConnectionStoreCopyResponseFromJSON,
+    CreateConnectionStoreCopyResponseToJSON,
+    CreateConnectionStoreDetachResponse,
+    CreateConnectionStoreDetachResponseFromJSON,
+    CreateConnectionStoreDetachResponseToJSON,
+    CreatePlatformAccountConnectRequest,
+    CreatePlatformAccountConnectRequestFromJSON,
+    CreatePlatformAccountConnectRequestToJSON,
     CreatePlatformAccountConnectResponse,
     CreatePlatformAccountConnectResponseFromJSON,
     CreatePlatformAccountConnectResponseToJSON,
@@ -48,6 +78,15 @@ import {
     CreatePlatformAccountRefreshStatusResponse,
     CreatePlatformAccountRefreshStatusResponseFromJSON,
     CreatePlatformAccountRefreshStatusResponseToJSON,
+    DeleteConnectionEmailResponse,
+    DeleteConnectionEmailResponseFromJSON,
+    DeleteConnectionEmailResponseToJSON,
+    DeleteConnectionOwnAppResponse,
+    DeleteConnectionOwnAppResponseFromJSON,
+    DeleteConnectionOwnAppResponseToJSON,
+    GetChannelAccountHistoryImportResponse,
+    GetChannelAccountHistoryImportResponseFromJSON,
+    GetChannelAccountHistoryImportResponseToJSON,
     GetConnectionEmailResponse,
     GetConnectionEmailResponseFromJSON,
     GetConnectionEmailResponseToJSON,
@@ -57,6 +96,9 @@ import {
     GetConnectionPolicyManagementOptionResponse,
     GetConnectionPolicyManagementOptionResponseFromJSON,
     GetConnectionPolicyManagementOptionResponseToJSON,
+    GetConnectionStoreResponse,
+    GetConnectionStoreResponseFromJSON,
+    GetConnectionStoreResponseToJSON,
     GetOauthInitResponse,
     GetOauthInitResponseFromJSON,
     GetOauthInitResponseToJSON,
@@ -66,6 +108,15 @@ import {
     ListAccountsResponse,
     ListAccountsResponseFromJSON,
     ListAccountsResponseToJSON,
+    ListConnectionEmailEmailsResponse,
+    ListConnectionEmailEmailsResponseFromJSON,
+    ListConnectionEmailEmailsResponseToJSON,
+    ListConnectionEmailResponse,
+    ListConnectionEmailResponseFromJSON,
+    ListConnectionEmailResponseToJSON,
+    ListConnectionOwnAppsResponse,
+    ListConnectionOwnAppsResponseFromJSON,
+    ListConnectionOwnAppsResponseToJSON,
     ListConnectionPolicyManagementItem,
     ListConnectionPolicyManagementItemFromJSON,
     ListConnectionPolicyManagementItemToJSON,
@@ -75,27 +126,86 @@ import {
     ListConnectionsResponse,
     ListConnectionsResponseFromJSON,
     ListConnectionsResponseToJSON,
+    ListPlatformsResponse,
+    ListPlatformsResponseFromJSON,
+    ListPlatformsResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
     SuccessResponse,
     SuccessResponseFromJSON,
     SuccessResponseToJSON,
+    UpdateChannelAccountHistoryImportRequest,
+    UpdateChannelAccountHistoryImportRequestFromJSON,
+    UpdateChannelAccountHistoryImportRequestToJSON,
+    UpdateChannelAccountHistoryImportResponse,
+    UpdateChannelAccountHistoryImportResponseFromJSON,
+    UpdateChannelAccountHistoryImportResponseToJSON,
+    UpdateConnectionEmailImapRequest,
+    UpdateConnectionEmailImapRequestFromJSON,
+    UpdateConnectionEmailImapRequestToJSON,
+    UpdateConnectionEmailResponse,
+    UpdateConnectionEmailResponseFromJSON,
+    UpdateConnectionEmailResponseToJSON,
+    UpdateConnectionOwnAppRequest,
+    UpdateConnectionOwnAppRequestFromJSON,
+    UpdateConnectionOwnAppRequestToJSON,
+    UpdateConnectionOwnAppResponse,
+    UpdateConnectionOwnAppResponseFromJSON,
+    UpdateConnectionOwnAppResponseToJSON,
+    UpdateConnectionPolicyManagementRequest,
+    UpdateConnectionPolicyManagementRequestFromJSON,
+    UpdateConnectionPolicyManagementRequestToJSON,
+    UpdatePlatformPreferenceRequest,
+    UpdatePlatformPreferenceRequestFromJSON,
+    UpdatePlatformPreferenceRequestToJSON,
     UpdatePlatformPreferenceResponse,
     UpdatePlatformPreferenceResponseFromJSON,
     UpdatePlatformPreferenceResponseToJSON,
+    UpdateWeb3MarketplaceKeyRequest,
+    UpdateWeb3MarketplaceKeyRequestFromJSON,
+    UpdateWeb3MarketplaceKeyRequestToJSON,
 } from '../models';
+
+export interface CreateAccountOperationRequest {
+    createAccountRequest: CreateAccountRequest;
+}
+
+export interface CreateConnectionCardnexusApiKeyRequest {
+    updateWeb3MarketplaceKeyRequest: UpdateWeb3MarketplaceKeyRequest;
+}
+
+export interface CreateConnectionEmailCheckRequest {
+    id: string;
+}
+
+export interface CreateConnectionEmailImapOperationRequest {
+    createConnectionEmailImapRequest: CreateConnectionEmailImapRequest;
+}
+
+export interface CreateConnectionEmailImapTestOperationRequest {
+    createConnectionEmailImapTestRequest: CreateConnectionEmailImapTestRequest;
+}
 
 export interface CreateConnectionLightspeedXTokenOperationRequest {
     createConnectionLightspeedXTokenRequest: CreateConnectionLightspeedXTokenRequest;
 }
 
-export interface CreateConnectionRequestRequest {
-    platform: string;
+export interface CreateConnectionStoreAttachOperationRequest {
+    createConnectionStoreAttachRequest?: CreateConnectionStoreAttachRequest;
 }
 
-export interface CreatePlatformAccountConnectRequest {
+export interface CreateConnectionStoreCopyOperationRequest {
+    createConnectionStoreCopyRequest?: CreateConnectionStoreCopyRequest;
+}
+
+export interface CreateConnectionStoreDetachRequest {
+    createConnectionStoreAttachRequest?: CreateConnectionStoreAttachRequest;
+}
+
+export interface CreatePlatformAccountConnectOperationRequest {
     platform: string;
+    createPlatformAccountConnectRequest?: CreatePlatformAccountConnectRequest;
 }
 
 export interface CreatePlatformAccountDisconnectRequest {
@@ -115,7 +225,23 @@ export interface DeleteConnectionByIdRequest {
     id: string;
 }
 
+export interface DeleteConnectionEmailRequest {
+    id: string;
+}
+
 export interface DeleteConnectionEmailImapRequest {
+    id: string;
+}
+
+export interface DeleteConnectionOwnAppRequest {
+    platform: string;
+}
+
+export interface GetChannelAccountHistoryImportRequest {
+    accountId: string;
+}
+
+export interface GetConnectionEmailRequest {
     id: string;
 }
 
@@ -131,16 +257,46 @@ export interface GetOauthInitRequest {
     siteUrl?: string;
 }
 
-export interface UpdateConnectionEmailImapRequest {
+export interface ListConnectionEmailEmailsRequest {
     id: string;
+    q?: string;
+    platform?: string;
+    type?: ListConnectionEmailEmailsTypeEnum;
+    match?: ListConnectionEmailEmailsMatchEnum;
+    from?: Date;
+    to?: Date;
+    cursor?: string;
+    limit?: number;
 }
 
-export interface UpdateConnectionPolicyManagementRequest {
-    connectionId: string;
+export interface UpdateChannelAccountHistoryImportOperationRequest {
+    accountId: string;
+    updateChannelAccountHistoryImportRequest: UpdateChannelAccountHistoryImportRequest;
 }
 
-export interface UpdatePlatformPreferenceRequest {
+export interface UpdateConnectionEmailRequest {
+    id: string;
+    updateConnectionEmailImapRequest: UpdateConnectionEmailImapRequest;
+}
+
+export interface UpdateConnectionEmailImapOperationRequest {
+    id: string;
+    updateConnectionEmailImapRequest: UpdateConnectionEmailImapRequest;
+}
+
+export interface UpdateConnectionOwnAppOperationRequest {
     platform: string;
+    updateConnectionOwnAppRequest: UpdateConnectionOwnAppRequest;
+}
+
+export interface UpdateConnectionPolicyManagementOperationRequest {
+    connectionId: string;
+    updateConnectionPolicyManagementRequest: UpdateConnectionPolicyManagementRequest;
+}
+
+export interface UpdatePlatformPreferenceOperationRequest {
+    platform: string;
+    updatePlatformPreferenceRequest: UpdatePlatformPreferenceRequest;
     connectionId?: string;
 }
 
@@ -152,10 +308,16 @@ export class AccountsApi extends runtime.BaseAPI {
     /**
      * Connect a new platform account (kicks off OAuth or extension handshake).
      */
-    async createAccountRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountResponse>> {
+    async createAccountRaw(requestParameters: CreateAccountOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountResponse>> {
+        if (requestParameters.createAccountRequest === null || requestParameters.createAccountRequest === undefined) {
+            throw new runtime.RequiredError('createAccountRequest','Required parameter requestParameters.createAccountRequest was null or undefined when calling createAccount.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -170,6 +332,7 @@ export class AccountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAccountRequestToJSON(requestParameters.createAccountRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAccountResponseFromJSON(jsonValue));
@@ -178,18 +341,24 @@ export class AccountsApi extends runtime.BaseAPI {
     /**
      * Connect a new platform account (kicks off OAuth or extension handshake).
      */
-    async createAccount(initOverrides?: RequestInit): Promise<CreateAccountResponse> {
-        const response = await this.createAccountRaw(initOverrides);
+    async createAccount(requestParameters: CreateAccountOperationRequest, initOverrides?: RequestInit): Promise<CreateAccountResponse> {
+        const response = await this.createAccountRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Connect CardNexus with a personal API key (validated live before it is stored).
      */
-    async createConnectionCardnexusApiKeyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionCardnexusApiKeyResponse>> {
+    async createConnectionCardnexusApiKeyRaw(requestParameters: CreateConnectionCardnexusApiKeyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionCardnexusApiKeyResponse>> {
+        if (requestParameters.updateWeb3MarketplaceKeyRequest === null || requestParameters.updateWeb3MarketplaceKeyRequest === undefined) {
+            throw new runtime.RequiredError('updateWeb3MarketplaceKeyRequest','Required parameter requestParameters.updateWeb3MarketplaceKeyRequest was null or undefined when calling createConnectionCardnexusApiKey.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -204,6 +373,7 @@ export class AccountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWeb3MarketplaceKeyRequestToJSON(requestParameters.updateWeb3MarketplaceKeyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionCardnexusApiKeyResponseFromJSON(jsonValue));
@@ -212,18 +382,62 @@ export class AccountsApi extends runtime.BaseAPI {
     /**
      * Connect CardNexus with a personal API key (validated live before it is stored).
      */
-    async createConnectionCardnexusApiKey(initOverrides?: RequestInit): Promise<CreateConnectionCardnexusApiKeyResponse> {
-        const response = await this.createConnectionCardnexusApiKeyRaw(initOverrides);
+    async createConnectionCardnexusApiKey(requestParameters: CreateConnectionCardnexusApiKeyRequest, initOverrides?: RequestInit): Promise<CreateConnectionCardnexusApiKeyResponse> {
+        const response = await this.createConnectionCardnexusApiKeyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Add an IMAP mailbox connection.
+     * Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason.
      */
-    async createConnectionEmailImapRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionEmailImapResponse>> {
+    async createConnectionEmailCheckRaw(requestParameters: CreateConnectionEmailCheckRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionEmailCheckResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createConnectionEmailCheck.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/email/{id}/check`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionEmailCheckResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason.
+     */
+    async createConnectionEmailCheck(requestParameters: CreateConnectionEmailCheckRequest, initOverrides?: RequestInit): Promise<CreateConnectionEmailCheckResponse> {
+        const response = await this.createConnectionEmailCheckRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null = all).
+     */
+    async createConnectionEmailImapRaw(requestParameters: CreateConnectionEmailImapOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionEmailImapResponse>> {
+        if (requestParameters.createConnectionEmailImapRequest === null || requestParameters.createConnectionEmailImapRequest === undefined) {
+            throw new runtime.RequiredError('createConnectionEmailImapRequest','Required parameter requestParameters.createConnectionEmailImapRequest was null or undefined when calling createConnectionEmailImap.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -238,26 +452,33 @@ export class AccountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateConnectionEmailImapRequestToJSON(requestParameters.createConnectionEmailImapRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionEmailImapResponseFromJSON(jsonValue));
     }
 
     /**
-     * Add an IMAP mailbox connection.
+     * Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null = all).
      */
-    async createConnectionEmailImap(initOverrides?: RequestInit): Promise<CreateConnectionEmailImapResponse> {
-        const response = await this.createConnectionEmailImapRaw(initOverrides);
+    async createConnectionEmailImap(requestParameters: CreateConnectionEmailImapOperationRequest, initOverrides?: RequestInit): Promise<CreateConnectionEmailImapResponse> {
+        const response = await this.createConnectionEmailImapRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Validate IMAP credentials without persisting.
+     * Check IMAP credentials without saving them. A failure is a 400 with a plain reason.
      */
-    async createConnectionEmailImapTestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionEmailImapTestResponse>> {
+    async createConnectionEmailImapTestRaw(requestParameters: CreateConnectionEmailImapTestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionEmailImapTestResponse>> {
+        if (requestParameters.createConnectionEmailImapTestRequest === null || requestParameters.createConnectionEmailImapTestRequest === undefined) {
+            throw new runtime.RequiredError('createConnectionEmailImapTestRequest','Required parameter requestParameters.createConnectionEmailImapTestRequest was null or undefined when calling createConnectionEmailImapTest.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -272,16 +493,17 @@ export class AccountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateConnectionEmailImapTestRequestToJSON(requestParameters.createConnectionEmailImapTestRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionEmailImapTestResponseFromJSON(jsonValue));
     }
 
     /**
-     * Validate IMAP credentials without persisting.
+     * Check IMAP credentials without saving them. A failure is a 400 with a plain reason.
      */
-    async createConnectionEmailImapTest(initOverrides?: RequestInit): Promise<CreateConnectionEmailImapTestResponse> {
-        const response = await this.createConnectionEmailImapTestRaw(initOverrides);
+    async createConnectionEmailImapTest(requestParameters: CreateConnectionEmailImapTestOperationRequest, initOverrides?: RequestInit): Promise<CreateConnectionEmailImapTestResponse> {
+        const response = await this.createConnectionEmailImapTestRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -327,16 +549,14 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Express interest in a request_only platform.
+     * Let this store (X-Storefront-Id) use one of your marketplace accounts.
      */
-    async createConnectionRequestRaw(requestParameters: CreateConnectionRequestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
-        if (requestParameters.platform === null || requestParameters.platform === undefined) {
-            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling createConnectionRequest.');
-        }
-
+    async createConnectionStoreAttachRaw(requestParameters: CreateConnectionStoreAttachOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionStoreAttachResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -347,27 +567,102 @@ export class AccountsApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/v1/connections/{platform}/request`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))),
+            path: `/v1/connections/stores/attach`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateConnectionStoreAttachRequestToJSON(requestParameters.createConnectionStoreAttachRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionStoreAttachResponseFromJSON(jsonValue));
     }
 
     /**
-     * Express interest in a request_only platform.
+     * Let this store (X-Storefront-Id) use one of your marketplace accounts.
      */
-    async createConnectionRequest(requestParameters: CreateConnectionRequestRequest, initOverrides?: RequestInit): Promise<OkResponse> {
-        const response = await this.createConnectionRequestRaw(requestParameters, initOverrides);
+    async createConnectionStoreAttach(requestParameters: CreateConnectionStoreAttachOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateConnectionStoreAttachResponse> {
+        const response = await this.createConnectionStoreAttachRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Let several of your stores use a marketplace account at once.
+     */
+    async createConnectionStoreCopyRaw(requestParameters: CreateConnectionStoreCopyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionStoreCopyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/stores/copy`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateConnectionStoreCopyRequestToJSON(requestParameters.createConnectionStoreCopyRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionStoreCopyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Let several of your stores use a marketplace account at once.
+     */
+    async createConnectionStoreCopy(requestParameters: CreateConnectionStoreCopyOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateConnectionStoreCopyResponse> {
+        const response = await this.createConnectionStoreCopyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Stop this store using a marketplace account. The account stays connected for your other stores.
+     */
+    async createConnectionStoreDetachRaw(requestParameters: CreateConnectionStoreDetachRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateConnectionStoreDetachResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/stores/detach`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateConnectionStoreAttachRequestToJSON(requestParameters.createConnectionStoreAttachRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectionStoreDetachResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Stop this store using a marketplace account. The account stays connected for your other stores.
+     */
+    async createConnectionStoreDetach(requestParameters: CreateConnectionStoreDetachRequest = {}, initOverrides?: RequestInit): Promise<CreateConnectionStoreDetachResponse> {
+        const response = await this.createConnectionStoreDetachRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Revive or initiate connection for a cookie platform.
      */
-    async createPlatformAccountConnectRaw(requestParameters: CreatePlatformAccountConnectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePlatformAccountConnectResponse>> {
+    async createPlatformAccountConnectRaw(requestParameters: CreatePlatformAccountConnectOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePlatformAccountConnectResponse>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling createPlatformAccountConnect.');
         }
@@ -375,6 +670,8 @@ export class AccountsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -389,6 +686,7 @@ export class AccountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreatePlatformAccountConnectRequestToJSON(requestParameters.createPlatformAccountConnectRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatePlatformAccountConnectResponseFromJSON(jsonValue));
@@ -397,7 +695,7 @@ export class AccountsApi extends runtime.BaseAPI {
     /**
      * Revive or initiate connection for a cookie platform.
      */
-    async createPlatformAccountConnect(requestParameters: CreatePlatformAccountConnectRequest, initOverrides?: RequestInit): Promise<CreatePlatformAccountConnectResponse> {
+    async createPlatformAccountConnect(requestParameters: CreatePlatformAccountConnectOperationRequest, initOverrides?: RequestInit): Promise<CreatePlatformAccountConnectResponse> {
         const response = await this.createPlatformAccountConnectRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -441,7 +739,7 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Set how far back to backfill order history + active listings for a platform, and run it now.
+     * Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now.
      */
     async createPlatformAccountHistoryImportRaw(requestParameters: CreatePlatformAccountHistoryImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePlatformAccountHistoryImportResponse>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
@@ -478,7 +776,7 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Set how far back to backfill order history + active listings for a platform, and run it now.
+     * Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now.
      */
     async createPlatformAccountHistoryImport(requestParameters: CreatePlatformAccountHistoryImportOperationRequest, initOverrides?: RequestInit): Promise<CreatePlatformAccountHistoryImportResponse> {
         const response = await this.createPlatformAccountHistoryImportRaw(requestParameters, initOverrides);
@@ -596,9 +894,47 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Remove an IMAP mailbox connection.
+     * Disconnect an email connection.
      */
-    async deleteConnectionEmailImapRaw(requestParameters: DeleteConnectionEmailImapRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SuccessResponse>> {
+    async deleteConnectionEmailRaw(requestParameters: DeleteConnectionEmailRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteConnectionEmailResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteConnectionEmail.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/email/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteConnectionEmailResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Disconnect an email connection.
+     */
+    async deleteConnectionEmail(requestParameters: DeleteConnectionEmailRequest, initOverrides?: RequestInit): Promise<DeleteConnectionEmailResponse> {
+        const response = await this.deleteConnectionEmailRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Disconnect an email connection.
+     */
+    async deleteConnectionEmailImapRaw(requestParameters: DeleteConnectionEmailImapRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteConnectionEmailResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteConnectionEmailImap.');
         }
@@ -622,21 +958,25 @@ export class AccountsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => SuccessResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteConnectionEmailResponseFromJSON(jsonValue));
     }
 
     /**
-     * Remove an IMAP mailbox connection.
+     * Disconnect an email connection.
      */
-    async deleteConnectionEmailImap(requestParameters: DeleteConnectionEmailImapRequest, initOverrides?: RequestInit): Promise<SuccessResponse> {
+    async deleteConnectionEmailImap(requestParameters: DeleteConnectionEmailImapRequest, initOverrides?: RequestInit): Promise<DeleteConnectionEmailResponse> {
         const response = await this.deleteConnectionEmailImapRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * List IMAP and email-OAuth connections.
+     * Remove your own developer app for a marketplace; the connections it authorized are switched off.
      */
-    async getConnectionEmailRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetConnectionEmailResponse>> {
+    async deleteConnectionOwnAppRaw(requestParameters: DeleteConnectionOwnAppRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteConnectionOwnAppResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling deleteConnectionOwnApp.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -650,7 +990,83 @@ export class AccountsApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/v1/connections/email`,
+            path: `/v1/connections/own-apps/{platform}`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteConnectionOwnAppResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove your own developer app for a marketplace; the connections it authorized are switched off.
+     */
+    async deleteConnectionOwnApp(requestParameters: DeleteConnectionOwnAppRequest, initOverrides?: RequestInit): Promise<DeleteConnectionOwnAppResponse> {
+        const response = await this.deleteConnectionOwnAppRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get one platform account\'s order-history import window (how far back its past sales and active listings import): days null = All time, 0 = None, N = the last N days; chosen=false = never chosen.
+     */
+    async getChannelAccountHistoryImportRaw(requestParameters: GetChannelAccountHistoryImportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetChannelAccountHistoryImportResponse>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling getChannelAccountHistoryImport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/channel-accounts/{accountId}/history-import`.replace(`{${"accountId"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetChannelAccountHistoryImportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get one platform account\'s order-history import window (how far back its past sales and active listings import): days null = All time, 0 = None, N = the last N days; chosen=false = never chosen.
+     */
+    async getChannelAccountHistoryImport(requestParameters: GetChannelAccountHistoryImportRequest, initOverrides?: RequestInit): Promise<GetChannelAccountHistoryImportResponse> {
+        const response = await this.getChannelAccountHistoryImportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One email connection: health, last scan, the marketplaces it watches and its 7-day counts.
+     */
+    async getConnectionEmailRaw(requestParameters: GetConnectionEmailRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetConnectionEmailResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getConnectionEmail.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/email/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -660,10 +1076,10 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List IMAP and email-OAuth connections.
+     * One email connection: health, last scan, the marketplaces it watches and its 7-day counts.
      */
-    async getConnectionEmail(initOverrides?: RequestInit): Promise<GetConnectionEmailResponse> {
-        const response = await this.getConnectionEmailRaw(initOverrides);
+    async getConnectionEmail(requestParameters: GetConnectionEmailRequest, initOverrides?: RequestInit): Promise<GetConnectionEmailResponse> {
+        const response = await this.getConnectionEmailRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -746,7 +1162,41 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Most platforms return `{ url }` (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.
+     * Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from).
+     */
+    async getConnectionStoreRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetConnectionStoreResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/stores`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetConnectionStoreResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from).
+     */
+    async getConnectionStore(initOverrides?: RequestInit): Promise<GetConnectionStoreResponse> {
+        const response = await this.getConnectionStoreRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Most platforms return `{ url }` (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart (and CardNexus before its approval link) returns `{ status: \"own_credentials\", connectWith, docsUrl, message }`: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
      * Return the OAuth authorize URL for an API-track platform.
      */
     async getOauthInitRaw(requestParameters: GetOauthInitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetOauthInitResponse>> {
@@ -789,7 +1239,7 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Most platforms return `{ url }` (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.
+     * Most platforms return `{ url }` (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart (and CardNexus before its approval link) returns `{ status: \"own_credentials\", connectWith, docsUrl, message }`: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
      * Return the OAuth authorize URL for an API-track platform.
      */
     async getOauthInit(requestParameters: GetOauthInitRequest, initOverrides?: RequestInit): Promise<GetOauthInitResponse> {
@@ -866,6 +1316,144 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
+     * List email connections (mailboxes Crossly reads marketplace email from).
+     */
+    async listConnectionEmailRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionEmailResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/email`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListConnectionEmailResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List email connections (mailboxes Crossly reads marketplace email from).
+     */
+    async listConnectionEmail(initOverrides?: RequestInit): Promise<ListConnectionEmailResponse> {
+        const response = await this.listConnectionEmailRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * An email connection\'s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor.
+     */
+    async listConnectionEmailEmailsRaw(requestParameters: ListConnectionEmailEmailsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionEmailEmailsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listConnectionEmailEmails.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.platform !== undefined) {
+            queryParameters['platform'] = requestParameters.platform;
+        }
+
+        if (requestParameters.type !== undefined) {
+            queryParameters['type'] = requestParameters.type;
+        }
+
+        if (requestParameters.match !== undefined) {
+            queryParameters['match'] = requestParameters.match;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = (requestParameters.from as any).toISOString().substr(0,10);
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = (requestParameters.to as any).toISOString().substr(0,10);
+        }
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/email/{id}/emails`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListConnectionEmailEmailsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * An email connection\'s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor.
+     */
+    async listConnectionEmailEmails(requestParameters: ListConnectionEmailEmailsRequest, initOverrides?: RequestInit): Promise<ListConnectionEmailEmailsResponse> {
+        const response = await this.listConnectionEmailEmailsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List the marketplaces you can connect with your own developer app, and what you\'ve saved.
+     */
+    async listConnectionOwnAppsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionOwnAppsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/own-apps`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListConnectionOwnAppsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List the marketplaces you can connect with your own developer app, and what you\'ve saved.
+     */
+    async listConnectionOwnApps(initOverrides?: RequestInit): Promise<ListConnectionOwnAppsResponse> {
+        const response = await this.listConnectionOwnAppsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * One row per connected eBay or Etsy account: `eligible` (eBay only on EBAY_US), `managed` (Crossly keeps its policies / shipping profiles in step with your default presets) and sync `notes`.
      * List eBay and Etsy accounts with whether Crossly manages their policies.
      */
@@ -902,7 +1490,7 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List OAuth-connected API platforms.
+     * List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it.
      */
     async listConnectionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionsResponse>> {
         const queryParameters: any = {};
@@ -928,7 +1516,7 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List OAuth-connected API platforms.
+     * List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it.
      */
     async listConnections(initOverrides?: RequestInit): Promise<ListConnectionsResponse> {
         const response = await this.listConnectionsRaw(initOverrides);
@@ -936,16 +1524,146 @@ export class AccountsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Edit an IMAP mailbox connection.
+     * List marketplaces with their availability (connect, own_app, coming_soon) and capability chips.
      */
-    async updateConnectionEmailImapRaw(requestParameters: UpdateConnectionEmailImapRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SuccessResponse>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateConnectionEmailImap.');
+    async listPlatformsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPlatformsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/platforms`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListPlatformsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List marketplaces with their availability (connect, own_app, coming_soon) and capability chips.
+     */
+    async listPlatforms(initOverrides?: RequestInit): Promise<ListPlatformsResponse> {
+        const response = await this.listPlatformsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set one platform account\'s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet.
+     */
+    async updateChannelAccountHistoryImportRaw(requestParameters: UpdateChannelAccountHistoryImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateChannelAccountHistoryImportResponse>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling updateChannelAccountHistoryImport.');
+        }
+
+        if (requestParameters.updateChannelAccountHistoryImportRequest === null || requestParameters.updateChannelAccountHistoryImportRequest === undefined) {
+            throw new runtime.RequiredError('updateChannelAccountHistoryImportRequest','Required parameter requestParameters.updateChannelAccountHistoryImportRequest was null or undefined when calling updateChannelAccountHistoryImport.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/channel-accounts/{accountId}/history-import`.replace(`{${"accountId"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateChannelAccountHistoryImportRequestToJSON(requestParameters.updateChannelAccountHistoryImportRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateChannelAccountHistoryImportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set one platform account\'s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet.
+     */
+    async updateChannelAccountHistoryImport(requestParameters: UpdateChannelAccountHistoryImportOperationRequest, initOverrides?: RequestInit): Promise<UpdateChannelAccountHistoryImportResponse> {
+        const response = await this.updateChannelAccountHistoryImportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change an email connection: label, watchedPlatforms (null = every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
+     */
+    async updateConnectionEmailRaw(requestParameters: UpdateConnectionEmailRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateConnectionEmailResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateConnectionEmail.');
+        }
+
+        if (requestParameters.updateConnectionEmailImapRequest === null || requestParameters.updateConnectionEmailImapRequest === undefined) {
+            throw new runtime.RequiredError('updateConnectionEmailImapRequest','Required parameter requestParameters.updateConnectionEmailImapRequest was null or undefined when calling updateConnectionEmail.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/email/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateConnectionEmailImapRequestToJSON(requestParameters.updateConnectionEmailImapRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateConnectionEmailResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change an email connection: label, watchedPlatforms (null = every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
+     */
+    async updateConnectionEmail(requestParameters: UpdateConnectionEmailRequest, initOverrides?: RequestInit): Promise<UpdateConnectionEmailResponse> {
+        const response = await this.updateConnectionEmailRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change an email connection: label, watchedPlatforms (null = every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
+     */
+    async updateConnectionEmailImapRaw(requestParameters: UpdateConnectionEmailImapOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateConnectionEmailResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateConnectionEmailImap.');
+        }
+
+        if (requestParameters.updateConnectionEmailImapRequest === null || requestParameters.updateConnectionEmailImapRequest === undefined) {
+            throw new runtime.RequiredError('updateConnectionEmailImapRequest','Required parameter requestParameters.updateConnectionEmailImapRequest was null or undefined when calling updateConnectionEmailImap.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -960,16 +1678,62 @@ export class AccountsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateConnectionEmailImapRequestToJSON(requestParameters.updateConnectionEmailImapRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => SuccessResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateConnectionEmailResponseFromJSON(jsonValue));
     }
 
     /**
-     * Edit an IMAP mailbox connection.
+     * Change an email connection: label, watchedPlatforms (null = every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
      */
-    async updateConnectionEmailImap(requestParameters: UpdateConnectionEmailImapRequest, initOverrides?: RequestInit): Promise<SuccessResponse> {
+    async updateConnectionEmailImap(requestParameters: UpdateConnectionEmailImapOperationRequest, initOverrides?: RequestInit): Promise<UpdateConnectionEmailResponse> {
         const response = await this.updateConnectionEmailImapRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save your own developer app for a marketplace (client id, secret and any required parameters).
+     */
+    async updateConnectionOwnAppRaw(requestParameters: UpdateConnectionOwnAppOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateConnectionOwnAppResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling updateConnectionOwnApp.');
+        }
+
+        if (requestParameters.updateConnectionOwnAppRequest === null || requestParameters.updateConnectionOwnAppRequest === undefined) {
+            throw new runtime.RequiredError('updateConnectionOwnAppRequest','Required parameter requestParameters.updateConnectionOwnAppRequest was null or undefined when calling updateConnectionOwnApp.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/connections/own-apps/{platform}`.replace(`{${"platform"}}`, encodeURIComponent(String(requestParameters.platform))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateConnectionOwnAppRequestToJSON(requestParameters.updateConnectionOwnAppRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateConnectionOwnAppResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save your own developer app for a marketplace (client id, secret and any required parameters).
+     */
+    async updateConnectionOwnApp(requestParameters: UpdateConnectionOwnAppOperationRequest, initOverrides?: RequestInit): Promise<UpdateConnectionOwnAppResponse> {
+        const response = await this.updateConnectionOwnAppRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -977,14 +1741,20 @@ export class AccountsApi extends runtime.BaseAPI {
      * Body `{ managed: boolean }`. On: Crossly may overwrite that account\'s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
      * Turn Crossly policy management on or off for one eBay or Etsy account.
      */
-    async updateConnectionPolicyManagementRaw(requestParameters: UpdateConnectionPolicyManagementRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionPolicyManagementItem>> {
+    async updateConnectionPolicyManagementRaw(requestParameters: UpdateConnectionPolicyManagementOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectionPolicyManagementItem>> {
         if (requestParameters.connectionId === null || requestParameters.connectionId === undefined) {
             throw new runtime.RequiredError('connectionId','Required parameter requestParameters.connectionId was null or undefined when calling updateConnectionPolicyManagement.');
+        }
+
+        if (requestParameters.updateConnectionPolicyManagementRequest === null || requestParameters.updateConnectionPolicyManagementRequest === undefined) {
+            throw new runtime.RequiredError('updateConnectionPolicyManagementRequest','Required parameter requestParameters.updateConnectionPolicyManagementRequest was null or undefined when calling updateConnectionPolicyManagement.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -999,6 +1769,7 @@ export class AccountsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateConnectionPolicyManagementRequestToJSON(requestParameters.updateConnectionPolicyManagementRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListConnectionPolicyManagementItemFromJSON(jsonValue));
@@ -1008,7 +1779,7 @@ export class AccountsApi extends runtime.BaseAPI {
      * Body `{ managed: boolean }`. On: Crossly may overwrite that account\'s own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
      * Turn Crossly policy management on or off for one eBay or Etsy account.
      */
-    async updateConnectionPolicyManagement(requestParameters: UpdateConnectionPolicyManagementRequest, initOverrides?: RequestInit): Promise<ListConnectionPolicyManagementItem> {
+    async updateConnectionPolicyManagement(requestParameters: UpdateConnectionPolicyManagementOperationRequest, initOverrides?: RequestInit): Promise<ListConnectionPolicyManagementItem> {
         const response = await this.updateConnectionPolicyManagementRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1016,9 +1787,13 @@ export class AccountsApi extends runtime.BaseAPI {
     /**
      * Update per-platform connection preferences.
      */
-    async updatePlatformPreferenceRaw(requestParameters: UpdatePlatformPreferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatePlatformPreferenceResponse>> {
+    async updatePlatformPreferenceRaw(requestParameters: UpdatePlatformPreferenceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatePlatformPreferenceResponse>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling updatePlatformPreference.');
+        }
+
+        if (requestParameters.updatePlatformPreferenceRequest === null || requestParameters.updatePlatformPreferenceRequest === undefined) {
+            throw new runtime.RequiredError('updatePlatformPreferenceRequest','Required parameter requestParameters.updatePlatformPreferenceRequest was null or undefined when calling updatePlatformPreference.');
         }
 
         const queryParameters: any = {};
@@ -1028,6 +1803,8 @@ export class AccountsApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1042,6 +1819,7 @@ export class AccountsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdatePlatformPreferenceRequestToJSON(requestParameters.updatePlatformPreferenceRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdatePlatformPreferenceResponseFromJSON(jsonValue));
@@ -1050,9 +1828,33 @@ export class AccountsApi extends runtime.BaseAPI {
     /**
      * Update per-platform connection preferences.
      */
-    async updatePlatformPreference(requestParameters: UpdatePlatformPreferenceRequest, initOverrides?: RequestInit): Promise<UpdatePlatformPreferenceResponse> {
+    async updatePlatformPreference(requestParameters: UpdatePlatformPreferenceOperationRequest, initOverrides?: RequestInit): Promise<UpdatePlatformPreferenceResponse> {
         const response = await this.updatePlatformPreferenceRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListConnectionEmailEmailsTypeEnum {
+    Sale = 'sale',
+    Offer = 'offer',
+    Shipped = 'shipped',
+    Delist = 'delist',
+    Label = 'label',
+    Message = 'message',
+    Cancel = 'cancel',
+    Payout = 'payout',
+    Notice = 'notice'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListConnectionEmailEmailsMatchEnum {
+    Matched = 'matched',
+    Unmatched = 'unmatched'
 }

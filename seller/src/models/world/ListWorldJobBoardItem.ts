@@ -127,25 +127,25 @@ export interface ListWorldJobBoardItem {
      * @type {string}
      * @memberof ListWorldJobBoardItem
      */
-    title: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListWorldJobBoardItem
-     */
     storefrontId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListWorldJobBoardItem
      */
-    endsAt: string;
+    role: string;
     /**
      * 
      * @type {string}
      * @memberof ListWorldJobBoardItem
      */
-    role: string;
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListWorldJobBoardItem
+     */
+    endsAt: string;
     /**
      * 
      * @type {WorldStaffPostingResponseDataTarget}
@@ -178,6 +178,12 @@ export interface ListWorldJobBoardItem {
     recurrence: WorldStaffPostingResponseDataRecurrence;
     /**
      * 
+     * @type {WorldStaffPostingResponseDataCheckIn}
+     * @memberof ListWorldJobBoardItem
+     */
+    checkIn: WorldStaffPostingResponseDataCheckIn;
+    /**
+     * 
      * @type {WorldStaffPostingResponseDataBreaks}
      * @memberof ListWorldJobBoardItem
      */
@@ -188,12 +194,6 @@ export interface ListWorldJobBoardItem {
      * @memberof ListWorldJobBoardItem
      */
     pay: WorldStaffPostingResponseDataPay;
-    /**
-     * 
-     * @type {WorldStaffPostingResponseDataCheckIn}
-     * @memberof ListWorldJobBoardItem
-     */
-    checkIn: WorldStaffPostingResponseDataCheckIn;
     /**
      * 
      * @type {PenaltyRepStrikesToBlock}
@@ -255,18 +255,18 @@ export function ListWorldJobBoardItemFromJSONTyped(json: any, ignoreDiscriminato
         'createdAt': json['createdAt'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'status': json['status'],
-        'title': json['title'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
-        'endsAt': json['endsAt'],
         'role': json['role'],
+        'title': json['title'],
+        'endsAt': json['endsAt'],
         'target': WorldStaffPostingResponseDataTargetFromJSON(json['target']),
         'startsAt': json['startsAt'],
         'timezone': json['timezone'],
         'visibility': json['visibility'],
         'recurrence': WorldStaffPostingResponseDataRecurrenceFromJSON(json['recurrence']),
+        'checkIn': WorldStaffPostingResponseDataCheckInFromJSON(json['checkIn']),
         'breaks': !exists(json, 'breaks') ? undefined : WorldStaffPostingResponseDataBreaksFromJSON(json['breaks']),
         'pay': WorldStaffPostingResponseDataPayFromJSON(json['pay']),
-        'checkIn': WorldStaffPostingResponseDataCheckInFromJSON(json['checkIn']),
         'noShow': PenaltyRepStrikesToBlockFromJSON(json['noShow']),
         'minWorkerRep': !exists(json, 'minWorkerRep') ? undefined : json['minWorkerRep'],
         'requiredBadges': json['requiredBadges'],
@@ -291,18 +291,18 @@ export function ListWorldJobBoardItemToJSON(value?: ListWorldJobBoardItem | null
         'createdAt': value.createdAt,
         'description': value.description,
         'status': value.status,
-        'title': value.title,
         'storefrontId': value.storefrontId,
-        'endsAt': value.endsAt,
         'role': value.role,
+        'title': value.title,
+        'endsAt': value.endsAt,
         'target': WorldStaffPostingResponseDataTargetToJSON(value.target),
         'startsAt': value.startsAt,
         'timezone': value.timezone,
         'visibility': value.visibility,
         'recurrence': WorldStaffPostingResponseDataRecurrenceToJSON(value.recurrence),
+        'checkIn': WorldStaffPostingResponseDataCheckInToJSON(value.checkIn),
         'breaks': WorldStaffPostingResponseDataBreaksToJSON(value.breaks),
         'pay': WorldStaffPostingResponseDataPayToJSON(value.pay),
-        'checkIn': WorldStaffPostingResponseDataCheckInToJSON(value.checkIn),
         'noShow': PenaltyRepStrikesToBlockToJSON(value.noShow),
         'minWorkerRep': value.minWorkerRep,
         'requiredBadges': value.requiredBadges,

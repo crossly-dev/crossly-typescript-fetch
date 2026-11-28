@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCustomerBulkDeleteRequest,
+    CreateCustomerBulkDeleteRequestFromJSON,
+    CreateCustomerBulkDeleteRequestToJSON,
     CreateCustomerBulkDeleteResponse,
     CreateCustomerBulkDeleteResponseFromJSON,
     CreateCustomerBulkDeleteResponseToJSON,
@@ -24,9 +27,24 @@ import {
     CreateLoyaltyAirdropPrepareResponse,
     CreateLoyaltyAirdropPrepareResponseFromJSON,
     CreateLoyaltyAirdropPrepareResponseToJSON,
+    CreateLoyaltyAirdropSubmitRequest,
+    CreateLoyaltyAirdropSubmitRequestFromJSON,
+    CreateLoyaltyAirdropSubmitRequestToJSON,
+    CreateLoyaltyProgramInviteRequest,
+    CreateLoyaltyProgramInviteRequestFromJSON,
+    CreateLoyaltyProgramInviteRequestToJSON,
     CreateLoyaltyProgramInviteResponse,
     CreateLoyaltyProgramInviteResponseFromJSON,
     CreateLoyaltyProgramInviteResponseToJSON,
+    CreateLoyaltyProgramMemberOverrideRequest,
+    CreateLoyaltyProgramMemberOverrideRequestFromJSON,
+    CreateLoyaltyProgramMemberOverrideRequestToJSON,
+    CreateLoyaltyProgramMemberPointRequest,
+    CreateLoyaltyProgramMemberPointRequestFromJSON,
+    CreateLoyaltyProgramMemberPointRequestToJSON,
+    CreateLoyaltyProgramMemberPointResponse,
+    CreateLoyaltyProgramMemberPointResponseFromJSON,
+    CreateLoyaltyProgramMemberPointResponseToJSON,
     CreateLoyaltyTierResponse,
     CreateLoyaltyTierResponseFromJSON,
     CreateLoyaltyTierResponseToJSON,
@@ -57,9 +75,15 @@ import {
     ListLoyaltyProgramInviteCandidatesResponse,
     ListLoyaltyProgramInviteCandidatesResponseFromJSON,
     ListLoyaltyProgramInviteCandidatesResponseToJSON,
+    ListLoyaltyProgramMemberPointsResponse,
+    ListLoyaltyProgramMemberPointsResponseFromJSON,
+    ListLoyaltyProgramMemberPointsResponseToJSON,
     ListLoyaltyProgramMembersResponse,
     ListLoyaltyProgramMembersResponseFromJSON,
     ListLoyaltyProgramMembersResponseToJSON,
+    ListLoyaltyRewardsResponse,
+    ListLoyaltyRewardsResponseFromJSON,
+    ListLoyaltyRewardsResponseToJSON,
     LoyaltyAirdropResponse,
     LoyaltyAirdropResponseFromJSON,
     LoyaltyAirdropResponseToJSON,
@@ -69,10 +93,27 @@ import {
     UpdateGroupBuyResponse,
     UpdateGroupBuyResponseFromJSON,
     UpdateGroupBuyResponseToJSON,
+    UpdateLoyaltyClubRequest,
+    UpdateLoyaltyClubRequestFromJSON,
+    UpdateLoyaltyClubRequestToJSON,
     UpdateLoyaltyProgramResponse,
     UpdateLoyaltyProgramResponseFromJSON,
     UpdateLoyaltyProgramResponseToJSON,
+    UpdateLoyaltyRewardByRewardIdResponse,
+    UpdateLoyaltyRewardByRewardIdResponseFromJSON,
+    UpdateLoyaltyRewardByRewardIdResponseToJSON,
+    UpdateLoyaltyRewardRequest,
+    UpdateLoyaltyRewardRequestFromJSON,
+    UpdateLoyaltyRewardRequestToJSON,
 } from '../models';
+
+export interface CreateCustomerBulkDeleteOperationRequest {
+    createCustomerBulkDeleteRequest: CreateCustomerBulkDeleteRequest;
+}
+
+export interface CreateCustomerBulkExportRequest {
+    createCustomerBulkDeleteRequest: CreateCustomerBulkDeleteRequest;
+}
 
 export interface CreateCustomerRefreshProfileRequest {
     handle: string;
@@ -90,12 +131,27 @@ export interface CreateLoyaltyAirdropPrepareRequest {
     id: string;
 }
 
-export interface CreateLoyaltyAirdropSubmitRequest {
+export interface CreateLoyaltyAirdropSubmitOperationRequest {
     id: string;
+    createLoyaltyAirdropSubmitRequest: CreateLoyaltyAirdropSubmitRequest;
 }
 
-export interface CreateLoyaltyProgramMemberOverrideRequest {
+export interface CreateLoyaltyProgramInviteOperationRequest {
+    createLoyaltyProgramInviteRequest: CreateLoyaltyProgramInviteRequest;
+}
+
+export interface CreateLoyaltyProgramMemberOverrideOperationRequest {
     id: string;
+    createLoyaltyProgramMemberOverrideRequest: CreateLoyaltyProgramMemberOverrideRequest;
+}
+
+export interface CreateLoyaltyProgramMemberPointOperationRequest {
+    id: string;
+    createLoyaltyProgramMemberPointRequest: CreateLoyaltyProgramMemberPointRequest;
+}
+
+export interface DeleteLoyaltyRewardRequest {
+    rewardId: string;
 }
 
 export interface DeleteLoyaltyTierRequest {
@@ -118,9 +174,30 @@ export interface GetLoyaltyProgramMemberRequest {
     id: string;
 }
 
+export interface ListLoyaltyAirdropsRequest {
+    status?: ListLoyaltyAirdropsStatusEnum;
+    limit?: number;
+}
+
+export interface ListLoyaltyProgramMemberPointsRequest {
+    id: string;
+}
+
 export interface UpdateCustomerNoteOperationRequest {
     handle: string;
     updateCustomerNoteRequest: UpdateCustomerNoteRequest;
+}
+
+export interface UpdateLoyaltyClubOperationRequest {
+    updateLoyaltyClubRequest: UpdateLoyaltyClubRequest;
+}
+
+export interface UpdateLoyaltyRewardOperationRequest {
+    updateLoyaltyRewardRequest: UpdateLoyaltyRewardRequest;
+}
+
+export interface UpdateLoyaltyRewardByRewardIdRequest {
+    rewardId: string;
 }
 
 export interface UpdateLoyaltyTierRequest {
@@ -135,10 +212,16 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Bulk blocklist customer handles.
      */
-    async createCustomerBulkDeleteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCustomerBulkDeleteResponse>> {
+    async createCustomerBulkDeleteRaw(requestParameters: CreateCustomerBulkDeleteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCustomerBulkDeleteResponse>> {
+        if (requestParameters.createCustomerBulkDeleteRequest === null || requestParameters.createCustomerBulkDeleteRequest === undefined) {
+            throw new runtime.RequiredError('createCustomerBulkDeleteRequest','Required parameter requestParameters.createCustomerBulkDeleteRequest was null or undefined when calling createCustomerBulkDelete.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -153,6 +236,7 @@ export class CustomersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCustomerBulkDeleteRequestToJSON(requestParameters.createCustomerBulkDeleteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCustomerBulkDeleteResponseFromJSON(jsonValue));
@@ -161,18 +245,24 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Bulk blocklist customer handles.
      */
-    async createCustomerBulkDelete(initOverrides?: RequestInit): Promise<CreateCustomerBulkDeleteResponse> {
-        const response = await this.createCustomerBulkDeleteRaw(initOverrides);
+    async createCustomerBulkDelete(requestParameters: CreateCustomerBulkDeleteOperationRequest, initOverrides?: RequestInit): Promise<CreateCustomerBulkDeleteResponse> {
+        const response = await this.createCustomerBulkDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Bulk export aggregated customers as CSV.
      */
-    async createCustomerBulkExportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+    async createCustomerBulkExportRaw(requestParameters: CreateCustomerBulkExportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+        if (requestParameters.createCustomerBulkDeleteRequest === null || requestParameters.createCustomerBulkDeleteRequest === undefined) {
+            throw new runtime.RequiredError('createCustomerBulkDeleteRequest','Required parameter requestParameters.createCustomerBulkDeleteRequest was null or undefined when calling createCustomerBulkExport.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -187,6 +277,7 @@ export class CustomersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCustomerBulkDeleteRequestToJSON(requestParameters.createCustomerBulkDeleteRequest),
         }, initOverrides);
 
         return new runtime.TextApiResponse(response) as any;
@@ -195,8 +286,8 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Bulk export aggregated customers as CSV.
      */
-    async createCustomerBulkExport(initOverrides?: RequestInit): Promise<string> {
-        const response = await this.createCustomerBulkExportRaw(initOverrides);
+    async createCustomerBulkExport(requestParameters: CreateCustomerBulkExportRequest, initOverrides?: RequestInit): Promise<string> {
+        const response = await this.createCustomerBulkExportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -355,14 +446,20 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
      */
-    async createLoyaltyAirdropSubmitRaw(requestParameters: CreateLoyaltyAirdropSubmitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LoyaltyAirdropResponse>> {
+    async createLoyaltyAirdropSubmitRaw(requestParameters: CreateLoyaltyAirdropSubmitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LoyaltyAirdropResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLoyaltyAirdropSubmit.');
+        }
+
+        if (requestParameters.createLoyaltyAirdropSubmitRequest === null || requestParameters.createLoyaltyAirdropSubmitRequest === undefined) {
+            throw new runtime.RequiredError('createLoyaltyAirdropSubmitRequest','Required parameter requestParameters.createLoyaltyAirdropSubmitRequest was null or undefined when calling createLoyaltyAirdropSubmit.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -377,6 +474,7 @@ export class CustomersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLoyaltyAirdropSubmitRequestToJSON(requestParameters.createLoyaltyAirdropSubmitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => LoyaltyAirdropResponseFromJSON(jsonValue));
@@ -385,7 +483,7 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
      */
-    async createLoyaltyAirdropSubmit(requestParameters: CreateLoyaltyAirdropSubmitRequest, initOverrides?: RequestInit): Promise<LoyaltyAirdropResponse> {
+    async createLoyaltyAirdropSubmit(requestParameters: CreateLoyaltyAirdropSubmitOperationRequest, initOverrides?: RequestInit): Promise<LoyaltyAirdropResponse> {
         const response = await this.createLoyaltyAirdropSubmitRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -393,10 +491,16 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
      */
-    async createLoyaltyProgramInviteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLoyaltyProgramInviteResponse>> {
+    async createLoyaltyProgramInviteRaw(requestParameters: CreateLoyaltyProgramInviteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLoyaltyProgramInviteResponse>> {
+        if (requestParameters.createLoyaltyProgramInviteRequest === null || requestParameters.createLoyaltyProgramInviteRequest === undefined) {
+            throw new runtime.RequiredError('createLoyaltyProgramInviteRequest','Required parameter requestParameters.createLoyaltyProgramInviteRequest was null or undefined when calling createLoyaltyProgramInvite.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -411,6 +515,7 @@ export class CustomersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLoyaltyProgramInviteRequestToJSON(requestParameters.createLoyaltyProgramInviteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateLoyaltyProgramInviteResponseFromJSON(jsonValue));
@@ -419,22 +524,28 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
      */
-    async createLoyaltyProgramInvite(initOverrides?: RequestInit): Promise<CreateLoyaltyProgramInviteResponse> {
-        const response = await this.createLoyaltyProgramInviteRaw(initOverrides);
+    async createLoyaltyProgramInvite(requestParameters: CreateLoyaltyProgramInviteOperationRequest, initOverrides?: RequestInit): Promise<CreateLoyaltyProgramInviteResponse> {
+        const response = await this.createLoyaltyProgramInviteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Pin a member to a tier (tierId null clears the pin), with a reason.
      */
-    async createLoyaltyProgramMemberOverrideRaw(requestParameters: CreateLoyaltyProgramMemberOverrideRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyProgramMemberResponse>> {
+    async createLoyaltyProgramMemberOverrideRaw(requestParameters: CreateLoyaltyProgramMemberOverrideOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyProgramMemberResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLoyaltyProgramMemberOverride.');
+        }
+
+        if (requestParameters.createLoyaltyProgramMemberOverrideRequest === null || requestParameters.createLoyaltyProgramMemberOverrideRequest === undefined) {
+            throw new runtime.RequiredError('createLoyaltyProgramMemberOverrideRequest','Required parameter requestParameters.createLoyaltyProgramMemberOverrideRequest was null or undefined when calling createLoyaltyProgramMemberOverride.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -449,6 +560,7 @@ export class CustomersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateLoyaltyProgramMemberOverrideRequestToJSON(requestParameters.createLoyaltyProgramMemberOverrideRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetLoyaltyProgramMemberResponseFromJSON(jsonValue));
@@ -457,8 +569,53 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Pin a member to a tier (tierId null clears the pin), with a reason.
      */
-    async createLoyaltyProgramMemberOverride(requestParameters: CreateLoyaltyProgramMemberOverrideRequest, initOverrides?: RequestInit): Promise<GetLoyaltyProgramMemberResponse> {
+    async createLoyaltyProgramMemberOverride(requestParameters: CreateLoyaltyProgramMemberOverrideOperationRequest, initOverrides?: RequestInit): Promise<GetLoyaltyProgramMemberResponse> {
         const response = await this.createLoyaltyProgramMemberOverrideRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
+     */
+    async createLoyaltyProgramMemberPointRaw(requestParameters: CreateLoyaltyProgramMemberPointOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateLoyaltyProgramMemberPointResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createLoyaltyProgramMemberPoint.');
+        }
+
+        if (requestParameters.createLoyaltyProgramMemberPointRequest === null || requestParameters.createLoyaltyProgramMemberPointRequest === undefined) {
+            throw new runtime.RequiredError('createLoyaltyProgramMemberPointRequest','Required parameter requestParameters.createLoyaltyProgramMemberPointRequest was null or undefined when calling createLoyaltyProgramMemberPoint.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program/members/{id}/points`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateLoyaltyProgramMemberPointRequestToJSON(requestParameters.createLoyaltyProgramMemberPointRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateLoyaltyProgramMemberPointResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
+     */
+    async createLoyaltyProgramMemberPoint(requestParameters: CreateLoyaltyProgramMemberPointOperationRequest, initOverrides?: RequestInit): Promise<CreateLoyaltyProgramMemberPointResponse> {
+        const response = await this.createLoyaltyProgramMemberPointRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -493,6 +650,44 @@ export class CustomersApi extends runtime.BaseAPI {
      */
     async createLoyaltyTier(initOverrides?: RequestInit): Promise<CreateLoyaltyTierResponse> {
         const response = await this.createLoyaltyTierRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Take a reward off the shelf. Perks already redeemed stay with their buyers.
+     */
+    async deleteLoyaltyRewardRaw(requestParameters: DeleteLoyaltyRewardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.rewardId === null || requestParameters.rewardId === undefined) {
+            throw new runtime.RequiredError('rewardId','Required parameter requestParameters.rewardId was null or undefined when calling deleteLoyaltyReward.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/rewards/{rewardId}`.replace(`{${"rewardId"}}`, encodeURIComponent(String(requestParameters.rewardId))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Take a reward off the shelf. Perks already redeemed stay with their buyers.
+     */
+    async deleteLoyaltyReward(requestParameters: DeleteLoyaltyRewardRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.deleteLoyaltyRewardRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -791,8 +986,16 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
      */
-    async listLoyaltyAirdropsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyAirdropsResponse>> {
+    async listLoyaltyAirdropsRaw(requestParameters: ListLoyaltyAirdropsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyAirdropsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -817,8 +1020,8 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
      */
-    async listLoyaltyAirdrops(initOverrides?: RequestInit): Promise<ListLoyaltyAirdropsResponse> {
-        const response = await this.listLoyaltyAirdropsRaw(initOverrides);
+    async listLoyaltyAirdrops(requestParameters: ListLoyaltyAirdropsRequest = {}, initOverrides?: RequestInit): Promise<ListLoyaltyAirdropsResponse> {
+        const response = await this.listLoyaltyAirdropsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -891,6 +1094,44 @@ export class CustomersApi extends runtime.BaseAPI {
     }
 
     /**
+     * A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
+     */
+    async listLoyaltyProgramMemberPointsRaw(requestParameters: ListLoyaltyProgramMemberPointsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyProgramMemberPointsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listLoyaltyProgramMemberPoints.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/program/members/{id}/points`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListLoyaltyProgramMemberPointsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
+     */
+    async listLoyaltyProgramMemberPoints(requestParameters: ListLoyaltyProgramMemberPointsRequest, initOverrides?: RequestInit): Promise<ListLoyaltyProgramMemberPointsResponse> {
+        const response = await this.listLoyaltyProgramMemberPointsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your loyalty members with tier, standing, grace and overrides; search, tier, status and sort filters.
      */
     async listLoyaltyProgramMembersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyProgramMembersResponse>> {
@@ -921,6 +1162,40 @@ export class CustomersApi extends runtime.BaseAPI {
      */
     async listLoyaltyProgramMembers(initOverrides?: RequestInit): Promise<ListLoyaltyProgramMembersResponse> {
         const response = await this.listLoyaltyProgramMembersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
+     */
+    async listLoyaltyRewardsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyRewardsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/rewards`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListLoyaltyRewardsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
+     */
+    async listLoyaltyRewards(initOverrides?: RequestInit): Promise<ListLoyaltyRewardsResponse> {
+        const response = await this.listLoyaltyRewardsRaw(initOverrides);
         return await response.value();
     }
 
@@ -972,10 +1247,16 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
      */
-    async updateLoyaltyClubRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyClubResponse>> {
+    async updateLoyaltyClubRaw(requestParameters: UpdateLoyaltyClubOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetLoyaltyClubResponse>> {
+        if (requestParameters.updateLoyaltyClubRequest === null || requestParameters.updateLoyaltyClubRequest === undefined) {
+            throw new runtime.RequiredError('updateLoyaltyClubRequest','Required parameter requestParameters.updateLoyaltyClubRequest was null or undefined when calling updateLoyaltyClub.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -990,6 +1271,7 @@ export class CustomersApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateLoyaltyClubRequestToJSON(requestParameters.updateLoyaltyClubRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetLoyaltyClubResponseFromJSON(jsonValue));
@@ -998,8 +1280,8 @@ export class CustomersApi extends runtime.BaseAPI {
     /**
      * Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
      */
-    async updateLoyaltyClub(initOverrides?: RequestInit): Promise<GetLoyaltyClubResponse> {
-        const response = await this.updateLoyaltyClubRaw(initOverrides);
+    async updateLoyaltyClub(requestParameters: UpdateLoyaltyClubOperationRequest, initOverrides?: RequestInit): Promise<GetLoyaltyClubResponse> {
+        const response = await this.updateLoyaltyClubRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1034,6 +1316,85 @@ export class CustomersApi extends runtime.BaseAPI {
      */
     async updateLoyaltyProgram(initOverrides?: RequestInit): Promise<UpdateLoyaltyProgramResponse> {
         const response = await this.updateLoyaltyProgramRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+     */
+    async updateLoyaltyRewardRaw(requestParameters: UpdateLoyaltyRewardOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListLoyaltyRewardsResponse>> {
+        if (requestParameters.updateLoyaltyRewardRequest === null || requestParameters.updateLoyaltyRewardRequest === undefined) {
+            throw new runtime.RequiredError('updateLoyaltyRewardRequest','Required parameter requestParameters.updateLoyaltyRewardRequest was null or undefined when calling updateLoyaltyReward.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/rewards`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateLoyaltyRewardRequestToJSON(requestParameters.updateLoyaltyRewardRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListLoyaltyRewardsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+     */
+    async updateLoyaltyReward(requestParameters: UpdateLoyaltyRewardOperationRequest, initOverrides?: RequestInit): Promise<ListLoyaltyRewardsResponse> {
+        const response = await this.updateLoyaltyRewardRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Add a reward to the shelf, or replace the one with this id.
+     */
+    async updateLoyaltyRewardByRewardIdRaw(requestParameters: UpdateLoyaltyRewardByRewardIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateLoyaltyRewardByRewardIdResponse>> {
+        if (requestParameters.rewardId === null || requestParameters.rewardId === undefined) {
+            throw new runtime.RequiredError('rewardId','Required parameter requestParameters.rewardId was null or undefined when calling updateLoyaltyRewardByRewardId.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/loyalty/rewards/{rewardId}`.replace(`{${"rewardId"}}`, encodeURIComponent(String(requestParameters.rewardId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateLoyaltyRewardByRewardIdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Add a reward to the shelf, or replace the one with this id.
+     */
+    async updateLoyaltyRewardByRewardId(requestParameters: UpdateLoyaltyRewardByRewardIdRequest, initOverrides?: RequestInit): Promise<UpdateLoyaltyRewardByRewardIdResponse> {
+        const response = await this.updateLoyaltyRewardByRewardIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1075,4 +1436,16 @@ export class CustomersApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListLoyaltyAirdropsStatusEnum {
+    Cancelled = 'cancelled',
+    Sent = 'sent',
+    Failed = 'failed',
+    Queued = 'queued',
+    Submitted = 'submitted'
 }

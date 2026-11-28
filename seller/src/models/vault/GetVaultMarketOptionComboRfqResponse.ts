@@ -112,9 +112,9 @@ export enum GetVaultMarketOptionComboRfqResponseSideEnum {
 * @enum {string}
 */
 export enum GetVaultMarketOptionComboRfqResponseStatusEnum {
+    Expired = 'expired',
     Cancelled = 'cancelled',
     Open = 'open',
-    Expired = 'expired',
     Filled = 'filled'
 }
 

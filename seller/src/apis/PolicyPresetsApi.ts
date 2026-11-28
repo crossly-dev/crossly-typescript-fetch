@@ -15,24 +15,73 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateGeoLocationCheckRequest,
+    CreateGeoLocationCheckRequestFromJSON,
+    CreateGeoLocationCheckRequestToJSON,
     CreateGeoLocationCheckResponse,
     CreateGeoLocationCheckResponseFromJSON,
     CreateGeoLocationCheckResponseToJSON,
+    CreatePolicyPresetRequest,
+    CreatePolicyPresetRequestFromJSON,
+    CreatePolicyPresetRequestToJSON,
     CreatePolicyPresetResponse,
     CreatePolicyPresetResponseFromJSON,
     CreatePolicyPresetResponseToJSON,
     DeletePolicyPresetResponse,
     DeletePolicyPresetResponseFromJSON,
     DeletePolicyPresetResponseToJSON,
+    GetPolicyGeneralResponse,
+    GetPolicyGeneralResponseFromJSON,
+    GetPolicyGeneralResponseToJSON,
+    GetPolicyPresetResponse,
+    GetPolicyPresetResponseFromJSON,
+    GetPolicyPresetResponseToJSON,
     GetPolicyResponse,
     GetPolicyResponseFromJSON,
     GetPolicyResponseToJSON,
+    ListPolicyPresetAccountsResponse,
+    ListPolicyPresetAccountsResponseFromJSON,
+    ListPolicyPresetAccountsResponseToJSON,
+    ListPolicyPresetsItem,
+    ListPolicyPresetsItemFromJSON,
+    ListPolicyPresetsItemToJSON,
     ListPolicyPresetsResponse,
     ListPolicyPresetsResponseFromJSON,
     ListPolicyPresetsResponseToJSON,
+    UpdatePolicyGeneralRequest,
+    UpdatePolicyGeneralRequestFromJSON,
+    UpdatePolicyGeneralRequestToJSON,
+    UpdatePolicyGeneralResponse,
+    UpdatePolicyGeneralResponseFromJSON,
+    UpdatePolicyGeneralResponseToJSON,
+    UpdatePolicyPresetApplicationRequest,
+    UpdatePolicyPresetApplicationRequestFromJSON,
+    UpdatePolicyPresetApplicationRequestToJSON,
+    UpdatePolicyPresetApplicationResponse,
+    UpdatePolicyPresetApplicationResponseFromJSON,
+    UpdatePolicyPresetApplicationResponseToJSON,
+    UpdatePolicyPresetRequest,
+    UpdatePolicyPresetRequestFromJSON,
+    UpdatePolicyPresetRequestToJSON,
 } from '../models';
 
+export interface CreateGeoLocationCheckOperationRequest {
+    createGeoLocationCheckRequest: CreateGeoLocationCheckRequest;
+}
+
+export interface CreatePolicyPresetOperationRequest {
+    createPolicyPresetRequest: CreatePolicyPresetRequest;
+}
+
+export interface CreatePolicyPresetDuplicateRequest {
+    id: string;
+}
+
 export interface DeletePolicyPresetRequest {
+    id: string;
+}
+
+export interface GetPolicyPresetRequest {
     id: string;
 }
 
@@ -40,8 +89,18 @@ export interface ListPolicyPresetsRequest {
     kind?: ListPolicyPresetsKindEnum;
 }
 
-export interface UpdatePolicyPresetRequest {
+export interface UpdatePolicyGeneralOperationRequest {
+    updatePolicyGeneralRequest: UpdatePolicyGeneralRequest;
+}
+
+export interface UpdatePolicyPresetOperationRequest {
     id: string;
+    updatePolicyPresetRequest: UpdatePolicyPresetRequest;
+}
+
+export interface UpdatePolicyPresetApplicationOperationRequest {
+    id: string;
+    updatePolicyPresetApplicationRequest: UpdatePolicyPresetApplicationRequest;
 }
 
 /**
@@ -53,10 +112,16 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
      * Pass an unsaved `policy` draft or a `presetId` (neither = your default shipping policy), an `address`, and optionally `consolidateVia` (a ship-together hub). Returns `ships`, and when it does not: `reason`, `stage` (buyer | hub), `message` and the deciding `rule`. `partial` means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
      * Check whether a shipping policy ships to an address.
      */
-    async createGeoLocationCheckRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGeoLocationCheckResponse>> {
+    async createGeoLocationCheckRaw(requestParameters: CreateGeoLocationCheckOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGeoLocationCheckResponse>> {
+        if (requestParameters.createGeoLocationCheckRequest === null || requestParameters.createGeoLocationCheckRequest === undefined) {
+            throw new runtime.RequiredError('createGeoLocationCheckRequest','Required parameter requestParameters.createGeoLocationCheckRequest was null or undefined when calling createGeoLocationCheck.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -71,6 +136,7 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateGeoLocationCheckRequestToJSON(requestParameters.createGeoLocationCheckRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateGeoLocationCheckResponseFromJSON(jsonValue));
@@ -80,18 +146,24 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
      * Pass an unsaved `policy` draft or a `presetId` (neither = your default shipping policy), an `address`, and optionally `consolidateVia` (a ship-together hub). Returns `ships`, and when it does not: `reason`, `stage` (buyer | hub), `message` and the deciding `rule`. `partial` means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
      * Check whether a shipping policy ships to an address.
      */
-    async createGeoLocationCheck(initOverrides?: RequestInit): Promise<CreateGeoLocationCheckResponse> {
-        const response = await this.createGeoLocationCheckRaw(initOverrides);
+    async createGeoLocationCheck(requestParameters: CreateGeoLocationCheckOperationRequest, initOverrides?: RequestInit): Promise<CreateGeoLocationCheckResponse> {
+        const response = await this.createGeoLocationCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Create a return / shipping / payment policy preset.
+     * Create a return / shipping / payment / pricing policy preset.
      */
-    async createPolicyPresetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePolicyPresetResponse>> {
+    async createPolicyPresetRaw(requestParameters: CreatePolicyPresetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePolicyPresetResponse>> {
+        if (requestParameters.createPolicyPresetRequest === null || requestParameters.createPolicyPresetRequest === undefined) {
+            throw new runtime.RequiredError('createPolicyPresetRequest','Required parameter requestParameters.createPolicyPresetRequest was null or undefined when calling createPolicyPreset.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -106,16 +178,55 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreatePolicyPresetRequestToJSON(requestParameters.createPolicyPresetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatePolicyPresetResponseFromJSON(jsonValue));
     }
 
     /**
-     * Create a return / shipping / payment policy preset.
+     * Create a return / shipping / payment / pricing policy preset.
      */
-    async createPolicyPreset(initOverrides?: RequestInit): Promise<CreatePolicyPresetResponse> {
-        const response = await this.createPolicyPresetRaw(initOverrides);
+    async createPolicyPreset(requestParameters: CreatePolicyPresetOperationRequest, initOverrides?: RequestInit): Promise<CreatePolicyPresetResponse> {
+        const response = await this.createPolicyPresetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Copy a policy preset (\"<name> (copy)\", never the default; a pricing copy applies nowhere yet).
+     */
+    async createPolicyPresetDuplicateRaw(requestParameters: CreatePolicyPresetDuplicateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPolicyPresetsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createPolicyPresetDuplicate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/policy-presets/{id}/duplicate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListPolicyPresetsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Copy a policy preset (\"<name> (copy)\", never the default; a pricing copy applies nowhere yet).
+     */
+    async createPolicyPresetDuplicate(requestParameters: CreatePolicyPresetDuplicateRequest, initOverrides?: RequestInit): Promise<ListPolicyPresetsItem> {
+        const response = await this.createPolicyPresetDuplicateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -159,7 +270,7 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
 
     /**
      * Pass a preset `id` as `policies.shippingPresetId` / `returnPresetId` / `paymentPresetId` on POST or PATCH /v1/listings (null = the marketplace\'s own default). A kind you omit uses `defaultPresetId`.
-     * The seller\'s shipping / return / payment policy presets by kind, with each kind\'s default.
+     * The store\'s shipping / return / payment policy presets by kind, with each kind\'s default (X-Storefront-Id, else the default store).
      */
     async getPolicyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPolicyResponse>> {
         const queryParameters: any = {};
@@ -186,7 +297,7 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
 
     /**
      * Pass a preset `id` as `policies.shippingPresetId` / `returnPresetId` / `paymentPresetId` on POST or PATCH /v1/listings (null = the marketplace\'s own default). A kind you omit uses `defaultPresetId`.
-     * The seller\'s shipping / return / payment policy presets by kind, with each kind\'s default.
+     * The store\'s shipping / return / payment policy presets by kind, with each kind\'s default (X-Storefront-Id, else the default store).
      */
     async getPolicy(initOverrides?: RequestInit): Promise<GetPolicyResponse> {
         const response = await this.getPolicyRaw(initOverrides);
@@ -194,7 +305,113 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List the seller\'s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
+     * Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions).
+     */
+    async getPolicyGeneralRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPolicyGeneralResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/policies/general`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPolicyGeneralResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions).
+     */
+    async getPolicyGeneral(initOverrides?: RequestInit): Promise<GetPolicyGeneralResponse> {
+        const response = await this.getPolicyGeneralRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace\'s own setting / default for that marketplace) with what each marketplace receives, and its history.
+     */
+    async getPolicyPresetRaw(requestParameters: GetPolicyPresetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPolicyPresetResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getPolicyPreset.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/policy-presets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPolicyPresetResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace\'s own setting / default for that marketplace) with what each marketplace receives, and its history.
+     */
+    async getPolicyPreset(requestParameters: GetPolicyPresetRequest, initOverrides?: RequestInit): Promise<GetPolicyPresetResponse> {
+        const response = await this.getPolicyPresetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The connected platform accounts a policy can apply to (\"Where this applies\").
+     */
+    async listPolicyPresetAccountsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPolicyPresetAccountsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/policy-presets/accounts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListPolicyPresetAccountsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The connected platform accounts a policy can apply to (\"Where this applies\").
+     */
+    async listPolicyPresetAccounts(initOverrides?: RequestInit): Promise<ListPolicyPresetAccountsResponse> {
+        const response = await this.listPolicyPresetAccountsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List the seller\'s return / shipping / payment / pricing policy presets (no kind = the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
      */
     async listPolicyPresetsRaw(requestParameters: ListPolicyPresetsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPolicyPresetsResponse>> {
         const queryParameters: any = {};
@@ -224,7 +441,7 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List the seller\'s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
+     * List the seller\'s return / shipping / payment / pricing policy presets (no kind = the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
      */
     async listPolicyPresets(requestParameters: ListPolicyPresetsRequest = {}, initOverrides?: RequestInit): Promise<ListPolicyPresetsResponse> {
         const response = await this.listPolicyPresetsRaw(requestParameters, initOverrides);
@@ -232,16 +449,63 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update a policy preset.
+     * Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions.
      */
-    async updatePolicyPresetRaw(requestParameters: UpdatePolicyPresetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePolicyPresetResponse>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePolicyPreset.');
+    async updatePolicyGeneralRaw(requestParameters: UpdatePolicyGeneralOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatePolicyGeneralResponse>> {
+        if (requestParameters.updatePolicyGeneralRequest === null || requestParameters.updatePolicyGeneralRequest === undefined) {
+            throw new runtime.RequiredError('updatePolicyGeneralRequest','Required parameter requestParameters.updatePolicyGeneralRequest was null or undefined when calling updatePolicyGeneral.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/policies/general`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdatePolicyGeneralRequestToJSON(requestParameters.updatePolicyGeneralRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdatePolicyGeneralResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions.
+     */
+    async updatePolicyGeneral(requestParameters: UpdatePolicyGeneralOperationRequest, initOverrides?: RequestInit): Promise<UpdatePolicyGeneralResponse> {
+        const response = await this.updatePolicyGeneralRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update a policy preset.
+     */
+    async updatePolicyPresetRaw(requestParameters: UpdatePolicyPresetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePolicyPresetResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePolicyPreset.');
+        }
+
+        if (requestParameters.updatePolicyPresetRequest === null || requestParameters.updatePolicyPresetRequest === undefined) {
+            throw new runtime.RequiredError('updatePolicyPresetRequest','Required parameter requestParameters.updatePolicyPresetRequest was null or undefined when calling updatePolicyPreset.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -256,6 +520,7 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdatePolicyPresetRequestToJSON(requestParameters.updatePolicyPresetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatePolicyPresetResponseFromJSON(jsonValue));
@@ -264,8 +529,53 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
     /**
      * Update a policy preset.
      */
-    async updatePolicyPreset(requestParameters: UpdatePolicyPresetRequest, initOverrides?: RequestInit): Promise<CreatePolicyPresetResponse> {
+    async updatePolicyPreset(requestParameters: UpdatePolicyPresetOperationRequest, initOverrides?: RequestInit): Promise<CreatePolicyPresetResponse> {
         const response = await this.updatePolicyPresetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace\'s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace).
+     */
+    async updatePolicyPresetApplicationRaw(requestParameters: UpdatePolicyPresetApplicationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdatePolicyPresetApplicationResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePolicyPresetApplication.');
+        }
+
+        if (requestParameters.updatePolicyPresetApplicationRequest === null || requestParameters.updatePolicyPresetApplicationRequest === undefined) {
+            throw new runtime.RequiredError('updatePolicyPresetApplicationRequest','Required parameter requestParameters.updatePolicyPresetApplicationRequest was null or undefined when calling updatePolicyPresetApplication.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/policy-presets/{id}/applications`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdatePolicyPresetApplicationRequestToJSON(requestParameters.updatePolicyPresetApplicationRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdatePolicyPresetApplicationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace\'s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace).
+     */
+    async updatePolicyPresetApplication(requestParameters: UpdatePolicyPresetApplicationOperationRequest, initOverrides?: RequestInit): Promise<UpdatePolicyPresetApplicationResponse> {
+        const response = await this.updatePolicyPresetApplicationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -278,5 +588,6 @@ export class PolicyPresetsApi extends runtime.BaseAPI {
 export enum ListPolicyPresetsKindEnum {
     Return = 'return',
     Shipping = 'shipping',
-    Payment = 'payment'
+    Payment = 'payment',
+    Pricing = 'pricing'
 }

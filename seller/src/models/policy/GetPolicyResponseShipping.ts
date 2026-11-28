@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListPolicyPresetsItem,
-    ListPolicyPresetsItemFromJSON,
-    ListPolicyPresetsItemFromJSONTyped,
-    ListPolicyPresetsItemToJSON,
-} from './ListPolicyPresetsItem';
+    GetPolicyResponseShippingPresets,
+    GetPolicyResponseShippingPresetsFromJSON,
+    GetPolicyResponseShippingPresetsFromJSONTyped,
+    GetPolicyResponseShippingPresetsToJSON,
+} from './GetPolicyResponseShippingPresets';
 
 /**
  * 
@@ -34,10 +34,10 @@ export interface GetPolicyResponseShipping {
     defaultPresetId?: string | null;
     /**
      * 
-     * @type {Array<ListPolicyPresetsItem>}
+     * @type {Array<GetPolicyResponseShippingPresets>}
      * @memberof GetPolicyResponseShipping
      */
-    presets: Array<ListPolicyPresetsItem>;
+    presets: Array<GetPolicyResponseShippingPresets>;
 }
 
 export function GetPolicyResponseShippingFromJSON(json: any): GetPolicyResponseShipping {
@@ -51,7 +51,7 @@ export function GetPolicyResponseShippingFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'defaultPresetId': !exists(json, 'defaultPresetId') ? undefined : json['defaultPresetId'],
-        'presets': ((json['presets'] as Array<any>).map(ListPolicyPresetsItemFromJSON)),
+        'presets': ((json['presets'] as Array<any>).map(GetPolicyResponseShippingPresetsFromJSON)),
     };
 }
 
@@ -65,7 +65,7 @@ export function GetPolicyResponseShippingToJSON(value?: GetPolicyResponseShippin
     return {
         
         'defaultPresetId': value.defaultPresetId,
-        'presets': ((value.presets as Array<any>).map(ListPolicyPresetsItemToJSON)),
+        'presets': ((value.presets as Array<any>).map(GetPolicyResponseShippingPresetsToJSON)),
     };
 }
 

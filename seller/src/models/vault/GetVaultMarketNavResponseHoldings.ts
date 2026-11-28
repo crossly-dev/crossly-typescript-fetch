@@ -20,12 +20,6 @@ import {
     GetVaultMarketNavResponseHoldingsAdministratorMarkToJSON,
 } from './GetVaultMarketNavResponseHoldingsAdministratorMark';
 import {
-    GetVaultMarketNavResponseHoldingsAsc820,
-    GetVaultMarketNavResponseHoldingsAsc820FromJSON,
-    GetVaultMarketNavResponseHoldingsAsc820FromJSONTyped,
-    GetVaultMarketNavResponseHoldingsAsc820ToJSON,
-} from './GetVaultMarketNavResponseHoldingsAsc820';
-import {
     GetVaultMarketNavResponseHoldingsBid,
     GetVaultMarketNavResponseHoldingsBidFromJSON,
     GetVaultMarketNavResponseHoldingsBidFromJSONTyped,
@@ -43,6 +37,12 @@ import {
     GetVaultMarketNavResponseHoldingsMarkFromJSONTyped,
     GetVaultMarketNavResponseHoldingsMarkToJSON,
 } from './GetVaultMarketNavResponseHoldingsMark';
+import {
+    ReasonRequest,
+    ReasonRequestFromJSON,
+    ReasonRequestFromJSONTyped,
+    ReasonRequestToJSON,
+} from '../common/ReasonRequest';
 
 /**
  * 
@@ -112,10 +112,10 @@ export interface GetVaultMarketNavResponseHoldings {
     mark: GetVaultMarketNavResponseHoldingsMark;
     /**
      * 
-     * @type {GetVaultMarketNavResponseHoldingsAsc820}
+     * @type {ReasonRequest}
      * @memberof GetVaultMarketNavResponseHoldings
      */
-    asc820: GetVaultMarketNavResponseHoldingsAsc820;
+    asc820: ReasonRequest;
     /**
      * 
      * @type {number}
@@ -162,7 +162,7 @@ export function GetVaultMarketNavResponseHoldingsFromJSONTyped(json: any, ignore
         'lentUnits': json['lentUnits'],
         'insuredValueCents': !exists(json, 'insuredValueCents') ? undefined : json['insuredValueCents'],
         'mark': GetVaultMarketNavResponseHoldingsMarkFromJSON(json['mark']),
-        'asc820': GetVaultMarketNavResponseHoldingsAsc820FromJSON(json['asc820']),
+        'asc820': ReasonRequestFromJSON(json['asc820']),
         'markValueCents': json['markValueCents'],
         'bid': GetVaultMarketNavResponseHoldingsBidFromJSON(json['bid']),
         'liquidation': GetVaultMarketNavResponseHoldingsLiquidationFromJSON(json['liquidation']),
@@ -189,7 +189,7 @@ export function GetVaultMarketNavResponseHoldingsToJSON(value?: GetVaultMarketNa
         'lentUnits': value.lentUnits,
         'insuredValueCents': value.insuredValueCents,
         'mark': GetVaultMarketNavResponseHoldingsMarkToJSON(value.mark),
-        'asc820': GetVaultMarketNavResponseHoldingsAsc820ToJSON(value.asc820),
+        'asc820': ReasonRequestToJSON(value.asc820),
         'markValueCents': value.markValueCents,
         'bid': GetVaultMarketNavResponseHoldingsBidToJSON(value.bid),
         'liquidation': GetVaultMarketNavResponseHoldingsLiquidationToJSON(value.liquidation),

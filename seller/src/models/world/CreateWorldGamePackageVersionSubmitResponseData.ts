@@ -44,8 +44,8 @@ export interface CreateWorldGamePackageVersionSubmitResponseData {
 * @enum {string}
 */
 export enum CreateWorldGamePackageVersionSubmitResponseDataStateEnum {
-    Pending = 'pending',
     Draft = 'draft',
+    Pending = 'pending',
     Cancelled = 'cancelled',
     Rejected = 'rejected',
     Approved = 'approved',

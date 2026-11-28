@@ -60,9 +60,9 @@ export enum GetMarketMetalSpotHistoryResponseDataMetalEnum {
 * @enum {string}
 */
 export enum GetMarketMetalSpotHistoryResponseDataRangeEnum {
-    _1d = '1d',
     _7d = '7d',
     _30d = '30d',
+    _1d = '1d',
     _1y = '1y'
 }
 

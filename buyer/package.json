@@ -1,6 +1,6 @@
 {
   "name": "@crossly/buyer-fetch",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Official Crossly buyer API client for the Fetch API (Cloudflare Workers, Deno, Bun, Node 18+): shopping: cart, orders, wishlists, offers, cashback. With webhook verification.",
   "author": "Crossly",
   "license": "MIT",

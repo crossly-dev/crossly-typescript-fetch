@@ -38,11 +38,11 @@ import {
     CreateBuyerLockonConfirmResponseOffsiteToJSON,
 } from '../lockon/CreateBuyerLockonConfirmResponseOffsite';
 import {
-    CreateBuyerScanResponseIdentifier,
-    CreateBuyerScanResponseIdentifierFromJSON,
-    CreateBuyerScanResponseIdentifierFromJSONTyped,
-    CreateBuyerScanResponseIdentifierToJSON,
-} from './CreateBuyerScanResponseIdentifier';
+    NsValue,
+    NsValueFromJSON,
+    NsValueFromJSONTyped,
+    NsValueToJSON,
+} from '../common/NsValue';
 
 /**
  * 
@@ -118,10 +118,10 @@ export interface CreateBuyerScanResponse {
     confidence: number;
     /**
      * 
-     * @type {CreateBuyerScanResponseIdentifier}
+     * @type {NsValue}
      * @memberof CreateBuyerScanResponse
      */
-    identifier: CreateBuyerScanResponseIdentifier;
+    identifier: NsValue;
     /**
      * 
      * @type {Array<any>}
@@ -169,7 +169,7 @@ export function CreateBuyerScanResponseFromJSONTyped(json: any, ignoreDiscrimina
         'matchMethod': json['matchMethod'],
         'comparable': json['comparable'],
         'confidence': json['confidence'],
-        'identifier': CreateBuyerScanResponseIdentifierFromJSON(json['identifier']),
+        'identifier': NsValueFromJSON(json['identifier']),
         'visualMatches': json['visualMatches'],
     };
 }
@@ -194,7 +194,7 @@ export function CreateBuyerScanResponseToJSON(value?: CreateBuyerScanResponse | 
         'matchMethod': value.matchMethod,
         'comparable': value.comparable,
         'confidence': value.confidence,
-        'identifier': CreateBuyerScanResponseIdentifierToJSON(value.identifier),
+        'identifier': NsValueToJSON(value.identifier),
         'visualMatches': value.visualMatches,
     };
 }

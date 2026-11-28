@@ -15,21 +15,39 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateBuyerIdentifyRequest,
+    CreateBuyerIdentifyRequestFromJSON,
+    CreateBuyerIdentifyRequestToJSON,
     CreateBuyerIdentifyResponse,
     CreateBuyerIdentifyResponseFromJSON,
     CreateBuyerIdentifyResponseToJSON,
+    CreateBuyerLockonConfirmRequest,
+    CreateBuyerLockonConfirmRequestFromJSON,
+    CreateBuyerLockonConfirmRequestToJSON,
     CreateBuyerLockonConfirmResponse,
     CreateBuyerLockonConfirmResponseFromJSON,
     CreateBuyerLockonConfirmResponseToJSON,
+    CreateBuyerLockonObserveRequest,
+    CreateBuyerLockonObserveRequestFromJSON,
+    CreateBuyerLockonObserveRequestToJSON,
+    CreateBuyerLockonRequest,
+    CreateBuyerLockonRequestFromJSON,
+    CreateBuyerLockonRequestToJSON,
     CreateBuyerLockonResponse,
     CreateBuyerLockonResponseFromJSON,
     CreateBuyerLockonResponseToJSON,
+    CreateBuyerScanRequest,
+    CreateBuyerScanRequestFromJSON,
+    CreateBuyerScanRequestToJSON,
     CreateBuyerScanResponse,
     CreateBuyerScanResponseFromJSON,
     CreateBuyerScanResponseToJSON,
     CreateBuyerScanSessionEndResponse,
     CreateBuyerScanSessionEndResponseFromJSON,
     CreateBuyerScanSessionEndResponseToJSON,
+    CreateBuyerScanSessionRequest,
+    CreateBuyerScanSessionRequestFromJSON,
+    CreateBuyerScanSessionRequestToJSON,
     CreateBuyerScanSessionResponse,
     CreateBuyerScanSessionResponseFromJSON,
     CreateBuyerScanSessionResponseToJSON,
@@ -74,16 +92,41 @@ import {
     ListBuyerScanSessionsResponseToJSON,
 } from '../models';
 
-export interface CreateBuyerLockonConfirmRequest {
-    id: string;
+export interface CreateBuyerIdentifyOperationRequest {
+    createBuyerIdentifyRequest: CreateBuyerIdentifyRequest;
 }
 
-export interface CreateBuyerLockonObserveRequest {
+export interface CreateBuyerLockonOperationRequest {
+    createBuyerLockonRequest: CreateBuyerLockonRequest;
+}
+
+export interface CreateBuyerLockonConfirmOperationRequest {
     id: string;
+    createBuyerLockonConfirmRequest: CreateBuyerLockonConfirmRequest;
+}
+
+export interface CreateBuyerLockonObserveOperationRequest {
+    id: string;
+    createBuyerLockonObserveRequest?: CreateBuyerLockonObserveRequest;
+}
+
+export interface CreateBuyerScanOperationRequest {
+    createBuyerScanRequest: CreateBuyerScanRequest;
+}
+
+export interface CreateBuyerScanSessionOperationRequest {
+    createBuyerScanSessionRequest?: CreateBuyerScanSessionRequest;
 }
 
 export interface CreateBuyerScanSessionEndRequest {
     id: string;
+}
+
+export interface GetBuyerAnywhereRequest {
+    ns: GetBuyerAnywhereNsEnum;
+    value: string;
+    pagePriceCents?: number;
+    currency?: string;
 }
 
 export interface GetBuyerCatalogListingRequest {
@@ -126,10 +169,34 @@ export interface ListBuyerCatalogBrowseRequest {
     maxPriceCents?: number;
     page?: number;
     limit?: number;
+    brand?: string;
+    condition?: string;
+    category?: string;
+    subcategory?: string;
+    freeShipping?: ListBuyerCatalogBrowseFreeShippingEnum;
+    localPickup?: ListBuyerCatalogBrowseLocalPickupEnum;
+    deals?: ListBuyerCatalogBrowseDealsEnum;
+    state?: string;
+    zip?: string;
 }
 
 export interface ListBuyerCatalogListingSoldHistoryRequest {
     slug: string;
+}
+
+export interface ListBuyerCatalogSearchRequest {
+    q?: string;
+    brand?: string;
+    category?: string;
+    condition?: string;
+    seller?: string;
+    minPriceCents?: number;
+    maxPriceCents?: number;
+    listedAfter?: string;
+    inStockOnly?: ListBuyerCatalogSearchInStockOnlyEnum;
+    sort?: ListBuyerCatalogSearchSortEnum;
+    limit?: number;
+    cursor?: string;
 }
 
 export interface ListBuyerCatalogSellersRequest {
@@ -146,10 +213,16 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). `hud` is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
      * Identify a held object and return a HUD-ready answer.
      */
-    async createBuyerIdentifyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerIdentifyResponse>> {
+    async createBuyerIdentifyRaw(requestParameters: CreateBuyerIdentifyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerIdentifyResponse>> {
+        if (requestParameters.createBuyerIdentifyRequest === null || requestParameters.createBuyerIdentifyRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerIdentifyRequest','Required parameter requestParameters.createBuyerIdentifyRequest was null or undefined when calling createBuyerIdentify.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -164,6 +237,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerIdentifyRequestToJSON(requestParameters.createBuyerIdentifyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerIdentifyResponseFromJSON(jsonValue));
@@ -173,8 +247,8 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). `hud` is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
      * Identify a held object and return a HUD-ready answer.
      */
-    async createBuyerIdentify(initOverrides?: RequestInit): Promise<CreateBuyerIdentifyResponse> {
-        const response = await this.createBuyerIdentifyRaw(initOverrides);
+    async createBuyerIdentify(requestParameters: CreateBuyerIdentifyOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerIdentifyResponse> {
+        const response = await this.createBuyerIdentifyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -182,10 +256,16 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
      * Lock on to an object the buyer is holding.
      */
-    async createBuyerLockonRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerLockonResponse>> {
+    async createBuyerLockonRaw(requestParameters: CreateBuyerLockonOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerLockonResponse>> {
+        if (requestParameters.createBuyerLockonRequest === null || requestParameters.createBuyerLockonRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerLockonRequest','Required parameter requestParameters.createBuyerLockonRequest was null or undefined when calling createBuyerLockon.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -200,6 +280,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerLockonRequestToJSON(requestParameters.createBuyerLockonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerLockonResponseFromJSON(jsonValue));
@@ -209,8 +290,8 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
      * Lock on to an object the buyer is holding.
      */
-    async createBuyerLockon(initOverrides?: RequestInit): Promise<CreateBuyerLockonResponse> {
-        const response = await this.createBuyerLockonRaw(initOverrides);
+    async createBuyerLockon(requestParameters: CreateBuyerLockonOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerLockonResponse> {
+        const response = await this.createBuyerLockonRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -218,14 +299,20 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Promotes a text match to a CONFIRMED identity — the strongest evidence in the system, because a person holding the object said yes. Validated against the candidates we actually offered, so it cannot be claimed about an arbitrary product.
      * The buyer picked one of the candidates.
      */
-    async createBuyerLockonConfirmRaw(requestParameters: CreateBuyerLockonConfirmRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerLockonConfirmResponse>> {
+    async createBuyerLockonConfirmRaw(requestParameters: CreateBuyerLockonConfirmOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerLockonConfirmResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerLockonConfirm.');
+        }
+
+        if (requestParameters.createBuyerLockonConfirmRequest === null || requestParameters.createBuyerLockonConfirmRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerLockonConfirmRequest','Required parameter requestParameters.createBuyerLockonConfirmRequest was null or undefined when calling createBuyerLockonConfirm.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -240,6 +327,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerLockonConfirmRequestToJSON(requestParameters.createBuyerLockonConfirmRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerLockonConfirmResponseFromJSON(jsonValue));
@@ -249,7 +337,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Promotes a text match to a CONFIRMED identity — the strongest evidence in the system, because a person holding the object said yes. Validated against the candidates we actually offered, so it cannot be claimed about an arbitrary product.
      * The buyer picked one of the candidates.
      */
-    async createBuyerLockonConfirm(requestParameters: CreateBuyerLockonConfirmRequest, initOverrides?: RequestInit): Promise<CreateBuyerLockonConfirmResponse> {
+    async createBuyerLockonConfirm(requestParameters: CreateBuyerLockonConfirmOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerLockonConfirmResponse> {
         const response = await this.createBuyerLockonConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -258,7 +346,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Send only what you LEARNED: a decoded barcode, newly-read OCR text, or a frame when neither settled it. Do not post every frame — tracking and decoding happen on-device for free, and this endpoint is for evidence, not video. Evidence is RANKED (confirmed > barcode > ocr > visual), so a late weak reading can never overwrite a strong early one. When text evidence finds several products, `candidates` comes back for the buyer to pick from — a vision label is words, and only a human confirmation turns it into an identity we will price against.
      * Add what this frame revealed, and get the current best answer.
      */
-    async createBuyerLockonObserveRaw(requestParameters: CreateBuyerLockonObserveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerLockonConfirmResponse>> {
+    async createBuyerLockonObserveRaw(requestParameters: CreateBuyerLockonObserveOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerLockonConfirmResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerLockonObserve.');
         }
@@ -266,6 +354,8 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -280,6 +370,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerLockonObserveRequestToJSON(requestParameters.createBuyerLockonObserveRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerLockonConfirmResponseFromJSON(jsonValue));
@@ -289,7 +380,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Send only what you LEARNED: a decoded barcode, newly-read OCR text, or a frame when neither settled it. Do not post every frame — tracking and decoding happen on-device for free, and this endpoint is for evidence, not video. Evidence is RANKED (confirmed > barcode > ocr > visual), so a late weak reading can never overwrite a strong early one. When text evidence finds several products, `candidates` comes back for the buyer to pick from — a vision label is words, and only a human confirmation turns it into an identity we will price against.
      * Add what this frame revealed, and get the current best answer.
      */
-    async createBuyerLockonObserve(requestParameters: CreateBuyerLockonObserveRequest, initOverrides?: RequestInit): Promise<CreateBuyerLockonConfirmResponse> {
+    async createBuyerLockonObserve(requestParameters: CreateBuyerLockonObserveOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerLockonConfirmResponse> {
         const response = await this.createBuyerLockonObserveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -298,10 +389,16 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, `comparable` is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
      * Identify a physical item and find the cheapest place to buy it.
      */
-    async createBuyerScanRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerScanResponse>> {
+    async createBuyerScanRaw(requestParameters: CreateBuyerScanOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerScanResponse>> {
+        if (requestParameters.createBuyerScanRequest === null || requestParameters.createBuyerScanRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerScanRequest','Required parameter requestParameters.createBuyerScanRequest was null or undefined when calling createBuyerScan.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -316,6 +413,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerScanRequestToJSON(requestParameters.createBuyerScanRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerScanResponseFromJSON(jsonValue));
@@ -325,8 +423,8 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, `comparable` is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
      * Identify a physical item and find the cheapest place to buy it.
      */
-    async createBuyerScan(initOverrides?: RequestInit): Promise<CreateBuyerScanResponse> {
-        const response = await this.createBuyerScanRaw(initOverrides);
+    async createBuyerScan(requestParameters: CreateBuyerScanOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerScanResponse> {
+        const response = await this.createBuyerScanRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -334,10 +432,12 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Call this when the glasses connect, then pass the returned id as `sessionId` on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
      * Open a Live Shop session.
      */
-    async createBuyerScanSessionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerScanSessionResponse>> {
+    async createBuyerScanSessionRaw(requestParameters: CreateBuyerScanSessionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerScanSessionResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -352,6 +452,7 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerScanSessionRequestToJSON(requestParameters.createBuyerScanSessionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerScanSessionResponseFromJSON(jsonValue));
@@ -361,8 +462,8 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Call this when the glasses connect, then pass the returned id as `sessionId` on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
      * Open a Live Shop session.
      */
-    async createBuyerScanSession(initOverrides?: RequestInit): Promise<CreateBuyerScanSessionResponse> {
-        const response = await this.createBuyerScanSessionRaw(initOverrides);
+    async createBuyerScanSession(requestParameters: CreateBuyerScanSessionOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateBuyerScanSessionResponse> {
+        const response = await this.createBuyerScanSessionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -408,8 +509,32 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. `shippingUnknown: true` means a compared price omitted postage, so present the result as \"before postage\" rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
      * Cheapest source for an item — Crossly first, then other retailers.
      */
-    async getBuyerAnywhereRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerAnywhereResponse>> {
+    async getBuyerAnywhereRaw(requestParameters: GetBuyerAnywhereRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerAnywhereResponse>> {
+        if (requestParameters.ns === null || requestParameters.ns === undefined) {
+            throw new runtime.RequiredError('ns','Required parameter requestParameters.ns was null or undefined when calling getBuyerAnywhere.');
+        }
+
+        if (requestParameters.value === null || requestParameters.value === undefined) {
+            throw new runtime.RequiredError('value','Required parameter requestParameters.value was null or undefined when calling getBuyerAnywhere.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.ns !== undefined) {
+            queryParameters['ns'] = requestParameters.ns;
+        }
+
+        if (requestParameters.value !== undefined) {
+            queryParameters['value'] = requestParameters.value;
+        }
+
+        if (requestParameters.pagePriceCents !== undefined) {
+            queryParameters['pagePriceCents'] = requestParameters.pagePriceCents;
+        }
+
+        if (requestParameters.currency !== undefined) {
+            queryParameters['currency'] = requestParameters.currency;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -435,8 +560,8 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. `shippingUnknown: true` means a compared price omitted postage, so present the result as \"before postage\" rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
      * Cheapest source for an item — Crossly first, then other retailers.
      */
-    async getBuyerAnywhere(initOverrides?: RequestInit): Promise<GetBuyerAnywhereResponse> {
-        const response = await this.getBuyerAnywhereRaw(initOverrides);
+    async getBuyerAnywhere(requestParameters: GetBuyerAnywhereRequest, initOverrides?: RequestInit): Promise<GetBuyerAnywhereResponse> {
+        const response = await this.getBuyerAnywhereRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -797,6 +922,42 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
             queryParameters['limit'] = requestParameters.limit;
         }
 
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.condition !== undefined) {
+            queryParameters['condition'] = requestParameters.condition;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.subcategory !== undefined) {
+            queryParameters['subcategory'] = requestParameters.subcategory;
+        }
+
+        if (requestParameters.freeShipping !== undefined) {
+            queryParameters['freeShipping'] = requestParameters.freeShipping;
+        }
+
+        if (requestParameters.localPickup !== undefined) {
+            queryParameters['localPickup'] = requestParameters.localPickup;
+        }
+
+        if (requestParameters.deals !== undefined) {
+            queryParameters['deals'] = requestParameters.deals;
+        }
+
+        if (requestParameters.state !== undefined) {
+            queryParameters['state'] = requestParameters.state;
+        }
+
+        if (requestParameters.zip !== undefined) {
+            queryParameters['zip'] = requestParameters.zip;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -870,8 +1031,56 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Keyset-paginated. Pass the `nextCursor` you were given back as `cursor`; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. `sort=popular` is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
      * Search the Crossly catalogue.
      */
-    async listBuyerCatalogSearchRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerCatalogSearchResponse>> {
+    async listBuyerCatalogSearchRaw(requestParameters: ListBuyerCatalogSearchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBuyerCatalogSearchResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.brand !== undefined) {
+            queryParameters['brand'] = requestParameters.brand;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
+
+        if (requestParameters.condition !== undefined) {
+            queryParameters['condition'] = requestParameters.condition;
+        }
+
+        if (requestParameters.seller !== undefined) {
+            queryParameters['seller'] = requestParameters.seller;
+        }
+
+        if (requestParameters.minPriceCents !== undefined) {
+            queryParameters['minPriceCents'] = requestParameters.minPriceCents;
+        }
+
+        if (requestParameters.maxPriceCents !== undefined) {
+            queryParameters['maxPriceCents'] = requestParameters.maxPriceCents;
+        }
+
+        if (requestParameters.listedAfter !== undefined) {
+            queryParameters['listedAfter'] = requestParameters.listedAfter;
+        }
+
+        if (requestParameters.inStockOnly !== undefined) {
+            queryParameters['inStockOnly'] = requestParameters.inStockOnly;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -897,8 +1106,8 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
      * Keyset-paginated. Pass the `nextCursor` you were given back as `cursor`; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. `sort=popular` is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
      * Search the Crossly catalogue.
      */
-    async listBuyerCatalogSearch(initOverrides?: RequestInit): Promise<ListBuyerCatalogSearchResponse> {
-        const response = await this.listBuyerCatalogSearchRaw(initOverrides);
+    async listBuyerCatalogSearch(requestParameters: ListBuyerCatalogSearchRequest = {}, initOverrides?: RequestInit): Promise<ListBuyerCatalogSearchResponse> {
+        const response = await this.listBuyerCatalogSearchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -990,6 +1199,18 @@ export class BuyerCatalogApi extends runtime.BaseAPI {
     * @export
     * @enum {string}
     */
+export enum GetBuyerAnywhereNsEnum {
+    Discogs = 'discogs',
+    Tcgplayer = 'tcgplayer',
+    Gtin = 'gtin',
+    StyleCode = 'style_code',
+    LegoSet = 'lego_set',
+    Asin = 'asin'
+}
+/**
+    * @export
+    * @enum {string}
+    */
 export enum ListBuyerCatalogBrowseFormatEnum {
     Auction = 'auction',
     BuyItNow = 'buy_it_now',
@@ -1022,4 +1243,45 @@ export enum ListBuyerCatalogBrowseSortEnum {
     PriceHigh = 'price_high',
     Popular = 'popular',
     EndingSoon = 'ending_soon'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBuyerCatalogBrowseFreeShippingEnum {
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBuyerCatalogBrowseLocalPickupEnum {
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBuyerCatalogBrowseDealsEnum {
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBuyerCatalogSearchInStockOnlyEnum {
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBuyerCatalogSearchSortEnum {
+    Newest = 'newest',
+    PriceLow = 'price_low',
+    PriceHigh = 'price_high'
 }

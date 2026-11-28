@@ -21,6 +21,9 @@ import {
     CreateWorkflowApprovalDecideResponse,
     CreateWorkflowApprovalDecideResponseFromJSON,
     CreateWorkflowApprovalDecideResponseToJSON,
+    CreateWorkflowChainRequest,
+    CreateWorkflowChainRequestFromJSON,
+    CreateWorkflowChainRequestToJSON,
     CreateWorkflowChainRunNowResponse,
     CreateWorkflowChainRunNowResponseFromJSON,
     CreateWorkflowChainRunNowResponseToJSON,
@@ -39,6 +42,9 @@ import {
     CreateWorkflowExpressionPreviewResponse,
     CreateWorkflowExpressionPreviewResponseFromJSON,
     CreateWorkflowExpressionPreviewResponseToJSON,
+    CreateWorkflowImportRequest,
+    CreateWorkflowImportRequestFromJSON,
+    CreateWorkflowImportRequestToJSON,
     CreateWorkflowImportResponse,
     CreateWorkflowImportResponseFromJSON,
     CreateWorkflowImportResponseToJSON,
@@ -84,6 +90,9 @@ import {
     CreateWorkflowValidateResponse,
     CreateWorkflowValidateResponseFromJSON,
     CreateWorkflowValidateResponseToJSON,
+    CreateWorkflowVersionRestoreRequest,
+    CreateWorkflowVersionRestoreRequestFromJSON,
+    CreateWorkflowVersionRestoreRequestToJSON,
     CreateWorkflowWebhookRotateRequest,
     CreateWorkflowWebhookRotateRequestFromJSON,
     CreateWorkflowWebhookRotateRequestToJSON,
@@ -159,6 +168,10 @@ export interface CreateWorkflowApprovalDecideOperationRequest {
     createWorkflowApprovalDecideRequest: CreateWorkflowApprovalDecideRequest;
 }
 
+export interface CreateWorkflowChainOperationRequest {
+    createWorkflowChainRequest: CreateWorkflowChainRequest;
+}
+
 export interface CreateWorkflowChainRunNowRequest {
     id: string;
 }
@@ -180,8 +193,8 @@ export interface CreateWorkflowExpressionPreviewOperationRequest {
     createWorkflowExpressionPreviewRequest: CreateWorkflowExpressionPreviewRequest;
 }
 
-export interface CreateWorkflowImportRequest {
-    requestBody: { [key: string]: any; };
+export interface CreateWorkflowImportOperationRequest {
+    createWorkflowImportRequest?: CreateWorkflowImportRequest;
 }
 
 export interface CreateWorkflowRunOperationRequest {
@@ -219,9 +232,10 @@ export interface CreateWorkflowValidateOperationRequest {
     createWorkflowValidateRequest: CreateWorkflowValidateRequest;
 }
 
-export interface CreateWorkflowVersionRestoreRequest {
+export interface CreateWorkflowVersionRestoreOperationRequest {
     id: string;
     v: number;
+    createWorkflowVersionRestoreRequest?: CreateWorkflowVersionRestoreRequest;
 }
 
 export interface CreateWorkflowWebhookRotateOperationRequest {
@@ -311,6 +325,7 @@ export interface UpdateWorkflowOperationRequest {
 
 export interface UpdateWorkflowChainRequest {
     id: string;
+    createWorkflowChainRequest: CreateWorkflowChainRequest;
 }
 
 /**
@@ -446,10 +461,16 @@ export class WorkflowsApi extends runtime.BaseAPI {
      * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Create a multi-step workflow chain.
      */
-    async createWorkflowChainRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
+    async createWorkflowChainRaw(requestParameters: CreateWorkflowChainOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
+        if (requestParameters.createWorkflowChainRequest === null || requestParameters.createWorkflowChainRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowChainRequest','Required parameter requestParameters.createWorkflowChainRequest was null or undefined when calling createWorkflowChain.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -464,6 +485,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorkflowChainRequestToJSON(requestParameters.createWorkflowChainRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => IdResponseFromJSON(jsonValue));
@@ -473,8 +495,8 @@ export class WorkflowsApi extends runtime.BaseAPI {
      * Deprecated: workflow chains are workflows now. Use /v1/workflows.
      * Create a multi-step workflow chain.
      */
-    async createWorkflowChain(initOverrides?: RequestInit): Promise<IdResponse> {
-        const response = await this.createWorkflowChainRaw(initOverrides);
+    async createWorkflowChain(requestParameters: CreateWorkflowChainOperationRequest, initOverrides?: RequestInit): Promise<IdResponse> {
+        const response = await this.createWorkflowChainRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -685,11 +707,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     /**
      * Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
      */
-    async createWorkflowImportRaw(requestParameters: CreateWorkflowImportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowImportResponse>> {
-        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
-            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createWorkflowImport.');
-        }
-
+    async createWorkflowImportRaw(requestParameters: CreateWorkflowImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorkflowImportResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -709,7 +727,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.requestBody,
+            body: CreateWorkflowImportRequestToJSON(requestParameters.createWorkflowImportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorkflowImportResponseFromJSON(jsonValue));
@@ -718,7 +736,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     /**
      * Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
      */
-    async createWorkflowImport(requestParameters: CreateWorkflowImportRequest, initOverrides?: RequestInit): Promise<CreateWorkflowImportResponse> {
+    async createWorkflowImport(requestParameters: CreateWorkflowImportOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateWorkflowImportResponse> {
         const response = await this.createWorkflowImportRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1057,7 +1075,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     /**
      * Restore an earlier version\'s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
      */
-    async createWorkflowVersionRestoreRaw(requestParameters: CreateWorkflowVersionRestoreRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkflowResponse>> {
+    async createWorkflowVersionRestoreRaw(requestParameters: CreateWorkflowVersionRestoreOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkflowResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWorkflowVersionRestore.');
         }
@@ -1069,6 +1087,8 @@ export class WorkflowsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1083,6 +1103,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorkflowVersionRestoreRequestToJSON(requestParameters.createWorkflowVersionRestoreRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorkflowResponseFromJSON(jsonValue));
@@ -1091,7 +1112,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
     /**
      * Restore an earlier version\'s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
      */
-    async createWorkflowVersionRestore(requestParameters: CreateWorkflowVersionRestoreRequest, initOverrides?: RequestInit): Promise<WorkflowResponse> {
+    async createWorkflowVersionRestore(requestParameters: CreateWorkflowVersionRestoreOperationRequest, initOverrides?: RequestInit): Promise<WorkflowResponse> {
         const response = await this.createWorkflowVersionRestoreRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1889,9 +1910,15 @@ export class WorkflowsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWorkflowChain.');
         }
 
+        if (requestParameters.createWorkflowChainRequest === null || requestParameters.createWorkflowChainRequest === undefined) {
+            throw new runtime.RequiredError('createWorkflowChainRequest','Required parameter requestParameters.createWorkflowChainRequest was null or undefined when calling updateWorkflowChain.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1906,6 +1933,7 @@ export class WorkflowsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorkflowChainRequestToJSON(requestParameters.createWorkflowChainRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));

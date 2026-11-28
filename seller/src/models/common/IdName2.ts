@@ -14,7 +14,7 @@
 
 import { exists, mapValues } from '../../runtime';
 /**
- * The owner's crew, when they are in one (crew-only needs it).
+ * The store that owns the app and is paid what it earns (spec DV1). Null = held until a store is chosen.
  * @export
  * @interface IdName2
  */

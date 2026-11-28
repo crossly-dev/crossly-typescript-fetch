@@ -15,9 +15,18 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateFieldRulePreviewRequest,
+    CreateFieldRulePreviewRequestFromJSON,
+    CreateFieldRulePreviewRequestToJSON,
     CreateFieldRulePreviewResponse,
     CreateFieldRulePreviewResponseFromJSON,
     CreateFieldRulePreviewResponseToJSON,
+    CreateFieldRuleReorderRequest,
+    CreateFieldRuleReorderRequestFromJSON,
+    CreateFieldRuleReorderRequestToJSON,
+    CreateFieldRuleRequest,
+    CreateFieldRuleRequestFromJSON,
+    CreateFieldRuleRequestToJSON,
     ListFieldRulesItem,
     ListFieldRulesItemFromJSON,
     ListFieldRulesItemToJSON,
@@ -27,7 +36,22 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateFieldRuleRequest,
+    UpdateFieldRuleRequestFromJSON,
+    UpdateFieldRuleRequestToJSON,
 } from '../models';
+
+export interface CreateFieldRuleOperationRequest {
+    createFieldRuleRequest: CreateFieldRuleRequest;
+}
+
+export interface CreateFieldRulePreviewOperationRequest {
+    createFieldRulePreviewRequest: CreateFieldRulePreviewRequest;
+}
+
+export interface CreateFieldRuleReorderOperationRequest {
+    createFieldRuleReorderRequest: CreateFieldRuleReorderRequest;
+}
 
 export interface DeleteFieldRuleRequest {
     id: string;
@@ -41,8 +65,9 @@ export interface ListFieldRulesRequest {
     platform?: string;
 }
 
-export interface UpdateFieldRuleRequest {
+export interface UpdateFieldRuleOperationRequest {
     id: string;
+    updateFieldRuleRequest: UpdateFieldRuleRequest;
 }
 
 /**
@@ -53,10 +78,16 @@ export class FieldRulesApi extends runtime.BaseAPI {
     /**
      * Create a per-channel field rule.
      */
-    async createFieldRuleRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListFieldRulesItem>> {
+    async createFieldRuleRaw(requestParameters: CreateFieldRuleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListFieldRulesItem>> {
+        if (requestParameters.createFieldRuleRequest === null || requestParameters.createFieldRuleRequest === undefined) {
+            throw new runtime.RequiredError('createFieldRuleRequest','Required parameter requestParameters.createFieldRuleRequest was null or undefined when calling createFieldRule.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -71,6 +102,7 @@ export class FieldRulesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFieldRuleRequestToJSON(requestParameters.createFieldRuleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListFieldRulesItemFromJSON(jsonValue));
@@ -79,18 +111,24 @@ export class FieldRulesApi extends runtime.BaseAPI {
     /**
      * Create a per-channel field rule.
      */
-    async createFieldRule(initOverrides?: RequestInit): Promise<ListFieldRulesItem> {
-        const response = await this.createFieldRuleRaw(initOverrides);
+    async createFieldRule(requestParameters: CreateFieldRuleOperationRequest, initOverrides?: RequestInit): Promise<ListFieldRulesItem> {
+        const response = await this.createFieldRuleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Preview field-rule output for a listing on one channel.
      */
-    async createFieldRulePreviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFieldRulePreviewResponse>> {
+    async createFieldRulePreviewRaw(requestParameters: CreateFieldRulePreviewOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateFieldRulePreviewResponse>> {
+        if (requestParameters.createFieldRulePreviewRequest === null || requestParameters.createFieldRulePreviewRequest === undefined) {
+            throw new runtime.RequiredError('createFieldRulePreviewRequest','Required parameter requestParameters.createFieldRulePreviewRequest was null or undefined when calling createFieldRulePreview.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -105,6 +143,7 @@ export class FieldRulesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFieldRulePreviewRequestToJSON(requestParameters.createFieldRulePreviewRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateFieldRulePreviewResponseFromJSON(jsonValue));
@@ -113,18 +152,24 @@ export class FieldRulesApi extends runtime.BaseAPI {
     /**
      * Preview field-rule output for a listing on one channel.
      */
-    async createFieldRulePreview(initOverrides?: RequestInit): Promise<CreateFieldRulePreviewResponse> {
-        const response = await this.createFieldRulePreviewRaw(initOverrides);
+    async createFieldRulePreview(requestParameters: CreateFieldRulePreviewOperationRequest, initOverrides?: RequestInit): Promise<CreateFieldRulePreviewResponse> {
+        const response = await this.createFieldRulePreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Set the run order of several field rules.
      */
-    async createFieldRuleReorderRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+    async createFieldRuleReorderRaw(requestParameters: CreateFieldRuleReorderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.createFieldRuleReorderRequest === null || requestParameters.createFieldRuleReorderRequest === undefined) {
+            throw new runtime.RequiredError('createFieldRuleReorderRequest','Required parameter requestParameters.createFieldRuleReorderRequest was null or undefined when calling createFieldRuleReorder.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -139,6 +184,7 @@ export class FieldRulesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateFieldRuleReorderRequestToJSON(requestParameters.createFieldRuleReorderRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
@@ -147,8 +193,8 @@ export class FieldRulesApi extends runtime.BaseAPI {
     /**
      * Set the run order of several field rules.
      */
-    async createFieldRuleReorder(initOverrides?: RequestInit): Promise<OkResponse> {
-        const response = await this.createFieldRuleReorderRaw(initOverrides);
+    async createFieldRuleReorder(requestParameters: CreateFieldRuleReorderOperationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.createFieldRuleReorderRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -269,14 +315,20 @@ export class FieldRulesApi extends runtime.BaseAPI {
     /**
      * Update a field rule.
      */
-    async updateFieldRuleRaw(requestParameters: UpdateFieldRuleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListFieldRulesItem>> {
+    async updateFieldRuleRaw(requestParameters: UpdateFieldRuleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListFieldRulesItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateFieldRule.');
+        }
+
+        if (requestParameters.updateFieldRuleRequest === null || requestParameters.updateFieldRuleRequest === undefined) {
+            throw new runtime.RequiredError('updateFieldRuleRequest','Required parameter requestParameters.updateFieldRuleRequest was null or undefined when calling updateFieldRule.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -291,6 +343,7 @@ export class FieldRulesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateFieldRuleRequestToJSON(requestParameters.updateFieldRuleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListFieldRulesItemFromJSON(jsonValue));
@@ -299,7 +352,7 @@ export class FieldRulesApi extends runtime.BaseAPI {
     /**
      * Update a field rule.
      */
-    async updateFieldRule(requestParameters: UpdateFieldRuleRequest, initOverrides?: RequestInit): Promise<ListFieldRulesItem> {
+    async updateFieldRule(requestParameters: UpdateFieldRuleOperationRequest, initOverrides?: RequestInit): Promise<ListFieldRulesItem> {
         const response = await this.updateFieldRuleRaw(requestParameters, initOverrides);
         return await response.value();
     }

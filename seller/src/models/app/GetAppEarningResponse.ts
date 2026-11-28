@@ -25,6 +25,12 @@ import {
     GetAppEarningResponseSummaryFromJSONTyped,
     GetAppEarningResponseSummaryToJSON,
 } from './GetAppEarningResponseSummary';
+import {
+    IdName2,
+    IdName2FromJSON,
+    IdName2FromJSONTyped,
+    IdName2ToJSON,
+} from '../common/IdName2';
 
 /**
  * 
@@ -44,6 +50,18 @@ export interface GetAppEarningResponse {
      * @memberof GetAppEarningResponse
      */
     ledger: Array<GetAppEarningResponseLedger>;
+    /**
+     * 
+     * @type {IdName2}
+     * @memberof GetAppEarningResponse
+     */
+    store?: IdName2 | null;
+    /**
+     * True while the app has no store: earnings keep accruing and wait here, never lost.
+     * @type {boolean}
+     * @memberof GetAppEarningResponse
+     */
+    held: boolean;
 }
 
 export function GetAppEarningResponseFromJSON(json: any): GetAppEarningResponse {
@@ -58,6 +76,8 @@ export function GetAppEarningResponseFromJSONTyped(json: any, ignoreDiscriminato
         
         'summary': GetAppEarningResponseSummaryFromJSON(json['summary']),
         'ledger': ((json['ledger'] as Array<any>).map(GetAppEarningResponseLedgerFromJSON)),
+        'store': !exists(json, 'store') ? undefined : IdName2FromJSON(json['store']),
+        'held': json['held'],
     };
 }
 
@@ -72,6 +92,8 @@ export function GetAppEarningResponseToJSON(value?: GetAppEarningResponse | null
         
         'summary': GetAppEarningResponseSummaryToJSON(value.summary),
         'ledger': ((value.ledger as Array<any>).map(GetAppEarningResponseLedgerToJSON)),
+        'store': IdName2ToJSON(value.store),
+        'held': value.held,
     };
 }
 

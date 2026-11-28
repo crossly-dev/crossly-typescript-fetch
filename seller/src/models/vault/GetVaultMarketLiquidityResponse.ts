@@ -125,8 +125,8 @@ export enum GetVaultMarketLiquidityResponseBucketEnum {
 * @enum {string}
 */
 export enum GetVaultMarketLiquidityResponsePeerGroupEnum {
-    Category = 'category',
-    All = 'all'
+    All = 'all',
+    Category = 'category'
 }
 
 export function GetVaultMarketLiquidityResponseFromJSON(json: any): GetVaultMarketLiquidityResponse {

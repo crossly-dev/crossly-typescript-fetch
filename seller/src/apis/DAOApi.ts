@@ -18,15 +18,27 @@ import {
     CreateDaoProposalFinaliseResponse,
     CreateDaoProposalFinaliseResponseFromJSON,
     CreateDaoProposalFinaliseResponseToJSON,
+    CreateDaoProposalOpenRequest,
+    CreateDaoProposalOpenRequestFromJSON,
+    CreateDaoProposalOpenRequestToJSON,
     CreateDaoProposalOpenResponse,
     CreateDaoProposalOpenResponseFromJSON,
     CreateDaoProposalOpenResponseToJSON,
+    CreateDaoProposalRequest,
+    CreateDaoProposalRequestFromJSON,
+    CreateDaoProposalRequestToJSON,
     CreateDaoProposalResponse,
     CreateDaoProposalResponseFromJSON,
     CreateDaoProposalResponseToJSON,
+    CreateDaoProposalVetoRequest,
+    CreateDaoProposalVetoRequestFromJSON,
+    CreateDaoProposalVetoRequestToJSON,
     CreateDaoProposalVetoResponse,
     CreateDaoProposalVetoResponseFromJSON,
     CreateDaoProposalVetoResponseToJSON,
+    CreateDaoProposalVoteRequest,
+    CreateDaoProposalVoteRequestFromJSON,
+    CreateDaoProposalVoteRequestToJSON,
     CreateDaoProposalVoteResponse,
     CreateDaoProposalVoteResponseFromJSON,
     CreateDaoProposalVoteResponseToJSON,
@@ -36,33 +48,56 @@ import {
     GetDaoProposalTallyResponse,
     GetDaoProposalTallyResponseFromJSON,
     GetDaoProposalTallyResponseToJSON,
+    GetDaoSubjectParticipationResponse,
+    GetDaoSubjectParticipationResponseFromJSON,
+    GetDaoSubjectParticipationResponseToJSON,
     ListDaoProposalsResponse,
     ListDaoProposalsResponseFromJSON,
     ListDaoProposalsResponseToJSON,
+    SubjectIdRequest,
+    SubjectIdRequestFromJSON,
+    SubjectIdRequestToJSON,
 } from '../models';
+
+export interface CreateDaoProposalOperationRequest {
+    createDaoProposalRequest: CreateDaoProposalRequest;
+}
 
 export interface CreateDaoProposalFinaliseRequest {
     id: string;
 }
 
-export interface CreateDaoProposalOpenRequest {
+export interface CreateDaoProposalOpenOperationRequest {
     id: string;
+    createDaoProposalOpenRequest: CreateDaoProposalOpenRequest;
 }
 
-export interface CreateDaoProposalVetoRequest {
+export interface CreateDaoProposalVetoOperationRequest {
     id: string;
+    createDaoProposalVetoRequest: CreateDaoProposalVetoRequest;
 }
 
-export interface CreateDaoProposalVoteRequest {
+export interface CreateDaoProposalVoteOperationRequest {
     id: string;
+    createDaoProposalVoteRequest: CreateDaoProposalVoteRequest;
 }
 
 export interface DeleteDaoProposalRequest {
     id: string;
+    subjectIdRequest?: SubjectIdRequest;
 }
 
 export interface GetDaoProposalTallyRequest {
     id: string;
+}
+
+export interface GetDaoSubjectParticipationRequest {
+    subjectId: string;
+}
+
+export interface ListDaoProposalsRequest {
+    status?: ListDaoProposalsStatusEnum;
+    limit?: number;
 }
 
 /**
@@ -74,10 +109,16 @@ export class DAOApi extends runtime.BaseAPI {
      * Requires staked CBX above `minProposeWeight`, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. `beneficiaryKind` is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A `policy` proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
      * Raise a proposal. Starts as a draft.
      */
-    async createDaoProposalRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDaoProposalResponse>> {
+    async createDaoProposalRaw(requestParameters: CreateDaoProposalOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDaoProposalResponse>> {
+        if (requestParameters.createDaoProposalRequest === null || requestParameters.createDaoProposalRequest === undefined) {
+            throw new runtime.RequiredError('createDaoProposalRequest','Required parameter requestParameters.createDaoProposalRequest was null or undefined when calling createDaoProposal.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -92,6 +133,7 @@ export class DAOApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateDaoProposalRequestToJSON(requestParameters.createDaoProposalRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateDaoProposalResponseFromJSON(jsonValue));
@@ -101,8 +143,8 @@ export class DAOApi extends runtime.BaseAPI {
      * Requires staked CBX above `minProposeWeight`, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. `beneficiaryKind` is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A `policy` proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
      * Raise a proposal. Starts as a draft.
      */
-    async createDaoProposal(initOverrides?: RequestInit): Promise<CreateDaoProposalResponse> {
-        const response = await this.createDaoProposalRaw(initOverrides);
+    async createDaoProposal(requestParameters: CreateDaoProposalOperationRequest, initOverrides?: RequestInit): Promise<CreateDaoProposalResponse> {
+        const response = await this.createDaoProposalRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -150,14 +192,20 @@ export class DAOApi extends runtime.BaseAPI {
      * ONLY THE PROPOSER may open their own draft. Opening puts something to a binding vote in somebody\'s name, and authorship and that decision both belong to them. Opening writes a per-subject voting-power snapshot and freezes the quorum denominator. Nothing recomputes either afterwards, which is what stops acquire-vote-sell. Refuses when nobody holds enough staked CBX to vote — opening then would guarantee a failed quorum, waste a week and read as the feature being broken.
      * Put your draft to a vote. Snapshots voting power.
      */
-    async createDaoProposalOpenRaw(requestParameters: CreateDaoProposalOpenRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDaoProposalOpenResponse>> {
+    async createDaoProposalOpenRaw(requestParameters: CreateDaoProposalOpenOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDaoProposalOpenResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDaoProposalOpen.');
+        }
+
+        if (requestParameters.createDaoProposalOpenRequest === null || requestParameters.createDaoProposalOpenRequest === undefined) {
+            throw new runtime.RequiredError('createDaoProposalOpenRequest','Required parameter requestParameters.createDaoProposalOpenRequest was null or undefined when calling createDaoProposalOpen.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -172,6 +220,7 @@ export class DAOApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateDaoProposalOpenRequestToJSON(requestParameters.createDaoProposalOpenRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateDaoProposalOpenResponseFromJSON(jsonValue));
@@ -181,7 +230,7 @@ export class DAOApi extends runtime.BaseAPI {
      * ONLY THE PROPOSER may open their own draft. Opening puts something to a binding vote in somebody\'s name, and authorship and that decision both belong to them. Opening writes a per-subject voting-power snapshot and freezes the quorum denominator. Nothing recomputes either afterwards, which is what stops acquire-vote-sell. Refuses when nobody holds enough staked CBX to vote — opening then would guarantee a failed quorum, waste a week and read as the feature being broken.
      * Put your draft to a vote. Snapshots voting power.
      */
-    async createDaoProposalOpen(requestParameters: CreateDaoProposalOpenRequest, initOverrides?: RequestInit): Promise<CreateDaoProposalOpenResponse> {
+    async createDaoProposalOpen(requestParameters: CreateDaoProposalOpenOperationRequest, initOverrides?: RequestInit): Promise<CreateDaoProposalOpenResponse> {
         const response = await this.createDaoProposalOpenRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -190,14 +239,20 @@ export class DAOApi extends runtime.BaseAPI {
      * DELIBERATELY ASYMMETRIC. A veto exists for the illegal and the ruinous — funding something unlawful, or emptying the pool in a week. A power to pass would make every vote advisory theatre, because the outcome would always be whatever the operator preferred. An operator who can only say no cannot manufacture an outcome. The reason is MANDATORY and stored: an unexplained veto is indistinguishable from disliking the result, which is exactly what would destroy confidence in the mechanism. Expect it to be read.
      * Operator block. There is no matching power to PASS.
      */
-    async createDaoProposalVetoRaw(requestParameters: CreateDaoProposalVetoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDaoProposalVetoResponse>> {
+    async createDaoProposalVetoRaw(requestParameters: CreateDaoProposalVetoOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDaoProposalVetoResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDaoProposalVeto.');
+        }
+
+        if (requestParameters.createDaoProposalVetoRequest === null || requestParameters.createDaoProposalVetoRequest === undefined) {
+            throw new runtime.RequiredError('createDaoProposalVetoRequest','Required parameter requestParameters.createDaoProposalVetoRequest was null or undefined when calling createDaoProposalVeto.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -212,6 +267,7 @@ export class DAOApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateDaoProposalVetoRequestToJSON(requestParameters.createDaoProposalVetoRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateDaoProposalVetoResponseFromJSON(jsonValue));
@@ -221,7 +277,7 @@ export class DAOApi extends runtime.BaseAPI {
      * DELIBERATELY ASYMMETRIC. A veto exists for the illegal and the ruinous — funding something unlawful, or emptying the pool in a week. A power to pass would make every vote advisory theatre, because the outcome would always be whatever the operator preferred. An operator who can only say no cannot manufacture an outcome. The reason is MANDATORY and stored: an unexplained veto is indistinguishable from disliking the result, which is exactly what would destroy confidence in the mechanism. Expect it to be read.
      * Operator block. There is no matching power to PASS.
      */
-    async createDaoProposalVeto(requestParameters: CreateDaoProposalVetoRequest, initOverrides?: RequestInit): Promise<CreateDaoProposalVetoResponse> {
+    async createDaoProposalVeto(requestParameters: CreateDaoProposalVetoOperationRequest, initOverrides?: RequestInit): Promise<CreateDaoProposalVetoResponse> {
         const response = await this.createDaoProposalVetoRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -230,14 +286,20 @@ export class DAOApi extends runtime.BaseAPI {
      * Weight comes from the snapshot taken when the proposal opened, so staking afterwards grants no vote on it. Changing your mind is an UPDATE, not a second vote — a unique index makes double-counting impossible even if this logic were wrong. ABSTAIN counts toward turnout and not toward approval, which is the whole reason to offer it: it lets you help a proposal clear quorum without taking a side.
      * Cast or change a vote while the window is open.
      */
-    async createDaoProposalVoteRaw(requestParameters: CreateDaoProposalVoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDaoProposalVoteResponse>> {
+    async createDaoProposalVoteRaw(requestParameters: CreateDaoProposalVoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDaoProposalVoteResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDaoProposalVote.');
+        }
+
+        if (requestParameters.createDaoProposalVoteRequest === null || requestParameters.createDaoProposalVoteRequest === undefined) {
+            throw new runtime.RequiredError('createDaoProposalVoteRequest','Required parameter requestParameters.createDaoProposalVoteRequest was null or undefined when calling createDaoProposalVote.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -252,6 +314,7 @@ export class DAOApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateDaoProposalVoteRequestToJSON(requestParameters.createDaoProposalVoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateDaoProposalVoteResponseFromJSON(jsonValue));
@@ -261,7 +324,7 @@ export class DAOApi extends runtime.BaseAPI {
      * Weight comes from the snapshot taken when the proposal opened, so staking afterwards grants no vote on it. Changing your mind is an UPDATE, not a second vote — a unique index makes double-counting impossible even if this logic were wrong. ABSTAIN counts toward turnout and not toward approval, which is the whole reason to offer it: it lets you help a proposal clear quorum without taking a side.
      * Cast or change a vote while the window is open.
      */
-    async createDaoProposalVote(requestParameters: CreateDaoProposalVoteRequest, initOverrides?: RequestInit): Promise<CreateDaoProposalVoteResponse> {
+    async createDaoProposalVote(requestParameters: CreateDaoProposalVoteOperationRequest, initOverrides?: RequestInit): Promise<CreateDaoProposalVoteResponse> {
         const response = await this.createDaoProposalVoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -279,6 +342,8 @@ export class DAOApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -292,6 +357,7 @@ export class DAOApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
+            body: SubjectIdRequestToJSON(requestParameters.subjectIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteDaoProposalResponseFromJSON(jsonValue));
@@ -347,11 +413,59 @@ export class DAOApi extends runtime.BaseAPI {
     }
 
     /**
+     * Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+     * One holder\'s participation: votes, voting power over time, share.
+     */
+    async getDaoSubjectParticipationRaw(requestParameters: GetDaoSubjectParticipationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDaoSubjectParticipationResponse>> {
+        if (requestParameters.subjectId === null || requestParameters.subjectId === undefined) {
+            throw new runtime.RequiredError('subjectId','Required parameter requestParameters.subjectId was null or undefined when calling getDaoSubjectParticipation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/dao/subjects/{subjectId}/participation`.replace(`{${"subjectId"}}`, encodeURIComponent(String(requestParameters.subjectId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDaoSubjectParticipationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+     * One holder\'s participation: votes, voting power over time, share.
+     */
+    async getDaoSubjectParticipation(requestParameters: GetDaoSubjectParticipationRequest, initOverrides?: RequestInit): Promise<GetDaoSubjectParticipationResponse> {
+        const response = await this.getDaoSubjectParticipationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. `totalVotingPower` is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
      * The proposal queue.
      */
-    async listDaoProposalsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListDaoProposalsResponse>> {
+    async listDaoProposalsRaw(requestParameters: ListDaoProposalsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListDaoProposalsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -377,9 +491,23 @@ export class DAOApi extends runtime.BaseAPI {
      * Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. `totalVotingPower` is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
      * The proposal queue.
      */
-    async listDaoProposals(initOverrides?: RequestInit): Promise<ListDaoProposalsResponse> {
-        const response = await this.listDaoProposalsRaw(initOverrides);
+    async listDaoProposals(requestParameters: ListDaoProposalsRequest = {}, initOverrides?: RequestInit): Promise<ListDaoProposalsResponse> {
+        const response = await this.listDaoProposalsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListDaoProposalsStatusEnum {
+    Expired = 'expired',
+    Draft = 'draft',
+    Open = 'open',
+    Rejected = 'rejected',
+    Passed = 'passed',
+    Vetoed = 'vetoed',
+    Executed = 'executed'
 }

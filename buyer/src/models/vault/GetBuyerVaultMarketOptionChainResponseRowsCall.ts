@@ -190,8 +190,8 @@ export enum GetBuyerVaultMarketOptionChainResponseRowsCallCycleEnum {
 * @enum {string}
 */
 export enum GetBuyerVaultMarketOptionChainResponseRowsCallStatusEnum {
-    Open = 'open',
     Expired = 'expired',
+    Open = 'open',
     Delisted = 'delisted',
     Settled = 'settled',
     Frozen = 'frozen'

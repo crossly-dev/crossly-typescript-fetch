@@ -44,6 +44,12 @@ import {
     GetWorldStreetOwnedResponseDataUpkeepToJSON,
 } from './GetWorldStreetOwnedResponseDataUpkeep';
 import {
+    IdName2,
+    IdName2FromJSON,
+    IdName2FromJSONTyped,
+    IdName2ToJSON,
+} from '../common/IdName2';
+import {
     ListSpatialStreetMineItem,
     ListSpatialStreetMineItemFromJSON,
     ListSpatialStreetMineItemFromJSONTyped,
@@ -92,6 +98,12 @@ export interface GetWorldStreetOwnedResponseData {
      * @memberof GetWorldStreetOwnedResponseData
      */
     name: string;
+    /**
+     * 
+     * @type {IdName2}
+     * @memberof GetWorldStreetOwnedResponseData
+     */
+    store?: IdName2 | null;
     /**
      * 
      * @type {string}
@@ -173,6 +185,7 @@ export function GetWorldStreetOwnedResponseDataFromJSONTyped(json: any, ignoreDi
         'id': json['id'],
         'slug': json['slug'],
         'name': json['name'],
+        'store': !exists(json, 'store') ? undefined : IdName2FromJSON(json['store']),
         'admission': json['admission'],
         'theme': !exists(json, 'theme') ? undefined : json['theme'],
         'themes': ((json['themes'] as Array<any>).map(GetWorldStreetOwnedResponseDataThemesFromJSON)),
@@ -198,6 +211,7 @@ export function GetWorldStreetOwnedResponseDataToJSON(value?: GetWorldStreetOwne
         'id': value.id,
         'slug': value.slug,
         'name': value.name,
+        'store': IdName2ToJSON(value.store),
         'admission': value.admission,
         'theme': value.theme,
         'themes': ((value.themes as Array<any>).map(GetWorldStreetOwnedResponseDataThemesToJSON)),

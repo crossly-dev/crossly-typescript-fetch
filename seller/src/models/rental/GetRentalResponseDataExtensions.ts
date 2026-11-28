@@ -39,6 +39,12 @@ export interface GetRentalResponseDataExtensions {
     cents: number;
     /**
      * 
+     * @type {number}
+     * @memberof GetRentalResponseDataExtensions
+     */
+    freeDays: number;
+    /**
+     * 
      * @type {string}
      * @memberof GetRentalResponseDataExtensions
      */
@@ -70,6 +76,7 @@ export function GetRentalResponseDataExtensionsFromJSONTyped(json: any, ignoreDi
         'id': json['id'],
         'days': json['days'],
         'cents': json['cents'],
+        'freeDays': json['freeDays'],
         'status': json['status'],
         'createdAt': json['createdAt'],
         'decidedAt': !exists(json, 'decidedAt') ? undefined : json['decidedAt'],
@@ -88,6 +95,7 @@ export function GetRentalResponseDataExtensionsToJSON(value?: GetRentalResponseD
         'id': value.id,
         'days': value.days,
         'cents': value.cents,
+        'freeDays': value.freeDays,
         'status': value.status,
         'createdAt': value.createdAt,
         'decidedAt': value.decidedAt,

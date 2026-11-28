@@ -84,6 +84,12 @@ export interface CreatePolicyPresetResponse {
      * @type {string}
      * @memberof CreatePolicyPresetResponse
      */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreatePolicyPresetResponse
+     */
     kind: string;
     /**
      * 
@@ -119,6 +125,7 @@ export function CreatePolicyPresetResponseFromJSONTyped(json: any, ignoreDiscrim
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': json['userId'],
         'isDefault': json['isDefault'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'kind': json['kind'],
         'revision': json['revision'],
         'hasDomesticRules': json['hasDomesticRules'],
@@ -144,6 +151,7 @@ export function CreatePolicyPresetResponseToJSON(value?: CreatePolicyPresetRespo
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
         'isDefault': value.isDefault,
+        'storefrontId': value.storefrontId,
         'kind': value.kind,
         'revision': value.revision,
         'hasDomesticRules': value.hasDomesticRules,

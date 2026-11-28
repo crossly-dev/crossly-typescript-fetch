@@ -50,10 +50,10 @@ export interface UpdateShowroom2ResponseResults {
 * @enum {string}
 */
 export enum UpdateShowroom2ResponseResultsOpEnum {
-    Move = 'move',
-    Remove = 'remove',
     Sort = 'sort',
     Fill = 'fill',
+    Move = 'move',
+    Remove = 'remove',
     Place = 'place',
     Clear = 'clear',
     AddFixture = 'add_fixture',

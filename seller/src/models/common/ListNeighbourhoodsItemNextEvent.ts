@@ -27,12 +27,6 @@ export interface ListNeighbourhoodsItemNextEvent {
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof ListNeighbourhoodsItemNextEvent
-     */
-    title: string;
-    /**
-     * 
      * @type {boolean}
      * @memberof ListNeighbourhoodsItemNextEvent
      */
@@ -42,13 +36,19 @@ export interface ListNeighbourhoodsItemNextEvent {
      * @type {string}
      * @memberof ListNeighbourhoodsItemNextEvent
      */
-    endsAt: string;
+    kind: ListNeighbourhoodsItemNextEventKindEnum;
     /**
      * 
      * @type {string}
      * @memberof ListNeighbourhoodsItemNextEvent
      */
-    kind: ListNeighbourhoodsItemNextEventKindEnum;
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListNeighbourhoodsItemNextEvent
+     */
+    endsAt: string;
     /**
      * 
      * @type {string}
@@ -77,10 +77,10 @@ export function ListNeighbourhoodsItemNextEventFromJSONTyped(json: any, ignoreDi
     return {
         
         'id': json['id'],
-        'title': json['title'],
         'live': json['live'],
-        'endsAt': json['endsAt'],
         'kind': json['kind'],
+        'title': json['title'],
+        'endsAt': json['endsAt'],
         'startsAt': json['startsAt'],
     };
 }
@@ -95,10 +95,10 @@ export function ListNeighbourhoodsItemNextEventToJSON(value?: ListNeighbourhoods
     return {
         
         'id': value.id,
-        'title': value.title,
         'live': value.live,
-        'endsAt': value.endsAt,
         'kind': value.kind,
+        'title': value.title,
+        'endsAt': value.endsAt,
         'startsAt': value.startsAt,
     };
 }

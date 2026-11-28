@@ -15,21 +15,36 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateAdOffsiteCampaignRequest,
+    CreateAdOffsiteCampaignRequestFromJSON,
+    CreateAdOffsiteCampaignRequestToJSON,
     CreateAdOffsiteCampaignResponse,
     CreateAdOffsiteCampaignResponseFromJSON,
     CreateAdOffsiteCampaignResponseToJSON,
     CreateAdOffsiteResumeResponse,
     CreateAdOffsiteResumeResponseFromJSON,
     CreateAdOffsiteResumeResponseToJSON,
+    CreateListingAdBulkAddRequest,
+    CreateListingAdBulkAddRequestFromJSON,
+    CreateListingAdBulkAddRequestToJSON,
     CreateListingAdBulkAddResponse,
     CreateListingAdBulkAddResponseFromJSON,
     CreateListingAdBulkAddResponseToJSON,
+    CreateListingAdCampaignListingRequest,
+    CreateListingAdCampaignListingRequestFromJSON,
+    CreateListingAdCampaignListingRequestToJSON,
     CreateListingAdCampaignListingResponse,
     CreateListingAdCampaignListingResponseFromJSON,
     CreateListingAdCampaignListingResponseToJSON,
+    CreateListingAdCampaignRequest,
+    CreateListingAdCampaignRequestFromJSON,
+    CreateListingAdCampaignRequestToJSON,
     CreateListingAdCampaignResponse,
     CreateListingAdCampaignResponseFromJSON,
     CreateListingAdCampaignResponseToJSON,
+    CreateSponsoredAdBillingTopupLinkRequest,
+    CreateSponsoredAdBillingTopupLinkRequestFromJSON,
+    CreateSponsoredAdBillingTopupLinkRequestToJSON,
     CreateSponsoredAdBillingTopupLinkResponse,
     CreateSponsoredAdBillingTopupLinkResponseFromJSON,
     CreateSponsoredAdBillingTopupLinkResponseToJSON,
@@ -87,29 +102,66 @@ import {
     SponsoredAdResponse,
     SponsoredAdResponseFromJSON,
     SponsoredAdResponseToJSON,
+    UpdateAdOffsiteRequest,
+    UpdateAdOffsiteRequestFromJSON,
+    UpdateAdOffsiteRequestToJSON,
     UpdateAdOffsiteResponse,
     UpdateAdOffsiteResponseFromJSON,
     UpdateAdOffsiteResponseToJSON,
+    UpdateListingAdCampaignRequest,
+    UpdateListingAdCampaignRequestFromJSON,
+    UpdateListingAdCampaignRequestToJSON,
+    UpdateListingAdListingRateRequest,
+    UpdateListingAdListingRateRequestFromJSON,
+    UpdateListingAdListingRateRequestToJSON,
     UpdateListingAdListingRateResponse,
     UpdateListingAdListingRateResponseFromJSON,
     UpdateListingAdListingRateResponseToJSON,
+    UpdateLiveStreamLineupRequest,
+    UpdateLiveStreamLineupRequestFromJSON,
+    UpdateLiveStreamLineupRequestToJSON,
+    UpdateSponsoredAdBillingAutoTopupRequest,
+    UpdateSponsoredAdBillingAutoTopupRequestFromJSON,
+    UpdateSponsoredAdBillingAutoTopupRequestToJSON,
+    UpdateSponsoredAdBoostRequest,
+    UpdateSponsoredAdBoostRequestFromJSON,
+    UpdateSponsoredAdBoostRequestToJSON,
     UpdateSponsoredAdBoostResponse,
     UpdateSponsoredAdBoostResponseFromJSON,
     UpdateSponsoredAdBoostResponseToJSON,
 } from '../models';
 
-export interface CreateListingAdCampaignRequest {
-    platform: string;
+export interface CreateAdOffsiteCampaignOperationRequest {
+    createAdOffsiteCampaignRequest: CreateAdOffsiteCampaignRequest;
 }
 
-export interface CreateListingAdCampaignListingRequest {
+export interface CreateListingAdBulkAddOperationRequest {
+    createListingAdBulkAddRequest: CreateListingAdBulkAddRequest;
+}
+
+export interface CreateListingAdCampaignOperationRequest {
+    platform: string;
+    createListingAdCampaignRequest: CreateListingAdCampaignRequest;
+}
+
+export interface CreateListingAdCampaignListingOperationRequest {
     platform: string;
     campaignId: string;
+    createListingAdCampaignListingRequest: CreateListingAdCampaignListingRequest;
 }
 
 export interface CreateListingAdCampaignListingRemoveRequest {
     platform: string;
     campaignId: string;
+    updateLiveStreamLineupRequest: UpdateLiveStreamLineupRequest;
+}
+
+export interface CreateSponsoredAdBillingTopupLinkOperationRequest {
+    createSponsoredAdBillingTopupLinkRequest: CreateSponsoredAdBillingTopupLinkRequest;
+}
+
+export interface CreateSponsoredAdBoostRemoveRequest {
+    updateLiveStreamLineupRequest: UpdateLiveStreamLineupRequest;
 }
 
 export interface CreateSponsoredAdCampaignDuplicateRequest {
@@ -120,8 +172,17 @@ export interface CreateSponsoredAdCampaignStatusRequest {
     id: string;
 }
 
+export interface GetAdOffsiteEligibilityRequest {
+    network: GetAdOffsiteEligibilityNetworkEnum;
+    category: string;
+}
+
 export interface GetListingAdListingRequest {
     listingId: string;
+}
+
+export interface GetSponsoredAdBillingRequest {
+    refresh?: GetSponsoredAdBillingRefreshEnum;
 }
 
 export interface GetSponsoredAdBillingStatementRequest {
@@ -138,20 +199,62 @@ export interface GetSponsoredAdBillingTopupReceiptRequest {
 
 export interface GetSponsoredAdCampaignRequest {
     id: string;
+    from?: string;
+    to?: string;
+}
+
+export interface GetSponsoredAdFundRequest {
+    refresh?: GetSponsoredAdFundRefreshEnum;
+}
+
+export interface GetSponsoredAdReportRequest {
+    from?: string;
+    to?: string;
 }
 
 export interface ListListingAdCampaignsRequest {
     platform: string;
+    refresh?: ListListingAdCampaignsRefreshEnum;
 }
 
-export interface UpdateListingAdCampaignRequest {
+export interface ListSponsoredAdBillingHistoryRequest {
+    kind?: ListSponsoredAdBillingHistoryKindEnum;
+    before?: string;
+    limit?: number;
+}
+
+export interface ListSponsoredAdCampaignsRequest {
+    from?: string;
+    to?: string;
+}
+
+export interface ListSponsoredAdListingsRequest {
+    from?: string;
+    to?: string;
+}
+
+export interface UpdateAdOffsiteOperationRequest {
+    updateAdOffsiteRequest: UpdateAdOffsiteRequest;
+}
+
+export interface UpdateListingAdCampaignOperationRequest {
     platform: string;
     campaignId: string;
+    updateListingAdCampaignRequest: UpdateListingAdCampaignRequest;
 }
 
-export interface UpdateListingAdListingRateRequest {
+export interface UpdateListingAdListingRateOperationRequest {
     platform: string;
     platformListingId: string;
+    updateListingAdListingRateRequest: UpdateListingAdListingRateRequest;
+}
+
+export interface UpdateSponsoredAdBillingAutoTopupOperationRequest {
+    updateSponsoredAdBillingAutoTopupRequest: UpdateSponsoredAdBillingAutoTopupRequest;
+}
+
+export interface UpdateSponsoredAdBoostOperationRequest {
+    updateSponsoredAdBoostRequest: UpdateSponsoredAdBoostRequest;
 }
 
 export interface UpdateSponsoredAdCampaignRequest {
@@ -167,10 +270,16 @@ export class AdsApi extends runtime.BaseAPI {
      * Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \"mint\" or \"authenticated\" when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
      * Launch an offsite campaign for an item.
      */
-    async createAdOffsiteCampaignRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAdOffsiteCampaignResponse>> {
+    async createAdOffsiteCampaignRaw(requestParameters: CreateAdOffsiteCampaignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAdOffsiteCampaignResponse>> {
+        if (requestParameters.createAdOffsiteCampaignRequest === null || requestParameters.createAdOffsiteCampaignRequest === undefined) {
+            throw new runtime.RequiredError('createAdOffsiteCampaignRequest','Required parameter requestParameters.createAdOffsiteCampaignRequest was null or undefined when calling createAdOffsiteCampaign.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -185,6 +294,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAdOffsiteCampaignRequestToJSON(requestParameters.createAdOffsiteCampaignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAdOffsiteCampaignResponseFromJSON(jsonValue));
@@ -194,8 +304,8 @@ export class AdsApi extends runtime.BaseAPI {
      * Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \"mint\" or \"authenticated\" when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
      * Launch an offsite campaign for an item.
      */
-    async createAdOffsiteCampaign(initOverrides?: RequestInit): Promise<CreateAdOffsiteCampaignResponse> {
-        const response = await this.createAdOffsiteCampaignRaw(initOverrides);
+    async createAdOffsiteCampaign(requestParameters: CreateAdOffsiteCampaignOperationRequest, initOverrides?: RequestInit): Promise<CreateAdOffsiteCampaignResponse> {
+        const response = await this.createAdOffsiteCampaignRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -238,10 +348,16 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Add listings to a campaign by master listing id: each listing\'s live row on `platform` joins campaignId (a Crossly campaign uuid, or the marketplace\'s campaign id). A listing not live there is its own failed result.
      */
-    async createListingAdBulkAddRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdBulkAddResponse>> {
+    async createListingAdBulkAddRaw(requestParameters: CreateListingAdBulkAddOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdBulkAddResponse>> {
+        if (requestParameters.createListingAdBulkAddRequest === null || requestParameters.createListingAdBulkAddRequest === undefined) {
+            throw new runtime.RequiredError('createListingAdBulkAddRequest','Required parameter requestParameters.createListingAdBulkAddRequest was null or undefined when calling createListingAdBulkAdd.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -256,6 +372,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingAdBulkAddRequestToJSON(requestParameters.createListingAdBulkAddRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdBulkAddResponseFromJSON(jsonValue));
@@ -264,22 +381,28 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Add listings to a campaign by master listing id: each listing\'s live row on `platform` joins campaignId (a Crossly campaign uuid, or the marketplace\'s campaign id). A listing not live there is its own failed result.
      */
-    async createListingAdBulkAdd(initOverrides?: RequestInit): Promise<CreateListingAdBulkAddResponse> {
-        const response = await this.createListingAdBulkAddRaw(initOverrides);
+    async createListingAdBulkAdd(requestParameters: CreateListingAdBulkAddOperationRequest, initOverrides?: RequestInit): Promise<CreateListingAdBulkAddResponse> {
+        const response = await this.createListingAdBulkAddRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Create a campaign on the marketplace: program (promoted_listing_rate = eBay General, a % of the sale; cpc_campaign = eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
      */
-    async createListingAdCampaignRaw(requestParameters: CreateListingAdCampaignRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignResponse>> {
+    async createListingAdCampaignRaw(requestParameters: CreateListingAdCampaignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignResponse>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling createListingAdCampaign.');
+        }
+
+        if (requestParameters.createListingAdCampaignRequest === null || requestParameters.createListingAdCampaignRequest === undefined) {
+            throw new runtime.RequiredError('createListingAdCampaignRequest','Required parameter requestParameters.createListingAdCampaignRequest was null or undefined when calling createListingAdCampaign.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -294,6 +417,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingAdCampaignRequestToJSON(requestParameters.createListingAdCampaignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdCampaignResponseFromJSON(jsonValue));
@@ -302,7 +426,7 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Create a campaign on the marketplace: program (promoted_listing_rate = eBay General, a % of the sale; cpc_campaign = eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
      */
-    async createListingAdCampaign(requestParameters: CreateListingAdCampaignRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignResponse> {
+    async createListingAdCampaign(requestParameters: CreateListingAdCampaignOperationRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignResponse> {
         const response = await this.createListingAdCampaignRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -310,7 +434,7 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
      */
-    async createListingAdCampaignListingRaw(requestParameters: CreateListingAdCampaignListingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignListingResponse>> {
+    async createListingAdCampaignListingRaw(requestParameters: CreateListingAdCampaignListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignListingResponse>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling createListingAdCampaignListing.');
         }
@@ -319,9 +443,15 @@ export class AdsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('campaignId','Required parameter requestParameters.campaignId was null or undefined when calling createListingAdCampaignListing.');
         }
 
+        if (requestParameters.createListingAdCampaignListingRequest === null || requestParameters.createListingAdCampaignListingRequest === undefined) {
+            throw new runtime.RequiredError('createListingAdCampaignListingRequest','Required parameter requestParameters.createListingAdCampaignListingRequest was null or undefined when calling createListingAdCampaignListing.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -336,6 +466,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingAdCampaignListingRequestToJSON(requestParameters.createListingAdCampaignListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdCampaignListingResponseFromJSON(jsonValue));
@@ -344,7 +475,7 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
      */
-    async createListingAdCampaignListing(requestParameters: CreateListingAdCampaignListingRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignListingResponse> {
+    async createListingAdCampaignListing(requestParameters: CreateListingAdCampaignListingOperationRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignListingResponse> {
         const response = await this.createListingAdCampaignListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -361,9 +492,15 @@ export class AdsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('campaignId','Required parameter requestParameters.campaignId was null or undefined when calling createListingAdCampaignListingRemove.');
         }
 
+        if (requestParameters.updateLiveStreamLineupRequest === null || requestParameters.updateLiveStreamLineupRequest === undefined) {
+            throw new runtime.RequiredError('updateLiveStreamLineupRequest','Required parameter requestParameters.updateLiveStreamLineupRequest was null or undefined when calling createListingAdCampaignListingRemove.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -378,6 +515,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateLiveStreamLineupRequestToJSON(requestParameters.updateLiveStreamLineupRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdCampaignListingResponseFromJSON(jsonValue));
@@ -394,10 +532,16 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
      */
-    async createSponsoredAdBillingTopupLinkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse>> {
+    async createSponsoredAdBillingTopupLinkRaw(requestParameters: CreateSponsoredAdBillingTopupLinkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse>> {
+        if (requestParameters.createSponsoredAdBillingTopupLinkRequest === null || requestParameters.createSponsoredAdBillingTopupLinkRequest === undefined) {
+            throw new runtime.RequiredError('createSponsoredAdBillingTopupLinkRequest','Required parameter requestParameters.createSponsoredAdBillingTopupLinkRequest was null or undefined when calling createSponsoredAdBillingTopupLink.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -412,6 +556,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateSponsoredAdBillingTopupLinkRequestToJSON(requestParameters.createSponsoredAdBillingTopupLinkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSponsoredAdBillingTopupLinkResponseFromJSON(jsonValue));
@@ -420,18 +565,24 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
      */
-    async createSponsoredAdBillingTopupLink(initOverrides?: RequestInit): Promise<CreateSponsoredAdBillingTopupLinkResponse> {
-        const response = await this.createSponsoredAdBillingTopupLinkRaw(initOverrides);
+    async createSponsoredAdBillingTopupLink(requestParameters: CreateSponsoredAdBillingTopupLinkOperationRequest, initOverrides?: RequestInit): Promise<CreateSponsoredAdBillingTopupLinkResponse> {
+        const response = await this.createSponsoredAdBillingTopupLinkRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Stop boosting listings in bulk.
      */
-    async createSponsoredAdBoostRemoveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSponsoredAdBoostRemoveResponse>> {
+    async createSponsoredAdBoostRemoveRaw(requestParameters: CreateSponsoredAdBoostRemoveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSponsoredAdBoostRemoveResponse>> {
+        if (requestParameters.updateLiveStreamLineupRequest === null || requestParameters.updateLiveStreamLineupRequest === undefined) {
+            throw new runtime.RequiredError('updateLiveStreamLineupRequest','Required parameter requestParameters.updateLiveStreamLineupRequest was null or undefined when calling createSponsoredAdBoostRemove.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -446,6 +597,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateLiveStreamLineupRequestToJSON(requestParameters.updateLiveStreamLineupRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSponsoredAdBoostRemoveResponseFromJSON(jsonValue));
@@ -454,8 +606,8 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Stop boosting listings in bulk.
      */
-    async createSponsoredAdBoostRemove(initOverrides?: RequestInit): Promise<CreateSponsoredAdBoostRemoveResponse> {
-        const response = await this.createSponsoredAdBoostRemoveRaw(initOverrides);
+    async createSponsoredAdBoostRemove(requestParameters: CreateSponsoredAdBoostRemoveRequest, initOverrides?: RequestInit): Promise<CreateSponsoredAdBoostRemoveResponse> {
+        const response = await this.createSponsoredAdBoostRemoveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -609,8 +761,24 @@ export class AdsApi extends runtime.BaseAPI {
      * Reasons: `not_opted_in`, `auto_paused`, `network_not_allowed`, `category_not_allowlisted`, `no_adapter`, `no_budget`. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
      * Whether an item can run offsite, and why not.
      */
-    async getAdOffsiteEligibilityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAdOffsiteEligibilityResponse>> {
+    async getAdOffsiteEligibilityRaw(requestParameters: GetAdOffsiteEligibilityRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAdOffsiteEligibilityResponse>> {
+        if (requestParameters.network === null || requestParameters.network === undefined) {
+            throw new runtime.RequiredError('network','Required parameter requestParameters.network was null or undefined when calling getAdOffsiteEligibility.');
+        }
+
+        if (requestParameters.category === null || requestParameters.category === undefined) {
+            throw new runtime.RequiredError('category','Required parameter requestParameters.category was null or undefined when calling getAdOffsiteEligibility.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.network !== undefined) {
+            queryParameters['network'] = requestParameters.network;
+        }
+
+        if (requestParameters.category !== undefined) {
+            queryParameters['category'] = requestParameters.category;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -636,8 +804,8 @@ export class AdsApi extends runtime.BaseAPI {
      * Reasons: `not_opted_in`, `auto_paused`, `network_not_allowed`, `category_not_allowlisted`, `no_adapter`, `no_budget`. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
      * Whether an item can run offsite, and why not.
      */
-    async getAdOffsiteEligibility(initOverrides?: RequestInit): Promise<GetAdOffsiteEligibilityResponse> {
-        const response = await this.getAdOffsiteEligibilityRaw(initOverrides);
+    async getAdOffsiteEligibility(requestParameters: GetAdOffsiteEligibilityRequest, initOverrides?: RequestInit): Promise<GetAdOffsiteEligibilityResponse> {
+        const response = await this.getAdOffsiteEligibilityRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -718,8 +886,12 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh=true re-reads the balance.
      */
-    async getSponsoredAdBillingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdBillingResponse>> {
+    async getSponsoredAdBillingRaw(requestParameters: GetSponsoredAdBillingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdBillingResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.refresh !== undefined) {
+            queryParameters['refresh'] = requestParameters.refresh;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -744,8 +916,8 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh=true re-reads the balance.
      */
-    async getSponsoredAdBilling(initOverrides?: RequestInit): Promise<GetSponsoredAdBillingResponse> {
-        const response = await this.getSponsoredAdBillingRaw(initOverrides);
+    async getSponsoredAdBilling(requestParameters: GetSponsoredAdBillingRequest = {}, initOverrides?: RequestInit): Promise<GetSponsoredAdBillingResponse> {
+        const response = await this.getSponsoredAdBillingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -873,6 +1045,14 @@ export class AdsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -904,8 +1084,12 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh=true re-reads CBX.
      */
-    async getSponsoredAdFundRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdFundResponse>> {
+    async getSponsoredAdFundRaw(requestParameters: GetSponsoredAdFundRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdFundResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.refresh !== undefined) {
+            queryParameters['refresh'] = requestParameters.refresh;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -930,16 +1114,24 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh=true re-reads CBX.
      */
-    async getSponsoredAdFund(initOverrides?: RequestInit): Promise<GetSponsoredAdFundResponse> {
-        const response = await this.getSponsoredAdFundRaw(initOverrides);
+    async getSponsoredAdFund(requestParameters: GetSponsoredAdFundRequest = {}, initOverrides?: RequestInit): Promise<GetSponsoredAdFundResponse> {
+        const response = await this.getSponsoredAdFundRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and `catalogs`, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
      */
-    async getSponsoredAdReportRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdReportResponse>> {
+    async getSponsoredAdReportRaw(requestParameters: GetSponsoredAdReportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetSponsoredAdReportResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -964,8 +1156,8 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and `catalogs`, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
      */
-    async getSponsoredAdReport(initOverrides?: RequestInit): Promise<GetSponsoredAdReportResponse> {
-        const response = await this.getSponsoredAdReportRaw(initOverrides);
+    async getSponsoredAdReport(requestParameters: GetSponsoredAdReportRequest = {}, initOverrides?: RequestInit): Promise<GetSponsoredAdReportResponse> {
+        const response = await this.getSponsoredAdReportRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1012,6 +1204,10 @@ export class AdsApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.refresh !== undefined) {
+            queryParameters['refresh'] = requestParameters.refresh;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1078,8 +1274,20 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
      */
-    async listSponsoredAdBillingHistoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdBillingHistoryResponse>> {
+    async listSponsoredAdBillingHistoryRaw(requestParameters: ListSponsoredAdBillingHistoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdBillingHistoryResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.kind !== undefined) {
+            queryParameters['kind'] = requestParameters.kind;
+        }
+
+        if (requestParameters.before !== undefined) {
+            queryParameters['before'] = requestParameters.before;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1104,8 +1312,8 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
      */
-    async listSponsoredAdBillingHistory(initOverrides?: RequestInit): Promise<ListSponsoredAdBillingHistoryResponse> {
-        const response = await this.listSponsoredAdBillingHistoryRaw(initOverrides);
+    async listSponsoredAdBillingHistory(requestParameters: ListSponsoredAdBillingHistoryRequest = {}, initOverrides?: RequestInit): Promise<ListSponsoredAdBillingHistoryResponse> {
+        const response = await this.listSponsoredAdBillingHistoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1180,8 +1388,16 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
      */
-    async listSponsoredAdCampaignsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdCampaignsResponse>> {
+    async listSponsoredAdCampaignsRaw(requestParameters: ListSponsoredAdCampaignsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdCampaignsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1206,16 +1422,24 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
      */
-    async listSponsoredAdCampaigns(initOverrides?: RequestInit): Promise<ListSponsoredAdCampaignsResponse> {
-        const response = await this.listSponsoredAdCampaignsRaw(initOverrides);
+    async listSponsoredAdCampaigns(requestParameters: ListSponsoredAdCampaignsRequest = {}, initOverrides?: RequestInit): Promise<ListSponsoredAdCampaignsResponse> {
+        const response = await this.listSponsoredAdCampaignsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
      */
-    async listSponsoredAdListingsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdListingsResponse>> {
+    async listSponsoredAdListingsRaw(requestParameters: ListSponsoredAdListingsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSponsoredAdListingsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1240,8 +1464,8 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
      */
-    async listSponsoredAdListings(initOverrides?: RequestInit): Promise<ListSponsoredAdListingsResponse> {
-        const response = await this.listSponsoredAdListingsRaw(initOverrides);
+    async listSponsoredAdListings(requestParameters: ListSponsoredAdListingsRequest = {}, initOverrides?: RequestInit): Promise<ListSponsoredAdListingsResponse> {
+        const response = await this.listSponsoredAdListingsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1249,10 +1473,16 @@ export class AdsApi extends runtime.BaseAPI {
      * The toggle. Nothing else in the system sets `enabled` — no onboarding default, no bulk enable, no admin override. `maxOffsiteShareBps` caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. `minReturnBps` sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE\'s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
      * Turn offsite ads on or off. Yours alone to set.
      */
-    async updateAdOffsiteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateAdOffsiteResponse>> {
+    async updateAdOffsiteRaw(requestParameters: UpdateAdOffsiteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateAdOffsiteResponse>> {
+        if (requestParameters.updateAdOffsiteRequest === null || requestParameters.updateAdOffsiteRequest === undefined) {
+            throw new runtime.RequiredError('updateAdOffsiteRequest','Required parameter requestParameters.updateAdOffsiteRequest was null or undefined when calling updateAdOffsite.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1267,6 +1497,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateAdOffsiteRequestToJSON(requestParameters.updateAdOffsiteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateAdOffsiteResponseFromJSON(jsonValue));
@@ -1276,15 +1507,15 @@ export class AdsApi extends runtime.BaseAPI {
      * The toggle. Nothing else in the system sets `enabled` — no onboarding default, no bulk enable, no admin override. `maxOffsiteShareBps` caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. `minReturnBps` sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE\'s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
      * Turn offsite ads on or off. Yours alone to set.
      */
-    async updateAdOffsite(initOverrides?: RequestInit): Promise<UpdateAdOffsiteResponse> {
-        const response = await this.updateAdOffsiteRaw(initOverrides);
+    async updateAdOffsite(requestParameters: UpdateAdOffsiteOperationRequest, initOverrides?: RequestInit): Promise<UpdateAdOffsiteResponse> {
+        const response = await this.updateAdOffsiteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
      */
-    async updateListingAdCampaignRaw(requestParameters: UpdateListingAdCampaignRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignResponse>> {
+    async updateListingAdCampaignRaw(requestParameters: UpdateListingAdCampaignOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAdCampaignResponse>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling updateListingAdCampaign.');
         }
@@ -1293,9 +1524,15 @@ export class AdsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('campaignId','Required parameter requestParameters.campaignId was null or undefined when calling updateListingAdCampaign.');
         }
 
+        if (requestParameters.updateListingAdCampaignRequest === null || requestParameters.updateListingAdCampaignRequest === undefined) {
+            throw new runtime.RequiredError('updateListingAdCampaignRequest','Required parameter requestParameters.updateListingAdCampaignRequest was null or undefined when calling updateListingAdCampaign.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1310,6 +1547,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateListingAdCampaignRequestToJSON(requestParameters.updateListingAdCampaignRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAdCampaignResponseFromJSON(jsonValue));
@@ -1318,7 +1556,7 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
      */
-    async updateListingAdCampaign(requestParameters: UpdateListingAdCampaignRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignResponse> {
+    async updateListingAdCampaign(requestParameters: UpdateListingAdCampaignOperationRequest, initOverrides?: RequestInit): Promise<CreateListingAdCampaignResponse> {
         const response = await this.updateListingAdCampaignRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1326,7 +1564,7 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Change one promoted listing\'s ad rate (percent of the sale) in the campaign it is in.
      */
-    async updateListingAdListingRateRaw(requestParameters: UpdateListingAdListingRateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateListingAdListingRateResponse>> {
+    async updateListingAdListingRateRaw(requestParameters: UpdateListingAdListingRateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateListingAdListingRateResponse>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling updateListingAdListingRate.');
         }
@@ -1335,9 +1573,15 @@ export class AdsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('platformListingId','Required parameter requestParameters.platformListingId was null or undefined when calling updateListingAdListingRate.');
         }
 
+        if (requestParameters.updateListingAdListingRateRequest === null || requestParameters.updateListingAdListingRateRequest === undefined) {
+            throw new runtime.RequiredError('updateListingAdListingRateRequest','Required parameter requestParameters.updateListingAdListingRateRequest was null or undefined when calling updateListingAdListingRate.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1352,6 +1596,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateListingAdListingRateRequestToJSON(requestParameters.updateListingAdListingRateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateListingAdListingRateResponseFromJSON(jsonValue));
@@ -1360,7 +1605,7 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Change one promoted listing\'s ad rate (percent of the sale) in the campaign it is in.
      */
-    async updateListingAdListingRate(requestParameters: UpdateListingAdListingRateRequest, initOverrides?: RequestInit): Promise<UpdateListingAdListingRateResponse> {
+    async updateListingAdListingRate(requestParameters: UpdateListingAdListingRateOperationRequest, initOverrides?: RequestInit): Promise<UpdateListingAdListingRateResponse> {
         const response = await this.updateListingAdListingRateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1368,10 +1613,16 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
      */
-    async updateSponsoredAdBillingAutoTopupRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdResponse>> {
+    async updateSponsoredAdBillingAutoTopupRaw(requestParameters: UpdateSponsoredAdBillingAutoTopupOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SponsoredAdResponse>> {
+        if (requestParameters.updateSponsoredAdBillingAutoTopupRequest === null || requestParameters.updateSponsoredAdBillingAutoTopupRequest === undefined) {
+            throw new runtime.RequiredError('updateSponsoredAdBillingAutoTopupRequest','Required parameter requestParameters.updateSponsoredAdBillingAutoTopupRequest was null or undefined when calling updateSponsoredAdBillingAutoTopup.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1386,6 +1637,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSponsoredAdBillingAutoTopupRequestToJSON(requestParameters.updateSponsoredAdBillingAutoTopupRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SponsoredAdResponseFromJSON(jsonValue));
@@ -1394,18 +1646,24 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
      */
-    async updateSponsoredAdBillingAutoTopup(initOverrides?: RequestInit): Promise<SponsoredAdResponse> {
-        const response = await this.updateSponsoredAdBillingAutoTopupRaw(initOverrides);
+    async updateSponsoredAdBillingAutoTopup(requestParameters: UpdateSponsoredAdBillingAutoTopupOperationRequest, initOverrides?: RequestInit): Promise<SponsoredAdResponse> {
+        const response = await this.updateSponsoredAdBillingAutoTopupRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Boost listings in bulk (platformListingIds, upliftBps 100–2000 = 1–20%), or change their rate. Your own live Crossly listings only.
      */
-    async updateSponsoredAdBoostRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSponsoredAdBoostResponse>> {
+    async updateSponsoredAdBoostRaw(requestParameters: UpdateSponsoredAdBoostOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateSponsoredAdBoostResponse>> {
+        if (requestParameters.updateSponsoredAdBoostRequest === null || requestParameters.updateSponsoredAdBoostRequest === undefined) {
+            throw new runtime.RequiredError('updateSponsoredAdBoostRequest','Required parameter requestParameters.updateSponsoredAdBoostRequest was null or undefined when calling updateSponsoredAdBoost.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1420,6 +1678,7 @@ export class AdsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateSponsoredAdBoostRequestToJSON(requestParameters.updateSponsoredAdBoostRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateSponsoredAdBoostResponseFromJSON(jsonValue));
@@ -1428,8 +1687,8 @@ export class AdsApi extends runtime.BaseAPI {
     /**
      * Boost listings in bulk (platformListingIds, upliftBps 100–2000 = 1–20%), or change their rate. Your own live Crossly listings only.
      */
-    async updateSponsoredAdBoost(initOverrides?: RequestInit): Promise<UpdateSponsoredAdBoostResponse> {
-        const response = await this.updateSponsoredAdBoostRaw(initOverrides);
+    async updateSponsoredAdBoost(requestParameters: UpdateSponsoredAdBoostOperationRequest, initOverrides?: RequestInit): Promise<UpdateSponsoredAdBoostResponse> {
+        const response = await this.updateSponsoredAdBoostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1505,4 +1764,53 @@ export class AdsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetAdOffsiteEligibilityNetworkEnum {
+    Google = 'google',
+    Tiktok = 'tiktok',
+    Reddit = 'reddit',
+    Meta = 'meta',
+    Pinterest = 'pinterest'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetSponsoredAdBillingRefreshEnum {
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetSponsoredAdFundRefreshEnum {
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListListingAdCampaignsRefreshEnum {
+    _0 = '0',
+    _1 = '1',
+    True = 'true',
+    False = 'false'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListSponsoredAdBillingHistoryKindEnum {
+    Topup = 'topup',
+    Refund = 'refund',
+    Credit = 'credit',
+    Charge = 'charge',
+    BoostFee = 'boost_fee'
 }

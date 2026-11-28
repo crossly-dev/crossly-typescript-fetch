@@ -121,13 +121,13 @@ export interface GetWholesaleProfileResponseData {
      * @type {string}
      * @memberof GetWholesaleProfileResponseData
      */
-    returnPresetId?: string | null;
+    shippingPresetId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof GetWholesaleProfileResponseData
      */
-    shippingPresetId?: string | null;
+    returnPresetId?: string | null;
     /**
      * 
      * @type {string}
@@ -308,8 +308,8 @@ export function GetWholesaleProfileResponseDataFromJSONTyped(json: any, ignoreDi
         'logoUrl': !exists(json, 'logoUrl') ? undefined : json['logoUrl'],
         'bannerUrl': !exists(json, 'bannerUrl') ? undefined : json['bannerUrl'],
         'returnPolicy': !exists(json, 'returnPolicy') ? undefined : json['returnPolicy'],
-        'returnPresetId': !exists(json, 'returnPresetId') ? undefined : json['returnPresetId'],
         'shippingPresetId': !exists(json, 'shippingPresetId') ? undefined : json['shippingPresetId'],
+        'returnPresetId': !exists(json, 'returnPresetId') ? undefined : json['returnPresetId'],
         'paymentPresetId': !exists(json, 'paymentPresetId') ? undefined : json['paymentPresetId'],
         'requiresBusinessVerification': json['requiresBusinessVerification'],
         'directoryCategories': json['directoryCategories'],
@@ -360,8 +360,8 @@ export function GetWholesaleProfileResponseDataToJSON(value?: GetWholesaleProfil
         'logoUrl': value.logoUrl,
         'bannerUrl': value.bannerUrl,
         'returnPolicy': value.returnPolicy,
-        'returnPresetId': value.returnPresetId,
         'shippingPresetId': value.shippingPresetId,
+        'returnPresetId': value.returnPresetId,
         'paymentPresetId': value.paymentPresetId,
         'requiresBusinessVerification': value.requiresBusinessVerification,
         'directoryCategories': value.directoryCategories,

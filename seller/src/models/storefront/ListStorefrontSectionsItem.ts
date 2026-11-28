@@ -48,13 +48,19 @@ export interface ListStorefrontSectionsItem {
      * @type {string}
      * @memberof ListStorefrontSectionsItem
      */
-    title: string;
+    storefrontId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListStorefrontSectionsItem
      */
-    storefrontId?: string | null;
+    kind: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListStorefrontSectionsItem
+     */
+    title: string;
     /**
      * 
      * @type {boolean}
@@ -67,12 +73,6 @@ export interface ListStorefrontSectionsItem {
      * @memberof ListStorefrontSectionsItem
      */
     position: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListStorefrontSectionsItem
-     */
-    kind: string;
     /**
      * 
      * @type {Array<string>}
@@ -95,11 +95,11 @@ export function ListStorefrontSectionsItemFromJSONTyped(json: any, ignoreDiscrim
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'userId': json['userId'],
-        'title': json['title'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'kind': json['kind'],
+        'title': json['title'],
         'visible': json['visible'],
         'position': json['position'],
-        'kind': json['kind'],
         'listingIds': json['listingIds'],
     };
 }
@@ -117,11 +117,11 @@ export function ListStorefrontSectionsItemToJSON(value?: ListStorefrontSectionsI
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'userId': value.userId,
-        'title': value.title,
         'storefrontId': value.storefrontId,
+        'kind': value.kind,
+        'title': value.title,
         'visible': value.visible,
         'position': value.position,
-        'kind': value.kind,
         'listingIds': value.listingIds,
     };
 }

@@ -24,12 +24,24 @@ import {
     CreateAccountLogoutAllResponse,
     CreateAccountLogoutAllResponseFromJSON,
     CreateAccountLogoutAllResponseToJSON,
+    CreateAccountReconfirmDeletionRequest,
+    CreateAccountReconfirmDeletionRequestFromJSON,
+    CreateAccountReconfirmDeletionRequestToJSON,
     CreateAccountReconfirmDeletionResponse,
     CreateAccountReconfirmDeletionResponseFromJSON,
     CreateAccountReconfirmDeletionResponseToJSON,
+    CreateAccountRequestDeletionRequest,
+    CreateAccountRequestDeletionRequestFromJSON,
+    CreateAccountRequestDeletionRequestToJSON,
     CreateAccountRequestDeletionResponse,
     CreateAccountRequestDeletionResponseFromJSON,
     CreateAccountRequestDeletionResponseToJSON,
+    CreateAuthSessionSignOutRequest,
+    CreateAuthSessionSignOutRequestFromJSON,
+    CreateAuthSessionSignOutRequestToJSON,
+    CreateAuthSessionSignOutResponse,
+    CreateAuthSessionSignOutResponseFromJSON,
+    CreateAuthSessionSignOutResponseToJSON,
     CreateWorldMatureVerifyResponse,
     CreateWorldMatureVerifyResponseFromJSON,
     CreateWorldMatureVerifyResponseToJSON,
@@ -45,6 +57,12 @@ import {
     GetAccountIdentityVerificationResponse,
     GetAccountIdentityVerificationResponseFromJSON,
     GetAccountIdentityVerificationResponseToJSON,
+    GetAccountNotificationPreferenceResponse,
+    GetAccountNotificationPreferenceResponseFromJSON,
+    GetAccountNotificationPreferenceResponseToJSON,
+    GetAccountSignInIdentityResponse,
+    GetAccountSignInIdentityResponseFromJSON,
+    GetAccountSignInIdentityResponseToJSON,
     GetMeResponse,
     GetMeResponseFromJSON,
     GetMeResponseToJSON,
@@ -63,10 +81,25 @@ import {
     SuccessResponse,
     SuccessResponseFromJSON,
     SuccessResponseToJSON,
+    UpdateAccountNotificationPreferenceRequest,
+    UpdateAccountNotificationPreferenceRequestFromJSON,
+    UpdateAccountNotificationPreferenceRequestToJSON,
 } from '../models';
 
 export interface CreateAccountIdentityVerificationStartOperationRequest {
     createAccountIdentityVerificationStartRequest: CreateAccountIdentityVerificationStartRequest;
+}
+
+export interface CreateAccountReconfirmDeletionOperationRequest {
+    createAccountReconfirmDeletionRequest?: CreateAccountReconfirmDeletionRequest;
+}
+
+export interface CreateAccountRequestDeletionOperationRequest {
+    createAccountRequestDeletionRequest?: CreateAccountRequestDeletionRequest;
+}
+
+export interface CreateAuthSessionSignOutOperationRequest {
+    createAuthSessionSignOutRequest: CreateAuthSessionSignOutRequest;
 }
 
 export interface DeleteAuthSessionBySessionIdRequest {
@@ -75,6 +108,20 @@ export interface DeleteAuthSessionBySessionIdRequest {
 
 export interface DeleteConnectedAppRequest {
     grantId: string;
+}
+
+export interface ListAuthSessionsRequest {
+    q?: string;
+    status?: ListAuthSessionsStatusEnum;
+    deviceType?: ListAuthSessionsDeviceTypeEnum;
+    from?: string;
+    to?: string;
+    page?: number;
+    limit?: number;
+}
+
+export interface UpdateAccountNotificationPreferenceOperationRequest {
+    updateAccountNotificationPreferenceRequest: UpdateAccountNotificationPreferenceRequest;
 }
 
 /**
@@ -196,10 +243,12 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Confirm again a deletion paused because the account was in use.
      */
-    async createAccountReconfirmDeletionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountReconfirmDeletionResponse>> {
+    async createAccountReconfirmDeletionRaw(requestParameters: CreateAccountReconfirmDeletionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountReconfirmDeletionResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -214,6 +263,7 @@ export class AccountApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAccountReconfirmDeletionRequestToJSON(requestParameters.createAccountReconfirmDeletionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAccountReconfirmDeletionResponseFromJSON(jsonValue));
@@ -222,18 +272,20 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Confirm again a deletion paused because the account was in use.
      */
-    async createAccountReconfirmDeletion(initOverrides?: RequestInit): Promise<CreateAccountReconfirmDeletionResponse> {
-        const response = await this.createAccountReconfirmDeletionRaw(initOverrides);
+    async createAccountReconfirmDeletion(requestParameters: CreateAccountReconfirmDeletionOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateAccountReconfirmDeletionResponse> {
+        const response = await this.createAccountReconfirmDeletionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Schedule account deletion after a grace period. Requires confirmEmail.
      */
-    async createAccountRequestDeletionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountRequestDeletionResponse>> {
+    async createAccountRequestDeletionRaw(requestParameters: CreateAccountRequestDeletionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAccountRequestDeletionResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -248,6 +300,7 @@ export class AccountApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAccountRequestDeletionRequestToJSON(requestParameters.createAccountRequestDeletionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAccountRequestDeletionResponseFromJSON(jsonValue));
@@ -256,8 +309,49 @@ export class AccountApi extends runtime.BaseAPI {
     /**
      * Schedule account deletion after a grace period. Requires confirmEmail.
      */
-    async createAccountRequestDeletion(initOverrides?: RequestInit): Promise<CreateAccountRequestDeletionResponse> {
-        const response = await this.createAccountRequestDeletionRaw(initOverrides);
+    async createAccountRequestDeletion(requestParameters: CreateAccountRequestDeletionOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateAccountRequestDeletionResponse> {
+        const response = await this.createAccountRequestDeletionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Sign out several sessions at once.
+     */
+    async createAuthSessionSignOutRaw(requestParameters: CreateAuthSessionSignOutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAuthSessionSignOutResponse>> {
+        if (requestParameters.createAuthSessionSignOutRequest === null || requestParameters.createAuthSessionSignOutRequest === undefined) {
+            throw new runtime.RequiredError('createAuthSessionSignOutRequest','Required parameter requestParameters.createAuthSessionSignOutRequest was null or undefined when calling createAuthSessionSignOut.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/auth/sessions/sign-out`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAuthSessionSignOutRequestToJSON(requestParameters.createAuthSessionSignOutRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateAuthSessionSignOutResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Sign out several sessions at once.
+     */
+    async createAuthSessionSignOut(requestParameters: CreateAuthSessionSignOutOperationRequest, initOverrides?: RequestInit): Promise<CreateAuthSessionSignOutResponse> {
+        const response = await this.createAuthSessionSignOutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -476,6 +570,74 @@ export class AccountApi extends runtime.BaseAPI {
     }
 
     /**
+     * Which notifications reach you, per event and channel (email, push, in-app).
+     */
+    async getAccountNotificationPreferenceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAccountNotificationPreferenceResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/account/notification-preferences`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAccountNotificationPreferenceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Which notifications reach you, per event and channel (email, push, in-app).
+     */
+    async getAccountNotificationPreference(initOverrides?: RequestInit): Promise<GetAccountNotificationPreferenceResponse> {
+        const response = await this.getAccountNotificationPreferenceRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * How you sign in (Atlas): linked providers, password, passkeys, two-step.
+     */
+    async getAccountSignInIdentityRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAccountSignInIdentityResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/account/sign-in-identity`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAccountSignInIdentityResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * How you sign in (Atlas): linked providers, password, passkeys, two-step.
+     */
+    async getAccountSignInIdentity(initOverrides?: RequestInit): Promise<GetAccountSignInIdentityResponse> {
+        const response = await this.getAccountSignInIdentityRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Identity check — authenticated user + PAT scopes + account state.
      */
     async getMeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetMeResponse>> {
@@ -546,10 +708,38 @@ export class AccountApi extends runtime.BaseAPI {
     }
 
     /**
-     * List active browser auth sessions.
+     * List, search and filter your sign-in sessions.
      */
-    async listAuthSessionsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListAuthSessionsResponse>> {
+    async listAuthSessionsRaw(requestParameters: ListAuthSessionsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListAuthSessionsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.deviceType !== undefined) {
+            queryParameters['deviceType'] = requestParameters.deviceType;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -572,15 +762,15 @@ export class AccountApi extends runtime.BaseAPI {
     }
 
     /**
-     * List active browser auth sessions.
+     * List, search and filter your sign-in sessions.
      */
-    async listAuthSessions(initOverrides?: RequestInit): Promise<ListAuthSessionsResponse> {
-        const response = await this.listAuthSessionsRaw(initOverrides);
+    async listAuthSessions(requestParameters: ListAuthSessionsRequest = {}, initOverrides?: RequestInit): Promise<ListAuthSessionsResponse> {
+        const response = await this.listAuthSessionsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * List third-party OAuth apps with access to this account.
+     * List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
      */
     async listConnectedAppsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListConnectedAppsResponse>> {
         const queryParameters: any = {};
@@ -606,11 +796,74 @@ export class AccountApi extends runtime.BaseAPI {
     }
 
     /**
-     * List third-party OAuth apps with access to this account.
+     * List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
      */
     async listConnectedApps(initOverrides?: RequestInit): Promise<ListConnectedAppsResponse> {
         const response = await this.listConnectedAppsRaw(initOverrides);
         return await response.value();
     }
 
+    /**
+     * Turn notifications on or off per event and channel (email, push, in-app).
+     */
+    async updateAccountNotificationPreferenceRaw(requestParameters: UpdateAccountNotificationPreferenceOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAccountNotificationPreferenceResponse>> {
+        if (requestParameters.updateAccountNotificationPreferenceRequest === null || requestParameters.updateAccountNotificationPreferenceRequest === undefined) {
+            throw new runtime.RequiredError('updateAccountNotificationPreferenceRequest','Required parameter requestParameters.updateAccountNotificationPreferenceRequest was null or undefined when calling updateAccountNotificationPreference.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/account/notification-preferences`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAccountNotificationPreferenceRequestToJSON(requestParameters.updateAccountNotificationPreferenceRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAccountNotificationPreferenceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Turn notifications on or off per event and channel (email, push, in-app).
+     */
+    async updateAccountNotificationPreference(requestParameters: UpdateAccountNotificationPreferenceOperationRequest, initOverrides?: RequestInit): Promise<GetAccountNotificationPreferenceResponse> {
+        const response = await this.updateAccountNotificationPreferenceRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListAuthSessionsStatusEnum {
+    Active = 'active',
+    Expired = 'expired',
+    All = 'all'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListAuthSessionsDeviceTypeEnum {
+    All = 'all',
+    Desktop = 'desktop',
+    Mobile = 'mobile',
+    Tablet = 'tablet',
+    App = 'app',
+    Unknown = 'unknown'
 }

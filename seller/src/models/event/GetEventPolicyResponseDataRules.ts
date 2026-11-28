@@ -68,8 +68,8 @@ export interface GetEventPolicyResponseDataRules {
 * @enum {string}
 */
 export enum GetEventPolicyResponseDataRulesScopeEnum {
-    Platform = 'platform',
     App = 'app',
+    Platform = 'platform',
     Global = 'global'
 }/**
 * @export
@@ -92,8 +92,8 @@ export enum GetEventPolicyResponseDataRulesEventEnum {
 * @enum {string}
 */
 export enum GetEventPolicyResponseDataRulesOwnershipEnum {
-    Imported = 'imported',
     Crossly = 'crossly',
+    Imported = 'imported',
     OtherTool = 'other_tool',
     AppManaged = 'app_managed',
     Untracked = 'untracked'

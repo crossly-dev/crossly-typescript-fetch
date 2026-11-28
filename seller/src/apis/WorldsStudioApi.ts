@@ -15,21 +15,39 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateWorldExperienceAssetMeshCheckRequest,
+    CreateWorldExperienceAssetMeshCheckRequestFromJSON,
+    CreateWorldExperienceAssetMeshCheckRequestToJSON,
     CreateWorldExperienceAssetMeshCheckResponse,
     CreateWorldExperienceAssetMeshCheckResponseFromJSON,
     CreateWorldExperienceAssetMeshCheckResponseToJSON,
+    CreateWorldExperienceAssetMeshRequest,
+    CreateWorldExperienceAssetMeshRequestFromJSON,
+    CreateWorldExperienceAssetMeshRequestToJSON,
     CreateWorldExperienceAssetMeshResponse,
     CreateWorldExperienceAssetMeshResponseFromJSON,
     CreateWorldExperienceAssetMeshResponseToJSON,
+    CreateWorldExperiencePlaceAssistantApplyRequest,
+    CreateWorldExperiencePlaceAssistantApplyRequestFromJSON,
+    CreateWorldExperiencePlaceAssistantApplyRequestToJSON,
     CreateWorldExperiencePlaceAssistantApplyResponse,
     CreateWorldExperiencePlaceAssistantApplyResponseFromJSON,
     CreateWorldExperiencePlaceAssistantApplyResponseToJSON,
+    CreateWorldExperiencePlaceAssistantRequest,
+    CreateWorldExperiencePlaceAssistantRequestFromJSON,
+    CreateWorldExperiencePlaceAssistantRequestToJSON,
     CreateWorldExperiencePlaceAssistantResponse,
     CreateWorldExperiencePlaceAssistantResponseFromJSON,
     CreateWorldExperiencePlaceAssistantResponseToJSON,
+    CreateWorldExperiencePlaceStudioEditRequest,
+    CreateWorldExperiencePlaceStudioEditRequestFromJSON,
+    CreateWorldExperiencePlaceStudioEditRequestToJSON,
     CreateWorldExperiencePlaceStudioEditResponse,
     CreateWorldExperiencePlaceStudioEditResponseFromJSON,
     CreateWorldExperiencePlaceStudioEditResponseToJSON,
+    CreateWorldExperiencePlaceStudioInsertAssetRequest,
+    CreateWorldExperiencePlaceStudioInsertAssetRequestFromJSON,
+    CreateWorldExperiencePlaceStudioInsertAssetRequestToJSON,
     CreateWorldExperiencePlaceStudioInsertAssetResponse,
     CreateWorldExperiencePlaceStudioInsertAssetResponseFromJSON,
     CreateWorldExperiencePlaceStudioInsertAssetResponseToJSON,
@@ -39,9 +57,15 @@ import {
     CreateWorldExperiencePlaceStudioPlaytestStopResponse,
     CreateWorldExperiencePlaceStudioPlaytestStopResponseFromJSON,
     CreateWorldExperiencePlaceStudioPlaytestStopResponseToJSON,
+    CreateWorldExperiencePlaceStudioPublishRequest,
+    CreateWorldExperiencePlaceStudioPublishRequestFromJSON,
+    CreateWorldExperiencePlaceStudioPublishRequestToJSON,
     CreateWorldExperiencePlaceStudioPublishResponse,
     CreateWorldExperiencePlaceStudioPublishResponseFromJSON,
     CreateWorldExperiencePlaceStudioPublishResponseToJSON,
+    CreateWorldExperiencePlaceStudioScriptCommitRequest,
+    CreateWorldExperiencePlaceStudioScriptCommitRequestFromJSON,
+    CreateWorldExperiencePlaceStudioScriptCommitRequestToJSON,
     CreateWorldExperiencePlaceStudioScriptCommitResponse,
     CreateWorldExperiencePlaceStudioScriptCommitResponseFromJSON,
     CreateWorldExperiencePlaceStudioScriptCommitResponseToJSON,
@@ -78,37 +102,46 @@ import {
     ListWorldExperienceAssetsResponse,
     ListWorldExperienceAssetsResponseFromJSON,
     ListWorldExperienceAssetsResponseToJSON,
+    UpdateWorldExperiencePlaceStudioScriptRequest,
+    UpdateWorldExperiencePlaceStudioScriptRequestFromJSON,
+    UpdateWorldExperiencePlaceStudioScriptRequestToJSON,
     UpdateWorldExperiencePlaceStudioScriptResponse,
     UpdateWorldExperiencePlaceStudioScriptResponseFromJSON,
     UpdateWorldExperiencePlaceStudioScriptResponseToJSON,
 } from '../models';
 
-export interface CreateWorldExperienceAssetMeshRequest {
+export interface CreateWorldExperienceAssetMeshOperationRequest {
     experienceId: string;
+    createWorldExperienceAssetMeshRequest?: CreateWorldExperienceAssetMeshRequest;
 }
 
-export interface CreateWorldExperienceAssetMeshCheckRequest {
+export interface CreateWorldExperienceAssetMeshCheckOperationRequest {
     experienceId: string;
+    createWorldExperienceAssetMeshCheckRequest?: CreateWorldExperienceAssetMeshCheckRequest;
 }
 
-export interface CreateWorldExperiencePlaceAssistantRequest {
+export interface CreateWorldExperiencePlaceAssistantOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceAssistantRequest?: CreateWorldExperiencePlaceAssistantRequest;
 }
 
-export interface CreateWorldExperiencePlaceAssistantApplyRequest {
+export interface CreateWorldExperiencePlaceAssistantApplyOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceAssistantApplyRequest?: CreateWorldExperiencePlaceAssistantApplyRequest;
 }
 
-export interface CreateWorldExperiencePlaceStudioEditRequest {
+export interface CreateWorldExperiencePlaceStudioEditOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceStudioEditRequest?: CreateWorldExperiencePlaceStudioEditRequest;
 }
 
-export interface CreateWorldExperiencePlaceStudioInsertAssetRequest {
+export interface CreateWorldExperiencePlaceStudioInsertAssetOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceStudioInsertAssetRequest?: CreateWorldExperiencePlaceStudioInsertAssetRequest;
 }
 
 export interface CreateWorldExperiencePlaceStudioPlaytestRequest {
@@ -121,34 +154,48 @@ export interface CreateWorldExperiencePlaceStudioPlaytestStopRequest {
     placeId: string;
 }
 
-export interface CreateWorldExperiencePlaceStudioPublishRequest {
+export interface CreateWorldExperiencePlaceStudioPublishOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceStudioPublishRequest?: CreateWorldExperiencePlaceStudioPublishRequest;
 }
 
-export interface CreateWorldExperiencePlaceStudioScriptCommitRequest {
+export interface CreateWorldExperiencePlaceStudioScriptCommitOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlaceStudioScriptCommitRequest?: CreateWorldExperiencePlaceStudioScriptCommitRequest;
 }
 
 export interface DeleteWorldExperiencePlaceStudioScriptRequest {
     experienceId: string;
     placeId: string;
+    path: string;
 }
 
 export interface GetWorldExperiencePlaceStudioFindRequest {
     experienceId: string;
     placeId: string;
+    name?: string;
+    _class?: string;
+    tag?: string;
+    limit?: number;
 }
 
 export interface GetWorldExperiencePlaceStudioInstanceRequest {
     experienceId: string;
     placeId: string;
+    path?: string;
+    id?: string;
 }
 
 export interface GetWorldExperiencePlaceStudioOutputRequest {
     experienceId: string;
     placeId: string;
+    since?: number;
+    serverId?: string;
+    level?: GetWorldExperiencePlaceStudioOutputLevelEnum;
+    scope?: GetWorldExperiencePlaceStudioOutputScopeEnum;
+    limit?: number;
 }
 
 export interface GetWorldExperiencePlaceStudioProblemRequest {
@@ -159,25 +206,37 @@ export interface GetWorldExperiencePlaceStudioProblemRequest {
 export interface GetWorldExperiencePlaceStudioScriptRequest {
     experienceId: string;
     placeId: string;
+    path: string;
 }
 
 export interface GetWorldExperiencePlaceStudioSnapshotRequest {
     experienceId: string;
     placeId: string;
+    path?: string;
+    view?: GetWorldExperiencePlaceStudioSnapshotViewEnum;
+    labels?: GetWorldExperiencePlaceStudioSnapshotLabelsEnum;
 }
 
 export interface GetWorldExperiencePlaceStudioTreeRequest {
     experienceId: string;
     placeId: string;
+    path?: string;
+    depth?: number;
+}
+
+export interface GetWorldStudioClassRequest {
+    name?: string;
 }
 
 export interface ListWorldExperienceAssetsRequest {
     experienceId: string;
+    limit?: number;
 }
 
-export interface UpdateWorldExperiencePlaceStudioScriptRequest {
+export interface UpdateWorldExperiencePlaceStudioScriptOperationRequest {
     experienceId: string;
     placeId: string;
+    updateWorldExperiencePlaceStudioScriptRequest?: UpdateWorldExperiencePlaceStudioScriptRequest;
 }
 
 /**
@@ -188,7 +247,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Import a .glb (base64) as a MeshPart: safety parse + budgets, stored on the Crossly CDN, a phone LOD over 5k triangles, collision Box or convex Hull. Returns the asset and the MeshPart node; with placeId it is inserted into that place through its co-editing session.
      */
-    async createWorldExperienceAssetMeshRaw(requestParameters: CreateWorldExperienceAssetMeshRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceAssetMeshResponse>> {
+    async createWorldExperienceAssetMeshRaw(requestParameters: CreateWorldExperienceAssetMeshOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceAssetMeshResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceAssetMesh.');
         }
@@ -196,6 +255,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -210,6 +271,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceAssetMeshRequestToJSON(requestParameters.createWorldExperienceAssetMeshRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceAssetMeshResponseFromJSON(jsonValue));
@@ -218,7 +280,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Import a .glb (base64) as a MeshPart: safety parse + budgets, stored on the Crossly CDN, a phone LOD over 5k triangles, collision Box or convex Hull. Returns the asset and the MeshPart node; with placeId it is inserted into that place through its co-editing session.
      */
-    async createWorldExperienceAssetMesh(requestParameters: CreateWorldExperienceAssetMeshRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceAssetMeshResponse> {
+    async createWorldExperienceAssetMesh(requestParameters: CreateWorldExperienceAssetMeshOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceAssetMeshResponse> {
         const response = await this.createWorldExperienceAssetMeshRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -226,7 +288,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Check a .glb (base64) for import without storing it: the budget report per device, plain-English errors with a fix list, whether a phone LOD will be made, mesh bounds and hull points.
      */
-    async createWorldExperienceAssetMeshCheckRaw(requestParameters: CreateWorldExperienceAssetMeshCheckRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceAssetMeshCheckResponse>> {
+    async createWorldExperienceAssetMeshCheckRaw(requestParameters: CreateWorldExperienceAssetMeshCheckOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceAssetMeshCheckResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceAssetMeshCheck.');
         }
@@ -234,6 +296,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -248,6 +312,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceAssetMeshCheckRequestToJSON(requestParameters.createWorldExperienceAssetMeshCheckRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceAssetMeshCheckResponseFromJSON(jsonValue));
@@ -256,7 +321,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Check a .glb (base64) for import without storing it: the budget report per device, plain-English errors with a fix list, whether a phone LOD will be made, mesh bounds and hull points.
      */
-    async createWorldExperienceAssetMeshCheck(requestParameters: CreateWorldExperienceAssetMeshCheckRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceAssetMeshCheckResponse> {
+    async createWorldExperienceAssetMeshCheck(requestParameters: CreateWorldExperienceAssetMeshCheckOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceAssetMeshCheckResponse> {
         const response = await this.createWorldExperienceAssetMeshCheckRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -264,7 +329,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Ask the Studio Assistant (mode explain | edit | build): returns an explanation and a proposed change set (scripts, inserts, edits) checked against your role and linted. Nothing is applied.
      */
-    async createWorldExperiencePlaceAssistantRaw(requestParameters: CreateWorldExperiencePlaceAssistantRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceAssistantResponse>> {
+    async createWorldExperiencePlaceAssistantRaw(requestParameters: CreateWorldExperiencePlaceAssistantOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceAssistantResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceAssistant.');
         }
@@ -276,6 +341,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -290,6 +357,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceAssistantRequestToJSON(requestParameters.createWorldExperiencePlaceAssistantRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceAssistantResponseFromJSON(jsonValue));
@@ -298,7 +366,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Ask the Studio Assistant (mode explain | edit | build): returns an explanation and a proposed change set (scripts, inserts, edits) checked against your role and linted. Nothing is applied.
      */
-    async createWorldExperiencePlaceAssistant(requestParameters: CreateWorldExperiencePlaceAssistantRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceAssistantResponse> {
+    async createWorldExperiencePlaceAssistant(requestParameters: CreateWorldExperiencePlaceAssistantOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceAssistantResponse> {
         const response = await this.createWorldExperiencePlaceAssistantRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -306,7 +374,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Apply accepted Assistant changes to the place as one co-editing batch (activity via assistant, revertible). Re-checked against the place as it is now.
      */
-    async createWorldExperiencePlaceAssistantApplyRaw(requestParameters: CreateWorldExperiencePlaceAssistantApplyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceAssistantApplyResponse>> {
+    async createWorldExperiencePlaceAssistantApplyRaw(requestParameters: CreateWorldExperiencePlaceAssistantApplyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceAssistantApplyResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceAssistantApply.');
         }
@@ -318,6 +386,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -332,6 +402,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceAssistantApplyRequestToJSON(requestParameters.createWorldExperiencePlaceAssistantApplyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceAssistantApplyResponseFromJSON(jsonValue));
@@ -340,7 +411,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Apply accepted Assistant changes to the place as one co-editing batch (activity via assistant, revertible). Re-checked against the place as it is now.
      */
-    async createWorldExperiencePlaceAssistantApply(requestParameters: CreateWorldExperiencePlaceAssistantApplyRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceAssistantApplyResponse> {
+    async createWorldExperiencePlaceAssistantApply(requestParameters: CreateWorldExperiencePlaceAssistantApplyOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceAssistantApplyResponse> {
         const response = await this.createWorldExperiencePlaceAssistantApplyRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -348,7 +419,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Apply set / insert / move / delete steps by path as ONE batch through Team Create (live in every open Studio, one revertible activity entry). All-or-nothing: any bad step refuses the batch with every problem listed.
      */
-    async createWorldExperiencePlaceStudioEditRaw(requestParameters: CreateWorldExperiencePlaceStudioEditRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceStudioEditResponse>> {
+    async createWorldExperiencePlaceStudioEditRaw(requestParameters: CreateWorldExperiencePlaceStudioEditOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceStudioEditResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceStudioEdit.');
         }
@@ -360,6 +431,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -374,6 +447,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceStudioEditRequestToJSON(requestParameters.createWorldExperiencePlaceStudioEditRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceStudioEditResponseFromJSON(jsonValue));
@@ -382,7 +456,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Apply set / insert / move / delete steps by path as ONE batch through Team Create (live in every open Studio, one revertible activity entry). All-or-nothing: any bad step refuses the batch with every problem listed.
      */
-    async createWorldExperiencePlaceStudioEdit(requestParameters: CreateWorldExperiencePlaceStudioEditRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceStudioEditResponse> {
+    async createWorldExperiencePlaceStudioEdit(requestParameters: CreateWorldExperiencePlaceStudioEditOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceStudioEditResponse> {
         const response = await this.createWorldExperiencePlaceStudioEditRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -390,7 +464,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Insert a Toolbox asset under a path (default Workspace; ServerScripts for scripts). Paid assets need the experience owner\'s licence.
      */
-    async createWorldExperiencePlaceStudioInsertAssetRaw(requestParameters: CreateWorldExperiencePlaceStudioInsertAssetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceStudioInsertAssetResponse>> {
+    async createWorldExperiencePlaceStudioInsertAssetRaw(requestParameters: CreateWorldExperiencePlaceStudioInsertAssetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceStudioInsertAssetResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceStudioInsertAsset.');
         }
@@ -402,6 +476,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -416,6 +492,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceStudioInsertAssetRequestToJSON(requestParameters.createWorldExperiencePlaceStudioInsertAssetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceStudioInsertAssetResponseFromJSON(jsonValue));
@@ -424,7 +501,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Insert a Toolbox asset under a path (default Workspace; ServerScripts for scripts). Paid assets need the experience owner\'s licence.
      */
-    async createWorldExperiencePlaceStudioInsertAsset(requestParameters: CreateWorldExperiencePlaceStudioInsertAssetRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceStudioInsertAssetResponse> {
+    async createWorldExperiencePlaceStudioInsertAsset(requestParameters: CreateWorldExperiencePlaceStudioInsertAssetOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceStudioInsertAssetResponse> {
         const response = await this.createWorldExperiencePlaceStudioInsertAssetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -516,7 +593,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Prepare a publish from the live session: checks, details, rating answers, access. Never submits and never acknowledges the money review — the person does (or submit_worlds_publish).
      */
-    async createWorldExperiencePlaceStudioPublishRaw(requestParameters: CreateWorldExperiencePlaceStudioPublishRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceStudioPublishResponse>> {
+    async createWorldExperiencePlaceStudioPublishRaw(requestParameters: CreateWorldExperiencePlaceStudioPublishOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceStudioPublishResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceStudioPublish.');
         }
@@ -528,6 +605,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -542,6 +621,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceStudioPublishRequestToJSON(requestParameters.createWorldExperiencePlaceStudioPublishRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceStudioPublishResponseFromJSON(jsonValue));
@@ -550,7 +630,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Prepare a publish from the live session: checks, details, rating answers, access. Never submits and never acknowledges the money review — the person does (or submit_worlds_publish).
      */
-    async createWorldExperiencePlaceStudioPublish(requestParameters: CreateWorldExperiencePlaceStudioPublishRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceStudioPublishResponse> {
+    async createWorldExperiencePlaceStudioPublish(requestParameters: CreateWorldExperiencePlaceStudioPublishOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceStudioPublishResponse> {
         const response = await this.createWorldExperiencePlaceStudioPublishRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -558,7 +638,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Commit your draft with a three-way merge onto the script as it is now (collaborators\' edits kept). 409 merge_conflict carries merged text with conflict blocks and theirs.
      */
-    async createWorldExperiencePlaceStudioScriptCommitRaw(requestParameters: CreateWorldExperiencePlaceStudioScriptCommitRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceStudioScriptCommitResponse>> {
+    async createWorldExperiencePlaceStudioScriptCommitRaw(requestParameters: CreateWorldExperiencePlaceStudioScriptCommitOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlaceStudioScriptCommitResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlaceStudioScriptCommit.');
         }
@@ -570,6 +650,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -584,6 +666,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlaceStudioScriptCommitRequestToJSON(requestParameters.createWorldExperiencePlaceStudioScriptCommitRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlaceStudioScriptCommitResponseFromJSON(jsonValue));
@@ -592,7 +675,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Commit your draft with a three-way merge onto the script as it is now (collaborators\' edits kept). 409 merge_conflict carries merged text with conflict blocks and theirs.
      */
-    async createWorldExperiencePlaceStudioScriptCommit(requestParameters: CreateWorldExperiencePlaceStudioScriptCommitRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceStudioScriptCommitResponse> {
+    async createWorldExperiencePlaceStudioScriptCommit(requestParameters: CreateWorldExperiencePlaceStudioScriptCommitOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlaceStudioScriptCommitResponse> {
         const response = await this.createWorldExperiencePlaceStudioScriptCommitRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -609,7 +692,15 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('placeId','Required parameter requestParameters.placeId was null or undefined when calling deleteWorldExperiencePlaceStudioScript.');
         }
 
+        if (requestParameters.path === null || requestParameters.path === undefined) {
+            throw new runtime.RequiredError('path','Required parameter requestParameters.path was null or undefined when calling deleteWorldExperiencePlaceStudioScript.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -687,6 +778,22 @@ export class WorldsStudioApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.name !== undefined) {
+            queryParameters['name'] = requestParameters.name;
+        }
+
+        if (requestParameters._class !== undefined) {
+            queryParameters['class'] = requestParameters._class;
+        }
+
+        if (requestParameters.tag !== undefined) {
+            queryParameters['tag'] = requestParameters.tag;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -729,6 +836,14 @@ export class WorldsStudioApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
+
+        if (requestParameters.id !== undefined) {
+            queryParameters['id'] = requestParameters.id;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -770,6 +885,26 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.since !== undefined) {
+            queryParameters['since'] = requestParameters.since;
+        }
+
+        if (requestParameters.serverId !== undefined) {
+            queryParameters['serverId'] = requestParameters.serverId;
+        }
+
+        if (requestParameters.level !== undefined) {
+            queryParameters['level'] = requestParameters.level;
+        }
+
+        if (requestParameters.scope !== undefined) {
+            queryParameters['scope'] = requestParameters.scope;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -853,7 +988,15 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('placeId','Required parameter requestParameters.placeId was null or undefined when calling getWorldExperiencePlaceStudioScript.');
         }
 
+        if (requestParameters.path === null || requestParameters.path === undefined) {
+            throw new runtime.RequiredError('path','Required parameter requestParameters.path was null or undefined when calling getWorldExperiencePlaceStudioScript.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -897,6 +1040,18 @@ export class WorldsStudioApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
+
+        if (requestParameters.view !== undefined) {
+            queryParameters['view'] = requestParameters.view;
+        }
+
+        if (requestParameters.labels !== undefined) {
+            queryParameters['labels'] = requestParameters.labels;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -939,6 +1094,14 @@ export class WorldsStudioApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
+
+        if (requestParameters.depth !== undefined) {
+            queryParameters['depth'] = requestParameters.depth;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -970,8 +1133,12 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * The engine\'s class table: insertable classes, services, and for ?name= one class with every property, its type, default and the exact JSON a place (and a studio edit) takes.
      */
-    async getWorldStudioClassRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldStudioClassResponse>> {
+    async getWorldStudioClassRaw(requestParameters: GetWorldStudioClassRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldStudioClassResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.name !== undefined) {
+            queryParameters['name'] = requestParameters.name;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -996,8 +1163,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * The engine\'s class table: insertable classes, services, and for ?name= one class with every property, its type, default and the exact JSON a place (and a studio edit) takes.
      */
-    async getWorldStudioClass(initOverrides?: RequestInit): Promise<GetWorldStudioClassResponse> {
-        const response = await this.getWorldStudioClassRaw(initOverrides);
+    async getWorldStudioClass(requestParameters: GetWorldStudioClassRequest = {}, initOverrides?: RequestInit): Promise<GetWorldStudioClassResponse> {
+        const response = await this.getWorldStudioClassRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1010,6 +1177,10 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -1042,7 +1213,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Save your draft of a script (the place does not change until you commit). Returns lint and the diff from the current source.
      */
-    async updateWorldExperiencePlaceStudioScriptRaw(requestParameters: UpdateWorldExperiencePlaceStudioScriptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperiencePlaceStudioScriptResponse>> {
+    async updateWorldExperiencePlaceStudioScriptRaw(requestParameters: UpdateWorldExperiencePlaceStudioScriptOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperiencePlaceStudioScriptResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperiencePlaceStudioScript.');
         }
@@ -1054,6 +1225,8 @@ export class WorldsStudioApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1068,6 +1241,7 @@ export class WorldsStudioApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperiencePlaceStudioScriptRequestToJSON(requestParameters.updateWorldExperiencePlaceStudioScriptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperiencePlaceStudioScriptResponseFromJSON(jsonValue));
@@ -1076,9 +1250,43 @@ export class WorldsStudioApi extends runtime.BaseAPI {
     /**
      * Save your draft of a script (the place does not change until you commit). Returns lint and the diff from the current source.
      */
-    async updateWorldExperiencePlaceStudioScript(requestParameters: UpdateWorldExperiencePlaceStudioScriptRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperiencePlaceStudioScriptResponse> {
+    async updateWorldExperiencePlaceStudioScript(requestParameters: UpdateWorldExperiencePlaceStudioScriptOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperiencePlaceStudioScriptResponse> {
         const response = await this.updateWorldExperiencePlaceStudioScriptRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldExperiencePlaceStudioOutputLevelEnum {
+    Info = 'info',
+    Error = 'error',
+    Warn = 'warn'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldExperiencePlaceStudioOutputScopeEnum {
+    All = 'all',
+    Test = 'test'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldExperiencePlaceStudioSnapshotViewEnum {
+    Top = 'top',
+    Front = 'front'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetWorldExperiencePlaceStudioSnapshotLabelsEnum {
+    True = 'true',
+    False = 'false'
 }

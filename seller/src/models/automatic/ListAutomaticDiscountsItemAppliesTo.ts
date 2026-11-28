@@ -86,8 +86,8 @@ export interface ListAutomaticDiscountsItemAppliesTo {
 * @enum {string}
 */
 export enum ListAutomaticDiscountsItemAppliesToModeEnum {
-    Selection = 'selection',
-    All = 'all'
+    All = 'all',
+    Selection = 'selection'
 }
 
 export function ListAutomaticDiscountsItemAppliesToFromJSON(json: any): ListAutomaticDiscountsItemAppliesTo {

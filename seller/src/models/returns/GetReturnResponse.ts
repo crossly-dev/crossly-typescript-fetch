@@ -54,6 +54,12 @@ export interface GetReturnResponse {
      * @type {string}
      * @memberof GetReturnResponse
      */
+    assigneeMemberId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetReturnResponse
+     */
     refundAmount?: string | null;
     /**
      * 
@@ -138,6 +144,7 @@ export function GetReturnResponseFromJSONTyped(json: any, ignoreDiscriminator: b
         'userId': json['userId'],
         'status': json['status'],
         'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'assigneeMemberId': !exists(json, 'assigneeMemberId') ? undefined : json['assigneeMemberId'],
         'refundAmount': !exists(json, 'refundAmount') ? undefined : json['refundAmount'],
         'orderId': json['orderId'],
         'reason': !exists(json, 'reason') ? undefined : json['reason'],
@@ -167,6 +174,7 @@ export function GetReturnResponseToJSON(value?: GetReturnResponse | null): any {
         'userId': value.userId,
         'status': value.status,
         'notes': value.notes,
+        'assigneeMemberId': value.assigneeMemberId,
         'refundAmount': value.refundAmount,
         'orderId': value.orderId,
         'reason': value.reason,

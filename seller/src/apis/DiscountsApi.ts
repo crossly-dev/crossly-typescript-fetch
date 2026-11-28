@@ -15,15 +15,36 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateAutomaticDiscountPreviewRequest,
+    CreateAutomaticDiscountPreviewRequestFromJSON,
+    CreateAutomaticDiscountPreviewRequestToJSON,
     CreateAutomaticDiscountPreviewResponse,
     CreateAutomaticDiscountPreviewResponseFromJSON,
     CreateAutomaticDiscountPreviewResponseToJSON,
+    CreateAutomaticDiscountRequest,
+    CreateAutomaticDiscountRequestFromJSON,
+    CreateAutomaticDiscountRequestToJSON,
     CreateAutomaticDiscountResponse,
     CreateAutomaticDiscountResponseFromJSON,
     CreateAutomaticDiscountResponseToJSON,
+    CreateDiscountCodeGenerateRequest,
+    CreateDiscountCodeGenerateRequestFromJSON,
+    CreateDiscountCodeGenerateRequestToJSON,
     CreateDiscountCodeGenerateResponse,
     CreateDiscountCodeGenerateResponseFromJSON,
     CreateDiscountCodeGenerateResponseToJSON,
+    CreateDiscountCodePauseAllRequest,
+    CreateDiscountCodePauseAllRequestFromJSON,
+    CreateDiscountCodePauseAllRequestToJSON,
+    CreateDiscountCodePauseAllResponse,
+    CreateDiscountCodePauseAllResponseFromJSON,
+    CreateDiscountCodePauseAllResponseToJSON,
+    CreateDiscountCodeRequest,
+    CreateDiscountCodeRequestFromJSON,
+    CreateDiscountCodeRequestToJSON,
+    CreateDiscountCodeStatusRequest,
+    CreateDiscountCodeStatusRequestFromJSON,
+    CreateDiscountCodeStatusRequestToJSON,
     CreateDiscountHolderResponse,
     CreateDiscountHolderResponseFromJSON,
     CreateDiscountHolderResponseToJSON,
@@ -54,17 +75,38 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateDiscountCodeRequest,
+    UpdateDiscountCodeRequestFromJSON,
+    UpdateDiscountCodeRequestToJSON,
     UpdateGroupBuyResponse,
     UpdateGroupBuyResponseFromJSON,
     UpdateGroupBuyResponseToJSON,
 } from '../models';
 
-export interface CreateDiscountCodeGenerateRequest {
-    id: string;
+export interface CreateAutomaticDiscountOperationRequest {
+    createAutomaticDiscountRequest: CreateAutomaticDiscountRequest;
 }
 
-export interface CreateDiscountCodeStatusRequest {
+export interface CreateAutomaticDiscountPreviewOperationRequest {
+    createAutomaticDiscountPreviewRequest: CreateAutomaticDiscountPreviewRequest;
+}
+
+export interface CreateDiscountCodeOperationRequest {
+    createDiscountCodeRequest: CreateDiscountCodeRequest;
+}
+
+export interface CreateDiscountCodeGenerateOperationRequest {
     id: string;
+    createDiscountCodeGenerateRequest: CreateDiscountCodeGenerateRequest;
+}
+
+export interface CreateDiscountCodePauseAllOperationRequest {
+    createDiscountCodePauseAllRequest: CreateDiscountCodePauseAllRequest;
+}
+
+export interface CreateDiscountCodeStatusOperationRequest {
+    id: string;
+    createDiscountCodeStatusRequest: CreateDiscountCodeStatusRequest;
 }
 
 export interface DeleteAutomaticDiscountRequest {
@@ -89,14 +131,22 @@ export interface GetDiscountHolderRequest {
 
 export interface ListDiscountCodeRedemptionsRequest {
     id: string;
+    limit?: number;
+    offset?: number;
+}
+
+export interface ListDiscountCodesRequest {
+    archived?: ListDiscountCodesArchivedEnum;
 }
 
 export interface UpdateAutomaticDiscountRequest {
     id: string;
+    createAutomaticDiscountRequest: CreateAutomaticDiscountRequest;
 }
 
-export interface UpdateDiscountCodeRequest {
+export interface UpdateDiscountCodeOperationRequest {
     id: string;
+    updateDiscountCodeRequest: UpdateDiscountCodeRequest;
 }
 
 export interface UpdateDiscountHolderRequest {
@@ -111,10 +161,16 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Create an automatic discount.
      */
-    async createAutomaticDiscountRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomaticDiscountResponse>> {
+    async createAutomaticDiscountRaw(requestParameters: CreateAutomaticDiscountOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomaticDiscountResponse>> {
+        if (requestParameters.createAutomaticDiscountRequest === null || requestParameters.createAutomaticDiscountRequest === undefined) {
+            throw new runtime.RequiredError('createAutomaticDiscountRequest','Required parameter requestParameters.createAutomaticDiscountRequest was null or undefined when calling createAutomaticDiscount.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -129,6 +185,7 @@ export class DiscountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAutomaticDiscountRequestToJSON(requestParameters.createAutomaticDiscountRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAutomaticDiscountResponseFromJSON(jsonValue));
@@ -137,18 +194,24 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Create an automatic discount.
      */
-    async createAutomaticDiscount(initOverrides?: RequestInit): Promise<CreateAutomaticDiscountResponse> {
-        const response = await this.createAutomaticDiscountRaw(initOverrides);
+    async createAutomaticDiscount(requestParameters: CreateAutomaticDiscountOperationRequest, initOverrides?: RequestInit): Promise<CreateAutomaticDiscountResponse> {
+        const response = await this.createAutomaticDiscountRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
      */
-    async createAutomaticDiscountPreviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomaticDiscountPreviewResponse>> {
+    async createAutomaticDiscountPreviewRaw(requestParameters: CreateAutomaticDiscountPreviewOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomaticDiscountPreviewResponse>> {
+        if (requestParameters.createAutomaticDiscountPreviewRequest === null || requestParameters.createAutomaticDiscountPreviewRequest === undefined) {
+            throw new runtime.RequiredError('createAutomaticDiscountPreviewRequest','Required parameter requestParameters.createAutomaticDiscountPreviewRequest was null or undefined when calling createAutomaticDiscountPreview.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -163,6 +226,7 @@ export class DiscountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAutomaticDiscountPreviewRequestToJSON(requestParameters.createAutomaticDiscountPreviewRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAutomaticDiscountPreviewResponseFromJSON(jsonValue));
@@ -171,18 +235,24 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
      */
-    async createAutomaticDiscountPreview(initOverrides?: RequestInit): Promise<CreateAutomaticDiscountPreviewResponse> {
-        const response = await this.createAutomaticDiscountPreviewRaw(initOverrides);
+    async createAutomaticDiscountPreview(requestParameters: CreateAutomaticDiscountPreviewOperationRequest, initOverrides?: RequestInit): Promise<CreateAutomaticDiscountPreviewResponse> {
+        const response = await this.createAutomaticDiscountPreviewRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
      */
-    async createDiscountCodeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<DiscountCodeResponse>> {
+    async createDiscountCodeRaw(requestParameters: CreateDiscountCodeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DiscountCodeResponse>> {
+        if (requestParameters.createDiscountCodeRequest === null || requestParameters.createDiscountCodeRequest === undefined) {
+            throw new runtime.RequiredError('createDiscountCodeRequest','Required parameter requestParameters.createDiscountCodeRequest was null or undefined when calling createDiscountCode.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -197,6 +267,7 @@ export class DiscountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateDiscountCodeRequestToJSON(requestParameters.createDiscountCodeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DiscountCodeResponseFromJSON(jsonValue));
@@ -205,22 +276,28 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
      */
-    async createDiscountCode(initOverrides?: RequestInit): Promise<DiscountCodeResponse> {
-        const response = await this.createDiscountCodeRaw(initOverrides);
+    async createDiscountCode(requestParameters: CreateDiscountCodeOperationRequest, initOverrides?: RequestInit): Promise<DiscountCodeResponse> {
+        const response = await this.createDiscountCodeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
      */
-    async createDiscountCodeGenerateRaw(requestParameters: CreateDiscountCodeGenerateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDiscountCodeGenerateResponse>> {
+    async createDiscountCodeGenerateRaw(requestParameters: CreateDiscountCodeGenerateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDiscountCodeGenerateResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDiscountCodeGenerate.');
+        }
+
+        if (requestParameters.createDiscountCodeGenerateRequest === null || requestParameters.createDiscountCodeGenerateRequest === undefined) {
+            throw new runtime.RequiredError('createDiscountCodeGenerateRequest','Required parameter requestParameters.createDiscountCodeGenerateRequest was null or undefined when calling createDiscountCodeGenerate.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -235,6 +312,7 @@ export class DiscountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateDiscountCodeGenerateRequestToJSON(requestParameters.createDiscountCodeGenerateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateDiscountCodeGenerateResponseFromJSON(jsonValue));
@@ -243,22 +321,69 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
      */
-    async createDiscountCodeGenerate(requestParameters: CreateDiscountCodeGenerateRequest, initOverrides?: RequestInit): Promise<CreateDiscountCodeGenerateResponse> {
+    async createDiscountCodeGenerate(requestParameters: CreateDiscountCodeGenerateOperationRequest, initOverrides?: RequestInit): Promise<CreateDiscountCodeGenerateResponse> {
         const response = await this.createDiscountCodeGenerateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
+     */
+    async createDiscountCodePauseAllRaw(requestParameters: CreateDiscountCodePauseAllOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDiscountCodePauseAllResponse>> {
+        if (requestParameters.createDiscountCodePauseAllRequest === null || requestParameters.createDiscountCodePauseAllRequest === undefined) {
+            throw new runtime.RequiredError('createDiscountCodePauseAllRequest','Required parameter requestParameters.createDiscountCodePauseAllRequest was null or undefined when calling createDiscountCodePauseAll.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/discount-codes/pause-all`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDiscountCodePauseAllRequestToJSON(requestParameters.createDiscountCodePauseAllRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateDiscountCodePauseAllResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
+     */
+    async createDiscountCodePauseAll(requestParameters: CreateDiscountCodePauseAllOperationRequest, initOverrides?: RequestInit): Promise<CreateDiscountCodePauseAllResponse> {
+        const response = await this.createDiscountCodePauseAllRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Pause, resume (active) or archive a discount code.
      */
-    async createDiscountCodeStatusRaw(requestParameters: CreateDiscountCodeStatusRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DiscountCodeResponse>> {
+    async createDiscountCodeStatusRaw(requestParameters: CreateDiscountCodeStatusOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DiscountCodeResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDiscountCodeStatus.');
+        }
+
+        if (requestParameters.createDiscountCodeStatusRequest === null || requestParameters.createDiscountCodeStatusRequest === undefined) {
+            throw new runtime.RequiredError('createDiscountCodeStatusRequest','Required parameter requestParameters.createDiscountCodeStatusRequest was null or undefined when calling createDiscountCodeStatus.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -273,6 +398,7 @@ export class DiscountsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateDiscountCodeStatusRequestToJSON(requestParameters.createDiscountCodeStatusRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DiscountCodeResponseFromJSON(jsonValue));
@@ -281,7 +407,7 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Pause, resume (active) or archive a discount code.
      */
-    async createDiscountCodeStatus(requestParameters: CreateDiscountCodeStatusRequest, initOverrides?: RequestInit): Promise<DiscountCodeResponse> {
+    async createDiscountCodeStatus(requestParameters: CreateDiscountCodeStatusOperationRequest, initOverrides?: RequestInit): Promise<DiscountCodeResponse> {
         const response = await this.createDiscountCodeStatusRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -554,6 +680,14 @@ export class DiscountsApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.offset !== undefined) {
+            queryParameters['offset'] = requestParameters.offset;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -585,8 +719,12 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage.
      */
-    async listDiscountCodesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListDiscountCodesResponse>> {
+    async listDiscountCodesRaw(requestParameters: ListDiscountCodesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListDiscountCodesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.archived !== undefined) {
+            queryParameters['archived'] = requestParameters.archived;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -611,8 +749,8 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage.
      */
-    async listDiscountCodes(initOverrides?: RequestInit): Promise<ListDiscountCodesResponse> {
-        const response = await this.listDiscountCodesRaw(initOverrides);
+    async listDiscountCodes(requestParameters: ListDiscountCodesRequest = {}, initOverrides?: RequestInit): Promise<ListDiscountCodesResponse> {
+        const response = await this.listDiscountCodesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -658,9 +796,15 @@ export class DiscountsApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateAutomaticDiscount.');
         }
 
+        if (requestParameters.createAutomaticDiscountRequest === null || requestParameters.createAutomaticDiscountRequest === undefined) {
+            throw new runtime.RequiredError('createAutomaticDiscountRequest','Required parameter requestParameters.createAutomaticDiscountRequest was null or undefined when calling updateAutomaticDiscount.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -675,6 +819,7 @@ export class DiscountsApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAutomaticDiscountRequestToJSON(requestParameters.createAutomaticDiscountRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAutomaticDiscountResponseFromJSON(jsonValue));
@@ -691,14 +836,20 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Update a discount code. The code itself can be renamed only until it is first used.
      */
-    async updateDiscountCodeRaw(requestParameters: UpdateDiscountCodeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DiscountCodeResponse>> {
+    async updateDiscountCodeRaw(requestParameters: UpdateDiscountCodeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DiscountCodeResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateDiscountCode.');
+        }
+
+        if (requestParameters.updateDiscountCodeRequest === null || requestParameters.updateDiscountCodeRequest === undefined) {
+            throw new runtime.RequiredError('updateDiscountCodeRequest','Required parameter requestParameters.updateDiscountCodeRequest was null or undefined when calling updateDiscountCode.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -713,6 +864,7 @@ export class DiscountsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateDiscountCodeRequestToJSON(requestParameters.updateDiscountCodeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DiscountCodeResponseFromJSON(jsonValue));
@@ -721,7 +873,7 @@ export class DiscountsApi extends runtime.BaseAPI {
     /**
      * Update a discount code. The code itself can be renamed only until it is first used.
      */
-    async updateDiscountCode(requestParameters: UpdateDiscountCodeRequest, initOverrides?: RequestInit): Promise<DiscountCodeResponse> {
+    async updateDiscountCode(requestParameters: UpdateDiscountCodeOperationRequest, initOverrides?: RequestInit): Promise<DiscountCodeResponse> {
         const response = await this.updateDiscountCodeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -764,4 +916,13 @@ export class DiscountsApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListDiscountCodesArchivedEnum {
+    True = 'true',
+    False = 'false'
 }

@@ -61,13 +61,13 @@ export enum GetTaxonomyRequiredFieldResponsePlatformEnum {
     Etsy = 'etsy',
     Poshmark = 'poshmark',
     Mercari = 'mercari',
+    Facebook = 'facebook',
     Depop = 'depop',
     Grailed = 'grailed',
     Vinted = 'vinted',
     Whatnot = 'whatnot',
     Vestiaire = 'vestiaire',
     Offerup = 'offerup',
-    Facebook = 'facebook',
     Curtsy = 'curtsy'
 }
 

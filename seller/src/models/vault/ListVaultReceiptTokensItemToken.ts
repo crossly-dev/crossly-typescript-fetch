@@ -158,9 +158,9 @@ export interface ListVaultReceiptTokensItemToken {
 * @enum {string}
 */
 export enum ListVaultReceiptTokensItemTokenStatusEnum {
-    Pending = 'pending',
-    Live = 'live',
     Expired = 'expired',
+    Live = 'live',
+    Pending = 'pending',
     Conflict = 'conflict',
     Frozen = 'frozen',
     Burned = 'burned'

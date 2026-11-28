@@ -61,6 +61,24 @@ export interface ListSalesItem {
      * @type {string}
      * @memberof ListSalesItem
      */
+    currency?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListSalesItem
+     */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListSalesItem
+     */
+    variantId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListSalesItem
+     */
     netProfit?: string | null;
     /**
      * 
@@ -85,12 +103,6 @@ export interface ListSalesItem {
      * @type {string}
      * @memberof ListSalesItem
      */
-    currency?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListSalesItem
-     */
     listingId?: string | null;
     /**
      * 
@@ -98,12 +110,6 @@ export interface ListSalesItem {
      * @memberof ListSalesItem
      */
     platformListingId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListSalesItem
-     */
-    storefrontId?: string | null;
     /**
      * 
      * @type {string}
@@ -194,12 +200,6 @@ export interface ListSalesItem {
      * @memberof ListSalesItem
      */
     variantSku?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListSalesItem
-     */
-    variantId?: string | null;
 }
 
 export function ListSalesItemFromJSON(json: any): ListSalesItem {
@@ -216,14 +216,15 @@ export function ListSalesItemFromJSONTyped(json: any, ignoreDiscriminator: boole
         'id': json['id'],
         'userId': json['userId'],
         'platform': json['platform'],
+        'currency': !exists(json, 'currency') ? undefined : json['currency'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'variantId': !exists(json, 'variantId') ? undefined : json['variantId'],
         'netProfit': !exists(json, 'netProfit') ? undefined : json['netProfit'],
         'shippingCost': !exists(json, 'shippingCost') ? undefined : json['shippingCost'],
         'shippingCharged': !exists(json, 'shippingCharged') ? undefined : json['shippingCharged'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
-        'currency': !exists(json, 'currency') ? undefined : json['currency'],
         'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
-        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'platformOrderId': !exists(json, 'platformOrderId') ? undefined : json['platformOrderId'],
         'costOfGoods': !exists(json, 'costOfGoods') ? undefined : json['costOfGoods'],
         'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
@@ -239,7 +240,6 @@ export function ListSalesItemFromJSONTyped(json: any, ignoreDiscriminator: boole
         'refundedAmount': !exists(json, 'refundedAmount') ? undefined : json['refundedAmount'],
         'detailsPending': json['detailsPending'],
         'variantSku': !exists(json, 'variantSku') ? undefined : json['variantSku'],
-        'variantId': !exists(json, 'variantId') ? undefined : json['variantId'],
     };
 }
 
@@ -256,14 +256,15 @@ export function ListSalesItemToJSON(value?: ListSalesItem | null): any {
         'id': value.id,
         'userId': value.userId,
         'platform': value.platform,
+        'currency': value.currency,
+        'storefrontId': value.storefrontId,
+        'variantId': value.variantId,
         'netProfit': value.netProfit,
         'shippingCost': value.shippingCost,
         'shippingCharged': value.shippingCharged,
         'inventoryItemId': value.inventoryItemId,
-        'currency': value.currency,
         'listingId': value.listingId,
         'platformListingId': value.platformListingId,
-        'storefrontId': value.storefrontId,
         'platformOrderId': value.platformOrderId,
         'costOfGoods': value.costOfGoods,
         'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
@@ -279,7 +280,6 @@ export function ListSalesItemToJSON(value?: ListSalesItem | null): any {
         'refundedAmount': value.refundedAmount,
         'detailsPending': value.detailsPending,
         'variantSku': value.variantSku,
-        'variantId': value.variantId,
     };
 }
 

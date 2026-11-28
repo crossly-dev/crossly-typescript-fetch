@@ -15,18 +15,36 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateBrandingDropControlRequest,
+    CreateBrandingDropControlRequestFromJSON,
+    CreateBrandingDropControlRequestToJSON,
     CreateBrandingDropPublishResponse,
     CreateBrandingDropPublishResponseFromJSON,
     CreateBrandingDropPublishResponseToJSON,
+    CreateBrandingDropRequest,
+    CreateBrandingDropRequestFromJSON,
+    CreateBrandingDropRequestToJSON,
     CreateBrandingDropResponse,
     CreateBrandingDropResponseFromJSON,
     CreateBrandingDropResponseToJSON,
+    CreateBrandingDropRestockRunRequest,
+    CreateBrandingDropRestockRunRequestFromJSON,
+    CreateBrandingDropRestockRunRequestToJSON,
+    CreateBrandingDropRestockRunResponse,
+    CreateBrandingDropRestockRunResponseFromJSON,
+    CreateBrandingDropRestockRunResponseToJSON,
     CreateBrandingEventCancelResponse,
     CreateBrandingEventCancelResponseFromJSON,
     CreateBrandingEventCancelResponseToJSON,
+    CreateBrandingEventCheckInRequest,
+    CreateBrandingEventCheckInRequestFromJSON,
+    CreateBrandingEventCheckInRequestToJSON,
     CreateBrandingEventCheckInResponse,
     CreateBrandingEventCheckInResponseFromJSON,
     CreateBrandingEventCheckInResponseToJSON,
+    CreateBrandingEventMessageRequest,
+    CreateBrandingEventMessageRequestFromJSON,
+    CreateBrandingEventMessageRequestToJSON,
     CreateBrandingEventMessageResponse,
     CreateBrandingEventMessageResponseFromJSON,
     CreateBrandingEventMessageResponseToJSON,
@@ -36,6 +54,9 @@ import {
     GetBrandingBrandResponse,
     GetBrandingBrandResponseFromJSON,
     GetBrandingBrandResponseToJSON,
+    GetBrandingBrandTermResponse,
+    GetBrandingBrandTermResponseFromJSON,
+    GetBrandingBrandTermResponseToJSON,
     GetBrandingBusinessVerificationResponse,
     GetBrandingBusinessVerificationResponseFromJSON,
     GetBrandingBusinessVerificationResponseToJSON,
@@ -48,33 +69,73 @@ import {
     GetBrandingSettingResponse,
     GetBrandingSettingResponseFromJSON,
     GetBrandingSettingResponseToJSON,
+    ListBrandingBrandSellerSearchResponse,
+    ListBrandingBrandSellerSearchResponseFromJSON,
+    ListBrandingBrandSellerSearchResponseToJSON,
+    ListBrandingBrandSellersResponse,
+    ListBrandingBrandSellersResponseFromJSON,
+    ListBrandingBrandSellersResponseToJSON,
+    ListBrandingDropBuyersResponse,
+    ListBrandingDropBuyersResponseFromJSON,
+    ListBrandingDropBuyersResponseToJSON,
     ListBrandingDropsResponse,
     ListBrandingDropsResponseFromJSON,
     ListBrandingDropsResponseToJSON,
+    ReasonRequest,
+    ReasonRequestFromJSON,
+    ReasonRequestToJSON,
+    UpdateBrandingBrandSellerRequest,
+    UpdateBrandingBrandSellerRequestFromJSON,
+    UpdateBrandingBrandSellerRequestToJSON,
+    UpdateBrandingBrandSellerResponse,
+    UpdateBrandingBrandSellerResponseFromJSON,
+    UpdateBrandingBrandSellerResponseToJSON,
+    UpdateBrandingDropRequest,
+    UpdateBrandingDropRequestFromJSON,
+    UpdateBrandingDropRequestToJSON,
+    UpdateBrandingEventSettingRequest,
+    UpdateBrandingEventSettingRequestFromJSON,
+    UpdateBrandingEventSettingRequestToJSON,
     UpdateBrandingEventSettingResponse,
     UpdateBrandingEventSettingResponseFromJSON,
     UpdateBrandingEventSettingResponseToJSON,
+    UpdateBrandingSettingRequest,
+    UpdateBrandingSettingRequestFromJSON,
+    UpdateBrandingSettingRequestToJSON,
 } from '../models';
 
-export interface CreateBrandingDropControlRequest {
+export interface CreateBrandingDropOperationRequest {
+    createBrandingDropRequest: CreateBrandingDropRequest;
+}
+
+export interface CreateBrandingDropControlOperationRequest {
     id: string;
     control: string;
+    createBrandingDropControlRequest?: CreateBrandingDropControlRequest;
 }
 
 export interface CreateBrandingDropPublishRequest {
     id: string;
 }
 
+export interface CreateBrandingDropRestockRunOperationRequest {
+    id: string;
+    createBrandingDropRestockRunRequest?: CreateBrandingDropRestockRunRequest;
+}
+
 export interface CreateBrandingEventCancelRequest {
     id: string;
+    reasonRequest: ReasonRequest;
 }
 
-export interface CreateBrandingEventCheckInRequest {
+export interface CreateBrandingEventCheckInOperationRequest {
     id: string;
+    createBrandingEventCheckInRequest: CreateBrandingEventCheckInRequest;
 }
 
-export interface CreateBrandingEventMessageRequest {
+export interface CreateBrandingEventMessageOperationRequest {
     id: string;
+    createBrandingEventMessageRequest: CreateBrandingEventMessageRequest;
 }
 
 export interface DeleteBrandingDropRequest {
@@ -85,12 +146,40 @@ export interface GetBrandingDropRequest {
     id: string;
 }
 
-export interface UpdateBrandingDropRequest {
+export interface GetBrandingEventRequest {
+    scope?: GetBrandingEventScopeEnum;
+}
+
+export interface ListBrandingBrandSellerSearchRequest {
+    q?: string;
+}
+
+export interface ListBrandingDropBuyersRequest {
     id: string;
 }
 
-export interface UpdateBrandingEventSettingRequest {
+export interface ListBrandingDropsRequest {
+    scope?: ListBrandingDropsScopeEnum;
+    limit?: number;
+    cursor?: string;
+}
+
+export interface UpdateBrandingBrandSellerOperationRequest {
+    updateBrandingBrandSellerRequest: UpdateBrandingBrandSellerRequest;
+}
+
+export interface UpdateBrandingDropOperationRequest {
     id: string;
+    updateBrandingDropRequest: UpdateBrandingDropRequest;
+}
+
+export interface UpdateBrandingEventSettingOperationRequest {
+    id: string;
+    updateBrandingEventSettingRequest: UpdateBrandingEventSettingRequest;
+}
+
+export interface UpdateBrandingSettingOperationRequest {
+    updateBrandingSettingRequest?: UpdateBrandingSettingRequest;
 }
 
 /**
@@ -101,10 +190,16 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Create a drop as a draft. `config` is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing.
      */
-    async createBrandingDropRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingDropResponse>> {
+    async createBrandingDropRaw(requestParameters: CreateBrandingDropOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingDropResponse>> {
+        if (requestParameters.createBrandingDropRequest === null || requestParameters.createBrandingDropRequest === undefined) {
+            throw new runtime.RequiredError('createBrandingDropRequest','Required parameter requestParameters.createBrandingDropRequest was null or undefined when calling createBrandingDrop.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -119,6 +214,7 @@ export class BrandingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBrandingDropRequestToJSON(requestParameters.createBrandingDropRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBrandingDropResponseFromJSON(jsonValue));
@@ -127,15 +223,15 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Create a drop as a draft. `config` is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing.
      */
-    async createBrandingDrop(initOverrides?: RequestInit): Promise<CreateBrandingDropResponse> {
-        const response = await this.createBrandingDropRaw(initOverrides);
+    async createBrandingDrop(requestParameters: CreateBrandingDropOperationRequest, initOverrides?: RequestInit): Promise<CreateBrandingDropResponse> {
+        const response = await this.createBrandingDropRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Live controls: pause, resume, extend (body endsAt), release-wave, end, draw (raffle).
      */
-    async createBrandingDropControlRaw(requestParameters: CreateBrandingDropControlRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBrandingDropResponse>> {
+    async createBrandingDropControlRaw(requestParameters: CreateBrandingDropControlOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBrandingDropResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBrandingDropControl.');
         }
@@ -147,6 +243,8 @@ export class BrandingApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -161,6 +259,7 @@ export class BrandingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBrandingDropControlRequestToJSON(requestParameters.createBrandingDropControlRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetBrandingDropResponseFromJSON(jsonValue));
@@ -169,7 +268,7 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Live controls: pause, resume, extend (body endsAt), release-wave, end, draw (raffle).
      */
-    async createBrandingDropControl(requestParameters: CreateBrandingDropControlRequest, initOverrides?: RequestInit): Promise<GetBrandingDropResponse> {
+    async createBrandingDropControl(requestParameters: CreateBrandingDropControlOperationRequest, initOverrides?: RequestInit): Promise<GetBrandingDropResponse> {
         const response = await this.createBrandingDropControlRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -213,6 +312,47 @@ export class BrandingApi extends runtime.BaseAPI {
     }
 
     /**
+     * Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after).
+     */
+    async createBrandingDropRestockRunRaw(requestParameters: CreateBrandingDropRestockRunOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingDropRestockRunResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBrandingDropRestockRun.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/branding/drops/{id}/restock-run`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateBrandingDropRestockRunRequestToJSON(requestParameters.createBrandingDropRestockRunRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBrandingDropRestockRunResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after).
+     */
+    async createBrandingDropRestockRun(requestParameters: CreateBrandingDropRestockRunOperationRequest, initOverrides?: RequestInit): Promise<CreateBrandingDropRestockRunResponse> {
+        const response = await this.createBrandingDropRestockRunRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Cancel a published event with the reason attendees see.
      */
     async createBrandingEventCancelRaw(requestParameters: CreateBrandingEventCancelRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingEventCancelResponse>> {
@@ -220,9 +360,15 @@ export class BrandingApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBrandingEventCancel.');
         }
 
+        if (requestParameters.reasonRequest === null || requestParameters.reasonRequest === undefined) {
+            throw new runtime.RequiredError('reasonRequest','Required parameter requestParameters.reasonRequest was null or undefined when calling createBrandingEventCancel.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -237,6 +383,7 @@ export class BrandingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ReasonRequestToJSON(requestParameters.reasonRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBrandingEventCancelResponseFromJSON(jsonValue));
@@ -253,14 +400,20 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Check a ticket in at the door by its QR token.
      */
-    async createBrandingEventCheckInRaw(requestParameters: CreateBrandingEventCheckInRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingEventCheckInResponse>> {
+    async createBrandingEventCheckInRaw(requestParameters: CreateBrandingEventCheckInOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingEventCheckInResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBrandingEventCheckIn.');
+        }
+
+        if (requestParameters.createBrandingEventCheckInRequest === null || requestParameters.createBrandingEventCheckInRequest === undefined) {
+            throw new runtime.RequiredError('createBrandingEventCheckInRequest','Required parameter requestParameters.createBrandingEventCheckInRequest was null or undefined when calling createBrandingEventCheckIn.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -275,6 +428,7 @@ export class BrandingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBrandingEventCheckInRequestToJSON(requestParameters.createBrandingEventCheckInRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBrandingEventCheckInResponseFromJSON(jsonValue));
@@ -283,7 +437,7 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Check a ticket in at the door by its QR token.
      */
-    async createBrandingEventCheckIn(requestParameters: CreateBrandingEventCheckInRequest, initOverrides?: RequestInit): Promise<CreateBrandingEventCheckInResponse> {
+    async createBrandingEventCheckIn(requestParameters: CreateBrandingEventCheckInOperationRequest, initOverrides?: RequestInit): Promise<CreateBrandingEventCheckInResponse> {
         const response = await this.createBrandingEventCheckInRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -291,14 +445,20 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Message the event\'s attendees: all, going, or ticketed.
      */
-    async createBrandingEventMessageRaw(requestParameters: CreateBrandingEventMessageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingEventMessageResponse>> {
+    async createBrandingEventMessageRaw(requestParameters: CreateBrandingEventMessageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingEventMessageResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBrandingEventMessage.');
+        }
+
+        if (requestParameters.createBrandingEventMessageRequest === null || requestParameters.createBrandingEventMessageRequest === undefined) {
+            throw new runtime.RequiredError('createBrandingEventMessageRequest','Required parameter requestParameters.createBrandingEventMessageRequest was null or undefined when calling createBrandingEventMessage.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -313,6 +473,7 @@ export class BrandingApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBrandingEventMessageRequestToJSON(requestParameters.createBrandingEventMessageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBrandingEventMessageResponseFromJSON(jsonValue));
@@ -321,7 +482,7 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Message the event\'s attendees: all, going, or ticketed.
      */
-    async createBrandingEventMessage(requestParameters: CreateBrandingEventMessageRequest, initOverrides?: RequestInit): Promise<CreateBrandingEventMessageResponse> {
+    async createBrandingEventMessage(requestParameters: CreateBrandingEventMessageOperationRequest, initOverrides?: RequestInit): Promise<CreateBrandingEventMessageResponse> {
         const response = await this.createBrandingEventMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -395,6 +556,40 @@ export class BrandingApi extends runtime.BaseAPI {
      */
     async getBrandingBrand(initOverrides?: RequestInit): Promise<GetBrandingBrandResponse> {
         const response = await this.getBrandingBrandRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month\'s drop usage and the terms history.
+     */
+    async getBrandingBrandTermRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBrandingBrandTermResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/branding/brand/terms`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBrandingBrandTermResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month\'s drop usage and the terms history.
+     */
+    async getBrandingBrandTerm(initOverrides?: RequestInit): Promise<GetBrandingBrandTermResponse> {
+        const response = await this.getBrandingBrandTermRaw(initOverrides);
         return await response.value();
     }
 
@@ -473,8 +668,12 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Your events: upcoming grouped by date (today, this_week, later), or past.
      */
-    async getBrandingEventRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBrandingEventResponse>> {
+    async getBrandingEventRaw(requestParameters: GetBrandingEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBrandingEventResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.scope !== undefined) {
+            queryParameters['scope'] = requestParameters.scope;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -499,8 +698,8 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Your events: upcoming grouped by date (today, this_week, later), or past.
      */
-    async getBrandingEvent(initOverrides?: RequestInit): Promise<GetBrandingEventResponse> {
-        const response = await this.getBrandingEventRaw(initOverrides);
+    async getBrandingEvent(requestParameters: GetBrandingEventRequest = {}, initOverrides?: RequestInit): Promise<GetBrandingEventResponse> {
+        const response = await this.getBrandingEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -539,10 +738,132 @@ export class BrandingApi extends runtime.BaseAPI {
     }
 
     /**
+     * Find a store to authorise by its name or slug (?q=, at least 2 characters).
+     */
+    async listBrandingBrandSellerSearchRaw(requestParameters: ListBrandingBrandSellerSearchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandingBrandSellerSearchResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/branding/brand/sellers/search`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBrandingBrandSellerSearchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Find a store to authorise by its name or slug (?q=, at least 2 characters).
+     */
+    async listBrandingBrandSellerSearch(requestParameters: ListBrandingBrandSellerSearchRequest = {}, initOverrides?: RequestInit): Promise<ListBrandingBrandSellerSearchResponse> {
+        const response = await this.listBrandingBrandSellerSearchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Your authorised sellers (approved brand partners), each with its store name and status.
+     */
+    async listBrandingBrandSellersRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandingBrandSellersResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/branding/brand/sellers`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBrandingBrandSellersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Your authorised sellers (approved brand partners), each with its store name and status.
+     */
+    async listBrandingBrandSellers(initOverrides?: RequestInit): Promise<ListBrandingBrandSellersResponse> {
+        const response = await this.listBrandingBrandSellersRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A drop\'s buyers: public username, units claimed, order id and when, oldest first.
+     */
+    async listBrandingDropBuyersRaw(requestParameters: ListBrandingDropBuyersRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandingDropBuyersResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listBrandingDropBuyers.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/branding/drops/{id}/buyers`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBrandingDropBuyersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A drop\'s buyers: public username, units claimed, order id and when, oldest first.
+     */
+    async listBrandingDropBuyers(requestParameters: ListBrandingDropBuyersRequest, initOverrides?: RequestInit): Promise<ListBrandingDropBuyersResponse> {
+        const response = await this.listBrandingDropBuyersRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope=upcoming|live|past|drafts|all.
      */
-    async listBrandingDropsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandingDropsResponse>> {
+    async listBrandingDropsRaw(requestParameters: ListBrandingDropsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBrandingDropsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.scope !== undefined) {
+            queryParameters['scope'] = requestParameters.scope;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -567,8 +888,8 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope=upcoming|live|past|drafts|all.
      */
-    async listBrandingDrops(initOverrides?: RequestInit): Promise<ListBrandingDropsResponse> {
-        const response = await this.listBrandingDropsRaw(initOverrides);
+    async listBrandingDrops(requestParameters: ListBrandingDropsRequest = {}, initOverrides?: RequestInit): Promise<ListBrandingDropsResponse> {
+        const response = await this.listBrandingDropsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -607,16 +928,63 @@ export class BrandingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Edit a drop that is not live yet. A published drop refuses rule problems (400 drop_config_problems).
+     * Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }.
      */
-    async updateBrandingDropRaw(requestParameters: UpdateBrandingDropRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingDropResponse>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBrandingDrop.');
+    async updateBrandingBrandSellerRaw(requestParameters: UpdateBrandingBrandSellerOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBrandingBrandSellerResponse>> {
+        if (requestParameters.updateBrandingBrandSellerRequest === null || requestParameters.updateBrandingBrandSellerRequest === undefined) {
+            throw new runtime.RequiredError('updateBrandingBrandSellerRequest','Required parameter requestParameters.updateBrandingBrandSellerRequest was null or undefined when calling updateBrandingBrandSeller.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/branding/brand/sellers`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateBrandingBrandSellerRequestToJSON(requestParameters.updateBrandingBrandSellerRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateBrandingBrandSellerResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }.
+     */
+    async updateBrandingBrandSeller(requestParameters: UpdateBrandingBrandSellerOperationRequest, initOverrides?: RequestInit): Promise<UpdateBrandingBrandSellerResponse> {
+        const response = await this.updateBrandingBrandSellerRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit a drop that is not live yet. A published drop refuses rule problems (400 drop_config_problems).
+     */
+    async updateBrandingDropRaw(requestParameters: UpdateBrandingDropOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBrandingDropResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBrandingDrop.');
+        }
+
+        if (requestParameters.updateBrandingDropRequest === null || requestParameters.updateBrandingDropRequest === undefined) {
+            throw new runtime.RequiredError('updateBrandingDropRequest','Required parameter requestParameters.updateBrandingDropRequest was null or undefined when calling updateBrandingDrop.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -631,6 +999,7 @@ export class BrandingApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBrandingDropRequestToJSON(requestParameters.updateBrandingDropRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBrandingDropResponseFromJSON(jsonValue));
@@ -639,7 +1008,7 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Edit a drop that is not live yet. A published drop refuses rule problems (400 drop_config_problems).
      */
-    async updateBrandingDrop(requestParameters: UpdateBrandingDropRequest, initOverrides?: RequestInit): Promise<CreateBrandingDropResponse> {
+    async updateBrandingDrop(requestParameters: UpdateBrandingDropOperationRequest, initOverrides?: RequestInit): Promise<CreateBrandingDropResponse> {
         const response = await this.updateBrandingDropRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -647,14 +1016,20 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Save an event\'s full settings (where, access, reminders, check-in, recording, linked drops) and ticket tiers.
      */
-    async updateBrandingEventSettingRaw(requestParameters: UpdateBrandingEventSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBrandingEventSettingResponse>> {
+    async updateBrandingEventSettingRaw(requestParameters: UpdateBrandingEventSettingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateBrandingEventSettingResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBrandingEventSetting.');
+        }
+
+        if (requestParameters.updateBrandingEventSettingRequest === null || requestParameters.updateBrandingEventSettingRequest === undefined) {
+            throw new runtime.RequiredError('updateBrandingEventSettingRequest','Required parameter requestParameters.updateBrandingEventSettingRequest was null or undefined when calling updateBrandingEventSetting.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -669,6 +1044,7 @@ export class BrandingApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBrandingEventSettingRequestToJSON(requestParameters.updateBrandingEventSettingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateBrandingEventSettingResponseFromJSON(jsonValue));
@@ -677,7 +1053,7 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Save an event\'s full settings (where, access, reminders, check-in, recording, linked drops) and ticket tiers.
      */
-    async updateBrandingEventSetting(requestParameters: UpdateBrandingEventSettingRequest, initOverrides?: RequestInit): Promise<UpdateBrandingEventSettingResponse> {
+    async updateBrandingEventSetting(requestParameters: UpdateBrandingEventSettingOperationRequest, initOverrides?: RequestInit): Promise<UpdateBrandingEventSettingResponse> {
         const response = await this.updateBrandingEventSettingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -685,10 +1061,12 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Change the store’s Branding defaults (any subset of the fields).
      */
-    async updateBrandingSettingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBrandingSettingResponse>> {
+    async updateBrandingSettingRaw(requestParameters: UpdateBrandingSettingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBrandingSettingResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -703,6 +1081,7 @@ export class BrandingApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBrandingSettingRequestToJSON(requestParameters.updateBrandingSettingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetBrandingSettingResponseFromJSON(jsonValue));
@@ -711,9 +1090,29 @@ export class BrandingApi extends runtime.BaseAPI {
     /**
      * Change the store’s Branding defaults (any subset of the fields).
      */
-    async updateBrandingSetting(initOverrides?: RequestInit): Promise<GetBrandingSettingResponse> {
-        const response = await this.updateBrandingSettingRaw(initOverrides);
+    async updateBrandingSetting(requestParameters: UpdateBrandingSettingOperationRequest = {}, initOverrides?: RequestInit): Promise<GetBrandingSettingResponse> {
+        const response = await this.updateBrandingSettingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetBrandingEventScopeEnum {
+    Upcoming = 'upcoming',
+    Past = 'past'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBrandingDropsScopeEnum {
+    All = 'all',
+    Live = 'live',
+    Upcoming = 'upcoming',
+    Past = 'past',
+    Drafts = 'drafts'
 }

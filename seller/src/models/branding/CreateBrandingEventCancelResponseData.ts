@@ -61,12 +61,6 @@ export interface CreateBrandingEventCancelResponseData {
      * @type {string}
      * @memberof CreateBrandingEventCancelResponseData
      */
-    title: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateBrandingEventCancelResponseData
-     */
     slug: string;
     /**
      * 
@@ -74,6 +68,18 @@ export interface CreateBrandingEventCancelResponseData {
      * @memberof CreateBrandingEventCancelResponseData
      */
     storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBrandingEventCancelResponseData
+     */
+    kind: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateBrandingEventCancelResponseData
+     */
+    title: string;
     /**
      * 
      * @type {Date}
@@ -86,12 +92,6 @@ export interface CreateBrandingEventCancelResponseData {
      * @memberof CreateBrandingEventCancelResponseData
      */
     cancelledAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateBrandingEventCancelResponseData
-     */
-    kind: string;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -265,12 +265,12 @@ export function CreateBrandingEventCancelResponseDataFromJSONTyped(json: any, ig
         'updatedAt': (new Date(json['updatedAt'])),
         'description': !exists(json, 'description') ? undefined : json['description'],
         'status': json['status'],
-        'title': json['title'],
         'slug': json['slug'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'kind': json['kind'],
+        'title': json['title'],
         'endsAt': !exists(json, 'endsAt') ? undefined : (json['endsAt'] === null ? null : new Date(json['endsAt'])),
         'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
-        'kind': json['kind'],
         'config': json['config'],
         'sellerUserId': json['sellerUserId'],
         'coverImageUrl': !exists(json, 'coverImageUrl') ? undefined : json['coverImageUrl'],
@@ -314,12 +314,12 @@ export function CreateBrandingEventCancelResponseDataToJSON(value?: CreateBrandi
         'updatedAt': (value.updatedAt.toISOString()),
         'description': value.description,
         'status': value.status,
-        'title': value.title,
         'slug': value.slug,
         'storefrontId': value.storefrontId,
+        'kind': value.kind,
+        'title': value.title,
         'endsAt': value.endsAt === undefined ? undefined : (value.endsAt === null ? null : value.endsAt.toISOString()),
         'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
-        'kind': value.kind,
         'config': value.config,
         'sellerUserId': value.sellerUserId,
         'coverImageUrl': value.coverImageUrl,

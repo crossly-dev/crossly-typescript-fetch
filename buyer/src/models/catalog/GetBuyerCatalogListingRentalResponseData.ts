@@ -25,6 +25,12 @@ import {
     GetBuyerCatalogListingRentalResponseDataOptionsFromJSONTyped,
     GetBuyerCatalogListingRentalResponseDataOptionsToJSON,
 } from './GetBuyerCatalogListingRentalResponseDataOptions';
+import {
+    GetBuyerCatalogListingRentalResponseDataPolicy,
+    GetBuyerCatalogListingRentalResponseDataPolicyFromJSON,
+    GetBuyerCatalogListingRentalResponseDataPolicyFromJSONTyped,
+    GetBuyerCatalogListingRentalResponseDataPolicyToJSON,
+} from './GetBuyerCatalogListingRentalResponseDataPolicy';
 
 /**
  * 
@@ -94,6 +100,12 @@ export interface GetBuyerCatalogListingRentalResponseData {
     returnPolicy?: string | null;
     /**
      * 
+     * @type {GetBuyerCatalogListingRentalResponseDataPolicy}
+     * @memberof GetBuyerCatalogListingRentalResponseData
+     */
+    policy?: GetBuyerCatalogListingRentalResponseDataPolicy | null;
+    /**
+     * 
      * @type {Array<GetBuyerCatalogListingRentalResponseDataBooked>}
      * @memberof GetBuyerCatalogListingRentalResponseData
      */
@@ -132,6 +144,7 @@ export function GetBuyerCatalogListingRentalResponseDataFromJSONTyped(json: any,
         'requireApproval': json['requireApproval'],
         'available': json['available'],
         'returnPolicy': !exists(json, 'returnPolicy') ? undefined : json['returnPolicy'],
+        'policy': !exists(json, 'policy') ? undefined : GetBuyerCatalogListingRentalResponseDataPolicyFromJSON(json['policy']),
         'booked': ((json['booked'] as Array<any>).map(GetBuyerCatalogListingRentalResponseDataBookedFromJSON)),
         'options': GetBuyerCatalogListingRentalResponseDataOptionsFromJSON(json['options']),
         'unitsFree': json['unitsFree'],
@@ -157,6 +170,7 @@ export function GetBuyerCatalogListingRentalResponseDataToJSON(value?: GetBuyerC
         'requireApproval': value.requireApproval,
         'available': value.available,
         'returnPolicy': value.returnPolicy,
+        'policy': GetBuyerCatalogListingRentalResponseDataPolicyToJSON(value.policy),
         'booked': ((value.booked as Array<any>).map(GetBuyerCatalogListingRentalResponseDataBookedToJSON)),
         'options': GetBuyerCatalogListingRentalResponseDataOptionsToJSON(value.options),
         'unitsFree': value.unitsFree,

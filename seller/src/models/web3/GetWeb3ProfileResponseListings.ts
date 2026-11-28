@@ -92,9 +92,9 @@ export interface GetWeb3ProfileResponseListings {
 * @enum {string}
 */
 export enum GetWeb3ProfileResponseListingsKindEnum {
+    Listing = 'listing',
     Bundle = 'bundle',
     Offer = 'offer',
-    Listing = 'listing',
     PrivateListing = 'private_listing',
     CollectionOffer = 'collection_offer',
     TraitOffer = 'trait_offer'

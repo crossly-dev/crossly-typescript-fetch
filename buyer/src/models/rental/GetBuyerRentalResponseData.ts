@@ -166,6 +166,18 @@ export interface GetBuyerRentalResponseData {
     returnPolicy?: string | null;
     /**
      * 
+     * @type {{ [key: string]: any; }}
+     * @memberof GetBuyerRentalResponseData
+     */
+    policy?: { [key: string]: any; } | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetBuyerRentalResponseData
+     */
+    claimWindowDays: number;
+    /**
+     * 
      * @type {CreateBuyerCatalogListingRentalQuoteResponseDataCancellation}
      * @memberof GetBuyerRentalResponseData
      */
@@ -515,6 +527,8 @@ export function GetBuyerRentalResponseDataFromJSONTyped(json: any, ignoreDiscrim
         'inspection': ((json['inspection'] as Array<any>).map(BuyerRentalResponseDataInspectionFromJSON)),
         'checklist': json['checklist'],
         'returnPolicy': !exists(json, 'returnPolicy') ? undefined : json['returnPolicy'],
+        'policy': !exists(json, 'policy') ? undefined : json['policy'],
+        'claimWindowDays': json['claimWindowDays'],
         'cancellation': CreateBuyerCatalogListingRentalQuoteResponseDataCancellationFromJSON(json['cancellation']),
         'claimWindowEndsAt': !exists(json, 'claimWindowEndsAt') ? undefined : json['claimWindowEndsAt'],
         'daysLeft': !exists(json, 'daysLeft') ? undefined : json['daysLeft'],
@@ -594,6 +608,8 @@ export function GetBuyerRentalResponseDataToJSON(value?: GetBuyerRentalResponseD
         'inspection': ((value.inspection as Array<any>).map(BuyerRentalResponseDataInspectionToJSON)),
         'checklist': value.checklist,
         'returnPolicy': value.returnPolicy,
+        'policy': value.policy,
+        'claimWindowDays': value.claimWindowDays,
         'cancellation': CreateBuyerCatalogListingRentalQuoteResponseDataCancellationToJSON(value.cancellation),
         'claimWindowEndsAt': value.claimWindowEndsAt,
         'daysLeft': value.daysLeft,

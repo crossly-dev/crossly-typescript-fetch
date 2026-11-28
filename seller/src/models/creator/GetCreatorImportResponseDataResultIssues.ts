@@ -70,13 +70,13 @@ export interface GetCreatorImportResponseDataResultIssues {
 export enum GetCreatorImportResponseDataResultIssuesCodeEnum {
     Format = 'format',
     Enum = 'enum',
+    Plan = 'plan',
     Budget = 'budget',
     Required = 'required',
     Duplicate = 'duplicate',
     TooLarge = 'too_large',
     MissingFile = 'missing_file',
-    Moderation = 'moderation',
-    Plan = 'plan'
+    Moderation = 'moderation'
 }/**
 * @export
 * @enum {string}

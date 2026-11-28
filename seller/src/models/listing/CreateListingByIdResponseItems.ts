@@ -576,6 +576,23 @@ export interface CreateListingByIdResponseItems {
      */
     quotaBucket?: string | null;
     /**
+     * The store this listing belongs to (STORE-SCOPE-PLAN D7, migration 1342): stamped at write time from the
+     * request store, the connection's home store or the default store. NULL = not stamped yet, which belongs to
+     * the owner's DEFAULT store (services/storefronts/scope.ts inStore) until backfill-store-usage.ts stamps it.
+     * Hot table: nullable, no default; the index is built CONCURRENTLY in 1343.
+     * @type {string}
+     * @memberof CreateListingByIdResponseItems
+     */
+    storefrontId?: string | null;
+    /**
+     * The teammate this listing (or draft) is assigned to (team_members.id, migration 1613); NULL = unassigned. Written only
+     * through the work-assignment service (api-orders services/work-assignment). Hot table: nullable, no default;
+     * the partial index is built CONCURRENTLY in 1613.
+     * @type {string}
+     * @memberof CreateListingByIdResponseItems
+     */
+    assigneeMemberId?: string | null;
+    /**
      * 
      * @type {Date}
      * @memberof CreateListingByIdResponseItems
@@ -682,6 +699,8 @@ export function CreateListingByIdResponseItemsFromJSONTyped(json: any, ignoreDis
         'attributedOauthAppId': !exists(json, 'attributedOauthAppId') ? undefined : json['attributedOauthAppId'],
         'attributedGrantId': !exists(json, 'attributedGrantId') ? undefined : json['attributedGrantId'],
         'quotaBucket': !exists(json, 'quotaBucket') ? undefined : json['quotaBucket'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'assigneeMemberId': !exists(json, 'assigneeMemberId') ? undefined : json['assigneeMemberId'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
     };
@@ -769,6 +788,8 @@ export function CreateListingByIdResponseItemsToJSON(value?: CreateListingByIdRe
         'attributedOauthAppId': value.attributedOauthAppId,
         'attributedGrantId': value.attributedGrantId,
         'quotaBucket': value.quotaBucket,
+        'storefrontId': value.storefrontId,
+        'assigneeMemberId': value.assigneeMemberId,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
     };

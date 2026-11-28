@@ -112,10 +112,10 @@ export interface CreateStorefrontProfileSuggestShelveResponseDataShelvesSource {
 * @enum {string}
 */
 export enum CreateStorefrontProfileSuggestShelveResponseDataShelvesSourceModeEnum {
+    All = 'all',
     Category = 'category',
     Tags = 'tags',
     Manual = 'manual',
-    All = 'all',
     Smart = 'smart'
 }/**
 * @export

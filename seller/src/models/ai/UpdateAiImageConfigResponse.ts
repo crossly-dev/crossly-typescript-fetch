@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetAiStatusResponseImage,
-    GetAiStatusResponseImageFromJSON,
-    GetAiStatusResponseImageFromJSONTyped,
-    GetAiStatusResponseImageToJSON,
-} from './GetAiStatusResponseImage';
+    GetAiRoutingResponseImage,
+    GetAiRoutingResponseImageFromJSON,
+    GetAiRoutingResponseImageFromJSONTyped,
+    GetAiRoutingResponseImageToJSON,
+} from './GetAiRoutingResponseImage';
 
 /**
  * 
@@ -34,10 +34,10 @@ export interface UpdateAiImageConfigResponse {
     success: boolean;
     /**
      * 
-     * @type {GetAiStatusResponseImage}
+     * @type {GetAiRoutingResponseImage}
      * @memberof UpdateAiImageConfigResponse
      */
-    image: GetAiStatusResponseImage;
+    image: GetAiRoutingResponseImage;
 }
 
 export function UpdateAiImageConfigResponseFromJSON(json: any): UpdateAiImageConfigResponse {
@@ -51,7 +51,7 @@ export function UpdateAiImageConfigResponseFromJSONTyped(json: any, ignoreDiscri
     return {
         
         'success': json['success'],
-        'image': GetAiStatusResponseImageFromJSON(json['image']),
+        'image': GetAiRoutingResponseImageFromJSON(json['image']),
     };
 }
 
@@ -65,7 +65,7 @@ export function UpdateAiImageConfigResponseToJSON(value?: UpdateAiImageConfigRes
     return {
         
         'success': value.success,
-        'image': GetAiStatusResponseImageToJSON(value.image),
+        'image': GetAiRoutingResponseImageToJSON(value.image),
     };
 }
 

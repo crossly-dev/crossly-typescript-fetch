@@ -15,21 +15,39 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCosmDesignerChainAutoUnlockRequest,
+    CreateCosmDesignerChainAutoUnlockRequestFromJSON,
+    CreateCosmDesignerChainAutoUnlockRequestToJSON,
     CreateCosmDesignerChainAutoUnlockResponse,
     CreateCosmDesignerChainAutoUnlockResponseFromJSON,
     CreateCosmDesignerChainAutoUnlockResponseToJSON,
+    CreateCosmDesignerChainUnlockRequest,
+    CreateCosmDesignerChainUnlockRequestFromJSON,
+    CreateCosmDesignerChainUnlockRequestToJSON,
     CreateCosmDesignerChainUnlockResponse,
     CreateCosmDesignerChainUnlockResponseFromJSON,
     CreateCosmDesignerChainUnlockResponseToJSON,
+    CreateCosmDesignerMaterialiseConfirmRequest,
+    CreateCosmDesignerMaterialiseConfirmRequestFromJSON,
+    CreateCosmDesignerMaterialiseConfirmRequestToJSON,
     CreateCosmDesignerMaterialiseConfirmResponse,
     CreateCosmDesignerMaterialiseConfirmResponseFromJSON,
     CreateCosmDesignerMaterialiseConfirmResponseToJSON,
+    CreateCosmDesignerMaterialiseReleaseRequest,
+    CreateCosmDesignerMaterialiseReleaseRequestFromJSON,
+    CreateCosmDesignerMaterialiseReleaseRequestToJSON,
+    CreateCosmDesignerMaterialiseRequest,
+    CreateCosmDesignerMaterialiseRequestFromJSON,
+    CreateCosmDesignerMaterialiseRequestToJSON,
     CreateCosmDesignerMaterialiseResponse,
     CreateCosmDesignerMaterialiseResponseFromJSON,
     CreateCosmDesignerMaterialiseResponseToJSON,
     CreateCosmDesignerSubmitForReviewResponse,
     CreateCosmDesignerSubmitForReviewResponseFromJSON,
     CreateCosmDesignerSubmitForReviewResponseToJSON,
+    CreateCosmDesignerTermRequest,
+    CreateCosmDesignerTermRequestFromJSON,
+    CreateCosmDesignerTermRequestToJSON,
     CreateCosmDesignerTermResponse,
     CreateCosmDesignerTermResponseFromJSON,
     CreateCosmDesignerTermResponseToJSON,
@@ -89,32 +107,32 @@ import {
     ListVariationGroupsResponseToJSON,
 } from '../models';
 
-export interface CreateCosmDesignerChainAutoUnlockRequest {
-    requestBody: { [key: string]: any; };
+export interface CreateCosmDesignerChainAutoUnlockOperationRequest {
+    createCosmDesignerChainAutoUnlockRequest: CreateCosmDesignerChainAutoUnlockRequest;
 }
 
-export interface CreateCosmDesignerChainUnlockRequest {
-    requestBody: { [key: string]: any; };
+export interface CreateCosmDesignerChainUnlockOperationRequest {
+    createCosmDesignerChainUnlockRequest: CreateCosmDesignerChainUnlockRequest;
 }
 
-export interface CreateCosmDesignerMaterialiseRequest {
-    requestBody: { [key: string]: any; };
+export interface CreateCosmDesignerMaterialiseOperationRequest {
+    createCosmDesignerMaterialiseRequest: CreateCosmDesignerMaterialiseRequest;
 }
 
-export interface CreateCosmDesignerMaterialiseConfirmRequest {
-    requestBody: { [key: string]: any; };
+export interface CreateCosmDesignerMaterialiseConfirmOperationRequest {
+    createCosmDesignerMaterialiseConfirmRequest: CreateCosmDesignerMaterialiseConfirmRequest;
 }
 
-export interface CreateCosmDesignerMaterialiseReleaseRequest {
-    requestBody: { [key: string]: any; };
+export interface CreateCosmDesignerMaterialiseReleaseOperationRequest {
+    createCosmDesignerMaterialiseReleaseRequest: CreateCosmDesignerMaterialiseReleaseRequest;
 }
 
 export interface CreateCosmDesignerSubmitForReviewRequest {
-    requestBody: { [key: string]: any; };
+    createCosmDesignerChainUnlockRequest: CreateCosmDesignerChainUnlockRequest;
 }
 
-export interface CreateCosmDesignerTermRequest {
-    requestBody: { [key: string]: any; };
+export interface CreateCosmDesignerTermOperationRequest {
+    createCosmDesignerTermRequest: CreateCosmDesignerTermRequest;
 }
 
 export interface GetCosmDesignerCopyStateRequest {
@@ -165,9 +183,9 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
      */
-    async createCosmDesignerChainAutoUnlockRaw(requestParameters: CreateCosmDesignerChainAutoUnlockRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse>> {
-        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
-            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createCosmDesignerChainAutoUnlock.');
+    async createCosmDesignerChainAutoUnlockRaw(requestParameters: CreateCosmDesignerChainAutoUnlockOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse>> {
+        if (requestParameters.createCosmDesignerChainAutoUnlockRequest === null || requestParameters.createCosmDesignerChainAutoUnlockRequest === undefined) {
+            throw new runtime.RequiredError('createCosmDesignerChainAutoUnlockRequest','Required parameter requestParameters.createCosmDesignerChainAutoUnlockRequest was null or undefined when calling createCosmDesignerChainAutoUnlock.');
         }
 
         const queryParameters: any = {};
@@ -189,7 +207,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.requestBody,
+            body: CreateCosmDesignerChainAutoUnlockRequestToJSON(requestParameters.createCosmDesignerChainAutoUnlockRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmDesignerChainAutoUnlockResponseFromJSON(jsonValue));
@@ -198,7 +216,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
      */
-    async createCosmDesignerChainAutoUnlock(requestParameters: CreateCosmDesignerChainAutoUnlockRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerChainAutoUnlockResponse> {
+    async createCosmDesignerChainAutoUnlock(requestParameters: CreateCosmDesignerChainAutoUnlockOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerChainAutoUnlockResponse> {
         const response = await this.createCosmDesignerChainAutoUnlockRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -206,9 +224,9 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
      */
-    async createCosmDesignerChainUnlockRaw(requestParameters: CreateCosmDesignerChainUnlockRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerChainUnlockResponse>> {
-        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
-            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createCosmDesignerChainUnlock.');
+    async createCosmDesignerChainUnlockRaw(requestParameters: CreateCosmDesignerChainUnlockOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerChainUnlockResponse>> {
+        if (requestParameters.createCosmDesignerChainUnlockRequest === null || requestParameters.createCosmDesignerChainUnlockRequest === undefined) {
+            throw new runtime.RequiredError('createCosmDesignerChainUnlockRequest','Required parameter requestParameters.createCosmDesignerChainUnlockRequest was null or undefined when calling createCosmDesignerChainUnlock.');
         }
 
         const queryParameters: any = {};
@@ -230,7 +248,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.requestBody,
+            body: CreateCosmDesignerChainUnlockRequestToJSON(requestParameters.createCosmDesignerChainUnlockRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmDesignerChainUnlockResponseFromJSON(jsonValue));
@@ -239,7 +257,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
      */
-    async createCosmDesignerChainUnlock(requestParameters: CreateCosmDesignerChainUnlockRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerChainUnlockResponse> {
+    async createCosmDesignerChainUnlock(requestParameters: CreateCosmDesignerChainUnlockOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerChainUnlockResponse> {
         const response = await this.createCosmDesignerChainUnlockRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -247,9 +265,9 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
      */
-    async createCosmDesignerMaterialiseRaw(requestParameters: CreateCosmDesignerMaterialiseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerMaterialiseResponse>> {
-        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
-            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createCosmDesignerMaterialise.');
+    async createCosmDesignerMaterialiseRaw(requestParameters: CreateCosmDesignerMaterialiseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerMaterialiseResponse>> {
+        if (requestParameters.createCosmDesignerMaterialiseRequest === null || requestParameters.createCosmDesignerMaterialiseRequest === undefined) {
+            throw new runtime.RequiredError('createCosmDesignerMaterialiseRequest','Required parameter requestParameters.createCosmDesignerMaterialiseRequest was null or undefined when calling createCosmDesignerMaterialise.');
         }
 
         const queryParameters: any = {};
@@ -271,7 +289,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.requestBody,
+            body: CreateCosmDesignerMaterialiseRequestToJSON(requestParameters.createCosmDesignerMaterialiseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmDesignerMaterialiseResponseFromJSON(jsonValue));
@@ -280,7 +298,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
      */
-    async createCosmDesignerMaterialise(requestParameters: CreateCosmDesignerMaterialiseRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerMaterialiseResponse> {
+    async createCosmDesignerMaterialise(requestParameters: CreateCosmDesignerMaterialiseOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerMaterialiseResponse> {
         const response = await this.createCosmDesignerMaterialiseRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -288,9 +306,9 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
      */
-    async createCosmDesignerMaterialiseConfirmRaw(requestParameters: CreateCosmDesignerMaterialiseConfirmRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse>> {
-        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
-            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createCosmDesignerMaterialiseConfirm.');
+    async createCosmDesignerMaterialiseConfirmRaw(requestParameters: CreateCosmDesignerMaterialiseConfirmOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse>> {
+        if (requestParameters.createCosmDesignerMaterialiseConfirmRequest === null || requestParameters.createCosmDesignerMaterialiseConfirmRequest === undefined) {
+            throw new runtime.RequiredError('createCosmDesignerMaterialiseConfirmRequest','Required parameter requestParameters.createCosmDesignerMaterialiseConfirmRequest was null or undefined when calling createCosmDesignerMaterialiseConfirm.');
         }
 
         const queryParameters: any = {};
@@ -312,7 +330,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.requestBody,
+            body: CreateCosmDesignerMaterialiseConfirmRequestToJSON(requestParameters.createCosmDesignerMaterialiseConfirmRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmDesignerMaterialiseConfirmResponseFromJSON(jsonValue));
@@ -321,7 +339,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
      */
-    async createCosmDesignerMaterialiseConfirm(requestParameters: CreateCosmDesignerMaterialiseConfirmRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerMaterialiseConfirmResponse> {
+    async createCosmDesignerMaterialiseConfirm(requestParameters: CreateCosmDesignerMaterialiseConfirmOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerMaterialiseConfirmResponse> {
         const response = await this.createCosmDesignerMaterialiseConfirmRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -329,9 +347,9 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
      */
-    async createCosmDesignerMaterialiseReleaseRaw(requestParameters: CreateCosmDesignerMaterialiseReleaseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldJobShiftReleaseResponse>> {
-        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
-            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createCosmDesignerMaterialiseRelease.');
+    async createCosmDesignerMaterialiseReleaseRaw(requestParameters: CreateCosmDesignerMaterialiseReleaseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldJobShiftReleaseResponse>> {
+        if (requestParameters.createCosmDesignerMaterialiseReleaseRequest === null || requestParameters.createCosmDesignerMaterialiseReleaseRequest === undefined) {
+            throw new runtime.RequiredError('createCosmDesignerMaterialiseReleaseRequest','Required parameter requestParameters.createCosmDesignerMaterialiseReleaseRequest was null or undefined when calling createCosmDesignerMaterialiseRelease.');
         }
 
         const queryParameters: any = {};
@@ -353,7 +371,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.requestBody,
+            body: CreateCosmDesignerMaterialiseReleaseRequestToJSON(requestParameters.createCosmDesignerMaterialiseReleaseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldJobShiftReleaseResponseFromJSON(jsonValue));
@@ -362,7 +380,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
      */
-    async createCosmDesignerMaterialiseRelease(requestParameters: CreateCosmDesignerMaterialiseReleaseRequest, initOverrides?: RequestInit): Promise<CreateWorldJobShiftReleaseResponse> {
+    async createCosmDesignerMaterialiseRelease(requestParameters: CreateCosmDesignerMaterialiseReleaseOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldJobShiftReleaseResponse> {
         const response = await this.createCosmDesignerMaterialiseReleaseRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -371,8 +389,8 @@ export class DefaultApi extends runtime.BaseAPI {
      * Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
      */
     async createCosmDesignerSubmitForReviewRaw(requestParameters: CreateCosmDesignerSubmitForReviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerSubmitForReviewResponse>> {
-        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
-            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createCosmDesignerSubmitForReview.');
+        if (requestParameters.createCosmDesignerChainUnlockRequest === null || requestParameters.createCosmDesignerChainUnlockRequest === undefined) {
+            throw new runtime.RequiredError('createCosmDesignerChainUnlockRequest','Required parameter requestParameters.createCosmDesignerChainUnlockRequest was null or undefined when calling createCosmDesignerSubmitForReview.');
         }
 
         const queryParameters: any = {};
@@ -394,7 +412,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.requestBody,
+            body: CreateCosmDesignerChainUnlockRequestToJSON(requestParameters.createCosmDesignerChainUnlockRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmDesignerSubmitForReviewResponseFromJSON(jsonValue));
@@ -411,9 +429,9 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
      */
-    async createCosmDesignerTermRaw(requestParameters: CreateCosmDesignerTermRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerTermResponse>> {
-        if (requestParameters.requestBody === null || requestParameters.requestBody === undefined) {
-            throw new runtime.RequiredError('requestBody','Required parameter requestParameters.requestBody was null or undefined when calling createCosmDesignerTerm.');
+    async createCosmDesignerTermRaw(requestParameters: CreateCosmDesignerTermOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCosmDesignerTermResponse>> {
+        if (requestParameters.createCosmDesignerTermRequest === null || requestParameters.createCosmDesignerTermRequest === undefined) {
+            throw new runtime.RequiredError('createCosmDesignerTermRequest','Required parameter requestParameters.createCosmDesignerTermRequest was null or undefined when calling createCosmDesignerTerm.');
         }
 
         const queryParameters: any = {};
@@ -435,7 +453,7 @@ export class DefaultApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.requestBody,
+            body: CreateCosmDesignerTermRequestToJSON(requestParameters.createCosmDesignerTermRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCosmDesignerTermResponseFromJSON(jsonValue));
@@ -444,7 +462,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
      */
-    async createCosmDesignerTerm(requestParameters: CreateCosmDesignerTermRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerTermResponse> {
+    async createCosmDesignerTerm(requestParameters: CreateCosmDesignerTermOperationRequest, initOverrides?: RequestInit): Promise<CreateCosmDesignerTermResponse> {
         const response = await this.createCosmDesignerTermRaw(requestParameters, initOverrides);
         return await response.value();
     }

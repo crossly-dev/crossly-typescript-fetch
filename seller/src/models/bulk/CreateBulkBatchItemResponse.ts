@@ -52,6 +52,12 @@ export interface CreateBulkBatchItemResponse {
     status: string;
     /**
      * 
+     * @type {string}
+     * @memberof CreateBulkBatchItemResponse
+     */
+    variantId?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof CreateBulkBatchItemResponse
      */
@@ -86,12 +92,6 @@ export interface CreateBulkBatchItemResponse {
      * @memberof CreateBulkBatchItemResponse
      */
     listingId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateBulkBatchItemResponse
-     */
-    variantId?: string | null;
     /**
      * 
      * @type {string}
@@ -239,13 +239,13 @@ export function CreateBulkBatchItemResponseFromJSONTyped(json: any, ignoreDiscri
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
+        'variantId': !exists(json, 'variantId') ? undefined : json['variantId'],
         'quantity': json['quantity'],
         'condition': !exists(json, 'condition') ? undefined : json['condition'],
         'grading': !exists(json, 'grading') ? undefined : CreateBulkBatchItemResponseGradingFromJSON(json['grading']),
         'costBasisCents': !exists(json, 'costBasisCents') ? undefined : json['costBasisCents'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
-        'variantId': !exists(json, 'variantId') ? undefined : json['variantId'],
         'batchId': json['batchId'],
         'error': !exists(json, 'error') ? undefined : json['error'],
         'position': json['position'],
@@ -283,13 +283,13 @@ export function CreateBulkBatchItemResponseToJSON(value?: CreateBulkBatchItemRes
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
+        'variantId': value.variantId,
         'quantity': value.quantity,
         'condition': value.condition,
         'grading': CreateBulkBatchItemResponseGradingToJSON(value.grading),
         'costBasisCents': value.costBasisCents,
         'title': value.title,
         'listingId': value.listingId,
-        'variantId': value.variantId,
         'batchId': value.batchId,
         'error': value.error,
         'position': value.position,

@@ -1,7 +1,7 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "specs": {
-    "seller": "551c1433857ad3bc5dc4472b1ba26b9095bcb50eb76b72af4149026d43acb876",
-    "buyer": "d64567faf31c1bcfe1d3c5c391c69d5fedd9346adbb9ecb3c9334d313488afd7"
+    "seller": "361d4c3da7e6d7a83c5b91dbbf835d7cf1a6ec6e353578fa5da20fad05b78b7c",
+    "buyer": "db3c48c10810c3535dc1b5e25f13449834c5f3a3d343fba89cad2d7b9370fd7a"
   }
 }

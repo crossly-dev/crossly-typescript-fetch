@@ -18,12 +18,24 @@ import {
     CreateTradeBlockEvolutionClaimResponse,
     CreateTradeBlockEvolutionClaimResponseFromJSON,
     CreateTradeBlockEvolutionClaimResponseToJSON,
+    CreateTradeBlockEvolutionRecipeRequest,
+    CreateTradeBlockEvolutionRecipeRequestFromJSON,
+    CreateTradeBlockEvolutionRecipeRequestToJSON,
     CreateTradeBlockEvolutionRecipeResponse,
     CreateTradeBlockEvolutionRecipeResponseFromJSON,
     CreateTradeBlockEvolutionRecipeResponseToJSON,
+    CreateTradeBlockOfferRespondRequest,
+    CreateTradeBlockOfferRespondRequestFromJSON,
+    CreateTradeBlockOfferRespondRequestToJSON,
     CreateTradeBlockOfferRespondResponse,
     CreateTradeBlockOfferRespondResponseFromJSON,
     CreateTradeBlockOfferRespondResponseToJSON,
+    CreateTradeBlockPostOfferRequest,
+    CreateTradeBlockPostOfferRequestFromJSON,
+    CreateTradeBlockPostOfferRequestToJSON,
+    CreateTradeBlockSetRecipeRequest,
+    CreateTradeBlockSetRecipeRequestFromJSON,
+    CreateTradeBlockSetRecipeRequestToJSON,
     CreateTradeBlockSetRecipeResponse,
     CreateTradeBlockSetRecipeResponseFromJSON,
     CreateTradeBlockSetRecipeResponseToJSON,
@@ -51,16 +63,26 @@ export interface CreateTradeBlockEvolutionClaimRequest {
     id: string;
 }
 
-export interface CreateTradeBlockOfferRespondRequest {
+export interface CreateTradeBlockEvolutionRecipeOperationRequest {
+    createTradeBlockEvolutionRecipeRequest: CreateTradeBlockEvolutionRecipeRequest;
+}
+
+export interface CreateTradeBlockOfferRespondOperationRequest {
     id: string;
+    createTradeBlockOfferRespondRequest: CreateTradeBlockOfferRespondRequest;
 }
 
 export interface CreateTradeBlockPostCloseRequest {
     id: string;
 }
 
-export interface CreateTradeBlockPostOfferRequest {
+export interface CreateTradeBlockPostOfferOperationRequest {
     id: string;
+    createTradeBlockPostOfferRequest: CreateTradeBlockPostOfferRequest;
+}
+
+export interface CreateTradeBlockSetRecipeOperationRequest {
+    createTradeBlockSetRecipeRequest: CreateTradeBlockSetRecipeRequest;
 }
 
 export interface GetTradeBlockPostRequest {
@@ -123,10 +145,16 @@ export class TradeBlockApi extends runtime.BaseAPI {
     /**
      * Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves.
      */
-    async createTradeBlockEvolutionRecipeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTradeBlockEvolutionRecipeResponse>> {
+    async createTradeBlockEvolutionRecipeRaw(requestParameters: CreateTradeBlockEvolutionRecipeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTradeBlockEvolutionRecipeResponse>> {
+        if (requestParameters.createTradeBlockEvolutionRecipeRequest === null || requestParameters.createTradeBlockEvolutionRecipeRequest === undefined) {
+            throw new runtime.RequiredError('createTradeBlockEvolutionRecipeRequest','Required parameter requestParameters.createTradeBlockEvolutionRecipeRequest was null or undefined when calling createTradeBlockEvolutionRecipe.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -141,6 +169,7 @@ export class TradeBlockApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTradeBlockEvolutionRecipeRequestToJSON(requestParameters.createTradeBlockEvolutionRecipeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTradeBlockEvolutionRecipeResponseFromJSON(jsonValue));
@@ -149,22 +178,28 @@ export class TradeBlockApi extends runtime.BaseAPI {
     /**
      * Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves.
      */
-    async createTradeBlockEvolutionRecipe(initOverrides?: RequestInit): Promise<CreateTradeBlockEvolutionRecipeResponse> {
-        const response = await this.createTradeBlockEvolutionRecipeRaw(initOverrides);
+    async createTradeBlockEvolutionRecipe(requestParameters: CreateTradeBlockEvolutionRecipeOperationRequest, initOverrides?: RequestInit): Promise<CreateTradeBlockEvolutionRecipeResponse> {
+        const response = await this.createTradeBlockEvolutionRecipeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Accept, decline, counter, or withdraw a Trade Block offer.
      */
-    async createTradeBlockOfferRespondRaw(requestParameters: CreateTradeBlockOfferRespondRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTradeBlockOfferRespondResponse>> {
+    async createTradeBlockOfferRespondRaw(requestParameters: CreateTradeBlockOfferRespondOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTradeBlockOfferRespondResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createTradeBlockOfferRespond.');
+        }
+
+        if (requestParameters.createTradeBlockOfferRespondRequest === null || requestParameters.createTradeBlockOfferRespondRequest === undefined) {
+            throw new runtime.RequiredError('createTradeBlockOfferRespondRequest','Required parameter requestParameters.createTradeBlockOfferRespondRequest was null or undefined when calling createTradeBlockOfferRespond.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -179,6 +214,7 @@ export class TradeBlockApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTradeBlockOfferRespondRequestToJSON(requestParameters.createTradeBlockOfferRespondRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTradeBlockOfferRespondResponseFromJSON(jsonValue));
@@ -187,7 +223,7 @@ export class TradeBlockApi extends runtime.BaseAPI {
     /**
      * Accept, decline, counter, or withdraw a Trade Block offer.
      */
-    async createTradeBlockOfferRespond(requestParameters: CreateTradeBlockOfferRespondRequest, initOverrides?: RequestInit): Promise<CreateTradeBlockOfferRespondResponse> {
+    async createTradeBlockOfferRespond(requestParameters: CreateTradeBlockOfferRespondOperationRequest, initOverrides?: RequestInit): Promise<CreateTradeBlockOfferRespondResponse> {
         const response = await this.createTradeBlockOfferRespondRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -233,14 +269,20 @@ export class TradeBlockApi extends runtime.BaseAPI {
     /**
      * Respond to a post with a concrete swap: items on each side (0..N), optional cash.
      */
-    async createTradeBlockPostOfferRaw(requestParameters: CreateTradeBlockPostOfferRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
+    async createTradeBlockPostOfferRaw(requestParameters: CreateTradeBlockPostOfferOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createTradeBlockPostOffer.');
+        }
+
+        if (requestParameters.createTradeBlockPostOfferRequest === null || requestParameters.createTradeBlockPostOfferRequest === undefined) {
+            throw new runtime.RequiredError('createTradeBlockPostOfferRequest','Required parameter requestParameters.createTradeBlockPostOfferRequest was null or undefined when calling createTradeBlockPostOffer.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -255,6 +297,7 @@ export class TradeBlockApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTradeBlockPostOfferRequestToJSON(requestParameters.createTradeBlockPostOfferRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => IdResponseFromJSON(jsonValue));
@@ -263,7 +306,7 @@ export class TradeBlockApi extends runtime.BaseAPI {
     /**
      * Respond to a post with a concrete swap: items on each side (0..N), optional cash.
      */
-    async createTradeBlockPostOffer(requestParameters: CreateTradeBlockPostOfferRequest, initOverrides?: RequestInit): Promise<IdResponse> {
+    async createTradeBlockPostOffer(requestParameters: CreateTradeBlockPostOfferOperationRequest, initOverrides?: RequestInit): Promise<IdResponse> {
         const response = await this.createTradeBlockPostOfferRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -271,10 +314,16 @@ export class TradeBlockApi extends runtime.BaseAPI {
     /**
      * Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves.
      */
-    async createTradeBlockSetRecipeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTradeBlockSetRecipeResponse>> {
+    async createTradeBlockSetRecipeRaw(requestParameters: CreateTradeBlockSetRecipeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTradeBlockSetRecipeResponse>> {
+        if (requestParameters.createTradeBlockSetRecipeRequest === null || requestParameters.createTradeBlockSetRecipeRequest === undefined) {
+            throw new runtime.RequiredError('createTradeBlockSetRecipeRequest','Required parameter requestParameters.createTradeBlockSetRecipeRequest was null or undefined when calling createTradeBlockSetRecipe.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -289,6 +338,7 @@ export class TradeBlockApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTradeBlockSetRecipeRequestToJSON(requestParameters.createTradeBlockSetRecipeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTradeBlockSetRecipeResponseFromJSON(jsonValue));
@@ -297,8 +347,8 @@ export class TradeBlockApi extends runtime.BaseAPI {
     /**
      * Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves.
      */
-    async createTradeBlockSetRecipe(initOverrides?: RequestInit): Promise<CreateTradeBlockSetRecipeResponse> {
-        const response = await this.createTradeBlockSetRecipeRaw(initOverrides);
+    async createTradeBlockSetRecipe(requestParameters: CreateTradeBlockSetRecipeOperationRequest, initOverrides?: RequestInit): Promise<CreateTradeBlockSetRecipeResponse> {
+        const response = await this.createTradeBlockSetRecipeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

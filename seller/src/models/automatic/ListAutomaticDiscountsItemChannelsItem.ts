@@ -18,9 +18,9 @@
  * @enum {string}
  */
 export enum ListAutomaticDiscountsItemChannelsItem {
+    Storefront = 'storefront',
     Live = 'live',
     Marketplace = 'marketplace',
-    Storefront = 'storefront',
     Rentals = 'rentals',
     World = 'world',
     Website = 'website',

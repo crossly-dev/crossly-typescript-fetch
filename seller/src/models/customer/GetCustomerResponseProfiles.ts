@@ -166,8 +166,8 @@ export enum GetCustomerResponseProfilesSourceEnum {
 * @enum {string}
 */
 export enum GetCustomerResponseProfilesFetchStatusEnum {
-    Error = 'error',
     Ok = 'ok',
+    Error = 'error',
     Unsupported = 'unsupported',
     NotFound = 'not_found'
 }

@@ -147,8 +147,8 @@ export interface ListWholesaleCatalogItemsItem {
 * @enum {string}
 */
 export enum ListWholesaleCatalogItemsItemSourceEnum {
-    Vault = 'vault',
-    Listing = 'listing'
+    Listing = 'listing',
+    Vault = 'vault'
 }
 
 export function ListWholesaleCatalogItemsItemFromJSON(json: any): ListWholesaleCatalogItemsItem {

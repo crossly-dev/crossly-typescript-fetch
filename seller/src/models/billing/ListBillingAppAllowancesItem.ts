@@ -79,6 +79,12 @@ export interface ListBillingAppAllowancesItem {
      * @memberof ListBillingAppAllowancesItem
      */
     resetsAt?: string | null;
+    /**
+     * Of `used`, the units in the asked store's plan pool (STORE-SCOPE-PLAN §4.1); null when no store was asked.
+     * @type {number}
+     * @memberof ListBillingAppAllowancesItem
+     */
+    storeUsed?: number | null;
 }
 
 /**
@@ -117,6 +123,7 @@ export function ListBillingAppAllowancesItemFromJSONTyped(json: any, ignoreDiscr
         'limitMode': json['limitMode'],
         'limitPeriod': json['limitPeriod'],
         'resetsAt': !exists(json, 'resetsAt') ? undefined : json['resetsAt'],
+        'storeUsed': !exists(json, 'storeUsed') ? undefined : json['storeUsed'],
     };
 }
 
@@ -139,6 +146,7 @@ export function ListBillingAppAllowancesItemToJSON(value?: ListBillingAppAllowan
         'limitMode': value.limitMode,
         'limitPeriod': value.limitPeriod,
         'resetsAt': value.resetsAt,
+        'storeUsed': value.storeUsed,
     };
 }
 

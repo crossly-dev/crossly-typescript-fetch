@@ -51,8 +51,8 @@ export interface CreateWorldDecorRetractResponseDataInventorySpaces {
 */
 export enum CreateWorldDecorRetractResponseDataInventorySpacesKindEnum {
     Home = 'home',
-    Street = 'street',
     Shop = 'shop',
+    Street = 'street',
     Stall = 'stall'
 }
 

@@ -51,10 +51,11 @@ export interface CreateVaultMarketAlertPrefTestResponse {
 * @enum {string}
 */
 export enum CreateVaultMarketAlertPrefTestResponseKindEnum {
+    Fill = 'fill',
     Account = 'account',
     Price = 'price',
-    Fill = 'fill',
     Auction = 'auction',
+    Follow = 'follow',
     Prediction = 'prediction',
     OptionExpiry = 'option_expiry',
     MarginCall = 'margin_call',
@@ -63,7 +64,6 @@ export enum CreateVaultMarketAlertPrefTestResponseKindEnum {
     MarketOpen = 'market_open',
     ReceiptToken = 'receipt_token',
     SetGoal = 'set_goal',
-    Follow = 'follow',
     ShareOffering = 'share_offering',
     ShareVote = 'share_vote',
     OptionSettlement = 'option_settlement',

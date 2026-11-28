@@ -87,8 +87,8 @@ export interface GetWorldGameByGameResponseDataStore {
 */
 export enum GetWorldGameByGameResponseDataStoreKindEnum {
     Product = 'product',
-    Subscription = 'subscription',
     Pass = 'pass',
+    Subscription = 'subscription',
     PrivateServer = 'private_server',
     PaidAccess = 'paid_access'
 }

@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
+    GetFundingLineResponseDataLateRules,
+    GetFundingLineResponseDataLateRulesFromJSON,
+    GetFundingLineResponseDataLateRulesFromJSONTyped,
+    GetFundingLineResponseDataLateRulesToJSON,
+} from './GetFundingLineResponseDataLateRules';
+import {
     GetFundingLineResponseDataLine,
     GetFundingLineResponseDataLineFromJSON,
     GetFundingLineResponseDataLineFromJSONTyped,
@@ -116,6 +122,12 @@ export interface GetFundingLineResponseData {
      * @memberof GetFundingLineResponseData
      */
     autorepayPct: number;
+    /**
+     * 
+     * @type {GetFundingLineResponseDataLateRules}
+     * @memberof GetFundingLineResponseData
+     */
+    lateRules: GetFundingLineResponseDataLateRules;
 }
 
 export function GetFundingLineResponseDataFromJSON(json: any): GetFundingLineResponseData {
@@ -140,6 +152,7 @@ export function GetFundingLineResponseDataFromJSONTyped(json: any, ignoreDiscrim
         'overdue': !exists(json, 'overdue') ? undefined : GetFundingLineResponseDataOverdueFromJSON(json['overdue']),
         'schedule': ((json['schedule'] as Array<any>).map(GetFundingLineResponseDataScheduleFromJSON)),
         'autorepayPct': json['autorepayPct'],
+        'lateRules': GetFundingLineResponseDataLateRulesFromJSON(json['lateRules']),
     };
 }
 
@@ -164,6 +177,7 @@ export function GetFundingLineResponseDataToJSON(value?: GetFundingLineResponseD
         'overdue': GetFundingLineResponseDataOverdueToJSON(value.overdue),
         'schedule': ((value.schedule as Array<any>).map(GetFundingLineResponseDataScheduleToJSON)),
         'autorepayPct': value.autorepayPct,
+        'lateRules': GetFundingLineResponseDataLateRulesToJSON(value.lateRules),
     };
 }
 

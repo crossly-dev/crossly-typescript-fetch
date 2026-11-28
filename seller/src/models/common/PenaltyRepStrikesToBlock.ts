@@ -20,13 +20,13 @@ import { exists, mapValues } from '../../runtime';
  */
 export interface PenaltyRepStrikesToBlock {
     /**
-     * Tenths of a star taken off the worker's reputation for a no-show.
+     * 
      * @type {number}
      * @memberof PenaltyRepStrikesToBlock
      */
     penaltyRep: number;
     /**
-     * After this many no-shows for this employer, the worker is put on the posting's blacklist. 0 = never.
+     * 
      * @type {number}
      * @memberof PenaltyRepStrikesToBlock
      */

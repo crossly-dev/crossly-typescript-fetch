@@ -68,6 +68,12 @@ import {
     GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscountsToJSON,
 } from './GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscounts';
 import {
+    GetBuyerCatalogListingRentalResponseDataOptionsPhotosBack,
+    GetBuyerCatalogListingRentalResponseDataOptionsPhotosBackFromJSON,
+    GetBuyerCatalogListingRentalResponseDataOptionsPhotosBackFromJSONTyped,
+    GetBuyerCatalogListingRentalResponseDataOptionsPhotosBackToJSON,
+} from './GetBuyerCatalogListingRentalResponseDataOptionsPhotosBack';
+import {
     GetBuyerCatalogListingRentalResponseDataOptionsPhotosOut,
     GetBuyerCatalogListingRentalResponseDataOptionsPhotosOutFromJSON,
     GetBuyerCatalogListingRentalResponseDataOptionsPhotosOutFromJSONTyped,
@@ -309,6 +315,12 @@ export interface GetBuyerCatalogListingRentalResponseDataOptions {
      */
     photosReturn: boolean;
     /**
+     * 
+     * @type {GetBuyerCatalogListingRentalResponseDataOptionsPhotosBack}
+     * @memberof GetBuyerCatalogListingRentalResponseDataOptions
+     */
+    photosBack: GetBuyerCatalogListingRentalResponseDataOptionsPhotosBack;
+    /**
      * A checklist the seller ticks at inspection (e.g. "lens cap", "strap").
      * @type {Array<string>}
      * @memberof GetBuyerCatalogListingRentalResponseDataOptions
@@ -373,8 +385,8 @@ export enum GetBuyerCatalogListingRentalResponseDataOptionsShippingPaidByEnum {
 * @enum {string}
 */
 export enum GetBuyerCatalogListingRentalResponseDataOptionsApprovalEnum {
-    Approval = 'approval',
-    Instant = 'instant'
+    Instant = 'instant',
+    Approval = 'approval'
 }
 
 export function GetBuyerCatalogListingRentalResponseDataOptionsFromJSON(json: any): GetBuyerCatalogListingRentalResponseDataOptions {
@@ -423,6 +435,7 @@ export function GetBuyerCatalogListingRentalResponseDataOptionsFromJSONTyped(jso
         'photosOut': GetBuyerCatalogListingRentalResponseDataOptionsPhotosOutFromJSON(json['photosOut']),
         'photosArrival': json['photosArrival'],
         'photosReturn': json['photosReturn'],
+        'photosBack': GetBuyerCatalogListingRentalResponseDataOptionsPhotosBackFromJSON(json['photosBack']),
         'checklist': json['checklist'],
         'extensions': GetBuyerCatalogListingRentalResponseDataOptionsExtensionsFromJSON(json['extensions']),
         'buyout': CreateBuyerCatalogListingRentalQuoteResponseDataBuyoutFromJSON(json['buyout']),
@@ -477,6 +490,7 @@ export function GetBuyerCatalogListingRentalResponseDataOptionsToJSON(value?: Ge
         'photosOut': GetBuyerCatalogListingRentalResponseDataOptionsPhotosOutToJSON(value.photosOut),
         'photosArrival': value.photosArrival,
         'photosReturn': value.photosReturn,
+        'photosBack': GetBuyerCatalogListingRentalResponseDataOptionsPhotosBackToJSON(value.photosBack),
         'checklist': value.checklist,
         'extensions': GetBuyerCatalogListingRentalResponseDataOptionsExtensionsToJSON(value.extensions),
         'buyout': CreateBuyerCatalogListingRentalQuoteResponseDataBuyoutToJSON(value.buyout),

@@ -141,8 +141,8 @@ export interface ListWorldDecorMineItem {
 */
 export enum ListWorldDecorMineItemSurfaceEnum {
     Home = 'home',
-    Street = 'street',
     Shop = 'shop',
+    Street = 'street',
     Avatar = 'avatar',
     Stall = 'stall'
 }/**

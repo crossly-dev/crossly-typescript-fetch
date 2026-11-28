@@ -27,9 +27,18 @@ import {
     CreateDetectedEventEventConfirmRequest,
     CreateDetectedEventEventConfirmRequestFromJSON,
     CreateDetectedEventEventConfirmRequestToJSON,
-    CreateDetectedEventEventUndoResponse,
-    CreateDetectedEventEventUndoResponseFromJSON,
-    CreateDetectedEventEventUndoResponseToJSON,
+    CreateDetectedEventEventDismissRequest,
+    CreateDetectedEventEventDismissRequestFromJSON,
+    CreateDetectedEventEventDismissRequestToJSON,
+    CreateDetectedEventEventRejectRequest,
+    CreateDetectedEventEventRejectRequestFromJSON,
+    CreateDetectedEventEventRejectRequestToJSON,
+    CreateDetectedEventRuleCopyRequest,
+    CreateDetectedEventRuleCopyRequestFromJSON,
+    CreateDetectedEventRuleCopyRequestToJSON,
+    CreateDetectedEventRuleCopyResponse,
+    CreateDetectedEventRuleCopyResponseFromJSON,
+    CreateDetectedEventRuleCopyResponseToJSON,
     CreateDetectedEventRulePlaceRequest,
     CreateDetectedEventRulePlaceRequestFromJSON,
     CreateDetectedEventRulePlaceRequestToJSON,
@@ -63,6 +72,9 @@ import {
     CreateDetectedEventSimulateResponse,
     CreateDetectedEventSimulateResponseFromJSON,
     CreateDetectedEventSimulateResponseToJSON,
+    CreateDetectedEventStartingPointPreviewResponse,
+    CreateDetectedEventStartingPointPreviewResponseFromJSON,
+    CreateDetectedEventStartingPointPreviewResponseToJSON,
     CreateEmailEventConfirmRequest,
     CreateEmailEventConfirmRequestFromJSON,
     CreateEmailEventConfirmRequestToJSON,
@@ -75,6 +87,9 @@ import {
     DeleteStoryResponse,
     DeleteStoryResponseFromJSON,
     DeleteStoryResponseToJSON,
+    DetectedEventEventResponse,
+    DetectedEventEventResponseFromJSON,
+    DetectedEventEventResponseToJSON,
     GetActionLogExportDownloadResponse,
     GetActionLogExportDownloadResponseFromJSON,
     GetActionLogExportDownloadResponseToJSON,
@@ -87,6 +102,21 @@ import {
     GetDetectedEventEventResponse,
     GetDetectedEventEventResponseFromJSON,
     GetDetectedEventEventResponseToJSON,
+    GetDetectedEventOverviewResponse,
+    GetDetectedEventOverviewResponseFromJSON,
+    GetDetectedEventOverviewResponseToJSON,
+    GetDetectedEventRuleResponse,
+    GetDetectedEventRuleResponseFromJSON,
+    GetDetectedEventRuleResponseToJSON,
+    GetDetectedEventStartingPointResponse,
+    GetDetectedEventStartingPointResponseFromJSON,
+    GetDetectedEventStartingPointResponseToJSON,
+    GetEmailEventPreviewResponse,
+    GetEmailEventPreviewResponseFromJSON,
+    GetEmailEventPreviewResponseToJSON,
+    GetEmailEventResponse,
+    GetEmailEventResponseFromJSON,
+    GetEmailEventResponseToJSON,
     GetEventPolicyResponse,
     GetEventPolicyResponseFromJSON,
     GetEventPolicyResponseToJSON,
@@ -111,12 +141,18 @@ import {
     ListDetectedEventRulesResponse,
     ListDetectedEventRulesResponseFromJSON,
     ListDetectedEventRulesResponseToJSON,
+    ListDetectedEventSituationsResponse,
+    ListDetectedEventSituationsResponseFromJSON,
+    ListDetectedEventSituationsResponseToJSON,
     ListEmailEventsResponse,
     ListEmailEventsResponseFromJSON,
     ListEmailEventsResponseToJSON,
     ListEventPolicyDecisionsResponse,
     ListEventPolicyDecisionsResponseFromJSON,
     ListEventPolicyDecisionsResponseToJSON,
+    UpdateDetectedEventStartingPointRequest,
+    UpdateDetectedEventStartingPointRequestFromJSON,
+    UpdateDetectedEventStartingPointRequestToJSON,
     UpdateEventPolicyRuleRequest,
     UpdateEventPolicyRuleRequestFromJSON,
     UpdateEventPolicyRuleRequestToJSON,
@@ -138,12 +174,27 @@ export interface CreateDetectedEventEventConfirmOperationRequest {
     createDetectedEventEventConfirmRequest: CreateDetectedEventEventConfirmRequest;
 }
 
+export interface CreateDetectedEventEventDismissOperationRequest {
+    id: string;
+    createDetectedEventEventDismissRequest: CreateDetectedEventEventDismissRequest;
+}
+
+export interface CreateDetectedEventEventRejectOperationRequest {
+    id: string;
+    createDetectedEventEventRejectRequest: CreateDetectedEventEventRejectRequest;
+}
+
 export interface CreateDetectedEventEventUndoRequest {
     id: string;
 }
 
 export interface CreateDetectedEventRuleOperationRequest {
     createDetectedEventRuleRequest: CreateDetectedEventRuleRequest;
+}
+
+export interface CreateDetectedEventRuleCopyOperationRequest {
+    ref: string;
+    createDetectedEventRuleCopyRequest: CreateDetectedEventRuleCopyRequest;
 }
 
 export interface CreateDetectedEventRulePlaceOperationRequest {
@@ -166,12 +217,20 @@ export interface CreateDetectedEventSimulateImpactOperationRequest {
     createDetectedEventSimulateImpactRequest: CreateDetectedEventSimulateImpactRequest;
 }
 
+export interface CreateDetectedEventStartingPointPreviewRequest {
+    updateDetectedEventStartingPointRequest: UpdateDetectedEventStartingPointRequest;
+}
+
 export interface CreateEmailEventConfirmOperationRequest {
     id: string;
     createEmailEventConfirmRequest: CreateEmailEventConfirmRequest;
 }
 
 export interface CreateEmailEventDismissRequest {
+    id: string;
+}
+
+export interface CreateEmailEventReprocessRequest {
     id: string;
 }
 
@@ -200,6 +259,18 @@ export interface GetActionLogExportDownloadRequest {
 }
 
 export interface GetDetectedEventEventRequest {
+    id: string;
+}
+
+export interface GetDetectedEventRuleRequest {
+    ref: string;
+}
+
+export interface GetEmailEventRequest {
+    id: string;
+}
+
+export interface GetEmailEventPreviewRequest {
     id: string;
 }
 
@@ -251,6 +322,12 @@ export interface ListDetectedEventEventsRequest {
     platforms?: string;
     accounts?: string;
     statuses?: string;
+    channels?: string;
+    itemId?: string;
+    listingId?: string;
+    orderId?: string;
+    ruleId?: string;
+    ownership?: string;
     since?: Date;
     cursor?: string;
     limit?: number;
@@ -272,6 +349,10 @@ export interface ListEventPolicyDecisionsRequest {
 export interface UpdateDetectedEventRuleRequest {
     id: string;
     createDetectedEventRuleRequest: CreateDetectedEventRuleRequest;
+}
+
+export interface UpdateDetectedEventStartingPointOperationRequest {
+    updateDetectedEventStartingPointRequest: UpdateDetectedEventStartingPointRequest;
 }
 
 export interface UpdateEventPolicyRuleOperationRequest {
@@ -368,7 +449,7 @@ export class ActivityApi extends runtime.BaseAPI {
     /**
      * Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask\'s preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
      */
-    async createDetectedEventEventConfirmRaw(requestParameters: CreateDetectedEventEventConfirmOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDetectedEventEventUndoResponse>> {
+    async createDetectedEventEventConfirmRaw(requestParameters: CreateDetectedEventEventConfirmOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DetectedEventEventResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDetectedEventEventConfirm.');
         }
@@ -399,21 +480,111 @@ export class ActivityApi extends runtime.BaseAPI {
             body: CreateDetectedEventEventConfirmRequestToJSON(requestParameters.createDetectedEventEventConfirmRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateDetectedEventEventUndoResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DetectedEventEventResponseFromJSON(jsonValue));
     }
 
     /**
      * Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask\'s preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
      */
-    async createDetectedEventEventConfirm(requestParameters: CreateDetectedEventEventConfirmOperationRequest, initOverrides?: RequestInit): Promise<CreateDetectedEventEventUndoResponse> {
+    async createDetectedEventEventConfirm(requestParameters: CreateDetectedEventEventConfirmOperationRequest, initOverrides?: RequestInit): Promise<DetectedEventEventResponse> {
         const response = await this.createDetectedEventEventConfirmRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+     */
+    async createDetectedEventEventDismissRaw(requestParameters: CreateDetectedEventEventDismissOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DetectedEventEventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDetectedEventEventDismiss.');
+        }
+
+        if (requestParameters.createDetectedEventEventDismissRequest === null || requestParameters.createDetectedEventEventDismissRequest === undefined) {
+            throw new runtime.RequiredError('createDetectedEventEventDismissRequest','Required parameter requestParameters.createDetectedEventEventDismissRequest was null or undefined when calling createDetectedEventEventDismiss.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/events/{id}/dismiss`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDetectedEventEventDismissRequestToJSON(requestParameters.createDetectedEventEventDismissRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DetectedEventEventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+     */
+    async createDetectedEventEventDismiss(requestParameters: CreateDetectedEventEventDismissOperationRequest, initOverrides?: RequestInit): Promise<DetectedEventEventResponse> {
+        const response = await this.createDetectedEventEventDismissRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * \"Not this item\": drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
+     */
+    async createDetectedEventEventRejectRaw(requestParameters: CreateDetectedEventEventRejectOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DetectedEventEventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDetectedEventEventReject.');
+        }
+
+        if (requestParameters.createDetectedEventEventRejectRequest === null || requestParameters.createDetectedEventEventRejectRequest === undefined) {
+            throw new runtime.RequiredError('createDetectedEventEventRejectRequest','Required parameter requestParameters.createDetectedEventEventRejectRequest was null or undefined when calling createDetectedEventEventReject.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/events/{id}/reject`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDetectedEventEventRejectRequestToJSON(requestParameters.createDetectedEventEventRejectRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DetectedEventEventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * \"Not this item\": drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
+     */
+    async createDetectedEventEventReject(requestParameters: CreateDetectedEventEventRejectOperationRequest, initOverrides?: RequestInit): Promise<DetectedEventEventResponse> {
+        const response = await this.createDetectedEventEventRejectRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Undo what Crossly did for an event (canUndo true): every executed action\'s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
      */
-    async createDetectedEventEventUndoRaw(requestParameters: CreateDetectedEventEventUndoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDetectedEventEventUndoResponse>> {
+    async createDetectedEventEventUndoRaw(requestParameters: CreateDetectedEventEventUndoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DetectedEventEventResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createDetectedEventEventUndo.');
         }
@@ -437,13 +608,13 @@ export class ActivityApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateDetectedEventEventUndoResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DetectedEventEventResponseFromJSON(jsonValue));
     }
 
     /**
      * Undo what Crossly did for an event (canUndo true): every executed action\'s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
      */
-    async createDetectedEventEventUndo(requestParameters: CreateDetectedEventEventUndoRequest, initOverrides?: RequestInit): Promise<CreateDetectedEventEventUndoResponse> {
+    async createDetectedEventEventUndo(requestParameters: CreateDetectedEventEventUndoRequest, initOverrides?: RequestInit): Promise<DetectedEventEventResponse> {
         const response = await this.createDetectedEventEventUndoRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -486,6 +657,51 @@ export class ActivityApi extends runtime.BaseAPI {
      */
     async createDetectedEventRule(requestParameters: CreateDetectedEventRuleOperationRequest, initOverrides?: RequestInit): Promise<CreateDetectedEventRuleResponse> {
         const response = await this.createDetectedEventRuleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Copy one rule (a stored id, or default.<key> for the store\'s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
+     */
+    async createDetectedEventRuleCopyRaw(requestParameters: CreateDetectedEventRuleCopyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDetectedEventRuleCopyResponse>> {
+        if (requestParameters.ref === null || requestParameters.ref === undefined) {
+            throw new runtime.RequiredError('ref','Required parameter requestParameters.ref was null or undefined when calling createDetectedEventRuleCopy.');
+        }
+
+        if (requestParameters.createDetectedEventRuleCopyRequest === null || requestParameters.createDetectedEventRuleCopyRequest === undefined) {
+            throw new runtime.RequiredError('createDetectedEventRuleCopyRequest','Required parameter requestParameters.createDetectedEventRuleCopyRequest was null or undefined when calling createDetectedEventRuleCopy.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/rules/{ref}/copy`.replace(`{${"ref"}}`, encodeURIComponent(String(requestParameters.ref))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDetectedEventRuleCopyRequestToJSON(requestParameters.createDetectedEventRuleCopyRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateDetectedEventRuleCopyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Copy one rule (a stored id, or default.<key> for the store\'s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
+     */
+    async createDetectedEventRuleCopy(requestParameters: CreateDetectedEventRuleCopyOperationRequest, initOverrides?: RequestInit): Promise<CreateDetectedEventRuleCopyResponse> {
+        const response = await this.createDetectedEventRuleCopyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -695,6 +911,47 @@ export class ActivityApi extends runtime.BaseAPI {
     }
 
     /**
+     * What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
+     */
+    async createDetectedEventStartingPointPreviewRaw(requestParameters: CreateDetectedEventStartingPointPreviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDetectedEventStartingPointPreviewResponse>> {
+        if (requestParameters.updateDetectedEventStartingPointRequest === null || requestParameters.updateDetectedEventStartingPointRequest === undefined) {
+            throw new runtime.RequiredError('updateDetectedEventStartingPointRequest','Required parameter requestParameters.updateDetectedEventStartingPointRequest was null or undefined when calling createDetectedEventStartingPointPreview.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/starting-point/preview`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateDetectedEventStartingPointRequestToJSON(requestParameters.updateDetectedEventStartingPointRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateDetectedEventStartingPointPreviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
+     */
+    async createDetectedEventStartingPointPreview(requestParameters: CreateDetectedEventStartingPointPreviewRequest, initOverrides?: RequestInit): Promise<CreateDetectedEventStartingPointPreviewResponse> {
+        const response = await this.createDetectedEventStartingPointPreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Confirm an email-detected event: re-run it as certain (a possible sale records the sale and delists the item elsewhere). When several listings could be meant, pass platformListingDbId to choose one.
      */
     async createEmailEventConfirmRaw(requestParameters: CreateEmailEventConfirmOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateEmailEventConfirmResponse>> {
@@ -774,6 +1031,44 @@ export class ActivityApi extends runtime.BaseAPI {
      */
     async createEmailEventDismiss(requestParameters: CreateEmailEventDismissRequest, initOverrides?: RequestInit): Promise<IdStatusResponse> {
         const response = await this.createEmailEventDismissRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
+     */
+    async createEmailEventReprocessRaw(requestParameters: CreateEmailEventReprocessRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetEmailEventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createEmailEventReprocess.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-events/{id}/reprocess`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetEmailEventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
+     */
+    async createEmailEventReprocess(requestParameters: CreateEmailEventReprocessRequest, initOverrides?: RequestInit): Promise<GetEmailEventResponse> {
+        const response = await this.createEmailEventReprocessRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1078,6 +1373,188 @@ export class ActivityApi extends runtime.BaseAPI {
     }
 
     /**
+     * What Crossly does today in each situation for the store, computed from the store\'s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+     */
+    async getDetectedEventOverviewRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDetectedEventOverviewResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/overview`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDetectedEventOverviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * What Crossly does today in each situation for the store, computed from the store\'s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+     */
+    async getDetectedEventOverview(initOverrides?: RequestInit): Promise<GetDetectedEventOverviewResponse> {
+        const response = await this.getDetectedEventOverviewRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One detection rule by its ref: a stored rule\'s id, or default.<key> for a situation (the store\'s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+     */
+    async getDetectedEventRuleRaw(requestParameters: GetDetectedEventRuleRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDetectedEventRuleResponse>> {
+        if (requestParameters.ref === null || requestParameters.ref === undefined) {
+            throw new runtime.RequiredError('ref','Required parameter requestParameters.ref was null or undefined when calling getDetectedEventRule.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/rules/{ref}`.replace(`{${"ref"}}`, encodeURIComponent(String(requestParameters.ref))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDetectedEventRuleResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One detection rule by its ref: a stored rule\'s id, or default.<key> for a situation (the store\'s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+     */
+    async getDetectedEventRule(requestParameters: GetDetectedEventRuleRequest, initOverrides?: RequestInit): Promise<GetDetectedEventRuleResponse> {
+        const response = await this.getDetectedEventRuleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The store\'s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+     */
+    async getDetectedEventStartingPointRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDetectedEventStartingPointResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/starting-point`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDetectedEventStartingPointResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The store\'s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+     */
+    async getDetectedEventStartingPoint(initOverrides?: RequestInit): Promise<GetDetectedEventStartingPointResponse> {
+        const response = await this.getDetectedEventStartingPointRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+     */
+    async getEmailEventRaw(requestParameters: GetEmailEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetEmailEventResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getEmailEvent.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-events/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetEmailEventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+     */
+    async getEmailEvent(requestParameters: GetEmailEventRequest, initOverrides?: RequestInit): Promise<GetEmailEventResponse> {
+        const response = await this.getEmailEventRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A marketplace email\'s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
+     */
+    async getEmailEventPreviewRaw(requestParameters: GetEmailEventPreviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetEmailEventPreviewResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getEmailEventPreview.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-events/{id}/preview`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetEmailEventPreviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A marketplace email\'s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
+     */
+    async getEmailEventPreview(requestParameters: GetEmailEventPreviewRequest, initOverrides?: RequestInit): Promise<GetEmailEventPreviewResponse> {
+        const response = await this.getEmailEventPreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * What Crossly does with each detected marketplace event (sale, listing ended, offer, cancellation, label, shipped, delivered, refund, return, payout, message), per who owns the item (crossly, imported, app_managed, other_tool, untracked). Each matrix cell lists the allowed actions and the effective one, with the scope it comes from (app > platform > global > default). Pass platform (or appId) to see the matrix as that platform\'s (or app\'s) items see it. Also returns the rules, platforms and connected apps.
      */
     async getEventPolicyRaw(requestParameters: GetEventPolicyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetEventPolicyResponse>> {
@@ -1338,7 +1815,7 @@ export class ActivityApi extends runtime.BaseAPI {
     }
 
     /**
-     * Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+     * Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses=asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
      */
     async listDetectedEventEventsRaw(requestParameters: ListDetectedEventEventsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListDetectedEventEventsResponse>> {
         const queryParameters: any = {};
@@ -1357,6 +1834,30 @@ export class ActivityApi extends runtime.BaseAPI {
 
         if (requestParameters.statuses !== undefined) {
             queryParameters['statuses'] = requestParameters.statuses;
+        }
+
+        if (requestParameters.channels !== undefined) {
+            queryParameters['channels'] = requestParameters.channels;
+        }
+
+        if (requestParameters.itemId !== undefined) {
+            queryParameters['itemId'] = requestParameters.itemId;
+        }
+
+        if (requestParameters.listingId !== undefined) {
+            queryParameters['listingId'] = requestParameters.listingId;
+        }
+
+        if (requestParameters.orderId !== undefined) {
+            queryParameters['orderId'] = requestParameters.orderId;
+        }
+
+        if (requestParameters.ruleId !== undefined) {
+            queryParameters['ruleId'] = requestParameters.ruleId;
+        }
+
+        if (requestParameters.ownership !== undefined) {
+            queryParameters['ownership'] = requestParameters.ownership;
         }
 
         if (requestParameters.since !== undefined) {
@@ -1392,7 +1893,7 @@ export class ActivityApi extends runtime.BaseAPI {
     }
 
     /**
-     * Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+     * Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses=asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
      */
     async listDetectedEventEvents(requestParameters: ListDetectedEventEventsRequest = {}, initOverrides?: RequestInit): Promise<ListDetectedEventEventsResponse> {
         const response = await this.listDetectedEventEventsRaw(requestParameters, initOverrides);
@@ -1430,6 +1931,40 @@ export class ActivityApi extends runtime.BaseAPI {
      */
     async listDetectedEventRules(initOverrides?: RequestInit): Promise<ListDetectedEventRulesResponse> {
         const response = await this.listDetectedEventRulesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.<key>) and the choice cards offered for it. To pick a card, PUT its body to the rule default:<key>. The same catalog for every seller; GET overview says what each does today.
+     */
+    async listDetectedEventSituationsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListDetectedEventSituationsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/situations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListDetectedEventSituationsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.<key>) and the choice cards offered for it. To pick a card, PUT its body to the rule default:<key>. The same catalog for every seller; GET overview says what each does today.
+     */
+    async listDetectedEventSituations(initOverrides?: RequestInit): Promise<ListDetectedEventSituationsResponse> {
+        const response = await this.listDetectedEventSituationsRaw(initOverrides);
         return await response.value();
     }
 
@@ -1571,6 +2106,47 @@ export class ActivityApi extends runtime.BaseAPI {
      */
     async updateDetectedEventRule(requestParameters: UpdateDetectedEventRuleRequest, initOverrides?: RequestInit): Promise<CreateDetectedEventRuleResponse> {
         const response = await this.updateDetectedEventRuleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Apply a starting point to the store: rewrites the store\'s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
+     */
+    async updateDetectedEventStartingPointRaw(requestParameters: UpdateDetectedEventStartingPointOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDetectedEventStartingPointResponse>> {
+        if (requestParameters.updateDetectedEventStartingPointRequest === null || requestParameters.updateDetectedEventStartingPointRequest === undefined) {
+            throw new runtime.RequiredError('updateDetectedEventStartingPointRequest','Required parameter requestParameters.updateDetectedEventStartingPointRequest was null or undefined when calling updateDetectedEventStartingPoint.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/detected-events/starting-point`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateDetectedEventStartingPointRequestToJSON(requestParameters.updateDetectedEventStartingPointRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDetectedEventStartingPointResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Apply a starting point to the store: rewrites the store\'s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
+     */
+    async updateDetectedEventStartingPoint(requestParameters: UpdateDetectedEventStartingPointOperationRequest, initOverrides?: RequestInit): Promise<GetDetectedEventStartingPointResponse> {
+        const response = await this.updateDetectedEventStartingPointRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -26,6 +26,12 @@ export interface CreatePlatformAccountHistoryImportResponse {
      */
     pendingAccounts: number;
     /**
+     * The account rows the window was saved on (user_platform_accounts / platform_connections ids).
+     * @type {Array<string>}
+     * @memberof CreatePlatformAccountHistoryImportResponse
+     */
+    accountIds?: Array<string> | null;
+    /**
      * 
      * @type {boolean}
      * @memberof CreatePlatformAccountHistoryImportResponse
@@ -37,6 +43,12 @@ export interface CreatePlatformAccountHistoryImportResponse {
      * @memberof CreatePlatformAccountHistoryImportResponse
      */
     listingsFired: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreatePlatformAccountHistoryImportResponse
+     */
+    messagesFired?: boolean | null;
     /**
      * 
      * @type {boolean}
@@ -56,8 +68,10 @@ export function CreatePlatformAccountHistoryImportResponseFromJSONTyped(json: an
     return {
         
         'pendingAccounts': json['pendingAccounts'],
+        'accountIds': !exists(json, 'accountIds') ? undefined : json['accountIds'],
         'ledgerFired': json['ledgerFired'],
         'listingsFired': json['listingsFired'],
+        'messagesFired': !exists(json, 'messagesFired') ? undefined : json['messagesFired'],
         'ok': json['ok'],
     };
 }
@@ -72,8 +86,10 @@ export function CreatePlatformAccountHistoryImportResponseToJSON(value?: CreateP
     return {
         
         'pendingAccounts': value.pendingAccounts,
+        'accountIds': value.accountIds,
         'ledgerFired': value.ledgerFired,
         'listingsFired': value.listingsFired,
+        'messagesFired': value.messagesFired,
         'ok': value.ok,
     };
 }

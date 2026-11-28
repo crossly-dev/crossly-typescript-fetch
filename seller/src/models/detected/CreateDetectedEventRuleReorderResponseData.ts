@@ -130,8 +130,8 @@ export interface CreateDetectedEventRuleReorderResponseData {
 */
 export enum CreateDetectedEventRuleReorderResponseDataSourceEnum {
     Default = 'default',
-    Seller = 'seller',
-    Legacy = 'legacy'
+    Legacy = 'legacy',
+    Seller = 'seller'
 }
 
 export function CreateDetectedEventRuleReorderResponseDataFromJSON(json: any): CreateDetectedEventRuleReorderResponseData {

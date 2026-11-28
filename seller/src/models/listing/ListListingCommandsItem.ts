@@ -128,11 +128,11 @@ export enum ListListingCommandsItemTypeEnum {
 * @enum {string}
 */
 export enum ListListingCommandsItemStateEnum {
+    Expired = 'expired',
     Pending = 'pending',
     Completed = 'completed',
     Cancelled = 'cancelled',
     Failed = 'failed',
-    Expired = 'expired',
     Acked = 'acked'
 }
 

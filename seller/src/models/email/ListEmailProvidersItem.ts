@@ -86,11 +86,29 @@ export interface ListEmailProvidersItem {
      */
     lastTestOk?: boolean | null;
     /**
-     * 
+     * A sanitized line (spec SE4), never the provider's own text.
      * @type {string}
      * @memberof ListEmailProvidersItem
      */
     lastTestError?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListEmailProvidersItem
+     */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListEmailProvidersItem
+     */
+    lastUsedAt?: Date | null;
+    /**
+     * What it sends (migration 1483; store-send.ts EMAIL_SENDER_USES): lookbooks, and on request invoices, receipts.
+     * @type {Array<string>}
+     * @memberof ListEmailProvidersItem
+     */
+    uses: Array<string>;
     /**
      * 
      * @type {Date}
@@ -121,6 +139,9 @@ export function ListEmailProvidersItemFromJSONTyped(json: any, ignoreDiscriminat
         'lastTestedAt': !exists(json, 'lastTestedAt') ? undefined : (json['lastTestedAt'] === null ? null : new Date(json['lastTestedAt'])),
         'lastTestOk': !exists(json, 'lastTestOk') ? undefined : json['lastTestOk'],
         'lastTestError': !exists(json, 'lastTestError') ? undefined : json['lastTestError'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'lastUsedAt': !exists(json, 'lastUsedAt') ? undefined : (json['lastUsedAt'] === null ? null : new Date(json['lastUsedAt'])),
+        'uses': json['uses'],
         'createdAt': (new Date(json['createdAt'])),
     };
 }
@@ -146,6 +167,9 @@ export function ListEmailProvidersItemToJSON(value?: ListEmailProvidersItem | nu
         'lastTestedAt': value.lastTestedAt === undefined ? undefined : (value.lastTestedAt === null ? null : value.lastTestedAt.toISOString()),
         'lastTestOk': value.lastTestOk,
         'lastTestError': value.lastTestError,
+        'storefrontId': value.storefrontId,
+        'lastUsedAt': value.lastUsedAt === undefined ? undefined : (value.lastUsedAt === null ? null : value.lastUsedAt.toISOString()),
+        'uses': value.uses,
         'createdAt': (value.createdAt.toISOString()),
     };
 }

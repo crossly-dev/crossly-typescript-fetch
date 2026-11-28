@@ -123,9 +123,9 @@ export interface GetWorldRewardTopupResponseData {
 * @enum {string}
 */
 export enum GetWorldRewardTopupResponseDataStatusEnum {
+    Expired = 'expired',
     Cancelled = 'cancelled',
     Open = 'open',
-    Expired = 'expired',
     Paid = 'paid',
     Refused = 'refused',
     Paying = 'paying'

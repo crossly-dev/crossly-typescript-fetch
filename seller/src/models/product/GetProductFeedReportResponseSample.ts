@@ -56,7 +56,7 @@ export interface GetProductFeedReportResponseSample {
      */
     additionalImageLinks: Array<string>;
     /**
-     * "12.50 USD".
+     * "12.50 USD" (or the feed's currency).
      * @type {string}
      * @memberof GetProductFeedReportResponseSample
      */
@@ -132,6 +132,12 @@ export interface GetProductFeedReportResponseSample {
      * @type {string}
      * @memberof GetProductFeedReportResponseSample
      */
+    sku?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetProductFeedReportResponseSample
+     */
     color?: string | null;
     /**
      * 
@@ -163,6 +169,42 @@ export interface GetProductFeedReportResponseSample {
      * @memberof GetProductFeedReportResponseSample
      */
     identifierExists: boolean;
+    /**
+     * custom_label_0..4 (mapping or per-item override).
+     * @type {Array<string>}
+     * @memberof GetProductFeedReportResponseSample
+     */
+    customLabels: Array<string>;
+    /**
+     * Per-item shipping rates, already in the feed's currency ("4.95 USD").
+     * @type {Array<{ [key: string]: any; }>}
+     * @memberof GetProductFeedReportResponseSample
+     */
+    shipping: Array<{ [key: string]: any; }>;
+    /**
+     * The listing's tags and dates, for generic feeds.
+     * @type {Array<string>}
+     * @memberof GetProductFeedReportResponseSample
+     */
+    tags: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetProductFeedReportResponseSample
+     */
+    publishedAt?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetProductFeedReportResponseSample
+     */
+    updatedAt?: string | null;
+    /**
+     * Values a field mapping produced for columns that have no typed field (generic feeds).
+     * @type {{ [key: string]: any; }}
+     * @memberof GetProductFeedReportResponseSample
+     */
+    extra: { [key: string]: any; };
     /**
      * 
      * @type {Array<{ [key: string]: any; }>}
@@ -224,12 +266,19 @@ export function GetProductFeedReportResponseSampleFromJSONTyped(json: any, ignor
         'googleProductCategory': !exists(json, 'googleProductCategory') ? undefined : json['googleProductCategory'],
         'productType': !exists(json, 'productType') ? undefined : json['productType'],
         'itemGroupId': !exists(json, 'itemGroupId') ? undefined : json['itemGroupId'],
+        'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'color': !exists(json, 'color') ? undefined : json['color'],
         'size': !exists(json, 'size') ? undefined : json['size'],
         'material': !exists(json, 'material') ? undefined : json['material'],
         'gender': !exists(json, 'gender') ? undefined : json['gender'],
         'shippingWeight': !exists(json, 'shippingWeight') ? undefined : json['shippingWeight'],
         'identifierExists': json['identifierExists'],
+        'customLabels': json['customLabels'],
+        'shipping': json['shipping'],
+        'tags': json['tags'],
+        'publishedAt': !exists(json, 'publishedAt') ? undefined : json['publishedAt'],
+        'updatedAt': !exists(json, 'updatedAt') ? undefined : json['updatedAt'],
+        'extra': json['extra'],
         'issues': json['issues'],
     };
 }
@@ -261,12 +310,19 @@ export function GetProductFeedReportResponseSampleToJSON(value?: GetProductFeedR
         'googleProductCategory': value.googleProductCategory,
         'productType': value.productType,
         'itemGroupId': value.itemGroupId,
+        'sku': value.sku,
         'color': value.color,
         'size': value.size,
         'material': value.material,
         'gender': value.gender,
         'shippingWeight': value.shippingWeight,
         'identifierExists': value.identifierExists,
+        'customLabels': value.customLabels,
+        'shipping': value.shipping,
+        'tags': value.tags,
+        'publishedAt': value.publishedAt,
+        'updatedAt': value.updatedAt,
+        'extra': value.extra,
         'issues': value.issues,
     };
 }

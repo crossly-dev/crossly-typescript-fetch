@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    FromTo2,
-    FromTo2FromJSON,
-    FromTo2FromJSONTyped,
-    FromTo2ToJSON,
-} from '../common/FromTo2';
+    CreateListingTagRenameRequest,
+    CreateListingTagRenameRequestFromJSON,
+    CreateListingTagRenameRequestFromJSONTyped,
+    CreateListingTagRenameRequestToJSON,
+} from '../listing/CreateListingTagRenameRequest';
 import {
     GetBookExpenseResponseDataRange,
     GetBookExpenseResponseDataRangeFromJSON,
@@ -119,10 +119,10 @@ export interface GetBookResponseData {
     range: GetBookExpenseResponseDataRange;
     /**
      * 
-     * @type {FromTo2}
+     * @type {CreateListingTagRenameRequest}
      * @memberof GetBookResponseData
      */
-    prevRange: FromTo2;
+    prevRange: CreateListingTagRenameRequest;
     /**
      * 
      * @type {GetBookResponseDataKpis}
@@ -224,7 +224,7 @@ export function GetBookResponseDataFromJSONTyped(json: any, ignoreDiscriminator:
         'firstSaleYear': !exists(json, 'firstSaleYear') ? undefined : json['firstSaleYear'],
         'period': json['period'],
         'range': GetBookExpenseResponseDataRangeFromJSON(json['range']),
-        'prevRange': FromTo2FromJSON(json['prevRange']),
+        'prevRange': CreateListingTagRenameRequestFromJSON(json['prevRange']),
         'kpis': GetBookResponseDataKpisFromJSON(json['kpis']),
         'pnl': GetBookResponseDataPnlFromJSON(json['pnl']),
         'monthly': ((json['monthly'] as Array<any>).map(GetBookResponseDataMonthlyFromJSON)),
@@ -251,7 +251,7 @@ export function GetBookResponseDataToJSON(value?: GetBookResponseData | null): a
         'firstSaleYear': value.firstSaleYear,
         'period': value.period,
         'range': GetBookExpenseResponseDataRangeToJSON(value.range),
-        'prevRange': FromTo2ToJSON(value.prevRange),
+        'prevRange': CreateListingTagRenameRequestToJSON(value.prevRange),
         'kpis': GetBookResponseDataKpisToJSON(value.kpis),
         'pnl': GetBookResponseDataPnlToJSON(value.pnl),
         'monthly': ((value.monthly as Array<any>).map(GetBookResponseDataMonthlyToJSON)),

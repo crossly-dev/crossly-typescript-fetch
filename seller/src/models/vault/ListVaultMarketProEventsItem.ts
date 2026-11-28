@@ -33,6 +33,12 @@ export interface ListVaultMarketProEventsItem {
     userId: string;
     /**
      * 
+     * @type {string}
+     * @memberof ListVaultMarketProEventsItem
+     */
+    kind: string;
+    /**
+     * 
      * @type {number}
      * @memberof ListVaultMarketProEventsItem
      */
@@ -43,12 +49,6 @@ export interface ListVaultMarketProEventsItem {
      * @memberof ListVaultMarketProEventsItem
      */
     orderId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListVaultMarketProEventsItem
-     */
-    kind: string;
     /**
      * 
      * @type {number}
@@ -87,9 +87,9 @@ export function ListVaultMarketProEventsItemFromJSONTyped(json: any, ignoreDiscr
         
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
+        'kind': json['kind'],
         'quantity': !exists(json, 'quantity') ? undefined : json['quantity'],
         'orderId': json['orderId'],
-        'kind': json['kind'],
         'priceCents': !exists(json, 'priceCents') ? undefined : json['priceCents'],
         'tradeId': !exists(json, 'tradeId') ? undefined : json['tradeId'],
         'detail': !exists(json, 'detail') ? undefined : json['detail'],
@@ -108,9 +108,9 @@ export function ListVaultMarketProEventsItemToJSON(value?: ListVaultMarketProEve
         
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
+        'kind': value.kind,
         'quantity': value.quantity,
         'orderId': value.orderId,
-        'kind': value.kind,
         'priceCents': value.priceCents,
         'tradeId': value.tradeId,
         'detail': value.detail,

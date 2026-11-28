@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    ListEventsItemDropRef,
-    ListEventsItemDropRefFromJSON,
-    ListEventsItemDropRefFromJSONTyped,
-    ListEventsItemDropRefToJSON,
-} from './ListEventsItemDropRef';
+    TypeId2,
+    TypeId2FromJSON,
+    TypeId2FromJSONTyped,
+    TypeId2ToJSON,
+} from '../common/TypeId2';
 
 /**
  * 
@@ -130,10 +130,10 @@ export interface ListEventsItem {
     liveStreamId?: string | null;
     /**
      * 
-     * @type {ListEventsItemDropRef}
+     * @type {TypeId2}
      * @memberof ListEventsItem
      */
-    dropRef?: ListEventsItemDropRef | null;
+    dropRef?: TypeId2 | null;
     /**
      * 
      * @type {string}
@@ -227,7 +227,7 @@ export function ListEventsItemFromJSONTyped(json: any, ignoreDiscriminator: bool
         'capacity': !exists(json, 'capacity') ? undefined : json['capacity'],
         'listingIds': json['listingIds'],
         'liveStreamId': !exists(json, 'liveStreamId') ? undefined : json['liveStreamId'],
-        'dropRef': !exists(json, 'dropRef') ? undefined : ListEventsItemDropRefFromJSON(json['dropRef']),
+        'dropRef': !exists(json, 'dropRef') ? undefined : TypeId2FromJSON(json['dropRef']),
         'discountCodeId': !exists(json, 'discountCodeId') ? undefined : json['discountCodeId'],
         'featureOnStorefront': json['featureOnStorefront'],
         'notifyFollowers': json['notifyFollowers'],
@@ -266,7 +266,7 @@ export function ListEventsItemToJSON(value?: ListEventsItem | null): any {
         'capacity': value.capacity,
         'listingIds': value.listingIds,
         'liveStreamId': value.liveStreamId,
-        'dropRef': ListEventsItemDropRefToJSON(value.dropRef),
+        'dropRef': TypeId2ToJSON(value.dropRef),
         'discountCodeId': value.discountCodeId,
         'featureOnStorefront': value.featureOnStorefront,
         'notifyFollowers': value.notifyFollowers,

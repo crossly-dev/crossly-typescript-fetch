@@ -57,12 +57,6 @@ export interface CreateWholesaleCatalogResponseData {
     description?: string | null;
     /**
      * 
-     * @type {Date}
-     * @memberof CreateWholesaleCatalogResponseData
-     */
-    listedAt?: Date | null;
-    /**
-     * 
      * @type {string}
      * @memberof CreateWholesaleCatalogResponseData
      */
@@ -73,6 +67,12 @@ export interface CreateWholesaleCatalogResponseData {
      * @memberof CreateWholesaleCatalogResponseData
      */
     storefrontId?: string | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof CreateWholesaleCatalogResponseData
+     */
+    listedAt?: Date | null;
     /**
      * 
      * @type {number}
@@ -114,13 +114,13 @@ export interface CreateWholesaleCatalogResponseData {
      * @type {string}
      * @memberof CreateWholesaleCatalogResponseData
      */
-    returnPresetId?: string | null;
+    shippingPresetId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateWholesaleCatalogResponseData
      */
-    shippingPresetId?: string | null;
+    returnPresetId?: string | null;
     /**
      * 
      * @type {string}
@@ -223,17 +223,17 @@ export function CreateWholesaleCatalogResponseDataFromJSONTyped(json: any, ignor
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'description': !exists(json, 'description') ? undefined : json['description'],
-        'listedAt': !exists(json, 'listedAt') ? undefined : (json['listedAt'] === null ? null : new Date(json['listedAt'])),
         'slug': json['slug'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'listedAt': !exists(json, 'listedAt') ? undefined : (json['listedAt'] === null ? null : new Date(json['listedAt'])),
         'minOrderQuantity': !exists(json, 'minOrderQuantity') ? undefined : json['minOrderQuantity'],
         'sellerUserId': json['sellerUserId'],
         'coverImageUrl': !exists(json, 'coverImageUrl') ? undefined : json['coverImageUrl'],
         'minOrderCents': !exists(json, 'minOrderCents') ? undefined : json['minOrderCents'],
         'listed': json['listed'],
         'visibility': json['visibility'],
-        'returnPresetId': !exists(json, 'returnPresetId') ? undefined : json['returnPresetId'],
         'shippingPresetId': !exists(json, 'shippingPresetId') ? undefined : json['shippingPresetId'],
+        'returnPresetId': !exists(json, 'returnPresetId') ? undefined : json['returnPresetId'],
         'paymentPresetId': !exists(json, 'paymentPresetId') ? undefined : json['paymentPresetId'],
         'autoApprove': json['autoApprove'],
         'requiresBusinessVerification': json['requiresBusinessVerification'],
@@ -266,17 +266,17 @@ export function CreateWholesaleCatalogResponseDataToJSON(value?: CreateWholesale
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'description': value.description,
-        'listedAt': value.listedAt === undefined ? undefined : (value.listedAt === null ? null : value.listedAt.toISOString()),
         'slug': value.slug,
         'storefrontId': value.storefrontId,
+        'listedAt': value.listedAt === undefined ? undefined : (value.listedAt === null ? null : value.listedAt.toISOString()),
         'minOrderQuantity': value.minOrderQuantity,
         'sellerUserId': value.sellerUserId,
         'coverImageUrl': value.coverImageUrl,
         'minOrderCents': value.minOrderCents,
         'listed': value.listed,
         'visibility': value.visibility,
-        'returnPresetId': value.returnPresetId,
         'shippingPresetId': value.shippingPresetId,
+        'returnPresetId': value.returnPresetId,
         'paymentPresetId': value.paymentPresetId,
         'autoApprove': value.autoApprove,
         'requiresBusinessVerification': value.requiresBusinessVerification,

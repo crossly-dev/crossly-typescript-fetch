@@ -142,8 +142,8 @@ export interface CreateDetectedEventRuleResponseData {
 */
 export enum CreateDetectedEventRuleResponseDataSourceEnum {
     Default = 'default',
-    Seller = 'seller',
-    Legacy = 'legacy'
+    Legacy = 'legacy',
+    Seller = 'seller'
 }
 
 export function CreateDetectedEventRuleResponseDataFromJSON(json: any): CreateDetectedEventRuleResponseData {

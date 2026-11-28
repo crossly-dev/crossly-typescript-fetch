@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    GetWorldMePrefResponseData,
-    GetWorldMePrefResponseDataFromJSON,
-    GetWorldMePrefResponseDataFromJSONTyped,
-    GetWorldMePrefResponseDataToJSON,
-} from './GetWorldMePrefResponseData';
+    UpdateWorldMePrefRequest,
+    UpdateWorldMePrefRequestFromJSON,
+    UpdateWorldMePrefRequestFromJSONTyped,
+    UpdateWorldMePrefRequestToJSON,
+} from './UpdateWorldMePrefRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface GetWorldMePrefResponse {
     /**
      * 
-     * @type {GetWorldMePrefResponseData}
+     * @type {UpdateWorldMePrefRequest}
      * @memberof GetWorldMePrefResponse
      */
-    data: GetWorldMePrefResponseData;
+    data: UpdateWorldMePrefRequest;
 }
 
 export function GetWorldMePrefResponseFromJSON(json: any): GetWorldMePrefResponse {
@@ -44,7 +44,7 @@ export function GetWorldMePrefResponseFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'data': GetWorldMePrefResponseDataFromJSON(json['data']),
+        'data': UpdateWorldMePrefRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function GetWorldMePrefResponseToJSON(value?: GetWorldMePrefResponse | nu
     }
     return {
         
-        'data': GetWorldMePrefResponseDataToJSON(value.data),
+        'data': UpdateWorldMePrefRequestToJSON(value.data),
     };
 }
 

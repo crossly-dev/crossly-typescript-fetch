@@ -15,21 +15,171 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCrmIntegrationRequest,
+    CreateCrmIntegrationRequestFromJSON,
+    CreateCrmIntegrationRequestToJSON,
+    CreateCrmIntegrationResponse,
+    CreateCrmIntegrationResponseFromJSON,
+    CreateCrmIntegrationResponseToJSON,
+    CreateCrmIntegrationTestResponse,
+    CreateCrmIntegrationTestResponseFromJSON,
+    CreateCrmIntegrationTestResponseToJSON,
+    CreateDesignToolImportRequest,
+    CreateDesignToolImportRequestFromJSON,
+    CreateDesignToolImportRequestToJSON,
+    CreateDesignToolImportResponse,
+    CreateDesignToolImportResponseFromJSON,
+    CreateDesignToolImportResponseToJSON,
+    CreateEmailProviderRequest,
+    CreateEmailProviderRequestFromJSON,
+    CreateEmailProviderRequestToJSON,
+    CreateEmailProviderResponse,
+    CreateEmailProviderResponseFromJSON,
+    CreateEmailProviderResponseToJSON,
+    CreateEmailProviderTestRequest,
+    CreateEmailProviderTestRequestFromJSON,
+    CreateEmailProviderTestRequestToJSON,
+    CreateEmailProviderTestResponse,
+    CreateEmailProviderTestResponseFromJSON,
+    CreateEmailProviderTestResponseToJSON,
+    CreateEmailProviderWebhookUrlResponse,
+    CreateEmailProviderWebhookUrlResponseFromJSON,
+    CreateEmailProviderWebhookUrlResponseToJSON,
+    CreateNotificationIntegrationRequest,
+    CreateNotificationIntegrationRequestFromJSON,
+    CreateNotificationIntegrationRequestToJSON,
+    CreateNotificationIntegrationResponse,
+    CreateNotificationIntegrationResponseFromJSON,
+    CreateNotificationIntegrationResponseToJSON,
     CreateNotificationIntegrationTestResponse,
     CreateNotificationIntegrationTestResponseFromJSON,
     CreateNotificationIntegrationTestResponseToJSON,
-    IdResponse,
-    IdResponseFromJSON,
-    IdResponseToJSON,
+    CreateNotifyActionResponse,
+    CreateNotifyActionResponseFromJSON,
+    CreateNotifyActionResponseToJSON,
+    CreatePrintMailCredentialRequest,
+    CreatePrintMailCredentialRequestFromJSON,
+    CreatePrintMailCredentialRequestToJSON,
+    CreatePrintMailCredentialResponse,
+    CreatePrintMailCredentialResponseFromJSON,
+    CreatePrintMailCredentialResponseToJSON,
+    CreatePrintMailCredentialTestByIdResponse,
+    CreatePrintMailCredentialTestByIdResponseFromJSON,
+    CreatePrintMailCredentialTestByIdResponseToJSON,
+    CreatePrintMailCredentialTestRequest,
+    CreatePrintMailCredentialTestRequestFromJSON,
+    CreatePrintMailCredentialTestRequestToJSON,
+    CreatePrintMailCredentialTestResponse,
+    CreatePrintMailCredentialTestResponseFromJSON,
+    CreatePrintMailCredentialTestResponseToJSON,
+    GetDesignToolResponse,
+    GetDesignToolResponseFromJSON,
+    GetDesignToolResponseToJSON,
+    GetIntegrationResponse,
+    GetIntegrationResponseFromJSON,
+    GetIntegrationResponseToJSON,
+    GetPrintMailEstimateResponse,
+    GetPrintMailEstimateResponseFromJSON,
+    GetPrintMailEstimateResponseToJSON,
+    ListCrmIntegrationLogsResponse,
+    ListCrmIntegrationLogsResponseFromJSON,
+    ListCrmIntegrationLogsResponseToJSON,
+    ListCrmIntegrationsResponse,
+    ListCrmIntegrationsResponseFromJSON,
+    ListCrmIntegrationsResponseToJSON,
     ListNotificationIntegrationsResponse,
     ListNotificationIntegrationsResponseFromJSON,
     ListNotificationIntegrationsResponseToJSON,
+    ListPrintMailCredentialsResponse,
+    ListPrintMailCredentialsResponseFromJSON,
+    ListPrintMailCredentialsResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    TokenObject,
+    TokenObjectFromJSON,
+    TokenObjectToJSON,
+    UpdateCrmIntegrationRequest,
+    UpdateCrmIntegrationRequestFromJSON,
+    UpdateCrmIntegrationRequestToJSON,
+    UpdateDesignToolResponse,
+    UpdateDesignToolResponseFromJSON,
+    UpdateDesignToolResponseToJSON,
+    UpdateEmailProviderRequest,
+    UpdateEmailProviderRequestFromJSON,
+    UpdateEmailProviderRequestToJSON,
+    UpdateEmailProviderResponse,
+    UpdateEmailProviderResponseFromJSON,
+    UpdateEmailProviderResponseToJSON,
+    UpdateGroupBuyResponse,
+    UpdateGroupBuyResponseFromJSON,
+    UpdateGroupBuyResponseToJSON,
+    UpdateNotificationIntegrationRequest,
+    UpdateNotificationIntegrationRequestFromJSON,
+    UpdateNotificationIntegrationRequestToJSON,
+    UpdatePrintMailCredentialRequest,
+    UpdatePrintMailCredentialRequestFromJSON,
+    UpdatePrintMailCredentialRequestToJSON,
 } from '../models';
 
+export interface CreateCrmIntegrationOperationRequest {
+    createCrmIntegrationRequest?: CreateCrmIntegrationRequest;
+}
+
+export interface CreateCrmIntegrationTestRequest {
+    id: string;
+}
+
+export interface CreateDesignToolImportOperationRequest {
+    createDesignToolImportRequest?: CreateDesignToolImportRequest;
+}
+
+export interface CreateEmailProviderOperationRequest {
+    createEmailProviderRequest?: CreateEmailProviderRequest;
+}
+
+export interface CreateEmailProviderTestOperationRequest {
+    id: string;
+    createEmailProviderTestRequest?: CreateEmailProviderTestRequest;
+}
+
+export interface CreateEmailProviderWebhookUrlRequest {
+    id: string;
+}
+
+export interface CreateNotificationIntegrationOperationRequest {
+    createNotificationIntegrationRequest: CreateNotificationIntegrationRequest;
+}
+
 export interface CreateNotificationIntegrationTestRequest {
+    id: string;
+}
+
+export interface CreateNotifyActionRequest {
+    tokenObject: TokenObject;
+}
+
+export interface CreatePrintMailCredentialOperationRequest {
+    createPrintMailCredentialRequest?: CreatePrintMailCredentialRequest;
+}
+
+export interface CreatePrintMailCredentialTestOperationRequest {
+    createPrintMailCredentialTestRequest?: CreatePrintMailCredentialTestRequest;
+}
+
+export interface CreatePrintMailCredentialTestByIdRequest {
+    id: string;
+}
+
+export interface DeleteCrmIntegrationRequest {
+    id: string;
+}
+
+export interface DeleteDesignToolRequest {
+    tool: string;
+}
+
+export interface DeleteEmailProviderRequest {
     id: string;
 }
 
@@ -37,8 +187,51 @@ export interface DeleteNotificationIntegrationRequest {
     id: string;
 }
 
-export interface UpdateNotificationIntegrationRequest {
+export interface DeletePrintMailCredentialRequest {
     id: string;
+}
+
+export interface GetDesignToolRequest {
+    tool: string;
+}
+
+export interface GetPrintMailEstimateRequest {
+    lookbookId: string;
+    count: number;
+    credentialId?: string;
+    format?: GetPrintMailEstimateFormatEnum;
+}
+
+export interface ListCrmIntegrationLogsRequest {
+    id: string;
+    page?: number;
+    pageSize?: number;
+    status?: ListCrmIntegrationLogsStatusEnum;
+}
+
+export interface UpdateCrmIntegrationOperationRequest {
+    id: string;
+    updateCrmIntegrationRequest?: UpdateCrmIntegrationRequest;
+}
+
+export interface UpdateDesignToolRequest {
+    tool: string;
+    tokenObject?: TokenObject;
+}
+
+export interface UpdateEmailProviderOperationRequest {
+    id: string;
+    updateEmailProviderRequest?: UpdateEmailProviderRequest;
+}
+
+export interface UpdateNotificationIntegrationOperationRequest {
+    id: string;
+    updateNotificationIntegrationRequest: UpdateNotificationIntegrationRequest;
+}
+
+export interface UpdatePrintMailCredentialOperationRequest {
+    id: string;
+    updatePrintMailCredentialRequest?: UpdatePrintMailCredentialRequest;
 }
 
 /**
@@ -47,12 +240,246 @@ export interface UpdateNotificationIntegrationRequest {
 export class IntegrationsApi extends runtime.BaseAPI {
 
     /**
-     * Add a Slack/Discord/Webhook destination.
+     * Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard.
      */
-    async createNotificationIntegrationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<IdResponse>> {
+    async createCrmIntegrationRaw(requestParameters: CreateCrmIntegrationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCrmIntegrationResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/crm/integrations`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateCrmIntegrationRequestToJSON(requestParameters.createCrmIntegrationRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateCrmIntegrationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard.
+     */
+    async createCrmIntegration(requestParameters: CreateCrmIntegrationOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateCrmIntegrationResponse> {
+        const response = await this.createCrmIntegrationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Send a sample buyer to the CRM and report whether it arrived, in one sanitized line.
+     */
+    async createCrmIntegrationTestRaw(requestParameters: CreateCrmIntegrationTestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCrmIntegrationTestResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCrmIntegrationTest.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/crm/integrations/{id}/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateCrmIntegrationTestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Send a sample buyer to the CRM and report whether it arrived, in one sanitized line.
+     */
+    async createCrmIntegrationTest(requestParameters: CreateCrmIntegrationTestRequest, initOverrides?: RequestInit): Promise<CreateCrmIntegrationTestResponse> {
+        const response = await this.createCrmIntegrationTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks.
+     */
+    async createDesignToolImportRaw(requestParameters: CreateDesignToolImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateDesignToolImportResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/design-tools/import`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDesignToolImportRequestToJSON(requestParameters.createDesignToolImportRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateDesignToolImportResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks.
+     */
+    async createDesignToolImport(requestParameters: CreateDesignToolImportOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateDesignToolImportResponse> {
+        const response = await this.createDesignToolImportRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once.
+     */
+    async createEmailProviderRaw(requestParameters: CreateEmailProviderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateEmailProviderResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-providers`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateEmailProviderRequestToJSON(requestParameters.createEmailProviderRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateEmailProviderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once.
+     */
+    async createEmailProvider(requestParameters: CreateEmailProviderOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateEmailProviderResponse> {
+        const response = await this.createEmailProviderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Send a real test email through the sender; the result is one sanitized line.
+     */
+    async createEmailProviderTestRaw(requestParameters: CreateEmailProviderTestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateEmailProviderTestResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createEmailProviderTest.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-providers/{id}/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateEmailProviderTestRequestToJSON(requestParameters.createEmailProviderTestRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateEmailProviderTestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Send a real test email through the sender; the result is one sanitized line.
+     */
+    async createEmailProviderTest(requestParameters: CreateEmailProviderTestOperationRequest, initOverrides?: RequestInit): Promise<CreateEmailProviderTestResponse> {
+        const response = await this.createEmailProviderTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Make a new event webhook URL for the sender (the old one stops working). It is returned once.
+     */
+    async createEmailProviderWebhookUrlRaw(requestParameters: CreateEmailProviderWebhookUrlRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateEmailProviderWebhookUrlResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createEmailProviderWebhookUrl.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-providers/{id}/webhook-url`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateEmailProviderWebhookUrlResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Make a new event webhook URL for the sender (the old one stops working). It is returned once.
+     */
+    async createEmailProviderWebhookUrl(requestParameters: CreateEmailProviderWebhookUrlRequest, initOverrides?: RequestInit): Promise<CreateEmailProviderWebhookUrlResponse> {
+        const response = await this.createEmailProviderWebhookUrlRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind.
+     */
+    async createNotificationIntegrationRaw(requestParameters: CreateNotificationIntegrationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateNotificationIntegrationResponse>> {
+        if (requestParameters.createNotificationIntegrationRequest === null || requestParameters.createNotificationIntegrationRequest === undefined) {
+            throw new runtime.RequiredError('createNotificationIntegrationRequest','Required parameter requestParameters.createNotificationIntegrationRequest was null or undefined when calling createNotificationIntegration.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -67,21 +494,22 @@ export class IntegrationsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateNotificationIntegrationRequestToJSON(requestParameters.createNotificationIntegrationRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => IdResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateNotificationIntegrationResponseFromJSON(jsonValue));
     }
 
     /**
-     * Add a Slack/Discord/Webhook destination.
+     * Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind.
      */
-    async createNotificationIntegration(initOverrides?: RequestInit): Promise<IdResponse> {
-        const response = await this.createNotificationIntegrationRaw(initOverrides);
+    async createNotificationIntegration(requestParameters: CreateNotificationIntegrationOperationRequest, initOverrides?: RequestInit): Promise<CreateNotificationIntegrationResponse> {
+        const response = await this.createNotificationIntegrationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Fire a canned test message to a notification destination.
+     * Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test.
      */
     async createNotificationIntegrationTestRaw(requestParameters: CreateNotificationIntegrationTestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateNotificationIntegrationTestResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -111,7 +539,7 @@ export class IntegrationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Fire a canned test message to a notification destination.
+     * Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test.
      */
     async createNotificationIntegrationTest(requestParameters: CreateNotificationIntegrationTestRequest, initOverrides?: RequestInit): Promise<CreateNotificationIntegrationTestResponse> {
         const response = await this.createNotificationIntegrationTestRaw(requestParameters, initOverrides);
@@ -119,7 +547,274 @@ export class IntegrationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete a notification destination.
+     * Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409).
+     */
+    async createNotifyActionRaw(requestParameters: CreateNotifyActionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateNotifyActionResponse>> {
+        if (requestParameters.tokenObject === null || requestParameters.tokenObject === undefined) {
+            throw new runtime.RequiredError('tokenObject','Required parameter requestParameters.tokenObject was null or undefined when calling createNotifyAction.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/notify/actions`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TokenObjectToJSON(requestParameters.tokenObject),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateNotifyActionResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409).
+     */
+    async createNotifyAction(requestParameters: CreateNotifyActionRequest, initOverrides?: RequestInit): Promise<CreateNotifyActionResponse> {
+        const response = await this.createNotifyActionRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices.
+     */
+    async createPrintMailCredentialRaw(requestParameters: CreatePrintMailCredentialOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePrintMailCredentialResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/print-mail/credentials`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreatePrintMailCredentialRequestToJSON(requestParameters.createPrintMailCredentialRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePrintMailCredentialResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices.
+     */
+    async createPrintMailCredential(requestParameters: CreatePrintMailCredentialOperationRequest = {}, initOverrides?: RequestInit): Promise<CreatePrintMailCredentialResponse> {
+        const response = await this.createPrintMailCredentialRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing.
+     */
+    async createPrintMailCredentialTestRaw(requestParameters: CreatePrintMailCredentialTestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePrintMailCredentialTestResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/print-mail/credentials/test`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreatePrintMailCredentialTestRequestToJSON(requestParameters.createPrintMailCredentialTestRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePrintMailCredentialTestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing.
+     */
+    async createPrintMailCredentialTest(requestParameters: CreatePrintMailCredentialTestOperationRequest = {}, initOverrides?: RequestInit): Promise<CreatePrintMailCredentialTestResponse> {
+        const response = await this.createPrintMailCredentialTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Re-check a saved Lob or PostGrid key; the result is one sanitized line.
+     */
+    async createPrintMailCredentialTestByIdRaw(requestParameters: CreatePrintMailCredentialTestByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePrintMailCredentialTestByIdResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createPrintMailCredentialTestById.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/print-mail/credentials/{id}/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePrintMailCredentialTestByIdResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Re-check a saved Lob or PostGrid key; the result is one sanitized line.
+     */
+    async createPrintMailCredentialTestById(requestParameters: CreatePrintMailCredentialTestByIdRequest, initOverrides?: RequestInit): Promise<CreatePrintMailCredentialTestByIdResponse> {
+        const response = await this.createPrintMailCredentialTestByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it.
+     */
+    async deleteCrmIntegrationRaw(requestParameters: DeleteCrmIntegrationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteCrmIntegration.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/crm/integrations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it.
+     */
+    async deleteCrmIntegration(requestParameters: DeleteCrmIntegrationRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.deleteCrmIntegrationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Disconnect Figma or Canva for the store.
+     */
+    async deleteDesignToolRaw(requestParameters: DeleteDesignToolRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.tool === null || requestParameters.tool === undefined) {
+            throw new runtime.RequiredError('tool','Required parameter requestParameters.tool was null or undefined when calling deleteDesignTool.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/design-tools/{tool}`.replace(`{${"tool"}}`, encodeURIComponent(String(requestParameters.tool))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Disconnect Figma or Canva for the store.
+     */
+    async deleteDesignTool(requestParameters: DeleteDesignToolRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.deleteDesignToolRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Disconnect an email sender. The next newest becomes the default.
+     */
+    async deleteEmailProviderRaw(requestParameters: DeleteEmailProviderRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteEmailProvider.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-providers/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Disconnect an email sender. The next newest becomes the default.
+     */
+    async deleteEmailProvider(requestParameters: DeleteEmailProviderRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.deleteEmailProviderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}.
      */
     async deleteNotificationIntegrationRaw(requestParameters: DeleteNotificationIntegrationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -149,7 +844,7 @@ export class IntegrationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete a notification destination.
+     * Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}.
      */
     async deleteNotificationIntegration(requestParameters: DeleteNotificationIntegrationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
         const response = await this.deleteNotificationIntegrationRaw(requestParameters, initOverrides);
@@ -157,7 +852,259 @@ export class IntegrationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List Slack/Discord/Webhook destinations for notify.* automation actions.
+     * Remove a print and mail account.
+     */
+    async deletePrintMailCredentialRaw(requestParameters: DeletePrintMailCredentialRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deletePrintMailCredential.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/print-mail/credentials/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove a print and mail account.
+     */
+    async deletePrintMailCredential(requestParameters: DeletePrintMailCredentialRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.deletePrintMailCredentialRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Whether Figma or Canva is connected for the store, and as whom. Never the token.
+     */
+    async getDesignToolRaw(requestParameters: GetDesignToolRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetDesignToolResponse>> {
+        if (requestParameters.tool === null || requestParameters.tool === undefined) {
+            throw new runtime.RequiredError('tool','Required parameter requestParameters.tool was null or undefined when calling getDesignTool.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/design-tools/{tool}`.replace(`{${"tool"}}`, encodeURIComponent(String(requestParameters.tool))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDesignToolResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Whether Figma or Canva is connected for the store, and as whom. Never the token.
+     */
+    async getDesignTool(requestParameters: GetDesignToolRequest, initOverrides?: RequestInit): Promise<GetDesignToolResponse> {
+        const response = await this.getDesignToolRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows.
+     */
+    async getIntegrationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetIntegrationResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/integrations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetIntegrationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows.
+     */
+    async getIntegration(initOverrides?: RequestInit): Promise<GetIntegrationResponse> {
+        const response = await this.getIntegrationRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Estimate a printed lookbook send: pieces × the seller\'s own per-piece price, per format the account\'s provider prints.
+     */
+    async getPrintMailEstimateRaw(requestParameters: GetPrintMailEstimateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetPrintMailEstimateResponse>> {
+        if (requestParameters.lookbookId === null || requestParameters.lookbookId === undefined) {
+            throw new runtime.RequiredError('lookbookId','Required parameter requestParameters.lookbookId was null or undefined when calling getPrintMailEstimate.');
+        }
+
+        if (requestParameters.count === null || requestParameters.count === undefined) {
+            throw new runtime.RequiredError('count','Required parameter requestParameters.count was null or undefined when calling getPrintMailEstimate.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.lookbookId !== undefined) {
+            queryParameters['lookbookId'] = requestParameters.lookbookId;
+        }
+
+        if (requestParameters.count !== undefined) {
+            queryParameters['count'] = requestParameters.count;
+        }
+
+        if (requestParameters.credentialId !== undefined) {
+            queryParameters['credentialId'] = requestParameters.credentialId;
+        }
+
+        if (requestParameters.format !== undefined) {
+            queryParameters['format'] = requestParameters.format;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/print-mail/estimate`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPrintMailEstimateResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Estimate a printed lookbook send: pieces × the seller\'s own per-piece price, per format the account\'s provider prints.
+     */
+    async getPrintMailEstimate(requestParameters: GetPrintMailEstimateRequest, initOverrides?: RequestInit): Promise<GetPrintMailEstimateResponse> {
+        const response = await this.getPrintMailEstimateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A CRM connection\'s delivery log, newest first, paged; filter by status.
+     */
+    async listCrmIntegrationLogsRaw(requestParameters: ListCrmIntegrationLogsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCrmIntegrationLogsResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling listCrmIntegrationLogs.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.pageSize !== undefined) {
+            queryParameters['pageSize'] = requestParameters.pageSize;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/crm/integrations/{id}/logs`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListCrmIntegrationLogsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A CRM connection\'s delivery log, newest first, paged; filter by status.
+     */
+    async listCrmIntegrationLogs(requestParameters: ListCrmIntegrationLogsRequest, initOverrides?: RequestInit): Promise<ListCrmIntegrationLogsResponse> {
+        const response = await this.listCrmIntegrationLogsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The store\'s CRM connections: provider, name, sync settings, health. Secrets are redacted.
+     */
+    async listCrmIntegrationsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCrmIntegrationsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/crm/integrations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListCrmIntegrationsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The store\'s CRM connections: provider, name, sync settings, health. Secrets are redacted.
+     */
+    async listCrmIntegrations(initOverrides?: RequestInit): Promise<ListCrmIntegrationsResponse> {
+        const response = await this.listCrmIntegrationsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks.
      */
     async listNotificationIntegrationsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListNotificationIntegrationsResponse>> {
         const queryParameters: any = {};
@@ -183,7 +1130,7 @@ export class IntegrationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List Slack/Discord/Webhook destinations for notify.* automation actions.
+     * Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks.
      */
     async listNotificationIntegrations(initOverrides?: RequestInit): Promise<ListNotificationIntegrationsResponse> {
         const response = await this.listNotificationIntegrationsRaw(initOverrides);
@@ -191,16 +1138,179 @@ export class IntegrationsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Edit a notification destination.
+     * The store\'s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices.
      */
-    async updateNotificationIntegrationRaw(requestParameters: UpdateNotificationIntegrationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+    async listPrintMailCredentialsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPrintMailCredentialsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/print-mail/credentials`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListPrintMailCredentialsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The store\'s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices.
+     */
+    async listPrintMailCredentials(initOverrides?: RequestInit): Promise<ListPrintMailCredentialsResponse> {
+        const response = await this.listPrintMailCredentialsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones.
+     */
+    async updateCrmIntegrationRaw(requestParameters: UpdateCrmIntegrationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCrmIntegrationResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateNotificationIntegration.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateCrmIntegration.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/crm/integrations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateCrmIntegrationRequestToJSON(requestParameters.updateCrmIntegrationRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateCrmIntegrationResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones.
+     */
+    async updateCrmIntegration(requestParameters: UpdateCrmIntegrationOperationRequest, initOverrides?: RequestInit): Promise<CreateCrmIntegrationResponse> {
+        const response = await this.updateCrmIntegrationRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard).
+     */
+    async updateDesignToolRaw(requestParameters: UpdateDesignToolRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateDesignToolResponse>> {
+        if (requestParameters.tool === null || requestParameters.tool === undefined) {
+            throw new runtime.RequiredError('tool','Required parameter requestParameters.tool was null or undefined when calling updateDesignTool.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/design-tools/{tool}`.replace(`{${"tool"}}`, encodeURIComponent(String(requestParameters.tool))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TokenObjectToJSON(requestParameters.tokenObject),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateDesignToolResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard).
+     */
+    async updateDesignTool(requestParameters: UpdateDesignToolRequest, initOverrides?: RequestInit): Promise<UpdateDesignToolResponse> {
+        const response = await this.updateDesignToolRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones.
+     */
+    async updateEmailProviderRaw(requestParameters: UpdateEmailProviderOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateEmailProviderResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateEmailProvider.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/email-providers/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateEmailProviderRequestToJSON(requestParameters.updateEmailProviderRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateEmailProviderResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones.
+     */
+    async updateEmailProvider(requestParameters: UpdateEmailProviderOperationRequest, initOverrides?: RequestInit): Promise<UpdateEmailProviderResponse> {
+        const response = await this.updateEmailProviderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}.
+     */
+    async updateNotificationIntegrationRaw(requestParameters: UpdateNotificationIntegrationOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateNotificationIntegration.');
+        }
+
+        if (requestParameters.updateNotificationIntegrationRequest === null || requestParameters.updateNotificationIntegrationRequest === undefined) {
+            throw new runtime.RequiredError('updateNotificationIntegrationRequest','Required parameter requestParameters.updateNotificationIntegrationRequest was null or undefined when calling updateNotificationIntegration.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -215,17 +1325,80 @@ export class IntegrationsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateNotificationIntegrationRequestToJSON(requestParameters.updateNotificationIntegrationRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
     }
 
     /**
-     * Edit a notification destination.
+     * Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}.
      */
-    async updateNotificationIntegration(requestParameters: UpdateNotificationIntegrationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+    async updateNotificationIntegration(requestParameters: UpdateNotificationIntegrationOperationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
         const response = await this.updateNotificationIntegrationRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+    /**
+     * Change a print and mail account: label, return address, per-piece prices (cents per format).
+     */
+    async updatePrintMailCredentialRaw(requestParameters: UpdatePrintMailCredentialOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePrintMailCredentialResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePrintMailCredential.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/print-mail/credentials/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdatePrintMailCredentialRequestToJSON(requestParameters.updatePrintMailCredentialRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreatePrintMailCredentialResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change a print and mail account: label, return address, per-piece prices (cents per format).
+     */
+    async updatePrintMailCredential(requestParameters: UpdatePrintMailCredentialOperationRequest, initOverrides?: RequestInit): Promise<CreatePrintMailCredentialResponse> {
+        const response = await this.updatePrintMailCredentialRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetPrintMailEstimateFormatEnum {
+    Postcard4x6 = 'postcard_4x6',
+    Postcard6x9 = 'postcard_6x9',
+    Postcard6x11 = 'postcard_6x11',
+    Booklet8x5 = 'booklet_8x5'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListCrmIntegrationLogsStatusEnum {
+    Pending = 'pending',
+    Sent = 'sent',
+    Failed = 'failed',
+    Retrying = 'retrying'
 }

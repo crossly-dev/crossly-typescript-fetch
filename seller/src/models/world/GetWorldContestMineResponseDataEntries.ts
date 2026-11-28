@@ -39,16 +39,16 @@ export interface GetWorldContestMineResponseDataEntries {
     userId: string;
     /**
      * 
-     * @type {string}
-     * @memberof GetWorldContestMineResponseDataEntries
-     */
-    stripePaymentIntentId?: string | null;
-    /**
-     * 
      * @type {number}
      * @memberof GetWorldContestMineResponseDataEntries
      */
     attempts: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetWorldContestMineResponseDataEntries
+     */
+    stripePaymentIntentId?: string | null;
     /**
      * 
      * @type {string}
@@ -100,8 +100,8 @@ export function GetWorldContestMineResponseDataEntriesFromJSONTyped(json: any, i
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
-        'stripePaymentIntentId': !exists(json, 'stripePaymentIntentId') ? undefined : json['stripePaymentIntentId'],
         'attempts': json['attempts'],
+        'stripePaymentIntentId': !exists(json, 'stripePaymentIntentId') ? undefined : json['stripePaymentIntentId'],
         'contestId': json['contestId'],
         'bestScore': !exists(json, 'bestScore') ? undefined : json['bestScore'],
         'bestAt': !exists(json, 'bestAt') ? undefined : (json['bestAt'] === null ? null : new Date(json['bestAt'])),
@@ -121,8 +121,8 @@ export function GetWorldContestMineResponseDataEntriesToJSON(value?: GetWorldCon
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
-        'stripePaymentIntentId': value.stripePaymentIntentId,
         'attempts': value.attempts,
+        'stripePaymentIntentId': value.stripePaymentIntentId,
         'contestId': value.contestId,
         'bestScore': value.bestScore,
         'bestAt': value.bestAt === undefined ? undefined : (value.bestAt === null ? null : value.bestAt.toISOString()),

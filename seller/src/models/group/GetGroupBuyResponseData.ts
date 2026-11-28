@@ -44,11 +44,11 @@ import {
     GetGroupBuyResponseDataProgressToJSON,
 } from './GetGroupBuyResponseDataProgress';
 import {
-    GetGroupBuyResponseDataTiers,
-    GetGroupBuyResponseDataTiersFromJSON,
-    GetGroupBuyResponseDataTiersFromJSONTyped,
-    GetGroupBuyResponseDataTiersToJSON,
-} from './GetGroupBuyResponseDataTiers';
+    MinQtyPriceCents,
+    MinQtyPriceCentsFromJSON,
+    MinQtyPriceCentsFromJSONTyped,
+    MinQtyPriceCentsToJSON,
+} from '../common/MinQtyPriceCents';
 
 /**
  * 
@@ -166,10 +166,10 @@ export interface GetGroupBuyResponseData {
     basePriceCents: number;
     /**
      * 
-     * @type {Array<GetGroupBuyResponseDataTiers>}
+     * @type {Array<MinQtyPriceCents>}
      * @memberof GetGroupBuyResponseData
      */
-    tiers: Array<GetGroupBuyResponseDataTiers>;
+    tiers: Array<MinQtyPriceCents>;
     /**
      * 
      * @type {Array<GetGroupBuyResponseDataProgress>}
@@ -320,7 +320,7 @@ export function GetGroupBuyResponseDataFromJSONTyped(json: any, ignoreDiscrimina
         'msLeft': json['msLeft'],
         'opensToAllAt': !exists(json, 'opensToAllAt') ? undefined : json['opensToAllAt'],
         'basePriceCents': json['basePriceCents'],
-        'tiers': ((json['tiers'] as Array<any>).map(GetGroupBuyResponseDataTiersFromJSON)),
+        'tiers': ((json['tiers'] as Array<any>).map(MinQtyPriceCentsFromJSON)),
         'progress': ((json['progress'] as Array<any>).map(GetGroupBuyResponseDataProgressFromJSON)),
         'goalQty': json['goalQty'],
         'minQtyToProceed': json['minQtyToProceed'],
@@ -371,7 +371,7 @@ export function GetGroupBuyResponseDataToJSON(value?: GetGroupBuyResponseData | 
         'msLeft': value.msLeft,
         'opensToAllAt': value.opensToAllAt,
         'basePriceCents': value.basePriceCents,
-        'tiers': ((value.tiers as Array<any>).map(GetGroupBuyResponseDataTiersToJSON)),
+        'tiers': ((value.tiers as Array<any>).map(MinQtyPriceCentsToJSON)),
         'progress': ((value.progress as Array<any>).map(GetGroupBuyResponseDataProgressToJSON)),
         'goalQty': value.goalQty,
         'minQtyToProceed': value.minQtyToProceed,

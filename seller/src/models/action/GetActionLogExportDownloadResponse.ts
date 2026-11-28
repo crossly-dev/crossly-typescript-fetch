@@ -78,7 +78,7 @@ export interface GetActionLogExportDownloadResponse {
      * @type {{ [key: string]: any; }}
      * @memberof GetActionLogExportDownloadResponse
      */
-    asyncIterator6022: { [key: string]: any; };
+    asyncIterator5986: { [key: string]: any; };
 }
 
 export function GetActionLogExportDownloadResponseFromJSON(json: any): GetActionLogExportDownloadResponse {
@@ -98,7 +98,7 @@ export function GetActionLogExportDownloadResponseFromJSONTyped(json: any, ignor
         'pipeTo': json['pipeTo'],
         'tee': json['tee'],
         'values': json['values'],
-        'asyncIterator6022': json['__@asyncIterator@6022'],
+        'asyncIterator5986': json['__@asyncIterator@5986'],
     };
 }
 
@@ -118,7 +118,7 @@ export function GetActionLogExportDownloadResponseToJSON(value?: GetActionLogExp
         'pipeTo': value.pipeTo,
         'tee': value.tee,
         'values': value.values,
-        '__@asyncIterator@6022': value.asyncIterator6022,
+        '__@asyncIterator@5986': value.asyncIterator5986,
     };
 }
 

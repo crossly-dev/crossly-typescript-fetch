@@ -36,13 +36,13 @@ export interface GetDeveloperAppHealthResponseDataLast24hByClass {
      * @type {number}
      * @memberof GetDeveloperAppHealthResponseDataLast24hByClass
      */
-    _4xx: number;
+    _5xx: number;
     /**
      * 
      * @type {number}
      * @memberof GetDeveloperAppHealthResponseDataLast24hByClass
      */
-    _5xx: number;
+    _4xx: number;
 }
 
 export function GetDeveloperAppHealthResponseDataLast24hByClassFromJSON(json: any): GetDeveloperAppHealthResponseDataLast24hByClass {
@@ -57,8 +57,8 @@ export function GetDeveloperAppHealthResponseDataLast24hByClassFromJSONTyped(jso
         
         '_2xx': json['2xx'],
         '_3xx': json['3xx'],
-        '_4xx': json['4xx'],
         '_5xx': json['5xx'],
+        '_4xx': json['4xx'],
     };
 }
 
@@ -73,8 +73,8 @@ export function GetDeveloperAppHealthResponseDataLast24hByClassToJSON(value?: Ge
         
         '2xx': value._2xx,
         '3xx': value._3xx,
-        '4xx': value._4xx,
         '5xx': value._5xx,
+        '4xx': value._4xx,
     };
 }
 

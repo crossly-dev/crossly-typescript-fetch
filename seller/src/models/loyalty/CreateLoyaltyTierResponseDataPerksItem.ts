@@ -163,6 +163,12 @@ export interface CreateLoyaltyTierResponseDataPerksItem {
      * @memberof CreateLoyaltyTierResponseDataPerksItem
      */
     bonusBps?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateLoyaltyTierResponseDataPerksItem
+     */
+    days?: number;
 }
 
 /**
@@ -208,6 +214,7 @@ export function CreateLoyaltyTierResponseDataPerksItemFromJSONTyped(json: any, i
         'itemId': !exists(json, 'itemId') ? undefined : json['itemId'],
         'eventId': !exists(json, 'eventId') ? undefined : json['eventId'],
         'bonusBps': !exists(json, 'bonusBps') ? undefined : json['bonusBps'],
+        'days': !exists(json, 'days') ? undefined : json['days'],
     };
 }
 
@@ -244,6 +251,7 @@ export function CreateLoyaltyTierResponseDataPerksItemToJSON(value?: CreateLoyal
         'itemId': value.itemId,
         'eventId': value.eventId,
         'bonusBps': value.bonusBps,
+        'days': value.days,
     };
 }
 

@@ -15,15 +15,30 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateWorldExperiencePlacePackageRequest,
+    CreateWorldExperiencePlacePackageRequestFromJSON,
+    CreateWorldExperiencePlacePackageRequestToJSON,
     CreateWorldExperiencePlacePackageResponse,
     CreateWorldExperiencePlacePackageResponseFromJSON,
     CreateWorldExperiencePlacePackageResponseToJSON,
+    CreateWorldExperiencePlacePackageUpdateRequest,
+    CreateWorldExperiencePlacePackageUpdateRequestFromJSON,
+    CreateWorldExperiencePlacePackageUpdateRequestToJSON,
     CreateWorldExperiencePlacePackageUpdateResponse,
     CreateWorldExperiencePlacePackageUpdateResponseFromJSON,
     CreateWorldExperiencePlacePackageUpdateResponseToJSON,
+    CreateWorldPackageRequest,
+    CreateWorldPackageRequestFromJSON,
+    CreateWorldPackageRequestToJSON,
+    CreateWorldPackageToolboxRequest,
+    CreateWorldPackageToolboxRequestFromJSON,
+    CreateWorldPackageToolboxRequestToJSON,
     CreateWorldPackageToolboxResponse,
     CreateWorldPackageToolboxResponseFromJSON,
     CreateWorldPackageToolboxResponseToJSON,
+    CreateWorldPackageVersionRequest,
+    CreateWorldPackageVersionRequestFromJSON,
+    CreateWorldPackageVersionRequestToJSON,
     CreateWorldPackageVersionResponse,
     CreateWorldPackageVersionResponseFromJSON,
     CreateWorldPackageVersionResponseToJSON,
@@ -42,28 +57,42 @@ import {
     ListWorldPackagesResponse,
     ListWorldPackagesResponseFromJSON,
     ListWorldPackagesResponseToJSON,
+    UpdateWorldExperiencePlacePackageRequest,
+    UpdateWorldExperiencePlacePackageRequestFromJSON,
+    UpdateWorldExperiencePlacePackageRequestToJSON,
     UpdateWorldExperiencePlacePackageResponse,
     UpdateWorldExperiencePlacePackageResponseFromJSON,
     UpdateWorldExperiencePlacePackageResponseToJSON,
+    UpdateWorldPackageRequest,
+    UpdateWorldPackageRequestFromJSON,
+    UpdateWorldPackageRequestToJSON,
 } from '../models';
 
-export interface CreateWorldExperiencePlacePackageRequest {
+export interface CreateWorldExperiencePlacePackageOperationRequest {
     experienceId: string;
     placeId: string;
+    createWorldExperiencePlacePackageRequest?: CreateWorldExperiencePlacePackageRequest;
 }
 
-export interface CreateWorldExperiencePlacePackageUpdateRequest {
+export interface CreateWorldExperiencePlacePackageUpdateOperationRequest {
     experienceId: string;
     placeId: string;
     nodeId: string;
+    createWorldExperiencePlacePackageUpdateRequest?: CreateWorldExperiencePlacePackageUpdateRequest;
 }
 
-export interface CreateWorldPackageToolboxRequest {
-    packageId: string;
+export interface CreateWorldPackageOperationRequest {
+    createWorldPackageRequest?: CreateWorldPackageRequest;
 }
 
-export interface CreateWorldPackageVersionRequest {
+export interface CreateWorldPackageToolboxOperationRequest {
     packageId: string;
+    createWorldPackageToolboxRequest?: CreateWorldPackageToolboxRequest;
+}
+
+export interface CreateWorldPackageVersionOperationRequest {
+    packageId: string;
+    createWorldPackageVersionRequest?: CreateWorldPackageVersionRequest;
 }
 
 export interface DeleteWorldPackageRequest {
@@ -84,14 +113,20 @@ export interface ListWorldExperiencePlacePackagesRequest {
     placeId: string;
 }
 
-export interface UpdateWorldExperiencePlacePackageRequest {
+export interface ListWorldPackagesRequest {
+    archived?: ListWorldPackagesArchivedEnum;
+}
+
+export interface UpdateWorldExperiencePlacePackageOperationRequest {
     experienceId: string;
     placeId: string;
     nodeId: string;
+    updateWorldExperiencePlacePackageRequest?: UpdateWorldExperiencePlacePackageRequest;
 }
 
-export interface UpdateWorldPackageRequest {
+export interface UpdateWorldPackageOperationRequest {
     packageId: string;
+    updateWorldPackageRequest?: UpdateWorldPackageRequest;
 }
 
 /**
@@ -102,7 +137,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Insert a copy of a package (default: the newest version, auto-update on).
      */
-    async createWorldExperiencePlacePackageRaw(requestParameters: CreateWorldExperiencePlacePackageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlacePackageResponse>> {
+    async createWorldExperiencePlacePackageRaw(requestParameters: CreateWorldExperiencePlacePackageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlacePackageResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlacePackage.');
         }
@@ -114,6 +149,8 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -128,6 +165,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlacePackageRequestToJSON(requestParameters.createWorldExperiencePlacePackageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlacePackageResponseFromJSON(jsonValue));
@@ -136,7 +174,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Insert a copy of a package (default: the newest version, auto-update on).
      */
-    async createWorldExperiencePlacePackage(requestParameters: CreateWorldExperiencePlacePackageRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlacePackageResponse> {
+    async createWorldExperiencePlacePackage(requestParameters: CreateWorldExperiencePlacePackageOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlacePackageResponse> {
         const response = await this.createWorldExperiencePlacePackageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -144,7 +182,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Update a copy to a version (default newest). A copy edited in the place needs force: true (its edits are replaced).
      */
-    async createWorldExperiencePlacePackageUpdateRaw(requestParameters: CreateWorldExperiencePlacePackageUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlacePackageUpdateResponse>> {
+    async createWorldExperiencePlacePackageUpdateRaw(requestParameters: CreateWorldExperiencePlacePackageUpdateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePlacePackageUpdateResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePlacePackageUpdate.');
         }
@@ -161,6 +199,8 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -174,6 +214,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePlacePackageUpdateRequestToJSON(requestParameters.createWorldExperiencePlacePackageUpdateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePlacePackageUpdateResponseFromJSON(jsonValue));
@@ -182,7 +223,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Update a copy to a version (default newest). A copy edited in the place needs force: true (its edits are replaced).
      */
-    async createWorldExperiencePlacePackageUpdate(requestParameters: CreateWorldExperiencePlacePackageUpdateRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlacePackageUpdateResponse> {
+    async createWorldExperiencePlacePackageUpdate(requestParameters: CreateWorldExperiencePlacePackageUpdateOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePlacePackageUpdateResponse> {
         const response = await this.createWorldExperiencePlacePackageUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -190,10 +231,12 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Create a package (v1) from one node (place JSON) or from a node in a place — which then becomes copy v1, auto-updating.
      */
-    async createWorldPackageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldPackageResponse>> {
+    async createWorldPackageRaw(requestParameters: CreateWorldPackageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetWorldPackageResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -208,6 +251,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldPackageRequestToJSON(requestParameters.createWorldPackageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetWorldPackageResponseFromJSON(jsonValue));
@@ -216,15 +260,15 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Create a package (v1) from one node (place JSON) or from a node in a place — which then becomes copy v1, auto-updating.
      */
-    async createWorldPackage(initOverrides?: RequestInit): Promise<GetWorldPackageResponse> {
-        const response = await this.createWorldPackageRaw(initOverrides);
+    async createWorldPackage(requestParameters: CreateWorldPackageOperationRequest = {}, initOverrides?: RequestInit): Promise<GetWorldPackageResponse> {
+        const response = await this.createWorldPackageRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * List the latest version in the Toolbox as an asset of kind package (Toolbox review and pricing rules apply).
      */
-    async createWorldPackageToolboxRaw(requestParameters: CreateWorldPackageToolboxRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPackageToolboxResponse>> {
+    async createWorldPackageToolboxRaw(requestParameters: CreateWorldPackageToolboxOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPackageToolboxResponse>> {
         if (requestParameters.packageId === null || requestParameters.packageId === undefined) {
             throw new runtime.RequiredError('packageId','Required parameter requestParameters.packageId was null or undefined when calling createWorldPackageToolbox.');
         }
@@ -232,6 +276,8 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -246,6 +292,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldPackageToolboxRequestToJSON(requestParameters.createWorldPackageToolboxRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldPackageToolboxResponseFromJSON(jsonValue));
@@ -254,7 +301,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * List the latest version in the Toolbox as an asset of kind package (Toolbox review and pricing rules apply).
      */
-    async createWorldPackageToolbox(requestParameters: CreateWorldPackageToolboxRequest, initOverrides?: RequestInit): Promise<CreateWorldPackageToolboxResponse> {
+    async createWorldPackageToolbox(requestParameters: CreateWorldPackageToolboxOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldPackageToolboxResponse> {
         const response = await this.createWorldPackageToolboxRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -262,7 +309,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Publish a new version; every auto-updating, unmodified copy in your places is updated through its co-editing session. Returns what happened per place.
      */
-    async createWorldPackageVersionRaw(requestParameters: CreateWorldPackageVersionRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPackageVersionResponse>> {
+    async createWorldPackageVersionRaw(requestParameters: CreateWorldPackageVersionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldPackageVersionResponse>> {
         if (requestParameters.packageId === null || requestParameters.packageId === undefined) {
             throw new runtime.RequiredError('packageId','Required parameter requestParameters.packageId was null or undefined when calling createWorldPackageVersion.');
         }
@@ -270,6 +317,8 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -284,6 +333,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldPackageVersionRequestToJSON(requestParameters.createWorldPackageVersionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldPackageVersionResponseFromJSON(jsonValue));
@@ -292,7 +342,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Publish a new version; every auto-updating, unmodified copy in your places is updated through its co-editing session. Returns what happened per place.
      */
-    async createWorldPackageVersion(requestParameters: CreateWorldPackageVersionRequest, initOverrides?: RequestInit): Promise<CreateWorldPackageVersionResponse> {
+    async createWorldPackageVersion(requestParameters: CreateWorldPackageVersionOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldPackageVersionResponse> {
         const response = await this.createWorldPackageVersionRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -460,8 +510,12 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Your package library: reusable models and modules, newest first, with how many places hold copies.
      */
-    async listWorldPackagesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldPackagesResponse>> {
+    async listWorldPackagesRaw(requestParameters: ListWorldPackagesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldPackagesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.archived !== undefined) {
+            queryParameters['archived'] = requestParameters.archived;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -486,15 +540,15 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Your package library: reusable models and modules, newest first, with how many places hold copies.
      */
-    async listWorldPackages(initOverrides?: RequestInit): Promise<ListWorldPackagesResponse> {
-        const response = await this.listWorldPackagesRaw(initOverrides);
+    async listWorldPackages(requestParameters: ListWorldPackagesRequest = {}, initOverrides?: RequestInit): Promise<ListWorldPackagesResponse> {
+        const response = await this.listWorldPackagesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Turn auto-update on or off for one copy.
      */
-    async updateWorldExperiencePlacePackageRaw(requestParameters: UpdateWorldExperiencePlacePackageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperiencePlacePackageResponse>> {
+    async updateWorldExperiencePlacePackageRaw(requestParameters: UpdateWorldExperiencePlacePackageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldExperiencePlacePackageResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperiencePlacePackage.');
         }
@@ -511,6 +565,8 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -524,6 +580,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperiencePlacePackageRequestToJSON(requestParameters.updateWorldExperiencePlacePackageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldExperiencePlacePackageResponseFromJSON(jsonValue));
@@ -532,7 +589,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Turn auto-update on or off for one copy.
      */
-    async updateWorldExperiencePlacePackage(requestParameters: UpdateWorldExperiencePlacePackageRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperiencePlacePackageResponse> {
+    async updateWorldExperiencePlacePackage(requestParameters: UpdateWorldExperiencePlacePackageOperationRequest, initOverrides?: RequestInit): Promise<UpdateWorldExperiencePlacePackageResponse> {
         const response = await this.updateWorldExperiencePlacePackageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -540,7 +597,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Rename a package or change its description.
      */
-    async updateWorldPackageRaw(requestParameters: UpdateWorldPackageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteWorldPackageResponse>> {
+    async updateWorldPackageRaw(requestParameters: UpdateWorldPackageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteWorldPackageResponse>> {
         if (requestParameters.packageId === null || requestParameters.packageId === undefined) {
             throw new runtime.RequiredError('packageId','Required parameter requestParameters.packageId was null or undefined when calling updateWorldPackage.');
         }
@@ -548,6 +605,8 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -562,6 +621,7 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldPackageRequestToJSON(requestParameters.updateWorldPackageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteWorldPackageResponseFromJSON(jsonValue));
@@ -570,9 +630,18 @@ export class WorldsPackagesApi extends runtime.BaseAPI {
     /**
      * Rename a package or change its description.
      */
-    async updateWorldPackage(requestParameters: UpdateWorldPackageRequest, initOverrides?: RequestInit): Promise<DeleteWorldPackageResponse> {
+    async updateWorldPackage(requestParameters: UpdateWorldPackageOperationRequest, initOverrides?: RequestInit): Promise<DeleteWorldPackageResponse> {
         const response = await this.updateWorldPackageRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListWorldPackagesArchivedEnum {
+    True = 'true',
+    False = 'false'
 }

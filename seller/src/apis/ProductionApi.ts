@@ -15,18 +15,39 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateProductionCandidateAcceptRequest,
+    CreateProductionCandidateAcceptRequestFromJSON,
+    CreateProductionCandidateAcceptRequestToJSON,
     CreateProductionCandidateAcceptResponse,
     CreateProductionCandidateAcceptResponseFromJSON,
     CreateProductionCandidateAcceptResponseToJSON,
+    CreateProductionCandidateVoteRequest,
+    CreateProductionCandidateVoteRequestFromJSON,
+    CreateProductionCandidateVoteRequestToJSON,
     CreateProductionCandidateVoteResponse,
     CreateProductionCandidateVoteResponseFromJSON,
     CreateProductionCandidateVoteResponseToJSON,
+    CreateProductionDesignBriefRequest,
+    CreateProductionDesignBriefRequestFromJSON,
+    CreateProductionDesignBriefRequestToJSON,
+    CreateProductionDesignConsentRequest,
+    CreateProductionDesignConsentRequestFromJSON,
+    CreateProductionDesignConsentRequestToJSON,
+    CreateProductionDesignSpecRequest,
+    CreateProductionDesignSpecRequestFromJSON,
+    CreateProductionDesignSpecRequestToJSON,
     CreateProductionDesignSpecResponse,
     CreateProductionDesignSpecResponseFromJSON,
     CreateProductionDesignSpecResponseToJSON,
+    CreateProductionEstimateRequest,
+    CreateProductionEstimateRequestFromJSON,
+    CreateProductionEstimateRequestToJSON,
     CreateProductionEstimateResponse,
     CreateProductionEstimateResponseFromJSON,
     CreateProductionEstimateResponseToJSON,
+    CreateProductionRunPurchaseRequest,
+    CreateProductionRunPurchaseRequestFromJSON,
+    CreateProductionRunPurchaseRequestToJSON,
     CreateProductionRunPurchaseResponse,
     CreateProductionRunPurchaseResponseFromJSON,
     CreateProductionRunPurchaseResponseToJSON,
@@ -63,37 +84,50 @@ import {
     GetShopListingProvenanceResponse,
     GetShopListingProvenanceResponseFromJSON,
     GetShopListingProvenanceResponseToJSON,
+    UpdateProductionPoRequest,
+    UpdateProductionPoRequestFromJSON,
+    UpdateProductionPoRequestToJSON,
     UpdateProductionPoResponse,
     UpdateProductionPoResponseFromJSON,
     UpdateProductionPoResponseToJSON,
 } from '../models';
 
-export interface CreateProductionCandidateAcceptRequest {
+export interface CreateProductionCandidateAcceptOperationRequest {
     id: string;
+    createProductionCandidateAcceptRequest: CreateProductionCandidateAcceptRequest;
 }
 
 export interface CreateProductionCandidatePoRequest {
     id: string;
 }
 
-export interface CreateProductionCandidateVoteRequest {
+export interface CreateProductionCandidateVoteOperationRequest {
     id: string;
+    createProductionCandidateVoteRequest?: CreateProductionCandidateVoteRequest;
 }
 
-export interface CreateProductionDesignBriefRequest {
+export interface CreateProductionDesignBriefOperationRequest {
     cosmeticId: string;
+    createProductionDesignBriefRequest: CreateProductionDesignBriefRequest;
 }
 
-export interface CreateProductionDesignConsentRequest {
+export interface CreateProductionDesignConsentOperationRequest {
     cosmeticId: string;
+    createProductionDesignConsentRequest: CreateProductionDesignConsentRequest;
 }
 
-export interface CreateProductionDesignSpecRequest {
+export interface CreateProductionDesignSpecOperationRequest {
     cosmeticId: string;
+    createProductionDesignSpecRequest: CreateProductionDesignSpecRequest;
 }
 
-export interface CreateProductionRunPurchaseRequest {
+export interface CreateProductionEstimateOperationRequest {
+    createProductionEstimateRequest: CreateProductionEstimateRequest;
+}
+
+export interface CreateProductionRunPurchaseOperationRequest {
     id: string;
+    createProductionRunPurchaseRequest?: CreateProductionRunPurchaseRequest;
 }
 
 export interface CreateReceiptRelistRequest {
@@ -116,8 +150,9 @@ export interface GetShopListingProvenanceRequest {
     slug: string;
 }
 
-export interface UpdateProductionPoRequest {
+export interface UpdateProductionPoOperationRequest {
     poId: string;
+    updateProductionPoRequest: UpdateProductionPoRequest;
 }
 
 /**
@@ -128,14 +163,20 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Accept a graduated design\'s production terms (edition size, cost, holder access).
      */
-    async createProductionCandidateAcceptRaw(requestParameters: CreateProductionCandidateAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionCandidateAcceptResponse>> {
+    async createProductionCandidateAcceptRaw(requestParameters: CreateProductionCandidateAcceptOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionCandidateAcceptResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductionCandidateAccept.');
+        }
+
+        if (requestParameters.createProductionCandidateAcceptRequest === null || requestParameters.createProductionCandidateAcceptRequest === undefined) {
+            throw new runtime.RequiredError('createProductionCandidateAcceptRequest','Required parameter requestParameters.createProductionCandidateAcceptRequest was null or undefined when calling createProductionCandidateAccept.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -150,6 +191,7 @@ export class ProductionApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductionCandidateAcceptRequestToJSON(requestParameters.createProductionCandidateAcceptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductionCandidateAcceptResponseFromJSON(jsonValue));
@@ -158,7 +200,7 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Accept a graduated design\'s production terms (edition size, cost, holder access).
      */
-    async createProductionCandidateAccept(requestParameters: CreateProductionCandidateAcceptRequest, initOverrides?: RequestInit): Promise<CreateProductionCandidateAcceptResponse> {
+    async createProductionCandidateAccept(requestParameters: CreateProductionCandidateAcceptOperationRequest, initOverrides?: RequestInit): Promise<CreateProductionCandidateAcceptResponse> {
         const response = await this.createProductionCandidateAcceptRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -204,7 +246,7 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Back (support: true) or un-back a design on the production ballot. One vote per person per design; voters must have bought on Crossly.
      */
-    async createProductionCandidateVoteRaw(requestParameters: CreateProductionCandidateVoteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionCandidateVoteResponse>> {
+    async createProductionCandidateVoteRaw(requestParameters: CreateProductionCandidateVoteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionCandidateVoteResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductionCandidateVote.');
         }
@@ -212,6 +254,8 @@ export class ProductionApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -226,6 +270,7 @@ export class ProductionApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductionCandidateVoteRequestToJSON(requestParameters.createProductionCandidateVoteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductionCandidateVoteResponseFromJSON(jsonValue));
@@ -234,7 +279,7 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Back (support: true) or un-back a design on the production ballot. One vote per person per design; voters must have bought on Crossly.
      */
-    async createProductionCandidateVote(requestParameters: CreateProductionCandidateVoteRequest, initOverrides?: RequestInit): Promise<CreateProductionCandidateVoteResponse> {
+    async createProductionCandidateVote(requestParameters: CreateProductionCandidateVoteOperationRequest, initOverrides?: RequestInit): Promise<CreateProductionCandidateVoteResponse> {
         const response = await this.createProductionCandidateVoteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -242,14 +287,20 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Set a design\'s production brief (materials, finish, box, reference images).
      */
-    async createProductionDesignBriefRaw(requestParameters: CreateProductionDesignBriefRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionDesignSpecResponse>> {
+    async createProductionDesignBriefRaw(requestParameters: CreateProductionDesignBriefOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionDesignSpecResponse>> {
         if (requestParameters.cosmeticId === null || requestParameters.cosmeticId === undefined) {
             throw new runtime.RequiredError('cosmeticId','Required parameter requestParameters.cosmeticId was null or undefined when calling createProductionDesignBrief.');
+        }
+
+        if (requestParameters.createProductionDesignBriefRequest === null || requestParameters.createProductionDesignBriefRequest === undefined) {
+            throw new runtime.RequiredError('createProductionDesignBriefRequest','Required parameter requestParameters.createProductionDesignBriefRequest was null or undefined when calling createProductionDesignBrief.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -264,6 +315,7 @@ export class ProductionApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductionDesignBriefRequestToJSON(requestParameters.createProductionDesignBriefRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductionDesignSpecResponseFromJSON(jsonValue));
@@ -272,7 +324,7 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Set a design\'s production brief (materials, finish, box, reference images).
      */
-    async createProductionDesignBrief(requestParameters: CreateProductionDesignBriefRequest, initOverrides?: RequestInit): Promise<CreateProductionDesignSpecResponse> {
+    async createProductionDesignBrief(requestParameters: CreateProductionDesignBriefOperationRequest, initOverrides?: RequestInit): Promise<CreateProductionDesignSpecResponse> {
         const response = await this.createProductionDesignBriefRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -280,14 +332,20 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Opt a design in or out of physical production.
      */
-    async createProductionDesignConsentRaw(requestParameters: CreateProductionDesignConsentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionDesignSpecResponse>> {
+    async createProductionDesignConsentRaw(requestParameters: CreateProductionDesignConsentOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionDesignSpecResponse>> {
         if (requestParameters.cosmeticId === null || requestParameters.cosmeticId === undefined) {
             throw new runtime.RequiredError('cosmeticId','Required parameter requestParameters.cosmeticId was null or undefined when calling createProductionDesignConsent.');
+        }
+
+        if (requestParameters.createProductionDesignConsentRequest === null || requestParameters.createProductionDesignConsentRequest === undefined) {
+            throw new runtime.RequiredError('createProductionDesignConsentRequest','Required parameter requestParameters.createProductionDesignConsentRequest was null or undefined when calling createProductionDesignConsent.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -302,6 +360,7 @@ export class ProductionApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductionDesignConsentRequestToJSON(requestParameters.createProductionDesignConsentRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductionDesignSpecResponseFromJSON(jsonValue));
@@ -310,7 +369,7 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Opt a design in or out of physical production.
      */
-    async createProductionDesignConsent(requestParameters: CreateProductionDesignConsentRequest, initOverrides?: RequestInit): Promise<CreateProductionDesignSpecResponse> {
+    async createProductionDesignConsent(requestParameters: CreateProductionDesignConsentOperationRequest, initOverrides?: RequestInit): Promise<CreateProductionDesignSpecResponse> {
         const response = await this.createProductionDesignConsentRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -318,14 +377,20 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Set a design\'s production spec (category, materials, complexity, packaging).
      */
-    async createProductionDesignSpecRaw(requestParameters: CreateProductionDesignSpecRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionDesignSpecResponse>> {
+    async createProductionDesignSpecRaw(requestParameters: CreateProductionDesignSpecOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionDesignSpecResponse>> {
         if (requestParameters.cosmeticId === null || requestParameters.cosmeticId === undefined) {
             throw new runtime.RequiredError('cosmeticId','Required parameter requestParameters.cosmeticId was null or undefined when calling createProductionDesignSpec.');
+        }
+
+        if (requestParameters.createProductionDesignSpecRequest === null || requestParameters.createProductionDesignSpecRequest === undefined) {
+            throw new runtime.RequiredError('createProductionDesignSpecRequest','Required parameter requestParameters.createProductionDesignSpecRequest was null or undefined when calling createProductionDesignSpec.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -340,6 +405,7 @@ export class ProductionApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductionDesignSpecRequestToJSON(requestParameters.createProductionDesignSpecRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductionDesignSpecResponseFromJSON(jsonValue));
@@ -348,7 +414,7 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Set a design\'s production spec (category, materials, complexity, packaging).
      */
-    async createProductionDesignSpec(requestParameters: CreateProductionDesignSpecRequest, initOverrides?: RequestInit): Promise<CreateProductionDesignSpecResponse> {
+    async createProductionDesignSpec(requestParameters: CreateProductionDesignSpecOperationRequest, initOverrides?: RequestInit): Promise<CreateProductionDesignSpecResponse> {
         const response = await this.createProductionDesignSpecRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -356,10 +422,16 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Estimate a run\'s landed cost from a spec + edition size (overshoots for safety).
      */
-    async createProductionEstimateRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionEstimateResponse>> {
+    async createProductionEstimateRaw(requestParameters: CreateProductionEstimateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionEstimateResponse>> {
+        if (requestParameters.createProductionEstimateRequest === null || requestParameters.createProductionEstimateRequest === undefined) {
+            throw new runtime.RequiredError('createProductionEstimateRequest','Required parameter requestParameters.createProductionEstimateRequest was null or undefined when calling createProductionEstimate.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -374,6 +446,7 @@ export class ProductionApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductionEstimateRequestToJSON(requestParameters.createProductionEstimateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductionEstimateResponseFromJSON(jsonValue));
@@ -382,15 +455,15 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Estimate a run\'s landed cost from a spec + edition size (overshoots for safety).
      */
-    async createProductionEstimate(initOverrides?: RequestInit): Promise<CreateProductionEstimateResponse> {
-        const response = await this.createProductionEstimateRaw(initOverrides);
+    async createProductionEstimate(requestParameters: CreateProductionEstimateOperationRequest, initOverrides?: RequestInit): Promise<CreateProductionEstimateResponse> {
+        const response = await this.createProductionEstimateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Buy a limited-edition unit of a physical run (holder pricing applies).
      */
-    async createProductionRunPurchaseRaw(requestParameters: CreateProductionRunPurchaseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionRunPurchaseResponse>> {
+    async createProductionRunPurchaseRaw(requestParameters: CreateProductionRunPurchaseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductionRunPurchaseResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductionRunPurchase.');
         }
@@ -398,6 +471,8 @@ export class ProductionApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -412,6 +487,7 @@ export class ProductionApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductionRunPurchaseRequestToJSON(requestParameters.createProductionRunPurchaseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductionRunPurchaseResponseFromJSON(jsonValue));
@@ -420,7 +496,7 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Buy a limited-edition unit of a physical run (holder pricing applies).
      */
-    async createProductionRunPurchase(requestParameters: CreateProductionRunPurchaseRequest, initOverrides?: RequestInit): Promise<CreateProductionRunPurchaseResponse> {
+    async createProductionRunPurchase(requestParameters: CreateProductionRunPurchaseOperationRequest, initOverrides?: RequestInit): Promise<CreateProductionRunPurchaseResponse> {
         const response = await this.createProductionRunPurchaseRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -822,14 +898,20 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Ops: update a PO (supplier, freight, actuals, QC, status). Admin PAT only.
      */
-    async updateProductionPoRaw(requestParameters: UpdateProductionPoRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateProductionPoResponse>> {
+    async updateProductionPoRaw(requestParameters: UpdateProductionPoOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateProductionPoResponse>> {
         if (requestParameters.poId === null || requestParameters.poId === undefined) {
             throw new runtime.RequiredError('poId','Required parameter requestParameters.poId was null or undefined when calling updateProductionPo.');
+        }
+
+        if (requestParameters.updateProductionPoRequest === null || requestParameters.updateProductionPoRequest === undefined) {
+            throw new runtime.RequiredError('updateProductionPoRequest','Required parameter requestParameters.updateProductionPoRequest was null or undefined when calling updateProductionPo.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -844,6 +926,7 @@ export class ProductionApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateProductionPoRequestToJSON(requestParameters.updateProductionPoRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateProductionPoResponseFromJSON(jsonValue));
@@ -852,7 +935,7 @@ export class ProductionApi extends runtime.BaseAPI {
     /**
      * Ops: update a PO (supplier, freight, actuals, QC, status). Admin PAT only.
      */
-    async updateProductionPo(requestParameters: UpdateProductionPoRequest, initOverrides?: RequestInit): Promise<UpdateProductionPoResponse> {
+    async updateProductionPo(requestParameters: UpdateProductionPoOperationRequest, initOverrides?: RequestInit): Promise<UpdateProductionPoResponse> {
         const response = await this.updateProductionPoRaw(requestParameters, initOverrides);
         return await response.value();
     }

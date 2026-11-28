@@ -31,7 +31,7 @@ export interface GetNetworkPoolResponse {
      * @type {GetNetworkPoolResponseMember}
      * @memberof GetNetworkPoolResponse
      */
-    member: GetNetworkPoolResponseMember;
+    member?: GetNetworkPoolResponseMember | null;
 }
 
 export function GetNetworkPoolResponseFromJSON(json: any): GetNetworkPoolResponse {
@@ -44,7 +44,7 @@ export function GetNetworkPoolResponseFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'member': GetNetworkPoolResponseMemberFromJSON(json['member']),
+        'member': !exists(json, 'member') ? undefined : GetNetworkPoolResponseMemberFromJSON(json['member']),
     };
 }
 

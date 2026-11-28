@@ -30,7 +30,13 @@ export interface CreateWebhookTestResponse {
      * @type {string}
      * @memberof CreateWebhookTestResponse
      */
-    deliveryId: string;
+    deliveryId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWebhookTestResponse
+     */
+    message?: string | null;
 }
 
 export function CreateWebhookTestResponseFromJSON(json: any): CreateWebhookTestResponse {
@@ -44,7 +50,8 @@ export function CreateWebhookTestResponseFromJSONTyped(json: any, ignoreDiscrimi
     return {
         
         'ok': json['ok'],
-        'deliveryId': json['deliveryId'],
+        'deliveryId': !exists(json, 'deliveryId') ? undefined : json['deliveryId'],
+        'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
 
@@ -59,6 +66,7 @@ export function CreateWebhookTestResponseToJSON(value?: CreateWebhookTestRespons
         
         'ok': value.ok,
         'deliveryId': value.deliveryId,
+        'message': value.message,
     };
 }
 

@@ -15,12 +15,18 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCreatorExperienceKeyRequest,
+    CreateCreatorExperienceKeyRequestFromJSON,
+    CreateCreatorExperienceKeyRequestToJSON,
     CreateCreatorExperienceKeyResponse,
     CreateCreatorExperienceKeyResponseFromJSON,
     CreateCreatorExperienceKeyResponseToJSON,
     CreateCreatorExperienceKeyResponseN201,
     CreateCreatorExperienceKeyResponseN201FromJSON,
     CreateCreatorExperienceKeyResponseN201ToJSON,
+    CreateCreatorExperienceKeyRotateRequest,
+    CreateCreatorExperienceKeyRotateRequestFromJSON,
+    CreateCreatorExperienceKeyRotateRequestToJSON,
     CreateCreatorExperienceKeyRotateResponse,
     CreateCreatorExperienceKeyRotateResponseFromJSON,
     CreateCreatorExperienceKeyRotateResponseToJSON,
@@ -38,12 +44,22 @@ import {
     ListCreatorExperienceKeysResponseToJSON,
 } from '../models';
 
-export interface CreateCreatorExperienceKeyRotateRequest {
+export interface CreateCreatorExperienceKeyOperationRequest {
+    createCreatorExperienceKeyRequest?: CreateCreatorExperienceKeyRequest;
+}
+
+export interface CreateCreatorExperienceKeyRotateOperationRequest {
     id: string;
+    createCreatorExperienceKeyRotateRequest?: CreateCreatorExperienceKeyRotateRequest;
 }
 
 export interface DeleteCreatorExperienceKeyRequest {
     id: string;
+}
+
+export interface ListCreatorExperienceKeysRequest {
+    includeRevoked?: ListCreatorExperienceKeysIncludeRevokedEnum;
+    experienceId?: string;
 }
 
 /**
@@ -54,10 +70,12 @@ export class CreatorApi extends runtime.BaseAPI {
     /**
      * Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE.
      */
-    async createCreatorExperienceKeyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorExperienceKeyResponse>> {
+    async createCreatorExperienceKeyRaw(requestParameters: CreateCreatorExperienceKeyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorExperienceKeyResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -72,6 +90,7 @@ export class CreatorApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorExperienceKeyRequestToJSON(requestParameters.createCreatorExperienceKeyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCreatorExperienceKeyResponseFromJSON(jsonValue));
@@ -80,15 +99,15 @@ export class CreatorApi extends runtime.BaseAPI {
     /**
      * Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE.
      */
-    async createCreatorExperienceKey(initOverrides?: RequestInit): Promise<CreateCreatorExperienceKeyResponse> {
-        const response = await this.createCreatorExperienceKeyRaw(initOverrides);
+    async createCreatorExperienceKey(requestParameters: CreateCreatorExperienceKeyOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateCreatorExperienceKeyResponse> {
+        const response = await this.createCreatorExperienceKeyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Rotate a key: a replacement with the same settings (its token shown ONCE); the old key keeps working for overlapHours (default 24, 0 = revoke now, max 168).
      */
-    async createCreatorExperienceKeyRotateRaw(requestParameters: CreateCreatorExperienceKeyRotateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorExperienceKeyRotateResponse>> {
+    async createCreatorExperienceKeyRotateRaw(requestParameters: CreateCreatorExperienceKeyRotateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateCreatorExperienceKeyRotateResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createCreatorExperienceKeyRotate.');
         }
@@ -96,6 +115,8 @@ export class CreatorApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -110,6 +131,7 @@ export class CreatorApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCreatorExperienceKeyRotateRequestToJSON(requestParameters.createCreatorExperienceKeyRotateRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateCreatorExperienceKeyRotateResponseFromJSON(jsonValue));
@@ -118,7 +140,7 @@ export class CreatorApi extends runtime.BaseAPI {
     /**
      * Rotate a key: a replacement with the same settings (its token shown ONCE); the old key keeps working for overlapHours (default 24, 0 = revoke now, max 168).
      */
-    async createCreatorExperienceKeyRotate(requestParameters: CreateCreatorExperienceKeyRotateRequest, initOverrides?: RequestInit): Promise<CreateCreatorExperienceKeyRotateResponse> {
+    async createCreatorExperienceKeyRotate(requestParameters: CreateCreatorExperienceKeyRotateOperationRequest, initOverrides?: RequestInit): Promise<CreateCreatorExperienceKeyRotateResponse> {
         const response = await this.createCreatorExperienceKeyRotateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -198,8 +220,16 @@ export class CreatorApi extends runtime.BaseAPI {
     /**
      * Your experience API keys, newest first (never the secret). ?includeRevoked=true for the history; ?experienceId= for the keys that reach one game (a game\'s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor=.
      */
-    async listCreatorExperienceKeysRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCreatorExperienceKeysResponse>> {
+    async listCreatorExperienceKeysRaw(requestParameters: ListCreatorExperienceKeysRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCreatorExperienceKeysResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.includeRevoked !== undefined) {
+            queryParameters['includeRevoked'] = requestParameters.includeRevoked;
+        }
+
+        if (requestParameters.experienceId !== undefined) {
+            queryParameters['experienceId'] = requestParameters.experienceId;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -224,9 +254,18 @@ export class CreatorApi extends runtime.BaseAPI {
     /**
      * Your experience API keys, newest first (never the secret). ?includeRevoked=true for the history; ?experienceId= for the keys that reach one game (a game\'s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor=.
      */
-    async listCreatorExperienceKeys(initOverrides?: RequestInit): Promise<ListCreatorExperienceKeysResponse> {
-        const response = await this.listCreatorExperienceKeysRaw(initOverrides);
+    async listCreatorExperienceKeys(requestParameters: ListCreatorExperienceKeysRequest = {}, initOverrides?: RequestInit): Promise<ListCreatorExperienceKeysResponse> {
+        const response = await this.listCreatorExperienceKeysRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListCreatorExperienceKeysIncludeRevokedEnum {
+    True = 'true',
+    False = 'false'
 }

@@ -13,12 +13,25 @@
  */
 
 import { exists, mapValues } from '../../runtime';
+import {
+    ListConnectionEmailItem,
+    ListConnectionEmailItemFromJSON,
+    ListConnectionEmailItemFromJSONTyped,
+    ListConnectionEmailItemToJSON,
+} from './ListConnectionEmailItem';
+
 /**
  * 
  * @export
  * @interface CreateConnectionEmailImapResponse
  */
 export interface CreateConnectionEmailImapResponse {
+    /**
+     * 
+     * @type {ListConnectionEmailItem}
+     * @memberof CreateConnectionEmailImapResponse
+     */
+    data: ListConnectionEmailItem;
     /**
      * 
      * @type {boolean}
@@ -43,6 +56,7 @@ export function CreateConnectionEmailImapResponseFromJSONTyped(json: any, ignore
     }
     return {
         
+        'data': ListConnectionEmailItemFromJSON(json['data']),
         'success': json['success'],
         'id': json['id'],
     };
@@ -57,6 +71,7 @@ export function CreateConnectionEmailImapResponseToJSON(value?: CreateConnection
     }
     return {
         
+        'data': ListConnectionEmailItemToJSON(value.data),
         'success': value.success,
         'id': value.id,
     };

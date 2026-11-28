@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    DeleteStoryResponseData,
-    DeleteStoryResponseDataFromJSON,
-    DeleteStoryResponseDataFromJSONTyped,
-    DeleteStoryResponseDataToJSON,
-} from './DeleteStoryResponseData';
+    DeleteSkuPresetResponse,
+    DeleteSkuPresetResponseFromJSON,
+    DeleteSkuPresetResponseFromJSONTyped,
+    DeleteSkuPresetResponseToJSON,
+} from '../sku/DeleteSkuPresetResponse';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface DeleteStoryResponse {
     /**
      * 
-     * @type {DeleteStoryResponseData}
+     * @type {DeleteSkuPresetResponse}
      * @memberof DeleteStoryResponse
      */
-    data: DeleteStoryResponseData;
+    data: DeleteSkuPresetResponse;
 }
 
 export function DeleteStoryResponseFromJSON(json: any): DeleteStoryResponse {
@@ -44,7 +44,7 @@ export function DeleteStoryResponseFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'data': DeleteStoryResponseDataFromJSON(json['data']),
+        'data': DeleteSkuPresetResponseFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function DeleteStoryResponseToJSON(value?: DeleteStoryResponse | null): a
     }
     return {
         
-        'data': DeleteStoryResponseDataToJSON(value.data),
+        'data': DeleteSkuPresetResponseToJSON(value.data),
     };
 }
 

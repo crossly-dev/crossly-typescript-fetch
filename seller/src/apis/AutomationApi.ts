@@ -15,18 +15,33 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateAutomationRuleImportRequest,
+    CreateAutomationRuleImportRequestFromJSON,
+    CreateAutomationRuleImportRequestToJSON,
     CreateAutomationRuleImportResponse,
     CreateAutomationRuleImportResponseFromJSON,
     CreateAutomationRuleImportResponseToJSON,
     CreateAutomationRuleRunNowResponse,
     CreateAutomationRuleRunNowResponseFromJSON,
     CreateAutomationRuleRunNowResponseToJSON,
+    CreateAutomationRuleValidateRecipeRequest,
+    CreateAutomationRuleValidateRecipeRequestFromJSON,
+    CreateAutomationRuleValidateRecipeRequestToJSON,
     CreateAutomationRuleValidateRecipeResponse,
     CreateAutomationRuleValidateRecipeResponseFromJSON,
     CreateAutomationRuleValidateRecipeResponseToJSON,
     CreateRepriceEventSkipResponse,
     CreateRepriceEventSkipResponseFromJSON,
     CreateRepriceEventSkipResponseToJSON,
+    CreateRepricingAssignmentRequest,
+    CreateRepricingAssignmentRequestFromJSON,
+    CreateRepricingAssignmentRequestToJSON,
+    CreateRepricingAssignmentResponse,
+    CreateRepricingAssignmentResponseFromJSON,
+    CreateRepricingAssignmentResponseToJSON,
+    DeleteStoryResponse,
+    DeleteStoryResponseFromJSON,
+    DeleteStoryResponseToJSON,
     GetAutomationCatalogResponse,
     GetAutomationCatalogResponseFromJSON,
     GetAutomationCatalogResponseToJSON,
@@ -39,6 +54,9 @@ import {
     GetAutomationRuleResponse,
     GetAutomationRuleResponseFromJSON,
     GetAutomationRuleResponseToJSON,
+    GetRepricingStrategyResponse,
+    GetRepricingStrategyResponseFromJSON,
+    GetRepricingStrategyResponseToJSON,
     ListAutomationRulesItem,
     ListAutomationRulesItemFromJSON,
     ListAutomationRulesItemToJSON,
@@ -51,12 +69,19 @@ import {
     ListRepriceEventsResponse,
     ListRepriceEventsResponseFromJSON,
     ListRepriceEventsResponseToJSON,
+    ListRepricingAssignmentsResponse,
+    ListRepricingAssignmentsResponseFromJSON,
+    ListRepricingAssignmentsResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateRepricingAssignmentRequest,
+    UpdateRepricingAssignmentRequestFromJSON,
+    UpdateRepricingAssignmentRequestToJSON,
 } from '../models';
 
-export interface CreateAutomationRuleImportRequest {
+export interface CreateAutomationRuleImportOperationRequest {
+    createAutomationRuleImportRequest: CreateAutomationRuleImportRequest;
     activate?: boolean;
 }
 
@@ -68,6 +93,10 @@ export interface CreateAutomationRuleToggleRequest {
     id: string;
 }
 
+export interface CreateAutomationRuleValidateRecipeOperationRequest {
+    createAutomationRuleValidateRecipeRequest: CreateAutomationRuleValidateRecipeRequest;
+}
+
 export interface CreateRepriceEventApproveRequest {
     id: string;
 }
@@ -76,7 +105,15 @@ export interface CreateRepriceEventSkipRequest {
     id: string;
 }
 
+export interface CreateRepricingAssignmentOperationRequest {
+    createRepricingAssignmentRequest?: CreateRepricingAssignmentRequest;
+}
+
 export interface DeleteAutomationRuleRequest {
+    id: string;
+}
+
+export interface DeleteRepricingAssignmentRequest {
     id: string;
 }
 
@@ -94,8 +131,19 @@ export interface ListAutomationRunsRequest {
     limit?: number;
 }
 
+export interface ListRepriceEventsRequest {
+    pending?: ListRepriceEventsPendingEnum;
+    listingId?: string;
+    limit?: number;
+}
+
 export interface UpdateAutomationRuleRequest {
     id: string;
+}
+
+export interface UpdateRepricingAssignmentOperationRequest {
+    id: string;
+    updateRepricingAssignmentRequest?: UpdateRepricingAssignmentRequest;
 }
 
 /**
@@ -143,7 +191,11 @@ export class AutomationApi extends runtime.BaseAPI {
      * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Import one or more rules from recipe JSON (single or bundle).
      */
-    async createAutomationRuleImportRaw(requestParameters: CreateAutomationRuleImportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomationRuleImportResponse>> {
+    async createAutomationRuleImportRaw(requestParameters: CreateAutomationRuleImportOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomationRuleImportResponse>> {
+        if (requestParameters.createAutomationRuleImportRequest === null || requestParameters.createAutomationRuleImportRequest === undefined) {
+            throw new runtime.RequiredError('createAutomationRuleImportRequest','Required parameter requestParameters.createAutomationRuleImportRequest was null or undefined when calling createAutomationRuleImport.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.activate !== undefined) {
@@ -151,6 +203,8 @@ export class AutomationApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -165,6 +219,7 @@ export class AutomationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAutomationRuleImportRequestToJSON(requestParameters.createAutomationRuleImportRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAutomationRuleImportResponseFromJSON(jsonValue));
@@ -174,7 +229,7 @@ export class AutomationApi extends runtime.BaseAPI {
      * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Import one or more rules from recipe JSON (single or bundle).
      */
-    async createAutomationRuleImport(requestParameters: CreateAutomationRuleImportRequest = {}, initOverrides?: RequestInit): Promise<CreateAutomationRuleImportResponse> {
+    async createAutomationRuleImport(requestParameters: CreateAutomationRuleImportOperationRequest, initOverrides?: RequestInit): Promise<CreateAutomationRuleImportResponse> {
         const response = await this.createAutomationRuleImportRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -263,10 +318,16 @@ export class AutomationApi extends runtime.BaseAPI {
      * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Dry-run validate one or more recipes against the live catalog.
      */
-    async createAutomationRuleValidateRecipeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomationRuleValidateRecipeResponse>> {
+    async createAutomationRuleValidateRecipeRaw(requestParameters: CreateAutomationRuleValidateRecipeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAutomationRuleValidateRecipeResponse>> {
+        if (requestParameters.createAutomationRuleValidateRecipeRequest === null || requestParameters.createAutomationRuleValidateRecipeRequest === undefined) {
+            throw new runtime.RequiredError('createAutomationRuleValidateRecipeRequest','Required parameter requestParameters.createAutomationRuleValidateRecipeRequest was null or undefined when calling createAutomationRuleValidateRecipe.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -281,6 +342,7 @@ export class AutomationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAutomationRuleValidateRecipeRequestToJSON(requestParameters.createAutomationRuleValidateRecipeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAutomationRuleValidateRecipeResponseFromJSON(jsonValue));
@@ -290,8 +352,8 @@ export class AutomationApi extends runtime.BaseAPI {
      * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Dry-run validate one or more recipes against the live catalog.
      */
-    async createAutomationRuleValidateRecipe(initOverrides?: RequestInit): Promise<CreateAutomationRuleValidateRecipeResponse> {
-        const response = await this.createAutomationRuleValidateRecipeRaw(initOverrides);
+    async createAutomationRuleValidateRecipe(requestParameters: CreateAutomationRuleValidateRecipeOperationRequest, initOverrides?: RequestInit): Promise<CreateAutomationRuleValidateRecipeResponse> {
+        const response = await this.createAutomationRuleValidateRecipeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -372,6 +434,43 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \"ask\" records each change for approval instead of applying it.
+     */
+    async createRepricingAssignmentRaw(requestParameters: CreateRepricingAssignmentOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateRepricingAssignmentResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/repricing/assignments`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateRepricingAssignmentRequestToJSON(requestParameters.createRepricingAssignmentRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateRepricingAssignmentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \"ask\" records each change for approval instead of applying it.
+     */
+    async createRepricingAssignment(requestParameters: CreateRepricingAssignmentOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateRepricingAssignmentResponse> {
+        const response = await this.createRepricingAssignmentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * Delete an automation rule.
      */
@@ -408,6 +507,44 @@ export class AutomationApi extends runtime.BaseAPI {
      */
     async deleteAutomationRule(requestParameters: DeleteAutomationRuleRequest, initOverrides?: RequestInit): Promise<OkResponse> {
         const response = await this.deleteAutomationRuleRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
+     */
+    async deleteRepricingAssignmentRaw(requestParameters: DeleteRepricingAssignmentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteStoryResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteRepricingAssignment.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/repricing/assignments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteStoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
+     */
+    async deleteRepricingAssignment(requestParameters: DeleteRepricingAssignmentRequest, initOverrides?: RequestInit): Promise<DeleteStoryResponse> {
+        const response = await this.deleteRepricingAssignmentRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -562,6 +699,40 @@ export class AutomationApi extends runtime.BaseAPI {
     }
 
     /**
+     * The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
+     */
+    async getRepricingStrategyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetRepricingStrategyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/repricing/strategies`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetRepricingStrategyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
+     */
+    async getRepricingStrategy(initOverrides?: RequestInit): Promise<GetRepricingStrategyResponse> {
+        const response = await this.getRepricingStrategyRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Deprecated: automation rules are workflows now. Use /v1/workflows.
      * List automation rules.
      */
@@ -648,8 +819,20 @@ export class AutomationApi extends runtime.BaseAPI {
     /**
      * Reprice decisions, newest first: applied, held at a floor, or pending approval (pending=true for only those waiting).
      */
-    async listRepriceEventsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListRepriceEventsResponse>> {
+    async listRepriceEventsRaw(requestParameters: ListRepriceEventsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListRepriceEventsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.pending !== undefined) {
+            queryParameters['pending'] = requestParameters.pending;
+        }
+
+        if (requestParameters.listingId !== undefined) {
+            queryParameters['listingId'] = requestParameters.listingId;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -674,8 +857,42 @@ export class AutomationApi extends runtime.BaseAPI {
     /**
      * Reprice decisions, newest first: applied, held at a floor, or pending approval (pending=true for only those waiting).
      */
-    async listRepriceEvents(initOverrides?: RequestInit): Promise<ListRepriceEventsResponse> {
-        const response = await this.listRepriceEventsRaw(initOverrides);
+    async listRepriceEvents(requestParameters: ListRepriceEventsRequest = {}, initOverrides?: RequestInit): Promise<ListRepriceEventsResponse> {
+        const response = await this.listRepriceEventsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
+     */
+    async listRepricingAssignmentsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListRepricingAssignmentsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/repricing/assignments`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListRepricingAssignmentsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
+     */
+    async listRepricingAssignments(initOverrides?: RequestInit): Promise<ListRepricingAssignmentsResponse> {
+        const response = await this.listRepricingAssignmentsRaw(initOverrides);
         return await response.value();
     }
 
@@ -719,4 +936,54 @@ export class AutomationApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+    /**
+     * Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
+     */
+    async updateRepricingAssignmentRaw(requestParameters: UpdateRepricingAssignmentOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateRepricingAssignmentResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateRepricingAssignment.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/repricing/assignments/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateRepricingAssignmentRequestToJSON(requestParameters.updateRepricingAssignmentRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateRepricingAssignmentResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
+     */
+    async updateRepricingAssignment(requestParameters: UpdateRepricingAssignmentOperationRequest, initOverrides?: RequestInit): Promise<CreateRepricingAssignmentResponse> {
+        const response = await this.updateRepricingAssignmentRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListRepriceEventsPendingEnum {
+    True = 'true',
+    False = 'false'
 }

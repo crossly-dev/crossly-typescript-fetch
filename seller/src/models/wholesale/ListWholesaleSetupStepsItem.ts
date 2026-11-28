@@ -59,19 +59,19 @@ export enum ListWholesaleSetupStepsItemIdEnum {
     Live = 'live',
     Catalog = 'catalog',
     Returns = 'returns',
+    Profile = 'profile',
     Visibility = 'visibility',
     Payment = 'payment',
-    ShipsFrom = 'ships_from',
-    Profile = 'profile'
+    ShipsFrom = 'ships_from'
 }/**
 * @export
 * @enum {string}
 */
 export enum ListWholesaleSetupStepsItemTabEnum {
     Invoices = 'invoices',
+    Profile = 'profile',
     Buyers = 'buyers',
-    Catalogs = 'catalogs',
-    Profile = 'profile'
+    Catalogs = 'catalogs'
 }
 
 export function ListWholesaleSetupStepsItemFromJSON(json: any): ListWholesaleSetupStepsItem {

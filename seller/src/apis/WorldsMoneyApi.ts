@@ -18,9 +18,18 @@ import {
     CreateWorldEarningPayoutAccountOnboardResponse,
     CreateWorldEarningPayoutAccountOnboardResponseFromJSON,
     CreateWorldEarningPayoutAccountOnboardResponseToJSON,
+    CreateWorldExperienceDropTableRequest,
+    CreateWorldExperienceDropTableRequestFromJSON,
+    CreateWorldExperienceDropTableRequestToJSON,
     CreateWorldExperienceDropTableResponse,
     CreateWorldExperienceDropTableResponseFromJSON,
     CreateWorldExperienceDropTableResponseToJSON,
+    CreateWorldExperienceProductRequest,
+    CreateWorldExperienceProductRequestFromJSON,
+    CreateWorldExperienceProductRequestToJSON,
+    CreateWorldExperiencePurchaseRequest,
+    CreateWorldExperiencePurchaseRequestFromJSON,
+    CreateWorldExperiencePurchaseRequestToJSON,
     CreateWorldExperiencePurchaseResponse,
     CreateWorldExperiencePurchaseResponseFromJSON,
     CreateWorldExperiencePurchaseResponseToJSON,
@@ -78,17 +87,22 @@ import {
     ListWorldMeSubscriptionsResponse,
     ListWorldMeSubscriptionsResponseFromJSON,
     ListWorldMeSubscriptionsResponseToJSON,
+    UpdateWorldExperienceProductRequest,
+    UpdateWorldExperienceProductRequestFromJSON,
+    UpdateWorldExperienceProductRequestToJSON,
     WorldExperienceProductResponse,
     WorldExperienceProductResponseFromJSON,
     WorldExperienceProductResponseToJSON,
 } from '../models';
 
-export interface CreateWorldExperienceDropTableRequest {
+export interface CreateWorldExperienceDropTableOperationRequest {
     experienceId: string;
+    createWorldExperienceDropTableRequest?: CreateWorldExperienceDropTableRequest;
 }
 
-export interface CreateWorldExperienceProductRequest {
+export interface CreateWorldExperienceProductOperationRequest {
     experienceId: string;
+    createWorldExperienceProductRequest?: CreateWorldExperienceProductRequest;
 }
 
 export interface CreateWorldExperienceProductArchiveRequest {
@@ -96,8 +110,9 @@ export interface CreateWorldExperienceProductArchiveRequest {
     productId: string;
 }
 
-export interface CreateWorldExperiencePurchaseRequest {
+export interface CreateWorldExperiencePurchaseOperationRequest {
     experienceId: string;
+    createWorldExperiencePurchaseRequest?: CreateWorldExperiencePurchaseRequest;
 }
 
 export interface CreateWorldExperienceReceiptAckRequest {
@@ -133,6 +148,11 @@ export interface GetWorldPurchaseRequest {
     intentId: string;
 }
 
+export interface ListWorldEarningLedgerRequest {
+    cursor?: string;
+    limit?: number;
+}
+
 export interface ListWorldExperienceDropTablesRequest {
     experienceId: string;
 }
@@ -143,11 +163,15 @@ export interface ListWorldExperienceProductsRequest {
 
 export interface ListWorldExperienceReceiptsRequest {
     experienceId: string;
+    cursor?: string;
+    limit?: number;
+    since?: string;
 }
 
-export interface UpdateWorldExperienceProductRequest {
+export interface UpdateWorldExperienceProductOperationRequest {
     experienceId: string;
     productId: string;
+    updateWorldExperienceProductRequest?: UpdateWorldExperienceProductRequest;
 }
 
 /**
@@ -192,7 +216,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Declare a drop table for a paid random item: cosmetic or in-experience outcomes only. Crossly pre-simulates and hashes it.
      */
-    async createWorldExperienceDropTableRaw(requestParameters: CreateWorldExperienceDropTableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceDropTableResponse>> {
+    async createWorldExperienceDropTableRaw(requestParameters: CreateWorldExperienceDropTableOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceDropTableResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceDropTable.');
         }
@@ -200,6 +224,8 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -214,6 +240,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceDropTableRequestToJSON(requestParameters.createWorldExperienceDropTableRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceDropTableResponseFromJSON(jsonValue));
@@ -222,7 +249,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Declare a drop table for a paid random item: cosmetic or in-experience outcomes only. Crossly pre-simulates and hashes it.
      */
-    async createWorldExperienceDropTable(requestParameters: CreateWorldExperienceDropTableRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceDropTableResponse> {
+    async createWorldExperienceDropTable(requestParameters: CreateWorldExperienceDropTableOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceDropTableResponse> {
         const response = await this.createWorldExperienceDropTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -230,7 +257,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Create a product: price 50-100,000 cents (a private server may be free), optional per-country prices. Paid random items need an approved drop table and are never tradeable.
      */
-    async createWorldExperienceProductRaw(requestParameters: CreateWorldExperienceProductRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceProductResponse>> {
+    async createWorldExperienceProductRaw(requestParameters: CreateWorldExperienceProductOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceProductResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceProduct.');
         }
@@ -238,6 +265,8 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -252,6 +281,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceProductRequestToJSON(requestParameters.createWorldExperienceProductRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceProductResponseFromJSON(jsonValue));
@@ -260,7 +290,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Create a product: price 50-100,000 cents (a private server may be free), optional per-country prices. Paid random items need an approved drop table and are never tradeable.
      */
-    async createWorldExperienceProduct(requestParameters: CreateWorldExperienceProductRequest, initOverrides?: RequestInit): Promise<WorldExperienceProductResponse> {
+    async createWorldExperienceProduct(requestParameters: CreateWorldExperienceProductOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceProductResponse> {
         const response = await this.createWorldExperienceProductRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -310,7 +340,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Open a purchase sheet for a product (paid access, a pass…). Returns checkoutPath: the player pays only in the Crossly checkout.
      */
-    async createWorldExperiencePurchaseRaw(requestParameters: CreateWorldExperiencePurchaseRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePurchaseResponse>> {
+    async createWorldExperiencePurchaseRaw(requestParameters: CreateWorldExperiencePurchaseOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperiencePurchaseResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperiencePurchase.');
         }
@@ -318,6 +348,8 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -332,6 +364,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperiencePurchaseRequestToJSON(requestParameters.createWorldExperiencePurchaseRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperiencePurchaseResponseFromJSON(jsonValue));
@@ -340,7 +373,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Open a purchase sheet for a product (paid access, a pass…). Returns checkoutPath: the player pays only in the Crossly checkout.
      */
-    async createWorldExperiencePurchase(requestParameters: CreateWorldExperiencePurchaseRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePurchaseResponse> {
+    async createWorldExperiencePurchase(requestParameters: CreateWorldExperiencePurchaseOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperiencePurchaseResponse> {
         const response = await this.createWorldExperiencePurchaseRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -792,8 +825,16 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Your creator ledger, newest first: every earning and reversal. Cursor-paged.
      */
-    async listWorldEarningLedgerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldEarningLedgerResponse>> {
+    async listWorldEarningLedgerRaw(requestParameters: ListWorldEarningLedgerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWorldEarningLedgerResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -818,8 +859,8 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Your creator ledger, newest first: every earning and reversal. Cursor-paged.
      */
-    async listWorldEarningLedger(initOverrides?: RequestInit): Promise<ListWorldEarningLedgerResponse> {
-        const response = await this.listWorldEarningLedgerRaw(initOverrides);
+    async listWorldEarningLedger(requestParameters: ListWorldEarningLedgerRequest = {}, initOverrides?: RequestInit): Promise<ListWorldEarningLedgerResponse> {
+        const response = await this.listWorldEarningLedgerRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -943,6 +984,18 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
 
         const queryParameters: any = {};
 
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.since !== undefined) {
+            queryParameters['since'] = requestParameters.since;
+        }
+
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
@@ -1008,7 +1061,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Edit a product: name, description, icon, price, regional prices, hourly limit, on/off sale. Kind and place never change.
      */
-    async updateWorldExperienceProductRaw(requestParameters: UpdateWorldExperienceProductRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceProductResponse>> {
+    async updateWorldExperienceProductRaw(requestParameters: UpdateWorldExperienceProductOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorldExperienceProductResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceProduct.');
         }
@@ -1020,6 +1073,8 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -1034,6 +1089,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceProductRequestToJSON(requestParameters.updateWorldExperienceProductRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => WorldExperienceProductResponseFromJSON(jsonValue));
@@ -1042,7 +1098,7 @@ export class WorldsMoneyApi extends runtime.BaseAPI {
     /**
      * Edit a product: name, description, icon, price, regional prices, hourly limit, on/off sale. Kind and place never change.
      */
-    async updateWorldExperienceProduct(requestParameters: UpdateWorldExperienceProductRequest, initOverrides?: RequestInit): Promise<WorldExperienceProductResponse> {
+    async updateWorldExperienceProduct(requestParameters: UpdateWorldExperienceProductOperationRequest, initOverrides?: RequestInit): Promise<WorldExperienceProductResponse> {
         const response = await this.updateWorldExperienceProductRaw(requestParameters, initOverrides);
         return await response.value();
     }

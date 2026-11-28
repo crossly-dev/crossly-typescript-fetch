@@ -75,8 +75,8 @@ export interface GetWorldAssistantStatusResponseDataAllowance {
 */
 export enum GetWorldAssistantStatusResponseDataAllowanceReasonEnum {
     Monthly = 'monthly',
-    Daily = 'daily',
-    Plan = 'plan'
+    Plan = 'plan',
+    Daily = 'daily'
 }
 
 export function GetWorldAssistantStatusResponseDataAllowanceFromJSON(json: any): GetWorldAssistantStatusResponseDataAllowance {

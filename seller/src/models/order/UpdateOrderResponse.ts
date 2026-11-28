@@ -73,6 +73,12 @@ export interface UpdateOrderResponse {
      * @type {string}
      * @memberof UpdateOrderResponse
      */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateOrderResponse
+     */
     source?: string | null;
     /**
      * 
@@ -80,6 +86,12 @@ export interface UpdateOrderResponse {
      * @memberof UpdateOrderResponse
      */
     quantity: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateOrderResponse
+     */
+    assigneeMemberId?: string | null;
     /**
      * 
      * @type {string}
@@ -100,12 +112,6 @@ export interface UpdateOrderResponse {
     platformListingId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof UpdateOrderResponse
-     */
-    storefrontId?: string | null;
-    /**
-     * 
      * @type {number}
      * @memberof UpdateOrderResponse
      */
@@ -116,6 +122,12 @@ export interface UpdateOrderResponse {
      * @memberof UpdateOrderResponse
      */
     platformOrderId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateOrderResponse
+     */
+    orderNumber?: string | null;
     /**
      * 
      * @type {string}
@@ -352,6 +364,12 @@ export interface UpdateOrderResponse {
     lastChatCheckAt?: Date | null;
     /**
      * 
+     * @type {Date}
+     * @memberof UpdateOrderResponse
+     */
+    lastTrackingCheckAt?: Date | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof UpdateOrderResponse
      */
@@ -495,14 +513,16 @@ export function UpdateOrderResponseFromJSONTyped(json: any, ignoreDiscriminator:
         'platform': json['platform'],
         'status': json['status'],
         'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'source': !exists(json, 'source') ? undefined : json['source'],
         'quantity': json['quantity'],
+        'assigneeMemberId': !exists(json, 'assigneeMemberId') ? undefined : json['assigneeMemberId'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
         'listingId': !exists(json, 'listingId') ? undefined : json['listingId'],
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
-        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'handlingTimeDays': !exists(json, 'handlingTimeDays') ? undefined : json['handlingTimeDays'],
         'platformOrderId': !exists(json, 'platformOrderId') ? undefined : json['platformOrderId'],
+        'orderNumber': !exists(json, 'orderNumber') ? undefined : json['orderNumber'],
         'reportedByAppId': !exists(json, 'reportedByAppId') ? undefined : json['reportedByAppId'],
         'buyerUsername': !exists(json, 'buyerUsername') ? undefined : json['buyerUsername'],
         'pickupPoint': !exists(json, 'pickupPoint') ? undefined : json['pickupPoint'],
@@ -542,6 +562,7 @@ export function UpdateOrderResponseFromJSONTyped(json: any, ignoreDiscriminator:
         'oversoldBy': json['oversoldBy'],
         'lastStatusCheckAt': !exists(json, 'lastStatusCheckAt') ? undefined : (json['lastStatusCheckAt'] === null ? null : new Date(json['lastStatusCheckAt'])),
         'lastChatCheckAt': !exists(json, 'lastChatCheckAt') ? undefined : (json['lastChatCheckAt'] === null ? null : new Date(json['lastChatCheckAt'])),
+        'lastTrackingCheckAt': !exists(json, 'lastTrackingCheckAt') ? undefined : (json['lastTrackingCheckAt'] === null ? null : new Date(json['lastTrackingCheckAt'])),
         'isDisputed': json['isDisputed'],
         'disputeReason': !exists(json, 'disputeReason') ? undefined : json['disputeReason'],
         'disputePlatformCaseId': !exists(json, 'disputePlatformCaseId') ? undefined : json['disputePlatformCaseId'],
@@ -582,14 +603,16 @@ export function UpdateOrderResponseToJSON(value?: UpdateOrderResponse | null): a
         'platform': value.platform,
         'status': value.status,
         'notes': value.notes,
+        'storefrontId': value.storefrontId,
         'source': value.source,
         'quantity': value.quantity,
+        'assigneeMemberId': value.assigneeMemberId,
         'inventoryItemId': value.inventoryItemId,
         'listingId': value.listingId,
         'platformListingId': value.platformListingId,
-        'storefrontId': value.storefrontId,
         'handlingTimeDays': value.handlingTimeDays,
         'platformOrderId': value.platformOrderId,
+        'orderNumber': value.orderNumber,
         'reportedByAppId': value.reportedByAppId,
         'buyerUsername': value.buyerUsername,
         'pickupPoint': value.pickupPoint,
@@ -629,6 +652,7 @@ export function UpdateOrderResponseToJSON(value?: UpdateOrderResponse | null): a
         'oversoldBy': value.oversoldBy,
         'lastStatusCheckAt': value.lastStatusCheckAt === undefined ? undefined : (value.lastStatusCheckAt === null ? null : value.lastStatusCheckAt.toISOString()),
         'lastChatCheckAt': value.lastChatCheckAt === undefined ? undefined : (value.lastChatCheckAt === null ? null : value.lastChatCheckAt.toISOString()),
+        'lastTrackingCheckAt': value.lastTrackingCheckAt === undefined ? undefined : (value.lastTrackingCheckAt === null ? null : value.lastTrackingCheckAt.toISOString()),
         'isDisputed': value.isDisputed,
         'disputeReason': value.disputeReason,
         'disputePlatformCaseId': value.disputePlatformCaseId,

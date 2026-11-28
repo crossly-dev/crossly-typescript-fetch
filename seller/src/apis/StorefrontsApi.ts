@@ -112,11 +112,23 @@ export interface GetStorefrontSettingRequest {
     id: string;
 }
 
+export interface GetStorefrontSlugAvailableRequest {
+    slug: string;
+}
+
 export interface ListStorefrontSectionsByIdRequest {
     id: string;
 }
 
+export interface ListStorefrontsRequest {
+    includeArchived?: ListStorefrontsIncludeArchivedEnum;
+}
+
 export interface UpdateStorefrontByIdRequest {
+    id: string;
+}
+
+export interface UpdateStorefrontCurrencyRequest {
     id: string;
 }
 
@@ -603,7 +615,7 @@ export class StorefrontsApi extends runtime.BaseAPI {
     }
 
     /**
-     * One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+     * One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null = never chosen).
      */
     async getStorefrontByIdRaw(requestParameters: GetStorefrontByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -633,7 +645,7 @@ export class StorefrontsApi extends runtime.BaseAPI {
     }
 
     /**
-     * One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+     * One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null = never chosen).
      */
     async getStorefrontById(requestParameters: GetStorefrontByIdRequest, initOverrides?: RequestInit): Promise<StorefrontResponse> {
         const response = await this.getStorefrontByIdRaw(requestParameters, initOverrides);
@@ -791,8 +803,16 @@ export class StorefrontsApi extends runtime.BaseAPI {
     /**
      * Is this store slug free? Checks shape, reserved words, current slugs and retired ones.
      */
-    async getStorefrontSlugAvailableRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStorefrontSlugAvailableResponse>> {
+    async getStorefrontSlugAvailableRaw(requestParameters: GetStorefrontSlugAvailableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetStorefrontSlugAvailableResponse>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
+            throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling getStorefrontSlugAvailable.');
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters.slug !== undefined) {
+            queryParameters['slug'] = requestParameters.slug;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -817,8 +837,8 @@ export class StorefrontsApi extends runtime.BaseAPI {
     /**
      * Is this store slug free? Checks shape, reserved words, current slugs and retired ones.
      */
-    async getStorefrontSlugAvailable(initOverrides?: RequestInit): Promise<GetStorefrontSlugAvailableResponse> {
-        const response = await this.getStorefrontSlugAvailableRaw(initOverrides);
+    async getStorefrontSlugAvailable(requestParameters: GetStorefrontSlugAvailableRequest, initOverrides?: RequestInit): Promise<GetStorefrontSlugAvailableResponse> {
+        const response = await this.getStorefrontSlugAvailableRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -897,8 +917,12 @@ export class StorefrontsApi extends runtime.BaseAPI {
     /**
      * Your stores (default first). includeArchived=true adds archived ones.
      */
-    async listStorefrontsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListStorefrontsResponse>> {
+    async listStorefrontsRaw(requestParameters: ListStorefrontsRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListStorefrontsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.includeArchived !== undefined) {
+            queryParameters['includeArchived'] = requestParameters.includeArchived;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -923,8 +947,8 @@ export class StorefrontsApi extends runtime.BaseAPI {
     /**
      * Your stores (default first). includeArchived=true adds archived ones.
      */
-    async listStorefronts(initOverrides?: RequestInit): Promise<ListStorefrontsResponse> {
-        const response = await this.listStorefrontsRaw(initOverrides);
+    async listStorefronts(requestParameters: ListStorefrontsRequest = {}, initOverrides?: RequestInit): Promise<ListStorefrontsResponse> {
+        const response = await this.listStorefrontsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -963,6 +987,44 @@ export class StorefrontsApi extends runtime.BaseAPI {
      */
     async updateStorefrontById(requestParameters: UpdateStorefrontByIdRequest, initOverrides?: RequestInit): Promise<StorefrontResponse> {
         const response = await this.updateStorefrontByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set a store\'s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
+     */
+    async updateStorefrontCurrencyRaw(requestParameters: UpdateStorefrontCurrencyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StorefrontResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateStorefrontCurrency.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/storefronts/{id}/currency`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StorefrontResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set a store\'s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
+     */
+    async updateStorefrontCurrency(requestParameters: UpdateStorefrontCurrencyRequest, initOverrides?: RequestInit): Promise<StorefrontResponse> {
+        const response = await this.updateStorefrontCurrencyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1290,4 +1352,12 @@ export enum GetHubSetupSectionEnum {
     Events = 'events',
     Market = 'market',
     Payouts = 'payouts'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListStorefrontsIncludeArchivedEnum {
+    True = 'true',
+    False = 'false'
 }

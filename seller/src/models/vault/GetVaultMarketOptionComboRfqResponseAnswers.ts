@@ -56,9 +56,9 @@ export interface GetVaultMarketOptionComboRfqResponseAnswers {
 * @enum {string}
 */
 export enum GetVaultMarketOptionComboRfqResponseAnswersStatusEnum {
+    Expired = 'expired',
     Live = 'live',
     Accepted = 'accepted',
-    Expired = 'expired',
     Withdrawn = 'withdrawn'
 }
 

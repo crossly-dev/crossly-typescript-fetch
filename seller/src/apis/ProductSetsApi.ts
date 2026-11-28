@@ -15,9 +15,18 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateProductSetBulkRequest,
+    CreateProductSetBulkRequestFromJSON,
+    CreateProductSetBulkRequestToJSON,
     CreateProductSetBulkResponse,
     CreateProductSetBulkResponseFromJSON,
     CreateProductSetBulkResponseToJSON,
+    CreateProductSetMemberRequest,
+    CreateProductSetMemberRequestFromJSON,
+    CreateProductSetMemberRequestToJSON,
+    CreateProductSetRequest,
+    CreateProductSetRequestFromJSON,
+    CreateProductSetRequestToJSON,
     ListProductSetMembersResponse,
     ListProductSetMembersResponseFromJSON,
     ListProductSetMembersResponseToJSON,
@@ -30,14 +39,23 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateProductSetRequest,
+    UpdateProductSetRequestFromJSON,
+    UpdateProductSetRequestToJSON,
 } from '../models';
 
-export interface CreateProductSetBulkRequest {
-    id: string;
+export interface CreateProductSetOperationRequest {
+    createProductSetRequest: CreateProductSetRequest;
 }
 
-export interface CreateProductSetMemberRequest {
+export interface CreateProductSetBulkOperationRequest {
     id: string;
+    createProductSetBulkRequest: CreateProductSetBulkRequest;
+}
+
+export interface CreateProductSetMemberOperationRequest {
+    id: string;
+    createProductSetMemberRequest: CreateProductSetMemberRequest;
 }
 
 export interface DeleteProductSetRequest {
@@ -54,8 +72,9 @@ export interface ListProductSetMembersRequest {
     limit?: number;
 }
 
-export interface UpdateProductSetRequest {
+export interface UpdateProductSetOperationRequest {
     id: string;
+    updateProductSetRequest: UpdateProductSetRequest;
 }
 
 /**
@@ -66,10 +85,16 @@ export class ProductSetsApi extends runtime.BaseAPI {
     /**
      * Create a product set (filters, explicit picks, or both).
      */
-    async createProductSetRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductSetsItem>> {
+    async createProductSetRaw(requestParameters: CreateProductSetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductSetsItem>> {
+        if (requestParameters.createProductSetRequest === null || requestParameters.createProductSetRequest === undefined) {
+            throw new runtime.RequiredError('createProductSetRequest','Required parameter requestParameters.createProductSetRequest was null or undefined when calling createProductSet.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -84,6 +109,7 @@ export class ProductSetsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductSetRequestToJSON(requestParameters.createProductSetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListProductSetsItemFromJSON(jsonValue));
@@ -92,22 +118,28 @@ export class ProductSetsApi extends runtime.BaseAPI {
     /**
      * Create a product set (filters, explicit picks, or both).
      */
-    async createProductSet(initOverrides?: RequestInit): Promise<ListProductSetsItem> {
-        const response = await this.createProductSetRaw(initOverrides);
+    async createProductSet(requestParameters: CreateProductSetOperationRequest, initOverrides?: RequestInit): Promise<ListProductSetsItem> {
+        const response = await this.createProductSetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Run a bulk action (delist / relist / check-status) against the set\'s current members.
      */
-    async createProductSetBulkRaw(requestParameters: CreateProductSetBulkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductSetBulkResponse>> {
+    async createProductSetBulkRaw(requestParameters: CreateProductSetBulkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductSetBulkResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductSetBulk.');
+        }
+
+        if (requestParameters.createProductSetBulkRequest === null || requestParameters.createProductSetBulkRequest === undefined) {
+            throw new runtime.RequiredError('createProductSetBulkRequest','Required parameter requestParameters.createProductSetBulkRequest was null or undefined when calling createProductSetBulk.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -122,6 +154,7 @@ export class ProductSetsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductSetBulkRequestToJSON(requestParameters.createProductSetBulkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductSetBulkResponseFromJSON(jsonValue));
@@ -130,7 +163,7 @@ export class ProductSetsApi extends runtime.BaseAPI {
     /**
      * Run a bulk action (delist / relist / check-status) against the set\'s current members.
      */
-    async createProductSetBulk(requestParameters: CreateProductSetBulkRequest, initOverrides?: RequestInit): Promise<CreateProductSetBulkResponse> {
+    async createProductSetBulk(requestParameters: CreateProductSetBulkOperationRequest, initOverrides?: RequestInit): Promise<CreateProductSetBulkResponse> {
         const response = await this.createProductSetBulkRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -138,14 +171,20 @@ export class ProductSetsApi extends runtime.BaseAPI {
     /**
      * Add / exclude / remove explicit picks for a set.
      */
-    async createProductSetMemberRaw(requestParameters: CreateProductSetMemberRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductSetsItem>> {
+    async createProductSetMemberRaw(requestParameters: CreateProductSetMemberOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductSetsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductSetMember.');
+        }
+
+        if (requestParameters.createProductSetMemberRequest === null || requestParameters.createProductSetMemberRequest === undefined) {
+            throw new runtime.RequiredError('createProductSetMemberRequest','Required parameter requestParameters.createProductSetMemberRequest was null or undefined when calling createProductSetMember.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -160,6 +199,7 @@ export class ProductSetsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductSetMemberRequestToJSON(requestParameters.createProductSetMemberRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListProductSetsItemFromJSON(jsonValue));
@@ -168,7 +208,7 @@ export class ProductSetsApi extends runtime.BaseAPI {
     /**
      * Add / exclude / remove explicit picks for a set.
      */
-    async createProductSetMember(requestParameters: CreateProductSetMemberRequest, initOverrides?: RequestInit): Promise<ListProductSetsItem> {
+    async createProductSetMember(requestParameters: CreateProductSetMemberOperationRequest, initOverrides?: RequestInit): Promise<ListProductSetsItem> {
         const response = await this.createProductSetMemberRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -332,14 +372,20 @@ export class ProductSetsApi extends runtime.BaseAPI {
     /**
      * Update a set: rename, description, or replace its filters.
      */
-    async updateProductSetRaw(requestParameters: UpdateProductSetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductSetsItem>> {
+    async updateProductSetRaw(requestParameters: UpdateProductSetOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductSetsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProductSet.');
+        }
+
+        if (requestParameters.updateProductSetRequest === null || requestParameters.updateProductSetRequest === undefined) {
+            throw new runtime.RequiredError('updateProductSetRequest','Required parameter requestParameters.updateProductSetRequest was null or undefined when calling updateProductSet.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -354,6 +400,7 @@ export class ProductSetsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateProductSetRequestToJSON(requestParameters.updateProductSetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListProductSetsItemFromJSON(jsonValue));
@@ -362,7 +409,7 @@ export class ProductSetsApi extends runtime.BaseAPI {
     /**
      * Update a set: rename, description, or replace its filters.
      */
-    async updateProductSet(requestParameters: UpdateProductSetRequest, initOverrides?: RequestInit): Promise<ListProductSetsItem> {
+    async updateProductSet(requestParameters: UpdateProductSetOperationRequest, initOverrides?: RequestInit): Promise<ListProductSetsItem> {
         const response = await this.updateProductSetRaw(requestParameters, initOverrides);
         return await response.value();
     }

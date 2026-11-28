@@ -39,9 +39,9 @@ export interface UpdateSpatialSceneShopLayoutResponseDataShell {
 */
 export enum UpdateSpatialSceneShopLayoutResponseDataShellSizeEnum {
     Auto = 'auto',
+    Compact = 'compact',
     Standard = 'standard',
     Large = 'large',
-    Compact = 'compact',
     Flagship = 'flagship'
 }
 

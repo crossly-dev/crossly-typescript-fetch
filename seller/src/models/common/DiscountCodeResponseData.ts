@@ -72,25 +72,25 @@ export interface DiscountCodeResponseData {
      * @type {string}
      * @memberof DiscountCodeResponseData
      */
-    batchId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof DiscountCodeResponseData
-     */
     kind?: string | null;
     /**
      * 
      * @type {string}
      * @memberof DiscountCodeResponseData
      */
-    code: string;
+    batchId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof DiscountCodeResponseData
      */
     sellerUserId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof DiscountCodeResponseData
+     */
+    code: string;
     /**
      * 
      * @type {Date}
@@ -183,10 +183,10 @@ export function DiscountCodeResponseDataFromJSONTyped(json: any, ignoreDiscrimin
         'expiresAt': !exists(json, 'expiresAt') ? undefined : (json['expiresAt'] === null ? null : new Date(json['expiresAt'])),
         'status': json['status'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
-        'batchId': !exists(json, 'batchId') ? undefined : json['batchId'],
         'kind': !exists(json, 'kind') ? undefined : json['kind'],
-        'code': json['code'],
+        'batchId': !exists(json, 'batchId') ? undefined : json['batchId'],
         'sellerUserId': !exists(json, 'sellerUserId') ? undefined : json['sellerUserId'],
+        'code': json['code'],
         'startsAt': !exists(json, 'startsAt') ? undefined : (json['startsAt'] === null ? null : new Date(json['startsAt'])),
         'discountType': json['discountType'],
         'percentOffBps': !exists(json, 'percentOffBps') ? undefined : json['percentOffBps'],
@@ -219,10 +219,10 @@ export function DiscountCodeResponseDataToJSON(value?: DiscountCodeResponseData 
         'expiresAt': value.expiresAt === undefined ? undefined : (value.expiresAt === null ? null : value.expiresAt.toISOString()),
         'status': value.status,
         'storefrontId': value.storefrontId,
-        'batchId': value.batchId,
         'kind': value.kind,
-        'code': value.code,
+        'batchId': value.batchId,
         'sellerUserId': value.sellerUserId,
+        'code': value.code,
         'startsAt': value.startsAt === undefined ? undefined : (value.startsAt === null ? null : value.startsAt.toISOString()),
         'discountType': value.discountType,
         'percentOffBps': value.percentOffBps,

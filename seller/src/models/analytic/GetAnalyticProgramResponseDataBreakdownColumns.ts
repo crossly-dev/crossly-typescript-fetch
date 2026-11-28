@@ -45,12 +45,12 @@ export interface GetAnalyticProgramResponseDataBreakdownColumns {
 */
 export enum GetAnalyticProgramResponseDataBreakdownColumnsKindEnum {
     Date = 'date',
+    Text = 'text',
     Days = 'days',
     Count = 'count',
     Rate = 'rate',
     Cents = 'cents',
-    Ratio = 'ratio',
-    Text = 'text'
+    Ratio = 'ratio'
 }
 
 export function GetAnalyticProgramResponseDataBreakdownColumnsFromJSON(json: any): GetAnalyticProgramResponseDataBreakdownColumns {

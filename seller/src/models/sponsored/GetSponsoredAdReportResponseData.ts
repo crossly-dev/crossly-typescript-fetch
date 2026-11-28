@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    FromTo2,
-    FromTo2FromJSON,
-    FromTo2FromJSONTyped,
-    FromTo2ToJSON,
-} from '../common/FromTo2';
+    CreateListingTagRenameRequest,
+    CreateListingTagRenameRequestFromJSON,
+    CreateListingTagRenameRequestFromJSONTyped,
+    CreateListingTagRenameRequestToJSON,
+} from '../listing/CreateListingTagRenameRequest';
 import {
     GetSponsoredAdReportResponseDataCampaignsItem,
     GetSponsoredAdReportResponseDataCampaignsItemFromJSON,
@@ -52,10 +52,10 @@ import {
 export interface GetSponsoredAdReportResponseData {
     /**
      * 
-     * @type {FromTo2}
+     * @type {CreateListingTagRenameRequest}
      * @memberof GetSponsoredAdReportResponseData
      */
-    range: FromTo2;
+    range: CreateListingTagRenameRequest;
     /**
      * 
      * @type {SponsoredAdCampaignResponseDataStats}
@@ -92,7 +92,7 @@ export function GetSponsoredAdReportResponseDataFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'range': FromTo2FromJSON(json['range']),
+        'range': CreateListingTagRenameRequestFromJSON(json['range']),
         'totals': SponsoredAdCampaignResponseDataStatsFromJSON(json['totals']),
         'daily': ((json['daily'] as Array<any>).map(GetSponsoredAdReportResponseDataDailyFromJSON)),
         'campaigns': ((json['campaigns'] as Array<any>).map(GetSponsoredAdReportResponseDataCampaignsItemFromJSON)),
@@ -109,7 +109,7 @@ export function GetSponsoredAdReportResponseDataToJSON(value?: GetSponsoredAdRep
     }
     return {
         
-        'range': FromTo2ToJSON(value.range),
+        'range': CreateListingTagRenameRequestToJSON(value.range),
         'totals': SponsoredAdCampaignResponseDataStatsToJSON(value.totals),
         'daily': ((value.daily as Array<any>).map(GetSponsoredAdReportResponseDataDailyToJSON)),
         'campaigns': ((value.campaigns as Array<any>).map(GetSponsoredAdReportResponseDataCampaignsItemToJSON)),

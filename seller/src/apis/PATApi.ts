@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreatePatRequest,
+    CreatePatRequestFromJSON,
+    CreatePatRequestToJSON,
     CreatePatResponse,
     CreatePatResponseFromJSON,
     CreatePatResponseToJSON,
@@ -29,6 +32,10 @@ import {
     OkResponseToJSON,
 } from '../models';
 
+export interface CreatePatOperationRequest {
+    createPatRequest: CreatePatRequest;
+}
+
 export interface DeletePatRequest {
     id: string;
 }
@@ -41,10 +48,16 @@ export class PATApi extends runtime.BaseAPI {
     /**
      * Mint a new PAT. Full token returned ONCE — store it on the client.
      */
-    async createPatRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePatResponse>> {
+    async createPatRaw(requestParameters: CreatePatOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreatePatResponse>> {
+        if (requestParameters.createPatRequest === null || requestParameters.createPatRequest === undefined) {
+            throw new runtime.RequiredError('createPatRequest','Required parameter requestParameters.createPatRequest was null or undefined when calling createPat.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -59,6 +72,7 @@ export class PATApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreatePatRequestToJSON(requestParameters.createPatRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreatePatResponseFromJSON(jsonValue));
@@ -67,8 +81,8 @@ export class PATApi extends runtime.BaseAPI {
     /**
      * Mint a new PAT. Full token returned ONCE — store it on the client.
      */
-    async createPat(initOverrides?: RequestInit): Promise<CreatePatResponse> {
-        const response = await this.createPatRaw(initOverrides);
+    async createPat(requestParameters: CreatePatOperationRequest, initOverrides?: RequestInit): Promise<CreatePatResponse> {
+        const response = await this.createPatRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -145,7 +159,7 @@ export class PATApi extends runtime.BaseAPI {
     }
 
     /**
-     * List the caller\'s PATs (preview only).
+     * List the caller\'s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
      */
     async listPatRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListPatResponse>> {
         const queryParameters: any = {};
@@ -171,7 +185,7 @@ export class PATApi extends runtime.BaseAPI {
     }
 
     /**
-     * List the caller\'s PATs (preview only).
+     * List the caller\'s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
      */
     async listPat(initOverrides?: RequestInit): Promise<ListPatResponse> {
         const response = await this.listPatRaw(initOverrides);

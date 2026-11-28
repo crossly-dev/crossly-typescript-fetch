@@ -68,8 +68,8 @@ export interface CreateGamePackBreakPickResponseDataCoupon {
 * @enum {string}
 */
 export enum CreateGamePackBreakPickResponseDataCouponStatusEnum {
-    Live = 'live',
     Expired = 'expired',
+    Live = 'live',
     Redeemed = 'redeemed'
 }
 

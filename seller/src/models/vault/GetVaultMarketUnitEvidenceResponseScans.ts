@@ -104,8 +104,8 @@ export interface GetVaultMarketUnitEvidenceResponseScans {
 * @enum {string}
 */
 export enum GetVaultMarketUnitEvidenceResponseScansSourceEnum {
-    Deposit = 'deposit',
     Owner = 'owner',
+    Deposit = 'deposit',
     Ops = 'ops',
     GradeToVault = 'grade_to_vault',
     VaultGrading = 'vault_grading',

@@ -69,9 +69,9 @@ export interface CreateWeb3OrderFulfillmentBatchResponseFulfillments {
 * @enum {string}
 */
 export enum CreateWeb3OrderFulfillmentBatchResponseFulfillmentsKindEnum {
+    Listing = 'listing',
     Bundle = 'bundle',
     Offer = 'offer',
-    Listing = 'listing',
     PrivateListing = 'private_listing',
     CollectionOffer = 'collection_offer',
     TraitOffer = 'trait_offer'

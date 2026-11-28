@@ -62,6 +62,12 @@ export interface GetAppEarningResponseLedger {
      */
     saleId?: string | null;
     /**
+     * The store the row belongs to (drizzle/1320); null while the app waits for a store.
+     * @type {string}
+     * @memberof GetAppEarningResponseLedger
+     */
+    storefrontId?: string | null;
+    /**
      * 
      * @type {Date}
      * @memberof GetAppEarningResponseLedger
@@ -86,6 +92,7 @@ export function GetAppEarningResponseLedgerFromJSONTyped(json: any, ignoreDiscri
         'bps': !exists(json, 'bps') ? undefined : json['bps'],
         'status': json['status'],
         'saleId': !exists(json, 'saleId') ? undefined : json['saleId'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'createdAt': (new Date(json['createdAt'])),
     };
 }
@@ -106,6 +113,7 @@ export function GetAppEarningResponseLedgerToJSON(value?: GetAppEarningResponseL
         'bps': value.bps,
         'status': value.status,
         'saleId': value.saleId,
+        'storefrontId': value.storefrontId,
         'createdAt': (value.createdAt.toISOString()),
     };
 }

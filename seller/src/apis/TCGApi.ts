@@ -15,21 +15,39 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateTcgDeckRequest,
+    CreateTcgDeckRequestFromJSON,
+    CreateTcgDeckRequestToJSON,
     CreateTcgDeckResponse,
     CreateTcgDeckResponseFromJSON,
     CreateTcgDeckResponseToJSON,
+    CreateTcgMatchActRequest,
+    CreateTcgMatchActRequestFromJSON,
+    CreateTcgMatchActRequestToJSON,
     CreateTcgPackOpenResponse,
     CreateTcgPackOpenResponseFromJSON,
     CreateTcgPackOpenResponseToJSON,
     CreateTcgQueueResponse,
     CreateTcgQueueResponseFromJSON,
     CreateTcgQueueResponseToJSON,
+    CreateTcgStarterRequest,
+    CreateTcgStarterRequestFromJSON,
+    CreateTcgStarterRequestToJSON,
     CreateTcgStarterResponse,
     CreateTcgStarterResponseFromJSON,
     CreateTcgStarterResponseToJSON,
+    CreateTcgTableRequest,
+    CreateTcgTableRequestFromJSON,
+    CreateTcgTableRequestToJSON,
+    CreateTcgTournamentRequest,
+    CreateTcgTournamentRequestFromJSON,
+    CreateTcgTournamentRequestToJSON,
     CreateTcgTournamentResponse,
     CreateTcgTournamentResponseFromJSON,
     CreateTcgTournamentResponseToJSON,
+    DeckIdRequest,
+    DeckIdRequestFromJSON,
+    DeckIdRequestToJSON,
     GetTcgCreatorGamePrintResponse,
     GetTcgCreatorGamePrintResponseFromJSON,
     GetTcgCreatorGamePrintResponseToJSON,
@@ -67,18 +85,22 @@ import {
 
 export interface CreateTcgChallengeRequest {
     game: string;
+    deckIdRequest?: DeckIdRequest;
 }
 
-export interface CreateTcgDeckRequest {
+export interface CreateTcgDeckOperationRequest {
     game: string;
+    createTcgDeckRequest?: CreateTcgDeckRequest;
 }
 
-export interface CreateTcgMatchActRequest {
+export interface CreateTcgMatchActOperationRequest {
     id: string;
+    createTcgMatchActRequest?: CreateTcgMatchActRequest;
 }
 
 export interface CreateTcgMatchJoinRequest {
     id: string;
+    deckIdRequest?: DeckIdRequest;
 }
 
 export interface CreateTcgPackOpenRequest {
@@ -87,22 +109,27 @@ export interface CreateTcgPackOpenRequest {
 
 export interface CreateTcgPracticeRequest {
     game: string;
+    deckIdRequest?: DeckIdRequest;
 }
 
 export interface CreateTcgQueueRequest {
     game: string;
+    deckIdRequest?: DeckIdRequest;
 }
 
-export interface CreateTcgStarterRequest {
+export interface CreateTcgStarterOperationRequest {
     game: string;
+    createTcgStarterRequest?: CreateTcgStarterRequest;
 }
 
-export interface CreateTcgTableRequest {
+export interface CreateTcgTableOperationRequest {
     game: string;
+    createTcgTableRequest?: CreateTcgTableRequest;
 }
 
-export interface CreateTcgTournamentRequest {
+export interface CreateTcgTournamentOperationRequest {
     game: string;
+    createTcgTournamentRequest?: CreateTcgTournamentRequest;
 }
 
 export interface CreateTcgTournamentDropRequest {
@@ -111,6 +138,7 @@ export interface CreateTcgTournamentDropRequest {
 
 export interface CreateTcgTournamentRegisterRequest {
     id: string;
+    deckIdRequest?: DeckIdRequest;
 }
 
 export interface CreateTcgTournamentStartRequest {
@@ -187,6 +215,8 @@ export class TCGApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -200,6 +230,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: DeckIdRequestToJSON(requestParameters.deckIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TcgResponseFromJSON(jsonValue));
@@ -216,7 +247,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Create (no id) or update a deck: its lead (Crew Boss, Mastermind or Keeper) and 40 cards you own, checked against the deck rules of its game.
      */
-    async createTcgDeckRaw(requestParameters: CreateTcgDeckRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgDeckResponse>> {
+    async createTcgDeckRaw(requestParameters: CreateTcgDeckOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgDeckResponse>> {
         if (requestParameters.game === null || requestParameters.game === undefined) {
             throw new runtime.RequiredError('game','Required parameter requestParameters.game was null or undefined when calling createTcgDeck.');
         }
@@ -224,6 +255,8 @@ export class TCGApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -238,6 +271,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgDeckRequestToJSON(requestParameters.createTcgDeckRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTcgDeckResponseFromJSON(jsonValue));
@@ -246,7 +280,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Create (no id) or update a deck: its lead (Crew Boss, Mastermind or Keeper) and 40 cards you own, checked against the deck rules of its game.
      */
-    async createTcgDeck(requestParameters: CreateTcgDeckRequest, initOverrides?: RequestInit): Promise<CreateTcgDeckResponse> {
+    async createTcgDeck(requestParameters: CreateTcgDeckOperationRequest, initOverrides?: RequestInit): Promise<CreateTcgDeckResponse> {
         const response = await this.createTcgDeckRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -254,7 +288,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Make one move: { action } as listed in the match\'s legal moves. The engine checks it.
      */
-    async createTcgMatchActRaw(requestParameters: CreateTcgMatchActRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TcgResponse>> {
+    async createTcgMatchActRaw(requestParameters: CreateTcgMatchActOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TcgResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createTcgMatchAct.');
         }
@@ -262,6 +296,8 @@ export class TCGApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -276,6 +312,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgMatchActRequestToJSON(requestParameters.createTcgMatchActRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TcgResponseFromJSON(jsonValue));
@@ -284,7 +321,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Make one move: { action } as listed in the match\'s legal moves. The engine checks it.
      */
-    async createTcgMatchAct(requestParameters: CreateTcgMatchActRequest, initOverrides?: RequestInit): Promise<TcgResponse> {
+    async createTcgMatchAct(requestParameters: CreateTcgMatchActOperationRequest, initOverrides?: RequestInit): Promise<TcgResponse> {
         const response = await this.createTcgMatchActRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -301,6 +338,8 @@ export class TCGApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -314,6 +353,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: DeckIdRequestToJSON(requestParameters.deckIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TcgResponseFromJSON(jsonValue));
@@ -377,6 +417,8 @@ export class TCGApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -390,6 +432,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: DeckIdRequestToJSON(requestParameters.deckIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TcgResponseFromJSON(jsonValue));
@@ -415,6 +458,8 @@ export class TCGApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -428,6 +473,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: DeckIdRequestToJSON(requestParameters.deckIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTcgQueueResponseFromJSON(jsonValue));
@@ -444,7 +490,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Claim the free starter deck for a game, choosing its faction (once per account; account-bound, untradeable).
      */
-    async createTcgStarterRaw(requestParameters: CreateTcgStarterRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgStarterResponse>> {
+    async createTcgStarterRaw(requestParameters: CreateTcgStarterOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgStarterResponse>> {
         if (requestParameters.game === null || requestParameters.game === undefined) {
             throw new runtime.RequiredError('game','Required parameter requestParameters.game was null or undefined when calling createTcgStarter.');
         }
@@ -452,6 +498,8 @@ export class TCGApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -466,6 +514,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgStarterRequestToJSON(requestParameters.createTcgStarterRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTcgStarterResponseFromJSON(jsonValue));
@@ -474,7 +523,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Claim the free starter deck for a game, choosing its faction (once per account; account-bound, untradeable).
      */
-    async createTcgStarter(requestParameters: CreateTcgStarterRequest, initOverrides?: RequestInit): Promise<CreateTcgStarterResponse> {
+    async createTcgStarter(requestParameters: CreateTcgStarterOperationRequest, initOverrides?: RequestInit): Promise<CreateTcgStarterResponse> {
         const response = await this.createTcgStarterRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -482,7 +531,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Sit at a table with your free starter deck (claimed now if you never did: starter names it, else one is picked for you): joins the oldest open 1v1 challenge, or opens one; already waiting, your own seat back.
      */
-    async createTcgTableRaw(requestParameters: CreateTcgTableRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TcgResponse>> {
+    async createTcgTableRaw(requestParameters: CreateTcgTableOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TcgResponse>> {
         if (requestParameters.game === null || requestParameters.game === undefined) {
             throw new runtime.RequiredError('game','Required parameter requestParameters.game was null or undefined when calling createTcgTable.');
         }
@@ -490,6 +539,8 @@ export class TCGApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -504,6 +555,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgTableRequestToJSON(requestParameters.createTcgTableRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TcgResponseFromJSON(jsonValue));
@@ -512,7 +564,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Sit at a table with your free starter deck (claimed now if you never did: starter names it, else one is picked for you): joins the oldest open 1v1 challenge, or opens one; already waiting, your own seat back.
      */
-    async createTcgTable(requestParameters: CreateTcgTableRequest, initOverrides?: RequestInit): Promise<TcgResponse> {
+    async createTcgTable(requestParameters: CreateTcgTableOperationRequest, initOverrides?: RequestInit): Promise<TcgResponse> {
         const response = await this.createTcgTableRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -520,7 +572,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Host a Swiss tournament: name, optional top cut (4 or 8), round length, player cap and start time.
      */
-    async createTcgTournamentRaw(requestParameters: CreateTcgTournamentRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgTournamentResponse>> {
+    async createTcgTournamentRaw(requestParameters: CreateTcgTournamentOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTcgTournamentResponse>> {
         if (requestParameters.game === null || requestParameters.game === undefined) {
             throw new runtime.RequiredError('game','Required parameter requestParameters.game was null or undefined when calling createTcgTournament.');
         }
@@ -528,6 +580,8 @@ export class TCGApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -542,6 +596,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTcgTournamentRequestToJSON(requestParameters.createTcgTournamentRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTcgTournamentResponseFromJSON(jsonValue));
@@ -550,7 +605,7 @@ export class TCGApi extends runtime.BaseAPI {
     /**
      * Host a Swiss tournament: name, optional top cut (4 or 8), round length, player cap and start time.
      */
-    async createTcgTournament(requestParameters: CreateTcgTournamentRequest, initOverrides?: RequestInit): Promise<CreateTcgTournamentResponse> {
+    async createTcgTournament(requestParameters: CreateTcgTournamentOperationRequest, initOverrides?: RequestInit): Promise<CreateTcgTournamentResponse> {
         const response = await this.createTcgTournamentRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -605,6 +660,8 @@ export class TCGApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -618,6 +675,7 @@ export class TCGApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: DeckIdRequestToJSON(requestParameters.deckIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => TcgTournamentResponseFromJSON(jsonValue));

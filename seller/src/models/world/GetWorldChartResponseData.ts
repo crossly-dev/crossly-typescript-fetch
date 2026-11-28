@@ -82,8 +82,8 @@ export enum GetWorldChartResponseDataChartEnum {
 export enum GetWorldChartResponseDataGenreEnum {
     Shopping = 'shopping',
     Other = 'other',
-    Strategy = 'strategy',
     Social = 'social',
+    Strategy = 'strategy',
     Hangout = 'hangout',
     Simulation = 'simulation',
     Obby = 'obby',

@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    UpdateWorldConventionStatusResponseData,
-    UpdateWorldConventionStatusResponseDataFromJSON,
-    UpdateWorldConventionStatusResponseDataFromJSONTyped,
-    UpdateWorldConventionStatusResponseDataToJSON,
-} from './UpdateWorldConventionStatusResponseData';
+    UpdateWorldConventionStatusRequest,
+    UpdateWorldConventionStatusRequestFromJSON,
+    UpdateWorldConventionStatusRequestFromJSONTyped,
+    UpdateWorldConventionStatusRequestToJSON,
+} from './UpdateWorldConventionStatusRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface UpdateWorldConventionStatusResponse {
     /**
      * 
-     * @type {UpdateWorldConventionStatusResponseData}
+     * @type {UpdateWorldConventionStatusRequest}
      * @memberof UpdateWorldConventionStatusResponse
      */
-    data: UpdateWorldConventionStatusResponseData;
+    data: UpdateWorldConventionStatusRequest;
 }
 
 export function UpdateWorldConventionStatusResponseFromJSON(json: any): UpdateWorldConventionStatusResponse {
@@ -44,7 +44,7 @@ export function UpdateWorldConventionStatusResponseFromJSONTyped(json: any, igno
     }
     return {
         
-        'data': UpdateWorldConventionStatusResponseDataFromJSON(json['data']),
+        'data': UpdateWorldConventionStatusRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function UpdateWorldConventionStatusResponseToJSON(value?: UpdateWorldCon
     }
     return {
         
-        'data': UpdateWorldConventionStatusResponseDataToJSON(value.data),
+        'data': UpdateWorldConventionStatusRequestToJSON(value.data),
     };
 }
 

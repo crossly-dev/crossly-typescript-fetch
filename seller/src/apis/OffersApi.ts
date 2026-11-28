@@ -21,6 +21,9 @@ import {
     CreateOfferRespondResponse,
     CreateOfferRespondResponseFromJSON,
     CreateOfferRespondResponseToJSON,
+    GetListingOfferFloorResponse,
+    GetListingOfferFloorResponseFromJSON,
+    GetListingOfferFloorResponseToJSON,
     GetOfferResponse,
     GetOfferResponseFromJSON,
     GetOfferResponseToJSON,
@@ -29,6 +32,11 @@ import {
 export interface CreateOfferRespondOperationRequest {
     id: string;
     createOfferRespondRequest: CreateOfferRespondRequest;
+}
+
+export interface GetListingOfferFloorRequest {
+    platform: string;
+    id: string;
 }
 
 export interface GetOfferRequest {
@@ -42,7 +50,7 @@ export interface GetOfferRequest {
 export class OffersApi extends runtime.BaseAPI {
 
     /**
-     * Accept, decline, or counter a buyer offer on a Crossly marketplace listing.
+     * Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle.
      */
     async createOfferRespondRaw(requestParameters: CreateOfferRespondOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOfferRespondResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -79,10 +87,56 @@ export class OffersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Accept, decline, or counter a buyer offer on a Crossly marketplace listing.
+     * Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle.
      */
     async createOfferRespond(requestParameters: CreateOfferRespondOperationRequest, initOverrides?: RequestInit): Promise<CreateOfferRespondResponse> {
         const response = await this.createOfferRespondRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource.
+     */
+    async getListingOfferFloorRaw(requestParameters: GetListingOfferFloorRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetListingOfferFloorResponse>> {
+        if (requestParameters.platform === null || requestParameters.platform === undefined) {
+            throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling getListingOfferFloor.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getListingOfferFloor.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.platform !== undefined) {
+            queryParameters['platform'] = requestParameters.platform;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/listings/{id}/offer-floor`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetListingOfferFloorResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource.
+     */
+    async getListingOfferFloor(requestParameters: GetListingOfferFloorRequest, initOverrides?: RequestInit): Promise<GetListingOfferFloorResponse> {
+        const response = await this.getListingOfferFloorRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

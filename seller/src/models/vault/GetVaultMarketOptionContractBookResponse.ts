@@ -93,8 +93,8 @@ export interface GetVaultMarketOptionContractBookResponse {
 * @enum {string}
 */
 export enum GetVaultMarketOptionContractBookResponseStatusEnum {
-    Open = 'open',
     Expired = 'expired',
+    Open = 'open',
     Delisted = 'delisted',
     Settled = 'settled',
     Frozen = 'frozen'

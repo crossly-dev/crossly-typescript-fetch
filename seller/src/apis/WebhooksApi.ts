@@ -18,30 +18,60 @@ import {
     CreateWebhookDeliveryRedeliverResponse,
     CreateWebhookDeliveryRedeliverResponseFromJSON,
     CreateWebhookDeliveryRedeliverResponseToJSON,
+    CreateWebhookRequest,
+    CreateWebhookRequestFromJSON,
+    CreateWebhookRequestToJSON,
     CreateWebhookResponse,
     CreateWebhookResponseFromJSON,
     CreateWebhookResponseToJSON,
+    CreateWebhookRotateSecretResponse,
+    CreateWebhookRotateSecretResponseFromJSON,
+    CreateWebhookRotateSecretResponseToJSON,
+    CreateWebhookTestRequest,
+    CreateWebhookTestRequestFromJSON,
+    CreateWebhookTestRequestToJSON,
     CreateWebhookTestResponse,
     CreateWebhookTestResponseFromJSON,
     CreateWebhookTestResponseToJSON,
     ListWebhookDeliveriesResponse,
     ListWebhookDeliveriesResponseFromJSON,
     ListWebhookDeliveriesResponseToJSON,
+    ListWebhookEventsResponse,
+    ListWebhookEventsResponseFromJSON,
+    ListWebhookEventsResponseToJSON,
+    ListWebhookTypesResponse,
+    ListWebhookTypesResponseFromJSON,
+    ListWebhookTypesResponseToJSON,
     ListWebhooksResponse,
     ListWebhooksResponseFromJSON,
     ListWebhooksResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateWebhookRequest,
+    UpdateWebhookRequestFromJSON,
+    UpdateWebhookRequestToJSON,
+    UpdateWebhookResponse,
+    UpdateWebhookResponseFromJSON,
+    UpdateWebhookResponseToJSON,
 } from '../models';
+
+export interface CreateWebhookOperationRequest {
+    createWebhookRequest: CreateWebhookRequest;
+}
 
 export interface CreateWebhookDeliveryRedeliverRequest {
     id: string;
     deliveryId: string;
 }
 
-export interface CreateWebhookTestRequest {
+export interface CreateWebhookRotateSecretRequest {
     id: string;
+}
+
+export interface CreateWebhookTestOperationRequest {
+    id: string;
+    createWebhookTestRequest?: CreateWebhookTestRequest;
 }
 
 export interface DeleteWebhookRequest {
@@ -54,18 +84,29 @@ export interface ListWebhookDeliveriesRequest {
     limit?: number;
 }
 
+export interface UpdateWebhookOperationRequest {
+    id: string;
+    updateWebhookRequest?: UpdateWebhookRequest;
+}
+
 /**
  * 
  */
 export class WebhooksApi extends runtime.BaseAPI {
 
     /**
-     * Register a webhook endpoint (returns the signing secret once).
+     * Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false = automation only (notify.* steps). Returns the signing secret once (json).
      */
-    async createWebhookRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWebhookResponse>> {
+    async createWebhookRaw(requestParameters: CreateWebhookOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWebhookResponse>> {
+        if (requestParameters.createWebhookRequest === null || requestParameters.createWebhookRequest === undefined) {
+            throw new runtime.RequiredError('createWebhookRequest','Required parameter requestParameters.createWebhookRequest was null or undefined when calling createWebhook.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -80,16 +121,17 @@ export class WebhooksApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWebhookRequestToJSON(requestParameters.createWebhookRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWebhookResponseFromJSON(jsonValue));
     }
 
     /**
-     * Register a webhook endpoint (returns the signing secret once).
+     * Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false = automation only (notify.* steps). Returns the signing secret once (json).
      */
-    async createWebhook(initOverrides?: RequestInit): Promise<CreateWebhookResponse> {
-        const response = await this.createWebhookRaw(initOverrides);
+    async createWebhook(requestParameters: CreateWebhookOperationRequest, initOverrides?: RequestInit): Promise<CreateWebhookResponse> {
+        const response = await this.createWebhookRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -136,11 +178,12 @@ export class WebhooksApi extends runtime.BaseAPI {
     }
 
     /**
-     * Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
+     * Returns the new `secret` once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
+     * Rotate the signing secret of a webhook, keeping its id, events and delivery history.
      */
-    async createWebhookTestRaw(requestParameters: CreateWebhookTestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWebhookTestResponse>> {
+    async createWebhookRotateSecretRaw(requestParameters: CreateWebhookRotateSecretRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWebhookRotateSecretResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWebhookTest.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWebhookRotateSecret.');
         }
 
         const queryParameters: any = {};
@@ -156,19 +199,61 @@ export class WebhooksApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
+            path: `/v1/webhooks/{id}/rotate-secret`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateWebhookRotateSecretResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Returns the new `secret` once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
+     * Rotate the signing secret of a webhook, keeping its id, events and delivery history.
+     */
+    async createWebhookRotateSecret(requestParameters: CreateWebhookRotateSecretRequest, initOverrides?: RequestInit): Promise<CreateWebhookRotateSecretResponse> {
+        const response = await this.createWebhookRotateSecretRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
+     */
+    async createWebhookTestRaw(requestParameters: CreateWebhookTestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWebhookTestResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createWebhookTest.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
             path: `/v1/webhooks/{id}/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWebhookTestRequestToJSON(requestParameters.createWebhookTestRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWebhookTestResponseFromJSON(jsonValue));
     }
 
     /**
-     * Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
+     * Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
      */
-    async createWebhookTest(requestParameters: CreateWebhookTestRequest, initOverrides?: RequestInit): Promise<CreateWebhookTestResponse> {
+    async createWebhookTest(requestParameters: CreateWebhookTestOperationRequest, initOverrides?: RequestInit): Promise<CreateWebhookTestResponse> {
         const response = await this.createWebhookTestRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -294,7 +379,75 @@ export class WebhooksApi extends runtime.BaseAPI {
     }
 
     /**
-     * List your registered webhook endpoints.
+     * List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+     */
+    async listWebhookEventsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWebhookEventsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/webhooks/events`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWebhookEventsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+     */
+    async listWebhookEvents(initOverrides?: RequestInit): Promise<ListWebhookEventsResponse> {
+        const response = await this.listWebhookEventsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+     */
+    async listWebhookTypesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWebhookTypesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/webhooks/types`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListWebhookTypesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+     */
+    async listWebhookTypes(initOverrides?: RequestInit): Promise<ListWebhookTypesResponse> {
+        const response = await this.listWebhookTypesRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing=true, page, pageSize.
      */
     async listWebhooksRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListWebhooksResponse>> {
         const queryParameters: any = {};
@@ -320,10 +473,51 @@ export class WebhooksApi extends runtime.BaseAPI {
     }
 
     /**
-     * List your registered webhook endpoints.
+     * List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing=true, page, pageSize.
      */
     async listWebhooks(initOverrides?: RequestInit): Promise<ListWebhooksResponse> {
         const response = await this.listWebhooksRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
+     */
+    async updateWebhookRaw(requestParameters: UpdateWebhookOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWebhookResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWebhook.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/webhooks/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateWebhookRequestToJSON(requestParameters.updateWebhookRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWebhookResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
+     */
+    async updateWebhook(requestParameters: UpdateWebhookOperationRequest, initOverrides?: RequestInit): Promise<UpdateWebhookResponse> {
+        const response = await this.updateWebhookRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

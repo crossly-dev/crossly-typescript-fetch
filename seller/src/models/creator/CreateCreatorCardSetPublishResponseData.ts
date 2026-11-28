@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateCreatorCardSetPublishResponseDataSubmitted,
-    CreateCreatorCardSetPublishResponseDataSubmittedFromJSON,
-    CreateCreatorCardSetPublishResponseDataSubmittedFromJSONTyped,
-    CreateCreatorCardSetPublishResponseDataSubmittedToJSON,
-} from './CreateCreatorCardSetPublishResponseDataSubmitted';
+    CreateCreatorCardGamePublishResponseDataSubmitted,
+    CreateCreatorCardGamePublishResponseDataSubmittedFromJSON,
+    CreateCreatorCardGamePublishResponseDataSubmittedFromJSONTyped,
+    CreateCreatorCardGamePublishResponseDataSubmittedToJSON,
+} from './CreateCreatorCardGamePublishResponseDataSubmitted';
 import {
     CreatorCardSetResponseDataCheck,
     CreatorCardSetResponseDataCheckFromJSON,
@@ -70,10 +70,10 @@ export interface CreateCreatorCardSetPublishResponseData {
     publishedAt?: string | null;
     /**
      * 
-     * @type {CreateCreatorCardSetPublishResponseDataSubmitted}
+     * @type {CreateCreatorCardGamePublishResponseDataSubmitted}
      * @memberof CreateCreatorCardSetPublishResponseData
      */
-    submitted: CreateCreatorCardSetPublishResponseDataSubmitted;
+    submitted: CreateCreatorCardGamePublishResponseDataSubmitted;
     /**
      * 
      * @type {string}
@@ -121,7 +121,7 @@ export function CreateCreatorCardSetPublishResponseDataFromJSONTyped(json: any, 
         'updatedAt': json['updatedAt'],
         'check': CreatorCardSetResponseDataCheckFromJSON(json['check']),
         'publishedAt': !exists(json, 'publishedAt') ? undefined : json['publishedAt'],
-        'submitted': CreateCreatorCardSetPublishResponseDataSubmittedFromJSON(json['submitted']),
+        'submitted': CreateCreatorCardGamePublishResponseDataSubmittedFromJSON(json['submitted']),
         'gameId': json['gameId'],
         'setCode': json['setCode'],
         'publishedVersion': !exists(json, 'publishedVersion') ? undefined : json['publishedVersion'],
@@ -144,7 +144,7 @@ export function CreateCreatorCardSetPublishResponseDataToJSON(value?: CreateCrea
         'updatedAt': value.updatedAt,
         'check': CreatorCardSetResponseDataCheckToJSON(value.check),
         'publishedAt': value.publishedAt,
-        'submitted': CreateCreatorCardSetPublishResponseDataSubmittedToJSON(value.submitted),
+        'submitted': CreateCreatorCardGamePublishResponseDataSubmittedToJSON(value.submitted),
         'gameId': value.gameId,
         'setCode': value.setCode,
         'publishedVersion': value.publishedVersion,

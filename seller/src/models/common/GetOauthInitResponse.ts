@@ -38,11 +38,17 @@ export interface GetOauthInitResponse {
      */
     status?: string;
     /**
+     * Where the keys go: a v1 route (cardnexus) or the dashboard's connect dialog.
+     * @type {string}
+     * @memberof GetOauthInitResponse
+     */
+    connectWith?: string;
+    /**
      * 
      * @type {string}
      * @memberof GetOauthInitResponse
      */
-    requestUrl?: string;
+    docsUrl?: string;
     /**
      * 
      * @type {string}
@@ -64,7 +70,8 @@ export function GetOauthInitResponseFromJSONTyped(json: any, ignoreDiscriminator
         'url': !exists(json, 'url') ? undefined : json['url'],
         'oneShot': !exists(json, 'oneShot') ? undefined : json['oneShot'],
         'status': !exists(json, 'status') ? undefined : json['status'],
-        'requestUrl': !exists(json, 'requestUrl') ? undefined : json['requestUrl'],
+        'connectWith': !exists(json, 'connectWith') ? undefined : json['connectWith'],
+        'docsUrl': !exists(json, 'docsUrl') ? undefined : json['docsUrl'],
         'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
@@ -81,7 +88,8 @@ export function GetOauthInitResponseToJSON(value?: GetOauthInitResponse | null):
         'url': value.url,
         'oneShot': value.oneShot,
         'status': value.status,
-        'requestUrl': value.requestUrl,
+        'connectWith': value.connectWith,
+        'docsUrl': value.docsUrl,
         'message': value.message,
     };
 }

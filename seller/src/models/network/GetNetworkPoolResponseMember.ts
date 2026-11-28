@@ -33,16 +33,16 @@ export interface GetNetworkPoolResponseMember {
     userId: string;
     /**
      * 
-     * @type {string}
-     * @memberof GetNetworkPoolResponseMember
-     */
-    platforms: string;
-    /**
-     * 
      * @type {Date}
      * @memberof GetNetworkPoolResponseMember
      */
     joinedAt: Date;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetNetworkPoolResponseMember
+     */
+    platforms: string;
     /**
      * 
      * @type {boolean}
@@ -99,8 +99,8 @@ export function GetNetworkPoolResponseMemberFromJSONTyped(json: any, ignoreDiscr
         
         'id': json['id'],
         'userId': json['userId'],
-        'platforms': json['platforms'],
         'joinedAt': (new Date(json['joinedAt'])),
+        'platforms': json['platforms'],
         'shareEnabled': json['shareEnabled'],
         'followEnabled': json['followEnabled'],
         'likeEnabled': json['likeEnabled'],
@@ -122,8 +122,8 @@ export function GetNetworkPoolResponseMemberToJSON(value?: GetNetworkPoolRespons
         
         'id': value.id,
         'userId': value.userId,
-        'platforms': value.platforms,
         'joinedAt': (value.joinedAt.toISOString()),
+        'platforms': value.platforms,
         'shareEnabled': value.shareEnabled,
         'followEnabled': value.followEnabled,
         'likeEnabled': value.likeEnabled,

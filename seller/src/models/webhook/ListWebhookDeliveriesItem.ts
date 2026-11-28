@@ -45,16 +45,16 @@ export interface ListWebhookDeliveriesItem {
     status: string;
     /**
      * 
-     * @type {string}
-     * @memberof ListWebhookDeliveriesItem
-     */
-    lastError?: string | null;
-    /**
-     * 
      * @type {Date}
      * @memberof ListWebhookDeliveriesItem
      */
     deliveredAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListWebhookDeliveriesItem
+     */
+    lastError?: string | null;
     /**
      * 
      * @type {number}
@@ -113,8 +113,8 @@ export function ListWebhookDeliveriesItemFromJSONTyped(json: any, ignoreDiscrimi
         'createdAt': (new Date(json['createdAt'])),
         'userId': json['userId'],
         'status': json['status'],
-        'lastError': !exists(json, 'lastError') ? undefined : json['lastError'],
         'deliveredAt': !exists(json, 'deliveredAt') ? undefined : (json['deliveredAt'] === null ? null : new Date(json['deliveredAt'])),
+        'lastError': !exists(json, 'lastError') ? undefined : json['lastError'],
         'attempts': json['attempts'],
         'lastAttemptAt': !exists(json, 'lastAttemptAt') ? undefined : (json['lastAttemptAt'] === null ? null : new Date(json['lastAttemptAt'])),
         'eventId': json['eventId'],
@@ -138,8 +138,8 @@ export function ListWebhookDeliveriesItemToJSON(value?: ListWebhookDeliveriesIte
         'createdAt': (value.createdAt.toISOString()),
         'userId': value.userId,
         'status': value.status,
-        'lastError': value.lastError,
         'deliveredAt': value.deliveredAt === undefined ? undefined : (value.deliveredAt === null ? null : value.deliveredAt.toISOString()),
+        'lastError': value.lastError,
         'attempts': value.attempts,
         'lastAttemptAt': value.lastAttemptAt === undefined ? undefined : (value.lastAttemptAt === null ? null : value.lastAttemptAt.toISOString()),
         'eventId': value.eventId,

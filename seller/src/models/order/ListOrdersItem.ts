@@ -20,6 +20,12 @@ import {
     GetOrderResponseAppShareToJSON,
 } from './GetOrderResponseAppShare';
 import {
+    GetOrderResponseBuyerCompany,
+    GetOrderResponseBuyerCompanyFromJSON,
+    GetOrderResponseBuyerCompanyFromJSONTyped,
+    GetOrderResponseBuyerCompanyToJSON,
+} from './GetOrderResponseBuyerCompany';
+import {
     GetOrderResponseLineItems,
     GetOrderResponseLineItemsFromJSON,
     GetOrderResponseLineItemsFromJSONTyped,
@@ -56,6 +62,12 @@ export interface ListOrdersItem {
      * @memberof ListOrdersItem
      */
     trade?: GetOrderResponseTrade | null;
+    /**
+     * 
+     * @type {GetOrderResponseBuyerCompany}
+     * @memberof ListOrdersItem
+     */
+    buyerCompany?: GetOrderResponseBuyerCompany | null;
     /**
      * DOLLARS (numbers, as order.created sends them). null = not known (no sale row, or details pending).
      * @type {number}
@@ -154,6 +166,12 @@ export interface ListOrdersItem {
      * @memberof ListOrdersItem
      */
     platformOrderId?: string | null;
+    /**
+     * 1570: a Crossly sale's readable checkout number (services/order-numbers); null elsewhere. platformOrderId = pi id.
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    orderNumber?: string | null;
     /**
      * 1066 (order relay): the developer app that reported this order through an
      * inbound item.sold (FK oauth_apps.id ON DELETE SET NULL in SQL). Null for
@@ -432,6 +450,13 @@ export interface ListOrdersItem {
      */
     lastChatCheckAt?: Date | null;
     /**
+     * Last time the shipping-tracking poller refreshed this order's tracking. NULL = never. The sweep's cursor
+     * (oldest first, NULLS FIRST) so in-transit orders past the batch size can't starve. See migration 1611.
+     * @type {Date}
+     * @memberof ListOrdersItem
+     */
+    lastTrackingCheckAt?: Date | null;
+    /**
      * 
      * @type {boolean}
      * @memberof ListOrdersItem
@@ -581,6 +606,14 @@ export interface ListOrdersItem {
      */
     platformConfirmedAt?: Date | null;
     /**
+     * The teammate this order is assigned to (team_members.id, migration 1613); NULL = unassigned. Written only
+     * through the work-assignment service (api-orders services/work-assignment). Hot table: nullable, no default;
+     * the partial index is built CONCURRENTLY in 1613.
+     * @type {string}
+     * @memberof ListOrdersItem
+     */
+    assigneeMemberId?: string | null;
+    /**
      * 
      * @type {Date}
      * @memberof ListOrdersItem
@@ -613,6 +646,7 @@ export function ListOrdersItemFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'appShare': !exists(json, 'appShare') ? undefined : GetOrderResponseAppShareFromJSON(json['appShare']),
         'trade': !exists(json, 'trade') ? undefined : GetOrderResponseTradeFromJSON(json['trade']),
+        'buyerCompany': !exists(json, 'buyerCompany') ? undefined : GetOrderResponseBuyerCompanyFromJSON(json['buyerCompany']),
         'salePrice': !exists(json, 'salePrice') ? undefined : json['salePrice'],
         'platformFee': !exists(json, 'platformFee') ? undefined : json['platformFee'],
         'taxCollected': !exists(json, 'taxCollected') ? undefined : json['taxCollected'],
@@ -629,6 +663,7 @@ export function ListOrdersItemFromJSONTyped(json: any, ignoreDiscriminator: bool
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
         'platform': json['platform'],
         'platformOrderId': !exists(json, 'platformOrderId') ? undefined : json['platformOrderId'],
+        'orderNumber': !exists(json, 'orderNumber') ? undefined : json['orderNumber'],
         'reportedByAppId': !exists(json, 'reportedByAppId') ? undefined : json['reportedByAppId'],
         'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'buyerUsername': !exists(json, 'buyerUsername') ? undefined : json['buyerUsername'],
@@ -671,6 +706,7 @@ export function ListOrdersItemFromJSONTyped(json: any, ignoreDiscriminator: bool
         'oversoldBy': json['oversoldBy'],
         'lastStatusCheckAt': !exists(json, 'lastStatusCheckAt') ? undefined : (json['lastStatusCheckAt'] === null ? null : new Date(json['lastStatusCheckAt'])),
         'lastChatCheckAt': !exists(json, 'lastChatCheckAt') ? undefined : (json['lastChatCheckAt'] === null ? null : new Date(json['lastChatCheckAt'])),
+        'lastTrackingCheckAt': !exists(json, 'lastTrackingCheckAt') ? undefined : (json['lastTrackingCheckAt'] === null ? null : new Date(json['lastTrackingCheckAt'])),
         'isDisputed': json['isDisputed'],
         'disputeReason': !exists(json, 'disputeReason') ? undefined : json['disputeReason'],
         'disputePlatformCaseId': !exists(json, 'disputePlatformCaseId') ? undefined : json['disputePlatformCaseId'],
@@ -693,6 +729,7 @@ export function ListOrdersItemFromJSONTyped(json: any, ignoreDiscriminator: bool
         'fulfillmentMethod': json['fulfillmentMethod'],
         'source': !exists(json, 'source') ? undefined : json['source'],
         'platformConfirmedAt': !exists(json, 'platformConfirmedAt') ? undefined : (json['platformConfirmedAt'] === null ? null : new Date(json['platformConfirmedAt'])),
+        'assigneeMemberId': !exists(json, 'assigneeMemberId') ? undefined : json['assigneeMemberId'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': (new Date(json['updatedAt'])),
         'deletedAt': !exists(json, 'deletedAt') ? undefined : (json['deletedAt'] === null ? null : new Date(json['deletedAt'])),
@@ -710,6 +747,7 @@ export function ListOrdersItemToJSON(value?: ListOrdersItem | null): any {
         
         'appShare': GetOrderResponseAppShareToJSON(value.appShare),
         'trade': GetOrderResponseTradeToJSON(value.trade),
+        'buyerCompany': GetOrderResponseBuyerCompanyToJSON(value.buyerCompany),
         'salePrice': value.salePrice,
         'platformFee': value.platformFee,
         'taxCollected': value.taxCollected,
@@ -726,6 +764,7 @@ export function ListOrdersItemToJSON(value?: ListOrdersItem | null): any {
         'platformListingId': value.platformListingId,
         'platform': value.platform,
         'platformOrderId': value.platformOrderId,
+        'orderNumber': value.orderNumber,
         'reportedByAppId': value.reportedByAppId,
         'storefrontId': value.storefrontId,
         'buyerUsername': value.buyerUsername,
@@ -768,6 +807,7 @@ export function ListOrdersItemToJSON(value?: ListOrdersItem | null): any {
         'oversoldBy': value.oversoldBy,
         'lastStatusCheckAt': value.lastStatusCheckAt === undefined ? undefined : (value.lastStatusCheckAt === null ? null : value.lastStatusCheckAt.toISOString()),
         'lastChatCheckAt': value.lastChatCheckAt === undefined ? undefined : (value.lastChatCheckAt === null ? null : value.lastChatCheckAt.toISOString()),
+        'lastTrackingCheckAt': value.lastTrackingCheckAt === undefined ? undefined : (value.lastTrackingCheckAt === null ? null : value.lastTrackingCheckAt.toISOString()),
         'isDisputed': value.isDisputed,
         'disputeReason': value.disputeReason,
         'disputePlatformCaseId': value.disputePlatformCaseId,
@@ -790,6 +830,7 @@ export function ListOrdersItemToJSON(value?: ListOrdersItem | null): any {
         'fulfillmentMethod': value.fulfillmentMethod,
         'source': value.source,
         'platformConfirmedAt': value.platformConfirmedAt === undefined ? undefined : (value.platformConfirmedAt === null ? null : value.platformConfirmedAt.toISOString()),
+        'assigneeMemberId': value.assigneeMemberId,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': (value.updatedAt.toISOString()),
         'deletedAt': value.deletedAt === undefined ? undefined : (value.deletedAt === null ? null : value.deletedAt.toISOString()),

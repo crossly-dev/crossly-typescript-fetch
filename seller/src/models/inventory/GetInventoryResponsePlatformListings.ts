@@ -79,6 +79,24 @@ export interface GetInventoryResponsePlatformListings {
      * @type {string}
      * @memberof GetInventoryResponsePlatformListings
      */
+    currency?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
+    platformConnectionId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetInventoryResponsePlatformListings
+     */
     origin: GetInventoryResponsePlatformListingsOriginEnum;
     /**
      * 
@@ -104,12 +122,6 @@ export interface GetInventoryResponsePlatformListings {
      * @memberof GetInventoryResponsePlatformListings
      */
     inventoryItemId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetInventoryResponsePlatformListings
-     */
-    currency?: string | null;
     /**
      * 
      * @type {Date}
@@ -260,12 +272,6 @@ export interface GetInventoryResponsePlatformListings {
      * @memberof GetInventoryResponsePlatformListings
      */
     bundlePromo?: GetInventoryResponsePlatformListingsBundlePromo | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetInventoryResponsePlatformListings
-     */
-    storefrontId?: string | null;
     /**
      * 
      * @type {Array<string>}
@@ -635,12 +641,14 @@ export function GetInventoryResponsePlatformListingsFromJSONTyped(json: any, ign
         'accountSlot': json['accountSlot'],
         'status': json['status'],
         'marketplaceId': !exists(json, 'marketplaceId') ? undefined : json['marketplaceId'],
+        'currency': !exists(json, 'currency') ? undefined : json['currency'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
+        'platformConnectionId': !exists(json, 'platformConnectionId') ? undefined : json['platformConnectionId'],
         'origin': json['origin'],
         'views': json['views'],
         'favorites': json['favorites'],
         'quantity': json['quantity'],
         'inventoryItemId': !exists(json, 'inventoryItemId') ? undefined : json['inventoryItemId'],
-        'currency': !exists(json, 'currency') ? undefined : json['currency'],
         'delistedAt': !exists(json, 'delistedAt') ? undefined : (json['delistedAt'] === null ? null : new Date(json['delistedAt'])),
         'soldAt': !exists(json, 'soldAt') ? undefined : (json['soldAt'] === null ? null : new Date(json['soldAt'])),
         'listingId': json['listingId'],
@@ -666,7 +674,6 @@ export function GetInventoryResponsePlatformListingsFromJSONTyped(json: any, ign
         'crosslyPriceUsdCents': !exists(json, 'crosslyPriceUsdCents') ? undefined : json['crosslyPriceUsdCents'],
         'crosslyPriceFxAsOf': !exists(json, 'crosslyPriceFxAsOf') ? undefined : json['crosslyPriceFxAsOf'],
         'bundlePromo': !exists(json, 'bundlePromo') ? undefined : GetInventoryResponsePlatformListingsBundlePromoFromJSON(json['bundlePromo']),
-        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'hashtags': !exists(json, 'hashtags') ? undefined : json['hashtags'],
         'isDraft': json['isDraft'],
         'scheduledPublishAt': !exists(json, 'scheduledPublishAt') ? undefined : (json['scheduledPublishAt'] === null ? null : new Date(json['scheduledPublishAt'])),
@@ -740,12 +747,14 @@ export function GetInventoryResponsePlatformListingsToJSON(value?: GetInventoryR
         'accountSlot': value.accountSlot,
         'status': value.status,
         'marketplaceId': value.marketplaceId,
+        'currency': value.currency,
+        'storefrontId': value.storefrontId,
+        'platformConnectionId': value.platformConnectionId,
         'origin': value.origin,
         'views': value.views,
         'favorites': value.favorites,
         'quantity': value.quantity,
         'inventoryItemId': value.inventoryItemId,
-        'currency': value.currency,
         'delistedAt': value.delistedAt === undefined ? undefined : (value.delistedAt === null ? null : value.delistedAt.toISOString()),
         'soldAt': value.soldAt === undefined ? undefined : (value.soldAt === null ? null : value.soldAt.toISOString()),
         'listingId': value.listingId,
@@ -771,7 +780,6 @@ export function GetInventoryResponsePlatformListingsToJSON(value?: GetInventoryR
         'crosslyPriceUsdCents': value.crosslyPriceUsdCents,
         'crosslyPriceFxAsOf': value.crosslyPriceFxAsOf,
         'bundlePromo': GetInventoryResponsePlatformListingsBundlePromoToJSON(value.bundlePromo),
-        'storefrontId': value.storefrontId,
         'hashtags': value.hashtags,
         'isDraft': value.isDraft,
         'scheduledPublishAt': value.scheduledPublishAt === undefined ? undefined : (value.scheduledPublishAt === null ? null : value.scheduledPublishAt.toISOString()),

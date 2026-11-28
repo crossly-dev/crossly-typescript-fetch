@@ -15,49 +15,208 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateAiCategorizeRequest,
+    CreateAiCategorizeRequestFromJSON,
+    CreateAiCategorizeRequestToJSON,
     CreateAiCategorizeResponse,
     CreateAiCategorizeResponseFromJSON,
     CreateAiCategorizeResponseToJSON,
+    CreateAiCopyRequest,
+    CreateAiCopyRequestFromJSON,
+    CreateAiCopyRequestToJSON,
+    CreateAiCopyResponse,
+    CreateAiCopyResponseFromJSON,
+    CreateAiCopyResponseToJSON,
+    CreateAiEnhanceDescriptionRequest,
+    CreateAiEnhanceDescriptionRequestFromJSON,
+    CreateAiEnhanceDescriptionRequestToJSON,
     CreateAiEnhanceDescriptionResponse,
     CreateAiEnhanceDescriptionResponseFromJSON,
     CreateAiEnhanceDescriptionResponseToJSON,
+    CreateAiEnhanceListingRequest,
+    CreateAiEnhanceListingRequestFromJSON,
+    CreateAiEnhanceListingRequestToJSON,
     CreateAiEnhanceListingResponse,
     CreateAiEnhanceListingResponseFromJSON,
     CreateAiEnhanceListingResponseToJSON,
+    CreateAiEnhanceTitleRequest,
+    CreateAiEnhanceTitleRequestFromJSON,
+    CreateAiEnhanceTitleRequestToJSON,
     CreateAiEnhanceTitleResponse,
     CreateAiEnhanceTitleResponseFromJSON,
     CreateAiEnhanceTitleResponseToJSON,
+    CreateAiExtractReceiptRequest,
+    CreateAiExtractReceiptRequestFromJSON,
+    CreateAiExtractReceiptRequestToJSON,
     CreateAiExtractReceiptResponse,
     CreateAiExtractReceiptResponseFromJSON,
     CreateAiExtractReceiptResponseToJSON,
+    CreateAiGenerateListingRequest,
+    CreateAiGenerateListingRequestFromJSON,
+    CreateAiGenerateListingRequestToJSON,
+    CreateAiHelpRequest,
+    CreateAiHelpRequestFromJSON,
+    CreateAiHelpRequestToJSON,
     CreateAiHelpResponse,
     CreateAiHelpResponseFromJSON,
     CreateAiHelpResponseToJSON,
+    CreateAiKeyRequest,
+    CreateAiKeyRequestFromJSON,
+    CreateAiKeyRequestToJSON,
+    CreateAiKeyResponse,
+    CreateAiKeyResponseFromJSON,
+    CreateAiKeyResponseToJSON,
+    CreateAiKeyTestRequest,
+    CreateAiKeyTestRequestFromJSON,
+    CreateAiKeyTestRequestToJSON,
+    CreateAiKeyTestResponse,
+    CreateAiKeyTestResponseFromJSON,
+    CreateAiKeyTestResponseToJSON,
+    CreateAiMagicListingRequest,
+    CreateAiMagicListingRequestFromJSON,
+    CreateAiMagicListingRequestToJSON,
     CreateAiMagicListingResponse,
     CreateAiMagicListingResponseFromJSON,
     CreateAiMagicListingResponseToJSON,
     CreateAiTestKeyResponse,
     CreateAiTestKeyResponseFromJSON,
     CreateAiTestKeyResponseToJSON,
+    CreateListingAiImagePromptRequest,
+    CreateListingAiImagePromptRequestFromJSON,
+    CreateListingAiImagePromptRequestToJSON,
     CreateListingAiImagePromptResponse,
     CreateListingAiImagePromptResponseFromJSON,
     CreateListingAiImagePromptResponseToJSON,
+    CreateListingAiImageRequest,
+    CreateListingAiImageRequestFromJSON,
+    CreateListingAiImageRequestToJSON,
     CreateListingAiImageResponse,
     CreateListingAiImageResponseFromJSON,
     CreateListingAiImageResponseToJSON,
+    GetAiKeyResponse,
+    GetAiKeyResponseFromJSON,
+    GetAiKeyResponseToJSON,
     GetAiProviderResponse,
     GetAiProviderResponseFromJSON,
     GetAiProviderResponseToJSON,
+    GetAiRoutingResponse,
+    GetAiRoutingResponseFromJSON,
+    GetAiRoutingResponseToJSON,
     GetAiStatusResponse,
     GetAiStatusResponseFromJSON,
     GetAiStatusResponseToJSON,
     SuccessResponse,
     SuccessResponseFromJSON,
     SuccessResponseToJSON,
+    UpdateAiImageConfigRequest,
+    UpdateAiImageConfigRequestFromJSON,
+    UpdateAiImageConfigRequestToJSON,
     UpdateAiImageConfigResponse,
     UpdateAiImageConfigResponseFromJSON,
     UpdateAiImageConfigResponseToJSON,
+    UpdateAiKeyByIdRequest,
+    UpdateAiKeyByIdRequestFromJSON,
+    UpdateAiKeyByIdRequestToJSON,
+    UpdateAiKeyRequest,
+    UpdateAiKeyRequestFromJSON,
+    UpdateAiKeyRequestToJSON,
+    UpdateAiRoutingRequest,
+    UpdateAiRoutingRequestFromJSON,
+    UpdateAiRoutingRequestToJSON,
+    UpdateAiRoutingResponse,
+    UpdateAiRoutingResponseFromJSON,
+    UpdateAiRoutingResponseToJSON,
 } from '../models';
+
+export interface CreateAiCategorizeOperationRequest {
+    createAiCategorizeRequest: CreateAiCategorizeRequest;
+}
+
+export interface CreateAiCategorizeFromImageRequest {
+    createAiExtractReceiptRequest: CreateAiExtractReceiptRequest;
+}
+
+export interface CreateAiCopyOperationRequest {
+    createAiCopyRequest?: CreateAiCopyRequest;
+}
+
+export interface CreateAiEnhanceDescriptionOperationRequest {
+    createAiEnhanceDescriptionRequest: CreateAiEnhanceDescriptionRequest;
+}
+
+export interface CreateAiEnhanceListingOperationRequest {
+    createAiEnhanceListingRequest: CreateAiEnhanceListingRequest;
+}
+
+export interface CreateAiEnhanceTitleOperationRequest {
+    createAiEnhanceTitleRequest: CreateAiEnhanceTitleRequest;
+}
+
+export interface CreateAiExtractReceiptOperationRequest {
+    createAiExtractReceiptRequest: CreateAiExtractReceiptRequest;
+}
+
+export interface CreateAiGenerateListingOperationRequest {
+    createAiGenerateListingRequest: CreateAiGenerateListingRequest;
+}
+
+export interface CreateAiHelpOperationRequest {
+    createAiHelpRequest: CreateAiHelpRequest;
+}
+
+export interface CreateAiKeyOperationRequest {
+    createAiKeyRequest?: CreateAiKeyRequest;
+}
+
+export interface CreateAiKeyTestOperationRequest {
+    createAiKeyTestRequest?: CreateAiKeyTestRequest;
+}
+
+export interface CreateAiKeyTestByIdRequest {
+    id: string;
+}
+
+export interface CreateAiMagicListingOperationRequest {
+    createAiMagicListingRequest: CreateAiMagicListingRequest;
+}
+
+export interface CreateAiTestKeyRequest {
+    updateAiKeyRequest: UpdateAiKeyRequest;
+}
+
+export interface CreateListingAiImageOperationRequest {
+    createListingAiImageRequest?: CreateListingAiImageRequest;
+}
+
+export interface CreateListingAiImagePromptOperationRequest {
+    createListingAiImagePromptRequest?: CreateListingAiImagePromptRequest;
+}
+
+export interface DeleteAiKeyRequest {
+    provider?: DeleteAiKeyProviderEnum;
+}
+
+export interface DeleteAiKeyByIdRequest {
+    id: string;
+}
+
+export interface UpdateAiImageConfigOperationRequest {
+    updateAiImageConfigRequest?: UpdateAiImageConfigRequest;
+}
+
+export interface UpdateAiKeyOperationRequest {
+    updateAiKeyRequest: UpdateAiKeyRequest;
+}
+
+export interface UpdateAiKeyByIdOperationRequest {
+    id: string;
+    updateAiKeyByIdRequest?: UpdateAiKeyByIdRequest;
+}
+
+export interface UpdateAiRoutingOperationRequest {
+    scope: string;
+    updateAiRoutingRequest?: UpdateAiRoutingRequest;
+}
 
 /**
  * 
@@ -67,10 +226,16 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Taxonomy guess from a single image URL.
      */
-    async createAiCategorizeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiCategorizeResponse>> {
+    async createAiCategorizeRaw(requestParameters: CreateAiCategorizeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiCategorizeResponse>> {
+        if (requestParameters.createAiCategorizeRequest === null || requestParameters.createAiCategorizeRequest === undefined) {
+            throw new runtime.RequiredError('createAiCategorizeRequest','Required parameter requestParameters.createAiCategorizeRequest was null or undefined when calling createAiCategorize.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -85,6 +250,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiCategorizeRequestToJSON(requestParameters.createAiCategorizeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiCategorizeResponseFromJSON(jsonValue));
@@ -93,18 +259,24 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Taxonomy guess from a single image URL.
      */
-    async createAiCategorize(initOverrides?: RequestInit): Promise<CreateAiCategorizeResponse> {
-        const response = await this.createAiCategorizeRaw(initOverrides);
+    async createAiCategorize(requestParameters: CreateAiCategorizeOperationRequest, initOverrides?: RequestInit): Promise<CreateAiCategorizeResponse> {
+        const response = await this.createAiCategorizeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Taxonomy guess from a single base64 image.
      */
-    async createAiCategorizeFromImageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiCategorizeResponse>> {
+    async createAiCategorizeFromImageRaw(requestParameters: CreateAiCategorizeFromImageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiCategorizeResponse>> {
+        if (requestParameters.createAiExtractReceiptRequest === null || requestParameters.createAiExtractReceiptRequest === undefined) {
+            throw new runtime.RequiredError('createAiExtractReceiptRequest','Required parameter requestParameters.createAiExtractReceiptRequest was null or undefined when calling createAiCategorizeFromImage.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -119,6 +291,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiExtractReceiptRequestToJSON(requestParameters.createAiExtractReceiptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiCategorizeResponseFromJSON(jsonValue));
@@ -127,18 +300,61 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Taxonomy guess from a single base64 image.
      */
-    async createAiCategorizeFromImage(initOverrides?: RequestInit): Promise<CreateAiCategorizeResponse> {
-        const response = await this.createAiCategorizeFromImageRaw(initOverrides);
+    async createAiCategorizeFromImage(requestParameters: CreateAiCategorizeFromImageRequest, initOverrides?: RequestInit): Promise<CreateAiCategorizeResponse> {
+        const response = await this.createAiCategorizeFromImageRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key.
+     */
+    async createAiCopyRaw(requestParameters: CreateAiCopyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiCopyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/copy`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAiCopyRequestToJSON(requestParameters.createAiCopyRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiCopyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key.
+     */
+    async createAiCopy(requestParameters: CreateAiCopyOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateAiCopyResponse> {
+        const response = await this.createAiCopyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * SEO-rewrite a listing description.
      */
-    async createAiEnhanceDescriptionRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiEnhanceDescriptionResponse>> {
+    async createAiEnhanceDescriptionRaw(requestParameters: CreateAiEnhanceDescriptionOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiEnhanceDescriptionResponse>> {
+        if (requestParameters.createAiEnhanceDescriptionRequest === null || requestParameters.createAiEnhanceDescriptionRequest === undefined) {
+            throw new runtime.RequiredError('createAiEnhanceDescriptionRequest','Required parameter requestParameters.createAiEnhanceDescriptionRequest was null or undefined when calling createAiEnhanceDescription.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -153,6 +369,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiEnhanceDescriptionRequestToJSON(requestParameters.createAiEnhanceDescriptionRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiEnhanceDescriptionResponseFromJSON(jsonValue));
@@ -161,18 +378,24 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * SEO-rewrite a listing description.
      */
-    async createAiEnhanceDescription(initOverrides?: RequestInit): Promise<CreateAiEnhanceDescriptionResponse> {
-        const response = await this.createAiEnhanceDescriptionRaw(initOverrides);
+    async createAiEnhanceDescription(requestParameters: CreateAiEnhanceDescriptionOperationRequest, initOverrides?: RequestInit): Promise<CreateAiEnhanceDescriptionResponse> {
+        const response = await this.createAiEnhanceDescriptionRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Rewrite title + description + tags in one call.
      */
-    async createAiEnhanceListingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiEnhanceListingResponse>> {
+    async createAiEnhanceListingRaw(requestParameters: CreateAiEnhanceListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiEnhanceListingResponse>> {
+        if (requestParameters.createAiEnhanceListingRequest === null || requestParameters.createAiEnhanceListingRequest === undefined) {
+            throw new runtime.RequiredError('createAiEnhanceListingRequest','Required parameter requestParameters.createAiEnhanceListingRequest was null or undefined when calling createAiEnhanceListing.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -187,6 +410,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiEnhanceListingRequestToJSON(requestParameters.createAiEnhanceListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiEnhanceListingResponseFromJSON(jsonValue));
@@ -195,18 +419,24 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Rewrite title + description + tags in one call.
      */
-    async createAiEnhanceListing(initOverrides?: RequestInit): Promise<CreateAiEnhanceListingResponse> {
-        const response = await this.createAiEnhanceListingRaw(initOverrides);
+    async createAiEnhanceListing(requestParameters: CreateAiEnhanceListingOperationRequest, initOverrides?: RequestInit): Promise<CreateAiEnhanceListingResponse> {
+        const response = await this.createAiEnhanceListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * SEO-rewrite a listing title.
      */
-    async createAiEnhanceTitleRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiEnhanceTitleResponse>> {
+    async createAiEnhanceTitleRaw(requestParameters: CreateAiEnhanceTitleOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiEnhanceTitleResponse>> {
+        if (requestParameters.createAiEnhanceTitleRequest === null || requestParameters.createAiEnhanceTitleRequest === undefined) {
+            throw new runtime.RequiredError('createAiEnhanceTitleRequest','Required parameter requestParameters.createAiEnhanceTitleRequest was null or undefined when calling createAiEnhanceTitle.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -221,6 +451,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiEnhanceTitleRequestToJSON(requestParameters.createAiEnhanceTitleRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiEnhanceTitleResponseFromJSON(jsonValue));
@@ -229,18 +460,24 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * SEO-rewrite a listing title.
      */
-    async createAiEnhanceTitle(initOverrides?: RequestInit): Promise<CreateAiEnhanceTitleResponse> {
-        const response = await this.createAiEnhanceTitleRaw(initOverrides);
+    async createAiEnhanceTitle(requestParameters: CreateAiEnhanceTitleOperationRequest, initOverrides?: RequestInit): Promise<CreateAiEnhanceTitleResponse> {
+        const response = await this.createAiEnhanceTitleRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Structured data extraction from a receipt photo.
      */
-    async createAiExtractReceiptRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiExtractReceiptResponse>> {
+    async createAiExtractReceiptRaw(requestParameters: CreateAiExtractReceiptOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiExtractReceiptResponse>> {
+        if (requestParameters.createAiExtractReceiptRequest === null || requestParameters.createAiExtractReceiptRequest === undefined) {
+            throw new runtime.RequiredError('createAiExtractReceiptRequest','Required parameter requestParameters.createAiExtractReceiptRequest was null or undefined when calling createAiExtractReceipt.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -255,6 +492,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiExtractReceiptRequestToJSON(requestParameters.createAiExtractReceiptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiExtractReceiptResponseFromJSON(jsonValue));
@@ -263,18 +501,24 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Structured data extraction from a receipt photo.
      */
-    async createAiExtractReceipt(initOverrides?: RequestInit): Promise<CreateAiExtractReceiptResponse> {
-        const response = await this.createAiExtractReceiptRaw(initOverrides);
+    async createAiExtractReceipt(requestParameters: CreateAiExtractReceiptOperationRequest, initOverrides?: RequestInit): Promise<CreateAiExtractReceiptResponse> {
+        const response = await this.createAiExtractReceiptRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Generate full listing fields from up to 4 image URLs.
      */
-    async createAiGenerateListingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiMagicListingResponse>> {
+    async createAiGenerateListingRaw(requestParameters: CreateAiGenerateListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiMagicListingResponse>> {
+        if (requestParameters.createAiGenerateListingRequest === null || requestParameters.createAiGenerateListingRequest === undefined) {
+            throw new runtime.RequiredError('createAiGenerateListingRequest','Required parameter requestParameters.createAiGenerateListingRequest was null or undefined when calling createAiGenerateListing.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -289,6 +533,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiGenerateListingRequestToJSON(requestParameters.createAiGenerateListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiMagicListingResponseFromJSON(jsonValue));
@@ -297,18 +542,24 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Generate full listing fields from up to 4 image URLs.
      */
-    async createAiGenerateListing(initOverrides?: RequestInit): Promise<CreateAiMagicListingResponse> {
-        const response = await this.createAiGenerateListingRaw(initOverrides);
+    async createAiGenerateListing(requestParameters: CreateAiGenerateListingOperationRequest, initOverrides?: RequestInit): Promise<CreateAiMagicListingResponse> {
+        const response = await this.createAiGenerateListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * In-app help Q&A grounded in supplied docs.
      */
-    async createAiHelpRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiHelpResponse>> {
+    async createAiHelpRaw(requestParameters: CreateAiHelpOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiHelpResponse>> {
+        if (requestParameters.createAiHelpRequest === null || requestParameters.createAiHelpRequest === undefined) {
+            throw new runtime.RequiredError('createAiHelpRequest','Required parameter requestParameters.createAiHelpRequest was null or undefined when calling createAiHelp.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -323,6 +574,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiHelpRequestToJSON(requestParameters.createAiHelpRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiHelpResponseFromJSON(jsonValue));
@@ -331,18 +583,136 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * In-app help Q&A grounded in supplied docs.
      */
-    async createAiHelp(initOverrides?: RequestInit): Promise<CreateAiHelpResponse> {
-        const response = await this.createAiHelpRaw(initOverrides);
+    async createAiHelp(requestParameters: CreateAiHelpOperationRequest, initOverrides?: RequestInit): Promise<CreateAiHelpResponse> {
+        const response = await this.createAiHelpRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Connect an AI provider key to the store, with scopes and priority.
+     */
+    async createAiKeyRaw(requestParameters: CreateAiKeyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiKeyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/keys`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAiKeyRequestToJSON(requestParameters.createAiKeyRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiKeyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Connect an AI provider key to the store, with scopes and priority.
+     */
+    async createAiKey(requestParameters: CreateAiKeyOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateAiKeyResponse> {
+        const response = await this.createAiKeyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Test an AI provider key before saving it.
+     */
+    async createAiKeyTestRaw(requestParameters: CreateAiKeyTestOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiKeyTestResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/keys/test`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAiKeyTestRequestToJSON(requestParameters.createAiKeyTestRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiKeyTestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Test an AI provider key before saving it.
+     */
+    async createAiKeyTest(requestParameters: CreateAiKeyTestOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateAiKeyTestResponse> {
+        const response = await this.createAiKeyTestRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Re-test a saved AI key.
+     */
+    async createAiKeyTestByIdRaw(requestParameters: CreateAiKeyTestByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiKeyTestResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createAiKeyTestById.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/keys/{id}/test`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiKeyTestResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Re-test a saved AI key.
+     */
+    async createAiKeyTestById(requestParameters: CreateAiKeyTestByIdRequest, initOverrides?: RequestInit): Promise<CreateAiKeyTestResponse> {
+        const response = await this.createAiKeyTestByIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Generate full listing fields from base64 photos.
      */
-    async createAiMagicListingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiMagicListingResponse>> {
+    async createAiMagicListingRaw(requestParameters: CreateAiMagicListingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiMagicListingResponse>> {
+        if (requestParameters.createAiMagicListingRequest === null || requestParameters.createAiMagicListingRequest === undefined) {
+            throw new runtime.RequiredError('createAiMagicListingRequest','Required parameter requestParameters.createAiMagicListingRequest was null or undefined when calling createAiMagicListing.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -357,6 +727,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateAiMagicListingRequestToJSON(requestParameters.createAiMagicListingRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiMagicListingResponseFromJSON(jsonValue));
@@ -365,18 +736,24 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Generate full listing fields from base64 photos.
      */
-    async createAiMagicListing(initOverrides?: RequestInit): Promise<CreateAiMagicListingResponse> {
-        const response = await this.createAiMagicListingRaw(initOverrides);
+    async createAiMagicListing(requestParameters: CreateAiMagicListingOperationRequest, initOverrides?: RequestInit): Promise<CreateAiMagicListingResponse> {
+        const response = await this.createAiMagicListingRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Live-ping a candidate BYO-key.
      */
-    async createAiTestKeyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiTestKeyResponse>> {
+    async createAiTestKeyRaw(requestParameters: CreateAiTestKeyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiTestKeyResponse>> {
+        if (requestParameters.updateAiKeyRequest === null || requestParameters.updateAiKeyRequest === undefined) {
+            throw new runtime.RequiredError('updateAiKeyRequest','Required parameter requestParameters.updateAiKeyRequest was null or undefined when calling createAiTestKey.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -391,6 +768,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateAiKeyRequestToJSON(requestParameters.updateAiKeyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiTestKeyResponseFromJSON(jsonValue));
@@ -399,18 +777,20 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Live-ping a candidate BYO-key.
      */
-    async createAiTestKey(initOverrides?: RequestInit): Promise<CreateAiTestKeyResponse> {
-        const response = await this.createAiTestKeyRaw(initOverrides);
+    async createAiTestKey(requestParameters: CreateAiTestKeyRequest, initOverrides?: RequestInit): Promise<CreateAiTestKeyResponse> {
+        const response = await this.createAiTestKeyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Generate a listing photo with the caller\'s own image-provider key; the result is marked AI-generated.
      */
-    async createListingAiImageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAiImageResponse>> {
+    async createListingAiImageRaw(requestParameters: CreateListingAiImageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAiImageResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -425,6 +805,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingAiImageRequestToJSON(requestParameters.createListingAiImageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAiImageResponseFromJSON(jsonValue));
@@ -433,18 +814,20 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Generate a listing photo with the caller\'s own image-provider key; the result is marked AI-generated.
      */
-    async createListingAiImage(initOverrides?: RequestInit): Promise<CreateListingAiImageResponse> {
-        const response = await this.createListingAiImageRaw(initOverrides);
+    async createListingAiImage(requestParameters: CreateListingAiImageOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateListingAiImageResponse> {
+        const response = await this.createListingAiImageRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Build the AI product-photo prompt for a listing (no image is generated).
      */
-    async createListingAiImagePromptRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAiImagePromptResponse>> {
+    async createListingAiImagePromptRaw(requestParameters: CreateListingAiImagePromptOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingAiImagePromptResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -459,6 +842,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingAiImagePromptRequestToJSON(requestParameters.createListingAiImagePromptRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingAiImagePromptResponseFromJSON(jsonValue));
@@ -467,16 +851,20 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Build the AI product-photo prompt for a listing (no image is generated).
      */
-    async createListingAiImagePrompt(initOverrides?: RequestInit): Promise<CreateListingAiImagePromptResponse> {
-        const response = await this.createListingAiImagePromptRaw(initOverrides);
+    async createListingAiImagePrompt(requestParameters: CreateListingAiImagePromptOperationRequest = {}, initOverrides?: RequestInit): Promise<CreateListingAiImagePromptResponse> {
+        const response = await this.createListingAiImagePromptRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Remove the BYO-key for a provider.
+     * Remove the store\'s BYO-key for a provider.
      */
-    async deleteAiKeyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SuccessResponse>> {
+    async deleteAiKeyRaw(requestParameters: DeleteAiKeyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SuccessResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.provider !== undefined) {
+            queryParameters['provider'] = requestParameters.provider;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -499,10 +887,82 @@ export class AIApi extends runtime.BaseAPI {
     }
 
     /**
-     * Remove the BYO-key for a provider.
+     * Remove the store\'s BYO-key for a provider.
      */
-    async deleteAiKey(initOverrides?: RequestInit): Promise<SuccessResponse> {
-        const response = await this.deleteAiKeyRaw(initOverrides);
+    async deleteAiKey(requestParameters: DeleteAiKeyRequest = {}, initOverrides?: RequestInit): Promise<SuccessResponse> {
+        const response = await this.deleteAiKeyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Disconnect an AI provider key.
+     */
+    async deleteAiKeyByIdRaw(requestParameters: DeleteAiKeyByIdRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SuccessResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteAiKeyById.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/keys/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SuccessResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Disconnect an AI provider key.
+     */
+    async deleteAiKeyById(requestParameters: DeleteAiKeyByIdRequest, initOverrides?: RequestInit): Promise<SuccessResponse> {
+        const response = await this.deleteAiKeyByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The store\'s AI provider keys with their scopes and priority (never the key).
+     */
+    async getAiKeyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAiKeyResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/keys`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAiKeyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The store\'s AI provider keys with their scopes and priority (never the key).
+     */
+    async getAiKey(initOverrides?: RequestInit): Promise<GetAiKeyResponse> {
+        const response = await this.getAiKeyRaw(initOverrides);
         return await response.value();
     }
 
@@ -537,6 +997,40 @@ export class AIApi extends runtime.BaseAPI {
      */
     async getAiProvider(initOverrides?: RequestInit): Promise<GetAiProviderResponse> {
         const response = await this.getAiProviderRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Which AI provider serves each feature of the store, in order, and whether it is on.
+     */
+    async getAiRoutingRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAiRoutingResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/routing`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAiRoutingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Which AI provider serves each feature of the store, in order, and whether it is on.
+     */
+    async getAiRouting(initOverrides?: RequestInit): Promise<GetAiRoutingResponse> {
+        const response = await this.getAiRoutingRaw(initOverrides);
         return await response.value();
     }
 
@@ -577,10 +1071,12 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Choose the AI image provider/model, independently of the text provider.
      */
-    async updateAiImageConfigRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateAiImageConfigResponse>> {
+    async updateAiImageConfigRaw(requestParameters: UpdateAiImageConfigOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateAiImageConfigResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -595,6 +1091,7 @@ export class AIApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateAiImageConfigRequestToJSON(requestParameters.updateAiImageConfigRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateAiImageConfigResponseFromJSON(jsonValue));
@@ -603,18 +1100,24 @@ export class AIApi extends runtime.BaseAPI {
     /**
      * Choose the AI image provider/model, independently of the text provider.
      */
-    async updateAiImageConfig(initOverrides?: RequestInit): Promise<UpdateAiImageConfigResponse> {
-        const response = await this.updateAiImageConfigRaw(initOverrides);
+    async updateAiImageConfig(requestParameters: UpdateAiImageConfigOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateAiImageConfigResponse> {
+        const response = await this.updateAiImageConfigRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Save an encrypted BYO-key for an AI provider.
+     * Save a BYO-key for an AI provider on the store and make it the store\'s default.
      */
-    async updateAiKeyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<SuccessResponse>> {
+    async updateAiKeyRaw(requestParameters: UpdateAiKeyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SuccessResponse>> {
+        if (requestParameters.updateAiKeyRequest === null || requestParameters.updateAiKeyRequest === undefined) {
+            throw new runtime.RequiredError('updateAiKeyRequest','Required parameter requestParameters.updateAiKeyRequest was null or undefined when calling updateAiKey.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -629,17 +1132,115 @@ export class AIApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateAiKeyRequestToJSON(requestParameters.updateAiKeyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => SuccessResponseFromJSON(jsonValue));
     }
 
     /**
-     * Save an encrypted BYO-key for an AI provider.
+     * Save a BYO-key for an AI provider on the store and make it the store\'s default.
      */
-    async updateAiKey(initOverrides?: RequestInit): Promise<SuccessResponse> {
-        const response = await this.updateAiKeyRaw(initOverrides);
+    async updateAiKey(requestParameters: UpdateAiKeyOperationRequest, initOverrides?: RequestInit): Promise<SuccessResponse> {
+        const response = await this.updateAiKeyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+    /**
+     * Edit an AI key: replace it, rename it, or change its scopes, priority and models.
+     */
+    async updateAiKeyByIdRaw(requestParameters: UpdateAiKeyByIdOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateAiKeyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateAiKeyById.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/keys/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAiKeyByIdRequestToJSON(requestParameters.updateAiKeyByIdRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateAiKeyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Edit an AI key: replace it, rename it, or change its scopes, priority and models.
+     */
+    async updateAiKeyById(requestParameters: UpdateAiKeyByIdOperationRequest, initOverrides?: RequestInit): Promise<CreateAiKeyResponse> {
+        const response = await this.updateAiKeyByIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Set one AI feature\'s provider chain, model or on/off.
+     */
+    async updateAiRoutingRaw(requestParameters: UpdateAiRoutingOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateAiRoutingResponse>> {
+        if (requestParameters.scope === null || requestParameters.scope === undefined) {
+            throw new runtime.RequiredError('scope','Required parameter requestParameters.scope was null or undefined when calling updateAiRouting.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/ai/routing/{scope}`.replace(`{${"scope"}}`, encodeURIComponent(String(requestParameters.scope))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateAiRoutingRequestToJSON(requestParameters.updateAiRoutingRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateAiRoutingResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set one AI feature\'s provider chain, model or on/off.
+     */
+    async updateAiRouting(requestParameters: UpdateAiRoutingOperationRequest, initOverrides?: RequestInit): Promise<UpdateAiRoutingResponse> {
+        const response = await this.updateAiRoutingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum DeleteAiKeyProviderEnum {
+    Custom = 'custom',
+    Openai = 'openai',
+    Anthropic = 'anthropic',
+    Google = 'google',
+    Groq = 'groq',
+    Openrouter = 'openrouter',
+    Xai = 'xai',
+    Together = 'together'
 }

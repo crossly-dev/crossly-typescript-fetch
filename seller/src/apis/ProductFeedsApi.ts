@@ -15,9 +15,36 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateProductFeedCopyRequest,
+    CreateProductFeedCopyRequestFromJSON,
+    CreateProductFeedCopyRequestToJSON,
+    CreateProductFeedCopyResponse,
+    CreateProductFeedCopyResponseFromJSON,
+    CreateProductFeedCopyResponseToJSON,
+    CreateProductFeedRequest,
+    CreateProductFeedRequestFromJSON,
+    CreateProductFeedRequestToJSON,
+    CreateProductFeedRotateRequest,
+    CreateProductFeedRotateRequestFromJSON,
+    CreateProductFeedRotateRequestToJSON,
+    GetProductFeedFetchResponse,
+    GetProductFeedFetchResponseFromJSON,
+    GetProductFeedFetchResponseToJSON,
+    GetProductFeedIssueResponse,
+    GetProductFeedIssueResponseFromJSON,
+    GetProductFeedIssueResponseToJSON,
+    GetProductFeedItemResponse,
+    GetProductFeedItemResponseFromJSON,
+    GetProductFeedItemResponseToJSON,
+    GetProductFeedPreviewResponse,
+    GetProductFeedPreviewResponseFromJSON,
+    GetProductFeedPreviewResponseToJSON,
     GetProductFeedReportResponse,
     GetProductFeedReportResponseFromJSON,
     GetProductFeedReportResponseToJSON,
+    GetProductFeedResponse,
+    GetProductFeedResponseFromJSON,
+    GetProductFeedResponseToJSON,
     ListProductFeedsItem,
     ListProductFeedsItemFromJSON,
     ListProductFeedsItemToJSON,
@@ -27,22 +54,90 @@ import {
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    UpdateProductFeedItemRequest,
+    UpdateProductFeedItemRequestFromJSON,
+    UpdateProductFeedItemRequestToJSON,
+    UpdateProductFeedItemResponse,
+    UpdateProductFeedItemResponseFromJSON,
+    UpdateProductFeedItemResponseToJSON,
+    UpdateProductFeedRequest,
+    UpdateProductFeedRequestFromJSON,
+    UpdateProductFeedRequestToJSON,
 } from '../models';
 
-export interface CreateProductFeedRotateRequest {
+export interface CreateProductFeedOperationRequest {
+    createProductFeedRequest: CreateProductFeedRequest;
+}
+
+export interface CreateProductFeedCopyOperationRequest {
     id: string;
+    createProductFeedCopyRequest: CreateProductFeedCopyRequest;
+}
+
+export interface CreateProductFeedRefreshRequest {
+    id: string;
+}
+
+export interface CreateProductFeedRevokePreviousRequest {
+    id: string;
+}
+
+export interface CreateProductFeedRotateOperationRequest {
+    id: string;
+    createProductFeedRotateRequest?: CreateProductFeedRotateRequest;
 }
 
 export interface DeleteProductFeedRequest {
     id: string;
 }
 
+export interface DeleteProductFeedItemRequest {
+    id: string;
+    listingId: string;
+}
+
+export interface GetProductFeedRequest {
+    id: string;
+}
+
+export interface GetProductFeedFetchRequest {
+    id: string;
+    before?: Date;
+    limit?: number;
+}
+
+export interface GetProductFeedIssueRequest {
+    id: string;
+    code?: string;
+    severity?: GetProductFeedIssueSeverityEnum;
+    after?: string;
+    limit?: number;
+}
+
+export interface GetProductFeedItemRequest {
+    id: string;
+}
+
+export interface GetProductFeedPreviewRequest {
+    id: string;
+    format?: GetProductFeedPreviewFormatEnum;
+    after?: string;
+    limit?: number;
+}
+
 export interface GetProductFeedReportRequest {
     id: string;
 }
 
-export interface UpdateProductFeedRequest {
+export interface UpdateProductFeedOperationRequest {
     id: string;
+    updateProductFeedRequest: UpdateProductFeedRequest;
+}
+
+export interface UpdateProductFeedItemOperationRequest {
+    id: string;
+    listingId: string;
+    updateProductFeedItemRequest: UpdateProductFeedItemRequest;
 }
 
 /**
@@ -51,12 +146,18 @@ export interface UpdateProductFeedRequest {
 export class ProductFeedsApi extends runtime.BaseAPI {
 
     /**
-     * Create a hosted product feed for a channel. Returns its secret URL.
+     * Create a hosted product feed in the store for a channel. Returns its secret URL.
      */
-    async createProductFeedRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsItem>> {
+    async createProductFeedRaw(requestParameters: CreateProductFeedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsItem>> {
+        if (requestParameters.createProductFeedRequest === null || requestParameters.createProductFeedRequest === undefined) {
+            throw new runtime.RequiredError('createProductFeedRequest','Required parameter requestParameters.createProductFeedRequest was null or undefined when calling createProductFeed.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -71,25 +172,71 @@ export class ProductFeedsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateProductFeedRequestToJSON(requestParameters.createProductFeedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListProductFeedsItemFromJSON(jsonValue));
     }
 
     /**
-     * Create a hosted product feed for a channel. Returns its secret URL.
+     * Create a hosted product feed in the store for a channel. Returns its secret URL.
      */
-    async createProductFeed(initOverrides?: RequestInit): Promise<ListProductFeedsItem> {
-        const response = await this.createProductFeedRaw(initOverrides);
+    async createProductFeed(requestParameters: CreateProductFeedOperationRequest, initOverrides?: RequestInit): Promise<ListProductFeedsItem> {
+        const response = await this.createProductFeedRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel.
+     * Copy the feed’s settings to other stores as new feeds, each with its own URL.
      */
-    async createProductFeedRotateRaw(requestParameters: CreateProductFeedRotateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsItem>> {
+    async createProductFeedCopyRaw(requestParameters: CreateProductFeedCopyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateProductFeedCopyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductFeedRotate.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductFeedCopy.');
+        }
+
+        if (requestParameters.createProductFeedCopyRequest === null || requestParameters.createProductFeedCopyRequest === undefined) {
+            throw new runtime.RequiredError('createProductFeedCopyRequest','Required parameter requestParameters.createProductFeedCopyRequest was null or undefined when calling createProductFeedCopy.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/copy`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateProductFeedCopyRequestToJSON(requestParameters.createProductFeedCopyRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateProductFeedCopyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Copy the feed’s settings to other stores as new feeds, each with its own URL.
+     */
+    async createProductFeedCopy(requestParameters: CreateProductFeedCopyOperationRequest, initOverrides?: RequestInit): Promise<CreateProductFeedCopyResponse> {
+        const response = await this.createProductFeedCopyRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Drop a scheduled feed’s stored copy so the next fetch builds it fresh.
+     */
+    async createProductFeedRefreshRaw(requestParameters: CreateProductFeedRefreshRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductFeedRefresh.');
         }
 
         const queryParameters: any = {};
@@ -105,7 +252,7 @@ export class ProductFeedsApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/v1/product-feeds/{id}/rotate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/v1/product-feeds/{id}/refresh`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -115,9 +262,88 @@ export class ProductFeedsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel.
+     * Drop a scheduled feed’s stored copy so the next fetch builds it fresh.
      */
-    async createProductFeedRotate(requestParameters: CreateProductFeedRotateRequest, initOverrides?: RequestInit): Promise<ListProductFeedsItem> {
+    async createProductFeedRefresh(requestParameters: CreateProductFeedRefreshRequest, initOverrides?: RequestInit): Promise<ListProductFeedsItem> {
+        const response = await this.createProductFeedRefreshRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * End a rotation’s grace window now: the previous URL stops answering.
+     */
+    async createProductFeedRevokePreviousRaw(requestParameters: CreateProductFeedRevokePreviousRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductFeedRevokePrevious.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/revoke-previous`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListProductFeedsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * End a rotation’s grace window now: the previous URL stops answering.
+     */
+    async createProductFeedRevokePrevious(requestParameters: CreateProductFeedRevokePreviousRequest, initOverrides?: RequestInit): Promise<ListProductFeedsItem> {
+        const response = await this.createProductFeedRevokePreviousRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 = stops at once).
+     */
+    async createProductFeedRotateRaw(requestParameters: CreateProductFeedRotateOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsItem>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createProductFeedRotate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/rotate`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateProductFeedRotateRequestToJSON(requestParameters.createProductFeedRotateRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListProductFeedsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 = stops at once).
+     */
+    async createProductFeedRotate(requestParameters: CreateProductFeedRotateOperationRequest, initOverrides?: RequestInit): Promise<ListProductFeedsItem> {
         const response = await this.createProductFeedRotateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -161,7 +387,275 @@ export class ProductFeedsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items.
+     * Remove one listing’s override from this feed.
+     */
+    async deleteProductFeedItemRaw(requestParameters: DeleteProductFeedItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteProductFeedItem.');
+        }
+
+        if (requestParameters.listingId === null || requestParameters.listingId === undefined) {
+            throw new runtime.RequiredError('listingId','Required parameter requestParameters.listingId was null or undefined when calling deleteProductFeedItem.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/items/{listingId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"listingId"}}`, encodeURIComponent(String(requestParameters.listingId))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove one listing’s override from this feed.
+     */
+    async deleteProductFeedItem(requestParameters: DeleteProductFeedItemRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+        const response = await this.deleteProductFeedItemRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * One feed: its settings, URLs, store and domain, and when it was last fetched and by whom.
+     */
+    async getProductFeedRaw(requestParameters: GetProductFeedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetProductFeedResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getProductFeed.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProductFeedResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One feed: its settings, URLs, store and domain, and when it was last fetched and by whom.
+     */
+    async getProductFeed(requestParameters: GetProductFeedRequest, initOverrides?: RequestInit): Promise<GetProductFeedResponse> {
+        const response = await this.getProductFeedRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size.
+     */
+    async getProductFeedFetchRaw(requestParameters: GetProductFeedFetchRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetProductFeedFetchResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getProductFeedFetch.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.before !== undefined) {
+            queryParameters['before'] = (requestParameters.before as any).toISOString();
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/fetches`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProductFeedFetchResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size.
+     */
+    async getProductFeedFetch(requestParameters: GetProductFeedFetchRequest, initOverrides?: RequestInit): Promise<GetProductFeedFetchResponse> {
+        const response = await this.getProductFeedFetchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after.
+     */
+    async getProductFeedIssueRaw(requestParameters: GetProductFeedIssueRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetProductFeedIssueResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getProductFeedIssue.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.code !== undefined) {
+            queryParameters['code'] = requestParameters.code;
+        }
+
+        if (requestParameters.severity !== undefined) {
+            queryParameters['severity'] = requestParameters.severity;
+        }
+
+        if (requestParameters.after !== undefined) {
+            queryParameters['after'] = requestParameters.after;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/issues`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProductFeedIssueResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after.
+     */
+    async getProductFeedIssue(requestParameters: GetProductFeedIssueRequest, initOverrides?: RequestInit): Promise<GetProductFeedIssueResponse> {
+        const response = await this.getProductFeedIssueRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only).
+     */
+    async getProductFeedItemRaw(requestParameters: GetProductFeedItemRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetProductFeedItemResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getProductFeedItem.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/items`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProductFeedItemResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only).
+     */
+    async getProductFeedItem(requestParameters: GetProductFeedItemRequest, initOverrides?: RequestInit): Promise<GetProductFeedItemResponse> {
+        const response = await this.getProductFeedItemRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A page of the feed exactly as the channel reads it: every column per item, and the raw document text.
+     */
+    async getProductFeedPreviewRaw(requestParameters: GetProductFeedPreviewRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetProductFeedPreviewResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getProductFeedPreview.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.format !== undefined) {
+            queryParameters['format'] = requestParameters.format;
+        }
+
+        if (requestParameters.after !== undefined) {
+            queryParameters['after'] = requestParameters.after;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/preview`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProductFeedPreviewResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A page of the feed exactly as the channel reads it: every column per item, and the raw document text.
+     */
+    async getProductFeedPreview(requestParameters: GetProductFeedPreviewRequest, initOverrides?: RequestInit): Promise<GetProductFeedPreviewResponse> {
+        const response = await this.getProductFeedPreviewRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency.
      */
     async getProductFeedReportRaw(requestParameters: GetProductFeedReportRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetProductFeedReportResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
@@ -191,7 +685,7 @@ export class ProductFeedsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items.
+     * Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency.
      */
     async getProductFeedReport(requestParameters: GetProductFeedReportRequest, initOverrides?: RequestInit): Promise<GetProductFeedReportResponse> {
         const response = await this.getProductFeedReportRaw(requestParameters, initOverrides);
@@ -199,7 +693,7 @@ export class ProductFeedsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats.
+     * List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats.
      */
     async listProductFeedsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsResponse>> {
         const queryParameters: any = {};
@@ -225,7 +719,7 @@ export class ProductFeedsApi extends runtime.BaseAPI {
     }
 
     /**
-     * List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats.
+     * List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats.
      */
     async listProductFeeds(initOverrides?: RequestInit): Promise<ListProductFeedsResponse> {
         const response = await this.listProductFeedsRaw(initOverrides);
@@ -233,16 +727,22 @@ export class ProductFeedsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Edit a feed: name, default format, enabled, listing filters, output settings.
+     * Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule.
      */
-    async updateProductFeedRaw(requestParameters: UpdateProductFeedRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsItem>> {
+    async updateProductFeedRaw(requestParameters: UpdateProductFeedOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListProductFeedsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProductFeed.');
+        }
+
+        if (requestParameters.updateProductFeedRequest === null || requestParameters.updateProductFeedRequest === undefined) {
+            throw new runtime.RequiredError('updateProductFeedRequest','Required parameter requestParameters.updateProductFeedRequest was null or undefined when calling updateProductFeed.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -257,17 +757,87 @@ export class ProductFeedsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateProductFeedRequestToJSON(requestParameters.updateProductFeedRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListProductFeedsItemFromJSON(jsonValue));
     }
 
     /**
-     * Edit a feed: name, default format, enabled, listing filters, output settings.
+     * Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule.
      */
-    async updateProductFeed(requestParameters: UpdateProductFeedRequest, initOverrides?: RequestInit): Promise<ListProductFeedsItem> {
+    async updateProductFeed(requestParameters: UpdateProductFeedOperationRequest, initOverrides?: RequestInit): Promise<ListProductFeedsItem> {
         const response = await this.updateProductFeedRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+    /**
+     * Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it.
+     */
+    async updateProductFeedItemRaw(requestParameters: UpdateProductFeedItemOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateProductFeedItemResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProductFeedItem.');
+        }
+
+        if (requestParameters.listingId === null || requestParameters.listingId === undefined) {
+            throw new runtime.RequiredError('listingId','Required parameter requestParameters.listingId was null or undefined when calling updateProductFeedItem.');
+        }
+
+        if (requestParameters.updateProductFeedItemRequest === null || requestParameters.updateProductFeedItemRequest === undefined) {
+            throw new runtime.RequiredError('updateProductFeedItemRequest','Required parameter requestParameters.updateProductFeedItemRequest was null or undefined when calling updateProductFeedItem.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/product-feeds/{id}/items/{listingId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"listingId"}}`, encodeURIComponent(String(requestParameters.listingId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateProductFeedItemRequestToJSON(requestParameters.updateProductFeedItemRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateProductFeedItemResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it.
+     */
+    async updateProductFeedItem(requestParameters: UpdateProductFeedItemOperationRequest, initOverrides?: RequestInit): Promise<UpdateProductFeedItemResponse> {
+        const response = await this.updateProductFeedItemRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetProductFeedIssueSeverityEnum {
+    Error = 'error',
+    Warning = 'warning'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GetProductFeedPreviewFormatEnum {
+    Xml = 'xml',
+    Tsv = 'tsv',
+    Csv = 'csv',
+    Atom = 'atom',
+    Json = 'json'
 }

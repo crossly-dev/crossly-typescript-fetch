@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateListingByIdRequest,
+    CreateListingByIdRequestFromJSON,
+    CreateListingByIdRequestToJSON,
     CreateSaleBulkDeleteResponse,
     CreateSaleBulkDeleteResponseFromJSON,
     CreateSaleBulkDeleteResponseToJSON,
@@ -22,6 +25,15 @@ import {
     ListSalesResponseFromJSON,
     ListSalesResponseToJSON,
 } from '../models';
+
+export interface CreateSaleBulkDeleteRequest {
+    createListingByIdRequest: CreateListingByIdRequest;
+}
+
+export interface ListSalesRequest {
+    page?: number;
+    limit?: number;
+}
 
 /**
  * 
@@ -31,10 +43,16 @@ export class SalesApi extends runtime.BaseAPI {
     /**
      * Bulk soft-delete sales rows.
      */
-    async createSaleBulkDeleteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSaleBulkDeleteResponse>> {
+    async createSaleBulkDeleteRaw(requestParameters: CreateSaleBulkDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateSaleBulkDeleteResponse>> {
+        if (requestParameters.createListingByIdRequest === null || requestParameters.createListingByIdRequest === undefined) {
+            throw new runtime.RequiredError('createListingByIdRequest','Required parameter requestParameters.createListingByIdRequest was null or undefined when calling createSaleBulkDelete.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -49,6 +67,7 @@ export class SalesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingByIdRequestToJSON(requestParameters.createListingByIdRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateSaleBulkDeleteResponseFromJSON(jsonValue));
@@ -57,16 +76,24 @@ export class SalesApi extends runtime.BaseAPI {
     /**
      * Bulk soft-delete sales rows.
      */
-    async createSaleBulkDelete(initOverrides?: RequestInit): Promise<CreateSaleBulkDeleteResponse> {
-        const response = await this.createSaleBulkDeleteRaw(initOverrides);
+    async createSaleBulkDelete(requestParameters: CreateSaleBulkDeleteRequest, initOverrides?: RequestInit): Promise<CreateSaleBulkDeleteResponse> {
+        const response = await this.createSaleBulkDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * List sales (each unique sale event).
      */
-    async listSalesRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSalesResponse>> {
+    async listSalesRaw(requestParameters: ListSalesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListSalesResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -91,8 +118,8 @@ export class SalesApi extends runtime.BaseAPI {
     /**
      * List sales (each unique sale event).
      */
-    async listSales(initOverrides?: RequestInit): Promise<ListSalesResponse> {
-        const response = await this.listSalesRaw(initOverrides);
+    async listSales(requestParameters: ListSalesRequest = {}, initOverrides?: RequestInit): Promise<ListSalesResponse> {
+        const response = await this.listSalesRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

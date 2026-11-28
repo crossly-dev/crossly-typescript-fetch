@@ -201,8 +201,8 @@ export interface GetVaultMarketGradingOrderResponseOrder {
 * @enum {string}
 */
 export enum GetVaultMarketGradingOrderResponseOrderStatusEnum {
-    Grading = 'grading',
     Draft = 'draft',
+    Grading = 'grading',
     Cancelled = 'cancelled',
     Paid = 'paid',
     Received = 'received',

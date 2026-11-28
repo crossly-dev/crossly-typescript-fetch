@@ -79,6 +79,12 @@ export interface ListStorefrontsItem {
      * @memberof ListStorefrontsItem
      */
     onboardedAt?: Date | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListStorefrontsItem
+     */
+    currency?: string | null;
 }
 
 /**
@@ -112,6 +118,7 @@ export function ListStorefrontsItemFromJSONTyped(json: any, ignoreDiscriminator:
         'slug': json['slug'],
         'nameAuto': json['nameAuto'],
         'onboardedAt': !exists(json, 'onboardedAt') ? undefined : (json['onboardedAt'] === null ? null : new Date(json['onboardedAt'])),
+        'currency': !exists(json, 'currency') ? undefined : json['currency'],
     };
 }
 
@@ -134,6 +141,7 @@ export function ListStorefrontsItemToJSON(value?: ListStorefrontsItem | null): a
         'slug': value.slug,
         'nameAuto': value.nameAuto,
         'onboardedAt': value.onboardedAt === undefined ? undefined : (value.onboardedAt === null ? null : value.onboardedAt.toISOString()),
+        'currency': value.currency,
     };
 }
 

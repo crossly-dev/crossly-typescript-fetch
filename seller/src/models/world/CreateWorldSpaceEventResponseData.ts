@@ -36,6 +36,12 @@ export interface CreateWorldSpaceEventResponseData {
      * @type {string}
      * @memberof CreateWorldSpaceEventResponseData
      */
+    kind: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateWorldSpaceEventResponseData
+     */
     title: string;
     /**
      * 
@@ -49,12 +55,6 @@ export interface CreateWorldSpaceEventResponseData {
      * @memberof CreateWorldSpaceEventResponseData
      */
     cancelledAt?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateWorldSpaceEventResponseData
-     */
-    kind: string;
     /**
      * 
      * @type {Date}
@@ -105,10 +105,10 @@ export function CreateWorldSpaceEventResponseDataFromJSONTyped(json: any, ignore
         
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
+        'kind': json['kind'],
         'title': json['title'],
         'endsAt': (new Date(json['endsAt'])),
         'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
-        'kind': json['kind'],
         'startsAt': (new Date(json['startsAt'])),
         'createdBy': !exists(json, 'createdBy') ? undefined : json['createdBy'],
         'about': !exists(json, 'about') ? undefined : json['about'],
@@ -129,10 +129,10 @@ export function CreateWorldSpaceEventResponseDataToJSON(value?: CreateWorldSpace
         
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
+        'kind': value.kind,
         'title': value.title,
         'endsAt': (value.endsAt.toISOString()),
         'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
-        'kind': value.kind,
         'startsAt': (value.startsAt.toISOString()),
         'createdBy': value.createdBy,
         'about': value.about,

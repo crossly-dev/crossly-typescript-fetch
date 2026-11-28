@@ -64,8 +64,8 @@ export enum GetGameLeaderboardResponseDataWeekGameEnum {
 * @enum {string}
 */
 export enum GetGameLeaderboardResponseDataWeekPeriodEnum {
-    Week = 'week',
-    All = 'all'
+    All = 'all',
+    Week = 'week'
 }
 
 export function GetGameLeaderboardResponseDataWeekFromJSON(json: any): GetGameLeaderboardResponseDataWeek {

@@ -120,9 +120,9 @@ export enum ListVaultMarketAgentWatchesItemDirectionEnum {
 * @enum {string}
 */
 export enum ListVaultMarketAgentWatchesItemStatusEnum {
+    Expired = 'expired',
     Live = 'live',
     Cancelled = 'cancelled',
-    Expired = 'expired',
     Fired = 'fired'
 }
 

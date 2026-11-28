@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateOrderDisputeResponseError,
-    CreateOrderDisputeResponseErrorFromJSON,
-    CreateOrderDisputeResponseErrorFromJSONTyped,
-    CreateOrderDisputeResponseErrorToJSON,
-} from './CreateOrderDisputeResponseError';
+    CreateOrderPackScanRequest,
+    CreateOrderPackScanRequestFromJSON,
+    CreateOrderPackScanRequestFromJSONTyped,
+    CreateOrderPackScanRequestToJSON,
+} from './CreateOrderPackScanRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface CreateOrderDisputeResponse {
     /**
      * 
-     * @type {CreateOrderDisputeResponseError}
+     * @type {CreateOrderPackScanRequest}
      * @memberof CreateOrderDisputeResponse
      */
-    error: CreateOrderDisputeResponseError;
+    error: CreateOrderPackScanRequest;
 }
 
 export function CreateOrderDisputeResponseFromJSON(json: any): CreateOrderDisputeResponse {
@@ -44,7 +44,7 @@ export function CreateOrderDisputeResponseFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'error': CreateOrderDisputeResponseErrorFromJSON(json['error']),
+        'error': CreateOrderPackScanRequestFromJSON(json['error']),
     };
 }
 
@@ -57,7 +57,7 @@ export function CreateOrderDisputeResponseToJSON(value?: CreateOrderDisputeRespo
     }
     return {
         
-        'error': CreateOrderDisputeResponseErrorToJSON(value.error),
+        'error': CreateOrderPackScanRequestToJSON(value.error),
     };
 }
 

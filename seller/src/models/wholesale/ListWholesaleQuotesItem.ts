@@ -141,9 +141,9 @@ export interface ListWholesaleQuotesItem {
 * @enum {string}
 */
 export enum ListWholesaleQuotesItemStatusEnum {
+    Expired = 'expired',
     Accepted = 'accepted',
     Declined = 'declined',
-    Expired = 'expired',
     Requested = 'requested',
     Withdrawn = 'withdrawn',
     Answered = 'answered'

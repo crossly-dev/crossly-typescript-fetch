@@ -15,18 +15,39 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateListingCommandCompleteRequest,
+    CreateListingCommandCompleteRequestFromJSON,
+    CreateListingCommandCompleteRequestToJSON,
+    CreateListingCommandFailRequest,
+    CreateListingCommandFailRequestFromJSON,
+    CreateListingCommandFailRequestToJSON,
+    CreateListingEvent2Request,
+    CreateListingEvent2RequestFromJSON,
+    CreateListingEvent2RequestToJSON,
     CreateListingEvent2Response,
     CreateListingEvent2ResponseFromJSON,
     CreateListingEvent2ResponseToJSON,
+    CreateListingEventRequest,
+    CreateListingEventRequestFromJSON,
+    CreateListingEventRequestToJSON,
     CreateListingEventResponse,
     CreateListingEventResponseFromJSON,
     CreateListingEventResponseToJSON,
+    CreateListingLinkBulkRequest,
+    CreateListingLinkBulkRequestFromJSON,
+    CreateListingLinkBulkRequestToJSON,
     CreateListingLinkBulkResponse,
     CreateListingLinkBulkResponseFromJSON,
     CreateListingLinkBulkResponseToJSON,
+    CreateListingLinkRequest,
+    CreateListingLinkRequestFromJSON,
+    CreateListingLinkRequestToJSON,
     CreateListingLinkResponse,
     CreateListingLinkResponseFromJSON,
     CreateListingLinkResponseToJSON,
+    CreateListingPlatformRecloneRequest,
+    CreateListingPlatformRecloneRequestFromJSON,
+    CreateListingPlatformRecloneRequestToJSON,
     CreateListingPlatformRecloneResponse,
     CreateListingPlatformRecloneResponseFromJSON,
     CreateListingPlatformRecloneResponseToJSON,
@@ -36,9 +57,15 @@ import {
     CreateListingUnlinkResponse,
     CreateListingUnlinkResponseFromJSON,
     CreateListingUnlinkResponseToJSON,
+    CreateOrderEventRequest,
+    CreateOrderEventRequestFromJSON,
+    CreateOrderEventRequestToJSON,
     CreateOrderEventResponse,
     CreateOrderEventResponseFromJSON,
     CreateOrderEventResponseToJSON,
+    CreateOrderTakeOverRequest,
+    CreateOrderTakeOverRequestFromJSON,
+    CreateOrderTakeOverRequestToJSON,
     CreateOrderTakeOverResponse,
     CreateOrderTakeOverResponseFromJSON,
     CreateOrderTakeOverResponseToJSON,
@@ -60,21 +87,37 @@ export interface CreateListingCommandAckRequest {
     id: string;
 }
 
-export interface CreateListingCommandCompleteRequest {
+export interface CreateListingCommandCompleteOperationRequest {
     id: string;
+    createListingCommandCompleteRequest?: CreateListingCommandCompleteRequest;
 }
 
-export interface CreateListingCommandFailRequest {
+export interface CreateListingCommandFailOperationRequest {
     id: string;
+    createListingCommandFailRequest: CreateListingCommandFailRequest;
 }
 
-export interface CreateListingEventRequest {
+export interface CreateListingEventOperationRequest {
     id: string;
+    createListingEventRequest: CreateListingEventRequest;
 }
 
-export interface CreateListingPlatformRecloneRequest {
+export interface CreateListingEvent2OperationRequest {
+    createListingEvent2Request: CreateListingEvent2Request;
+}
+
+export interface CreateListingLinkOperationRequest {
+    createListingLinkRequest: CreateListingLinkRequest;
+}
+
+export interface CreateListingLinkBulkOperationRequest {
+    createListingLinkBulkRequest: CreateListingLinkBulkRequest;
+}
+
+export interface CreateListingPlatformRecloneOperationRequest {
     id: string;
     platform: string;
+    createListingPlatformRecloneRequest?: CreateListingPlatformRecloneRequest;
 }
 
 export interface CreateListingPlatformRecloneCancelRequest {
@@ -90,14 +133,20 @@ export interface CreateListingPlatformRecloneSellerEndedRequest {
 export interface CreateListingPlatformTakeOverRequest {
     id: string;
     platform: string;
+    createOrderTakeOverRequest?: CreateOrderTakeOverRequest;
 }
 
 export interface CreateListingUnlinkRequest {
     id: string;
 }
 
-export interface CreateOrderTakeOverRequest {
+export interface CreateOrderEventOperationRequest {
+    createOrderEventRequest: CreateOrderEventRequest;
+}
+
+export interface CreateOrderTakeOverOperationRequest {
     id: string;
+    createOrderTakeOverRequest?: CreateOrderTakeOverRequest;
 }
 
 export interface GetListingManagementRequest {
@@ -162,7 +211,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Report a command done on the marketplace. relist: newExternalId when a new id was issued; refund_order: platformRefundId + amount (required); submit_tracking: trackingNumber/carrier as the marketplace holds them; message_buyer: platformMessageId.
      */
-    async createListingCommandCompleteRaw(requestParameters: CreateListingCommandCompleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingCommandsItem>> {
+    async createListingCommandCompleteRaw(requestParameters: CreateListingCommandCompleteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingCommandsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createListingCommandComplete.');
         }
@@ -170,6 +219,8 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -184,6 +235,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingCommandCompleteRequestToJSON(requestParameters.createListingCommandCompleteRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListListingCommandsItemFromJSON(jsonValue));
@@ -192,7 +244,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Report a command done on the marketplace. relist: newExternalId when a new id was issued; refund_order: platformRefundId + amount (required); submit_tracking: trackingNumber/carrier as the marketplace holds them; message_buyer: platformMessageId.
      */
-    async createListingCommandComplete(requestParameters: CreateListingCommandCompleteRequest, initOverrides?: RequestInit): Promise<ListListingCommandsItem> {
+    async createListingCommandComplete(requestParameters: CreateListingCommandCompleteOperationRequest, initOverrides?: RequestInit): Promise<ListListingCommandsItem> {
         const response = await this.createListingCommandCompleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -200,14 +252,20 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Report a command failed, with a reason the seller will see.
      */
-    async createListingCommandFailRaw(requestParameters: CreateListingCommandFailRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingCommandsItem>> {
+    async createListingCommandFailRaw(requestParameters: CreateListingCommandFailOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListListingCommandsItem>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createListingCommandFail.');
+        }
+
+        if (requestParameters.createListingCommandFailRequest === null || requestParameters.createListingCommandFailRequest === undefined) {
+            throw new runtime.RequiredError('createListingCommandFailRequest','Required parameter requestParameters.createListingCommandFailRequest was null or undefined when calling createListingCommandFail.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -222,6 +280,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingCommandFailRequestToJSON(requestParameters.createListingCommandFailRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListListingCommandsItemFromJSON(jsonValue));
@@ -230,7 +289,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Report a command failed, with a reason the seller will see.
      */
-    async createListingCommandFail(requestParameters: CreateListingCommandFailRequest, initOverrides?: RequestInit): Promise<ListListingCommandsItem> {
+    async createListingCommandFail(requestParameters: CreateListingCommandFailOperationRequest, initOverrides?: RequestInit): Promise<ListListingCommandsItem> {
         const response = await this.createListingCommandFailRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -239,14 +298,20 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
      * Idempotent on `eventId`. State events apply only when `sequence` is higher than the last applied one (else `stale`, ignored). `item.sold` runs Crossly\'s sale cascade (other channels delist) and is never dropped as stale.
      * Report a marketplace event (item.updated / ended / sold / relisted) for a listing your app manages.
      */
-    async createListingEventRaw(requestParameters: CreateListingEventRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingEventResponse>> {
+    async createListingEventRaw(requestParameters: CreateListingEventOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingEventResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createListingEvent.');
+        }
+
+        if (requestParameters.createListingEventRequest === null || requestParameters.createListingEventRequest === undefined) {
+            throw new runtime.RequiredError('createListingEventRequest','Required parameter requestParameters.createListingEventRequest was null or undefined when calling createListingEvent.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -261,6 +326,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingEventRequestToJSON(requestParameters.createListingEventRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingEventResponseFromJSON(jsonValue));
@@ -270,7 +336,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
      * Idempotent on `eventId`. State events apply only when `sequence` is higher than the last applied one (else `stale`, ignored). `item.sold` runs Crossly\'s sale cascade (other channels delist) and is never dropped as stale.
      * Report a marketplace event (item.updated / ended / sold / relisted) for a listing your app manages.
      */
-    async createListingEvent(requestParameters: CreateListingEventRequest, initOverrides?: RequestInit): Promise<CreateListingEventResponse> {
+    async createListingEvent(requestParameters: CreateListingEventOperationRequest, initOverrides?: RequestInit): Promise<CreateListingEventResponse> {
         const response = await this.createListingEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -278,10 +344,16 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest.
      */
-    async createListingEvent2Raw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingEvent2Response>> {
+    async createListingEvent2Raw(requestParameters: CreateListingEvent2OperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingEvent2Response>> {
+        if (requestParameters.createListingEvent2Request === null || requestParameters.createListingEvent2Request === undefined) {
+            throw new runtime.RequiredError('createListingEvent2Request','Required parameter requestParameters.createListingEvent2Request was null or undefined when calling createListingEvent2.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -296,6 +368,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingEvent2RequestToJSON(requestParameters.createListingEvent2Request),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingEvent2ResponseFromJSON(jsonValue));
@@ -304,8 +377,8 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest.
      */
-    async createListingEvent2(initOverrides?: RequestInit): Promise<CreateListingEvent2Response> {
-        const response = await this.createListingEvent2Raw(initOverrides);
+    async createListingEvent2(requestParameters: CreateListingEvent2OperationRequest, initOverrides?: RequestInit): Promise<CreateListingEvent2Response> {
+        const response = await this.createListingEvent2Raw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -313,10 +386,16 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
      * Direct when Crossly holds the seller\'s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus `snapshot`. The listing shows \"Managed by <your app>\". Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
      * Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent.
      */
-    async createListingLinkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingLinkResponse>> {
+    async createListingLinkRaw(requestParameters: CreateListingLinkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingLinkResponse>> {
+        if (requestParameters.createListingLinkRequest === null || requestParameters.createListingLinkRequest === undefined) {
+            throw new runtime.RequiredError('createListingLinkRequest','Required parameter requestParameters.createListingLinkRequest was null or undefined when calling createListingLink.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -331,6 +410,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingLinkRequestToJSON(requestParameters.createListingLinkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingLinkResponseFromJSON(jsonValue));
@@ -340,18 +420,24 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
      * Direct when Crossly holds the seller\'s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus `snapshot`. The listing shows \"Managed by <your app>\". Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
      * Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent.
      */
-    async createListingLink(initOverrides?: RequestInit): Promise<CreateListingLinkResponse> {
-        const response = await this.createListingLinkRaw(initOverrides);
+    async createListingLink(requestParameters: CreateListingLinkOperationRequest, initOverrides?: RequestInit): Promise<CreateListingLinkResponse> {
+        const response = await this.createListingLinkRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe.
      */
-    async createListingLinkBulkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingLinkBulkResponse>> {
+    async createListingLinkBulkRaw(requestParameters: CreateListingLinkBulkOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingLinkBulkResponse>> {
+        if (requestParameters.createListingLinkBulkRequest === null || requestParameters.createListingLinkBulkRequest === undefined) {
+            throw new runtime.RequiredError('createListingLinkBulkRequest','Required parameter requestParameters.createListingLinkBulkRequest was null or undefined when calling createListingLinkBulk.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -366,6 +452,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingLinkBulkRequestToJSON(requestParameters.createListingLinkBulkRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingLinkBulkResponseFromJSON(jsonValue));
@@ -374,8 +461,8 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe.
      */
-    async createListingLinkBulk(initOverrides?: RequestInit): Promise<CreateListingLinkBulkResponse> {
-        const response = await this.createListingLinkBulkRaw(initOverrides);
+    async createListingLinkBulk(requestParameters: CreateListingLinkBulkOperationRequest, initOverrides?: RequestInit): Promise<CreateListingLinkBulkResponse> {
+        const response = await this.createListingLinkBulkRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -383,7 +470,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
      * Loses the item\'s watchers, sold count, sales history, Promoted Listings and open offers; the item number changes. Refused while an order awaits fulfilment or an auction has bids. The new listing is published only after the old one is confirmed ended.
      * End this marketplace item and relist it under Crossly. Requires consent: true.
      */
-    async createListingPlatformRecloneRaw(requestParameters: CreateListingPlatformRecloneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingPlatformRecloneResponse>> {
+    async createListingPlatformRecloneRaw(requestParameters: CreateListingPlatformRecloneOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateListingPlatformRecloneResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createListingPlatformReclone.');
         }
@@ -395,6 +482,8 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -409,6 +498,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateListingPlatformRecloneRequestToJSON(requestParameters.createListingPlatformRecloneRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingPlatformRecloneResponseFromJSON(jsonValue));
@@ -418,7 +508,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
      * Loses the item\'s watchers, sold count, sales history, Promoted Listings and open offers; the item number changes. Refused while an order awaits fulfilment or an auction has bids. The new listing is published only after the old one is confirmed ended.
      * End this marketplace item and relist it under Crossly. Requires consent: true.
      */
-    async createListingPlatformReclone(requestParameters: CreateListingPlatformRecloneRequest, initOverrides?: RequestInit): Promise<CreateListingPlatformRecloneResponse> {
+    async createListingPlatformReclone(requestParameters: CreateListingPlatformRecloneOperationRequest, initOverrides?: RequestInit): Promise<CreateListingPlatformRecloneResponse> {
         const response = await this.createListingPlatformRecloneRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -524,6 +614,8 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        headerParameters['Content-Type'] = 'application/json';
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("PersonalAccessToken", []);
@@ -537,6 +629,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderTakeOverRequestToJSON(requestParameters.createOrderTakeOverRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateListingPlatformTakeOverResponseFromJSON(jsonValue));
@@ -592,10 +685,16 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest.
      */
-    async createOrderEventRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderEventResponse>> {
+    async createOrderEventRaw(requestParameters: CreateOrderEventOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderEventResponse>> {
+        if (requestParameters.createOrderEventRequest === null || requestParameters.createOrderEventRequest === undefined) {
+            throw new runtime.RequiredError('createOrderEventRequest','Required parameter requestParameters.createOrderEventRequest was null or undefined when calling createOrderEvent.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -610,6 +709,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderEventRequestToJSON(requestParameters.createOrderEventRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderEventResponseFromJSON(jsonValue));
@@ -618,15 +718,15 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest.
      */
-    async createOrderEvent(initOverrides?: RequestInit): Promise<CreateOrderEventResponse> {
-        const response = await this.createOrderEventRaw(initOverrides);
+    async createOrderEvent(requestParameters: CreateOrderEventOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderEventResponse> {
+        const response = await this.createOrderEventRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Take over the app-managed item behind an order; its actions then go through your own connection.
      */
-    async createOrderTakeOverRaw(requestParameters: CreateOrderTakeOverRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderTakeOverResponse>> {
+    async createOrderTakeOverRaw(requestParameters: CreateOrderTakeOverOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateOrderTakeOverResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createOrderTakeOver.');
         }
@@ -634,6 +734,8 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -648,6 +750,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateOrderTakeOverRequestToJSON(requestParameters.createOrderTakeOverRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateOrderTakeOverResponseFromJSON(jsonValue));
@@ -656,7 +759,7 @@ export class AppManagedListingsApi extends runtime.BaseAPI {
     /**
      * Take over the app-managed item behind an order; its actions then go through your own connection.
      */
-    async createOrderTakeOver(requestParameters: CreateOrderTakeOverRequest, initOverrides?: RequestInit): Promise<CreateOrderTakeOverResponse> {
+    async createOrderTakeOver(requestParameters: CreateOrderTakeOverOperationRequest, initOverrides?: RequestInit): Promise<CreateOrderTakeOverResponse> {
         const response = await this.createOrderTakeOverRaw(requestParameters, initOverrides);
         return await response.value();
     }

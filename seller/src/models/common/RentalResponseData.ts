@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    RentalResponseDataInspection,
-    RentalResponseDataInspectionFromJSON,
-    RentalResponseDataInspectionFromJSONTyped,
-    RentalResponseDataInspectionToJSON,
-} from './RentalResponseDataInspection';
+    ItemOk,
+    ItemOkFromJSON,
+    ItemOkFromJSONTyped,
+    ItemOkToJSON,
+} from './ItemOk';
 
 /**
  * 
@@ -46,6 +46,12 @@ export interface RentalResponseData {
     status: string;
     /**
      * 
+     * @type {string}
+     * @memberof RentalResponseData
+     */
+    storefrontId?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof RentalResponseData
      */
@@ -56,12 +62,6 @@ export interface RentalResponseData {
      * @memberof RentalResponseData
      */
     platformListingId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RentalResponseData
-     */
-    storefrontId?: string | null;
     /**
      * 
      * @type {Date}
@@ -97,13 +97,13 @@ export interface RentalResponseData {
      * @type {string}
      * @memberof RentalResponseData
      */
-    stripePaymentIntentId?: string | null;
+    sellerUserId: string;
     /**
      * 
      * @type {string}
      * @memberof RentalResponseData
      */
-    sellerUserId: string;
+    stripePaymentIntentId?: string | null;
     /**
      * 
      * @type {string}
@@ -340,10 +340,10 @@ export interface RentalResponseData {
     conditionPhotosReturn: Array<string>;
     /**
      * 
-     * @type {Array<RentalResponseDataInspection>}
+     * @type {Array<ItemOk>}
      * @memberof RentalResponseData
      */
-    inspection: Array<RentalResponseDataInspection>;
+    inspection: Array<ItemOk>;
     /**
      * 
      * @type {Date}
@@ -377,16 +377,16 @@ export function RentalResponseDataFromJSONTyped(json: any, ignoreDiscriminator: 
         'id': json['id'],
         'createdAt': (new Date(json['createdAt'])),
         'status': json['status'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'days': json['days'],
         'platformListingId': json['platformListingId'],
-        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'shippedAt': !exists(json, 'shippedAt') ? undefined : (json['shippedAt'] === null ? null : new Date(json['shippedAt'])),
         'deliveredAt': !exists(json, 'deliveredAt') ? undefined : (json['deliveredAt'] === null ? null : new Date(json['deliveredAt'])),
         'cancelledAt': !exists(json, 'cancelledAt') ? undefined : (json['cancelledAt'] === null ? null : new Date(json['cancelledAt'])),
         'orderId': !exists(json, 'orderId') ? undefined : json['orderId'],
         'inspectedAt': !exists(json, 'inspectedAt') ? undefined : (json['inspectedAt'] === null ? null : new Date(json['inspectedAt'])),
-        'stripePaymentIntentId': !exists(json, 'stripePaymentIntentId') ? undefined : json['stripePaymentIntentId'],
         'sellerUserId': json['sellerUserId'],
+        'stripePaymentIntentId': !exists(json, 'stripePaymentIntentId') ? undefined : json['stripePaymentIntentId'],
         'payoutAccountId': !exists(json, 'payoutAccountId') ? undefined : json['payoutAccountId'],
         'crosslyFeeCents': json['crosslyFeeCents'],
         'shippingCents': json['shippingCents'],
@@ -426,7 +426,7 @@ export function RentalResponseDataFromJSONTyped(json: any, ignoreDiscriminator: 
         'payoutReleasedAt': !exists(json, 'payoutReleasedAt') ? undefined : (json['payoutReleasedAt'] === null ? null : new Date(json['payoutReleasedAt'])),
         'returnShippedAt': !exists(json, 'returnShippedAt') ? undefined : (json['returnShippedAt'] === null ? null : new Date(json['returnShippedAt'])),
         'conditionPhotosReturn': json['conditionPhotosReturn'],
-        'inspection': ((json['inspection'] as Array<any>).map(RentalResponseDataInspectionFromJSON)),
+        'inspection': ((json['inspection'] as Array<any>).map(ItemOkFromJSON)),
         'boughtOutAt': !exists(json, 'boughtOutAt') ? undefined : (json['boughtOutAt'] === null ? null : new Date(json['boughtOutAt'])),
         'buyoutCents': !exists(json, 'buyoutCents') ? undefined : json['buyoutCents'],
         'notReturnedAt': !exists(json, 'notReturnedAt') ? undefined : (json['notReturnedAt'] === null ? null : new Date(json['notReturnedAt'])),
@@ -445,16 +445,16 @@ export function RentalResponseDataToJSON(value?: RentalResponseData | null): any
         'id': value.id,
         'createdAt': (value.createdAt.toISOString()),
         'status': value.status,
+        'storefrontId': value.storefrontId,
         'days': value.days,
         'platformListingId': value.platformListingId,
-        'storefrontId': value.storefrontId,
         'shippedAt': value.shippedAt === undefined ? undefined : (value.shippedAt === null ? null : value.shippedAt.toISOString()),
         'deliveredAt': value.deliveredAt === undefined ? undefined : (value.deliveredAt === null ? null : value.deliveredAt.toISOString()),
         'cancelledAt': value.cancelledAt === undefined ? undefined : (value.cancelledAt === null ? null : value.cancelledAt.toISOString()),
         'orderId': value.orderId,
         'inspectedAt': value.inspectedAt === undefined ? undefined : (value.inspectedAt === null ? null : value.inspectedAt.toISOString()),
-        'stripePaymentIntentId': value.stripePaymentIntentId,
         'sellerUserId': value.sellerUserId,
+        'stripePaymentIntentId': value.stripePaymentIntentId,
         'payoutAccountId': value.payoutAccountId,
         'crosslyFeeCents': value.crosslyFeeCents,
         'shippingCents': value.shippingCents,
@@ -494,7 +494,7 @@ export function RentalResponseDataToJSON(value?: RentalResponseData | null): any
         'payoutReleasedAt': value.payoutReleasedAt === undefined ? undefined : (value.payoutReleasedAt === null ? null : value.payoutReleasedAt.toISOString()),
         'returnShippedAt': value.returnShippedAt === undefined ? undefined : (value.returnShippedAt === null ? null : value.returnShippedAt.toISOString()),
         'conditionPhotosReturn': value.conditionPhotosReturn,
-        'inspection': ((value.inspection as Array<any>).map(RentalResponseDataInspectionToJSON)),
+        'inspection': ((value.inspection as Array<any>).map(ItemOkToJSON)),
         'boughtOutAt': value.boughtOutAt === undefined ? undefined : (value.boughtOutAt === null ? null : value.boughtOutAt.toISOString()),
         'buyoutCents': value.buyoutCents,
         'notReturnedAt': value.notReturnedAt === undefined ? undefined : (value.notReturnedAt === null ? null : value.notReturnedAt.toISOString()),

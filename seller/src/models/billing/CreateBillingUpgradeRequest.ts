@@ -31,6 +31,12 @@ export interface CreateBillingUpgradeRequest {
      * @memberof CreateBillingUpgradeRequest
      */
     interval?: CreateBillingUpgradeRequestIntervalEnum;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateBillingUpgradeRequest
+     */
+    separate?: boolean;
 }
 
 /**
@@ -63,6 +69,7 @@ export function CreateBillingUpgradeRequestFromJSONTyped(json: any, ignoreDiscri
         
         'tier': json['tier'],
         'interval': !exists(json, 'interval') ? undefined : json['interval'],
+        'separate': !exists(json, 'separate') ? undefined : json['separate'],
     };
 }
 
@@ -77,6 +84,7 @@ export function CreateBillingUpgradeRequestToJSON(value?: CreateBillingUpgradeRe
         
         'tier': value.tier,
         'interval': value.interval,
+        'separate': value.separate,
     };
 }
 

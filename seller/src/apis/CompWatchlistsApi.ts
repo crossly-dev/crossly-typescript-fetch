@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateCompWatchlistRequest,
+    CreateCompWatchlistRequestFromJSON,
+    CreateCompWatchlistRequestToJSON,
     CreateCompWatchlistScrapeResponse,
     CreateCompWatchlistScrapeResponseFromJSON,
     CreateCompWatchlistScrapeResponseToJSON,
@@ -31,6 +34,10 @@ import {
     OkResponseFromJSON,
     OkResponseToJSON,
 } from '../models';
+
+export interface CreateCompWatchlistOperationRequest {
+    createCompWatchlistRequest: CreateCompWatchlistRequest;
+}
 
 export interface CreateCompWatchlistScrapeRequest {
     id: string;
@@ -52,10 +59,16 @@ export class CompWatchlistsApi extends runtime.BaseAPI {
     /**
      * Create a sold-comp watchlist.
      */
-    async createCompWatchlistRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCompWatchlistsItem>> {
+    async createCompWatchlistRaw(requestParameters: CreateCompWatchlistOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListCompWatchlistsItem>> {
+        if (requestParameters.createCompWatchlistRequest === null || requestParameters.createCompWatchlistRequest === undefined) {
+            throw new runtime.RequiredError('createCompWatchlistRequest','Required parameter requestParameters.createCompWatchlistRequest was null or undefined when calling createCompWatchlist.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -70,6 +83,7 @@ export class CompWatchlistsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateCompWatchlistRequestToJSON(requestParameters.createCompWatchlistRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ListCompWatchlistsItemFromJSON(jsonValue));
@@ -78,8 +92,8 @@ export class CompWatchlistsApi extends runtime.BaseAPI {
     /**
      * Create a sold-comp watchlist.
      */
-    async createCompWatchlist(initOverrides?: RequestInit): Promise<ListCompWatchlistsItem> {
-        const response = await this.createCompWatchlistRaw(initOverrides);
+    async createCompWatchlist(requestParameters: CreateCompWatchlistOperationRequest, initOverrides?: RequestInit): Promise<ListCompWatchlistsItem> {
+        const response = await this.createCompWatchlistRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

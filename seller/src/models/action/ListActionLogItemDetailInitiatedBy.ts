@@ -44,12 +44,12 @@ export interface ListActionLogItemDetailInitiatedBy {
 * @enum {string}
 */
 export enum ListActionLogItemDetailInitiatedByKindEnum {
+    App = 'app',
     Person = 'person',
     Rule = 'rule',
     Sale = 'sale',
     Bulk = 'bulk',
     Schedule = 'schedule',
-    App = 'app',
     System = 'system'
 }
 

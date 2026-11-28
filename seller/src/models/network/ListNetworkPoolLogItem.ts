@@ -48,12 +48,6 @@ export interface ListNetworkPoolLogItem {
      * @type {string}
      * @memberof ListNetworkPoolLogItem
      */
-    ruleId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListNetworkPoolLogItem
-     */
     engagerUserId: string;
     /**
      * 
@@ -67,6 +61,12 @@ export interface ListNetworkPoolLogItem {
      * @memberof ListNetworkPoolLogItem
      */
     targetPlatformListingId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListNetworkPoolLogItem
+     */
+    ruleId?: string | null;
     /**
      * 
      * @type {Date}
@@ -89,10 +89,10 @@ export function ListNetworkPoolLogItemFromJSONTyped(json: any, ignoreDiscriminat
         'platform': json['platform'],
         'actionType': json['actionType'],
         'targetUserId': json['targetUserId'],
-        'ruleId': !exists(json, 'ruleId') ? undefined : json['ruleId'],
         'engagerUserId': json['engagerUserId'],
         'targetListingId': !exists(json, 'targetListingId') ? undefined : json['targetListingId'],
         'targetPlatformListingId': !exists(json, 'targetPlatformListingId') ? undefined : json['targetPlatformListingId'],
+        'ruleId': !exists(json, 'ruleId') ? undefined : json['ruleId'],
         'performedAt': (new Date(json['performedAt'])),
     };
 }
@@ -110,10 +110,10 @@ export function ListNetworkPoolLogItemToJSON(value?: ListNetworkPoolLogItem | nu
         'platform': value.platform,
         'actionType': value.actionType,
         'targetUserId': value.targetUserId,
-        'ruleId': value.ruleId,
         'engagerUserId': value.engagerUserId,
         'targetListingId': value.targetListingId,
         'targetPlatformListingId': value.targetPlatformListingId,
+        'ruleId': value.ruleId,
         'performedAt': (value.performedAt.toISOString()),
     };
 }

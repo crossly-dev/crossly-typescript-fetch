@@ -24,22 +24,38 @@ import {
     CreateGroupBuyCloseResponse,
     CreateGroupBuyCloseResponseFromJSON,
     CreateGroupBuyCloseResponseToJSON,
+    CreateGroupBuyExtendRequest,
+    CreateGroupBuyExtendRequestFromJSON,
+    CreateGroupBuyExtendRequestToJSON,
     CreateGroupBuyExtendResponse,
     CreateGroupBuyExtendResponseFromJSON,
     CreateGroupBuyExtendResponseToJSON,
+    CreateGroupBuyMessageRequest,
+    CreateGroupBuyMessageRequestFromJSON,
+    CreateGroupBuyMessageRequestToJSON,
     CreateGroupBuyMessageResponse,
     CreateGroupBuyMessageResponseFromJSON,
     CreateGroupBuyMessageResponseToJSON,
+    CreateGroupBuyRequest,
+    CreateGroupBuyRequestFromJSON,
+    CreateGroupBuyRequestToJSON,
     GetGroupBuyResponse,
     GetGroupBuyResponseFromJSON,
     GetGroupBuyResponseToJSON,
     ListGroupBuysResponse,
     ListGroupBuysResponseFromJSON,
     ListGroupBuysResponseToJSON,
+    UpdateGroupBuyRequest,
+    UpdateGroupBuyRequestFromJSON,
+    UpdateGroupBuyRequestToJSON,
     UpdateGroupBuyResponse,
     UpdateGroupBuyResponseFromJSON,
     UpdateGroupBuyResponseToJSON,
 } from '../models';
+
+export interface CreateGroupBuyOperationRequest {
+    createGroupBuyRequest: CreateGroupBuyRequest;
+}
 
 export interface CreateGroupBuyCancelRequest {
     id: string;
@@ -49,12 +65,14 @@ export interface CreateGroupBuyCloseRequest {
     id: string;
 }
 
-export interface CreateGroupBuyExtendRequest {
+export interface CreateGroupBuyExtendOperationRequest {
     id: string;
+    createGroupBuyExtendRequest?: CreateGroupBuyExtendRequest;
 }
 
-export interface CreateGroupBuyMessageRequest {
+export interface CreateGroupBuyMessageOperationRequest {
     id: string;
+    createGroupBuyMessageRequest?: CreateGroupBuyMessageRequest;
 }
 
 export interface GetGroupBuyRequest {
@@ -65,8 +83,9 @@ export interface GetGroupBuyParticipantsCsvRequest {
     id: string;
 }
 
-export interface UpdateGroupBuyRequest {
+export interface UpdateGroupBuyOperationRequest {
     id: string;
+    updateGroupBuyRequest?: UpdateGroupBuyRequest;
 }
 
 /**
@@ -77,10 +96,16 @@ export class GroupBuysApi extends runtime.BaseAPI {
     /**
      * Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
      */
-    async createGroupBuyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakResponse>> {
+    async createGroupBuyRaw(requestParameters: CreateGroupBuyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBreakResponse>> {
+        if (requestParameters.createGroupBuyRequest === null || requestParameters.createGroupBuyRequest === undefined) {
+            throw new runtime.RequiredError('createGroupBuyRequest','Required parameter requestParameters.createGroupBuyRequest was null or undefined when calling createGroupBuy.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -95,6 +120,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateGroupBuyRequestToJSON(requestParameters.createGroupBuyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBreakResponseFromJSON(jsonValue));
@@ -103,8 +129,8 @@ export class GroupBuysApi extends runtime.BaseAPI {
     /**
      * Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
      */
-    async createGroupBuy(initOverrides?: RequestInit): Promise<CreateBreakResponse> {
-        const response = await this.createGroupBuyRaw(initOverrides);
+    async createGroupBuy(requestParameters: CreateGroupBuyOperationRequest, initOverrides?: RequestInit): Promise<CreateBreakResponse> {
+        const response = await this.createGroupBuyRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -187,7 +213,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
     /**
      * Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
      */
-    async createGroupBuyExtendRaw(requestParameters: CreateGroupBuyExtendRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGroupBuyExtendResponse>> {
+    async createGroupBuyExtendRaw(requestParameters: CreateGroupBuyExtendOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGroupBuyExtendResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createGroupBuyExtend.');
         }
@@ -195,6 +221,8 @@ export class GroupBuysApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -209,6 +237,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateGroupBuyExtendRequestToJSON(requestParameters.createGroupBuyExtendRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateGroupBuyExtendResponseFromJSON(jsonValue));
@@ -217,7 +246,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
     /**
      * Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
      */
-    async createGroupBuyExtend(requestParameters: CreateGroupBuyExtendRequest, initOverrides?: RequestInit): Promise<CreateGroupBuyExtendResponse> {
+    async createGroupBuyExtend(requestParameters: CreateGroupBuyExtendOperationRequest, initOverrides?: RequestInit): Promise<CreateGroupBuyExtendResponse> {
         const response = await this.createGroupBuyExtendRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -225,7 +254,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
     /**
      * Send a notification to every buyer committed to the group buy.
      */
-    async createGroupBuyMessageRaw(requestParameters: CreateGroupBuyMessageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGroupBuyMessageResponse>> {
+    async createGroupBuyMessageRaw(requestParameters: CreateGroupBuyMessageOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateGroupBuyMessageResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createGroupBuyMessage.');
         }
@@ -233,6 +262,8 @@ export class GroupBuysApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -247,6 +278,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateGroupBuyMessageRequestToJSON(requestParameters.createGroupBuyMessageRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateGroupBuyMessageResponseFromJSON(jsonValue));
@@ -255,7 +287,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
     /**
      * Send a notification to every buyer committed to the group buy.
      */
-    async createGroupBuyMessage(requestParameters: CreateGroupBuyMessageRequest, initOverrides?: RequestInit): Promise<CreateGroupBuyMessageResponse> {
+    async createGroupBuyMessage(requestParameters: CreateGroupBuyMessageOperationRequest, initOverrides?: RequestInit): Promise<CreateGroupBuyMessageResponse> {
         const response = await this.createGroupBuyMessageRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -373,7 +405,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
     /**
      * Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
      */
-    async updateGroupBuyRaw(requestParameters: UpdateGroupBuyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+    async updateGroupBuyRaw(requestParameters: UpdateGroupBuyOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateGroupBuy.');
         }
@@ -381,6 +413,8 @@ export class GroupBuysApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -395,6 +429,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateGroupBuyRequestToJSON(requestParameters.updateGroupBuyRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
@@ -403,7 +438,7 @@ export class GroupBuysApi extends runtime.BaseAPI {
     /**
      * Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
      */
-    async updateGroupBuy(requestParameters: UpdateGroupBuyRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+    async updateGroupBuy(requestParameters: UpdateGroupBuyOperationRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
         const response = await this.updateGroupBuyRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -15,12 +15,21 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateBuyerAgentSessionActRequest,
+    CreateBuyerAgentSessionActRequestFromJSON,
+    CreateBuyerAgentSessionActRequestToJSON,
     CreateBuyerAgentSessionActResponse,
     CreateBuyerAgentSessionActResponseFromJSON,
     CreateBuyerAgentSessionActResponseToJSON,
+    CreateBuyerAgentSessionReactRequest,
+    CreateBuyerAgentSessionReactRequestFromJSON,
+    CreateBuyerAgentSessionReactRequestToJSON,
     CreateBuyerAgentSessionResponse,
     CreateBuyerAgentSessionResponseFromJSON,
     CreateBuyerAgentSessionResponseToJSON,
+    CreateBuyerAgentSessionTurnRequest,
+    CreateBuyerAgentSessionTurnRequestFromJSON,
+    CreateBuyerAgentSessionTurnRequestToJSON,
     CreateBuyerAgentSessionTurnResponse,
     CreateBuyerAgentSessionTurnResponseFromJSON,
     CreateBuyerAgentSessionTurnResponseToJSON,
@@ -35,16 +44,19 @@ import {
     ListBuyerAgentSessionsResponseToJSON,
 } from '../models';
 
-export interface CreateBuyerAgentSessionActRequest {
+export interface CreateBuyerAgentSessionActOperationRequest {
     id: string;
+    createBuyerAgentSessionActRequest: CreateBuyerAgentSessionActRequest;
 }
 
-export interface CreateBuyerAgentSessionReactRequest {
+export interface CreateBuyerAgentSessionReactOperationRequest {
     id: string;
+    createBuyerAgentSessionReactRequest: CreateBuyerAgentSessionReactRequest;
 }
 
-export interface CreateBuyerAgentSessionTurnRequest {
+export interface CreateBuyerAgentSessionTurnOperationRequest {
     id: string;
+    createBuyerAgentSessionTurnRequest: CreateBuyerAgentSessionTurnRequest;
 }
 
 export interface DeleteBuyerAgentSessionRequest {
@@ -97,14 +109,20 @@ export class BuyerAgentApi extends runtime.BaseAPI {
     /**
      * Act on an option: save, cart, alert, registry, price (real-sales check), offer (prepare / confirm), or buy (quote — complete with POST /api/v1/buyer/checkout). Needs the action’s own scope too.
      */
-    async createBuyerAgentSessionActRaw(requestParameters: CreateBuyerAgentSessionActRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerAgentSessionActResponse>> {
+    async createBuyerAgentSessionActRaw(requestParameters: CreateBuyerAgentSessionActOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerAgentSessionActResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerAgentSessionAct.');
+        }
+
+        if (requestParameters.createBuyerAgentSessionActRequest === null || requestParameters.createBuyerAgentSessionActRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerAgentSessionActRequest','Required parameter requestParameters.createBuyerAgentSessionActRequest was null or undefined when calling createBuyerAgentSessionAct.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -119,6 +137,7 @@ export class BuyerAgentApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerAgentSessionActRequestToJSON(requestParameters.createBuyerAgentSessionActRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerAgentSessionActResponseFromJSON(jsonValue));
@@ -127,7 +146,7 @@ export class BuyerAgentApi extends runtime.BaseAPI {
     /**
      * Act on an option: save, cart, alert, registry, price (real-sales check), offer (prepare / confirm), or buy (quote — complete with POST /api/v1/buyer/checkout). Needs the action’s own scope too.
      */
-    async createBuyerAgentSessionAct(requestParameters: CreateBuyerAgentSessionActRequest, initOverrides?: RequestInit): Promise<CreateBuyerAgentSessionActResponse> {
+    async createBuyerAgentSessionAct(requestParameters: CreateBuyerAgentSessionActOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerAgentSessionActResponse> {
         const response = await this.createBuyerAgentSessionActRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -135,14 +154,20 @@ export class BuyerAgentApi extends runtime.BaseAPI {
     /**
      * Like or dislike an option; the next search leans toward likes and drops dislikes.
      */
-    async createBuyerAgentSessionReactRaw(requestParameters: CreateBuyerAgentSessionReactRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteBuyerAgentSessionResponse>> {
+    async createBuyerAgentSessionReactRaw(requestParameters: CreateBuyerAgentSessionReactOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<DeleteBuyerAgentSessionResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerAgentSessionReact.');
+        }
+
+        if (requestParameters.createBuyerAgentSessionReactRequest === null || requestParameters.createBuyerAgentSessionReactRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerAgentSessionReactRequest','Required parameter requestParameters.createBuyerAgentSessionReactRequest was null or undefined when calling createBuyerAgentSessionReact.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -157,6 +182,7 @@ export class BuyerAgentApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerAgentSessionReactRequestToJSON(requestParameters.createBuyerAgentSessionReactRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteBuyerAgentSessionResponseFromJSON(jsonValue));
@@ -165,7 +191,7 @@ export class BuyerAgentApi extends runtime.BaseAPI {
     /**
      * Like or dislike an option; the next search leans toward likes and drops dislikes.
      */
-    async createBuyerAgentSessionReact(requestParameters: CreateBuyerAgentSessionReactRequest, initOverrides?: RequestInit): Promise<DeleteBuyerAgentSessionResponse> {
+    async createBuyerAgentSessionReact(requestParameters: CreateBuyerAgentSessionReactOperationRequest, initOverrides?: RequestInit): Promise<DeleteBuyerAgentSessionResponse> {
         const response = await this.createBuyerAgentSessionReactRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -173,14 +199,20 @@ export class BuyerAgentApi extends runtime.BaseAPI {
     /**
      * Say something to the agent: what you want, a critique of the options (\"cheaper\", \"more like #2\"), or send a photo (imageBase64) to find things like it. Returns its reply and the new numbered options.
      */
-    async createBuyerAgentSessionTurnRaw(requestParameters: CreateBuyerAgentSessionTurnRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerAgentSessionTurnResponse>> {
+    async createBuyerAgentSessionTurnRaw(requestParameters: CreateBuyerAgentSessionTurnOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerAgentSessionTurnResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createBuyerAgentSessionTurn.');
+        }
+
+        if (requestParameters.createBuyerAgentSessionTurnRequest === null || requestParameters.createBuyerAgentSessionTurnRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerAgentSessionTurnRequest','Required parameter requestParameters.createBuyerAgentSessionTurnRequest was null or undefined when calling createBuyerAgentSessionTurn.');
         }
 
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -195,6 +227,7 @@ export class BuyerAgentApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerAgentSessionTurnRequestToJSON(requestParameters.createBuyerAgentSessionTurnRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerAgentSessionTurnResponseFromJSON(jsonValue));
@@ -203,7 +236,7 @@ export class BuyerAgentApi extends runtime.BaseAPI {
     /**
      * Say something to the agent: what you want, a critique of the options (\"cheaper\", \"more like #2\"), or send a photo (imageBase64) to find things like it. Returns its reply and the new numbered options.
      */
-    async createBuyerAgentSessionTurn(requestParameters: CreateBuyerAgentSessionTurnRequest, initOverrides?: RequestInit): Promise<CreateBuyerAgentSessionTurnResponse> {
+    async createBuyerAgentSessionTurn(requestParameters: CreateBuyerAgentSessionTurnOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerAgentSessionTurnResponse> {
         const response = await this.createBuyerAgentSessionTurnRaw(requestParameters, initOverrides);
         return await response.value();
     }

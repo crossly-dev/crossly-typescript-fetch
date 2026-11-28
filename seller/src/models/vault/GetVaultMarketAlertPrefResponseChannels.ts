@@ -58,8 +58,8 @@ export interface GetVaultMarketAlertPrefResponseChannels {
 export enum GetVaultMarketAlertPrefResponseChannelsKeyEnum {
     Email = 'email',
     Push = 'push',
-    Webhook = 'webhook',
     Telegram = 'telegram',
+    Webhook = 'webhook',
     Terminal = 'terminal'
 }
 

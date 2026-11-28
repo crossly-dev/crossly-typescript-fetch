@@ -85,7 +85,19 @@ export interface ListInventoryItem {
      * @type {string}
      * @memberof ListInventoryItem
      */
+    storefrontId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInventoryItem
+     */
     source: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ListInventoryItem
+     */
+    images: Array<string>;
     /**
      * 
      * @type {string}
@@ -194,12 +206,6 @@ export interface ListInventoryItem {
      * @memberof ListInventoryItem
      */
     defaultTitle: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof ListInventoryItem
-     */
-    images: Array<string>;
     /**
      * 
      * @type {string}
@@ -361,7 +367,19 @@ export interface ListInventoryItem {
      * @type {string}
      * @memberof ListInventoryItem
      */
+    parcelSource?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInventoryItem
+     */
     allowanceAppId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListInventoryItem
+     */
+    assigneeMemberId?: string | null;
     /**
      * 
      * @type {MainSub}
@@ -397,7 +415,9 @@ export function ListInventoryItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'userId': json['userId'],
         'status': json['status'],
         'notes': !exists(json, 'notes') ? undefined : json['notes'],
+        'storefrontId': !exists(json, 'storefrontId') ? undefined : json['storefrontId'],
         'source': json['source'],
+        'images': json['images'],
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'quantity': json['quantity'],
         'quantityAvailable': json['quantityAvailable'],
@@ -416,7 +436,6 @@ export function ListInventoryItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'sizeSystem': !exists(json, 'sizeSystem') ? undefined : json['sizeSystem'],
         'color': json['color'],
         'defaultTitle': json['defaultTitle'],
-        'images': json['images'],
         'videoUrl': !exists(json, 'videoUrl') ? undefined : json['videoUrl'],
         'provenanceReceiptId': !exists(json, 'provenanceReceiptId') ? undefined : json['provenanceReceiptId'],
         'tags': json['tags'],
@@ -443,7 +462,9 @@ export function ListInventoryItemFromJSONTyped(json: any, ignoreDiscriminator: b
         'dimensionLIn': !exists(json, 'dimensionLIn') ? undefined : json['dimensionLIn'],
         'dimensionWIn': !exists(json, 'dimensionWIn') ? undefined : json['dimensionWIn'],
         'dimensionHIn': !exists(json, 'dimensionHIn') ? undefined : json['dimensionHIn'],
+        'parcelSource': !exists(json, 'parcelSource') ? undefined : json['parcelSource'],
         'allowanceAppId': !exists(json, 'allowanceAppId') ? undefined : json['allowanceAppId'],
+        'assigneeMemberId': !exists(json, 'assigneeMemberId') ? undefined : json['assigneeMemberId'],
         'category': !exists(json, 'category') ? undefined : MainSubFromJSON(json['category']),
     };
 }
@@ -464,7 +485,9 @@ export function ListInventoryItemToJSON(value?: ListInventoryItem | null): any {
         'userId': value.userId,
         'status': value.status,
         'notes': value.notes,
+        'storefrontId': value.storefrontId,
         'source': value.source,
+        'images': value.images,
         'sku': value.sku,
         'quantity': value.quantity,
         'quantityAvailable': value.quantityAvailable,
@@ -483,7 +506,6 @@ export function ListInventoryItemToJSON(value?: ListInventoryItem | null): any {
         'sizeSystem': value.sizeSystem,
         'color': value.color,
         'defaultTitle': value.defaultTitle,
-        'images': value.images,
         'videoUrl': value.videoUrl,
         'provenanceReceiptId': value.provenanceReceiptId,
         'tags': value.tags,
@@ -510,7 +532,9 @@ export function ListInventoryItemToJSON(value?: ListInventoryItem | null): any {
         'dimensionLIn': value.dimensionLIn,
         'dimensionWIn': value.dimensionWIn,
         'dimensionHIn': value.dimensionHIn,
+        'parcelSource': value.parcelSource,
         'allowanceAppId': value.allowanceAppId,
+        'assigneeMemberId': value.assigneeMemberId,
         'category': MainSubToJSON(value.category),
     };
 }

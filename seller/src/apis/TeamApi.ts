@@ -18,25 +18,133 @@ import {
     CreateTeamAcceptResponse,
     CreateTeamAcceptResponseFromJSON,
     CreateTeamAcceptResponseToJSON,
+    CreateTeamInvite2Request,
+    CreateTeamInvite2RequestFromJSON,
+    CreateTeamInvite2RequestToJSON,
+    CreateTeamInvite2Response,
+    CreateTeamInvite2ResponseFromJSON,
+    CreateTeamInvite2ResponseToJSON,
+    CreateTeamInviteRequest,
+    CreateTeamInviteRequestFromJSON,
+    CreateTeamInviteRequestToJSON,
     CreateTeamInviteResponse,
     CreateTeamInviteResponseFromJSON,
     CreateTeamInviteResponseToJSON,
     CreateTeamLeaveResponse,
     CreateTeamLeaveResponseFromJSON,
     CreateTeamLeaveResponseToJSON,
+    CreateTeamMemberStoreRequest,
+    CreateTeamMemberStoreRequestFromJSON,
+    CreateTeamMemberStoreRequestToJSON,
+    CreateTeamRevokeRequest,
+    CreateTeamRevokeRequestFromJSON,
+    CreateTeamRevokeRequestToJSON,
     CreateTeamRevokeResponse,
     CreateTeamRevokeResponseFromJSON,
     CreateTeamRevokeResponseToJSON,
+    GetAssigneeResponse,
+    GetAssigneeResponseFromJSON,
+    GetAssigneeResponseToJSON,
+    GetTeamMemberResponse,
+    GetTeamMemberResponseFromJSON,
+    GetTeamMemberResponseToJSON,
     GetTeamResponse,
     GetTeamResponseFromJSON,
     GetTeamResponseToJSON,
+    ListTeamInvitesResponse,
+    ListTeamInvitesResponseFromJSON,
+    ListTeamInvitesResponseToJSON,
+    ListTeamMembersResponse,
+    ListTeamMembersResponseFromJSON,
+    ListTeamMembersResponseToJSON,
+    ListTeamStoresResponse,
+    ListTeamStoresResponseFromJSON,
+    ListTeamStoresResponseToJSON,
     OkResponse,
     OkResponseFromJSON,
     OkResponseToJSON,
+    TeamMemberStoreResponse,
+    TeamMemberStoreResponseFromJSON,
+    TeamMemberStoreResponseToJSON,
+    TokenObject,
+    TokenObjectFromJSON,
+    TokenObjectToJSON,
+    UpdateGroupBuyResponse,
+    UpdateGroupBuyResponseFromJSON,
+    UpdateGroupBuyResponseToJSON,
+    UpdateTeamMemberStoreRequest,
+    UpdateTeamMemberStoreRequestFromJSON,
+    UpdateTeamMemberStoreRequestToJSON,
+    UpdateTeamRequest,
+    UpdateTeamRequestFromJSON,
+    UpdateTeamRequestToJSON,
 } from '../models';
 
-export interface UpdateTeamRequest {
+export interface CreateTeamAcceptRequest {
+    tokenObject: TokenObject;
+}
+
+export interface CreateTeamInviteOperationRequest {
+    createTeamInviteRequest: CreateTeamInviteRequest;
+}
+
+export interface CreateTeamInvite2OperationRequest {
+    createTeamInvite2Request: CreateTeamInvite2Request;
+}
+
+export interface CreateTeamMemberStoreOperationRequest {
+    id: string;
+    createTeamMemberStoreRequest: CreateTeamMemberStoreRequest;
+}
+
+export interface CreateTeamRevokeOperationRequest {
+    createTeamRevokeRequest: CreateTeamRevokeRequest;
+}
+
+export interface DeleteTeamMemberStoreRequest {
+    id: string;
+    store: string;
+}
+
+export interface GetTeamMemberRequest {
+    id: string;
+}
+
+export interface GetTeamMemberStoreRequest {
+    id: string;
+    store: string;
+}
+
+export interface ListTeamInvitesRequest {
+    store?: string;
+    status?: ListTeamInvitesStatusEnum;
+    sort?: ListTeamInvitesSortEnum;
+    q?: string;
+    page?: number;
+    pageSize?: number;
+}
+
+export interface ListTeamMembersRequest {
+    store?: string;
+    role?: string;
+    permission?: string;
+    status?: ListTeamMembersStatusEnum;
+    lastActive?: ListTeamMembersLastActiveEnum;
+    sort?: ListTeamMembersSortEnum;
+    q?: string;
+    page?: number;
+    pageSize?: number;
+}
+
+export interface UpdateTeamOperationRequest {
     memberId: string;
+    updateTeamRequest: UpdateTeamRequest;
+}
+
+export interface UpdateTeamMemberStoreOperationRequest {
+    id: string;
+    store: string;
+    updateTeamMemberStoreRequest: UpdateTeamMemberStoreRequest;
 }
 
 /**
@@ -47,10 +155,16 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Accept a team invitation by the raw token from its link.
      */
-    async createTeamAcceptRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamAcceptResponse>> {
+    async createTeamAcceptRaw(requestParameters: CreateTeamAcceptRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamAcceptResponse>> {
+        if (requestParameters.tokenObject === null || requestParameters.tokenObject === undefined) {
+            throw new runtime.RequiredError('tokenObject','Required parameter requestParameters.tokenObject was null or undefined when calling createTeamAccept.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -65,6 +179,7 @@ export class TeamApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: TokenObjectToJSON(requestParameters.tokenObject),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTeamAcceptResponseFromJSON(jsonValue));
@@ -73,18 +188,65 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Accept a team invitation by the raw token from its link.
      */
-    async createTeamAccept(initOverrides?: RequestInit): Promise<CreateTeamAcceptResponse> {
-        const response = await this.createTeamAcceptRaw(initOverrides);
+    async createTeamAccept(requestParameters: CreateTeamAcceptRequest, initOverrides?: RequestInit): Promise<CreateTeamAcceptResponse> {
+        const response = await this.createTeamAcceptRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Invite someone to one or more stores, each with its permissions; returns the one-time accept URL.
+     */
+    async createTeamInviteRaw(requestParameters: CreateTeamInviteOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamInviteResponse>> {
+        if (requestParameters.createTeamInviteRequest === null || requestParameters.createTeamInviteRequest === undefined) {
+            throw new runtime.RequiredError('createTeamInviteRequest','Required parameter requestParameters.createTeamInviteRequest was null or undefined when calling createTeamInvite.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/team/invites`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateTeamInviteRequestToJSON(requestParameters.createTeamInviteRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateTeamInviteResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Invite someone to one or more stores, each with its permissions; returns the one-time accept URL.
+     */
+    async createTeamInvite(requestParameters: CreateTeamInviteOperationRequest, initOverrides?: RequestInit): Promise<CreateTeamInviteResponse> {
+        const response = await this.createTeamInviteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      */
-    async createTeamInviteRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamInviteResponse>> {
+    async createTeamInvite2Raw(requestParameters: CreateTeamInvite2OperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamInvite2Response>> {
+        if (requestParameters.createTeamInvite2Request === null || requestParameters.createTeamInvite2Request === undefined) {
+            throw new runtime.RequiredError('createTeamInvite2Request','Required parameter requestParameters.createTeamInvite2Request was null or undefined when calling createTeamInvite2.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -99,16 +261,17 @@ export class TeamApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTeamInvite2RequestToJSON(requestParameters.createTeamInvite2Request),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateTeamInviteResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateTeamInvite2ResponseFromJSON(jsonValue));
     }
 
     /**
      * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      */
-    async createTeamInvite(initOverrides?: RequestInit): Promise<CreateTeamInviteResponse> {
-        const response = await this.createTeamInviteRaw(initOverrides);
+    async createTeamInvite2(requestParameters: CreateTeamInvite2OperationRequest, initOverrides?: RequestInit): Promise<CreateTeamInvite2Response> {
+        const response = await this.createTeamInvite2Raw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -147,12 +310,63 @@ export class TeamApi extends runtime.BaseAPI {
     }
 
     /**
-     * Revoke a pending invite OR an active team member.
+     * Add a team member to a store with its permissions.
      */
-    async createTeamRevokeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamRevokeResponse>> {
+    async createTeamMemberStoreRaw(requestParameters: CreateTeamMemberStoreOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TeamMemberStoreResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling createTeamMemberStore.');
+        }
+
+        if (requestParameters.createTeamMemberStoreRequest === null || requestParameters.createTeamMemberStoreRequest === undefined) {
+            throw new runtime.RequiredError('createTeamMemberStoreRequest','Required parameter requestParameters.createTeamMemberStoreRequest was null or undefined when calling createTeamMemberStore.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/team/members/{id}/stores`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateTeamMemberStoreRequestToJSON(requestParameters.createTeamMemberStoreRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TeamMemberStoreResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Add a team member to a store with its permissions.
+     */
+    async createTeamMemberStore(requestParameters: CreateTeamMemberStoreOperationRequest, initOverrides?: RequestInit): Promise<TeamMemberStoreResponse> {
+        const response = await this.createTeamMemberStoreRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Revoke a pending invite OR an active team member.
+     */
+    async createTeamRevokeRaw(requestParameters: CreateTeamRevokeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateTeamRevokeResponse>> {
+        if (requestParameters.createTeamRevokeRequest === null || requestParameters.createTeamRevokeRequest === undefined) {
+            throw new runtime.RequiredError('createTeamRevokeRequest','Required parameter requestParameters.createTeamRevokeRequest was null or undefined when calling createTeamRevoke.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -167,6 +381,7 @@ export class TeamApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateTeamRevokeRequestToJSON(requestParameters.createTeamRevokeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTeamRevokeResponseFromJSON(jsonValue));
@@ -175,8 +390,84 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Revoke a pending invite OR an active team member.
      */
-    async createTeamRevoke(initOverrides?: RequestInit): Promise<CreateTeamRevokeResponse> {
-        const response = await this.createTeamRevokeRaw(initOverrides);
+    async createTeamRevoke(requestParameters: CreateTeamRevokeOperationRequest, initOverrides?: RequestInit): Promise<CreateTeamRevokeResponse> {
+        const response = await this.createTeamRevokeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Remove a team member from one store (their other stores stay).
+     */
+    async deleteTeamMemberStoreRaw(requestParameters: DeleteTeamMemberStoreRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateGroupBuyResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteTeamMemberStore.');
+        }
+
+        if (requestParameters.store === null || requestParameters.store === undefined) {
+            throw new runtime.RequiredError('store','Required parameter requestParameters.store was null or undefined when calling deleteTeamMemberStore.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/team/members/{id}/stores/{store}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"store"}}`, encodeURIComponent(String(requestParameters.store))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateGroupBuyResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remove a team member from one store (their other stores stay).
+     */
+    async deleteTeamMemberStore(requestParameters: DeleteTeamMemberStoreRequest, initOverrides?: RequestInit): Promise<UpdateGroupBuyResponse> {
+        const response = await this.deleteTeamMemberStoreRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The teammates work can be assigned to (active seats; isMe marks yours).
+     */
+    async getAssigneeRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetAssigneeResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/assignees`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAssigneeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The teammates work can be assigned to (active seats; isMe marks yours).
+     */
+    async getAssignee(initOverrides?: RequestInit): Promise<GetAssigneeResponse> {
+        const response = await this.getAssigneeRaw(initOverrides);
         return await response.value();
     }
 
@@ -215,11 +506,11 @@ export class TeamApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update a team member\'s scopes (owner only).
+     * One team member: added, last active and the stores they staff.
      */
-    async updateTeamRaw(requestParameters: UpdateTeamRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
-        if (requestParameters.memberId === null || requestParameters.memberId === undefined) {
-            throw new runtime.RequiredError('memberId','Required parameter requestParameters.memberId was null or undefined when calling updateTeam.');
+    async getTeamMemberRaw(requestParameters: GetTeamMemberRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetTeamMemberResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getTeamMember.');
         }
 
         const queryParameters: any = {};
@@ -235,10 +526,259 @@ export class TeamApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
+            path: `/v1/team/members/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetTeamMemberResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * One team member: added, last active and the stores they staff.
+     */
+    async getTeamMember(requestParameters: GetTeamMemberRequest, initOverrides?: RequestInit): Promise<GetTeamMemberResponse> {
+        const response = await this.getTeamMemberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * A member\'s permissions and limits in one store (`all` = all current and future stores).
+     */
+    async getTeamMemberStoreRaw(requestParameters: GetTeamMemberStoreRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TeamMemberStoreResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling getTeamMemberStore.');
+        }
+
+        if (requestParameters.store === null || requestParameters.store === undefined) {
+            throw new runtime.RequiredError('store','Required parameter requestParameters.store was null or undefined when calling getTeamMemberStore.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/team/members/{id}/stores/{store}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"store"}}`, encodeURIComponent(String(requestParameters.store))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TeamMemberStoreResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * A member\'s permissions and limits in one store (`all` = all current and future stores).
+     */
+    async getTeamMemberStore(requestParameters: GetTeamMemberStoreRequest, initOverrides?: RequestInit): Promise<TeamMemberStoreResponse> {
+        const response = await this.getTeamMemberStoreRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List team invitations with the stores each adds the person to.
+     */
+    async listTeamInvitesRaw(requestParameters: ListTeamInvitesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListTeamInvitesResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.store !== undefined) {
+            queryParameters['store'] = requestParameters.store;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.pageSize !== undefined) {
+            queryParameters['pageSize'] = requestParameters.pageSize;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/team/invites`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListTeamInvitesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List team invitations with the stores each adds the person to.
+     */
+    async listTeamInvites(requestParameters: ListTeamInvitesRequest = {}, initOverrides?: RequestInit): Promise<ListTeamInvitesResponse> {
+        const response = await this.listTeamInvitesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List team members with the stores each staffs (search, store, preset, permission, status, last active).
+     */
+    async listTeamMembersRaw(requestParameters: ListTeamMembersRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListTeamMembersResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.store !== undefined) {
+            queryParameters['store'] = requestParameters.store;
+        }
+
+        if (requestParameters.role !== undefined) {
+            queryParameters['role'] = requestParameters.role;
+        }
+
+        if (requestParameters.permission !== undefined) {
+            queryParameters['permission'] = requestParameters.permission;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.lastActive !== undefined) {
+            queryParameters['lastActive'] = requestParameters.lastActive;
+        }
+
+        if (requestParameters.sort !== undefined) {
+            queryParameters['sort'] = requestParameters.sort;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.page !== undefined) {
+            queryParameters['page'] = requestParameters.page;
+        }
+
+        if (requestParameters.pageSize !== undefined) {
+            queryParameters['pageSize'] = requestParameters.pageSize;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/team/members`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListTeamMembersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List team members with the stores each staffs (search, store, preset, permission, status, last active).
+     */
+    async listTeamMembers(requestParameters: ListTeamMembersRequest = {}, initOverrides?: RequestInit): Promise<ListTeamMembersResponse> {
+        const response = await this.listTeamMembersRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The stores whose team you may see, invite to and manage.
+     */
+    async listTeamStoresRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListTeamStoresResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/team/stores`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListTeamStoresResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The stores whose team you may see, invite to and manage.
+     */
+    async listTeamStores(initOverrides?: RequestInit): Promise<ListTeamStoresResponse> {
+        const response = await this.listTeamStoresRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update a team member\'s scopes (owner only).
+     */
+    async updateTeamRaw(requestParameters: UpdateTeamOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OkResponse>> {
+        if (requestParameters.memberId === null || requestParameters.memberId === undefined) {
+            throw new runtime.RequiredError('memberId','Required parameter requestParameters.memberId was null or undefined when calling updateTeam.');
+        }
+
+        if (requestParameters.updateTeamRequest === null || requestParameters.updateTeamRequest === undefined) {
+            throw new runtime.RequiredError('updateTeamRequest','Required parameter requestParameters.updateTeamRequest was null or undefined when calling updateTeam.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
             path: `/v1/team/{memberId}`.replace(`{${"memberId"}}`, encodeURIComponent(String(requestParameters.memberId))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateTeamRequestToJSON(requestParameters.updateTeamRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => OkResponseFromJSON(jsonValue));
@@ -247,9 +787,108 @@ export class TeamApi extends runtime.BaseAPI {
     /**
      * Update a team member\'s scopes (owner only).
      */
-    async updateTeam(requestParameters: UpdateTeamRequest, initOverrides?: RequestInit): Promise<OkResponse> {
+    async updateTeam(requestParameters: UpdateTeamOperationRequest, initOverrides?: RequestInit): Promise<OkResponse> {
         const response = await this.updateTeamRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
+    /**
+     * Set a member\'s permissions and limits in one store.
+     */
+    async updateTeamMemberStoreRaw(requestParameters: UpdateTeamMemberStoreOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TeamMemberStoreResponse>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateTeamMemberStore.');
+        }
+
+        if (requestParameters.store === null || requestParameters.store === undefined) {
+            throw new runtime.RequiredError('store','Required parameter requestParameters.store was null or undefined when calling updateTeamMemberStore.');
+        }
+
+        if (requestParameters.updateTeamMemberStoreRequest === null || requestParameters.updateTeamMemberStoreRequest === undefined) {
+            throw new runtime.RequiredError('updateTeamMemberStoreRequest','Required parameter requestParameters.updateTeamMemberStoreRequest was null or undefined when calling updateTeamMemberStore.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/team/members/{id}/stores/{store}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"store"}}`, encodeURIComponent(String(requestParameters.store))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateTeamMemberStoreRequestToJSON(requestParameters.updateTeamMemberStoreRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TeamMemberStoreResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Set a member\'s permissions and limits in one store.
+     */
+    async updateTeamMemberStore(requestParameters: UpdateTeamMemberStoreOperationRequest, initOverrides?: RequestInit): Promise<TeamMemberStoreResponse> {
+        const response = await this.updateTeamMemberStoreRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListTeamInvitesStatusEnum {
+    All = 'all',
+    Expired = 'expired',
+    Pending = 'pending',
+    Accepted = 'accepted',
+    Revoked = 'revoked'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListTeamInvitesSortEnum {
+    Email = 'email',
+    Expires = 'expires',
+    Newest = 'newest',
+    Oldest = 'oldest'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListTeamMembersStatusEnum {
+    Active = 'active',
+    NoStores = 'no_stores'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListTeamMembersLastActiveEnum {
+    Never = 'never',
+    _7d = '7d',
+    _30d = '30d',
+    _90d = '90d',
+    Over90d = 'over_90d'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListTeamMembersSortEnum {
+    Name = 'name',
+    Added = 'added',
+    LastActive = 'last_active'
 }

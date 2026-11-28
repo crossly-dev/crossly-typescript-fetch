@@ -92,9 +92,9 @@ export interface ListVaultMarketOptionRfqItem {
 * @enum {string}
 */
 export enum ListVaultMarketOptionRfqItemStatusEnum {
+    Expired = 'expired',
     Cancelled = 'cancelled',
     Open = 'open',
-    Expired = 'expired',
     Filled = 'filled'
 }/**
 * @export

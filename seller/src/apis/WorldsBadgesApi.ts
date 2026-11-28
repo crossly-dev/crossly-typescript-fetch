@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateWorldExperienceBadgeRequest,
+    CreateWorldExperienceBadgeRequestFromJSON,
+    CreateWorldExperienceBadgeRequestToJSON,
     CreateWorldExperienceBadgeResponse,
     CreateWorldExperienceBadgeResponseFromJSON,
     CreateWorldExperienceBadgeResponseToJSON,
@@ -30,13 +33,20 @@ import {
     GetWorldPlayerBadgeResponse,
     GetWorldPlayerBadgeResponseFromJSON,
     GetWorldPlayerBadgeResponseToJSON,
+    UpdateWorldBadgeProfileRequest,
+    UpdateWorldBadgeProfileRequestFromJSON,
+    UpdateWorldBadgeProfileRequestToJSON,
     UpdateWorldBadgeProfileResponse,
     UpdateWorldBadgeProfileResponseFromJSON,
     UpdateWorldBadgeProfileResponseToJSON,
+    UpdateWorldExperienceBadgeRequest,
+    UpdateWorldExperienceBadgeRequestFromJSON,
+    UpdateWorldExperienceBadgeRequestToJSON,
 } from '../models';
 
-export interface CreateWorldExperienceBadgeRequest {
+export interface CreateWorldExperienceBadgeOperationRequest {
     experienceId: string;
+    createWorldExperienceBadgeRequest?: CreateWorldExperienceBadgeRequest;
 }
 
 export interface GetWorldExperienceBadgeRequest {
@@ -51,9 +61,14 @@ export interface GetWorldPlayerBadgeRequest {
     username: string;
 }
 
-export interface UpdateWorldExperienceBadgeRequest {
+export interface UpdateWorldBadgeProfileOperationRequest {
+    updateWorldBadgeProfileRequest?: UpdateWorldBadgeProfileRequest;
+}
+
+export interface UpdateWorldExperienceBadgeOperationRequest {
     experienceId: string;
     badgeId: string;
+    updateWorldExperienceBadgeRequest?: UpdateWorldExperienceBadgeRequest;
 }
 
 /**
@@ -64,7 +79,7 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
     /**
      * Add a badge (at most 100 per game). name 1-50 characters, description up to 1000, iconSha256 = the sha256 a png upload answered (POST /v1/world/interactive/assets, kind png); a new icon is shown once a person approved it.
      */
-    async createWorldExperienceBadgeRaw(requestParameters: CreateWorldExperienceBadgeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceBadgeResponse>> {
+    async createWorldExperienceBadgeRaw(requestParameters: CreateWorldExperienceBadgeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceBadgeResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling createWorldExperienceBadge.');
         }
@@ -72,6 +87,8 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -86,6 +103,7 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateWorldExperienceBadgeRequestToJSON(requestParameters.createWorldExperienceBadgeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceBadgeResponseFromJSON(jsonValue));
@@ -94,7 +112,7 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
     /**
      * Add a badge (at most 100 per game). name 1-50 characters, description up to 1000, iconSha256 = the sha256 a png upload answered (POST /v1/world/interactive/assets, kind png); a new icon is shown once a person approved it.
      */
-    async createWorldExperienceBadge(requestParameters: CreateWorldExperienceBadgeRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceBadgeResponse> {
+    async createWorldExperienceBadge(requestParameters: CreateWorldExperienceBadgeOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceBadgeResponse> {
         const response = await this.createWorldExperienceBadgeRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -250,10 +268,12 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
     /**
      * Show (or hide) the game badges you hold on your person page. Off by default.
      */
-    async updateWorldBadgeProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldBadgeProfileResponse>> {
+    async updateWorldBadgeProfileRaw(requestParameters: UpdateWorldBadgeProfileOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UpdateWorldBadgeProfileResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -268,6 +288,7 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldBadgeProfileRequestToJSON(requestParameters.updateWorldBadgeProfileRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UpdateWorldBadgeProfileResponseFromJSON(jsonValue));
@@ -276,15 +297,15 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
     /**
      * Show (or hide) the game badges you hold on your person page. Off by default.
      */
-    async updateWorldBadgeProfile(initOverrides?: RequestInit): Promise<UpdateWorldBadgeProfileResponse> {
-        const response = await this.updateWorldBadgeProfileRaw(initOverrides);
+    async updateWorldBadgeProfile(requestParameters: UpdateWorldBadgeProfileOperationRequest = {}, initOverrides?: RequestInit): Promise<UpdateWorldBadgeProfileResponse> {
+        const response = await this.updateWorldBadgeProfileRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * Edit a badge: name, description, icon (null removes it), enabled. Badges are never deleted (players keep what they earned); turn one off to hide it and stop AwardBadge.
      */
-    async updateWorldExperienceBadgeRaw(requestParameters: UpdateWorldExperienceBadgeRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceBadgeResponse>> {
+    async updateWorldExperienceBadgeRaw(requestParameters: UpdateWorldExperienceBadgeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateWorldExperienceBadgeResponse>> {
         if (requestParameters.experienceId === null || requestParameters.experienceId === undefined) {
             throw new runtime.RequiredError('experienceId','Required parameter requestParameters.experienceId was null or undefined when calling updateWorldExperienceBadge.');
         }
@@ -296,6 +317,8 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -310,6 +333,7 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateWorldExperienceBadgeRequestToJSON(requestParameters.updateWorldExperienceBadgeRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateWorldExperienceBadgeResponseFromJSON(jsonValue));
@@ -318,7 +342,7 @@ export class WorldsBadgesApi extends runtime.BaseAPI {
     /**
      * Edit a badge: name, description, icon (null removes it), enabled. Badges are never deleted (players keep what they earned); turn one off to hide it and stop AwardBadge.
      */
-    async updateWorldExperienceBadge(requestParameters: UpdateWorldExperienceBadgeRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceBadgeResponse> {
+    async updateWorldExperienceBadge(requestParameters: UpdateWorldExperienceBadgeOperationRequest, initOverrides?: RequestInit): Promise<CreateWorldExperienceBadgeResponse> {
         const response = await this.updateWorldExperienceBadgeRaw(requestParameters, initOverrides);
         return await response.value();
     }

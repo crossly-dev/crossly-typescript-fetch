@@ -94,8 +94,8 @@ export enum CreateProductionDesignSpecResponsePrefsSpecComplexityEnum {
 * @enum {string}
 */
 export enum CreateProductionDesignSpecResponsePrefsSpecPackagingEnum {
-    Poly = 'poly',
     Box = 'box',
+    Poly = 'poly',
     PremiumBox = 'premium_box'
 }
 

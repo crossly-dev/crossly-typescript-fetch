@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    CreateWorldSpaceEventRsvpResponseData,
-    CreateWorldSpaceEventRsvpResponseDataFromJSON,
-    CreateWorldSpaceEventRsvpResponseDataFromJSONTyped,
-    CreateWorldSpaceEventRsvpResponseDataToJSON,
-} from './CreateWorldSpaceEventRsvpResponseData';
+    CreateWorldSpaceEventRsvpRequest,
+    CreateWorldSpaceEventRsvpRequestFromJSON,
+    CreateWorldSpaceEventRsvpRequestFromJSONTyped,
+    CreateWorldSpaceEventRsvpRequestToJSON,
+} from './CreateWorldSpaceEventRsvpRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface CreateWorldSpaceEventRsvpResponse {
     /**
      * 
-     * @type {CreateWorldSpaceEventRsvpResponseData}
+     * @type {CreateWorldSpaceEventRsvpRequest}
      * @memberof CreateWorldSpaceEventRsvpResponse
      */
-    data: CreateWorldSpaceEventRsvpResponseData;
+    data: CreateWorldSpaceEventRsvpRequest;
 }
 
 export function CreateWorldSpaceEventRsvpResponseFromJSON(json: any): CreateWorldSpaceEventRsvpResponse {
@@ -44,7 +44,7 @@ export function CreateWorldSpaceEventRsvpResponseFromJSONTyped(json: any, ignore
     }
     return {
         
-        'data': CreateWorldSpaceEventRsvpResponseDataFromJSON(json['data']),
+        'data': CreateWorldSpaceEventRsvpRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function CreateWorldSpaceEventRsvpResponseToJSON(value?: CreateWorldSpace
     }
     return {
         
-        'data': CreateWorldSpaceEventRsvpResponseDataToJSON(value.data),
+        'data': CreateWorldSpaceEventRsvpRequestToJSON(value.data),
     };
 }
 

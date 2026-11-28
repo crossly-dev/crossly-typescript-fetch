@@ -15,17 +15,28 @@
 
 import * as runtime from '../runtime';
 import {
-    ListChannelInventoryItem,
-    ListChannelInventoryItemFromJSON,
-    ListChannelInventoryItemToJSON,
-    ListChannelInventoryResponse,
-    ListChannelInventoryResponseFromJSON,
-    ListChannelInventoryResponseToJSON,
+    ListChannelAccountsItem,
+    ListChannelAccountsItemFromJSON,
+    ListChannelAccountsItemToJSON,
+    ListChannelAccountsResponse,
+    ListChannelAccountsResponseFromJSON,
+    ListChannelAccountsResponseToJSON,
+    UpdateChannelInventoryRequest,
+    UpdateChannelInventoryRequestFromJSON,
+    UpdateChannelInventoryRequestToJSON,
 } from '../models';
+
+export interface DeleteChannelAccountSettingRequest {
+    accountId: string;
+}
 
 export interface DeleteChannelInventoryRequest {
     platform: string;
     slot: number;
+}
+
+export interface GetChannelAccountSettingRequest {
+    accountId: string;
 }
 
 export interface GetChannelInventoryRequest {
@@ -33,9 +44,15 @@ export interface GetChannelInventoryRequest {
     slot: number;
 }
 
-export interface UpdateChannelInventoryRequest {
+export interface UpdateChannelAccountSettingRequest {
+    accountId: string;
+    updateChannelInventoryRequest: UpdateChannelInventoryRequest;
+}
+
+export interface UpdateChannelInventoryOperationRequest {
     platform: string;
     slot: number;
+    updateChannelInventoryRequest: UpdateChannelInventoryRequest;
 }
 
 /**
@@ -44,9 +61,47 @@ export interface UpdateChannelInventoryRequest {
 export class ChannelInventoryApi extends runtime.BaseAPI {
 
     /**
-     * Reset a channel\'s inventory controls to the default (no cap, no buffer, sync on, end on sell-out).
+     * Reset a platform account\'s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically).
      */
-    async deleteChannelInventoryRaw(requestParameters: DeleteChannelInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelInventoryItem>> {
+    async deleteChannelAccountSettingRaw(requestParameters: DeleteChannelAccountSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelAccountsItem>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling deleteChannelAccountSetting.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/channel-accounts/{accountId}/settings`.replace(`{${"accountId"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelAccountsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Reset a platform account\'s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically).
+     */
+    async deleteChannelAccountSetting(requestParameters: DeleteChannelAccountSettingRequest, initOverrides?: RequestInit): Promise<ListChannelAccountsItem> {
+        const response = await this.deleteChannelAccountSettingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release).
+     */
+    async deleteChannelInventoryRaw(requestParameters: DeleteChannelInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelAccountsItem>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling deleteChannelInventory.');
         }
@@ -74,21 +129,59 @@ export class ChannelInventoryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelInventoryItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelAccountsItemFromJSON(jsonValue));
     }
 
     /**
-     * Reset a channel\'s inventory controls to the default (no cap, no buffer, sync on, end on sell-out).
+     * Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release).
      */
-    async deleteChannelInventory(requestParameters: DeleteChannelInventoryRequest, initOverrides?: RequestInit): Promise<ListChannelInventoryItem> {
+    async deleteChannelInventory(requestParameters: DeleteChannelInventoryRequest, initOverrides?: RequestInit): Promise<ListChannelAccountsItem> {
         const response = await this.deleteChannelInventoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * Get one channel\'s inventory controls.
+     * Get one platform account\'s inventory and restock settings in the store.
      */
-    async getChannelInventoryRaw(requestParameters: GetChannelInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelInventoryItem>> {
+    async getChannelAccountSettingRaw(requestParameters: GetChannelAccountSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelAccountsItem>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling getChannelAccountSetting.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/channel-accounts/{accountId}/settings`.replace(`{${"accountId"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelAccountsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Get one platform account\'s inventory and restock settings in the store.
+     */
+    async getChannelAccountSetting(requestParameters: GetChannelAccountSettingRequest, initOverrides?: RequestInit): Promise<ListChannelAccountsItem> {
+        const response = await this.getChannelAccountSettingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release).
+     */
+    async getChannelInventoryRaw(requestParameters: GetChannelInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelAccountsItem>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling getChannelInventory.');
         }
@@ -116,21 +209,55 @@ export class ChannelInventoryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelInventoryItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelAccountsItemFromJSON(jsonValue));
     }
 
     /**
-     * Get one channel\'s inventory controls.
+     * Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release).
      */
-    async getChannelInventory(requestParameters: GetChannelInventoryRequest, initOverrides?: RequestInit): Promise<ListChannelInventoryItem> {
+    async getChannelInventory(requestParameters: GetChannelInventoryRequest, initOverrides?: RequestInit): Promise<ListChannelAccountsItem> {
         const response = await this.getChannelInventoryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
-     * List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions).
+     * List every platform account of the store with its inventory and restock settings.
      */
-    async listChannelInventoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelInventoryResponse>> {
+    async listChannelAccountsRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelAccountsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/channel-accounts`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelAccountsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List every platform account of the store with its inventory and restock settings.
+     */
+    async listChannelAccounts(initOverrides?: RequestInit): Promise<ListChannelAccountsResponse> {
+        const response = await this.listChannelAccountsRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated alias of GET /api/v1/channel-accounts (removed next release).
+     */
+    async listChannelInventoryRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelAccountsResponse>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -150,21 +277,66 @@ export class ChannelInventoryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelInventoryResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelAccountsResponseFromJSON(jsonValue));
     }
 
     /**
-     * List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions).
+     * Deprecated alias of GET /api/v1/channel-accounts (removed next release).
      */
-    async listChannelInventory(initOverrides?: RequestInit): Promise<ListChannelInventoryResponse> {
+    async listChannelInventory(initOverrides?: RequestInit): Promise<ListChannelAccountsResponse> {
         const response = await this.listChannelInventoryRaw(initOverrides);
         return await response.value();
     }
 
     /**
-     * Set a channel\'s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write).
+     * Set a platform account\'s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write).
      */
-    async updateChannelInventoryRaw(requestParameters: UpdateChannelInventoryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelInventoryItem>> {
+    async updateChannelAccountSettingRaw(requestParameters: UpdateChannelAccountSettingRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelAccountsItem>> {
+        if (requestParameters.accountId === null || requestParameters.accountId === undefined) {
+            throw new runtime.RequiredError('accountId','Required parameter requestParameters.accountId was null or undefined when calling updateChannelAccountSetting.');
+        }
+
+        if (requestParameters.updateChannelInventoryRequest === null || requestParameters.updateChannelInventoryRequest === undefined) {
+            throw new runtime.RequiredError('updateChannelInventoryRequest','Required parameter requestParameters.updateChannelInventoryRequest was null or undefined when calling updateChannelAccountSetting.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/channel-accounts/{accountId}/settings`.replace(`{${"accountId"}}`, encodeURIComponent(String(requestParameters.accountId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UpdateChannelInventoryRequestToJSON(requestParameters.updateChannelInventoryRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelAccountsItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Set a platform account\'s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write).
+     */
+    async updateChannelAccountSetting(requestParameters: UpdateChannelAccountSettingRequest, initOverrides?: RequestInit): Promise<ListChannelAccountsItem> {
+        const response = await this.updateChannelAccountSettingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release).
+     */
+    async updateChannelInventoryRaw(requestParameters: UpdateChannelInventoryOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListChannelAccountsItem>> {
         if (requestParameters.platform === null || requestParameters.platform === undefined) {
             throw new runtime.RequiredError('platform','Required parameter requestParameters.platform was null or undefined when calling updateChannelInventory.');
         }
@@ -173,9 +345,15 @@ export class ChannelInventoryApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('slot','Required parameter requestParameters.slot was null or undefined when calling updateChannelInventory.');
         }
 
+        if (requestParameters.updateChannelInventoryRequest === null || requestParameters.updateChannelInventoryRequest === undefined) {
+            throw new runtime.RequiredError('updateChannelInventoryRequest','Required parameter requestParameters.updateChannelInventoryRequest was null or undefined when calling updateChannelInventory.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -190,15 +368,16 @@ export class ChannelInventoryApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateChannelInventoryRequestToJSON(requestParameters.updateChannelInventoryRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelInventoryItemFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListChannelAccountsItemFromJSON(jsonValue));
     }
 
     /**
-     * Set a channel\'s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write).
+     * Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release).
      */
-    async updateChannelInventory(requestParameters: UpdateChannelInventoryRequest, initOverrides?: RequestInit): Promise<ListChannelInventoryItem> {
+    async updateChannelInventory(requestParameters: UpdateChannelInventoryOperationRequest, initOverrides?: RequestInit): Promise<ListChannelAccountsItem> {
         const response = await this.updateChannelInventoryRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -38,7 +38,7 @@ export interface CreatePlatformAccountRefreshStatusResponseResults {
      */
     status: string;
     /**
-     * 
+     * A probe ran and the platform answered (false: no healthcheck action, archived, or the call never got through).
      * @type {boolean}
      * @memberof CreatePlatformAccountRefreshStatusResponseResults
      */

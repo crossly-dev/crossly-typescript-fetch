@@ -69,10 +69,28 @@ export interface ListRepriceEventsItem {
     ruleId?: string | null;
     /**
      * 
+     * @type {number}
+     * @memberof ListRepriceEventsItem
+     */
+    floorCents?: number | null;
+    /**
+     * 
+     * @type {Date}
+     * @memberof ListRepriceEventsItem
+     */
+    decidedAt?: Date | null;
+    /**
+     * 
      * @type {string}
      * @memberof ListRepriceEventsItem
      */
     strategy: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListRepriceEventsItem
+     */
+    approval?: string | null;
     /**
      * 
      * @type {number}
@@ -93,28 +111,10 @@ export interface ListRepriceEventsItem {
     changed: boolean;
     /**
      * 
-     * @type {number}
-     * @memberof ListRepriceEventsItem
-     */
-    floorCents?: number | null;
-    /**
-     * 
      * @type {boolean}
      * @memberof ListRepriceEventsItem
      */
     floorWasNet: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListRepriceEventsItem
-     */
-    approval?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ListRepriceEventsItem
-     */
-    decidedAt?: Date | null;
 }
 
 export function ListRepriceEventsItemFromJSON(json: any): ListRepriceEventsItem {
@@ -135,14 +135,14 @@ export function ListRepriceEventsItemFromJSONTyped(json: any, ignoreDiscriminato
         'platformListingId': !exists(json, 'platformListingId') ? undefined : json['platformListingId'],
         'reason': json['reason'],
         'ruleId': !exists(json, 'ruleId') ? undefined : json['ruleId'],
+        'floorCents': !exists(json, 'floorCents') ? undefined : json['floorCents'],
+        'decidedAt': !exists(json, 'decidedAt') ? undefined : (json['decidedAt'] === null ? null : new Date(json['decidedAt'])),
         'strategy': json['strategy'],
+        'approval': !exists(json, 'approval') ? undefined : json['approval'],
         'oldPriceCents': !exists(json, 'oldPriceCents') ? undefined : json['oldPriceCents'],
         'newPriceCents': !exists(json, 'newPriceCents') ? undefined : json['newPriceCents'],
         'changed': json['changed'],
-        'floorCents': !exists(json, 'floorCents') ? undefined : json['floorCents'],
         'floorWasNet': json['floorWasNet'],
-        'approval': !exists(json, 'approval') ? undefined : json['approval'],
-        'decidedAt': !exists(json, 'decidedAt') ? undefined : (json['decidedAt'] === null ? null : new Date(json['decidedAt'])),
     };
 }
 
@@ -163,14 +163,14 @@ export function ListRepriceEventsItemToJSON(value?: ListRepriceEventsItem | null
         'platformListingId': value.platformListingId,
         'reason': value.reason,
         'ruleId': value.ruleId,
+        'floorCents': value.floorCents,
+        'decidedAt': value.decidedAt === undefined ? undefined : (value.decidedAt === null ? null : value.decidedAt.toISOString()),
         'strategy': value.strategy,
+        'approval': value.approval,
         'oldPriceCents': value.oldPriceCents,
         'newPriceCents': value.newPriceCents,
         'changed': value.changed,
-        'floorCents': value.floorCents,
         'floorWasNet': value.floorWasNet,
-        'approval': value.approval,
-        'decidedAt': value.decidedAt === undefined ? undefined : (value.decidedAt === null ? null : value.decidedAt.toISOString()),
     };
 }
 

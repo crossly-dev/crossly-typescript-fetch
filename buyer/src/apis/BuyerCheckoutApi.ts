@@ -15,13 +15,27 @@
 
 import * as runtime from '../runtime';
 import {
+    CreateBuyerCheckoutRequest,
+    CreateBuyerCheckoutRequestFromJSON,
+    CreateBuyerCheckoutRequestToJSON,
     CreateBuyerCheckoutResponse,
     CreateBuyerCheckoutResponseFromJSON,
     CreateBuyerCheckoutResponseToJSON,
     GetBuyerCheckoutControlResponse,
     GetBuyerCheckoutControlResponseFromJSON,
     GetBuyerCheckoutControlResponseToJSON,
+    UpdateBuyerCheckoutControlRequest,
+    UpdateBuyerCheckoutControlRequestFromJSON,
+    UpdateBuyerCheckoutControlRequestToJSON,
 } from '../models';
+
+export interface CreateBuyerCheckoutOperationRequest {
+    createBuyerCheckoutRequest: CreateBuyerCheckoutRequest;
+}
+
+export interface UpdateBuyerCheckoutControlOperationRequest {
+    updateBuyerCheckoutControlRequest: UpdateBuyerCheckoutControlRequest;
+}
 
 /**
  * 
@@ -32,10 +46,16 @@ export class BuyerCheckoutApi extends runtime.BaseAPI {
      * An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key\'s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail `variants`), pass listingVariantId: without one the quote is refused and `details.options` names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with `authentication_required` and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \"eur\") charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
      * Buy a listing without being present.
      */
-    async createBuyerCheckoutRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCheckoutResponse>> {
+    async createBuyerCheckoutRaw(requestParameters: CreateBuyerCheckoutOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBuyerCheckoutResponse>> {
+        if (requestParameters.createBuyerCheckoutRequest === null || requestParameters.createBuyerCheckoutRequest === undefined) {
+            throw new runtime.RequiredError('createBuyerCheckoutRequest','Required parameter requestParameters.createBuyerCheckoutRequest was null or undefined when calling createBuyerCheckout.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -50,6 +70,7 @@ export class BuyerCheckoutApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateBuyerCheckoutRequestToJSON(requestParameters.createBuyerCheckoutRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateBuyerCheckoutResponseFromJSON(jsonValue));
@@ -59,8 +80,8 @@ export class BuyerCheckoutApi extends runtime.BaseAPI {
      * An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key\'s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail `variants`), pass listingVariantId: without one the quote is refused and `details.options` names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with `authentication_required` and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \"eur\") charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
      * Buy a listing without being present.
      */
-    async createBuyerCheckout(initOverrides?: RequestInit): Promise<CreateBuyerCheckoutResponse> {
-        const response = await this.createBuyerCheckoutRaw(initOverrides);
+    async createBuyerCheckout(requestParameters: CreateBuyerCheckoutOperationRequest, initOverrides?: RequestInit): Promise<CreateBuyerCheckoutResponse> {
+        const response = await this.createBuyerCheckoutRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -104,10 +125,16 @@ export class BuyerCheckoutApi extends runtime.BaseAPI {
      * A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
      * Switch this key on for spending, and set its limits.
      */
-    async updateBuyerCheckoutControlRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerCheckoutControlResponse>> {
+    async updateBuyerCheckoutControlRaw(requestParameters: UpdateBuyerCheckoutControlOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBuyerCheckoutControlResponse>> {
+        if (requestParameters.updateBuyerCheckoutControlRequest === null || requestParameters.updateBuyerCheckoutControlRequest === undefined) {
+            throw new runtime.RequiredError('updateBuyerCheckoutControlRequest','Required parameter requestParameters.updateBuyerCheckoutControlRequest was null or undefined when calling updateBuyerCheckoutControl.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -122,6 +149,7 @@ export class BuyerCheckoutApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: UpdateBuyerCheckoutControlRequestToJSON(requestParameters.updateBuyerCheckoutControlRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetBuyerCheckoutControlResponseFromJSON(jsonValue));
@@ -131,8 +159,8 @@ export class BuyerCheckoutApi extends runtime.BaseAPI {
      * A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
      * Switch this key on for spending, and set its limits.
      */
-    async updateBuyerCheckoutControl(initOverrides?: RequestInit): Promise<GetBuyerCheckoutControlResponse> {
-        const response = await this.updateBuyerCheckoutControlRaw(initOverrides);
+    async updateBuyerCheckoutControl(requestParameters: UpdateBuyerCheckoutControlOperationRequest, initOverrides?: RequestInit): Promise<GetBuyerCheckoutControlResponse> {
+        const response = await this.updateBuyerCheckoutControlRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

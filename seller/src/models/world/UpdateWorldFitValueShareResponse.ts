@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../../runtime';
 import {
-    UpdateWorldFitValueShareResponseData,
-    UpdateWorldFitValueShareResponseDataFromJSON,
-    UpdateWorldFitValueShareResponseDataFromJSONTyped,
-    UpdateWorldFitValueShareResponseDataToJSON,
-} from './UpdateWorldFitValueShareResponseData';
+    UpdateWorldFitValueShareRequest,
+    UpdateWorldFitValueShareRequestFromJSON,
+    UpdateWorldFitValueShareRequestFromJSONTyped,
+    UpdateWorldFitValueShareRequestToJSON,
+} from './UpdateWorldFitValueShareRequest';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface UpdateWorldFitValueShareResponse {
     /**
      * 
-     * @type {UpdateWorldFitValueShareResponseData}
+     * @type {UpdateWorldFitValueShareRequest}
      * @memberof UpdateWorldFitValueShareResponse
      */
-    data: UpdateWorldFitValueShareResponseData;
+    data: UpdateWorldFitValueShareRequest;
 }
 
 export function UpdateWorldFitValueShareResponseFromJSON(json: any): UpdateWorldFitValueShareResponse {
@@ -44,7 +44,7 @@ export function UpdateWorldFitValueShareResponseFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'data': UpdateWorldFitValueShareResponseDataFromJSON(json['data']),
+        'data': UpdateWorldFitValueShareRequestFromJSON(json['data']),
     };
 }
 
@@ -57,7 +57,7 @@ export function UpdateWorldFitValueShareResponseToJSON(value?: UpdateWorldFitVal
     }
     return {
         
-        'data': UpdateWorldFitValueShareResponseDataToJSON(value.data),
+        'data': UpdateWorldFitValueShareRequestToJSON(value.data),
     };
 }
 

@@ -21,9 +21,15 @@ import {
     CreateBillingUpgradeResponse,
     CreateBillingUpgradeResponseFromJSON,
     CreateBillingUpgradeResponseToJSON,
+    GetBillingUsageResponse,
+    GetBillingUsageResponseFromJSON,
+    GetBillingUsageResponseToJSON,
     ListBillingAppAllowancesResponse,
     ListBillingAppAllowancesResponseFromJSON,
     ListBillingAppAllowancesResponseToJSON,
+    ListBillingInvoicesResponse,
+    ListBillingInvoicesResponseFromJSON,
+    ListBillingInvoicesResponseToJSON,
     ListBillingPlansResponse,
     ListBillingPlansResponseFromJSON,
     ListBillingPlansResponseToJSON,
@@ -33,14 +39,25 @@ export interface CreateBillingUpgradeOperationRequest {
     createBillingUpgradeRequest: CreateBillingUpgradeRequest;
 }
 
+export interface ListBillingInvoicesRequest {
+    cursor?: string;
+    status?: ListBillingInvoicesStatusEnum;
+    from?: string;
+    to?: string;
+    min?: number;
+    max?: number;
+    q?: string;
+    limit?: number;
+}
+
 /**
  * 
  */
 export class BillingApi extends runtime.BaseAPI {
 
     /**
-     * Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
-     * Start an upgrade to a higher plan.
+     * Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is `X-Storefront-Id` (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass `separate: true` to take its own.
+     * Start an upgrade of a store\'s plan.
      */
     async createBillingUpgradeRaw(requestParameters: CreateBillingUpgradeOperationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<CreateBillingUpgradeResponse>> {
         if (requestParameters.createBillingUpgradeRequest === null || requestParameters.createBillingUpgradeRequest === undefined) {
@@ -73,11 +90,47 @@ export class BillingApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
-     * Start an upgrade to a higher plan.
+     * Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is `X-Storefront-Id` (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass `separate: true` to take its own.
+     * Start an upgrade of a store\'s plan.
      */
     async createBillingUpgrade(requestParameters: CreateBillingUpgradeOperationRequest, initOverrides?: RequestInit): Promise<CreateBillingUpgradeResponse> {
         const response = await this.createBillingUpgradeRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * The store is `X-Storefront-Id` (omitted: the default store). `pooled` is true when one plan covers several stores and its limits are shared by them; `used` is then the sum across those stores. A null `limit` means no cap. `upgradeTier` is the cheapest plan that raises a limit; `resetsAt` is when a monthly count starts again (null for a standing count). A teammate\'s token needs a billing grant on that store.
+     * A store\'s plan and its usage against the plan\'s limits (used of limit, per metered limit).
+     */
+    async getBillingUsageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<GetBillingUsageResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/billing/usage`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBillingUsageResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The store is `X-Storefront-Id` (omitted: the default store). `pooled` is true when one plan covers several stores and its limits are shared by them; `used` is then the sum across those stores. A null `limit` means no cap. `upgradeTier` is the cheapest plan that raises a limit; `resetsAt` is when a monthly count starts again (null for a standing count). A teammate\'s token needs a billing grant on that store.
+     * A store\'s plan and its usage against the plan\'s limits (used of limit, per metered limit).
+     */
+    async getBillingUsage(initOverrides?: RequestInit): Promise<GetBillingUsageResponse> {
+        const response = await this.getBillingUsageRaw(initOverrides);
         return await response.value();
     }
 
@@ -118,6 +171,74 @@ export class BillingApi extends runtime.BaseAPI {
     }
 
     /**
+     * The store is `X-Storefront-Id` (omitted: the default store). Filters: `status`, `from`/`to` (YYYY-MM-DD, inclusive, UTC), `min`/`max` (amount in cents), `q` (part of the invoice number). Paged by `cursor`: pass `meta.nextCursor` of the previous page; null means the last page. Amounts are cents in `currency`.
+     * List a store\'s plan invoices, newest first, with search and filters.
+     */
+    async listBillingInvoicesRaw(requestParameters: ListBillingInvoicesRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ListBillingInvoicesResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.cursor !== undefined) {
+            queryParameters['cursor'] = requestParameters.cursor;
+        }
+
+        if (requestParameters.status !== undefined) {
+            queryParameters['status'] = requestParameters.status;
+        }
+
+        if (requestParameters.from !== undefined) {
+            queryParameters['from'] = requestParameters.from;
+        }
+
+        if (requestParameters.to !== undefined) {
+            queryParameters['to'] = requestParameters.to;
+        }
+
+        if (requestParameters.min !== undefined) {
+            queryParameters['min'] = requestParameters.min;
+        }
+
+        if (requestParameters.max !== undefined) {
+            queryParameters['max'] = requestParameters.max;
+        }
+
+        if (requestParameters.q !== undefined) {
+            queryParameters['q'] = requestParameters.q;
+        }
+
+        if (requestParameters.limit !== undefined) {
+            queryParameters['limit'] = requestParameters.limit;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("PersonalAccessToken", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/v1/billing/invoices`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListBillingInvoicesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * The store is `X-Storefront-Id` (omitted: the default store). Filters: `status`, `from`/`to` (YYYY-MM-DD, inclusive, UTC), `min`/`max` (amount in cents), `q` (part of the invoice number). Paged by `cursor`: pass `meta.nextCursor` of the previous page; null means the last page. Amounts are cents in `currency`.
+     * List a store\'s plan invoices, newest first, with search and filters.
+     */
+    async listBillingInvoices(requestParameters: ListBillingInvoicesRequest = {}, initOverrides?: RequestInit): Promise<ListBillingInvoicesResponse> {
+        const response = await this.listBillingInvoicesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Prices are the Stripe Prices checkout charges (whole USD). A null limit means no cap.
      * List the plans with their prices, limits and features.
      */
@@ -153,4 +274,16 @@ export class BillingApi extends runtime.BaseAPI {
         return await response.value();
     }
 
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum ListBillingInvoicesStatusEnum {
+    Draft = 'draft',
+    Open = 'open',
+    Paid = 'paid',
+    Uncollectible = 'uncollectible',
+    Void = 'void'
 }
